@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Watch Overview — 89 Models</title>
+<title>Watch Overview — {{rowCount}} Models</title>
 <style>
   :root{
     --bg:#0f1115; --panel:#161a21; --line:#28303c; --text:#e7ecf3; --muted:#9aa7b6;
@@ -127,12 +127,18 @@
   .absent li{padding:6px 0;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--muted)}
   .absent li:last-child{border-bottom:none}
   .absent b{color:var(--text)}
-  @media (max-width:640px){ header{padding:18px 14px 6px} h1{font-size:20px} .stores{margin:0 14px 32px} }
+  .self-check{margin:0 22px 14px;padding:12px 14px;border:1px solid #c0392b;border-left-width:4px;
+    border-radius:6px;background:#2a1512;color:#ffb3a6;font-size:12.5px;line-height:1.55}
+  .self-check b{color:#ff8f7d}
+  .self-check ul{margin:8px 0 0;padding-left:20px}
+  .self-check li{margin:3px 0}
+  @media (max-width:640px){ header{padding:18px 14px 6px} h1{font-size:20px} .stores{margin:0 14px 32px}
+    .self-check{margin:0 14px 14px} }
 </style>
 </head>
 <body>
 <header>
-  <h1>Watch Overview — 89 models</h1>
+  <h1>Watch Overview — {{rowCount}} models</h1>
   <p class="sub">Specs and prices from each brand's site — treat as approximate.</p>
 </header>
 <div class="legend">L2L = lug-to-lug · Höhe = case height · "—" = not published by maker.</div>
@@ -192,8 +198,9 @@
 <p class="price-note">Leave Min/Max blank for no limit. Price sorts on an approx. EUR-equivalent (converted for $ listings).</p>
 <p class="price-note" id="rateInfo">Fetching exchange rate…</p>
 <p class="price-note"><b>Movement cost</b> = approx. price to buy that caliber loose (parts market), not the brand's wholesale cost. <b>"Not sold separately"</b> = maker only supplies it inside a finished watch. Shown for reference only — the Value score rates the movement by architecture tier, not by parts price.</p>
-<p class="price-note"><b>Value</b> = how many spec points a watch sits above or below what this list charges for specs at its price. A spec score (0–100) is built from seven weighted criterion groups — movement, timekeeping, case &amp; glass, water &amp; lume, wearability, fittings and complications — then compared against a robust baseline of spec vs ln(price) fitted separately for mechanical and quartz. <b>0 = priced exactly as its specs predict</b>; the badge shows the surplus or shortfall in spec points. Colour is banded rather than continuous: the residual carries about ±<span id="sigmaNote">4</span> spec points of noise, so watches within one band are ties, not a ranking. <b>n/s</b> = fewer than five other watches within ±50% of that price, so the list cannot say what it charges there. The <b>Score</b> column to its left is the same number on the 0–100 scale used up to revision 2 (50 = as predicted), kept for continuity; it sorts identically. <b>Specs</b> is step 1 alone — the weighted spec score with price taken out, answering “how much watch is this” rather than “how well is it priced”. It is the only one of the three defined for every row, but it correlates 0.85 with price and tilts toward tool watches, so read it alongside the other two rather than instead of them. Hover a badge for that watch’s inputs.</p>
+<p class="price-note"><b>Value</b> = how many spec points a watch sits above or below what this list charges for specs at its price. A spec score (0–100) is built from seven weighted criterion groups — movement, timekeeping, case &amp; glass, water &amp; lume, wearability, fittings and complications — then compared against a robust baseline of spec vs ln(price) fitted separately for mechanical and quartz. <b>0 = priced exactly as its specs predict</b>; the badge shows the surplus or shortfall in spec points. Colour is banded rather than continuous: the residual carries about ±{{sigma}} spec points of noise, so watches within one band are ties, not a ranking. <b>n/s</b> = fewer than {{supportMin}} other watches within ±{{supportPct}}% of that price, so the list cannot say what it charges there. The <b>Score</b> column to its left is the same number on the 0–100 scale used up to revision 2 (50 = as predicted), kept for continuity; it sorts identically. <b>Specs</b> is step 1 alone — the weighted spec score with price taken out, answering “how much watch is this” rather than “how well is it priced”. It is the only one of the three defined for every row, but it correlates 0.85 with price and tilts toward tool watches, so read it alongside the other two rather than instead of them. Hover a badge for that watch’s inputs.</p>
 <div class="band-legend" id="bandLegend"></div>
+<div class="self-check" id="selfCheck" hidden></div>
 
 <div class="wrap">
 <table>
@@ -205,7 +212,7 @@
   <th data-key="diameter">Diameter<span class="sort-arrow"></span></th>
   <th data-key="l2l">L2L<span class="sort-arrow"></span></th>
   <th data-key="height" title="Case thickness/height, from each maker's spec sheet (or press/retailer listings where the maker page didn't list one).">Höhe<span class="sort-arrow"></span></th>
-  <th data-key="weight" title="Weight on the wrist including the band. 47 of the 89 rows are a published figure, shown in bold and without the ≈: Tissot, Citizen, Seagull, Seiko, Mido, Timex and Christopher Ward all state weight as a plain field in their spec tables, and three further rows come from a review or a specialist retailer where the maker omits it. The remaining rows are a physical estimate computed from case diameter, thickness, case material density and band type — case volume as a cylinder at a 0.55 fill factor, plus the movement, plus the bracelet or strap. Those estimates can now be checked, because the 47 published figures are exactly the test set the estimator never had: against them it lands within 15% on 40 of 47, with a median error of 6.1% and an RMSE of 13.5 g, and runs 2.4% heavy on average. The biases it shows are NOT corrected, because each rests on too little data — titanium reads about 5% light across seven rows, and the one bioceramic row it could be tested on came out 45% heavy, so the Swatch estimates are the least trustworthy in the column. Rows quoted on a strap with the bracelet optional are estimated on the strap, matching the price they carry. This column is deliberately NOT part of any score: the estimate is a deterministic function of diameter, thickness, case material and band, all of which the spec score already uses, so scoring it would double-count. Titanium already scores above steel on the case criterion largely because it is light — paying for that again here would reward the same property twice.">Weight<span class="sort-arrow"></span></th>
+  <th data-key="weight" title="Weight on the wrist including the band. {{weightPublished}} of the {{rowCount}} rows are a published figure, shown in bold and without the ≈: Tissot, Citizen, Seagull, Seiko, Mido, Timex and Christopher Ward all state weight as a plain field in their spec tables, and three further rows come from a review or a specialist retailer where the maker omits it. The remaining rows are a physical estimate computed from case diameter, thickness, case material density and band type — case volume as a cylinder at a 0.55 fill factor, plus the movement, plus the bracelet or strap. Those estimates can now be checked, because the {{weightPublished}} published figures are exactly the test set the estimator never had: against them it lands within 15% on {{weightWithin15}} of {{weightPublished}}, with a median error of {{weightMedianErr}}% and an RMSE of {{weightRmse}} g, and runs {{weightSigned}}% heavy on average. The biases it shows are NOT corrected, because each rests on too little data — titanium reads about {{weightTiPct}}% light across {{weightTiN}} rows, and the one bioceramic row it could be tested on came out {{weightBioPct}}% heavy, so the Swatch estimates are the least trustworthy in the column. Rows quoted on a strap with the bracelet optional are estimated on the strap, matching the price they carry. This column is deliberately NOT part of any score: the estimate is a deterministic function of diameter, thickness, case material and band, all of which the spec score already uses, so scoring it would double-count. Titanium already scores above steel on the case criterion largely because it is light — paying for that again here would reward the same property twice.">Weight<span class="sort-arrow"></span></th>
   <th data-key="case">Case<span class="sort-arrow"></span></th>
   <th data-key="band">Band<span class="sort-arrow"></span></th>
   <th data-key="glass">Glass<span class="sort-arrow"></span></th>
@@ -215,9 +222,9 @@
   <th data-key="measured" title="What watches on this caliber are actually REPORTED to do, against the maker’s guarantee in the column to the left. Not scored — the Value model still runs on the published figure. This column exists so the two standards can be compared before deciding whether to switch. The gap between them is not a constant: about 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing the score on measured rates would therefore not rescale the column, it would hand several points to whichever makers quote most conservatively. Figures are the range of reported rates in seconds per day, magnitude only, so they sit on the same footing as the published column. Confidence is marked in the tooltip: multiple consistent sources, a handful of reports, or one or two data points with a wide spread. These are collected owner reports and review samples, not controlled measurements — people post when delighted or annoyed, phone apps are not timegraphers, and a magnetised watch reads exactly like a badly regulated one. “—” means nothing published: no maker or reviewer reports measured rates for that caliber, which is the case for most of the micro-brand mechanicals and for essentially all the quartz.">Measured<span class="sort-arrow"></span></th>
   <th data-key="waterres">Water&nbsp;res.<span class="sort-arrow"></span></th>
   <th data-key="movementcost" title="Approx. cost of buying the movement itself, loose, from the parts/hobbyist market (Cousins UK, Esslinger, Otto Frei, eBay parts sellers, etc.) — not the same as what the brand pays wholesale. 'Not sold separately' = the maker only supplies it inside a finished watch (Swatch Group's Powermatic 80, Citizen's in-house Series 8 and Orient's in-house calibers all fall in this category). Reference data only — no longer an input to the Value score.">Movement&nbsp;cost<span class="sort-arrow"></span></th>
-  <th data-key="specs" title="Step 1 of the Value model on its own: the weighted spec score, 0–100, with price taken out entirely. This is what the watch offers; the two columns to the right are what it offers relative to what it costs. Useful when the budget is already fixed, and it is the only one of the three defined for every row — the four watches with too few comparable prices to score for Value still have a spec score. It is also the more stable number: it rests on fixed anchors (30–300 m, 38–80 h and so on) rather than on a curve fitted to this list, so adding a row cannot change it. Three things to know before ranking by it. It correlates 0.84 with price, so sorting by it gives you something close to a price sort — that is precisely why the Value column exists. It tilts toward tool watches by construction: divers average 48.3 here against 35.1 for watches rated 50 m or less, because depth rating, lume and bezel are things a dress watch cannot collect, and the Value column cancels that tilt while this one does not. And accuracy is ranked within movement class, so a quartz and a mechanical scoring alike on it are not actually keeping time alike. The observed range here is 26–63, not 0–100: 63 is the top of this list, not a perfect watch.">Specs<span class="sort-arrow"></span></th>
+  <th data-key="specs" title="Step 1 of the Value model on its own: the weighted spec score, 0–100, with price taken out entirely. This is what the watch offers; the two columns to the right are what it offers relative to what it costs. Useful when the budget is already fixed, and it is the only one of the three defined for every row — the {{nsCount}} watches with too few comparable prices to score for Value still have a spec score. It is also the more stable number: it rests on fixed anchors (30–300 m, 38–80 h and so on) rather than on a curve fitted to this list, so adding a row cannot change it. Three things to know before ranking by it. It correlates {{specPriceCorr}} with price, so sorting by it gives you something close to a price sort — that is precisely why the Value column exists. It tilts toward tool watches by construction: divers average {{diverSpec}} here against {{shallowSpec}} for watches rated 50 m or less, because depth rating, lume and bezel are things a dress watch cannot collect, and the Value column cancels that tilt while this one does not. And accuracy is ranked within movement class, so a quartz and a mechanical scoring alike on it are not actually keeping time alike. The observed range here is {{specMin}}–{{specMax}}, not 0–100: {{specMax}} is the top of this list, not a perfect watch.">Specs<span class="sort-arrow"></span></th>
   <th data-key="price" title="Sorted using an approximate EUR-equivalent across currencies (live USD→EUR rate)">Price<span class="sort-arrow"></span></th>
-  <th data-key="score" title="The same number as the Value column on the right, on the 0–100 scale this table used up to revision 2, kept for continuity: 50 = priced exactly as its specs predict, and each spec point of surplus moves it 2.8 points. Sorting by it gives exactly the same order as sorting by Value, because the two are one number on two scales. For judging how big a gap is, prefer the Value column: the ×2.8 makes differences here look about three times larger than the model can resolve — the residual carries roughly ±4 spec points of noise, which is about ±12 on this scale, so anything inside ~12 points is a tie. “—” = too few comparable prices to score.">Score<span class="sort-arrow"></span></th>
+  <th data-key="score" title="The same number as the Value column on the right, on the 0–100 scale this table used up to revision 2, kept for continuity: 50 = priced exactly as its specs predict, and each spec point of surplus moves it 2.8 points. Sorting by it gives exactly the same order as sorting by Value, because the two are one number on two scales. For judging how big a gap is, prefer the Value column: the ×2.8 makes differences here look about three times larger than the model can resolve — the residual carries roughly ±{{sigma}} spec points of noise, which is about ±{{sigmaOnScore}} on this scale, so anything inside ~{{sigmaOnScore}} points is a tie. “—” = too few comparable prices to score.">Score<span class="sort-arrow"></span></th>
   <th data-key="value" title="Spec points above or below what this list charges for specs at this price. Step 1: a spec score from seven criterion GROUPS, each with one weight shared by its members — movement (24%: tier, finishing, antimagnetism), timekeeping (16%: accuracy, power reserve), case &amp; glass (16%), water &amp; lume (13%, incl. ISO 6425), wearability (11%: thickness and lug-to-lug, both as a ratio of diameter), fittings (11%: clasp, display back) and complications (9%). Grouping replaces revision 2’s eleven separate weights, which let correlated criteria stack — water and lume correlated at 0.75, movement tier and finishing at 0.72, and the eleven carried about 6.4 effective dimensions. Anything that cannot apply (power reserve on quartz, lug-to-lug on a pocket watch) has its weight redistributed; anything that applies but has not been researched is imputed at the list average, so looking a row up moves it on what is found rather than on being looked at. Accuracy is still ranked within movement class. Step 2: the spec score is compared against a Theil–Sen baseline of spec vs ln(price), with a separate intercept per movement class. Median-based, so no single row can steer it, and class-aware, so quartz and mechanical are not measured against one shared line. The badge is signed spec points, not a 0–100 rating, and the colour is banded at ½ and 1½ sigma of the residual because differences smaller than that are not real. “n/s” = too few comparable prices to score. Price, depreciation, service cost and warranty are not inputs. Hover-visible inputs include estimates — finishing and lume especially.">Value<span class="sort-arrow"></span></th>
 </tr>
 </thead>
@@ -228,7 +235,7 @@
 
 <section class="stores">
   <h2>Where to try these on in Munich</h2>
-  <p><b>44 of the 89 rows</b> are carried by a physical shop in Munich; 41 of the remaining 45 are
+  <p><b>44 of the {{rowCount}} rows</b> are carried by a physical shop in Munich; 41 of the remaining 45 are
   direct-to-consumer brands with no dealer here at any price. The split is not about quality — it is about
   distribution model.
   Everything Swiss or Japanese in this table (Tissot, Citizen, Certina, Swatch, Longines, Seiko, Orient, Mido) plus
@@ -482,6 +489,8 @@
   <p>Christopher Ward, pass 16 — ten rows added (77–86), and the list goes from 76 to 86. Three Tridents (Reef 41, Pro 300 38, GMT 300 44), the C65 Dune Aeolian 38, both C63 Sealanders in 36 mm, three of The Twelve including the titanium 40, and the titanium Trident Lumière — €1,160 to €2,250, all priced from CW's EUR storefront. <b>Every URL is a specific SKU rather than a model page</b>, so each row is scored on the exact bracelet or strap its own price buys. That is the rule pass 3 set for MAEN and Baltic and pass 6 for Vaer, and it bites harder here than anywhere else in the file: CW sell the same reference across six or seven band options at spreads of a couple of hundred euros, and the clasp rating has to move with the price or the row is scored on a watch nobody is buying. Four of the ten are consequently strap rows at clasp 0.35 rather than bracelet rows at 0.85. <b>CW publish the second-best spec table in this file, after Mido's</b> — case diameter, height, lug-to-lug, water resistance, caliber, power reserve, jewels, beat rate, case weight and with-strap weight — and two fields in it that no other maker here states at all. The first is the lume <i>grade</i>, printed as "SLN X1 BL C1" in the spec table rather than left to a marketing sentence, which makes these the only ten rows in the file where the lume rating is read instead of estimated; X1 is the top Super-LumiNova grade, so all ten sit at 1.0, a value only the MAEN otherwise holds. The second is a timing tolerance per reference, and that is what turned up the strangest number of the pass: <b>the Trident GMT 300 is quoted at ±20 s/day where every other CW row, including the Sealander GMT on the identical SW330-2 at the identical Élaboré grade, is quoted at −5/+12.</b> It is CW's own figure on CW's own page, so it is recorded rather than quietly smoothed toward its sibling, and it costs that row about two spec points. <b>Three findings stated rather than assumed.</b> ISO 6425 appears nowhere on any of the ten pages, including all three 300 m divers, so iso is 0 as a finding. No Nivachron, no silicon, no A/m figure anywhere either, so antimag is 0 on all ten — these are standard Sellita hairsprings, which ranks them below every Powermatic in the list and is a real part of why they score as they do. And the 60-month movement guarantee gives them war 5, level with Citizen and the longest here alongside it, though that column is data only.</p>
   <p><b>Movement tiers, pass 16.</b> Three new Sellita entries, and each turns on not paying twice for something already scored. The <b>SW200-2 Power+</b> in the Sealander Automatic sits at 0.60, level with the SW200-1 it replaces: the Power+ is a barrel and mainspring redesign taking 38 h to 60–65 h, the escapement is untouched, and power reserve is already its own sub-score at 40% of the timekeeping group — raising the tier as well would bank the same improvement twice. The <b>SW330-2</b> also takes 0.60. It is the 2892 lineage rather than the 2824, which is the same argument that puts Mido's A31.111 at 0.60, but it is a <i>caller</i> GMT and not a traveller, so it gets none of the +0.05 the C07.661 and the Miyota 9075 earn for a jumping local hour; its second time zone is paid for in complications instead, at the 'gmt' rate of 0.25 rather than the 0.5 a true GMT takes. The <b>SW300-1 COSC</b> takes 0.65, level with the Longines L888.5 at the top of the reworked-ebauche band. This table's own header says regulation grade is folded into the tier rather than bolted on as a bonus, and COSC is a per-unit, third-party-verified regulation standard — the strongest form that evidence takes anywhere in this file. It is a different merit from the L888.5's silicon hairspring, not a lesser one, so the two sit level rather than being split on a distinction this column has no way to rank. <b>On weight, CW become the seventh maker to publish mass as an ordinary field</b>, all ten rows, no gaps — and the only one that publishes <i>two</i> figures per reference, a "Case Weight" and a "Weight inc. Strap". This column is a with-band number so the second is used, which also makes CW the one maker here from whom the wrong figure could have been taken without it showing. The column goes to 47 published of 86.</p>
   <p><b>GMT labelling, pass 18 — no score moves, but the table now shows a distinction it was already making.</b> The model has always separated the two kinds: a <i>true</i> (traveller) GMT jumps the local hour hand in one-hour steps and takes 0.5 in complications plus &plus;0.05 on the movement tier, while a <i>caller</i> GMT moves only the 24-hour hand and takes 0.25 with no tier bonus — 2.9 spec points end to end. That split reached the Value tooltip but not the Movement column, where six of the nine GMT rows read simply "Quartz GMT" or "Automatic GMT" and so looked like peers of the three reading "true GMT". All six now say <b>caller GMT</b>, verified per caliber rather than inferred: the Ronda 515.24H and the ETA F06.865 each set the 24-hour hand at their own crown position, and the Sellita SW330-2 is caller by design. The three true ones are unchanged — both Vaer G5s (Miyota 9075) and the Mido Ocean Star GMT (ETA C07.661). The <code>gmt</code> tag's definition in the code was corrected while there: it described a hand "geared to the main time", which is an AM/PM indicator rather than a GMT, and no row here has one.</p>
+  <p><b>Maintainability, pass 19 — nothing about the watches changed; the model output is identical to the digit.</b> This pass is about how the file fails, which until now was silently. Three of the last four passes found a number in this page's own prose that had quietly stopped being true — the spec range, the spec/price correlation, the diver split, the titanium bias — and each was found by chance rather than by anything checking. <b>Every figure the page can derive is now derived.</b> The prose carries <code>{{token}}</code> placeholders filled at render from <code>computedFigures()</code>, so the tooltips, the heading, the row counts and the sources tally are outputs of the data rather than assertions about it. That includes the weight estimator's own error statistics, which turn out to be fully recomputable from the published figures: enlarging the test set now updates the claim instead of falsifying it. Research findings that genuinely are not derivable — the Munich shop counts, the estimator's band-type breakdown — stay as literals, and stay here in the footer where they carry a date.</p>
+  <p><b>The invariants are enforced rather than described.</b> <code>selfCheck()</code> runs at load and puts a red banner above the table if any of them break: row ids contiguous and unique, every side table covering every row, the four weight tables disjoint and total, every <code>movementDisplay</code> matching a <code>MOVEMENT_TIER</code> key <i>and vice versa</i>, no unknown complication tag, watch type, case or glass category, and the empty-state <code>colspan</code> equal to the column count. The last two are worth naming because they are the ones this file has actually been bitten by. Renumbering a row reassigns its lume, finishing and caseback to a different watch. Editing a <code>movementDisplay</code> string without its tier key drops that watch to the generic by-type fallback — a one-character change, an em dash to a hyphen, was enough. Both used to render a completely normal-looking page; both now name themselves. <code>node check.js</code> runs the same checks from the command line and exits non-zero, and prints the validation figures alongside them, so a change that was not meant to touch the model can be seen not to have. The file is also under version control from this pass onward, which is what finally lets the changelog below be about <i>why</i> rather than about what moved.</p>
   <p><b>This is the first time enlarging that test set has made the weight estimator visibly worse, and it is reported as found rather than tuned away.</b> Across all 47 rows the estimator now lands within ±15% on 40, with a mean absolute error of 9.5%, a median of 6.1%, an RMSE of 13.5 g and a mean signed error of +2.4% — against 33 of 37, 8.0%, 5.6%, 11.7 g and +1.6% on the pre-CW rows. The ten CW rows alone run at 15.0% mean absolute error and 7 of 10 within ±15%, roughly double the error of everything else, and splitting them by band type says exactly where it comes from: the six bracelet rows are fine at −2.2% mean signed and 5 of 6 inside ±15%, while the four strap rows run <b>+16.4%</b> with only 2 of 4 inside. <b>The cause is structural and not CW-specific.</b> The cylinder-times-0.55 term already lands near the mass of a complete watch head on cases this size — it predicts 50 g for the Sealander GMT's case, which is precisely the 50 g CW publish for the head — and the estimator then adds 25 g of movement on top of it. On a bracelet row the flat 62 g allowance is too heavy for CW's comparatively light bracelets and the two errors partly cancel; on a strap row nothing cancels and the double-count is visible. That reframes the "small case" bias pass 12 recorded for the Ocean Star 36.5, the Seiko Presage and the 40 mm Seagull: it was never really about case size, it is that the fill factor and the movement allowance overlap. Nothing is corrected, for the reason this file has given every time — fitting the estimator on the rows meant to test it would leave no way to know whether the other 42 estimates are any good. The titanium bias meanwhile gets <i>better</i> evidenced rather than smaller: 7 rows now, mean −5.2%, with the two CW titanium rows at −1.5% and −6.5% sitting inside the pattern pass 12 saw at −5.6% on five. <b>One test-set row is itself doubtful and is left in the arithmetic rather than dropped.</b> The Trident GMT 300's published 91 g implies an 8 g rubber strap, where the same 22 mm Aquaflex on the Lumière implies 24 g; one of the two is wrong and it is almost certainly this one, with a plausible total nearer 107 g. It is kept because it is CW's own published, reproducible field — the standard row 21 was kept under — rather than the unreproducible figure row 43 was dropped for. Excluding it would move the 47-row numbers to 9.1% and 13.1 g, so it accounts for a noticeable share of the degradation and nothing like all of it.</p>
   <p><b>Where they land, and it is not where the specification list suggests.</b> On paper these are strong rows — top-grade lume on all ten, anti-reflective sapphire on nine, exhibition backs on nine, Swiss movements throughout and chronometer certification on two — and the model nonetheless puts nine of the ten at or below the baseline: four as expected, five below the curve, none above it, and a mean residual of −1.5 spec points. The best is The Twelve 40 Ti at +1.6 (rank 29 of 85 scored rows), the worst The Twelve Midnight 38 at −4.5 (rank 71). <b>The ten span 6.1 points end to end, the tightest block any brand has produced here</b> — against 9.6 for the eight Midos and 15.6 for the nine Tissots — which is what a single maker pricing a coherent range consistently looks like. Three things drag on them, and none is a defect: the 38-hour SW200-1 in six of the ten rows is a weak power reserve at this money in a list full of 80-hour Powermatics; antimag 0 concedes ground to every Nivachron row it is priced against; and the four strap SKUs take clasp 0.35 while their bracelet siblings take 0.85. The fair reading is that <b>CW charge Swiss-made prices into a curve substantially populated by Japanese and direct-to-consumer rows</b>, and the Value column measures exactly that, without any opinion about whether the watches are nicer. <b>The Lumière is the one row that cannot be scored at all.</b> At €2,250 it is now the most expensive watch here and it has only 3 other rows within ±0.40 in ln(price) against the 5 the support test requires, so it shows n/s rather than being scored off an extrapolated curve. Adding it did not rescue the Longines HydroConquest either — that row went from 3 neighbours to 4, one short — so the top of this list is still too thin to say anything about, which is a fact about the sample and not about the watches.</p>
   <p><b>Effect on the model, which is the best any pass here has produced.</b> Leave-one-out RMSE falls 5.96 → 5.57 spec points, skill rises 63.3% → 68.3%, worst-case resampling shift falls 1.60 → 0.93, and sign flips stay at 0. Ten rows that cluster tightly around the line in a well-populated price band are close to the ideal thing to add to a fitted baseline, which is the mirror image of pass 15, where one strong outlier in a thin stretch cost accuracy. <b>The residual sigma is unchanged at 4.4</b>, so unlike passes 12 and 15 the colour bands did not move underneath anyone: the five rows that change colour (9, 66, 69, 70, 73) do so on their own residuals, which move by 2.1 points at most and 0.5 at the median. <b>Two existing spec scores changed, and that is worth naming because step 1 is supposed to be anchored.</b> Rows 16 and 56 each rise a point. Nothing about those watches changed; both have unresearched fields that <code>imputeMissingSubs()</code> fills with the mean of the rows where the answer <i>is</i> known, and ten new rows moved that mean. Normalisation against fixed anchors means adding a row cannot re-score an existing one on any criterion that has been researched — it says nothing about criteria that have not, and this is what that looks like in practice. <b>Two things are left open rather than closed.</b> The Trident GMT 300's caseback is deliberately absent from <code>DISPLAY_BACK</code> instead of being inferred: its feature list is the one short list of the ten and stops without mentioning it, and the words "case back", "caseback", "exhibition" and "display" appear nowhere on either the 44 mm or the 40 mm page. Every sibling has a window and it very likely does too — which is precisely why it is not recorded, because that reasoning is what had the Sinn 556 down as solid for a whole revision before its own spec sheet said sapphire. Under the three-state rule the fittings group scores that row on its clasp alone. The second is its 91 g. <b>One stale number was also corrected in passing:</b> the sources line below read "65 of 65 links covered" and had done since the list was 65 rows long; every row carries a link, all ten new ones load, and the tally now reads 89 of 89.</p>
@@ -512,7 +521,7 @@
   but it is an online shop at a residential address with no shop floor, so the three Seagull rows are counted as not
   available. The limit of the whole section is that authorised-dealer status is not stock — it names shops worth
   phoning, and for the specialist Citizen references it is likely to be an order rather than a try-on.</p>
-  <p>Sources: each brand's own product page, supplemented by manufacturer press releases and authorised-retailer spec sheets where a page omitted a field. 89 of 89 links covered — the tally had
+  <p>Sources: each brand's own product page, supplemented by manufacturer press releases and authorised-retailer spec sheets where a page omitted a field. {{linkCount}} of {{rowCount}} links covered — the tally had
   been left at "65 of 65" since the list was 65 rows long and was corrected in pass 16 by counting the
   link field on every row. Munich dealer addresses in the section above come from the manufacturers' dealer directories where one loaded, otherwise from the shop's own site.</p>
 </footer>
@@ -526,6 +535,25 @@
 </div>
 
 <script>
+// =============================================================================================
+// Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
+//
+//   Data          WATCHES, one object literal per row, ids 1-89 contiguous. Row ids are keys
+//                 into every side table below, so renumbering silently reassigns research.
+//   Side tables   MEASURED_ACCURACY · Weight · Watch type · Movement tier · Complications ·
+//                 EXTRAS · Finishing · Fittings — all keyed by row id, except MOVEMENT_TIER
+//                 (exact movementDisplay string) and MEASURED_ACCURACY (caliber substring).
+//   Model         Wearability · Criterion groups · Robust baseline · Support guard ·
+//                 computeValueScores() · Validation. Step 1 (specs) uses fixed anchors; step 2
+//                 (value) is fitted to the list, so adding a row moves every Value.
+//   View          Rendering, sorting, filtering, the image modal.
+//   Figures       computedFigures() — every derived number the page quotes in its own prose.
+//   Self-check    selfCheck() — the invariants above, enforced instead of merely documented.
+//   Bootstrap     renderAll(), called once now and once when the live FX rate lands.
+//
+// Nothing here is silent when it breaks: run `node check.js`, or open the page and look for the
+// red banner above the table.
+// =============================================================================================
 /**
  * @typedef {Object} Watch
  * @property {number} id
@@ -2191,8 +2219,10 @@ const WEIGHT_UNPUBLISHED = new Set([
 //               weight; one search result claims 52 g but no page could be loaded to confirm
 const WEIGHT_UNRESOLVED = new Set([5, 13, 14, 15, 43, 61, 66]);
 
-function estimateWeightG(w) {
-  if (WEIGHT_MEASURED[w.id]) return { g: WEIGHT_MEASURED[w.id], measured: true };
+// The physical model on its own, with the published-figure lookup deliberately left OUT, so the
+// estimator can be run against the rows where the answer is already known. estimateWeightG()
+// below is what the column renders; this is what weightEstimatorStats() scores.
+function predictedWeightG(w) {
   if (w.diameterMm == null || w.heightMm == null) return null;
   const r = w.diameterMm / 20, h = w.heightMm / 10;            // cm
   const dens = DENSITY[w.caseCategory] ?? 7.9;
@@ -2203,7 +2233,45 @@ function estimateWeightG(w) {
   const band = (w.bandDisplay || '').toLowerCase();
   const onBracelet = /bracelet|milanese|mesh/.test(band) && !/opt\.|optional/.test(band);
   const bandG = onBracelet ? (dens === 4.5 ? 38 : 62) : 12;
-  return { g: Math.round(caseG + movementG + bandG), measured: false };
+  return Math.round(caseG + movementG + bandG);
+}
+function estimateWeightG(w) {
+  if (WEIGHT_MEASURED[w.id]) return { g: WEIGHT_MEASURED[w.id], measured: true };
+  const g = predictedWeightG(w);
+  return g == null ? null : { g, measured: false };
+}
+
+// Scores the estimator against every row that publishes a figure. The numbers this returns are
+// the ones quoted in the Weight column's tooltip - computed rather than typed, because they are
+// a function of WEIGHT_MEASURED and shift every time it grows. The biases are reported, never
+// fitted away: correcting one would mean tuning the estimator on the same rows used to test it,
+// leaving no way to tell whether the remaining estimates are any good.
+function weightEstimatorStats(watches) {
+  const rows = watches
+    .filter(w => WEIGHT_MEASURED[w.id] != null)
+    .map(w => {
+      const est = predictedWeightG(w);
+      if (est == null) return null;
+      const pub = WEIGHT_MEASURED[w.id];
+      return { w, pub, est, pct: (est - pub) / pub * 100 };
+    })
+    .filter(Boolean);
+  if (!rows.length) return null;
+  const median = a => { const s = [...a].sort((x, y) => x - y), m = s.length >> 1;
+    return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2; };
+  const meanPct = rs => rs.reduce((s, r) => s + r.pct, 0) / rs.length;
+  // Bioceramic is caseCategory 'Ceramic' in the data, so it is picked out by the display string.
+  const ti = rows.filter(r => r.w.caseCategory === 'Titanium');
+  const bio = rows.filter(r => /bioceramic/i.test(r.w.caseDisplay || ''));
+  return {
+    n: rows.length,
+    within15: rows.filter(r => Math.abs(r.pct) <= 15).length,
+    medianAbs: median(rows.map(r => Math.abs(r.pct))),
+    rmse: Math.sqrt(rows.reduce((s, r) => s + (r.est - r.pub) ** 2, 0) / rows.length),
+    signed: meanPct(rows),
+    tiN: ti.length, tiPct: ti.length ? meanPct(ti) : null,
+    bioN: bio.length, bioPct: bio.length ? meanPct(bio) : null,
+  };
 }
 
 // --- Watch type (pass 9) -------------------------------------------------------------------
@@ -2414,10 +2482,16 @@ const MOVEMENT_TIER = {
   // no caliber is recorded in the Movement cost column instead, where it belongs.
   'Quartz — caliber not published (SR626SW cell)': 0.18,
 };
+// Rows that took the fallback below, recorded so selfCheck() can report them. The fallback exists
+// so a NEW row never scores zero, but it fires just as quietly when an EXISTING row's
+// movementDisplay is edited without updating the matching MOVEMENT_TIER key - which silently
+// rescores that watch. Reset per computeValueScores() run.
+const MOVEMENT_TIER_FALLBACKS = new Set();
 function movementTierFor(w) {
   const t = MOVEMENT_TIER[w.movementDisplay];
   if (t != null) return t;
   // Unlisted movement: fall back by type so a new row never silently scores zero.
+  MOVEMENT_TIER_FALLBACKS.add(w.movementDisplay);
   return ({ 'Hand-wound': 0.4, Automatic: 0.4, 'Meca-quartz': 0.3, Solar: 0.24, Quartz: 0.2 })[w.movementType] ?? 0.3;
 }
 
@@ -3086,6 +3160,7 @@ const effectivePrice = w => (typeof w.streetPriceEUR === 'number' && w.streetPri
 // Computes the spec score and its residual against what this list charges for specs.
 // Must be re-run whenever priceEUR changes - see the call sites after recomputePriceEUR().
 function computeValueScores(watches) {
+  MOVEMENT_TIER_FALLBACKS.clear();   // repopulated below; selfCheck() reads it afterwards
   // --- step 1: spec score, grouped ---------------------------------------------------------
   const allSubs = watches.map(specSubScores);
   const imputedKeys = imputeMissingSubs(allSubs);
@@ -3374,10 +3449,14 @@ function compareWatches(a, b, key, dir) {
   return (av - bv) * mult;
 }
 
+// Must equal the number of <th>s in the table head. selfCheck() counts them and compares, so
+// adding a column and forgetting this now says so instead of quietly misdrawing the empty state.
+const EMPTY_ROW_COLSPAN = 20;
+
 function renderRows(list) {
   const tbody = document.getElementById('tbody');
   if (list.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="20" class="note" style="text-align:center;padding:28px">No watches match your filters.</td></tr>';
+    tbody.innerHTML = `<tr><td colspan="${EMPTY_ROW_COLSPAN}" class="note" style="text-align:center;padding:28px">No watches match your filters.</td></tr>`;
     return;
   }
   tbody.innerHTML = list.map((w, i) => {
@@ -3530,9 +3609,8 @@ function renderValidationNote() {
   const el = document.getElementById('validationNote');
   if (!el) return;
   const v = validateModel(WATCHES);
-  const sigEl = document.getElementById('sigmaNote');
-  const anyRow = WATCHES.find(w => w.residualSigma != null);
-  if (sigEl && anyRow) sigEl.textContent = anyRow.residualSigma;
+  // The sigma this paragraph used to patch into a <span> is now a {{sigma}} token filled by
+  // fillComputedFigures(), along with every other derived number in the page's prose.
   if (!v) { el.textContent = 'Model validation: too few priced rows to test.'; return; }
   const unscored = WATCHES.filter(w => w.priceEUR > 0 && w.valueBand == null).length;
   el.innerHTML =
@@ -3549,24 +3627,203 @@ function renderValidationNote() {
     `something the model never saw, such as used-market retention, could do that.`;
 }
 
-populateBrandOptions();
-populateTypeOptions();
-wireControls();
-wireImageModal();
-document.querySelector('th[data-key="id"] .sort-arrow').textContent = '▲';
-computeValueScores(WATCHES);
-renderValidationNote();
-renderBandLegend();
-applyPipeline();
-updateRateInfoDisplay();
+// --- Computed figures in prose -------------------------------------------------------------
+// Every number in this page's own prose that the page can derive is written in the HTML as a
+// {{token}} and filled in here. The alternative rots: pass 18 found four figures typed into the
+// tooltips - the spec range, the spec/price correlation and the diver split - that had drifted
+// as rows were added, and nothing had flagged it, because prose has no way to be wrong out loud.
+// The rule is: if the page can compute it, the page writes it. Research findings that are NOT
+// derivable from the data - the Munich shop counts, the estimator's band-type breakdown - stay
+// as literals, and belong in the footer where they can be dated.
+// Templates are captured once, before the first fill, so re-running after the live FX rate
+// arrives substitutes against the original text rather than against already-filled output.
+const FIGURE_SLOTS = [];
+function captureFigureSlots() {
+  const add = (tpl, set) => { if (tpl.includes('{{')) FIGURE_SLOTS.push({ tpl, set }); };
+  document.querySelectorAll('[title]').forEach(el => add(el.title, t => { el.title = t; }));
+  // SCRIPT, STYLE and CODE are skipped, so a token can be written about without being substituted:
+  // this comment and the footer's description of the mechanism both contain {{token}} as an
+  // example, and without the filter the walker would collect them and report them as unknown
+  // figures. Nothing inside <code> is ever a real slot - it is how the page quotes its own syntax.
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+    acceptNode: n => (n.parentNode && /^(SCRIPT|STYLE|CODE)$/.test(n.parentNode.nodeName)
+      ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT),
+  });
+  const nodes = [];
+  for (let n = walker.nextNode(); n; n = walker.nextNode()) nodes.push(n);
+  nodes.forEach(n => add(n.nodeValue, t => { n.nodeValue = t; }));
+  add(document.title, t => { document.title = t; });
+}
 
-fetchUsdToEurRate().then(() => {
-  recomputePriceEUR();
+// The derived figures themselves. Anything added here becomes usable as {{name}} anywhere in the
+// page; anything referenced in the prose but missing here is reported by selfCheck() rather than
+// left as a visible {{token}}.
+function computedFigures(watches) {
+  const mean = a => a.reduce((x, y) => x + y, 0) / a.length;
+  const pearson = (a, b) => {
+    const ma = mean(a), mb = mean(b);
+    const cov = a.reduce((s, _, i) => s + (a[i] - ma) * (b[i] - mb), 0);
+    const sd = Math.sqrt(a.reduce((s, v) => s + (v - ma) ** 2, 0) * b.reduce((s, v) => s + (v - mb) ** 2, 0));
+    return sd ? cov / sd : 0;
+  };
+  const scored = watches.filter(w => w.specScore != null && w.priceEUR > 0);
+  const specs = scored.map(w => w.specScore);
+  const diver = watches.filter(w => typesFor(w).includes('Diver') && w.specScore != null).map(w => w.specScore);
+  const shallow = watches.filter(w => w.waterResM != null && w.waterResM <= 50 && w.specScore != null).map(w => w.specScore);
+  const sigma = watches.find(w => w.residualSigma != null)?.residualSigma ?? 0;
+  const f = {
+    rowCount: watches.length,
+    linkCount: watches.filter(w => w.link).length,
+    nsCount: watches.filter(w => w.priceEUR > 0 && w.valueBand == null).length,
+    specMin: specs.length ? Math.min(...specs) : '—',
+    specMax: specs.length ? Math.max(...specs) : '—',
+    specPriceCorr: specs.length ? pearson(specs, scored.map(w => Math.log(w.priceEUR))).toFixed(2) : '—',
+    diverSpec: diver.length ? mean(diver).toFixed(1) : '—',
+    shallowSpec: shallow.length ? mean(shallow).toFixed(1) : '—',
+    sigma: Math.round(sigma),
+    sigmaOnScore: Math.round(sigma * 2.8),        // the Score column's ×2.8 rescale
+    supportMin: SUPPORT.min,
+    supportPct: Math.round((Math.exp(SUPPORT.window) - 1) * 100),
+  };
+  const ws = weightEstimatorStats(watches);
+  if (ws) Object.assign(f, {
+    weightPublished: ws.n,
+    weightWithin15: ws.within15,
+    weightMedianErr: ws.medianAbs.toFixed(1),
+    weightRmse: ws.rmse.toFixed(1),
+    weightSigned: ws.signed.toFixed(1),
+    weightTiN: ws.tiN,
+    weightTiPct: ws.tiPct == null ? '—' : Math.abs(ws.tiPct).toFixed(0),
+    weightBioPct: ws.bioPct == null ? '—' : Math.abs(ws.bioPct).toFixed(0),
+  });
+  return f;
+}
+
+// Returns the names of any tokens the prose asked for that computedFigures() does not produce.
+function fillComputedFigures(watches) {
+  const f = computedFigures(watches);
+  const missing = new Set();
+  FIGURE_SLOTS.forEach(s => s.set(s.tpl.replace(/\{\{(\w+)\}\}/g, (whole, key) => {
+    if (key in f) return f[key];
+    missing.add(key);
+    return whole;
+  })));
+  return [...missing];
+}
+
+// --- Self-check ------------------------------------------------------------------------------
+// The invariants this file rests on, checked at load and rendered as a banner above the table.
+// They were prose in CLAUDE.md, which enforces nothing. The failure mode here is never an
+// exception - it is a silent rescore. Renumber a row and its lume, finishing and caseback are
+// reassigned to a different watch. Edit a movementDisplay string without its MOVEMENT_TIER key
+// and that watch drops to the generic by-type tier. Both render a completely normal-looking page,
+// so the only way to notice is to be told.
+function selfCheck(watches, missingFigureTokens = []) {
+  const out = [];
+  const ids = watches.map(w => w.id);
+  const idSet = new Set(ids);
+  const list = a => a.join(', ');
+
+  if (idSet.size !== ids.length) out.push('duplicate row ids in WATCHES');
+  const gap = ids.findIndex((id, i) => id !== i + 1);
+  if (gap !== -1) out.push(`row ids are not contiguous 1–${ids.length}: index ${gap} holds id ${ids[gap]}`);
+
+  for (const [name, table] of [['EXTRAS', EXTRAS], ['FINISH', FINISH], ['WATCH_TYPES', WATCH_TYPES]]) {
+    const missing = ids.filter(id => !(id in table));
+    if (missing.length) out.push(`${name} has no entry for row ${list(missing)}`);
+    const ghost = Object.keys(table).map(Number).filter(id => !idSet.has(id));
+    if (ghost.length) out.push(`${name} has an entry for row ${list(ghost)}, which does not exist`);
+  }
+
+  const owner = new Map();
+  for (const [name, t] of [['WEIGHT_MEASURED', WEIGHT_MEASURED], ['WEIGHT_UNPUBLISHED', WEIGHT_UNPUBLISHED],
+                           ['WEIGHT_UNRESOLVED', WEIGHT_UNRESOLVED], ['WEIGHT_HEAD_ONLY', WEIGHT_HEAD_ONLY]]) {
+    for (const id of (t instanceof Set ? [...t] : Object.keys(t).map(Number))) {
+      if (owner.has(id)) out.push(`row ${id} is in both ${owner.get(id)} and ${name} — the four weight tables must be disjoint`);
+      owner.set(id, name);
+      if (!idSet.has(id)) out.push(`${name} lists row ${id}, which does not exist`);
+    }
+  }
+  const unweighed = ids.filter(id => !owner.has(id));
+  if (unweighed.length) out.push(`no weight table covers row ${list(unweighed)} — the four must together cover every row`);
+
+  if (MOVEMENT_TIER_FALLBACKS.size) {
+    out.push(`no MOVEMENT_TIER entry for ${[...MOVEMENT_TIER_FALLBACKS].map(s => `"${s}"`).join('; ')} ` +
+             `— those rows are scoring off the generic by-type fallback, not their real tier`);
+  }
+  const usedMovements = new Set(watches.map(w => w.movementDisplay));
+  const orphanTiers = Object.keys(MOVEMENT_TIER).filter(k => !usedMovements.has(k));
+  if (orphanTiers.length) {
+    out.push(`MOVEMENT_TIER key matches no row: ${orphanTiers.map(s => `"${s}"`).join('; ')} ` +
+             `— usually a movementDisplay that was edited without updating its key`);
+  }
+
+  const badBack = Object.entries(DISPLAY_BACK).filter(([, v]) => v !== 0 && v !== 1).map(([id]) => id);
+  if (badBack.length) out.push(`DISPLAY_BACK must be 1 or 0 (absent = not researched); row ${list(badBack)} is neither`);
+
+  const unknownComp = new Set();
+  watches.forEach(w => ((EXTRAS[w.id] ?? DEFAULT_EXTRAS).comp ?? [])
+    .forEach(k => { if (!(k in COMPLICATION_VALUES)) unknownComp.add(k); }));
+  if (unknownComp.size) out.push(`complication tag with no value in COMPLICATION_VALUES: ${list([...unknownComp])} — scores nothing`);
+
+  const unknownType = new Set();
+  watches.forEach(w => typesFor(w).forEach(t => { if (!TYPE_ORDER.includes(t)) unknownType.add(t); }));
+  if (unknownType.size) out.push(`watch type missing from TYPE_ORDER: ${list([...unknownType])} — it will not appear in the filter`);
+
+  for (const [field, map, mapName] of [['caseCategory', CASE_SCORE, 'CASE_SCORE'],
+                                       ['caseCategory', DENSITY, 'DENSITY'],
+                                       ['glassCategory', GLASS_SCORE, 'GLASS_SCORE']]) {
+    const bad = [...new Set(watches.map(w => w[field]))].filter(v => v != null && !(v in map));
+    if (bad.length) out.push(`${field} value ${list(bad)} has no entry in ${mapName} — it falls back to a default`);
+  }
+
+  const thCount = document.querySelectorAll('.wrap > table > thead th').length;
+  if (thCount && thCount !== EMPTY_ROW_COLSPAN) {
+    out.push(`the empty-results row spans ${EMPTY_ROW_COLSPAN} columns but the table has ${thCount}`);
+  }
+
+  if (missingFigureTokens.length) {
+    out.push(`prose references ${missingFigureTokens.map(t => `{{${t}}}`).join(', ')}, which computedFigures() does not produce`);
+  }
+  return out;
+}
+
+function renderSelfCheck(watches, missingFigureTokens) {
+  const el = document.getElementById('selfCheck');
+  if (!el) return;
+  const problems = selfCheck(watches, missingFigureTokens);
+  if (!problems.length) { el.hidden = true; el.innerHTML = ''; return; }
+  el.hidden = false;
+  el.innerHTML = `<b>Self-check failed — ${problems.length} problem${problems.length === 1 ? '' : 's'} ` +
+    `in the data, not in the browser. The table below is still rendering, but some of it is wrong.</b><ul>` +
+    problems.map(p => `<li>${escapeHtml(p)}</li>`).join('') + '</ul>';
+}
+
+// --- Bootstrap -------------------------------------------------------------------------------
+// One render path, called twice: once synchronously, once when the live USD rate resolves. The
+// order inside it is load-bearing - renderBandLegend(), renderValidationNote() and the {{sigma}}
+// token all read residualSigma, which only exists once computeValueScores() has run - so it lives
+// in one function rather than being written out twice and kept in sync by hand.
+function renderAll() {
   computeValueScores(WATCHES);
   renderValidationNote();
   renderBandLegend();
   applyPipeline();
   updateRateInfoDisplay();
+  renderSelfCheck(WATCHES, fillComputedFigures(WATCHES));
+}
+
+captureFigureSlots();          // must precede the first fill, while the {{tokens}} are still there
+populateBrandOptions();
+populateTypeOptions();
+wireControls();
+wireImageModal();
+document.querySelector('th[data-key="id"] .sort-arrow').textContent = '▲';
+renderAll();
+
+fetchUsdToEurRate().then(() => {
+  recomputePriceEUR();
+  renderAll();
 });
 </script>
 </body>
