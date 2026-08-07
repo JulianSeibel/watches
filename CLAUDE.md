@@ -134,11 +134,15 @@ nothing — that is the lesson the whole self-check exists to encode.
 
 Two steps, and keeping them separate is the point:
 
-- **Step 1 — spec score (0–100).** Seven weighted `GROUPS` (line ~2921: movement 24%, timekeeping
-  16%, case & glass 16%, water & lume 13%, wearability 11%, fittings 11%, complications 9%), each
+- **Step 1 — spec score (0–100).** Seven weighted `GROUPS` (movement 24%, timekeeping 16%,
+  case & glass 16%, water & lume 13%, wearability 11%, fittings 11%, complications 9%), each
   splitting its weight among sub-scores. Normalisation uses the **fixed** `ANCHOR` / `WEAR_ANCHOR`
-  constants, never list min/max, so adding a row cannot re-score existing rows here. Exposed as the
-  `Specs` column; observed range on the current list is 26–63, not 0–100.
+  constants, never list min/max. Exposed as the `Specs` column; observed range on the current list
+  is 26–63, not 0–100.
+  **Caveat, measured in pass 20:** this is *nearly* but not entirely independent of the list. The
+  anchors are fixed, but `imputeMissingSubs()` fills unresearched sub-scores with the list mean, so
+  the 15 rows carrying one drift a little as rows are added. Adding row 90 moved exactly one row
+  (54, an unresearched display back) by one rounding point. Small, but do not claim immunity.
 - **Step 2 — value (signed spec points).** `robustBaseline()` fits spec vs `ln(price)` with
   Theil–Sen (median pairwise slope, within movement class) and a **separate median intercept per
   class**. Each row's residual against that line is the `Value` badge; `Score` is the same number
