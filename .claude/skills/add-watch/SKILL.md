@@ -32,6 +32,7 @@ lume estimate, whether a caseback is researched — is a call you make, comment,
 | `references/row-and-tables.md` | phase 2, before writing any field. The field list, evidence rules, and every mandatory side table |
 | `references/new-vocabulary.md` | phase 3, **only if** the row introduces a new case/glass/movement type, watch type, complication, movement tier, or brand |
 | `references/writing-it-up.md` | phase 5. Footer style, the literal sweep, CLAUDE.md, the commit |
+| `scripts/page-text.js` | phase 2. Run it; do not read it. Fetches raw source, caches it, probes it for spec fields, summarises Shopify product records |
 | `scripts/model-diff.js` | phase 4. Run it; do not read it |
 
 ---
@@ -61,6 +62,35 @@ Read `references/row-and-tables.md` first.
 
 Fetch the maker's own product page for each link. That page is the primary source; reviews and
 retailers are only for fields the maker omits, and anything taken from them is labelled as borrowed.
+
+### Start with the raw source, not with a summarising fetch
+
+**A markdown-converting fetch is the wrong first tool for a product page**, and pass 22 proved it on
+five brands out of five: every one of them hid at least one *mandatory* field from it. Traska's
+dimensions are a line drawing, Sinn's band prices are in a configurator widget, Oris's per-reference
+prices are in a sibling page's variation list, Nomadic's water resistance is printed on the dial, and
+Abinger's storefront renders client-side and carries no specs in its HTML at all. In each case the
+answer was in the raw source or one hop from it, and the summarising fetch that came first was a
+wasted round trip. Reverse the order:
+
+```bash
+node .claude/skills/add-watch/scripts/page-text.js <url> --probe
+node .claude/skills/add-watch/scripts/page-text.js <url> --around "Technische Merkmale"
+node .claude/skills/add-watch/scripts/page-text.js <url> --shopify
+```
+
+`--probe` greps the raw body for the field names makers actually use, in English and German, with
+CSS filtered out and `<script>` blocks deliberately kept — which is where an embedded product record
+lives. **No probe hits is a finding**, and a much stronger one than a search that came back empty.
+Bodies are cached, so grepping the same page five ways costs one request. Use WebFetch afterwards
+for pages that are genuinely prose — a review, a press release, a dealer directory.
+
+`references/row-and-tables.md` carries a table of the site shapes seen so far and the route into
+each. Check it before working out a new one.
+
+**Batch the fetches per brand.** The research route is identical across one maker's references and
+different across makers, so four Traska URLs in one batch cost barely more than one; four URLs from
+four brands cost four discoveries. Do a brand at a time, all of it, before moving on.
 
 Work the field list in the `@typedef {Object} Watch` JSDoc above `const WATCHES` — all 26 mandatory
 fields, plus the side-table research: lume, warranty, ISO 6425, antimagnetism, clasp, bezel insert
@@ -110,10 +140,18 @@ no weight by passes 6 and 13 for exactly this reason; they publish it for every 
 `case_weight`, alongside `case_thickness`, `case_lug_to_lug`, `case_case_back` and
 `mvt_fct_calibre_name`. Two passes of research were lost to a rendering artefact.
 
-So before recording any field as unpublished, fetch the **raw HTML** and search it for the value and
-for plausible key names (`weight`, `thickness`, `lug`, `case_back`, `calibre`). Attribute values may
-be numeric ids resolved against an options table elsewhere in the same payload. This is not
+So before recording any field as unpublished, search the **raw HTML** for the value and for plausible
+key names — `scripts/page-text.js --probe` does exactly this and is why it exists. Attribute values
+may be numeric ids resolved against an options table elsewhere in the same payload. This is not
 scraping something the maker hid — it is the same spec table the page renders, read at source.
+
+### One decisive source per field
+
+Pass 22 read four Traska casebacks individually when the maker's own spec graphic said "individual
+serial number on case back" for all four and two photographs had already confirmed it, and settled
+one Oris bracelet three separate ways. Verification is cheap to add and easy to over-add. **Take one
+decisive source per field and stop; reach for a second only when the first is contradicted** — which
+does happen, and when it does the contradiction is itself a finding for the row comment (row 105).
 
 ## Phase 3 — Classify
 

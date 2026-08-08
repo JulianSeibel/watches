@@ -75,6 +75,30 @@ The difference: `priceValue` is what this row costs from the source it links to.
 is the evidence that the market charges less than the linked list price. `effectivePrice()` prefers
 `streetPriceEUR` when present.
 
+## Site shapes: where each kind of storefront keeps its specs
+
+Worked out the hard way, one brand at a time. Check here before deriving a route from scratch —
+`scripts/page-text.js` handles the first two columns for you.
+
+| Shape | Seen on | Where the specs actually are |
+|---|---|---|
+| **Shopify** | Traska, Nomadic, MAEN, Baltic | `<product-url>.json` gives title, every variant with price and availability, and every image. `collections/all/products.json?limit=250` lists the whole catalogue with prices — the fastest way to see sibling references and spot a duplicate. **Specs are usually NOT there**: Traska keep dimensions in a `*-Dimensions*.png` drawing and features in a `*-Specifications*.png`, both linked from the product HTML. Grep the body for `spec\|dimension` image URLs and read the images |
+| **OXID (Sinn)** | sinn.de | Full German spec table renders in the HTML — `--around "Technische Merkmale"`. Band prices do **not**: a `#config=` fragment is client-side, and the configurator loads from `widget.php?actcontrol=details&cl=articledetailsconfigurator&anid=<anid>`, where every band carries `data-price`, `data-desc` and `data-config-hash`. Grep the product page for `cl=articledetailsconfigurator&anid=` to get the anid, then match the URL's hash in that payload |
+| **Nuxt / Vue (Oris)** | oris.ch | Technical Details render in the HTML. Prices do not appear for the page's *own* reference — they appear in the **variations list of its siblings**, so fetch a sibling and map `/product/…/<ref>"` → the next `"price" content="…"`. Two refs cross-check each other |
+| **Squarespace-style maker site** | abingerwatches.com | Plain HTML, full spec block, `--around "Specifications"` |
+| **Square storefront** | abingerwatches.square.site | Client-rendered: price, warranty and package contents only, and even those need a text-extraction proxy. **Specs are never here** — go to the brand's own domain, which the site's logo links to |
+| **Text-extraction proxy** | longines.com (pass 21), Square (pass 22) | Last resort for a page that will not load or will not render. Returns the maker's own rendered page, so it is a change of route, not of source — no borrowed label needed. Say in the footer that it was used |
+
+Two traps that come with the fast routes, both found by running the script against pass 22's rows:
+
+- **A Shopify `price` has no currency field.** It is whatever the storefront presented to that
+  request, and market-aware stores decide on `Accept-Language`: Traska returns `700.00` unprompted
+  and `614.95` with `de-DE`. Record the maker's own listing currency and let `recomputePriceEUR()`
+  convert; a converted figure frozen into the file drifts, and the row-level rule is in the Price
+  table below.
+- **A Shopify variant's `grams` / `weight` is the packed parcel**, not the watch — Traska's Summiteer
+  reports 454 g. It is never a `WEIGHT_MEASURED` figure.
+
 ## Evidence rules
 
 These are rules the file has been bitten by, not preferences.
