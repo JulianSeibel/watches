@@ -14,6 +14,11 @@
 //
 // Required as a module it exports loadPage()/readPageHtml() instead of running, so the DOM stub
 // below has exactly one copy — same reasoning as not restating the invariants.
+//
+// loadPage() hands back a few of the page's own internals as well as its entry points —
+// WEIGHT_MEASURED, predictedWeightG, SUPPORT, effectivePrice — because the add-watch tooling needs
+// to reproduce the page's arithmetic exactly rather than approximate it. Anything added to that
+// list must stay a read of the page, never a second definition of one of its rules.
 
 const fs = require('fs');
 const path = require('path');
@@ -62,6 +67,7 @@ function loadPage(html) {
   const page = {};
   new Function('__exports', `${script}\n;Object.assign(__exports, {
     WATCHES, selfCheck, computeValueScores, validateModel, computedFigures, weightEstimatorStats,
+    WEIGHT_MEASURED, predictedWeightG, SUPPORT, effectivePrice,
   });`)(page);
   return page;
 }
