@@ -42,6 +42,40 @@
   #resetFilters:hover{background:var(--accent);color:#0f1115}
   .count{color:var(--muted);font-size:12.5px;margin-left:auto;white-space:nowrap}
 
+  /* Multi-select filter: a button that looks like the selects beside it, opening a panel of
+     checkboxes. The panel sits outside .wrap, so its z-index only has to clear the sticky
+     thead (2) to paint over the table. */
+  .ms{position:relative}
+  .ms-trigger{display:flex;align-items:center;gap:8px;max-width:230px;
+    background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:8px;
+    padding:7px 10px;font-size:13px;font-family:inherit;cursor:pointer;text-align:left}
+  .ms-trigger:hover{border-color:var(--accent)}
+  .ms-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .ms-caret{margin-left:auto;font-size:10px;color:var(--muted)}
+  .ms.active .ms-trigger,.ms.open .ms-trigger{border-color:var(--accent);color:var(--accent)}
+  .ms.active .ms-caret,.ms.open .ms-caret{color:var(--accent)}
+  .ms-panel{position:absolute;z-index:900;top:calc(100% + 4px);left:0;min-width:220px;
+    max-height:320px;overflow-y:auto;background:var(--panel);border:1px solid var(--line);
+    border-radius:8px;padding:6px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+  .ms-head{display:flex;align-items:center;justify-content:space-between;gap:12px;
+    padding:2px 7px 6px;margin-bottom:4px;border-bottom:1px solid var(--line);
+    color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.5px}
+  .ms-clear{background:none;border:none;padding:0;color:var(--accent);font-family:inherit;
+    font-size:10px;text-transform:uppercase;letter-spacing:.5px;cursor:pointer}
+  .ms-clear[hidden]{display:none}
+  .ms-mode{display:flex;gap:12px;padding:2px 7px 7px;margin-bottom:4px;
+    border-bottom:1px solid var(--line);color:var(--muted);font-size:11.5px}
+  .ms-mode label{display:flex;align-items:center;gap:5px;cursor:pointer}
+  .ms-opt{display:flex;align-items:center;gap:8px;padding:5px 7px;border-radius:6px;
+    font-size:13px;cursor:pointer;white-space:nowrap}
+  .ms-opt:hover{background:var(--head)}
+  .ms input{accent-color:var(--accent);margin:0;cursor:pointer}
+  .ms-count{margin-left:auto;padding-left:10px;color:var(--muted);font-size:11.5px;
+    font-variant-numeric:tabular-nums}
+  /* Dimmed, not disabled: an option that currently matches nothing must stay clickable, or a
+     filter narrowed too far could never be widened again. */
+  .ms-opt.empty{opacity:.45}
+
   .wrap{padding:16px 12px 60px;overflow-x:auto}
   table{border-collapse:separate;border-spacing:0;width:100%;min-width:1280px;background:var(--panel);
     border:1px solid var(--line);border-radius:12px;overflow:hidden}
@@ -133,7 +167,7 @@
   .self-check ul{margin:8px 0 0;padding-left:20px}
   .self-check li{margin:3px 0}
   @media (max-width:640px){ header{padding:18px 14px 6px} h1{font-size:20px} .stores{margin:0 14px 32px}
-    .self-check{margin:0 14px 14px} }
+    .self-check{margin:0 14px 14px} .ms-panel{max-width:calc(100vw - 28px)} }
 </style>
 </head>
 <body>
@@ -145,29 +179,28 @@
 
 <div class="controls">
   <input type="search" id="searchInput" placeholder="Search name, movement, case, band, glass…">
-  <select id="filterBrand"><option value="">All brands</option></select>
-  <select id="filterType" title="Type is held as data only — it is never shown as a column and is not part of any score. Watches carry every type that applies, so a dive GMT appears under both Diver and GMT."><option value="">All types</option></select>
-  <select id="filterMovement">
-    <option value="">All movements</option>
-    <option value="Automatic">Automatic</option>
-    <option value="Hand-wound">Hand-wound</option>
-    <option value="Meca-quartz">Meca-quartz</option>
-    <option value="Quartz">Quartz</option>
-    <option value="Solar">Solar</option>
-  </select>
-  <select id="filterCase">
-    <option value="">All case materials</option>
-    <option value="Steel">Steel</option>
-    <option value="Titanium">Titanium</option>
-    <option value="Bronze">Bronze</option>
-    <option value="Ceramic">Ceramic</option>
-  </select>
-  <select id="filterGlass">
-    <option value="">All glass</option>
-    <option value="Sapphire">Sapphire</option>
-    <option value="Mineral">Mineral</option>
-    <option value="Hesalite">Hesalite</option>
-  </select>
+  <!-- The five categorical filters. Triggers and panels are empty here and filled by
+       buildFilterPanels() from WATCHES, so the options cannot drift from the data. -->
+  <div class="ms" data-dim="brand">
+    <button type="button" class="ms-trigger" aria-expanded="false" aria-haspopup="true"><span class="ms-label">All brands</span><span class="ms-caret">▾</span></button>
+    <div class="ms-panel" hidden></div>
+  </div>
+  <div class="ms" data-dim="type">
+    <button type="button" class="ms-trigger" aria-expanded="false" aria-haspopup="true" title="Type is held as data only — it is never shown as a column and is not part of any score. Watches carry every type that applies, so a dive GMT appears under both Diver and GMT."><span class="ms-label">All types</span><span class="ms-caret">▾</span></button>
+    <div class="ms-panel" hidden></div>
+  </div>
+  <div class="ms" data-dim="movement">
+    <button type="button" class="ms-trigger" aria-expanded="false" aria-haspopup="true"><span class="ms-label">All movements</span><span class="ms-caret">▾</span></button>
+    <div class="ms-panel" hidden></div>
+  </div>
+  <div class="ms" data-dim="case">
+    <button type="button" class="ms-trigger" aria-expanded="false" aria-haspopup="true"><span class="ms-label">All case materials</span><span class="ms-caret">▾</span></button>
+    <div class="ms-panel" hidden></div>
+  </div>
+  <div class="ms" data-dim="glass">
+    <button type="button" class="ms-trigger" aria-expanded="false" aria-haspopup="true"><span class="ms-label">All glass</span><span class="ms-caret">▾</span></button>
+    <div class="ms-panel" hidden></div>
+  </div>
   <select id="filterWater">
     <option value="">Any water res.</option>
     <option value="50">≥ 50 m</option>
@@ -235,7 +268,7 @@
 
 <section class="stores">
   <h2>Where to try these on in Munich</h2>
-  <p><b>44 of the {{rowCount}} rows</b> are carried by a physical shop in Munich; 42 of the remaining 46 are
+  <p><b>47 of the {{rowCount}} rows</b> are carried by a physical shop in Munich; 42 of the remaining 46 are
   direct-to-consumer brands with no dealer here at any price. The split is not about quality — it is about
   distribution model.
   Everything Swiss or Japanese in this table (Tissot, Citizen, Certina, Swatch, Longines, Seiko, Orient, Mido) plus
@@ -322,8 +355,8 @@
   <tr>
     <td class="st-name">Juwelier Fridrich</td>
     <td class="st-addr">Sendlinger Str. 15, 80331</td>
-    <td><span class="brandchip"><b>Tissot</b> <i>9</i></span><span class="brandchip"><b>NOMOS</b> <i>1</i></span><span class="brandchip"><b>Longines</b> <i>1</i></span></td>
-    <td class="st-rows">11</td>
+    <td><span class="brandchip"><b>Tissot</b> <i>9</i></span><span class="brandchip"><b>NOMOS</b> <i>1</i></span><span class="brandchip"><b>Longines</b> <i>4</i></span></td>
+    <td class="st-rows">14</td>
     <td class="st-src">own brand list</td>
   </tr>
   <tr>
@@ -336,15 +369,15 @@
   <tr>
     <td class="st-name">Bucherer</td>
     <td class="st-addr">Neuhauser Str. 2, 80331</td>
-    <td><span class="brandchip"><b>Longines</b> <i>1</i></span></td>
-    <td class="st-rows">1</td>
+    <td><span class="brandchip"><b>Longines</b> <i>4</i></span></td>
+    <td class="st-rows">4</td>
     <td class="st-src"><span class="src-maker">Longines retailer page</span></td>
   </tr>
   <tr>
     <td class="st-name">Wempe</td>
     <td class="st-addr">Maximilianstr. 6, 80539</td>
-    <td><span class="brandchip"><b>Longines</b> <i>1</i></span></td>
-    <td class="st-rows">1</td>
+    <td><span class="brandchip"><b>Longines</b> <i>4</i></span></td>
+    <td class="st-rows">4</td>
     <td class="st-src"><span class="src-maker">Longines retailer page</span></td>
   </tr>
   </tbody>
@@ -417,15 +450,15 @@
   <tr>
     <td class="st-name">Juwelier F. C. Bauer</td>
     <td class="st-addr">Peter-Auzinger-Str. 11, 81547</td>
-    <td><span class="brandchip"><b>Sinn</b> <i>1</i></span><span class="brandchip"><b>NOMOS</b> <i>1</i></span><span class="brandchip"><b>Seiko</b> <i>1</i></span><span class="brandchip"><b>Longines</b> <i>1</i></span></td>
-    <td class="st-rows">4</td>
+    <td><span class="brandchip"><b>Sinn</b> <i>1</i></span><span class="brandchip"><b>NOMOS</b> <i>1</i></span><span class="brandchip"><b>Seiko</b> <i>1</i></span><span class="brandchip"><b>Longines</b> <i>4</i></span></td>
+    <td class="st-rows">7</td>
     <td class="st-src"><span class="src-maker">Sinn dealer list</span> + own site</td>
   </tr>
   <tr>
     <td class="st-name">Juwelier Hilscher</td>
     <td class="st-addr">Nordendstr. 50, 80801 (Schwabing)</td>
-    <td><span class="brandchip"><b>Sinn</b> <i>1</i></span><span class="brandchip"><b>NOMOS</b> <i>1</i></span><span class="brandchip"><b>Longines</b> <i>1</i></span></td>
-    <td class="st-rows">3</td>
+    <td><span class="brandchip"><b>Sinn</b> <i>1</i></span><span class="brandchip"><b>NOMOS</b> <i>1</i></span><span class="brandchip"><b>Longines</b> <i>4</i></span></td>
+    <td class="st-rows">6</td>
     <td class="st-src"><span class="src-maker">Sinn dealer list</span> + own site</td>
   </tr>
   </tbody>
@@ -443,9 +476,14 @@
   branches — Neuhauser 35 and Kaufinger 11, but <i>not</i> Kaufinger 26 — plus six independents and all three
   OROVIVO branches. The catch is where they are. Only the two CHRIST shops are in the Altstadt; the rest sit in
   Laim, Neuhausen, Schwabing-West and the three suburban shopping centres, so the eight Mido rows are broadly
-  available but mostly not on the pedestrian loop.</p>
+  available but mostly not on the pedestrian loop.
+  <b>Longines</b> (rows 67, 91–93) changed shape in pass 21 without a single new address being found. It was one
+  row across five dealers, which made it look thinly represented; it is now four rows across the same five, two of
+  them — Bucherer on Neuhauser and Wempe on Maximilianstraße — carrying nothing else from this table. That is the
+  best-served brand here per shop rather than per address, and both of those are the kind of shop where a €2,750
+  Spirit is ordinary stock rather than a special order, which is not true of most entries in this section.</p>
 
-  <h3>Not available to handle in Munich — 31 rows</h3>
+  <h3>Not available to handle in Munich — 32 rows</h3>
   <ul class="absent">
     <li><b>Vaer — 12 rows.</b> The brand states outright that it is carried in no retail stores anywhere. Direct only, with a US return window as the substitute for trying one on.</li>
     <li><b>AV86 — 5 rows.</b> Danish, direct-to-consumer. No German stockist found.</li>
@@ -453,7 +491,8 @@
     <li><b>Seagull — 3 rows.</b> Near miss: Poljot24, an official Seagull dealer since 2012, is registered in Munich (Linprunstr. 47) — but it is an online shop with no published shop floor or opening hours. Worth a phone call (089 330 797 63) if you want to see one in the metal; do not just turn up.</li>
     <li><b>Heinrich — 2 rows.</b> German, but the showroom is in Stuttgart. Its only listed dealer is in Neu-Isenburg, by appointment.</li>
     <li><b>Lorier — 1 row.</b> One authorised bricks-and-mortar retailer worldwide, Grand Central Watch in New York.</li>
-    <li><b>MAEN, Earthen, Delhi Watch Co., Dan Henry, Revelot — 1 row each.</b> All direct-to-consumer, no European retail network found.</li>
+    <li><b>MAEN — 2 rows.</b> Dutch, direct-to-consumer, no European retail network found. Was one row until the Hudson GMT MKII was added; the count below had not followed it.</li>
+    <li><b>Earthen, Delhi Watch Co., Dan Henry, Revelot — 1 row each.</b> All direct-to-consumer, no European retail network found.</li>
   </ul>
 
   <h3>What this list does and does not claim</h3>
@@ -491,6 +530,12 @@
   <p><b>GMT labelling, pass 18 — no score moves, but the table now shows a distinction it was already making.</b> The model has always separated the two kinds: a <i>true</i> (traveller) GMT jumps the local hour hand in one-hour steps and takes 0.5 in complications plus &plus;0.05 on the movement tier, while a <i>caller</i> GMT moves only the 24-hour hand and takes 0.25 with no tier bonus — 2.9 spec points end to end. That split reached the Value tooltip but not the Movement column, where six of the nine GMT rows read simply "Quartz GMT" or "Automatic GMT" and so looked like peers of the three reading "true GMT". All six now say <b>caller GMT</b>, verified per caliber rather than inferred: the Ronda 515.24H and the ETA F06.865 each set the 24-hour hand at their own crown position, and the Sellita SW330-2 is caller by design. The three true ones are unchanged — both Vaer G5s (Miyota 9075) and the Mido Ocean Star GMT (ETA C07.661). The <code>gmt</code> tag's definition in the code was corrected while there: it described a hand "geared to the main time", which is an AM/PM indicator rather than a GMT, and no row here has one.</p>
   <p><b>Maintainability, pass 19 — nothing about the watches changed; the model output is identical to the digit.</b> This pass is about how the file fails, which until now was silently. Three of the last four passes found a number in this page's own prose that had quietly stopped being true — the spec range, the spec/price correlation, the diver split, the titanium bias — and each was found by chance rather than by anything checking. <b>Every figure the page can derive is now derived.</b> The prose carries <code>{{token}}</code> placeholders filled at render from <code>computedFigures()</code>, so the tooltips, the heading, the row counts and the sources tally are outputs of the data rather than assertions about it. That includes the weight estimator's own error statistics, which turn out to be fully recomputable from the published figures: enlarging the test set now updates the claim instead of falsifying it. Research findings that genuinely are not derivable — the Munich shop counts, the estimator's band-type breakdown — stay as literals, and stay here in the footer where they carry a date.</p>
   <p><b>The invariants are enforced rather than described.</b> <code>selfCheck()</code> runs at load and puts a red banner above the table if any of them break: row ids contiguous and unique, every side table covering every row, the four weight tables disjoint and total, every <code>movementDisplay</code> matching a <code>MOVEMENT_TIER</code> key <i>and vice versa</i>, no unknown complication tag, watch type, case or glass category, and the empty-state <code>colspan</code> equal to the column count. The last two are worth naming because they are the ones this file has actually been bitten by. Renumbering a row reassigns its lume, finishing and caseback to a different watch. Editing a <code>movementDisplay</code> string without its tier key drops that watch to the generic by-type fallback — a one-character change, an em dash to a hyphen, was enough. Both used to render a completely normal-looking page; both now name themselves. <code>node check.js</code> runs the same checks from the command line and exits non-zero, and prints the validation figures alongside them, so a change that was not meant to touch the model can be seen not to have. The file is also under version control from this pass onward, which is what finally lets the changelog below be about <i>why</i> rather than about what moved.</p>
+  <p><b>Longines Spirit, Spirit Pilot and Conquest, pass 21 — three rows added (91–93), and the list goes from 90 to 93.</b> These are here to attack the thinnest part of the list. Above €1,700 this table held exactly two rows, which is why the Longines HydroConquest and the Christopher Ward Lumière were both showing <i>n/s</i> — not scored, for want of anything to compare them against. Three rows at €2,250, €2,750 and €2,900 fix that for both of them. They also do something the list could not do before: <b>put rows on both sides of a distinction this file spent a paragraph establishing in pass 13.</b> The two Spirits run the Longines L888.4, which <i>is</i> the COSC variant, and the Conquest runs the L888.5, which is not — so rows 91 and 92 carry a published −4/+6 s/day while row 93 carries the same empty Accuracy cell as row 67, on the same evidence and for the same reason. The L888.4 needed a new movement tier at 0.70; everything else was already in the vocabulary. <b>The Conquest lands at 57 spec points and −4.4 on Value, below the curve</b>, on 6 comparable rows, so it is scored rather than extrapolated. <b>The two Spirits are not scored at all</b> — 57 and 56 spec points, notional residuals of −6.4 and −7.7, but only 4 comparable rows each against the 5 the support test requires, so they show <i>n/s</i>. The count of unscored rows is unchanged at four; it is a different four. Rows 67 and 86 leave it and rows 91 and 92 take their places, which is the price of extending a list upward: whatever is at the top is always the thing with no neighbours.</p>
+  <p><b>Where they land, and it is not a verdict on the watches.</b> All three sit below the baseline, by 4.4 to 7.7 spec points, and the reason is arithmetic rather than an opinion: at €2,250–2,900 they are being compared against a curve populated by €1,300–1,700 Christopher Wards and Citizens, and 57 spec points is roughly what this list gets for €1,500. What the money buys that the model does not fully reward is real but narrow — a 72-hour reserve, a silicon hairspring, COSC on two of the three, and a service network — and three of those four are already scored, thinly, while warranty and service network are excluded by design. The honest summary is the one pass 20 reached for the MAEN, pointed the other way: the specifications are good and the price is where the list disagrees, except that here the disagreement is with a list that mostly does not shop at this price. <b>Read the two <i>n/s</i> Spirits as the model declining to answer, not as a poor score.</b></p>
+  <p><b>The judgement calls.</b> The <b>movement tier</b> for the L888.4 at 0.70 is the one number here genuinely open to argument, and it is arithmetic on this table's own precedents rather than an opinion about Longines. The L888.5 sits at 0.65 for a silicon hairspring; the Sellita SW300-1 sits at 0.65 for COSC; pass 16 set those level on the explicit reasoning that they are different merits, "not a lesser one". The L888.4 is the L888.5 <i>plus</i> COSC — the same base with one added merit — and this table's established rate for exactly that is +0.05, the step the Miyota 9075 takes over the 9015 and the ETA C07.661 over the C07.611. That lands on 0.70, which is the floor of the "in-house from a major" band the L888.4 does not belong to, so it is placed deliberately <i>at</i> that boundary rather than inside it. The objection worth recording is that COSC is visible twice, since these rows also carry a published rate in the timekeeping group — but rows 85 and 86 already carry both, so scoring it differently here would be the inconsistency. At 0.65 the two Spirits lose about a point and a half of spec, comfortably inside the model's own ±4 of noise. <b>Finishing</b> is 0.60 on all three, level with row 67, and the Conquest is deliberately <i>not</i> raised for its sapphire display back: that back is already its own sub-score at 38% of the fittings group, and paying for it in finishing as well is precisely the double-count the SW200-2 Power+ and ST19 tier entries refuse. The Christopher Wards that reached 0.65 on a visible movement got there on a decorated rotor; what this window shows is an undecorated ETA-derived one. <b>Lume</b> is 0.7 on all three because Longines make the identical undifferentiated claim — "Swiss Super-LumiNova®", no grade — on all four of their references here, and inventing a split between applied Arabics and applied indexes would be rating the dial rather than the lume. <b>Clasp</b> is 0.8 on all three: the Spirit and Conquest carry a triple-safety folding clasp with push-piece opening and no micro-adjustment, the Pilot carries the double-security clasp with micro-adjustment that row 67 already has, and the 0.7–0.8 band does not separate two variants of the same push-button safety foldover. <b>Row 91's caseback is left open rather than inferred.</b> Longines leave the field empty on the 37 mm — and on the 40 mm, fetched specifically to test whether the gap was per-reference or collection-wide. It is collection-wide, so the row is absent from <code>DISPLAY_BACK</code> and the fittings group scores it on its clasp alone, the same treatment the Trident GMT 300 gets and for the same stated reason. <b>One contradiction inside Longines' own data is recorded and not resolved:</b> the 37 mm states no screw-in crown where the 40 mm does, in two independent fields, so no crown claim is made on that row either way. It is not a scored field.</p>
+  <p><b>What it did to everything else.</b> Value moved by at most 1.60 spec points across the existing 90 — row 16, the Delhi Tithi — with 84 of 90 moving at all and 8 crossing zero (rows 1, 21, 38, 52, 64, 68, 70, 87). Thirteen bands changed. The two that matter are <b>row 67, the HydroConquest, from <i>n/s</i> to <i>below the curve</i></b>, and <b>row 86, the Lumière, from <i>n/s</i> to <i>as expected</i></b> — both rescued by gaining the neighbours pass 16 said they lacked, which is the intended effect of this pass rather than a side effect of it. The other eleven are boundary crossings on their own residuals: rows 12 and 60 from <i>well below</i> to <i>below the curve</i>, rows 39, 40, 43 and 85 from <i>as expected</i> to <i>above the curve</i>, rows 79, 81, 82 and 83 from <i>below the curve</i> to <i>as expected</i>, and row 88 from <i>as expected</i> to <i>below the curve</i>. <b>Spec drift: none at all</b> — unlike pass 20, where one row moved a rounding point, no existing spec score changed here, because none of the fifteen rows carrying an imputed sub-score sat close enough to a boundary for three new rows to move it. Leave-one-out RMSE is 5.46 → 5.46 and residual sigma is unchanged at 4.4, so the colour bands did not move underneath anyone. <b>Two figures got slightly worse and are reported as found.</b> Naive RMSE falls 9.85 → 9.76, which drags skill down 69.2% → 68.7% without the model having got any worse at its job — skill is measured against the naive baseline, and three rows clustered at the top of the range narrow the list's own spread. Sign flips go 0 → 1: one row now changes side when it is left out of the fit, which is what happens when rows are added at the end of the price range rather than into the middle of it, and it is the same figure that stood at 1 before pass 20 and 0 after. Worst-case resampling shift goes 0.85 → 0.94. None of this is tuned away.</p>
+  <p><b>Longines turn out to publish weight after all, which makes them the eighth maker here to do so and corrects a standing assumption.</b> Passes 6 and 13 both read this brand as publishing nothing, and both were reading the rendered page; the figure is in the product record behind the spec accordion, as <code>case_weight</code>, per reference. All three new rows carry it on the bracelet each is priced on — 114.7 g, 143.0 g and 122.7 g — and none is borrowed from a sibling. <b>The check that matters is row 67:</b> its 167 g came from a Watch Advice review, and Longines' own field for that reference reads 167.0 g. The number did not move; only its standing did, from borrowed to the maker's own, and the comment beside it now says so. That is the first time in this file a borrowed weight has been independently confirmed rather than merely left standing. The test set grows 47 → 50, and the estimator gets slightly worse on it: mean absolute error 9.5% → 9.8%, median 6.1% → 6.5%, RMSE 13.5 g → 13.9 g, within ±15% 40/47 → 42/50, mean signed error +2.4% → +3.1%. <b>The three new rows are a clean confirmation of the structural bias pass 20 identified, on a maker that has nothing to do with Christopher Ward.</b> All three read <i>heavy</i> — the Spirit 37 by +23.8% (142 g estimated against 114.7 published), the Conquest 38 by +14.9%, the Pilot 39 by only +2.8% — for a mean signed +13.8%, and they line up strictly by case size. That is precisely the fill-factor-plus-movement overlap already described: the cylinder-times-0.55 term lands near the mass of a complete head on a small case, the estimator adds 25 g of movement on top, and on a 37 mm case the flat 62 g bracelet allowance does not cancel enough of it. Pass 20 read that pattern off four Christopher Ward strap rows and wondered aloud whether it was CW-specific; three Longines bracelet rows say it is not. Nothing is corrected, for the reason given every time: fitting the estimator on the rows meant to test it would leave no way to know whether the other 43 estimates are any good.</p>
+  <p><b>Two stale literals were corrected in passing, both left by pass 20.</b> The Munich section's absent-brands list read "31 rows" and gave MAEN as one of five brands with "1 row each" — MAEN has had two rows since the Hudson GMT MKII was added, so the heading now reads 32 and MAEN has its own line. The <code>&lt;script&gt;</code> contents banner still said "ids 1-89". Both are exactly the kind of hand-maintained count that <code>computedFigures()</code> exists to eliminate and that survives only where a number genuinely cannot be derived. <b>The Longines pages themselves could not be fetched directly</b> — every path under longines.com timed out from here while the bare root answered — so all three were read through a text-extraction proxy, which returns Longines' own rendered page. That is a change of route, not of source: every figure on these rows is the maker's own record for that exact reference, and the weights are the proof, since a reviewer's number would not have matched row 67's to the decimal.</p>
   <p><b>MAEN Hudson 38 GMT MKII, pass 20 — one row added (90), and the list goes from 89 to 90.</b> The second MAEN here and the second row on the Sellita SW330-2, which means it needed no new movement tier: it takes the 0.60 already argued for the two Christopher Wards, and its caller GMT is paid for in complications at 0.25 rather than the 0.5 a jumping local hour earns. <b>It lands at 48 spec points and −5.7 on Value, below the curve</b>, in a well-populated stretch of the price range — 30 comparable rows, so this is not an extrapolation. The reason is legible rather than mysterious: a 38 mm 300 m steel diver with a box-domed sapphire, X1 lume and an Élaboré Swiss GMT is a genuinely good specification, but at €1,079 it is being compared against the Mido Ocean Star GMT and the Christopher Wards, which bring a true traveller GMT, a display back or a bracelet at similar money. Specs are strong; the price is where the list disagrees.</p>
   <p><b>Three judgement calls, all recorded beside the numbers.</b> The <b>price</b> is €1,079.20, MAEN's own 20% site-wide reduction from a €1,349 list — the same arrangement row 1 already carries, and handled the way pass 17 handled poljot24: the selling price goes in <code>priceValue</code> so the cell, the sort and the model read one number, with the UVP shown alongside. The <b>height</b> is the weakest figure on the row. MAEN publish 11 mm "excluding crystal" and no total, so 13 mm is carried across from the MK5 on row 1, which shares the case family and the box-domed sapphire; it is an inference, not a measurement. The <b>bezel</b> is scored 0.4, an aluminium insert, inferred from an absence: MAEN's spec line says only "60 Click Bi-Directional Sandblasted Bezel" where their MK5 page names ceramic, and this is a maker who advertises ceramic when it is ceramic. The insert is also two-tone — blue/black on this reference, brown/black on the M1.3.3, which is how the two are told apart — and two-tone is cheap to anodise and expensive to sinter. If it proves to be ceramic the row gains about 1.3 spec points, comfortably inside the model's own ±4 of noise. <b>Weight</b> is estimated despite MAEN publishing 129 g, because that figure belongs to the five-link bracelet and this reference is priced on the TPU strap — taking it would describe a watch costing €151.20 more than the one in the Price cell, which is the same trap the Christopher Ward "Case Weight" field sets.</p>
   <p><b>What it did to everything else, and one claim it falsified.</b> Value moved by at most 0.20 spec points across the existing 89, four rows crossed zero within that, and one band changed: the Mido Ocean Star GMT (row 72) from <i>as expected</i> to <i>above the curve</i>, which is a row sitting on a boundary rather than a reappraisal. Leave-one-out RMSE is 5.46 → 5.46 and skill 69.5% → 69.2%, so the model is neither better nor worse for the addition; sign flips fall from 1 to 0. But this file has said in two places that a spec score "cannot change" when a row is added, because step 1 runs on fixed anchors. <b>That was overstated, and adding this row proved it.</b> The anchors are fixed, but <code>imputeMissingSubs()</code> fills an unresearched sub-score with the list average, so the fifteen rows carrying one drift as the list grows — row 54, whose caseback is still unresearched, moved a single rounding point. The effect is tiny and the design is deliberate, but the claim of immunity was wrong and both statements of it have been corrected.</p>
@@ -541,7 +586,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-89 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-93 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Movement tier · Complications ·
 //                 EXTRAS · Finishing · Fittings — all keyed by row id, except MOVEMENT_TIER
@@ -571,7 +616,7 @@
  * @property {string} heightDisplay - case height/thickness; '—' where not published by the maker; sorted via parseLeadingNumber()
  * @property {?number} heightMm - numeric mm value for the primary (with-crystal) height figure, or null if unpublished
  * @property {string} caseDisplay
- * @property {'Steel'|'Titanium'|'Ceramic'} caseCategory
+ * @property {'Steel'|'Titanium'|'Bronze'|'Ceramic'} caseCategory
  * @property {string} bandDisplay
  * @property {string} glassDisplay
  * @property {'Sapphire'|'Mineral'|'Hesalite'} glassCategory
@@ -586,6 +631,7 @@
  * @property {number} priceValue - in priceCurrency's units
  * @property {'EUR'|'USD'|'HKD'|'INR'} priceCurrency
  * @property {number} [priceEUR] - precomputed only for the rows priced in a currency with no direct EUR figure given in the source (HKD, INR); EUR rows use priceValue as-is; USD rows are (re)computed from the live-fetched USD_TO_EUR rate — see recomputePriceEUR()
+ * @property {number} [streetPriceEUR] - German street price where it is materially below the linked list price; the model prefers it over priceEUR — see effectivePrice(). NOT the mechanism for a seller's own markdown from a stated UVP, which goes in priceValue
  * @property {number} [valueScore] - computed 0–100 price-performance score, relative to all watches in this list — see computeValueScores()
  */
 
@@ -1866,6 +1912,77 @@ const WATCHES = [
   // carries, and handled the same way pass 17 handled poljot24: the selling price goes in
   // priceValue so the Price cell, the sort and the value model all read one number.
   priceDisplay:'€1079.20 (UVP €1349)', priceValue:1079.20, priceCurrency:'EUR' },
+
+// --- Longines Spirit / Conquest, pass 21 (rows 91-93) ---------------------------------------
+// Longines' own site would not open from here at all - every path under longines.com timed out,
+// while the bare root answered - so all three pages were read through a text-extraction proxy.
+// What came back is Longines' own rendered page including the embedded product record, which is
+// where the spec accordion's contents actually live: case_thickness, case_lug_to_lug,
+// case_weight, mvt_fct_calibre_name and case_case_back, per SKU. Every figure below is that
+// record for that exact reference. Nothing here is a retailer's or a reviewer's number.
+//
+// The three sit together because of the CALIBER SPLIT, which is the distinction pass 13 spent a
+// paragraph establishing on row 67 and which the list could not until now show both sides of:
+// the two Spirits run the L888.4, the COSC variant, and the Conquest runs the L888.5, which is
+// not. So rows 91 and 92 carry a published −4/+6 s/day and row 93 carries the same empty
+// Accuracy cell as row 67, for the same reason and on the same evidence.
+{ id:91, brand:'Longines', name:'Longines Spirit 37 mm (L3.410.4.53.6)', desc:'Matte black dial, applied Arabics · COSC L888.4 (the 40 and 42 mm are separate refs)',
+  link:'https://www.longines.com/de/p/watch-longines-spirit-l3-410-4-53-6',
+  img:'https://api.ecom.longines.com/media/catalog/product/w/a/watch-collection-longines-spirit-l3-410-4-53-6-43622c-hero.png?w=800',
+  diameterDisplay:'37 mm', diameterMm:37, l2lDisplay:'44.8 mm',
+  heightDisplay:'11.7 mm', heightMm:11.7,
+  // Longines leave case_case_back empty on this reference AND on the 40 mm sibling, which was
+  // fetched specifically to test whether the gap was per-SKU or collection-wide. It is
+  // collection-wide, so the back is not claimed here and the row is absent from DISPLAY_BACK.
+  // The wording also has to avoid the words "display back" and "exhibition", which
+  // displayBackFor() reads out of caseDisplay as a fallback and would silently score as 1.
+  // They also leave case_specificities empty where the 40 mm carries "screw-in crown" - see the
+  // footer; no crown claim is made either way here.
+  caseDisplay:'Stainless steel, fixed bezel (caseback not specified by Longines)', caseCategory:'Steel',
+  bandDisplay:'Solid steel bracelet (triple-safety folding clasp, push-button)',
+  glassDisplay:'Sapphire + AR both sides', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Longines L888.4 (silicon hairspring, COSC)', movementType:'Automatic', movementCostDisplay:'not sold separately (Longines-exclusive ETA A31 derivative, COSC grade)',
+  // The rate is the COSC standard under ISO 3159 and is a published, per-unit, third-party
+  // verified figure for this caliber - the same basis rows 85 and 86 carry it on. It is NOT the
+  // generic A31 tolerance that passes 6 and 13 rejected for the L888.5.
+  powerReserveDisplay:'~72 h', accuracyDisplay:'−4/+6 s/day',
+  waterResDisplay:'100 m (10 bar)', waterResM:100,
+  priceDisplay:'€2,750', priceValue:2750, priceCurrency:'EUR' },
+
+{ id:92, brand:'Longines', name:'Longines Spirit Pilot 39 mm (L3.809.4.53.6)', desc:'Matte black dial, gilt hands · no date · COSC L888.4, screwed solid back',
+  link:'https://www.longines.com/de/p/watch-longines-spirit-pilot-l3-809-4-53-6',
+  img:'https://api.ecom.longines.com/media/catalog/product/w/a/watch-collection-longines-spirit-pilot-l3-809-4-53-6-a3e321-hero.png?w=800',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'47.2 mm',
+  heightDisplay:'11.5 mm', heightMm:11.5,
+  caseDisplay:'Stainless steel, fixed bezel (screw-in crown, screwed solid back)', caseCategory:'Steel',
+  bandDisplay:'Solid steel bracelet (double-security folding clasp, micro-adjust)',
+  glassDisplay:'Sapphire + AR both sides', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Longines L888.4 (silicon hairspring, COSC)', movementType:'Automatic', movementCostDisplay:'not sold separately (Longines-exclusive ETA A31 derivative, COSC grade)',
+  // mvt_fct_functions on this reference reads "Hours, minutes, seconds" where every other
+  // Longines row here reads "...and date". The absence is the maker's, not a research gap, and
+  // it costs the row nothing: date is not a key in COMPLICATION_VALUES and is not scored.
+  powerReserveDisplay:'~72 h', accuracyDisplay:'−4/+6 s/day',
+  waterResDisplay:'100 m (10 bar)', waterResM:100,
+  priceDisplay:'€2,900', priceValue:2900, priceCurrency:'EUR' },
+
+{ id:93, brand:'Longines', name:'Longines Conquest 38 mm (L3.720.4.62.6)', desc:'Sunray gilt dial, applied indexes · L888.5 (non-COSC), sapphire display back',
+  link:'https://www.longines.com/de/p/watch-conquest-l3-720-4-62-6',
+  img:'https://api.ecom.longines.com/media/catalog/product/w/a/watch-collection-conquest-l3-720-4-62-6-79f9f0-hero.png?w=800',
+  diameterDisplay:'38 mm', diameterMm:38, l2lDisplay:'46.8 mm',
+  heightDisplay:'10.9 mm', heightMm:10.9,
+  caseDisplay:'Stainless steel, fixed bezel (screw-in crown, sapphire display back)', caseCategory:'Steel',
+  bandDisplay:'Solid steel bracelet (triple-safety folding clasp, push-button)',
+  glassDisplay:'Sapphire + AR both sides', glassCategory:'Sapphire',
+  // Reused verbatim from row 67 - same caliber, so same MOVEMENT_TIER key, and the
+  // MEASURED_ACCURACY substring key 'Longines L888.5' now picks up this row too. That is
+  // correct rather than incidental: the owner reports behind that entry name the L888 family.
+  movementDisplay:'Automatic — Longines L888.5 (silicon hairspring)', movementType:'Automatic', movementCostDisplay:'not sold separately (Longines-exclusive ETA A31.L11 derivative)',
+  // Longines publish no rate for the L888.5. The field stays empty rather than borrowing the
+  // COSC figure from the L888.4 rows two entries above, which would be the same mistake as
+  // borrowing the generic A31 tolerance and would look far more plausible.
+  powerReserveDisplay:'~72 h', accuracyDisplay:'—',
+  waterResDisplay:'100 m (10 bar)', waterResM:100,
+  priceDisplay:'€2,250', priceValue:2250, priceCurrency:'EUR' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -2001,6 +2118,7 @@ const MEASURED_ACCURACY = {
   'cal. 9051':         { typ: 5.5,  range: '4\u20137',   conf: 'fair', note: 'Fujitsubo owners at +7 unadjusted and +4 or a little less; Citizen note their own figure is measured stationary' },
   'cal. 8210':         { typ: 15,   range: '5\u201320',  conf: 'weak', note: 'Very wide spread. One owner reports all their Citizen automatics inside \u00b13 to 5; another returned a new example at +21. No clear centre' },
   'Mido Caliber 80':   { typ: 4,    range: '1\u20137',   conf: 'fair', note: 'Same ETA C07 base as the Powermatic rows above, but the Mido-specific reports run wider and to the slow side. An Ocean Star Tribute owner logged +0.15 s/day averaged over a month (positional spread +4 to \u22123); another Tribute settled to about \u22127; one owner reports losing 6\u20138 s/day worn; one timegrapher figure at \u221211. Marked fair, not good, because the spread is a factor of ten and none of it is a controlled sample' },
+  'Longines L888.4':   { typ: 2,    range: '1\u20133',   conf: 'fair', note: 'No data specific to the L888.4; taken from the L888.5 entry below, which the reports behind it mostly describe at family level anyway - "every L888 inside roughly 2 s/day". Borrowed on the same basis as the Miyota 90S5 borrows the 9039. Worth reading against this row\u2019s published \u22124/+6: the COSC bound is the guarantee, not the expectation' },
   'Longines L888.5':   { typ: 2,    range: '1\u20133',   conf: 'fair', note: 'Added in pass 13, and the one row where the measured column now says something the published column cannot. One HydroConquest owner measured 0 s/day on a timegrapher with under 3 s of spread across six positions; another averaged 1\u20132 s/day over several days; a third canvassed about twenty other owners and reports every L888 inside roughly 2 s/day. Against that, three individual reports at +10, +12 and \u22125. Fair rather than good because of those outliers, and because most reports name the L888 family rather than the .5 specifically' },
 };
 
@@ -2019,10 +2137,11 @@ function measuredAccuracyFor(w) {
 // wrong: Tissot, Citizen, Seagull and Seiko all publish weight as a plain field, which covers 25
 // rows outright, and three more are sourced from a review or a specialist retailer. Pass 12 added
 // Mido as a fifth such maker, covering all 8 of its rows, pass 15 added Timex as a sixth, and
-// pass 16 Christopher Ward as a seventh, covering all 10 of its rows. So the column is now
-// 47 published figures and 42 estimates - 34 rows that genuinely publish nothing, 7 that could
-// not be reached, and 1 published head-only. The estimator below still runs for anything not in
-// WEIGHT_MEASURED.
+// pass 16 Christopher Ward as a seventh, covering all 10 of its rows. Pass 21 added Longines as
+// an eighth, covering all 3 of its new rows and confirming the one figure already held for row 67.
+// So the column is now 50 published figures and 43 estimates - 35 rows that genuinely publish
+// nothing, 7 that could not be reached, and 1 published head-only. The estimator below still runs
+// for anything not in WEIGHT_MEASURED.
 //
 // Worth stating why the earlier conclusion was wrong, since it is the kind of error that repeats:
 // pass 10 searched for the number and found nothing, rather than opening the product pages and
@@ -2038,12 +2157,12 @@ function measuredAccuracyFor(w) {
 //
 // Pass 10 wrote that "if a real set of measured weights ever exists that argument changes,
 // because measured mass carries information the dimensions do not - bracelet build, case wall
-// thickness". That set now partly exists: 47 of 89 rows carry a published figure. The condition
+// thickness". That set now partly exists: 50 of 93 rows carry a published figure. The condition
 // has been met and the question is genuinely open, so it is flagged rather than quietly ignored.
-// It is NOT acted on here, for two reasons. The 47 are not a random sample - they are seven makers
-// who happen to document well, three of them Japanese and four Western, so scoring on them would
+// It is NOT acted on here, for two reasons. The 50 are not a random sample - they are eight makers
+// who happen to document well, three of them Japanese and five Western, so scoring on them would
 // score brands on their spec-sheet habits. And the double-counting objection still binds for the
-// other 42 rows, where the "weight" is a function of columns the score already reads. Scoring a
+// other 43 rows, where the "weight" is a function of columns the score already reads. Scoring a
 // column that is measured for some rows and derived from other scored inputs for the rest would
 // mean two different things in one number. Completing the research is the prerequisite.
 //
@@ -2055,13 +2174,14 @@ function measuredAccuracyFor(w) {
 // set - the estimator was built before any of them were known, and none of them were used to tune
 // it. Pass 12's eight Mido rows enlarged that set from 28 to 36 and barely moved the result. Pass
 // 16's ten Christopher Ward rows are the first enlargement that made it visibly WORSE, and that
-// is the useful finding rather than a reason to hide it.
-//                        28 rows (p11)   36 rows (p12)   47 rows (p16)
-//   mean absolute error       8.5%           8.2%            9.5%
-//   median absolute error     6.1%           5.8%            6.1%
-//   RMSE                     11.8 g         11.9 g          13.5 g
-//   within +-15%             25 of 28       32 of 36        40 of 47
-//   mean signed error        +2.6%          +1.6%           +2.4%   (positive = reads heavy)
+// is the useful finding rather than a reason to hide it. Pass 21's three Longines rows moved it
+// slightly worse again, in the same direction and for the same structural reason - see below.
+//                        28 rows (p11)   36 rows (p12)   47 rows (p16)   50 rows (p21)
+//   mean absolute error       8.5%           8.2%            9.5%            9.8%
+//   median absolute error     6.1%           5.8%            6.1%            6.5%
+//   RMSE                     11.8 g         11.9 g          13.5 g          13.9 g
+//   within +-15%             25 of 28       32 of 36        40 of 47        42 of 50
+//   mean signed error        +2.6%          +1.6%           +2.4%           +3.1%  (+ = reads heavy)
 // The ten CW rows on their own: mean absolute error 15.0%, RMSE 18.8 g, 7 of 10 within +-15%,
 // mean signed +5.2%. That is roughly twice the error the other 37 rows produce (8.0% / 11.7 g /
 // 33 of 37), and splitting the CW rows by band type says exactly where it comes from:
@@ -2076,9 +2196,14 @@ function measuredAccuracyFor(w) {
 // is the same small-case pattern already recorded for the Seiko Presage and the 40 mm Seagull,
 // seen from a new angle: it is not really about case size, it is that the fill factor and the
 // movement allowance overlap.
+// Pass 21's three Longines rows confirm that on a different maker and on BRACELETS rather than
+// straps, which is what closes the question of whether it was CW-specific. All three read heavy
+// and they rank strictly by case size: Spirit 37 +23.8% (142 g estimated, 114.7 published),
+// Conquest 38 +14.9%, Spirit Pilot 39 +2.8%; mean signed +13.8%, 2 of 3 within +-15%. Three
+// points is not a sample, but they fall exactly where the overlap above predicts they would.
 // Three systematic biases now show up, and all three are deliberately LEFT IN rather than fitted
 // away, because correcting any of them means tuning the estimator on the same rows used to test
-// it - which would leave no way to tell whether the remaining 42 estimates are any good:
+// it - which would leave no way to tell whether the remaining 43 estimates are any good:
 //   titanium   7 rows, mean -5.2%. Pass 12 saw -5.6% on 5 rows; the two CW titanium rows (-1.5%
 //              and -6.5%) sit inside that pattern, so the bias is now better evidenced, not
 //              smaller. The 4.5 density is right for the alloy, but titanium bracelets and straps
@@ -2098,8 +2223,8 @@ function measuredAccuracyFor(w) {
 const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceramic: 2.0 };
 // Published weights, pass 11, extended in passes 12, 15 and 16. Every row was checked against the
 // maker's own product page - the link the row already carries - rather than sampled. That
-// overturned the premise this column was built on. Weight is NOT unpublishable: seven makers state
-// it outright, as a plain field in the same spec table as the diameter, covering 44 rows.
+// overturned the premise this column was built on. Weight is NOT unpublishable: eight makers state
+// it outright, as a plain field in the same spec table as the diameter, covering 47 rows.
 //   Citizen    "Gewicht"          12/14 rows on de.citizenwatch.eu
 //   CW         "Weight inc. Strap" 10/10 rows - and the only maker that also gives a separate
 //                                  "Case Weight", i.e. the only one it is possible to take the
@@ -2109,6 +2234,9 @@ const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceram
 //   Seagull    "Net Weight"        3/3 rows
 //   Seiko                          1/1 row
 //   Timex      "Weight"            1/1 row - to two decimals, the most precise here
+//   Longines   "case_weight"       4/4 rows - in the product record behind the spec accordion
+//                                  rather than in the rendered prose, which is why passes 6 and
+//                                  13 both read this brand as publishing nothing
 // Three more rows come from a third party where the maker omits it, marked below. Figures are
 // with the band the row is priced on, matching what this column claims to show.
 const WEIGHT_MEASURED = {
@@ -2150,8 +2278,11 @@ const WEIGHT_MEASURED = {
   44: 111,  // Fujitsubo NB6025-59H - Long Island Watch spec table. Citizen's own DE and US
             //   pages both omit this reference while publishing it for its siblings.
   63: 29,   // MoonSwatch SO33M101 - StrapHabit review spec table; swatch.com would not load.
-  67: 167,  // HydroConquest 39 - Watch Advice: "the mesh reference coming in at 155g, while the
-            //   classic three-link version is 12g heavier at 167g". This row is the three-link.
+  67: 167,  // HydroConquest 39. Was sourced from Watch Advice - "the mesh reference coming in at
+            //   155g, while the classic three-link version is 12g heavier at 167g", this row
+            //   being the three-link. Pass 21 found Longines publish it themselves after all,
+            //   as case_weight on the product record: 167.0 g, the same number. The figure did
+            //   not move; only its standing did, from borrowed to the maker's own.
   // --- Mido, "Gewicht (g)" on midowatches.com -----------------------------------------------
   // A fifth maker publishing it, and the most precise of them: Mido states it to a decimal on
   // the Tribute. All eight rows, no gaps - the best-documented brand in this column.
@@ -2189,6 +2320,14 @@ const WEIGHT_MEASURED = {
   84: 157,  // The Twelve Midnight 38, integrated steel bracelet (case 60 g)
   85: 66,   // The Twelve 40 Ti, integrated rubber (case 41 g)
   86: 77,   // C60 Trident Lumiere 41, Aquaflex rubber (case 53 g)
+  // --- Longines, "case_weight" on the product record, pass 21 -------------------------------
+  // An eighth maker publishing it, and it was here the whole time: the field is in the product
+  // data behind the spec accordion rather than in the rendered prose, which is why passes 6 and
+  // 13 read this brand as publishing nothing. All three new rows carry it per reference, on the
+  // bracelet each row is priced on, and row 67's borrowed figure turned out to match it exactly.
+  91: 114.7,  // Spirit 37, steel bracelet
+  92: 143.0,  // Spirit Pilot 39, steel bracelet
+  93: 122.7,  // Conquest 38, steel bracelet
 };
 
 // Sinn is the one maker that publishes a head-only figure: "Gewicht ohne Band: 65 Gramm" for the
@@ -2400,8 +2539,31 @@ const WATCH_TYPES = {
   89: ['Chronograph'],
   90: ['GMT / traveller', 'Diver'],    // 300 m case, but a 24 h bezel rather than an elapsed-time
                                        //   one - both apply, as on rows 72 and 82
+  // Pass 21. The maker states the intent on both counts, which is this table's own rule. Longines
+  // file the whole Spirit collection under "Fliegeruhren" and describe them as pilot watches in
+  // the collection text, so both Spirits are Pilot and nothing else - the same single-type call
+  // row 60 gets. The Conquest is sold as "the ultimate everyday watch" with "sporting elegance",
+  // and at 100 m behind a fixed bezel that is the Sealander shape on row 80.
+  91: ['Pilot'],
+  92: ['Pilot'],
+  93: ['Everyday', 'Sports'],
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
+
+// --- Filter option order ---------------------------------------------------------------------
+// The order the three material/movement filters list their options in, and - because the panels
+// are built from the intersection of these arrays and the values actually present in WATCHES -
+// the closed set of legal values for each field. selfCheck() reads them in both directions, so a
+// new caseCategory now says so instead of quietly having no filter entry, which is what the
+// hardcoded <option> lists these replaced allowed.
+//
+// The orders are the ones the <option> lists carried and are kept deliberately: case runs
+// commonest-first (79 of 93 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
+// derived from the data and sorted with localeCompare.
+const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
+const GLASS_ORDER = ['Sapphire', 'Mineral', 'Hesalite'];
+const MOVEMENT_ORDER = ['Automatic', 'Hand-wound', 'Meca-quartz', 'Quartz', 'Solar'];
 
 // --- Movement tier -----------------------------------------------------------------------
 // Replaces the former parts-market price as the movement criterion. The old figure mixed new
@@ -2423,6 +2585,22 @@ const MOVEMENT_TIER = {
   'Automatic — cal. 0950': 0.75,
   'Automatic — cal. 9051': 0.75,
   'Automatic (hand-wind + hack) — Seiko 6R51': 0.70,
+  // Longines L888.4, pass 21, at 0.70 - the highest non-manufacture entry in this table, and the
+  // one number in that pass most open to disagreement. The argument is arithmetic on this table's
+  // own precedents rather than an opinion about Longines. The L888.5 below sits at 0.65 for a
+  // silicon hairspring; the Sellita SW300-1 sits at 0.65 for COSC; pass 16 set those two level on
+  // the explicit reasoning that they are different merits, "not a lesser one". The L888.4 is the
+  // L888.5 PLUS COSC - the same base with one added merit - and this table's established rate for
+  // exactly that is +0.05 (Miyota 9015 -> 9075, ETA C07.611 -> C07.661). That lands on 0.70.
+  // 0.70 is the floor of the "in-house from a major" band, which the L888.4 is not, so this is a
+  // deliberate placement AT that boundary rather than inside it: it is the top of the ebauche
+  // range because it is the only entry carrying both of the merits that define that range's top.
+  // The objection worth recording is that COSC is also visible in the timekeeping group, since
+  // these rows carry a published −4/+6 s/day. That is not new - rows 85 and 86 already carry both
+  // the 0.65 COSC tier and the same rate - so scoring it differently here would be the
+  // inconsistency, not the double-count. If this entry is ever revisited, 0.65 level with the
+  // other two is the alternative, and it costs these rows about a point and a half of spec.
+  'Automatic — Longines L888.4 (silicon hairspring, COSC)': 0.70,
   'Automatic — Longines L888.5 (silicon hairspring)': 0.65,  // top of the reworked-ebauche band: Longines-exclusive ETA A31.L11, silicon hairspring ranks above the Nivachron Powermatics, below a true manufacture
   'Hand-wound — ETA 7001 Top Grade': 0.60,
   'Automatic — Sellita SW200-1 (Élaboré)': 0.60,
@@ -2766,6 +2944,29 @@ const EXTRAS = {
   // to be ceramic this row gains about 1.3 spec points, inside the model's own +-4 noise.
   // Listed as open in the footer.
   90:{lume:1.0,war:2,iso:0,antimag:0,clasp:0.3,service:0.5,bezel:0.4,comp:['gmt']},
+  // Rows 91-93, Longines Spirit / Spirit Pilot / Conquest, pass 21. Every field below is anchored
+  // on row 67, the HydroConquest, because it is the same maker making the same declarations - and
+  // where the four rows genuinely differ, the difference is not one this scale resolves.
+  // lume 0.7, level with row 67. Longines say "Swiss Super-LumiNova®" and name no grade on all
+  //   four references - the identical claim, so the identical score. The dial layouts do differ
+  //   (big applied Arabics on the two Spirits, applied indexes on the Conquest) but inventing a
+  //   split on that would be rating the dial rather than the lume the maker actually specifies.
+  // war 5, Longines' own "5-Jahres-Garantie", stated on all three pages. Data only, not scored.
+  // iso 0 on all three. None claims ISO 6425 and none is a dive watch; at 10 bar behind a fixed
+  //   bezel the absence of the claim is a finding, per this table's rule, not a gap.
+  // antimag 0.9, level with row 67 and for the same reason: a monocrystalline silicon balance
+  //   spring, which Longines state on every one of these references.
+  // clasp 0.8 on all three, level with row 67. Two variants of the same thing and the 0.7-0.8
+  //   band does not separate them: the Spirit and Conquest carry a triple-safety folding clasp
+  //   with push-piece opening and no micro-adjustment, the Pilot carries Longines' double-security
+  //   clasp WITH micro-adjustment - word for word what row 67 has. Both are push-button safety
+  //   foldovers differing only in which extra they bring. None is on-the-fly, so none reaches 0.9.
+  // bezel null on all three - no rotating bezel anywhere in this group. Excluded, not penalised.
+  // comp omitted on all three. The two dated rows get nothing for it because date is not a key in
+  //   COMPLICATION_VALUES, so the Pilot loses nothing for going without one.
+  91:{lume:0.7,war:5,iso:0,antimag:0.9,clasp:0.8,service:0.9,bezel:null},
+  92:{lume:0.7,war:5,iso:0,antimag:0.9,clasp:0.8,service:0.9,bezel:null},
+  93:{lume:0.7,war:5,iso:0,antimag:0.9,clasp:0.8,service:0.9,bezel:null},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -2828,6 +3029,18 @@ const FINISH = {
   // sandblasted dial with printed markers, and the MKII's "improved brushing and polishing" is
   // a step within the line rather than a change of class.
   90:0.50,
+  // Longines, pass 21. All three at 0.60, level with row 67 and at the top of the "solid
+  // mainstream" band. Same maker, same industrial standard: brushed-and-polished cases with
+  // sharp edge definition, applied markers and hands rather than printed ones, lacquer or sunray
+  // dials. The Conquest's sunray gilt dial and the Spirits' applied Arabics are variations of
+  // execution within one level of craft, not a step between levels.
+  // The Conquest is deliberately NOT raised for its sapphire display back. That back is already
+  // its own scored sub-score - fittings.displayBack, 38% of an 11% group - and paying for it here
+  // as well is exactly the double-count the SW200-2 Power+ and ST19 entries in MOVEMENT_TIER
+  // refuse. The Christopher Ward rows that reached 0.65 partly on a visible movement got there on
+  // a Colimacon-finished, twin-flag-engraved rotor; what this window shows is an undecorated
+  // ETA-derived rotor, so the window is the merit and the window is already counted.
+  91:0.60, 92:0.60, 93:0.60,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -2835,8 +3048,10 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 80 of 89 rows resolved - 34 see-through, 46 solid. The nine still open are
-// 12, 16, 38, 41, 54, 56, 58, 59 and 82, all rows whose maker publishes no caseback detail.
+// Research status: 83 of 93 rows resolved - 35 see-through, 48 solid. The ten still open are
+// 12, 16, 38, 41, 54, 56, 58, 59, 82 and 91, all rows whose maker publishes no caseback detail.
+// Row 91 is the newest and the best documented of the ten: Longines leave the field empty on the
+// Spirit 37 AND on the 40 mm sibling, so the gap is the collection's, not this reference's.
 const DISPLAY_BACK = {
   // --- fittings research, pass 6 (see the footer note) ---
   // Vaer state the rule themselves: automatics get sapphire exhibition backs, quartz gets solid
@@ -2941,6 +3156,10 @@ const DISPLAY_BACK = {
   87: 1, 88: 1, 89: 1,
   90: 0,  // MAEN Hudson 38 GMT MKII - "Closed Screw-down" caseback on MAEN's own spec list,
           //   and Monochrome's first look calls it a solid screw-down back
+  // Longines, pass 21, straight from case_case_back on each product record. Two of the three
+  // rows are settled and the third is deliberately open - see the row literal for row 91.
+  92: 0,  // Spirit Pilot 39 - "Screw-down case back"
+  93: 1,  // Conquest 38 - "Screw-down and transparent with sapphire crystal case back"
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
@@ -3444,18 +3663,55 @@ function valueTooltip(w) {
   return parts.join(' \u00b7 ');
 }
 
+// --- Categorical filters ----------------------------------------------------------------------
+// The five list-shaped filters, each a dropdown of checkboxes rather than a single-pick select,
+// declared once and driven from here: the panels, the predicate, the option counts and the reset
+// all loop over this array. They used to be five near-identical <select>s with five near-identical
+// listeners, which is how the case/glass/movement option lists drifted out of reach of the data
+// in the first place.
+//
+// values(w) returns an ARRAY because that is what makes type fit the same shape as the other
+// four: a row carries one case material but any number of types (row 90 is both a GMT and a
+// diver), and the predicate should not care which kind it is looking at.
+const FILTER_DIMS = [
+  { key: 'brand',    label: 'Brand',         allLabel: 'All brands',         order: null,           values: w => [w.brand] },
+  { key: 'type',     label: 'Type',          allLabel: 'All types',          order: TYPE_ORDER,     values: typesFor, modes: true },
+  { key: 'movement', label: 'Movement',      allLabel: 'All movements',      order: MOVEMENT_ORDER, values: w => [w.movementType] },
+  { key: 'case',     label: 'Case material', allLabel: 'All case materials', order: CASE_ORDER,     values: w => [w.caseCategory] },
+  { key: 'glass',    label: 'Glass',         allLabel: 'All glass',          order: GLASS_ORDER,    values: w => [w.glassCategory] },
+];
+
 const state = {
-  search: '', brand: '', type: '', movement: '', caseCategory: '', glassCategory: '',
+  search: '',
+  // One Set per dimension, keyed by FILTER_DIMS key. Empty = that dimension is off, which is the
+  // same "no selection means no constraint" rule the empty-string selects had.
+  sel: Object.fromEntries(FILTER_DIMS.map(d => [d.key, new Set()])),
+  // Type only: false = show rows carrying ANY ticked type, true = only rows carrying ALL of them.
+  // Meaningful because a row holds several types; the other four dimensions hold exactly one
+  // value each, where "all of these" could only ever match nothing.
+  typeMatchAll: false,
   waterMin: null, priceMin: null, priceMax: null, diaMin: null, diaMax: null
 };
 const sortState = { key: 'id', dir: 'asc' };
 
-function matchesFilters(w) {
-  if (state.brand && w.brand !== state.brand) return false;
-  if (state.type && !typesFor(w).includes(state.type)) return false;
-  if (state.movement && w.movementType !== state.movement) return false;
-  if (state.caseCategory && w.caseCategory !== state.caseCategory) return false;
-  if (state.glassCategory && w.glassCategory !== state.glassCategory) return false;
+// Ticked options inside one dimension are OR-ed; the dimensions are then AND-ed together, so
+// ceramic+titanium with movement automatic means (ceramic OR titanium) AND automatic.
+//
+// skipKey ignores one dimension's own selection. That is what lets the counts beside the
+// checkboxes answer "how many rows would this option add", measured against every OTHER active
+// filter - without it, ticking Ceramic would show 0 next to Titanium and the filter could be
+// narrowed but never widened.
+function matchesFilters(w, skipKey) {
+  for (const dim of FILTER_DIMS) {
+    if (dim.key === skipKey) continue;
+    const picked = state.sel[dim.key];
+    if (!picked.size) continue;
+    const have = dim.values(w).filter(v => v != null);
+    const ok = (dim.modes && state.typeMatchAll)
+      ? [...picked].every(v => have.includes(v))
+      : have.some(v => picked.has(v));
+    if (!ok) return false;
+  }
   if (state.waterMin !== null && w.waterResM < state.waterMin) return false;
   if (state.priceMin !== null && w.priceEUR < state.priceMin) return false;
   if (state.priceMax !== null && w.priceEUR > state.priceMax) return false;
@@ -3532,32 +3788,137 @@ function renderRows(list) {
 }
 
 function applyPipeline() {
-  let list = WATCHES.filter(matchesFilters).filter(matchesSearch);
+  let list = WATCHES.filter(w => matchesFilters(w)).filter(matchesSearch);
   list = list.slice().sort((a, b) => compareWatches(a, b, sortState.key, sortState.dir));
   renderRows(list);
+  refreshFilterPanels();
   document.getElementById('resultCount').textContent = `${list.length} of ${WATCHES.length} watches`;
 }
 
-function populateBrandOptions() {
-  const brands = Array.from(new Set(WATCHES.map(w => w.brand))).sort((a, b) => a.localeCompare(b));
-  const sel = document.getElementById('filterBrand');
-  brands.forEach(b => {
-    const opt = document.createElement('option');
-    opt.value = b; opt.textContent = b;
-    sel.appendChild(opt);
+// --- Filter panels ------------------------------------------------------------------------------
+// Every option comes from WATCHES, never from markup, so a new case material or brand appears in
+// the filter the moment its row is added. Where a dimension has an order array the array also
+// fixes the legal set; selfCheck() reports a value that is in the data but not in the array,
+// because such a value would otherwise just be silently unfilterable.
+function optionValuesFor(dim) {
+  const present = new Set();
+  WATCHES.forEach(w => dim.values(w).forEach(v => { if (v != null) present.add(v); }));
+  return dim.order ? dim.order.filter(v => present.has(v))
+                   : [...present].sort((a, b) => a.localeCompare(b));
+}
+
+// How many rows each option would show, measured against every filter EXCEPT its own dimension's
+// (see matchesFilters). Recomputed on every pipeline pass, which is 5 x 90 predicate calls - the
+// same order as the search box, which rejoins a haystack string for all 93 rows per keystroke.
+function optionCounts(dim) {
+  const counts = new Map();
+  WATCHES.filter(w => matchesFilters(w, dim.key)).filter(matchesSearch)
+    .forEach(w => dim.values(w).forEach(v => { if (v != null) counts.set(v, (counts.get(v) ?? 0) + 1); }));
+  return counts;
+}
+
+// Nothing picked reads as the old "All brands" placeholder. A short selection is spelled out,
+// because seeing "Ceramic, Titanium" on the closed trigger is the whole point of the control; a
+// long one falls back to a count so the trigger cannot outgrow the selects beside it.
+function triggerLabel(dim, chosen) {
+  if (!chosen.length) return dim.allLabel;
+  const joined = chosen.join(', ');
+  return joined.length <= 28 ? joined : `${dim.label}: ${chosen.length} selected`;
+}
+
+// Panels are built once and thereafter only updated, because the option universe is fixed:
+// WATCHES never changes at runtime. Rebuilding a panel's markup would also mean rebuilding it
+// underneath the click that just ticked one of its boxes, which loses focus mid-interaction.
+// createElement + textContent rather than innerHTML - the idiom the two option-populating
+// functions this replaced already used, and it escapes brand names by construction.
+const MS_REFS = new Map();
+
+function buildFilterPanels() {
+  FILTER_DIMS.forEach(dim => {
+    const root = document.querySelector(`.ms[data-dim="${dim.key}"]`);
+    if (!root) return;
+    const panel = root.querySelector('.ms-panel');
+
+    const head = document.createElement('div');
+    head.className = 'ms-head';
+    const heading = document.createElement('span');
+    heading.textContent = dim.label;
+    const clear = document.createElement('button');
+    clear.type = 'button';
+    clear.className = 'ms-clear';
+    clear.textContent = 'Clear';
+    head.appendChild(heading);
+    head.appendChild(clear);
+    panel.appendChild(head);
+
+    // Only the type dimension gets the any/all switch: the other four hold exactly one value per
+    // row, where "all of these" could never match anything.
+    if (dim.modes) {
+      const mode = document.createElement('div');
+      mode.className = 'ms-mode';
+      [['any', 'any of these'], ['all', 'all of these']].forEach(([value, text]) => {
+        const wrap = document.createElement('label');
+        const radio = document.createElement('input');
+        radio.type = 'radio';
+        radio.name = `msMode-${dim.key}`;
+        radio.value = value;
+        radio.checked = value === 'any';
+        const caption = document.createElement('span');
+        caption.textContent = text;
+        wrap.appendChild(radio);
+        wrap.appendChild(caption);
+        mode.appendChild(wrap);
+      });
+      panel.appendChild(mode);
+    }
+
+    // The checkbox lives inside its <label>, so no id has to be generated - which matters,
+    // since 'GMT / traveller' is not a legal id and would need slugifying.
+    const opts = optionValuesFor(dim).map(value => {
+      const row = document.createElement('label');
+      row.className = 'ms-opt';
+      const input = document.createElement('input');
+      input.type = 'checkbox';
+      input.dataset.value = value;
+      const name = document.createElement('span');
+      name.textContent = value;
+      const count = document.createElement('span');
+      count.className = 'ms-count';
+      row.appendChild(input);
+      row.appendChild(name);
+      row.appendChild(count);
+      panel.appendChild(row);
+      return { value, row, input, count };
+    });
+
+    MS_REFS.set(dim.key, { root, panel, clear, opts, label: root.querySelector('.ms-label') });
   });
 }
 
-// Options come from the data, in TYPE_ORDER, with a count so it is obvious up front how thin
-// some categories are - there is exactly one pilot watch and one pocket watch in this list.
-function populateTypeOptions() {
-  const counts = new Map();
-  WATCHES.forEach(w => typesFor(w).forEach(t => counts.set(t, (counts.get(t) ?? 0) + 1)));
-  const sel = document.getElementById('filterType');
-  TYPE_ORDER.filter(t => counts.has(t)).forEach(t => {
-    const opt = document.createElement('option');
-    opt.value = t; opt.textContent = `${t} (${counts.get(t)})`;
-    sel.appendChild(opt);
+function refreshFilterPanels() {
+  FILTER_DIMS.forEach(dim => {
+    const ref = MS_REFS.get(dim.key);
+    if (!ref) return;
+    const picked = state.sel[dim.key];
+    const counts = optionCounts(dim);
+    ref.opts.forEach(o => {
+      const n = counts.get(o.value) ?? 0;
+      o.input.checked = picked.has(o.value);
+      o.count.textContent = String(n);
+      o.row.classList.toggle('empty', n === 0 && !picked.has(o.value));
+    });
+    ref.clear.hidden = picked.size === 0;
+    ref.root.classList.toggle('active', picked.size > 0);
+    ref.label.textContent = triggerLabel(dim, ref.opts.filter(o => picked.has(o.value)).map(o => o.value));
+  });
+}
+
+function closeFilterPanels(except) {
+  MS_REFS.forEach(ref => {
+    if (ref.root === except) return;
+    ref.root.classList.remove('open');
+    ref.panel.hidden = true;
+    ref.root.querySelector('.ms-trigger').setAttribute('aria-expanded', 'false');
   });
 }
 
@@ -3594,11 +3955,42 @@ function wireImageModal() {
 
 function wireControls() {
   document.getElementById('searchInput').addEventListener('input', e => { state.search = e.target.value.trim(); applyPipeline(); });
-  document.getElementById('filterBrand').addEventListener('change', e => { state.brand = e.target.value; applyPipeline(); });
-  document.getElementById('filterType').addEventListener('change', e => { state.type = e.target.value; applyPipeline(); });
-  document.getElementById('filterMovement').addEventListener('change', e => { state.movement = e.target.value; applyPipeline(); });
-  document.getElementById('filterCase').addEventListener('change', e => { state.caseCategory = e.target.value; applyPipeline(); });
-  document.getElementById('filterGlass').addEventListener('change', e => { state.glassCategory = e.target.value; applyPipeline(); });
+
+  // One loop for all five panels, in place of the five copies of read-control-then-filter this
+  // replaced. Nothing here knows which dimension it is wiring.
+  MS_REFS.forEach((ref, key) => {
+    const trigger = ref.root.querySelector('.ms-trigger');
+    trigger.addEventListener('click', () => {
+      const open = !ref.root.classList.contains('open');
+      closeFilterPanels();
+      ref.root.classList.toggle('open', open);
+      ref.panel.hidden = !open;
+      trigger.setAttribute('aria-expanded', String(open));
+    });
+
+    // Delegated on the panel, so the panel survives - ticking a box must not close it, or
+    // picking ceramic AND titanium would take two trips through the dropdown.
+    ref.panel.addEventListener('change', e => {
+      const box = e.target.closest('input[type="checkbox"]');
+      if (box) {
+        if (box.checked) state.sel[key].add(box.dataset.value);
+        else state.sel[key].delete(box.dataset.value);
+      } else if (e.target.closest('.ms-mode input')) {
+        state.typeMatchAll = e.target.value === 'all';
+      } else {
+        return;
+      }
+      applyPipeline();
+    });
+
+    ref.clear.addEventListener('click', () => { state.sel[key].clear(); applyPipeline(); });
+  });
+
+  // An anchored panel has no backdrop element to test against the way the image modal does, so
+  // closing falls to the document: anything outside every .ms dismisses whichever one is open.
+  document.addEventListener('click', e => { if (!e.target.closest('.ms')) closeFilterPanels(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeFilterPanels(); });
+
   document.getElementById('filterWater').addEventListener('change', e => { state.waterMin = e.target.value === '' ? null : parseFloat(e.target.value); applyPipeline(); });
   document.getElementById('diaMin').addEventListener('input', e => { state.diaMin = e.target.value === '' ? null : parseFloat(e.target.value); applyPipeline(); });
   document.getElementById('diaMax').addEventListener('input', e => { state.diaMax = e.target.value === '' ? null : parseFloat(e.target.value); applyPipeline(); });
@@ -3606,20 +3998,20 @@ function wireControls() {
   document.getElementById('priceMax').addEventListener('input', e => { state.priceMax = e.target.value === '' ? null : parseFloat(e.target.value); applyPipeline(); });
 
   document.getElementById('resetFilters').addEventListener('click', () => {
-    state.search = ''; state.brand = ''; state.type = ''; state.movement = ''; state.caseCategory = ''; state.glassCategory = '';
+    state.search = '';
+    FILTER_DIMS.forEach(dim => state.sel[dim.key].clear());
+    state.typeMatchAll = false;
     state.waterMin = null; state.priceMin = null; state.priceMax = null; state.diaMin = null; state.diaMax = null;
     document.getElementById('searchInput').value = '';
-    document.getElementById('filterBrand').value = '';
-    document.getElementById('filterType').value = '';
-    document.getElementById('filterMovement').value = '';
-    document.getElementById('filterCase').value = '';
-    document.getElementById('filterGlass').value = '';
     document.getElementById('filterWater').value = '';
     document.getElementById('diaMin').value = '';
     document.getElementById('diaMax').value = '';
     document.getElementById('priceMin').value = '';
     document.getElementById('priceMax').value = '';
-    applyPipeline();
+    const anyMode = document.querySelector('.ms-mode input[value="any"]');
+    if (anyMode) anyMode.checked = true;
+    closeFilterPanels();
+    applyPipeline();   // repaints every checkbox, count and trigger label via refreshFilterPanels()
   });
 
   document.querySelectorAll('th[data-key]').forEach(th => {
@@ -3832,6 +4224,19 @@ function selfCheck(watches, missingFigureTokens = []) {
     if (bad.length) out.push(`${field} value ${list(bad)} has no entry in ${mapName} — it falls back to a default`);
   }
 
+  // The filter panels are built from these arrays intersected with the data, so a value in one
+  // and not the other is invisible rather than wrong: a missing value cannot be filtered for, an
+  // orphan offers an option that matches nothing. Same shape as the TYPE_ORDER check above,
+  // which covers the fourth list.
+  for (const [field, order, name] of [['caseCategory', CASE_ORDER, 'CASE_ORDER'],
+                                      ['glassCategory', GLASS_ORDER, 'GLASS_ORDER'],
+                                      ['movementType', MOVEMENT_ORDER, 'MOVEMENT_ORDER']]) {
+    const missing = [...new Set(watches.map(w => w[field]))].filter(v => v != null && !order.includes(v));
+    if (missing.length) out.push(`${field} value ${list(missing)} is missing from ${name} — it will not appear in the filter`);
+    const orphan = order.filter(v => !watches.some(w => w[field] === v));
+    if (orphan.length) out.push(`${name} lists ${list(orphan)}, which no row uses — the filter would offer an option matching nothing`);
+  }
+
   const thCount = document.querySelectorAll('.wrap > table > thead th').length;
   if (thCount && thCount !== EMPTY_ROW_COLSPAN) {
     out.push(`the empty-results row spans ${EMPTY_ROW_COLSPAN} columns but the table has ${thCount}`);
@@ -3869,8 +4274,7 @@ function renderAll() {
 }
 
 captureFigureSlots();          // must precede the first fill, while the {{tokens}} are still there
-populateBrandOptions();
-populateTypeOptions();
+buildFilterPanels();           // must precede wireControls(), which wires what it built
 wireControls();
 wireImageModal();
 document.querySelector('th[data-key="id"] .sort-arrow').textContent = '▲';

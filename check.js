@@ -11,13 +11,18 @@
 //
 // It also prints the validation figures, which are the closest thing here to a regression test:
 // if a change was not meant to touch the model and RMSE or skill moves, something is wrong.
+//
+// Required as a module it exports loadPage()/readPageHtml() instead of running, so the DOM stub
+// below has exactly one copy — same reasoning as not restating the invariants.
 
 const fs = require('fs');
 const path = require('path');
 
 const FILE = path.join(__dirname, 'watch-overviewnew.html');
-const html = fs.readFileSync(FILE, 'utf8');
-const script = html.slice(html.indexOf('<script>') + '<script>'.length, html.lastIndexOf('</script>'));
+
+function readPageHtml() {
+  return fs.readFileSync(FILE, 'utf8');
+}
 
 // --- Minimal DOM ------------------------------------------------------------------------------
 // Enough for the script to evaluate and for captureFigureSlots()/renderSelfCheck() to no-op
@@ -49,36 +54,51 @@ global.setTimeout = () => 0;
 global.clearTimeout = noop;
 
 // --- Evaluate the page's script ---------------------------------------------------------------
-const page = {};
-try {
+// Takes the HTML as a string rather than reading it, so a caller can hand it a different revision
+// of the file — that is how scripts/model-diff.js compares the working tree against a commit
+// without a second copy of the stub above. Throws if the script does not evaluate.
+function loadPage(html) {
+  const script = html.slice(html.indexOf('<script>') + '<script>'.length, html.lastIndexOf('</script>'));
+  const page = {};
   new Function('__exports', `${script}\n;Object.assign(__exports, {
     WATCHES, selfCheck, computeValueScores, validateModel, computedFigures, weightEstimatorStats,
   });`)(page);
-} catch (err) {
-  console.error('FAIL  the page script did not evaluate:\n' + err.stack);
-  process.exit(1);
+  return page;
 }
 
-const { WATCHES, selfCheck, computeValueScores, validateModel, computedFigures } = page;
-computeValueScores(WATCHES);
+module.exports = { loadPage, readPageHtml, FILE };
 
 // --- Report ------------------------------------------------------------------------------------
-const problems = selfCheck(WATCHES);
-const v = validateModel(WATCHES);
-const f = computedFigures(WATCHES);
+// Only when run directly. Required as a module, the file is just the two functions above.
+if (require.main === module) {
+  let page;
+  try {
+    page = loadPage(readPageHtml());
+  } catch (err) {
+    console.error('FAIL  the page script did not evaluate:\n' + err.stack);
+    process.exit(1);
+  }
 
-console.log(`${WATCHES.length} rows · spec ${f.specMin}–${f.specMax} · sigma ${f.sigma} · ` +
-            `${f.nsCount} n/s · ${f.weightPublished} published weights`);
-if (v) {
-  console.log(`model  LOO RMSE ${v.looRmse.toFixed(2)} vs naive ${v.naiveRmse.toFixed(2)} · ` +
-              `skill ${(v.skill * 100).toFixed(1)}% · ${v.signFlips} sign flip(s) · ` +
-              `resample typical ${v.resampleShift.toFixed(2)} worst ${v.resampleWorst.toFixed(2)}`);
-}
+  const { WATCHES, selfCheck, computeValueScores, validateModel, computedFigures } = page;
+  computeValueScores(WATCHES);
 
-if (!problems.length) {
-  console.log('OK    all invariants hold');
-  process.exit(0);
+  const problems = selfCheck(WATCHES);
+  const v = validateModel(WATCHES);
+  const f = computedFigures(WATCHES);
+
+  console.log(`${WATCHES.length} rows · spec ${f.specMin}–${f.specMax} · sigma ${f.sigma} · ` +
+              `${f.nsCount} n/s · ${f.weightPublished} published weights`);
+  if (v) {
+    console.log(`model  LOO RMSE ${v.looRmse.toFixed(2)} vs naive ${v.naiveRmse.toFixed(2)} · ` +
+                `skill ${(v.skill * 100).toFixed(1)}% · ${v.signFlips} sign flip(s) · ` +
+                `resample typical ${v.resampleShift.toFixed(2)} worst ${v.resampleWorst.toFixed(2)}`);
+  }
+
+  if (!problems.length) {
+    console.log('OK    all invariants hold');
+    process.exit(0);
+  }
+  console.error(`FAIL  ${problems.length} problem${problems.length === 1 ? '' : 's'}:`);
+  problems.forEach(p => console.error('  - ' + p));
+  process.exit(1);
 }
-console.error(`FAIL  ${problems.length} problem${problems.length === 1 ? '' : 's'}:`);
-problems.forEach(p => console.error('  - ' + p));
-process.exit(1);

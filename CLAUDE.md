@@ -4,8 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-`watch-overviewnew.html` is the entire project: a single self-contained static page (~3800 lines)
-holding a hand-researched comparison of 89 watches, plus a scoring model that rates each one's
+`watch-overviewnew.html` is the entire project: a single self-contained static page (~4300 lines)
+holding a hand-researched comparison of 93 watches, plus a scoring model that rates each one's
 specs against what the rest of the list charges at that price, plus a section on which of them can
 be handled in a Munich shop. No build system, no dependencies, no package manager. HTML, CSS and
 JS live in the one file; `check.js` beside it is a Node harness that runs the page's own checks.
@@ -26,10 +26,17 @@ Invoke-Item .\watch-overviewnew.html
 Two things reach the network, and neither is load-bearing. `fetchUsdToEurRate()` hits two free
 key-less exchange-rate APIs to convert the USD-priced rows; it never throws, and on failure
 (offline, or `file://` CORS) the hardcoded `USD_TO_EUR` fallback stays in use and the page renders
-normally. The `Pic` column hotlinks product photos from the makers' own CDNs (87 of 89 rows carry
+normally. The `Pic` column hotlinks product photos from the makers' own CDNs (91 of 93 rows carry
 an `img`; rows 60 and 64 fall back to a `🔗 photo` link). Broken images degrade to the same link, so
 a dead CDN URL costs a thumbnail and nothing else. Scoring, validation and filtering all run
 locally, so `file://` is a fine way to work.
+
+Note that **`longines.com` cannot be fetched from this machine** — every path under it times out on
+both WebFetch and curl, while the bare root answers. The four Longines rows were researched through
+a text-extraction proxy, which returns the maker's own rendered page. Their full spec table lives in
+an embedded product record (`case_thickness`, `case_lug_to_lug`, `case_weight`, `case_case_back`,
+`mvt_fct_calibre_name`) rather than in the rendered prose, so a plain text scrape of that site looks
+as though Longines publish almost nothing. They publish more than most makers here.
 
 ## Checking a change
 
@@ -46,8 +53,8 @@ It also prints the validation figures, which are the closest thing here to a reg
 Current baseline:
 
 ```
-89 rows · spec 26–63 · sigma 4 · 4 n/s · 47 published weights
-model  LOO RMSE 5.46 vs naive 9.88 · skill 69.5% · 1 sign flip(s) · resample typical 0.33 worst 0.84
+93 rows · spec 26–63 · sigma 4 · 4 n/s · 50 published weights
+model  LOO RMSE 5.46 vs naive 9.76 · skill 68.7% · 1 sign flip(s) · resample typical 0.35 worst 0.94
 ```
 
 **If a change was not meant to touch the model and those numbers move, something is wrong.**
@@ -59,19 +66,20 @@ passed. The `colspan` check only runs there, since it counts real `<th>` element
 
 Three layers inside the one `<script>`:
 
-1. **Data.** `WATCHES` (line ~563) — 89 object literals, one per watch, ids **1–89, contiguous and
+1. **Data.** `WATCHES` (line ~639) — 93 object literals, one per watch, ids **1–93, contiguous and
    unique**, each with display strings (`diameterDisplay`, `movementDisplay`, …), an `img` and
    `link`, and the few structured fields the code sorts or scores on (`diameterMm`, `heightMm`,
    `waterResM`, `priceValue`, `priceCurrency`, `caseCategory`, `glassCategory`, `movementType`,
    optional `streetPriceEUR`). Most columns are *display strings only*; sorting them goes through
    `parseLeadingNumber()`, which pulls the first number out of messy text.
-2. **Model.** `computeValueScores()` (line ~3093) — turns the data into `specScore`, `valueScore`,
+2. **Model.** `computeValueScores()` (line ~3436) — turns the data into `specScore`, `valueScore`,
    `specResidual`, `specExpected`, `specSubs`, `specGroups`, `valueBand`, `residualSigma` and
    `priceSupport`, written back onto each watch object as properties.
-3. **View.** `applyPipeline()` = filter → search → sort → `renderRows()`, which rebuilds `tbody`
-   via `innerHTML` with `escapeHtml()` on every interpolated value. Sorting is driven by `data-key`
-   attributes on the `<th>`s, mapped in `compareWatches()`. `wireImageModal()` handles the lightbox
-   on the `Pic` column.
+3. **View.** `applyPipeline()` = filter → search → sort → `renderRows()` → `refreshFilterPanels()`,
+   which rebuilds `tbody` via `innerHTML` with `escapeHtml()` on every interpolated value, then
+   repaints the filter panels' checkboxes, live counts and trigger labels. Sorting is driven by
+   `data-key` attributes on the `<th>`s, mapped in `compareWatches()`. `wireImageModal()` handles
+   the lightbox on the `Pic` column.
 4. **Figures and self-check.** `computedFigures()` derives every number the page quotes in its own
    prose; `selfCheck()` enforces the invariants. Both are described below.
 
@@ -85,13 +93,13 @@ The per-watch research does not live on the watch objects. It lives in parallel 
 
 | Table | Line | Keyed by | Holds |
 |---|---|---|---|
-| `EXTRAS` | ~2507 | `id` | lume, warranty, ISO 6425, antimagnetism, clasp, service, bezel, complications, optional `caseScore` override. **All 89 present.** |
-| `FINISH` | ~2665 | `id` | 0–1 finishing/decoration estimate. **All 89 present.** |
-| `DISPLAY_BACK` | ~2717 | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 80 of 89 researched, 9 open. |
-| `WATCH_TYPES` | ~2222 | `id` | array of types (filter only, never scored). **All 89 present.** |
-| `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | ~2060 / ~2151 / ~2193 / ~2144 | `id` | published grams (47); ids confirmed to publish none (34); ids whose page could not be reached (7); ids published without the band (1). The four are disjoint and together cover all 89 — keep it that way. |
-| `MOVEMENT_TIER` | ~2317 | **exact `movementDisplay` string** | 0–1 architecture tier. 51 keys for 51 distinct movements, no misses, no orphans. |
-| `MEASURED_ACCURACY` | ~1937 | caliber **substring** of `movementDisplay` | reported real-world rates |
+| `EXTRAS` | ~2792 | `id` | lume, warranty, ISO 6425, antimagnetism, clasp, service, bezel, complications, optional `caseScore` override. **All 93 present.** |
+| `FINISH` | ~2985 | `id` | 0–1 finishing/decoration estimate. **All 93 present.** |
+| `DISPLAY_BACK` | ~3055 | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 83 of 93 researched, 10 open. |
+| `WATCH_TYPES` | ~2463 | `id` | array of types (filter only, never scored). **All 93 present.** |
+| `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | ~2242 / ~2344 / ~2394 / ~2337 | `id` | published grams (50); ids confirmed to publish none (35); ids whose page could not be reached (7); ids published without the band (1). The four are disjoint and together cover all 93 — keep it that way. |
+| `MOVEMENT_TIER` | ~2583 | **exact `movementDisplay` string** | 0–1 architecture tier. 52 keys for 52 distinct movements, no misses, no orphans. |
+| `MEASURED_ACCURACY` | ~2108 | caliber **substring** of `movementDisplay` | reported real-world rates |
 
 **Row `id`s are load-bearing.** Renumbering or reordering rows silently reassigns lume, finishing,
 casebacks and types to the wrong watches. Adding a watch means adding an entry to `EXTRAS`,
@@ -125,7 +133,9 @@ It runs at load, renders a red banner above the table on failure, and is what `c
 Covered today: id contiguity and uniqueness; `EXTRAS` / `FINISH` / `WATCH_TYPES` coverage in both
 directions; the four weight tables disjoint and total; `movementDisplay` ↔ `MOVEMENT_TIER` in both
 directions; `DISPLAY_BACK` values strictly 1/0; unknown complication tags, watch types, case and
-glass categories; `EMPTY_ROW_COLSPAN` against the real `<th>` count; unresolved figure tokens.
+glass categories; `caseCategory` / `glassCategory` / `movementType` against `CASE_ORDER` /
+`GLASS_ORDER` / `MOVEMENT_ORDER` in both directions; `EMPTY_ROW_COLSPAN` against the real `<th>`
+count; unresolved figure tokens.
 
 **When you add an invariant to this file, add it there too.** Prose in this document enforces
 nothing — that is the lesson the whole self-check exists to encode.
@@ -142,18 +152,21 @@ Two steps, and keeping them separate is the point:
   **Caveat, measured in pass 20:** this is *nearly* but not entirely independent of the list. The
   anchors are fixed, but `imputeMissingSubs()` fills unresearched sub-scores with the list mean, so
   the 15 rows carrying one drift a little as rows are added. Adding row 90 moved exactly one row
-  (54, an unresearched display back) by one rounding point. Small, but do not claim immunity.
+  (54, an unresearched display back) by one rounding point. Small, but do not claim immunity —
+  though pass 21's three rows moved none at all, so it does not fire every time either.
 - **Step 2 — value (signed spec points).** `robustBaseline()` fits spec vs `ln(price)` with
   Theil–Sen (median pairwise slope, within movement class) and a **separate median intercept per
   class**. Each row's residual against that line is the `Value` badge; `Score` is the same number
   rescaled to 0–100 (`50 + residual * 2.8`) and sorts identically. This step *is* fitted to the
-  list, so adding rows does move everyone's Value. `residualSigma` is currently ~4.3.
+  list, so adding rows does move everyone's Value. `residualSigma` is currently ~4.4.
 
 Guards worth knowing before touching either step:
 
 - **`SUPPORT`** — `{ window: 0.40, min: 5 }`: a row with fewer than 5 other rows within ±0.40 in
   `ln(price)` shows `n/s` rather than being scored off an extrapolated curve. Four rows qualify
-  today (16, 56, 67, 86).
+  today (16, 56, 91, 92) — the two cheapest and the two most expensive. Pass 21 rescued 67 and 86
+  by adding neighbours above them and put its own two priciest rows in their place; whatever sits
+  at the end of the price range is always the thing with nothing to compare against.
 - **`BANDS`** — colour is quantised at ½σ and 1½σ of the residual, deliberately, because the
   model's own resolution is ~4–6 spec points. Don't replace it with a continuous ramp.
 - **`effectivePrice()`** — uses `streetPriceEUR` when a row carries one, else `priceEUR`. Rows 14,
@@ -187,7 +200,7 @@ do not fold them into the score without being asked.
   written up in prose in the `<footer>` — what was wrong before, what the evidence was, what is
   still unresolved. That reasoning is irreplaceable and belongs there. The bare chronology of what
   changed when is git's job now; don't grow the footer with it. The model is on revision 3;
-  research passes run to 19.
+  research passes run to 21.
 - **Footer paragraphs are dated snapshots, not live claims.** Do not retrofit them to current
   numbers — later passes explicitly refer back to earlier ones ("the earlier warning overstated
   the case"), and rewriting the earlier text destroys the correction it records. Live claims go in
@@ -209,8 +222,18 @@ do not fold them into the score without being asked.
   says so. Don't quietly promote one to a published spec.
 - **Unknown sorts last.** `compareWatches()` pushes `null` to the end regardless of direction.
 - **Counts in prose are derived, not typed.** Row counts, the source tally and the Weight tooltip's
-  coverage are `{{tokens}}`; adding a row updates them. The one literal left is the Munich section's
-  "44", which is research and cannot be computed.
+  coverage are `{{tokens}}`; adding a row updates them. The literals left are all in the Munich
+  section — the "47 of" count, the per-shop brand chips and row totals, and the absent-brands
+  `<h3>` and `<li>` counts — because dealer coverage is research and cannot be computed. Nothing
+  checks them, and pass 20 left two of them stale, so sweep the whole section by hand every time.
+- **Filter options are derived, not typed.** The five categorical filters (brand, type, movement,
+  case, glass) are dropdown panels of checkboxes built by `buildFilterPanels()` from `WATCHES`
+  itself, ordered by `TYPE_ORDER` / `MOVEMENT_ORDER` / `CASE_ORDER` / `GLASS_ORDER` — brand is
+  alphabetical and needs no array. They replaced hardcoded `<option>` lists that nothing tied to
+  the data. A row with a new `caseCategory` therefore needs that value added to `CASE_ORDER`, and
+  `selfCheck()` says so if it is not. Ticked options inside one filter are OR-ed, the filters are
+  AND-ed together, and `type` alone carries an any/all switch because only it holds several values
+  per row.
 - **`EMPTY_ROW_COLSPAN`** is the single source for the empty-results `colspan`; `selfCheck()`
   compares it against the real `<th>` count in the browser.
 
