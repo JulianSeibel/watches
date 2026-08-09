@@ -245,7 +245,7 @@
   <th data-key="diameter">Diameter<span class="sort-arrow"></span></th>
   <th data-key="l2l">L2L<span class="sort-arrow"></span></th>
   <th data-key="height" title="Case thickness/height, from each maker's spec sheet (or press/retailer listings where the maker page didn't list one).">Höhe<span class="sort-arrow"></span></th>
-  <th data-key="weight" title="Weight on the wrist including the band. {{weightPublished}} of the {{rowCount}} rows are a published figure, shown in bold and without the ≈: Tissot, Citizen, Seagull, Seiko, Mido, Timex and Christopher Ward all state weight as a plain field in their spec tables, and three further rows come from a review or a specialist retailer where the maker omits it. The remaining rows are a physical estimate computed from case diameter, thickness, case material density and band type — case volume as a cylinder at a 0.55 fill factor, plus the movement, plus the bracelet or strap. Those estimates can now be checked, because the {{weightPublished}} published figures are exactly the test set the estimator never had: against them it lands within 15% on {{weightWithin15}} of {{weightPublished}}, with a median error of {{weightMedianErr}}% and an RMSE of {{weightRmse}} g, and runs {{weightSigned}}% heavy on average. The biases it shows are NOT corrected, because each rests on too little data — titanium reads about {{weightTiPct}}% light across {{weightTiN}} rows, and the one bioceramic row it could be tested on came out {{weightBioPct}}% heavy, so the Swatch estimates are the least trustworthy in the column. Rows quoted on a strap with the bracelet optional are estimated on the strap, matching the price they carry. This column is deliberately NOT part of any score: the estimate is a deterministic function of diameter, thickness, case material and band, all of which the spec score already uses, so scoring it would double-count. Titanium already scores above steel on the case criterion largely because it is light — paying for that again here would reward the same property twice.">Weight<span class="sort-arrow"></span></th>
+  <th data-key="weight" title="Weight on the wrist including the band. {{weightPublished}} of the {{rowCount}} rows are a published figure, shown in bold and without the ≈: Tissot, Citizen, Seagull, Seiko, Mido, Timex, Christopher Ward, Longines and Junkers all state weight as a plain field in their spec tables, and two further rows come from a review or a specialist retailer where the maker omits it. The remaining rows are a physical estimate computed from case diameter, thickness, case material density and band type — case volume as a cylinder at a 0.55 fill factor, plus the movement, plus the bracelet or strap. Those estimates can now be checked, because the {{weightPublished}} published figures are exactly the test set the estimator never had: against them it lands within 15% on {{weightWithin15}} of {{weightPublished}}, with a median error of {{weightMedianErr}}% and an RMSE of {{weightRmse}} g, and runs {{weightSigned}}% heavy on average. The biases it shows are NOT corrected, because each rests on too little data — titanium reads about {{weightTiPct}}% light across {{weightTiN}} rows, and the one bioceramic row it could be tested on came out {{weightBioPct}}% heavy, so the Swatch estimates are the least trustworthy in the column. Rows quoted on a strap with the bracelet optional are estimated on the strap, matching the price they carry. This column is deliberately NOT part of any score: the estimate is a deterministic function of diameter, thickness, case material and band, all of which the spec score already uses, so scoring it would double-count. Titanium already scores above steel on the case criterion largely because it is light — paying for that again here would reward the same property twice.">Weight<span class="sort-arrow"></span></th>
   <th data-key="case">Case<span class="sort-arrow"></span></th>
   <th data-key="band">Band<span class="sort-arrow"></span></th>
   <th data-key="glass">Glass<span class="sort-arrow"></span></th>
@@ -268,11 +268,16 @@
 
 <section class="stores">
   <h2>Where to try these on in Munich</h2>
-  <p><b>55 of the {{rowCount}} rows</b> are carried by a physical shop in Munich; 53 of the remaining 57 are
+  <p><b>56 of the {{rowCount}} rows</b> are carried by a physical shop in Munich; 53 of the remaining 57 are
   direct-to-consumer brands with no dealer here at any price. The split is not about quality — it is about
   distribution model.
   Everything Swiss or Japanese in this table (Tissot, Citizen, Certina, Swatch, Longines, Oris, Seiko, Orient, Mido)
   plus the two German brands (Sinn, NOMOS) sells through authorised dealers, so it can be handled before buying.
+  <b>Junkers (row 113) is a fifth distribution model and the only one of its kind here:</b> the brand has no Munich
+  dealer because it does not need one — Junkers Uhren GmbH <i>is</i> a Munich company, and it shows the whole
+  catalogue in its own showroom at its own registered address. It is the one row in this table that is available to
+  handle in this city and available nowhere else, which is why adding it moved the count above without moving the
+  "53 of the remaining 57" beside it.
   Vaer, AV86, Baltic, Lorier, MAEN, Earthen, Delhi, Dan Henry, Heinrich, Revelot, Christopher Ward, Traska, Nomadic
   and Abinger sell only from their own sites, which is a large part of why they price the way they do in the Value
   column.
@@ -290,7 +295,7 @@
   a wrist first. Worth noting that rows 57–59 are also Seagull and are counted among the direct-to-consumer rows
   above, because those are priced from Seagull's own site instead — same manufacturer, two different routes to it.</p>
 
-  <p class="cluster">Altstadt — all within one pedestrian loop (Marienplatz → Kaufinger/Neuhauser → Stachus → Sendlinger → Theatiner → Platzl)</p>
+  <p class="cluster">Altstadt — all within one pedestrian loop (Marienplatz → Kaufinger/Neuhauser → Stachus → Sendlinger → Theatiner → Platzl), plus one address a few minutes north of it</p>
   <div class="store-scroll">
   <table>
   <thead>
@@ -387,6 +392,13 @@
     <td><span class="brandchip"><b>Longines</b> <i>4</i></span></td>
     <td class="st-rows">4</td>
     <td class="st-src"><span class="src-maker">Longines retailer page</span></td>
+  </tr>
+  <tr>
+    <td class="st-name">Junkers Showroom</td>
+    <td class="st-addr">Max-Joseph-Str. 8, 80333 — Mon–Fri 10:00–16:00, appointment</td>
+    <td><span class="brandchip"><b>Junkers</b> <i>1</i></span></td>
+    <td class="st-rows">1</td>
+    <td class="st-src"><span class="src-maker">Junkers' own showroom page</span></td>
   </tr>
   </tbody>
   </table>
@@ -500,7 +512,17 @@
   the two are kept apart rather than merged. Two Oris listings were found and deliberately left out: Euro Trade in
   Terminal 2 at the airport, which is airside retail in 85356 rather than a shop in the city, and Schreiter, which
   carries a full Oris catalogue on its own site but is in Grünwald and claims no authorised-dealer status anywhere
-  on the page — a Chrono24 trusted-seller badge is not the standard the green sources here are held to.</p>
+  on the page — a Chrono24 trusted-seller badge is not the standard the green sources here are held to.
+  <b>Junkers</b> (row 113) arrives in pass 23 and is the easiest row in this table to go and handle, which is not
+  something any amount of dealer research could have produced: the brand is registered at Max-Joseph-Straße 8 in
+  80333, and that address is also its showroom, open Monday to Friday 10:00–16:00 and holding — in Junkers' own
+  words — every model and every strap in one place. No dealer list is involved, so the usual caveat this section
+  ends on does not apply here: this is the one entry where brand availability and stock are the same claim, because
+  it is the maker's own room. Two things keep it honest rather than making it the best entry outright. It sits a few
+  minutes north of the pedestrian loop the rest of this cluster shares, off Karolinenplatz rather than on
+  Kaufingerstraße. And Junkers ask you to book a slot, which is a weaker invitation than a shop you can walk into —
+  though a published address with published hours and an explicit invitation to visit is a long way from the
+  Poljot24 case above, which is why this row is counted as available and those three are not.</p>
 
   <h3>Not available to handle in Munich — 43 rows</h3>
   <ul class="absent">
@@ -572,6 +594,18 @@
   <p><b>The weight column gained nothing, which is itself a finding about four makers at once.</b> Traska publish case diameter, lug-to-lug, thickness and bracelet taper to two decimal places in a dimension drawing and no mass; Oris have no weight field on any of the five pages, and — checked before this was written down, because pass 21 was burned by exactly this — no hidden product record carrying one either; Nomadic's Tech Specs block stops after the bracelet; Abinger's specification blocks cover dimensions, movement, case, glass, dial, crown, bezel and strap and never mass. So sixteen of the nineteen go to <code>WEIGHT_UNPUBLISHED</code> as findings rather than gaps, and none to <code>WEIGHT_UNRESOLVED</code>. The other three are Sinn, which publishes "Gewicht ohne Band" and nothing else — 75 g for the Klassik 12, 73 g for both St Sa I references — and that goes to <code>WEIGHT_HEAD_ONLY</code> beside the 556's 65 g, unused, because grafting an unmeasured bracelet onto a measured head produces a number that is neither published nor estimated. Four rows there now instead of one confirms it is Sinn's house style rather than one page's quirk. The estimator's test set is unchanged at 50 rows and its figures are unchanged with it.</p>
 
   <p><b>The Munich section moved more than any pass since it was written, and the arithmetic was recomputed rather than incremented.</b> Availability goes 47 → 55 rows of a longer list, and the direct-to-consumer relation with it: 53 of the remaining 57, up from 42 of 46. Sinn crossing from one row to four is the awkward kind of change this section keeps getting wrong — the brand chip appears in three shop rows, each with its own total, and none of the three shops is new. <b>Oris cost the section exactly one new address</b>: their own store finder returns four Munich retailers and three of them — Fridrich, F. C. Bauer and Hieber — were already listed for other brands, leaving only the Bucherer concession inside Oberpollinger at Neuhauser 18, which is a different shop from the Bucherer at Neuhauser 2 already here for Longines and is kept separate rather than merged. Two Oris listings were found and deliberately excluded, both recorded in the section: Euro Trade in Terminal 2, which is airside retail rather than a shop in the city, and Schreiter, which carries a full Oris catalogue but sits in Grünwald and claims no dealer status anywhere on the page — a Chrono24 trusted-seller badge is not the standard the green-marked sources are held to. Traska, Nomadic and Abinger are all direct-only and add eleven rows to the absent list, taking it 32 → 43. Nomadic state it outright, which is the strongest evidence any absent brand here has: no third-party retailers anywhere, only the Belfast HQ and four named partner galleries.</p>
+  <p><b>Junkers Bauhaus Chronograph, pass 23 — one row added (113), and the list goes from 112 to 113.</b> The first Junkers here, and a brand that fits none of the three distribution models this table had: not a dealer network, not direct-to-consumer, but a Munich company selling from its own Munich showroom. At €385 it is comfortably scored rather than <i>n/s</i> — 34 comparable rows within ±0.40 in <code>ln(price)</code>, since the stretch either side of €400 is the densest part of this list. <b>It lands at 34 spec points and −6.10 on Value, below the curve</b>, and the reason needs no interpretation: the chronograph shelf immediately beneath it holds the two Red Star 1963s at €279 and €299, which score 36 and 39 on hand-wound column-wheel ST19s, and the bronze Strela at €449, which scores 42. The Junkers asks more than both 1963s for a quartz module, a Hesalite crystal and 5 atm. Against the three Tissot Seastar quartz chronographs at €545–575 and 44 spec points it is cheaper and correspondingly plainer, which the model prices about right; it is the comparison downwards that costs it. Only the MoonSwatch scores worse among chronographs, and this is not that kind of gap — −6.10 is an ordinary "you are paying for the design" verdict on a watch whose design is most of the point.</p>
+
+  <p><b>The caliber is the judgement call, and it is a second application of the Timex precedent rather than a new idea.</b> Junkers publish <i>Werktyp: Quarz</i> and <i>Werkart: Chronograph kleine Sekunde</i> and no caliber anywhere — the raw page source was searched for Ronda, Miyota, ISA, Kaliber and Uhrwerk across this reference and both its siblings, with zero hits on every one, so this is a finding about Junkers and not about the search. Row 76 settled what to do with that in pass 15: a movement is its architecture whether or not its maker names it, and docking the row for the non-disclosure would score the paperwork. So a new <code>MOVEMENT_TIER</code> key, <code>Quartz chronograph — caliber not published</code>, sits at <b>0.25, level with the two ETA G10.212 entries</b> and not below them, with the non-disclosure recorded in the Movement cost column where this file puts it. The honest caveat is that the identification is one step weaker than the Timex's: row 76 at least names its cell, while this rests on the function Junkers <i>do</i> state plus a dial layout — 30-minute counter at 9, 24 h at 3, small seconds at 6, date at 4:30, central chronograph seconds — that is the Ronda 5030.D's. The row does not claim that caliber, and if one ever surfaces and is not a Swiss module of that class, this entry is what to revisit. <b>The 24-hour subdial deliberately earns nothing.</b> It is geared to the main time, which the block above <code>COMPLICATION_VALUES</code> calls an AM/PM indicator rather than a GMT — no second crown position, no independently settable hand — so the row takes <code>chrono</code> and <code>small_sec</code> and stops. The date earns nothing either, as dates do nowhere in this file. <b>Finishing at 0.30</b> is the other soft number: one rung under the Timex's 0.40 on case work alone — a single polished finish, no brushed contrast, no crown guards — and explicitly <i>not</i> marked down for the Hesalite, which <code>GLASS_SCORE</code> already charges 0.4 against sapphire's 1.0. <b>Lume 0.1 is a finding, not a gap</b>: Junkers state nothing, and their own product photograph shows bare polished baton hands and a printed minute track with no lume plot on any marker.</p>
+
+  <p><b>Junkers become the ninth maker here to publish weight, and the figure had to survive a test before it could be used.</b> Their spec table carries <i>Gewicht: 46 g</i> as a plain field — but the same 46 g appears on the 10.4 mm Bauhaus 40 three-hander as well as on all three Bauhaus Chronograph references, which is precisely the shape the Vaer "70.6 grams" boilerplate was thrown out for in pass 11 and the Seagull 61 g in pass 17. <b>It survives, and Junkers' own catalogue is what settles it.</b> The Bauhaus Saphir Automatik is sold on both bands off one 40 × 11.5 mm case: ref. 100096801010 on leather gives 56 g, ref. 100096801011 on the steel bracelet gives 77 g. A field that moves 21 g when only the band changes is a with-band measurement, not a pasted constant — which is exactly what Vaer's number could never show, because theirs never moved at all. Across the four case/band combinations sampled the field takes three distinct values. The residual worry is left standing rather than argued away: 0.45 mm of height on the same 40 mm case and the same 20 mm strap is worth about a gram of steel, so two watches that close genuinely rounding to the same whole gram is the ordinary reading, and this remains the one figure in the block a second source could overturn.</p>
+
+  <p><b>Adding it makes the weight estimator visibly worse, and the row exposes a bias that was always there.</b> The test set goes 50 → 51 and the headline figures degrade with it: mean absolute error 9.8% → 11.1%, RMSE 13.9 g → 14.6 g, mean signed error +3.1% → +4.5%, with the within-±15% count static at 42 so the hit rate falls 84% → 82%. One row does all of that. <b>The estimator predicts 81 g against the published 46 — +76.1%, the largest single error in the test set</b>, ahead of the Sealander GMT's +45.0% and the MoonSwatch's +44.8%. The arithmetic says where it goes wrong: the cylinder-times-0.55 term alone returns 59 g of case, and the published total leaves room for about 24 g of it, i.e. a fill fraction nearer 0.22 than 0.55. A Bauhaus dress case is mostly air — thin bezel, slim profile, and a domed Hesalite contributing height at 1.2 g/cm³ where the model assumes 7.9. <b>Splitting the test set by band type shows this is systematic rather than one odd watch.</b> On the 43 bracelet rows the estimator is essentially unbiased — mean signed +1.0%, mean absolute 8.0%. On the 8 strap rows it reads heavy by <b>+23.5% signed and 27.4% absolute</b>, and the two worst offenders are the two leather rows, this one and the Sealander GMT. That refines pass 16's reading, which put the strap bias on the flat 12 g band allowance colliding with the movement term; on a case this light the band allowance is a rounding error next to the fill fraction. <b>Nothing is corrected</b>, for the reason this file gives every time: tuning the estimator on the rows meant to test it would leave no way to know whether the other 62 estimates are any good. <b>One stale claim was fixed in passing.</b> The note beside row 82 called its 91 g "the single worst outlier in the estimator's test set", which it was not even when written — rows 81 and 63 both missed by more — and row 113 now beats all three. Row 82's real distinction is different and worth keeping: it is the one figure in that column contradicted by its own maker's other published number, which is a worse complaint than disagreeing with an estimator. <b>The Weight tooltip's own roster was two passes out of date and is corrected here too.</b> It still named seven makers as publishing mass — Longines were never added after pass 21 established them as the eighth — and it still said "three further rows come from a review or a specialist retailer", which stopped being true in the same pass, when row 67's borrowed 167 g turned out to match Longines' own published figure and was promoted to the maker's. It now reads nine makers and two borrowed rows. The counts either side of it were <code>{{tokens}}</code> and had updated themselves; the sentence naming the brands was prose, and prose cannot be wrong out loud.</p>
+
+  <p><b>What it did to everything else, which is less than any pass since 20.</b> Value moved by at most <b>0.10</b> spec points across the existing 112 — row 11, the AV86 Amalfi — with only 9 of 112 moving at all and none crossing zero. Four rows still changed band, which is what a boundary looks like rather than a reappraisal: rows 14 and 15, the two titanium Certinas, slip from <i>well above</i> to <i>above</i> the curve, while rows 105 and 108 rise from <i>well below</i> to <i>below</i> it. Sigma stays at 5, the spec range at 26–63, the spec/price correlation at 0.78 and the unscored count at 2 — rows 16 and 56, still the two cheapest, and this row was never going to rescue them at €385. The model gets slightly better: leave-one-out RMSE 5.91 → 5.88 and skill 58.3% → 59.0%, helped by the naive baseline worsening 9.14 → 9.19, and the resample figures tighten from 0.44/1.03 to 0.37/0.94. Sign flips go 0 → 1, which is the one figure moving the wrong way and is the expected cost of adding a row that sits well off the line. <b>Spec drift touched two rows</b>, by one rounding point each and in opposite directions: row 41 loses a point, row 55 gains one, both of them rows carrying an unresearched sub-score that <code>imputeMissingSubs()</code> fills with a list mean that just shifted. Pass 20's warning against claiming immunity stands, and pass 22's ceiling on it holds — nineteen rows moved three, one row moved two.</p>
+
+  <p><b>The Munich section gains an address of a kind it did not previously have.</b> Availability goes 55 → 56 of a longer list, and — unusually — the relation beside it did not need recomputing: <b>53 of the remaining 57 is unchanged</b>, because the added row is itself available, so the remaining set never grew. That is the case the arithmetic here is normally wrong about, and it held for the opposite reason to the usual one. Junkers reach this city by neither route this section was built to describe. There is no Munich dealer because there needs to be none: Junkers Uhren GmbH is registered at Max-Joseph-Straße 8 in 80333, and that address is also its showroom, open Monday to Friday 10:00–16:00 and holding every model and every strap. It is the only entry in the section where brand availability and stock are the same claim, because it is the maker's own room rather than a jeweller's brand list — the caveat the section closes on genuinely does not apply to this one row. Two things stop it being the section's best entry outright: it sits a few minutes north of the pedestrian loop the rest of that cluster shares, so the cluster heading now says so, and Junkers ask for a booked slot rather than a walk-in. That is still a long way from the Poljot24 case, which has no shop floor and no published hours at all, and the difference is why this row counts as available and those three do not. The absent list is untouched at 43 rows.</p>
+
   <p><b>MAEN Hudson 38 GMT MKII, pass 20 — one row added (90), and the list goes from 89 to 90.</b> The second MAEN here and the second row on the Sellita SW330-2, which means it needed no new movement tier: it takes the 0.60 already argued for the two Christopher Wards, and its caller GMT is paid for in complications at 0.25 rather than the 0.5 a jumping local hour earns. <b>It lands at 48 spec points and −5.7 on Value, below the curve</b>, in a well-populated stretch of the price range — 30 comparable rows, so this is not an extrapolation. The reason is legible rather than mysterious: a 38 mm 300 m steel diver with a box-domed sapphire, X1 lume and an Élaboré Swiss GMT is a genuinely good specification, but at €1,079 it is being compared against the Mido Ocean Star GMT and the Christopher Wards, which bring a true traveller GMT, a display back or a bracelet at similar money. Specs are strong; the price is where the list disagrees.</p>
   <p><b>Three judgement calls, all recorded beside the numbers.</b> The <b>price</b> is €1,079.20, MAEN's own 20% site-wide reduction from a €1,349 list — the same arrangement row 1 already carries, and handled the way pass 17 handled poljot24: the selling price goes in <code>priceValue</code> so the cell, the sort and the model read one number, with the UVP shown alongside. The <b>height</b> is the weakest figure on the row. MAEN publish 11 mm "excluding crystal" and no total, so 13 mm is carried across from the MK5 on row 1, which shares the case family and the box-domed sapphire; it is an inference, not a measurement. The <b>bezel</b> is scored 0.4, an aluminium insert, inferred from an absence: MAEN's spec line says only "60 Click Bi-Directional Sandblasted Bezel" where their MK5 page names ceramic, and this is a maker who advertises ceramic when it is ceramic. The insert is also two-tone — blue/black on this reference, brown/black on the M1.3.3, which is how the two are told apart — and two-tone is cheap to anodise and expensive to sinter. If it proves to be ceramic the row gains about 1.3 spec points, comfortably inside the model's own ±4 of noise. <b>Weight</b> is estimated despite MAEN publishing 129 g, because that figure belongs to the five-link bracelet and this reference is priced on the TPU strap — taking it would describe a watch costing €151.20 more than the one in the Price cell, which is the same trap the Christopher Ward "Case Weight" field sets.</p>
   <p><b>What it did to everything else, and one claim it falsified.</b> Value moved by at most 0.20 spec points across the existing 89, four rows crossed zero within that, and one band changed: the Mido Ocean Star GMT (row 72) from <i>as expected</i> to <i>above the curve</i>, which is a row sitting on a boundary rather than a reappraisal. Leave-one-out RMSE is 5.46 → 5.46 and skill 69.5% → 69.2%, so the model is neither better nor worse for the addition; sign flips fall from 1 to 0. But this file has said in two places that a spec score "cannot change" when a row is added, because step 1 runs on fixed anchors. <b>That was overstated, and adding this row proved it.</b> The anchors are fixed, but <code>imputeMissingSubs()</code> fills an unresearched sub-score with the list average, so the fifteen rows carrying one drift as the list grows — row 54, whose caseback is still unresearched, moved a single rounding point. The effect is tiny and the design is deliberate, but the claim of immunity was wrong and both statements of it have been corrected.</p>
@@ -622,7 +656,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-112 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-113 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Movement tier · Complications ·
 //                 EXTRAS · Finishing · Fittings — all keyed by row id, except MOVEMENT_TIER
@@ -2363,6 +2397,36 @@ const WATCHES = [
   powerReserveDisplay:'42 h', accuracyDisplay:'−10/+15 s/day (regulated)',
   waterResDisplay:'200 m (20 ATM)', waterResM:200,
   priceDisplay:'£699 pre-order (RRP £725) · ~€815', priceValue:699, priceCurrency:'GBP', priceEUR:815 /* £699 at ECB GBP→EUR ≈1.166, 7 Aug 2026 */ },
+
+// --- Junkers Bauhaus Chronograph, pass 23 (row 113) -----------------------------------------
+// The first Junkers row, and the first brand here that is neither dealer-network nor direct-only:
+// Junkers Uhren GmbH is a Munich company running its own Munich showroom, which is why this row
+// adds an address to the stores section rather than a line to its absent list.
+//
+// junkers.de renders its whole German spec table in the HTML - Glas, Wasserdichtigkeit, Gewicht,
+// Bandanstoss zu Bandanstoss, Gehaeusehoehe, Gehaeuseboden - so every dimension below is the
+// maker's own, read from the page rather than inferred. The one field they publish nowhere is the
+// caliber; see the movementDisplay note.
+{ id:113, brand:'Junkers', name:'Junkers Bauhaus Chronograph 40 mm (Ref. 912.01.02)', desc:'Bauhaus dress chronograph on domed Hesalite · black-dial 912.01.02; the blue 912.01.12 is the same watch',
+  link:'https://www.junkers.de/Bauhaus-Chronograph/100091201020',
+  img:'https://www.junkers.de/media/08/9b/0f/1781778468/junkers-bauhaus-chronograph-9.12.01.02.0--leder--8b5cd076-ca42-4a9f-9a52-45cd451f01a7.webp',
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'46 mm',
+  heightDisplay:'10.85 mm', heightMm:10.85,
+  caseDisplay:'Stainless steel (sealed crown, screwed solid back)', caseCategory:'Steel',
+  bandDisplay:'Leather strap, 20 mm',
+  glassDisplay:'Domed Hesalite', glassCategory:'Hesalite',
+  // Junkers publish "Werktyp: Quarz" and "Werkart: Chronograph kleine Sekunde" and no caliber at
+  // all - the raw page source was searched for Ronda, Miyota, ISA, Kaliber and Uhrwerk on this
+  // reference and on both its siblings, zero hits on every one. This follows the Timex precedent
+  // on row 76: the non-disclosure is recorded in the Movement cost column, where it belongs, and
+  // is not scored as a defect of the movement.
+  // The dial layout - 30-minute counter at 9, 24 h at 3, small seconds at 6, date at 4:30, central
+  // chronograph seconds - is the Ronda 5030.D's, but that is an inference from the maker's own
+  // photograph and the row does not claim a caliber Junkers decline to state.
+  movementDisplay:'Quartz chronograph — caliber not published', movementType:'Quartz', movementCostDisplay:'not published (Junkers name no caliber)',
+  powerReserveDisplay:'— (battery)', accuracyDisplay:'—',
+  waterResDisplay:'50 m (5 ATM)', waterResM:50,
+  priceDisplay:'€385', priceValue:385, priceCurrency:'EUR' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -2523,7 +2587,9 @@ function measuredAccuracyFor(w) {
 // an eighth, covering all 3 of its new rows and confirming the one figure already held for row 67.
 // Pass 22 added no ninth maker: Traska, Oris, Nomadic and Abinger publish full specification
 // blocks and no mass in any of them, so its 19 rows split 16 unpublished and 3 head-only.
-// So the column is now 50 published figures and 62 estimates - 51 rows that genuinely publish
+// Pass 23 added Junkers as a ninth, covering its one row - a "Gewicht" field beside the diameter,
+// used only after their own catalogue showed it moving 21 g when just the band changes.
+// So the column is now 51 published figures and 62 estimates - 51 rows that genuinely publish
 // nothing, 7 that could not be reached, and 4 published head-only. The estimator below still runs
 // for anything not in WEIGHT_MEASURED.
 //
@@ -2541,10 +2607,10 @@ function measuredAccuracyFor(w) {
 //
 // Pass 10 wrote that "if a real set of measured weights ever exists that argument changes,
 // because measured mass carries information the dimensions do not - bracelet build, case wall
-// thickness". That set now partly exists: 50 of 112 rows carry a published figure. The condition
+// thickness". That set now partly exists: 51 of 113 rows carry a published figure. The condition
 // has been met and the question is genuinely open, so it is flagged rather than quietly ignored.
-// It is NOT acted on here, for two reasons. The 50 are not a random sample - they are eight makers
-// who happen to document well, three of them Japanese and five Western, so scoring on them would
+// It is NOT acted on here, for two reasons. The 51 are not a random sample - they are nine makers
+// who happen to document well, three of them Japanese and six Western, so scoring on them would
 // score brands on their spec-sheet habits. And the double-counting objection still binds for the
 // other 62 rows, where the "weight" is a function of columns the score already reads. Scoring a
 // column that is measured for some rows and derived from other scored inputs for the rest would
@@ -2560,12 +2626,14 @@ function measuredAccuracyFor(w) {
 // 16's ten Christopher Ward rows are the first enlargement that made it visibly WORSE, and that
 // is the useful finding rather than a reason to hide it. Pass 21's three Longines rows moved it
 // slightly worse again, in the same direction and for the same structural reason - see below.
-//                        28 rows (p11)   36 rows (p12)   47 rows (p16)   50 rows (p21)
-//   mean absolute error       8.5%           8.2%            9.5%            9.8%
-//   median absolute error     6.1%           5.8%            6.1%            6.5%
-//   RMSE                     11.8 g         11.9 g          13.5 g          13.9 g
-//   within +-15%             25 of 28       32 of 36        40 of 47        42 of 50
-//   mean signed error        +2.6%          +1.6%           +2.4%           +3.1%  (+ = reads heavy)
+// Pass 23's ONE row moved it more than either: the Junkers on row 113 is the largest single error
+// in the set at +76.1%, and on its own it takes mean absolute error from 9.8% to 11.1%.
+//                        28 rows (p11)   36 rows (p12)   47 rows (p16)   50 rows (p21)   51 rows (p23)
+//   mean absolute error       8.5%           8.2%            9.5%            9.8%           11.1%
+//   median absolute error     6.1%           5.8%            6.1%            6.5%            6.5%
+//   RMSE                     11.8 g         11.9 g          13.5 g          13.9 g          14.6 g
+//   within +-15%             25 of 28       32 of 36        40 of 47        42 of 50        42 of 51
+//   mean signed error        +2.6%          +1.6%           +2.4%           +3.1%           +4.5%  (+ = reads heavy)
 // The ten CW rows on their own: mean absolute error 15.0%, RMSE 18.8 g, 7 of 10 within +-15%,
 // mean signed +5.2%. That is roughly twice the error the other 37 rows produce (8.0% / 11.7 g /
 // 33 of 37), and splitting the CW rows by band type says exactly where it comes from:
@@ -2587,12 +2655,23 @@ function measuredAccuracyFor(w) {
 // points is not a sample, but they fall exactly where the overlap above predicts they would.
 // Three systematic biases now show up, and all three are deliberately LEFT IN rather than fitted
 // away, because correcting any of them means tuning the estimator on the same rows used to test
-// it - which would leave no way to tell whether the remaining 43 estimates are any good:
+// it - which would leave no way to tell whether the remaining 62 estimates are any good:
 //   titanium   7 rows, mean -5.2%. Pass 12 saw -5.6% on 5 rows; the two CW titanium rows (-1.5%
 //              and -6.5%) sit inside that pattern, so the bias is now better evidenced, not
 //              smaller. The 4.5 density is right for the alloy, but titanium bracelets and straps
 //              are evidently more solid than the flat 38 g allowance.
 //   head/case  the fill-factor overlap described above, worst on small cases and on straps.
+//              Pass 23 measured this across the WHOLE set rather than one maker's rows, and the
+//              split is stark: the 43 bracelet rows are essentially unbiased at +1.0% mean signed
+//              and 8.0% mean absolute, while the 8 strap rows read +23.5% signed and 27.4%
+//              absolute. The two worst are the two LEATHER rows - the Junkers at +76.1% and the
+//              Sealander GMT at +45.0% - and on a case as light as the Junkers's the flat 12 g
+//              strap allowance is a rounding error beside the fill factor: the cylinder term
+//              alone returns 59 g where the published total leaves room for about 24 g, i.e. a
+//              fill fraction nearer 0.22 than 0.55 on a thin dress case with an acrylic crystal.
+//              That refines pass 16's reading, which put the strap bias on the band allowance
+//              colliding with the movement term. No thin quartz dress watch was in the test set
+//              before pass 23, so this end of the range had never been checked at all.
 //   bioceramic 1 row (MoonSwatch, id 63) at +44.8%: estimated 42 g against a published 29 g.
 //              Rows 61 and 62 are the same material with no published figure, so they are the
 //              least reliable estimates in the column. One data point is not enough to re-fit a
@@ -2697,8 +2776,12 @@ const WEIGHT_MEASURED = {
   // i.e. 24 g. One of the two is wrong and it is almost certainly this one; a plausible total
   // would be nearer 107 g. It is kept because it is CW's own published field and reproducible
   // from their page, which is the standard row 21 was kept under, rather than the unreproducible
-  // figure row 43 was dropped for. It is called out here and in the footer because it is the
-  // single worst outlier in the estimator's test set.
+  // figure row 43 was dropped for. It is called out here and in the footer because it is the one
+  // figure in this column contradicted by its OWN maker's other published number, which is a
+  // different and worse complaint than merely disagreeing with the estimator.
+  // (Corrected in pass 23: this note used to call it "the single worst outlier in the estimator's
+  // test set", which it was not even when written - rows 81 and 63 both miss by more - and row 113
+  // now misses by +76%. Its distinction is the internal contradiction, not the margin.)
   82: 91,   // C60 Trident GMT 300 44, Aquaflex rubber (case 83 g) - see note above
   83: 160,  // The Twelve 40, integrated steel bracelet (case 65 g)
   84: 157,  // The Twelve Midnight 38, integrated steel bracelet (case 60 g)
@@ -2712,6 +2795,23 @@ const WEIGHT_MEASURED = {
   91: 114.7,  // Spirit 37, steel bracelet
   92: 143.0,  // Spirit Pilot 39, steel bracelet
   93: 122.7,  // Conquest 38, steel bracelet
+  // --- Junkers, "Gewicht" in the spec table on junkers.de, pass 23 --------------------------
+  // A ninth maker publishing it, as a plain field beside the diameter. It needed a test before it
+  // could be used, because 46 g appears on the Bauhaus 40 three-hander as well as on all three
+  // Bauhaus Chronograph references - which is the exact shape the Vaer "70.6 grams" boilerplate
+  // was rejected for below, and the Seagull 61 g after it.
+  // It survives the test, and the test is Junkers' own catalogue. The Bauhaus Saphir Automatik is
+  // sold on both bands off ONE case (40 mm x 11.5 mm): ref. 100096801010 on leather gives 56 g,
+  // ref. 100096801011 on the steel bracelet gives 77 g. A field that moves 21 g when only the band
+  // changes is a with-band measurement, not a pasted constant - which is precisely what Vaer's
+  // number could not show, since theirs never moved at all. Across the four case/band combinations
+  // sampled the field takes three distinct values (46, 56, 77).
+  // That leaves the 46 g shared with the 10.4 mm Bauhaus 40, and it is left standing rather than
+  // explained away: 0.45 mm of height on the same 40 mm case and the same 20 mm leather strap is
+  // worth about a gram of steel, so two watches this close genuinely rounding to the same whole
+  // gram is the ordinary reading. It is the one figure in this block that a second source could
+  // still overturn.
+  113: 46,  // Bauhaus Chronograph 912.01.02, black leather strap
 };
 
 // Sinn is the one maker that publishes a head-only figure: "Gewicht ohne Band: 65 Gramm" for the
@@ -2975,6 +3075,9 @@ const WATCH_TYPES = {
   109: ['Field', 'Everyday'],
   110: ['Sports', 'Everyday'],         // 200 m, but a 12 h bezel rather than an elapsed-time one
   111: ['Sports', 'Everyday'], 112: ['Sports', 'Everyday'],
+  113: ['Chronograph', 'Dress'],       // Bauhaus design, 50 m, fixed bezel, leather - a dress
+                                       //   chronograph rather than a sports one, unlike every
+                                       //   other Chronograph row here except 89
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
@@ -2986,7 +3089,7 @@ const typesFor = w => WATCH_TYPES[w.id] ?? [];
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (98 of 112 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (99 of 113 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -3153,6 +3256,17 @@ const MOVEMENT_TIER = {
   // non-disclosure would be scoring the paperwork rather than the movement; that Timex publish
   // no caliber is recorded in the Movement cost column instead, where it belongs.
   'Quartz — caliber not published (SR626SW cell)': 0.18,
+  // Junkers, pass 23. 0.25, level with the two ETA G10.212 entries above and NOT below them.
+  // This is the Timex entry's argument applied a second time, to a brand that withholds the same
+  // field: a quartz chronograph module driving a 30-minute counter, a small second and a central
+  // sweep hand is that architecture whether or not its maker names the caliber, and docking it
+  // for the non-disclosure would score the paperwork rather than the movement. That Junkers name
+  // no caliber is recorded in the Movement cost column, which is where this file puts it.
+  // The honest caveat is that the identification is one step weaker here than on the Timex: row
+  // 76 at least names its cell, while this is placed on the FUNCTION Junkers do state ("Werkart:
+  // Chronograph kleine Sekunde") plus a dial layout matching the Ronda 5030.D. If a caliber ever
+  // surfaces and it is not a Swiss module of that class, this entry is the thing to revisit.
+  'Quartz chronograph — caliber not published': 0.25,
 };
 // Rows that took the fallback below, recorded so selfCheck() can report them. The fallback exists
 // so a NEW row never scores zero, but it fires just as quietly when an EXISTING row's
@@ -3552,6 +3666,29 @@ const EXTRAS = {
   110:{lume:0.9,war:2,iso:0,antimag:0,clasp:0.85,service:0.4,bezel:0.8},
   111:{lume:0.9,war:2,iso:0,antimag:0,clasp:0.3,service:0.4,bezel:0.8},
   112:{lume:0.9,war:2,iso:0,antimag:0,clasp:0.3,service:0.4,bezel:0.8},
+  // Row 113, Junkers Bauhaus Chronograph. lume 0.1, level with rows 87-89, the other dress
+  //   chronographs here with effectively none. Junkers say nothing about luminous material
+  //   anywhere on the page, and their own product photograph settles it rather than leaving it
+  //   open: bare polished baton hands with no fill, and a printed white minute track with no lume
+  //   plot on any marker. The only textured element on the dial is the Junkers triangle at 12,
+  //   which is a decorative print. This is a finding, not an unresearched gap.
+  // clasp 0.3: a two-piece leather strap - Junkers give the halves as 7 cm and 11.5 cm - with the
+  //   buckle type unstated, which at EUR 385 on leather is a pin buckle. Same rung as row 89 and
+  //   the MAEN, Baltic and Christopher Ward strap rows.
+  // bezel null: the polished ring around the crystal is fixed. The criterion does not apply and is
+  //   excluded from the group rather than scored 0.
+  // comp ['chrono','small_sec'], and deliberately no gmt tag despite a 24-hour subdial at 3. That
+  //   hand is geared to the main time, which the block above COMPLICATION_VALUES calls an AM/PM
+  //   indicator and scores at nothing: there is no second crown position and no independently
+  //   settable hand. The date at 4:30 also scores nothing - date is not a complication anywhere in
+  //   this file, per the SW 220-1 note in MOVEMENT_TIER.
+  // iso 0 and antimag 0, both findings of absence: 5 atm behind a crown Junkers describe as
+  //   "abgedichtet" (sealed) rather than screw-down, no certification claimed and no antimagnetic
+  //   claim of any kind on the page.
+  // war 2, Junkers' own "2 Jahre Herstellergarantie". service 0.5: a Munich company with a listed
+  //   service address and its own showroom, but one country and a generic Swiss quartz module
+  //   rather than a dealer network - level with the microbrands. Data only, not scored.
+  113:{lume:0.1,war:2,iso:0,antimag:0,clasp:0.3,service:0.5,bezel:null,comp:['chrono','small_sec']},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -3599,6 +3736,7 @@ const FINISH = {
   //   0.65  Lumiere - indexes and hands sculpted from solid Globolight XP ceramic rather than
   //         filled, over a stippled fume dial. Genuinely unusual construction at any price here.
   // Still the softest input in the model, and still an estimate.
+  // (Junkers, pass 23, is at the far end of this table - see the note beside 113 below.)
   77:0.50, 78:0.55, 79:0.55, 80:0.60, 81:0.60, 82:0.55, 83:0.60, 84:0.60, 85:0.60, 86:0.65,
   // Pass 17. Rows 87 and 88 are given the SAME 0.50 on purpose. They are the same watch but for
   // the crystal, and although only the acrylic reference's page says "21 Steine - graviert und
@@ -3669,6 +3807,18 @@ const FINISH = {
   // between them would be scoring the copywriting, which is what pass 17 refused to do with rows
   // 87 and 88. Still an estimate, and the least evidenced pair of numbers in this pass.
   110:0.50, 111:0.50, 112:0.50,
+  // Junkers, pass 23. 0.30 - the top of the "basic printed dial" band, and the lowest entry in
+  // this table outside the three Swatch-group novelties at 0.15. The anchor is the Timex on row
+  // 76, at 0.40 on an argument that transfers almost word for word: printed dial, plain hands,
+  // nothing to see behind a solid back. The Junkers sits one rung under it on case work, which is
+  // the only thing separating the two here - a single polished finish over the whole case with no
+  // brushed contrast, no crown guards and no bezel work, against the Timex's brushed-and-polished
+  // case. Dial construction is a straight printed minute track with no applied indices at all.
+  // The Hesalite crystal is explicitly NOT part of this number, and that is the point worth
+  // recording: GLASS_SCORE already charges it 0.4 against sapphire's 1.0, so marking finishing
+  // down for it as well would be the double-count the Longines and Oris notes above refuse in the
+  // other direction. What would move this up is evidence of applied rather than printed indices.
+  113:0.30,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -3676,9 +3826,9 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 102 of 112 rows resolved - 46 see-through, 56 solid. The ten still open are
+// Research status: 103 of 113 rows resolved - 46 see-through, 57 solid. The ten still open are
 // 12, 16, 38, 41, 54, 56, 58, 59, 82 and 91, all rows whose maker publishes no caseback detail,
-// and none of them was added after pass 21 - pass 22 settled all nineteen of its own rows.
+// and none of them was added after pass 21 - passes 22 and 23 settled every one of their own rows.
 // Row 91 is the newest and the best documented of the ten: Longines leave the field empty on the
 // Spirit 37 AND on the 40 mm sibling, so the gap is the collection's, not this reference's.
 const DISPLAY_BACK = {
@@ -3812,6 +3962,11 @@ const DISPLAY_BACK = {
   // "Sapphire Crystal front and rear"; the Phantom's reads "Sapphire Crystal" with no "and rear",
   // and its prose describes "the deeply brushed caseback". Same case family, different backs.
   110: 1, 111: 0, 112: 0,
+  // Junkers, pass 23. Solid, and stated as its own spec field rather than inferred: junkers.de
+  // give "Gehäuseboden: Mit Schrauben befestigt" - a back held on by screws, with no glass or
+  // window mentioned anywhere on the page. A screwed steel disc over a quartz module is also the
+  // only thing that makes sense of it, but the field alone settles it.
+  113: 0,
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
@@ -4462,7 +4617,7 @@ function optionValuesFor(dim) {
 
 // How many rows each option would show, measured against every filter EXCEPT its own dimension's
 // (see matchesFilters). Recomputed on every pipeline pass, which is 5 x 90 predicate calls - the
-// same order as the search box, which rejoins a haystack string for all 112 rows per keystroke.
+// same order as the search box, which rejoins a haystack string for all 113 rows per keystroke.
 function optionCounts(dim) {
   const counts = new Map();
   WATCHES.filter(w => matchesFilters(w, dim.key)).filter(matchesSearch)
