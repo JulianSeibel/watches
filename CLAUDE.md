@@ -99,6 +99,7 @@ The per-watch research does not live on the watch objects. It lives in parallel 
 | `FINISH` | ~3570 | `id` | 0–1 finishing/decoration estimate. **All 112 present.** |
 | `DISPLAY_BACK` | ~3684 | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 102 of 112 researched, 10 open. |
 | `WATCH_TYPES` | ~2866 | `id` | array of types (filter only, never scored). **All 112 present.** |
+| `STATUS` | ~3010 | `id` | buying decision — `'bought'`, `'likely'` or `'avoid'`; **absent = `'consider'`**, the default. Filter and name-cell chip only, never scored. The one id-keyed table with no coverage requirement, so adding a watch needs no entry. |
 | `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | ~2626 / ~2735 / ~2797 / ~2723 | `id` | published grams (50); ids confirmed to publish none (51); ids whose page could not be reached (7); ids published without the band (4). The four are disjoint and together cover all 112 — keep it that way. |
 | `MOVEMENT_TIER` | ~3011 | **exact `movementDisplay` string** | 0–1 architecture tier. 60 keys for 60 distinct movements, no misses, no orphans. |
 | `MEASURED_ACCURACY` | ~2490 | caliber **substring** of `movementDisplay` | reported real-world rates |
@@ -136,8 +137,8 @@ Covered today: id contiguity and uniqueness; `EXTRAS` / `FINISH` / `WATCH_TYPES`
 directions; the four weight tables disjoint and total; `movementDisplay` ↔ `MOVEMENT_TIER` in both
 directions; `DISPLAY_BACK` values strictly 1/0; unknown complication tags, watch types, case and
 glass categories; `caseCategory` / `glassCategory` / `movementType` against `CASE_ORDER` /
-`GLASS_ORDER` / `MOVEMENT_ORDER` in both directions; `EMPTY_ROW_COLSPAN` against the real `<th>`
-count; unresolved figure tokens.
+`GLASS_ORDER` / `MOVEMENT_ORDER` in both directions; `STATUS` keys against real rows and its values
+against `STATUS_ORDER`; `EMPTY_ROW_COLSPAN` against the real `<th>` count; unresolved figure tokens.
 
 **When you add an invariant to this file, add it there too.** Prose in this document enforces
 nothing — that is the lesson the whole self-check exists to encode.
@@ -192,11 +193,15 @@ This is the invariant the model is built around, and conflating the two has brok
 
 ### Deliberately not scored
 
-Weight, watch type, warranty, service network, movement cost and the Measured accuracy column are
-all displayed but excluded from every score, each for a reason written out in the code comment
-above it (mostly double-counting: e.g. estimated weight is a deterministic function of diameter,
-thickness, case material and band, all already scored). Treat these as decisions, not omissions —
-do not fold them into the score without being asked.
+Weight, watch type, buying status, warranty, service network, movement cost and the Measured
+accuracy column are all displayed but excluded from every score, each for a reason written out in
+the code comment above it (mostly double-counting: e.g. estimated weight is a deterministic
+function of diameter, thickness, case material and band, all already scored). Treat these as
+decisions, not omissions — do not fold them into the score without being asked.
+
+`STATUS` is excluded for a different and stronger reason than the rest: the Specs and Value columns
+exist to say what a watch is worth *independently of whether it is wanted*, so a status feeding
+either would turn the model into an echo of the shortlist. Say so before wiring it in, even if asked.
 
 ## Conventions
 
@@ -233,14 +238,17 @@ do not fold them into the score without being asked.
   stale, so sweep the whole section by hand every time. Recompute the "N of the remaining M"
   relation rather than eyeballing it: it holds only while every added row is a dealer-network
   brand, and pass 22 added rows on both sides of that line at once.
-- **Filter options are derived, not typed.** The five categorical filters (brand, type, movement,
-  case, glass) are dropdown panels of checkboxes built by `buildFilterPanels()` from `WATCHES`
-  itself, ordered by `TYPE_ORDER` / `MOVEMENT_ORDER` / `CASE_ORDER` / `GLASS_ORDER` — brand is
-  alphabetical and needs no array. They replaced hardcoded `<option>` lists that nothing tied to
-  the data. A row with a new `caseCategory` therefore needs that value added to `CASE_ORDER`, and
-  `selfCheck()` says so if it is not. Ticked options inside one filter are OR-ed, the filters are
-  AND-ed together, and `type` alone carries an any/all switch because only it holds several values
-  per row.
+- **Filter options are derived, not typed.** The six categorical filters (status, brand, type,
+  movement, case, glass) are dropdown panels of checkboxes built by `buildFilterPanels()` from
+  `WATCHES` itself, ordered by `STATUS_LABELS` / `TYPE_ORDER` / `MOVEMENT_ORDER` / `CASE_ORDER` /
+  `GLASS_ORDER` — brand is alphabetical and needs no array. They replaced hardcoded `<option>`
+  lists that nothing tied to the data. A row with a new `caseCategory` therefore needs that value
+  added to `CASE_ORDER`, and `selfCheck()` says so if it is not. Ticked options inside one filter
+  are OR-ed, the filters are AND-ed together, and `type` alone carries an any/all switch because
+  only it holds several values per row.
+  `status` is the one dimension whose order array is a **fixed vocabulary rather than a derived
+  set**: an unused status is normal, not a bug, so it is deliberately left out of `selfCheck()`'s
+  orphan check and simply does not appear in the panel until a row carries it.
 - **`EMPTY_ROW_COLSPAN`** is the single source for the empty-results `colspan`; `selfCheck()`
   compares it against the real `<th>` count in the browser.
 
