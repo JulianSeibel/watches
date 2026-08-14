@@ -143,9 +143,14 @@
     border:1px solid currentColor;border-radius:20px;padding:1px 7px;margin:4px 0 0 5px}
   .status-tag.st-bought{color:#6ea8fe}
   .status-tag.st-likely{color:#b79cf7}
+  /* Desaturated violet-grey, sitting between likely's violet and avoid's grey because that is
+     where it sits on the commitment axis. Deliberately not amber: caution colours belong to the
+     Value badge, and a "sceptical" chip next to an amber band would read as one scale. */
+  .status-tag.st-sceptical{color:#9b8fa8}
   .status-tag.st-avoid{color:#8794a4}
   /* Rejects recede instead of disappearing - they are still in the list, and still worth seeing
-     when scanning a price band. Hovering the row brings it back to full strength to read it. */
+     when scanning a price band. Hovering the row brings it back to full strength to read it.
+     Sceptical rows do NOT recede: doubt is not rejection, and they are still live candidates. */
   tr.row-avoid td{opacity:.45}
   tr.row-avoid:hover td{opacity:1}
   .movement{min-width:150px}
@@ -2812,16 +2817,20 @@ const typesFor = w => WATCH_TYPES[w.id] ?? [];
 // Held in the file rather than in localStorage: statuses are decisions worth keeping, and the
 // page is opened from disk on more than one machine. Changing one is an edit to this table and a
 // commit, which is also what makes the history of the decision readable later.
-const STATUS_ORDER = ['bought', 'likely', 'consider', 'avoid'];
+const STATUS_ORDER = ['bought', 'likely', 'consider', 'sceptical', 'avoid'];
 const STATUS_DEFAULT = 'consider';
 const STATUS_META = {
-  bought:   { label: 'Bought',           chip: 'st-bought', mark: '✓ ' },
-  likely:   { label: 'Likely to buy',    chip: 'st-likely', mark: '★ ' },
-  consider: { label: 'In consideration', chip: null,        mark: '' },   // the default: draws nothing
-  avoid:    { label: 'Do not buy',       chip: 'st-avoid',  mark: '✕ ' },
+  bought:    { label: 'Bought',           chip: 'st-bought',    mark: '✓ ' },
+  likely:    { label: 'Likely to buy',    chip: 'st-likely',    mark: '★ ' },
+  consider:  { label: 'In consideration', chip: null,           mark: '' },  // the default: draws nothing
+  // Doubt, not rejection: a row worth keeping in the list but currently leaning the wrong way.
+  // It exists because the vocabulary was lopsided — 'likely' had no negative counterpart, so
+  // everything short of an outright reject collapsed into the default and read as untouched.
+  sceptical: { label: 'Sceptical',        chip: 'st-sceptical', mark: '? ' },
+  avoid:     { label: 'Do not buy',       chip: 'st-avoid',     mark: '✕ ' },
 };
 const STATUS = {
-  // id: 'bought' | 'likely' | 'avoid'   — 'consider' is the default and need not be written
+  // id: 'bought' | 'likely' | 'sceptical' | 'avoid'   — 'consider' is the default and need not be written
 };
 // An unknown value falls back to the default so the page still renders; selfCheck() reads the raw
 // table and names it, which is this file's usual answer to bad data - report it, don't throw.

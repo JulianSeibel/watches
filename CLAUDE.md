@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-`watch-overview.html` is the entire project: a single self-contained static page (~4870 lines)
+`watch-overview.html` is the entire project: a single self-contained static page (~4880 lines)
 holding a hand-researched comparison of 113 watches, plus a scoring model that rates each one's
 specs against what the rest of the list charges at that price. No build system, no dependencies,
 no package manager. HTML, CSS and JS live in the one file; `check.js` beside it is a Node harness
@@ -85,13 +85,13 @@ PR bodies. Drop both.
 
 Three layers inside the one `<script>`:
 
-1. **Data.** `WATCHES` (line ~728) — 113 object literals, one per watch, ids **1–113, contiguous and
+1. **Data.** `WATCHES` (line ~432) — 113 object literals, one per watch, ids **1–113, contiguous and
    unique**, each with display strings (`diameterDisplay`, `movementDisplay`, …), an `img` and
    `link`, and the few structured fields the code sorts or scores on (`diameterMm`, `heightMm`,
    `waterResM`, `priceValue`, `priceCurrency`, `caseCategory`, `glassCategory`, `movementType`,
    optional `streetPriceEUR`). Most columns are *display strings only*; sorting them goes through
    `parseLeadingNumber()`, which pulls the first number out of messy text.
-2. **Model.** `computeValueScores()` (line ~4294) — turns the data into `specScore`, `valueScore`,
+2. **Model.** `computeValueScores()` (line ~4001) — turns the data into `specScore`, `valueScore`,
    `specResidual`, `specExpected`, `specSubs`, `specGroups`, `valueBand`, `residualSigma` and
    `priceSupport`, written back onto each watch object as properties.
 3. **View.** `applyPipeline()` = filter → search → sort → `renderRows()` → `refreshFilterPanels()`,
@@ -111,14 +111,14 @@ The per-watch research does not live on the watch objects. It lives in parallel 
 
 | Table | Line | Keyed by | Holds |
 |---|---|---|---|
-| `EXTRAS` | ~3415 | `id` | lume, warranty, ISO 6425, antimagnetism, clasp, service, bezel, complications, optional `caseScore` override. **All 113 present.** |
-| `FINISH` | ~3758 | `id` | 0–1 finishing/decoration estimate. **All 113 present.** |
-| `DISPLAY_BACK` | ~3885 | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 103 of 113 researched, 10 open. |
-| `WATCH_TYPES` | ~2985 | `id` | array of types (filter only, never scored). **All 113 present.** |
-| `STATUS` | ~3125 | `id` | buying decision — `'bought'`, `'likely'` or `'avoid'`; **absent = `'consider'`**, the default. Filter and name-cell chip only, never scored. The one id-keyed table with no coverage requirement, so adding a watch needs no entry. |
-| `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | ~2724 / ~2854 / ~2916 / ~2842 | `id` | published grams (51); ids confirmed to publish none (51); ids whose page could not be reached (7); ids published without the band (4). The four are disjoint and together cover all 113 — keep it that way. |
-| `MOVEMENT_TIER` | ~3165 | **exact `movementDisplay` string** | 0–1 architecture tier. 61 keys for 61 distinct movements, no misses, no orphans. |
-| `MEASURED_ACCURACY` | ~2573 | caliber **substring** of `movementDisplay` | reported real-world rates |
+| `EXTRAS` | ~3122 | `id` | lume, warranty, ISO 6425, antimagnetism, clasp, service, bezel, complications, optional `caseScore` override. **All 113 present.** |
+| `FINISH` | ~3465 | `id` | 0–1 finishing/decoration estimate. **All 113 present.** |
+| `DISPLAY_BACK` | ~3592 | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 103 of 113 researched, 10 open. |
+| `WATCH_TYPES` | ~2688 | `id` | array of types (filter only, never scored). **All 113 present.** |
+| `STATUS` | ~2832 | `id` | buying decision — `'bought'`, `'likely'`, `'sceptical'` or `'avoid'`; **absent = `'consider'`**, the default. Filter and name-cell chip only, never scored. The one id-keyed table with no coverage requirement, so adding a watch needs no entry. Empty today: the mechanism is wired, no row carries a decision yet. |
+| `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | ~2427 / ~2557 / ~2619 / ~2545 | `id` | published grams (51); ids confirmed to publish none (51); ids whose page could not be reached (7); ids published without the band (4). The four are disjoint and together cover all 113 — keep it that way. |
+| `MOVEMENT_TIER` | ~2872 | **exact `movementDisplay` string** | 0–1 architecture tier. 61 keys for 61 distinct movements, no misses, no orphans. |
+| `MEASURED_ACCURACY` | ~2276 | caliber **substring** of `movementDisplay` | reported real-world rates |
 
 **Row `id`s are load-bearing.** Renumbering or reordering rows silently reassigns lume, finishing,
 casebacks and types to the wrong watches. Adding a watch means adding an entry to `EXTRAS`,
