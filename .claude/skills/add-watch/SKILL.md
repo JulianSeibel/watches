@@ -1,6 +1,6 @@
 ---
 name: add-watch
-description: Add one or more watches to watch-overviewnew.html from maker product links. Use when the user pastes a watch product URL and asks to add it, add a row, add a model, or run a new research pass on the comparison table. Covers the research protocol, the row literal, every side table and vocabulary, the model-effect measurement, the footer write-up and the commit.
+description: Add one or more watches to watch-overview.html from maker product links. Use when the user pastes a watch product URL and asks to add it, add a row, add a model, or run a new research pass on the comparison table. Covers the research protocol, the row literal, every side table and vocabulary, the model-effect measurement, the footer write-up and the commit.
 user-invocable: true
 argument-hint: <product-url> [more-urls…]
 ---
@@ -246,7 +246,7 @@ Finally, open the page in a browser and confirm there is no red banner above the
 row renders with its image:
 
 ```powershell
-Invoke-Item .\watch-overviewnew.html
+Invoke-Item .\watch-overview.html
 ```
 
 That is the only place the `EMPTY_ROW_COLSPAN` check runs, since it counts real `<th>` elements.

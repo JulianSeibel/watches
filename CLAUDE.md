@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-`watch-overviewnew.html` is the entire project: a single self-contained static page (~4840 lines)
+`watch-overview.html` is the entire project: a single self-contained static page (~4870 lines)
 holding a hand-researched comparison of 113 watches, plus a scoring model that rates each one's
 specs against what the rest of the list charges at that price. No build system, no dependencies,
 no package manager. HTML, CSS and JS live in the one file; `check.js` beside it is a Node harness
@@ -20,7 +20,7 @@ do not introduce a build step.
 Open the file directly in a browser — there is nothing to build or serve:
 
 ```powershell
-Invoke-Item .\watch-overviewnew.html
+Invoke-Item .\watch-overview.html
 ```
 
 Two things reach the network, and neither is load-bearing. `fetchUsdToEurRate()` hits two free

@@ -15,7 +15,7 @@
 // crossed zero, one band changed" - and check.js only prints headline figures. This prints the
 // per-row half.
 //
-// It loads watch-overviewnew.html twice, once from a git revision (default HEAD, i.e. before the
+// It loads watch-overview.html twice, once from a git revision (default HEAD, i.e. before the
 // edits in the working tree) and once from the working tree, runs the page's own
 // computeValueScores() on each, and diffs. It borrows check.js's loader rather than re-stubbing
 // the DOM, and it restates no invariant and no model constant - every number below comes out of

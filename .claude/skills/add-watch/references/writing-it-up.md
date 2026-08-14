@@ -82,7 +82,7 @@ finding, where "RMSE rose 0.4 g" is noise.
 Nothing checks any of this. Run it every time:
 
 ```bash
-rg -n 'of (89|90|\d+) rows|\d+ of \d+|ids 1-\d+|ids 1–\d+|— \d+ rows|\d+ row each' watch-overviewnew.html CLAUDE.md
+rg -n 'of (89|90|\d+) rows|\d+ of \d+|ids 1-\d+|ids 1–\d+|— \d+ rows|\d+ row each' watch-overview.html CLAUDE.md
 ```
 
 Then check each hit against the new row count. The sites are listed below **by what they are, not by
@@ -160,7 +160,7 @@ Add Longines Spirit 37, Spirit Pilot 39 and Conquest 38, rows 91-93
 
 For a pass, the subject line says which rows; `git show` says what changed; the footer says why.
 
-Commit without asking. Stage the tracked files this pass touched (`watch-overviewnew.html`, and
+Commit without asking. Stage the tracked files this pass touched (`watch-overview.html`, and
 `CLAUDE.md` when the baseline moved); leave anything untracked alone. Do not amend an earlier
 commit, and branch first if on `main`.
 
