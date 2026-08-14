@@ -4,11 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-`watch-overviewnew.html` is the entire project: a single self-contained static page (~5170 lines)
+`watch-overviewnew.html` is the entire project: a single self-contained static page (~4840 lines)
 holding a hand-researched comparison of 113 watches, plus a scoring model that rates each one's
-specs against what the rest of the list charges at that price, plus a section on which of them can
-be handled in a Munich shop. No build system, no dependencies, no package manager. HTML, CSS and
-JS live in the one file; `check.js` beside it is a Node harness that runs the page's own checks.
+specs against what the rest of the list charges at that price. No build system, no dependencies,
+no package manager. HTML, CSS and JS live in the one file; `check.js` beside it is a Node harness
+that runs the page's own checks.
 
 **Keep it that way.** The single-file, `file://`-openable, zero-toolchain property is load-bearing:
 it is why the page works offline and has no build to rot. ES modules do not load over `file://`,
@@ -103,8 +103,7 @@ Three layers inside the one `<script>`:
    prose; `selfCheck()` enforces the invariants. Both are described below.
 
 The `<script>` opens with a contents banner listing the sections in order; grep for a
-`// --- Name ---` banner to jump to one. Below the table, a `<section class="stores">` lists Munich
-retail availability, then the `<footer>` carries the changelog.
+`// --- Name ---` banner to jump to one. Below the table, the `<footer>` carries the changelog.
 
 ### Side tables keyed by watch `id`
 
@@ -144,8 +143,8 @@ had already drifted before this was introduced, silently, because prose cannot b
 - A `{{token}}` with no matching key is reported by `selfCheck()`, not left visible.
 - `captureFigureSlots()` snapshots the templates once at startup, so the second render after the
   live FX rate lands substitutes against the original text rather than against filled output.
-- Research findings that are *not* derivable (Munich shop counts, the estimator's band-type
-  breakdown) stay as literals and belong in the footer, where they carry a date.
+- Research findings that are *not* derivable (the estimator's band-type breakdown, for one) stay
+  as literals and belong in the footer, where they carry a date.
 
 ### `selfCheck()` enforces the invariants — add to it, don't just document
 
@@ -252,13 +251,9 @@ either would turn the model into an echo of the shortlist. Say so before wiring 
   says so. Don't quietly promote one to a published spec.
 - **Unknown sorts last.** `compareWatches()` pushes `null` to the end regardless of direction.
 - **Counts in prose are derived, not typed.** Row counts, the source tally and the Weight tooltip's
-  coverage are `{{tokens}}`; adding a row updates them. The literals left are all in the Munich
-  section — the availability count and the "N of the remaining M" relation beside it, the per-shop
-  brand chips and row totals, and the absent-brands `<h3>` and `<li>` counts — because dealer
-  coverage is research and cannot be computed. Nothing checks them, and pass 20 left two of them
-  stale, so sweep the whole section by hand every time. Recompute the "N of the remaining M"
-  relation rather than eyeballing it: it holds only while every added row is a dealer-network
-  brand, and pass 22 added rows on both sides of that line at once.
+  coverage are `{{tokens}}`; adding a row updates them. The literals that remain are all dated
+  figures inside footer paragraphs, which are snapshots and stay put. If you find yourself typing
+  a number a later row would falsify, make it a `{{token}}` instead.
 - **Filter options are derived, not typed.** The six categorical filters (status, brand, type,
   movement, case, glass) are dropdown panels of checkboxes built by `buildFilterPanels()` from
   `WATCHES` itself, ordered by `STATUS_LABELS` / `TYPE_ORDER` / `MOVEMENT_ORDER` / `CASE_ORDER` /

@@ -10,8 +10,8 @@ The edits are the easy half. This file is the half that has drifted before.
    records. Add a new paragraph; leave every existing one alone.
 2. **Never type a number the page can derive.** If `computedFigures()` can compute it, it is a
    `{{token}}` in the prose and the page writes it. Four figures had already silently drifted before
-   that mechanism existed. Research findings that genuinely are not derivable — Munich shop counts,
-   the estimator's band-type breakdown — stay as literals and stay in the footer, where they carry a
+   that mechanism existed. Research findings that genuinely are not derivable — the estimator's
+   band-type breakdown, for one — stay as literals and stay in the footer, where they carry a
    pass number.
 
 ## The footer paragraphs
@@ -99,19 +99,8 @@ which it has. Grep for the surrounding words instead.
 | HTML | above `CASE_ORDER`: "N of M rows are steel" | any row |
 | HTML | above `DISPLAY_BACK`: "N of M rows resolved — X see-through, Y solid", and the list of open ids | a researched caseback, or any row |
 | HTML | the search-box comment: "all N rows per keystroke" | any row |
-| HTML | Munich intro: "N of {{rowCount}} rows", and "42 of the remaining 46" | any row — see below |
-| HTML | Munich shop table: **every row carrying the brand**, both the chip number and the row total | a row on a brand with Munich dealers |
-| HTML | Munich: the absent-brands `<h3>` count and its per-brand `<li>` | a row on a direct-to-consumer brand |
 | CLAUDE.md | the baseline block, the watch count, the img count, the `WATCHES` id range, every "All N present", the `DISPLAY_BACK` coverage, the `MOVEMENT_TIER` key count, the `n/s` row list, `residualSigma`, and "research passes run to N" | various |
 | CLAUDE.md | the `~line` numbers in the side-table — they drift by hundreds of lines per pass | any insertion above them |
-
-**The Munich section is the one with no safety net at all** and it is where the last two passes left
-counts stale. Three things make it error-prone. A brand's chip appears in *several* shop rows, and
-each row also carries its own total that has to move with it — pass 21 touched five shops. The
-absent-brands `<h3>` is a sum of its own `<li>`s, so a brand crossing from one row to two breaks
-both. And "42 of the remaining 46" is a *relation*, not a count: it holds only because every added
-row was a dealer-network brand, and it goes silently wrong the moment one is not. Recompute it,
-do not eyeball it.
 
 **CLAUDE.md's baseline block is the important one.** It is the regression baseline every future
 change is compared against, so paste the literal new two lines of `node check.js` — do not retype

@@ -162,10 +162,10 @@ Decide, and be able to say why for each:
 2. Which **one** of the four weight tables.
 3. Is `caseCategory` / `glassCategory` / `movementType` / every watch type / every complication tag
    already in its order array and score map?
-4. Is the brand already in the list, and is it already in the Munich section?
+4. Is the brand already in the list?
 
 If any answer is "new", read `references/new-vocabulary.md` now. It lists every location each novelty
-touches, including two that `selfCheck()` cannot catch.
+touches, including one that `selfCheck()` cannot catch.
 
 Then find out whether the rows will be scored at all, **before** editing anything:
 
@@ -183,8 +183,8 @@ it and would have been easy to report backwards.
 
 ## Phase 4 — Edit and measure
 
-Make every edit now — row literals, side tables, vocabulary, the contents banner, the Munich
-section. The checklist below is the list; work it.
+Make every edit now — row literals, side tables, vocabulary, the contents banner. The checklist
+below is the list; work it.
 
 **Every judgement call gets a comment where the value lives**, naming the existing row it is
 anchored against and what evidence would change it. A number with no comparison is not reviewable,
@@ -279,11 +279,6 @@ Read this before starting phase 4 and again before the commit.
 - [ ] exactly one of `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY`
 - [ ] `MOVEMENT_TIER` — reused verbatim, or a new entry with its argument
 - [ ] `<script>` contents banner id range
-- [ ] Munich section — nothing checks any of it, so walk all five sites (see `writing-it-up.md`):
-      the "N of {{rowCount}}" count, **every shop row carrying the brand** (chip number *and* the
-      row total beside it), the `<h3>` count and the per-brand `<li>`. Note the intro's second
-      relation, "42 of the remaining 46": it stays true only when every added row is a
-      dealer-network brand, and silently goes wrong when one is not.
 - [ ] footer paragraphs, inserted after the newest pass, no existing paragraph touched
 - [ ] CLAUDE.md baseline block + coverage counts + pass number
 - [ ] stale in-file comment sweep
@@ -298,7 +293,6 @@ Read this before starting phase 4 and again before the commit.
 - [ ] new watch type → `TYPE_ORDER`
 - [ ] new complication → `COMPLICATION_VALUES` **and** `COMP_LABELS` in `valueTooltip()`
 - [ ] non-EUR price handled per currency — never hand-set `priceEUR` on a USD row
-- [ ] new brand → Munich dealer research
 
 **Verify**
 

@@ -3,7 +3,7 @@
 Read this only if the new row introduces something the list has never held. Each section lists
 **every** place that must change and how to argue the number. `selfCheck()` catches most of these,
 but it catches them as failures after the fact — the point of this file is to get them right first,
-and it does not catch the two marked ⚠.
+and it does not catch the one marked ⚠.
 
 ## New `caseCategory`
 
@@ -87,25 +87,3 @@ arguing the number against a named neighbour. Three precedents worth copying:
 - **Different merits can rank level.** The SW300-1 COSC and the Longines L888.5 both sit at 0.65:
   per-unit third-party certification and a silicon hairspring are different kinds of evidence, and
   this column has no way to rank one above the other, so it does not pretend to.
-
-## New brand → the Munich section
-
-⚠ Nothing checks any of this. `<section class="stores">` is hand-researched prose.
-
-1. **Research it.** The maker's own dealer directory first — that is the standard the green-marked
-   sources in the section are held to; a shop's own brand list is second-best and is marked as such.
-   The question is *authorised dealer in Munich*, not stock.
-2. **File the brand.** Either into the store tables above (with the shop, address and source) or
-   into the `<h3>Not available to handle in Munich</h3>` list with a one-line reason of the kind
-   already there — "direct-to-consumer, no German stockist found", "showroom is in Stuttgart".
-3. **A near miss is recorded, not dropped.** Poljot24 is an official Seagull dealer registered in
-   Munich but is an online shop with no shop floor, so the Seagull rows count as unavailable *and*
-   the reason is written down with a phone number.
-4. **Fix the arithmetic.** The opening paragraph reads `<b>44 of the {{rowCount}} rows</b> … 42 of
-   the remaining 46`. `{{rowCount}}` updates itself; the other three literals do not. The `<h3>`
-   heading carries its own row count, and each `<li>` carries a per-brand count.
-5. **An existing brand gaining a second row** still needs its `<li>` moved out of the "1 row each"
-   grouping. Pass 20 missed exactly this and left MAEN in it.
-
-The Munich counts are the one set of literals CLAUDE.md sanctions, because they are research and
-cannot be computed. That is why they need a human sweep every time.
