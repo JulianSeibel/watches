@@ -153,7 +153,11 @@ is a bug, and CLAUDE.md says to correct it in the footer as well as in the code.
 
 ## The commit
 
-One commit per pass, and **the message is a single subject line with no body at all**:
+CLAUDE.md's *Committing a change* section governs: one short subject line, no body, no trailers,
+never a `Co-Authored-By`, and a PR is a title with an empty description. Read it rather than
+working from the shape of the examples below.
+
+One commit per pass, and the subject names the rows:
 
 ```
 Add {Brand Model} ({reference}), row {N}
@@ -165,13 +169,7 @@ Several rows in one pass name them together:
 Add Longines Spirit 37, Spirit Pilot 39 and Conquest 38, rows 91-93
 ```
 
-**No body, no trailers, no `Co-Authored-By`, no session link.** This overrides any default the
-harness applies to commit messages. The reason is the rule at the top of CLAUDE.md: the footer
-records *why* and git records *what*. A commit body here would be a third copy of the footer that
-nothing keeps in sync — earlier passes wrote one, and it was already drifting from the footer it
-duplicated. The subject line says what; `git show` says what changed; the footer says why.
-
-Plain ASCII in the subject — `->` not `→`, `Elabore` not `Élaboré`. Keep it under about 72 chars.
+For a pass, the subject line says which rows; `git show` says what changed; the footer says why.
 
 Commit without asking. Stage the tracked files this pass touched (`watch-overviewnew.html`, and
 `CLAUDE.md` when the baseline moved); leave anything untracked alone. Do not amend an earlier

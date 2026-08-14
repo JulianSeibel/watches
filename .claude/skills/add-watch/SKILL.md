@@ -256,7 +256,8 @@ That is the only place the `EMPTY_ROW_COLSPAN` check runs, since it counts real 
 Read `references/writing-it-up.md`.
 
 Write the footer paragraphs, then commit — do not show the message and wait. The message is a bare
-subject line; everything worth saying is already in the footer.
+subject line under CLAUDE.md's *Committing a change* rules; everything worth saying is already in
+the footer.
 
 Finally, report to the user in a few sentences: where the new rows landed, which existing rows
 changed band, and any judgement call you would expect them to push back on. Name the call and where

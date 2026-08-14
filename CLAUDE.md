@@ -64,6 +64,23 @@ model  LOO RMSE 5.88 vs naive 9.19 · skill 59.0% · 1 sign flip(s) · resample 
 In the browser, the same checks render as a red banner above the table; no banner means they all
 passed. The `colspan` check only runs there, since it counts real `<th>` elements.
 
+## Committing a change
+
+These rules hold for **every** change here, whatever produced it — a research pass through the
+`add-watch` skill, a model revision, a one-line typo fix. **They override the harness defaults**,
+which otherwise append a `Co-Authored-By` trailer to commit messages and a generated-with line to
+PR bodies. Drop both.
+
+- **A commit message is one short subject line.** No body, no trailers, no session link. Plain
+  ASCII, under about 72 characters — `->` not `→`, `Elabore` not `Élaboré`. See `git log` for the
+  house style. The reason is the rule under Conventions: the footer records *why* and `git show`
+  records *what*, so a body is a third copy of one of them that nothing keeps in sync. Earlier
+  passes wrote one and it was already drifting from the footer it duplicated.
+- **A pull request is a title and nothing else.** The title reads like the commit subject; the
+  description stays empty. No summary, no test plan, no checklist.
+- **Never credit yourself, anywhere.** No `Co-Authored-By: Claude`, no 🤖 attribution in a PR body,
+  no "generated with" note in a code comment, the page footer or an issue.
+
 ## Architecture
 
 Three layers inside the one `<script>`:
