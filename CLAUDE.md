@@ -4,8 +4,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-`watch-overviewnew.html` is the entire project: a single self-contained static page (~4950 lines)
-holding a hand-researched comparison of 112 watches, plus a scoring model that rates each one's
+`watch-overviewnew.html` is the entire project: a single self-contained static page (~5170 lines)
+holding a hand-researched comparison of 113 watches, plus a scoring model that rates each one's
 specs against what the rest of the list charges at that price, plus a section on which of them can
 be handled in a Munich shop. No build system, no dependencies, no package manager. HTML, CSS and
 JS live in the one file; `check.js` beside it is a Node harness that runs the page's own checks.
@@ -28,7 +28,7 @@ key-less exchange-rate APIs to convert the USD-priced rows — USD is the only l
 HKD and INR rows carry a hand-set `priceEUR` with the rate in an inline comment instead. It never
 throws, and on failure (offline, or `file://` CORS) the hardcoded `USD_TO_EUR` fallback stays in
 use and the page renders normally. The `Pic` column hotlinks product photos from the makers' own
-CDNs (110 of 112 rows carry
+CDNs (111 of 113 rows carry
 an `img`; rows 60 and 64 fall back to a `🔗 photo` link). Broken images degrade to the same link, so
 a dead CDN URL costs a thumbnail and nothing else. Scoring, validation and filtering all run
 locally, so `file://` is a fine way to work.
@@ -55,8 +55,8 @@ It also prints the validation figures, which are the closest thing here to a reg
 Current baseline:
 
 ```
-112 rows · spec 26–63 · sigma 5 · 2 n/s · 50 published weights
-model  LOO RMSE 5.91 vs naive 9.14 · skill 58.3% · 0 sign flip(s) · resample typical 0.44 worst 1.03
+113 rows · spec 26–63 · sigma 5 · 2 n/s · 51 published weights
+model  LOO RMSE 5.88 vs naive 9.19 · skill 59.0% · 1 sign flip(s) · resample typical 0.37 worst 0.94
 ```
 
 **If a change was not meant to touch the model and those numbers move, something is wrong.**
@@ -68,13 +68,13 @@ passed. The `colspan` check only runs there, since it counts real `<th>` element
 
 Three layers inside the one `<script>`:
 
-1. **Data.** `WATCHES` (line ~675) — 112 object literals, one per watch, ids **1–112, contiguous and
+1. **Data.** `WATCHES` (line ~728) — 113 object literals, one per watch, ids **1–113, contiguous and
    unique**, each with display strings (`diameterDisplay`, `movementDisplay`, …), an `img` and
    `link`, and the few structured fields the code sorts or scores on (`diameterMm`, `heightMm`,
    `waterResM`, `priceValue`, `priceCurrency`, `caseCategory`, `glassCategory`, `movementType`,
    optional `streetPriceEUR`). Most columns are *display strings only*; sorting them goes through
    `parseLeadingNumber()`, which pulls the first number out of messy text.
-2. **Model.** `computeValueScores()` (line ~4088) — turns the data into `specScore`, `valueScore`,
+2. **Model.** `computeValueScores()` (line ~4294) — turns the data into `specScore`, `valueScore`,
    `specResidual`, `specExpected`, `specSubs`, `specGroups`, `valueBand`, `residualSigma` and
    `priceSupport`, written back onto each watch object as properties.
 3. **View.** `applyPipeline()` = filter → search → sort → `renderRows()` → `refreshFilterPanels()`,
@@ -95,14 +95,14 @@ The per-watch research does not live on the watch objects. It lives in parallel 
 
 | Table | Line | Keyed by | Holds |
 |---|---|---|---|
-| `EXTRAS` | ~3250 | `id` | lume, warranty, ISO 6425, antimagnetism, clasp, service, bezel, complications, optional `caseScore` override. **All 112 present.** |
-| `FINISH` | ~3570 | `id` | 0–1 finishing/decoration estimate. **All 112 present.** |
-| `DISPLAY_BACK` | ~3684 | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 102 of 112 researched, 10 open. |
-| `WATCH_TYPES` | ~2866 | `id` | array of types (filter only, never scored). **All 112 present.** |
-| `STATUS` | ~3010 | `id` | buying decision — `'bought'`, `'likely'` or `'avoid'`; **absent = `'consider'`**, the default. Filter and name-cell chip only, never scored. The one id-keyed table with no coverage requirement, so adding a watch needs no entry. |
-| `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | ~2626 / ~2735 / ~2797 / ~2723 | `id` | published grams (50); ids confirmed to publish none (51); ids whose page could not be reached (7); ids published without the band (4). The four are disjoint and together cover all 112 — keep it that way. |
-| `MOVEMENT_TIER` | ~3011 | **exact `movementDisplay` string** | 0–1 architecture tier. 60 keys for 60 distinct movements, no misses, no orphans. |
-| `MEASURED_ACCURACY` | ~2490 | caliber **substring** of `movementDisplay` | reported real-world rates |
+| `EXTRAS` | ~3415 | `id` | lume, warranty, ISO 6425, antimagnetism, clasp, service, bezel, complications, optional `caseScore` override. **All 113 present.** |
+| `FINISH` | ~3758 | `id` | 0–1 finishing/decoration estimate. **All 113 present.** |
+| `DISPLAY_BACK` | ~3885 | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 103 of 113 researched, 10 open. |
+| `WATCH_TYPES` | ~2985 | `id` | array of types (filter only, never scored). **All 113 present.** |
+| `STATUS` | ~3125 | `id` | buying decision — `'bought'`, `'likely'` or `'avoid'`; **absent = `'consider'`**, the default. Filter and name-cell chip only, never scored. The one id-keyed table with no coverage requirement, so adding a watch needs no entry. |
+| `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | ~2724 / ~2854 / ~2916 / ~2842 | `id` | published grams (51); ids confirmed to publish none (51); ids whose page could not be reached (7); ids published without the band (4). The four are disjoint and together cover all 113 — keep it that way. |
+| `MOVEMENT_TIER` | ~3165 | **exact `movementDisplay` string** | 0–1 architecture tier. 61 keys for 61 distinct movements, no misses, no orphans. |
+| `MEASURED_ACCURACY` | ~2573 | caliber **substring** of `movementDisplay` | reported real-world rates |
 
 **Row `id`s are load-bearing.** Renumbering or reordering rows silently reassigns lume, finishing,
 casebacks and types to the wrong watches. Adding a watch means adding an entry to `EXTRAS`,
@@ -158,11 +158,13 @@ Two steps, and keeping them separate is the point:
   (54, an unresearched display back) by one rounding point. Small, but do not claim immunity —
   though pass 21's three rows moved none at all, so it does not fire every time either. Pass 22 put
   a ceiling on it: nineteen rows at once moved three rows by one rounding point each (41, 54, 55).
+  Pass 23's single row moved two (41 down, 55 up), which is the clearest evidence yet that the
+  effect tracks how far the list mean shifts rather than how many rows are added.
 - **Step 2 — value (signed spec points).** `robustBaseline()` fits spec vs `ln(price)` with
   Theil–Sen (median pairwise slope, within movement class) and a **separate median intercept per
   class**. Each row's residual against that line is the `Value` badge; `Score` is the same number
   rescaled to 0–100 (`50 + residual * 2.8`) and sorts identically. This step *is* fitted to the
-  list, so adding rows does move everyone's Value. `residualSigma` is currently ~4.9.
+  list, so adding rows does move everyone's Value. `residualSigma` is currently ~5.0.
 
 Guards worth knowing before touching either step:
 
@@ -170,8 +172,10 @@ Guards worth knowing before touching either step:
   `ln(price)` shows `n/s` rather than being scored off an extrapolated curve. Two rows qualify
   today (16 and 56) — the two cheapest. Pass 21 rescued 67 and 86 by adding neighbours above them
   and put its own two priciest rows in their place; pass 22's five Oris rows at €2,100–2,600 then
-  rescued those two (91, 92) and added none of its own. Whatever sits at the end of the price range
-  is always the thing with nothing to compare against, and this list is now thin only at the bottom.
+  rescued those two (91, 92) and added none of its own. Pass 23's single row at €385 landed in the
+  densest part of the range with 34 neighbours, so it neither joined the list nor rescued anyone.
+  Whatever sits at the end of the price range is always the thing with nothing to compare against,
+  and this list is now thin only at the bottom.
 - **`BANDS`** — colour is quantised at ½σ and 1½σ of the residual, deliberately, because the
   model's own resolution is ~4–6 spec points. Don't replace it with a continuous ramp.
 - **`effectivePrice()`** — uses `streetPriceEUR` when a row carries one, else `priceEUR`. Rows 14,
@@ -209,7 +213,7 @@ either would turn the model into an echo of the shortlist. Say so before wiring 
   written up in prose in the `<footer>` — what was wrong before, what the evidence was, what is
   still unresolved. That reasoning is irreplaceable and belongs there. The bare chronology of what
   changed when is git's job now; don't grow the footer with it. The model is on revision 3;
-  research passes run to 22.
+  research passes run to 23.
 - **Footer paragraphs are dated snapshots, not live claims.** Do not retrofit them to current
   numbers — later passes explicitly refer back to earlier ones ("the earlier warning overstated
   the case"), and rewriting the earlier text destroys the correction it records. Live claims go in
