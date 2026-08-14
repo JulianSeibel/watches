@@ -134,25 +134,35 @@
   .eur-approx{font-weight:400;color:var(--muted);font-size:12px}
   .brand-tag{display:inline-block;font-size:10.5px;color:var(--muted);border:1px solid var(--line);
     border-radius:20px;padding:1px 7px;margin-top:4px}
-  /* Buying status, rendered beside the brand tag so it costs no column width. Outlined rather
-     than filled, and blue/violet/grey rather than green/amber/red, because solid fills and the
-     traffic-light ramp are the Value badge's language: a green "bought" sitting two cells from a
-     red "well below the curve" would read as one scale when the two say nothing about each other.
-     The default status draws nothing at all, so only rows with a decision on them stand out. */
-  .status-tag{display:inline-block;font-size:10.5px;font-weight:600;white-space:nowrap;
-    border:1px solid currentColor;border-radius:20px;padding:1px 7px;margin:4px 0 0 5px}
-  .status-tag.st-bought{color:#6ea8fe}
-  .status-tag.st-likely{color:#b79cf7}
-  /* Desaturated violet-grey, sitting between likely's violet and avoid's grey because that is
-     where it sits on the commitment axis. Deliberately not amber: caution colours belong to the
-     Value badge, and a "sceptical" chip next to an amber band would read as one scale. */
-  .status-tag.st-sceptical{color:#9b8fa8}
-  .status-tag.st-avoid{color:#8794a4}
+  /* Buying status. Two marks, neither of which costs the table any width: a bar bled into the
+     left edge of the id cell with an inset shadow, and a chip beside the brand tag. The hue is
+     written once per row as --st and both marks read it, so a status has exactly one colour.
+     A row with no decision sets no --st and draws neither mark, so only decided rows stand out.
+
+     Still outline-plus-tint rather than a solid fill, and still blue/violet/grey rather than
+     green/amber/red, because solid fills and the traffic-light ramp are the Value badge's
+     language: a green "bought" sitting two cells from a red "well below the curve" would read as
+     one scale when the two say nothing about each other. */
+  tr.rs-bought{--st:#6ea8fe}
+  tr.rs-likely{--st:#b79cf7}
+  /* Light lilac rather than the violet-grey this began as. At #9b8fa8 it sat within a few points
+     of --muted #9aa7b6, which the brand tag immediately to its left already uses, so the chip
+     read as a second brand tag and was the main reason the status was hard to see. Lightness
+     separates it from the greys here; hue still keeps it on the likely-to-avoid axis. */
+  tr.rs-sceptical{--st:#c3b0d4}
+  tr.rs-avoid{--st:#8794a4}
+  tbody td.num{box-shadow:inset 3px 0 0 var(--st,transparent)}
+  /* Square-ish corners on purpose: the brand tag is a radius-20 pill, and matching its geometry
+     was the other half of why this did not read. color-mix degrades to no background at all on a
+     browser without it, which is exactly the outlined chip this replaced. */
+  .status-tag{display:inline-block;font-size:10.5px;font-weight:700;white-space:nowrap;
+    color:var(--st);border:1px solid var(--st);border-radius:4px;padding:1px 7px;margin:4px 0 0 5px;
+    background:color-mix(in srgb, var(--st) 18%, transparent)}
   /* Rejects recede instead of disappearing - they are still in the list, and still worth seeing
      when scanning a price band. Hovering the row brings it back to full strength to read it.
      Sceptical rows do NOT recede: doubt is not rejection, and they are still live candidates. */
-  tr.row-avoid td{opacity:.45}
-  tr.row-avoid:hover td{opacity:1}
+  tr.rs-avoid td{opacity:.45}
+  tr.rs-avoid:hover td{opacity:1}
   .movement{min-width:150px}
   .movement-cost{min-width:150px;white-space:normal}
   .movement-cost.na{color:var(--muted);font-style:italic}
@@ -2819,18 +2829,35 @@ const typesFor = w => WATCH_TYPES[w.id] ?? [];
 // commit, which is also what makes the history of the decision readable later.
 const STATUS_ORDER = ['bought', 'likely', 'consider', 'sceptical', 'avoid'];
 const STATUS_DEFAULT = 'consider';
+// chip = does this status draw anything? The colour is not named here: renderRows() puts an
+// `rs-<key>` class on the row and the stylesheet hangs --st off that, so each hue is written in
+// exactly one place. Only the default is chip:false, and it is the only status that draws nothing.
 const STATUS_META = {
-  bought:    { label: 'Bought',           chip: 'st-bought',    mark: '✓ ' },
-  likely:    { label: 'Likely to buy',    chip: 'st-likely',    mark: '★ ' },
-  consider:  { label: 'In consideration', chip: null,           mark: '' },  // the default: draws nothing
+  bought:    { label: 'Bought',           chip: true,  mark: '✓ ' },
+  likely:    { label: 'Likely to buy',    chip: true,  mark: '★ ' },
+  consider:  { label: 'In consideration', chip: false, mark: '' },
   // Doubt, not rejection: a row worth keeping in the list but currently leaning the wrong way.
   // It exists because the vocabulary was lopsided — 'likely' had no negative counterpart, so
   // everything short of an outright reject collapsed into the default and read as untouched.
-  sceptical: { label: 'Sceptical',        chip: 'st-sceptical', mark: '? ' },
-  avoid:     { label: 'Do not buy',       chip: 'st-avoid',     mark: '✕ ' },
+  sceptical: { label: 'Sceptical',        chip: true,  mark: '? ' },
+  avoid:     { label: 'Do not buy',       chip: true,  mark: '✕ ' },
 };
 const STATUS = {
   // id: 'bought' | 'likely' | 'sceptical' | 'avoid'   — 'consider' is the default and need not be written
+  // The name is repeated here only so the table is readable without cross-referencing ids; it is
+  // not a second source for it. Kept in id order, like every other id-keyed table here, rather
+  // than grouped by status - the ids are what this is looked up by.
+  20:  'sceptical',   // Tissot Seastar 1000 Quartz Chronograph 38 mm — Grey
+  21:  'sceptical',   // Tissot Seastar 1000 Quartz Chronograph 38 mm — Black PVD
+  22:  'sceptical',   // Tissot Seastar 1000 Quartz Chronograph 38 mm — Steel
+  46:  'sceptical',   // Citizen Zenshin 60 Automatic (NK5020-58L)
+  48:  'sceptical',   // Citizen Tsuyosa Small Second Automatic (NK5010-51L)
+  50:  'sceptical',   // Citizen Zenshin Eco-Drive (AW0130-85LC)
+  52:  'avoid',       // Citizen Tsuyosa Automatic (NJ0151-88M)
+  54:  'avoid',       // Citizen Promaster Marine Eco-Drive Diver (EO2020-08E)
+  56:  'sceptical',   // Citizen Quartz (BF2011-51AC)
+  63:  'bought',      // Swatch x Omega MoonSwatch Mission to Pluto (SO33M101)
+  113: 'bought',      // Junkers Bauhaus Chronograph 40 mm (Ref. 912.01.02)
 };
 // An unknown value falls back to the default so the page still renders; selfCheck() reads the raw
 // table and names it, which is this file's usual answer to bad data - report it, don't throw.
@@ -4344,14 +4371,18 @@ function renderRows(list) {
   tbody.innerHTML = list.map((w, i) => {
     const stripe = i % 2 === 0 ? 'r-odd' : 'r-even';
     const safeLink = escapeHtml(w.link);
-    const st = STATUS_META[statusFor(w)];
+    // One class carries the status: it sets --st, which the id cell's edge bar and the chip both
+    // read, and for 'avoid' it is also what dims the row.
+    const stKey = statusFor(w);
+    const st = STATUS_META[stKey];
+    const statusClass = st.chip ? ` rs-${stKey}` : '';
     const statusTag = st.chip
-      ? `<span class="status-tag ${st.chip}" title="Buying status: ${escapeHtml(st.label)}. Set in the STATUS table; not an input to any score.">${st.mark}${escapeHtml(st.label)}</span>`
+      ? `<span class="status-tag" title="Buying status: ${escapeHtml(st.label)}. Set in the STATUS table; not an input to any score.">${st.mark}${escapeHtml(st.label)}</span>`
       : '';
     const picCell = w.img
       ? `<td class="pic"><img src="${escapeHtml(w.img)}" alt="${escapeHtml(w.name)}"></td>`
       : `<td class="pic"><a class="viewlink" href="${safeLink}" target="_blank">🔗 photo</a></td>`;
-    return `<tr class="${stripe}${statusFor(w) === 'avoid' ? ' row-avoid' : ''}">
+    return `<tr class="${stripe}${statusClass}">
  <td class="num">${w.id}</td>
  ${picCell}
  <td class="name"><a href="${safeLink}" target="_blank">${escapeHtml(w.name)}</a><small>${escapeHtml(w.desc)}</small><span class="brand-tag">${escapeHtml(w.brand)}</span>${statusTag}</td>

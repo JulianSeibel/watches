@@ -115,7 +115,7 @@ The per-watch research does not live on the watch objects. It lives in parallel 
 | `FINISH` | ~3465 | `id` | 0–1 finishing/decoration estimate. **All 113 present.** |
 | `DISPLAY_BACK` | ~3592 | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 103 of 113 researched, 10 open. |
 | `WATCH_TYPES` | ~2688 | `id` | array of types (filter only, never scored). **All 113 present.** |
-| `STATUS` | ~2832 | `id` | buying decision — `'bought'`, `'likely'`, `'sceptical'` or `'avoid'`; **absent = `'consider'`**, the default. Filter and name-cell chip only, never scored. The one id-keyed table with no coverage requirement, so adding a watch needs no entry. Empty today: the mechanism is wired, no row carries a decision yet. |
+| `STATUS` | ~2832 | `id` | buying decision — `'bought'`, `'likely'`, `'sceptical'` or `'avoid'`; **absent = `'consider'`**, the default. Drives a filter, a name-cell chip and a bar on the row's left edge; never scored. The one id-keyed table with no coverage requirement, so adding a watch needs no entry — and the only one where a count would just drift, so none is stated here. |
 | `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | ~2427 / ~2557 / ~2619 / ~2545 | `id` | published grams (51); ids confirmed to publish none (51); ids whose page could not be reached (7); ids published without the band (4). The four are disjoint and together cover all 113 — keep it that way. |
 | `MOVEMENT_TIER` | ~2872 | **exact `movementDisplay` string** | 0–1 architecture tier. 61 keys for 61 distinct movements, no misses, no orphans. |
 | `MEASURED_ACCURACY` | ~2276 | caliber **substring** of `movementDisplay` | reported real-world rates |
