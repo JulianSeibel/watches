@@ -116,6 +116,20 @@
   .eur-approx{font-weight:400;color:var(--muted);font-size:12px}
   .brand-tag{display:inline-block;font-size:10.5px;color:var(--muted);border:1px solid var(--line);
     border-radius:20px;padding:1px 7px;margin-top:4px}
+  /* Buying status, rendered beside the brand tag so it costs no column width. Outlined rather
+     than filled, and blue/violet/grey rather than green/amber/red, because solid fills and the
+     traffic-light ramp are the Value badge's language: a green "bought" sitting two cells from a
+     red "well below the curve" would read as one scale when the two say nothing about each other.
+     The default status draws nothing at all, so only rows with a decision on them stand out. */
+  .status-tag{display:inline-block;font-size:10.5px;font-weight:600;white-space:nowrap;
+    border:1px solid currentColor;border-radius:20px;padding:1px 7px;margin:4px 0 0 5px}
+  .status-tag.st-bought{color:#6ea8fe}
+  .status-tag.st-likely{color:#b79cf7}
+  .status-tag.st-avoid{color:#8794a4}
+  /* Rejects recede instead of disappearing - they are still in the list, and still worth seeing
+     when scanning a price band. Hovering the row brings it back to full strength to read it. */
+  tr.row-avoid td{opacity:.45}
+  tr.row-avoid:hover td{opacity:1}
   .movement{min-width:150px}
   .movement-cost{min-width:150px;white-space:normal}
   .movement-cost.na{color:var(--muted);font-style:italic}
@@ -179,8 +193,12 @@
 
 <div class="controls">
   <input type="search" id="searchInput" placeholder="Search name, movement, case, band, glass…">
-  <!-- The five categorical filters. Triggers and panels are empty here and filled by
+  <!-- The six categorical filters. Triggers and panels are empty here and filled by
        buildFilterPanels() from WATCHES, so the options cannot drift from the data. -->
+  <div class="ms" data-dim="status">
+    <button type="button" class="ms-trigger" aria-expanded="false" aria-haspopup="true" title="Where this watch stands in the buying decision — a personal shortlist held in the STATUS table, not a property of the watch. Rows carry no status until one is set, which reads as 'In consideration'. Never an input to any score: the Specs and Value columns do not know or care which rows are wanted. Only statuses actually in use are offered here."><span class="ms-label">All statuses</span><span class="ms-caret">▾</span></button>
+    <div class="ms-panel" hidden></div>
+  </div>
   <div class="ms" data-dim="brand">
     <button type="button" class="ms-trigger" aria-expanded="false" aria-haspopup="true"><span class="ms-label">All brands</span><span class="ms-caret">▾</span></button>
     <div class="ms-panel" hidden></div>
@@ -624,9 +642,10 @@
 //
 //   Data          WATCHES, one object literal per row, ids 1-112 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
-//   Side tables   MEASURED_ACCURACY · Weight · Watch type · Movement tier · Complications ·
-//                 EXTRAS · Finishing · Fittings — all keyed by row id, except MOVEMENT_TIER
-//                 (exact movementDisplay string) and MEASURED_ACCURACY (caliber substring).
+//   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
+//                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
+//                 MOVEMENT_TIER (exact movementDisplay string) and MEASURED_ACCURACY (caliber
+//                 substring). STATUS is the only one where an absent row is legal.
 //   Model         Wearability · Criterion groups · Robust baseline · Support guard ·
 //                 computeValueScores() · Validation. Step 1 (specs) uses fixed anchors; step 2
 //                 (value) is fitted to the list, so adding a row moves every Value.
@@ -2978,6 +2997,38 @@ const WATCH_TYPES = {
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
+// --- Buying status -------------------------------------------------------------------------
+// Where each watch stands in the decision. Like WATCH_TYPES this is DATA ONLY: it drives a filter
+// and a small chip in the name cell, and it is not an input to any score. That separation is the
+// whole point of the table — the Specs and Value columns exist to say what a watch is worth
+// independently of whether it is wanted, and a status that fed either would turn the model into
+// an echo of the shortlist.
+//
+// Absent = 'consider', so the table lists only the rows with a decision on them rather than
+// restating the default 112 times, and adding a watch needs no entry here. That also means this
+// is the one id-keyed side table selfCheck() does NOT require full coverage of.
+//
+// Held in the file rather than in localStorage: statuses are decisions worth keeping, and the
+// page is opened from disk on more than one machine. Changing one is an edit to this table and a
+// commit, which is also what makes the history of the decision readable later.
+const STATUS_ORDER = ['bought', 'likely', 'consider', 'avoid'];
+const STATUS_DEFAULT = 'consider';
+const STATUS_META = {
+  bought:   { label: 'Bought',           chip: 'st-bought', mark: '✓ ' },
+  likely:   { label: 'Likely to buy',    chip: 'st-likely', mark: '★ ' },
+  consider: { label: 'In consideration', chip: null,        mark: '' },   // the default: draws nothing
+  avoid:    { label: 'Do not buy',       chip: 'st-avoid',  mark: '✕ ' },
+};
+const STATUS = {
+  // id: 'bought' | 'likely' | 'avoid'   — 'consider' is the default and need not be written
+};
+// An unknown value falls back to the default so the page still renders; selfCheck() reads the raw
+// table and names it, which is this file's usual answer to bad data - report it, don't throw.
+const statusFor = w => (STATUS[w.id] in STATUS_META ? STATUS[w.id] : STATUS_DEFAULT);
+const statusLabel = w => STATUS_META[statusFor(w)].label;
+// The filter panel lists statuses in decision order, strongest commitment first.
+const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
+
 // --- Filter option order ---------------------------------------------------------------------
 // The order the three material/movement filters list their options in, and - because the panels
 // are built from the intersection of these arrays and the values actually present in WATCHES -
@@ -4327,6 +4378,11 @@ function valueTooltip(w) {
 // four: a row carries one case material but any number of types (row 90 is both a GMT and a
 // diver), and the predicate should not care which kind it is looking at.
 const FILTER_DIMS = [
+  // Status differs from the five below in one way: its order array is a fixed vocabulary rather
+  // than a set derived from the data, so selfCheck() does not check it for orphans. An unused
+  // status is normal — nothing is bought yet on a fresh list — and optionValuesFor() simply
+  // leaves it out of the panel until a row carries it.
+  { key: 'status',   label: 'Status',        allLabel: 'All statuses',       order: STATUS_LABELS,  values: w => [statusLabel(w)] },
   { key: 'brand',    label: 'Brand',         allLabel: 'All brands',         order: null,           values: w => [w.brand] },
   { key: 'type',     label: 'Type',          allLabel: 'All types',          order: TYPE_ORDER,     values: typesFor, modes: true },
   { key: 'movement', label: 'Movement',      allLabel: 'All movements',      order: MOVEMENT_ORDER, values: w => [w.movementType] },
@@ -4376,7 +4432,7 @@ function matchesFilters(w, skipKey) {
 function matchesSearch(w) {
   if (!state.search) return true;
   const q = state.search.toLowerCase();
-  const haystack = [w.brand, w.name, w.desc, w.caseDisplay, w.bandDisplay, w.glassDisplay, w.movementDisplay, w.movementCostDisplay, ...typesFor(w)]
+  const haystack = [w.brand, w.name, w.desc, w.caseDisplay, w.bandDisplay, w.glassDisplay, w.movementDisplay, w.movementCostDisplay, statusLabel(w), ...typesFor(w)]
     .join(' ').toLowerCase();
   return haystack.includes(q);
 }
@@ -4426,13 +4482,17 @@ function renderRows(list) {
   tbody.innerHTML = list.map((w, i) => {
     const stripe = i % 2 === 0 ? 'r-odd' : 'r-even';
     const safeLink = escapeHtml(w.link);
+    const st = STATUS_META[statusFor(w)];
+    const statusTag = st.chip
+      ? `<span class="status-tag ${st.chip}" title="Buying status: ${escapeHtml(st.label)}. Set in the STATUS table; not an input to any score.">${st.mark}${escapeHtml(st.label)}</span>`
+      : '';
     const picCell = w.img
       ? `<td class="pic"><img src="${escapeHtml(w.img)}" alt="${escapeHtml(w.name)}"></td>`
       : `<td class="pic"><a class="viewlink" href="${safeLink}" target="_blank">🔗 photo</a></td>`;
-    return `<tr class="${stripe}">
+    return `<tr class="${stripe}${statusFor(w) === 'avoid' ? ' row-avoid' : ''}">
  <td class="num">${w.id}</td>
  ${picCell}
- <td class="name"><a href="${safeLink}" target="_blank">${escapeHtml(w.name)}</a><small>${escapeHtml(w.desc)}</small><span class="brand-tag">${escapeHtml(w.brand)}</span></td>
+ <td class="name"><a href="${safeLink}" target="_blank">${escapeHtml(w.name)}</a><small>${escapeHtml(w.desc)}</small><span class="brand-tag">${escapeHtml(w.brand)}</span>${statusTag}</td>
  <td>${escapeHtml(w.diameterDisplay)}</td><td>${escapeHtml(w.l2lDisplay)}</td><td>${escapeHtml(w.heightDisplay)}</td><td class="weight-cell">${(() => { const e = estimateWeightG(w); return e ? (e.measured ? `<b>${e.g} g</b>` : `\u2248${e.g} g`) : '\u2014'; })()}</td><td>${escapeHtml(w.caseDisplay)}</td>
  <td>${escapeHtml(w.bandDisplay)}</td>
  <td>${escapeHtml(w.glassDisplay)}</td><td class="movement">${escapeHtml(w.movementDisplay)}</td><td>${escapeHtml(w.powerReserveDisplay)}</td><td>${escapeHtml(w.accuracyDisplay)}</td><td class="measured-cell${measuredAccuracyFor(w) ? (measuredAccuracyFor(w).conf === 'weak' ? ' weak' : '') : ' na'}" title="${measuredAccuracyFor(w) ? escapeHtml(measuredAccuracyFor(w).conf.toUpperCase() + ' confidence \u00b7 ' + measuredAccuracyFor(w).note) : 'No measured rates published for this caliber'}">${measuredAccuracyFor(w) ? '\u2248' + measuredAccuracyFor(w).range : '\u2014'}</td><td>${escapeHtml(w.waterResDisplay)}</td><td class="movement-cost${w.movementCostDisplay.startsWith('not sold') ? ' na' : ''}">${escapeHtml(w.movementCostDisplay)}</td><td class="score-cell" style="color:${specColor(w)}">${w.specScore != null ? w.specScore : '\u2014'}</td><td class="price">${priceCellHtml(w)}</td><td class="score-cell${w.valueScore == null ? ' na' : ''}" style="color:${scoreColor(w)}">${w.valueScore != null ? w.valueScore : '\u2014'}</td><td class="value-cell"><span class="value-badge" title="${escapeHtml(valueTooltip(w))}" style="background:${valueColor(w)}">${valueLabel(w)}</span></td>
@@ -4609,7 +4669,7 @@ function wireImageModal() {
 function wireControls() {
   document.getElementById('searchInput').addEventListener('input', e => { state.search = e.target.value.trim(); applyPipeline(); });
 
-  // One loop for all five panels, in place of the five copies of read-control-then-filter this
+  // One loop for all six panels, in place of the five copies of read-control-then-filter this
   // replaced. Nothing here knows which dimension it is wiring.
   MS_REFS.forEach((ref, key) => {
     const trigger = ref.root.querySelector('.ms-trigger');
@@ -4857,6 +4917,20 @@ function selfCheck(watches, missingFigureTokens = []) {
     out.push(`MOVEMENT_TIER key matches no row: ${orphanTiers.map(s => `"${s}"`).join('; ')} ` +
              `— usually a movementDisplay that was edited without updating its key`);
   }
+
+  // STATUS is the one id-keyed table with no coverage requirement — absent means the default.
+  // Both failures it can have are silent otherwise: a status on a row that does not exist is a
+  // decision applied to nothing, and a misspelled value renders as 'In consideration' rather than
+  // as an error, which is exactly the shape of bug the rest of this function exists to catch.
+  const ghostStatus = Object.keys(STATUS).map(Number).filter(id => !idSet.has(id));
+  if (ghostStatus.length) out.push(`STATUS has an entry for row ${list(ghostStatus)}, which does not exist`);
+  const badStatus = Object.entries(STATUS).filter(([, v]) => !STATUS_ORDER.includes(v));
+  if (badStatus.length) {
+    out.push(`STATUS value ${list(badStatus.map(([id, v]) => `${v} (row ${id})`))} is not one of ` +
+             `${list(STATUS_ORDER)} — that row is showing as the default instead`);
+  }
+  const unlabelledStatus = STATUS_ORDER.filter(k => !(k in STATUS_META));
+  if (unlabelledStatus.length) out.push(`STATUS_ORDER lists ${list(unlabelledStatus)}, which STATUS_META has no label for`);
 
   const badBack = Object.entries(DISPLAY_BACK).filter(([, v]) => v !== 0 && v !== 1).map(([id]) => id);
   if (badBack.length) out.push(`DISPLAY_BACK must be 1 or 0 (absent = not researched); row ${list(badBack)} is neither`);
