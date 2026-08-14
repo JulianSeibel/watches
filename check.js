@@ -5,7 +5,7 @@
 //   node check.js
 //
 // Exits 0 if every invariant holds, 1 otherwise, so it can gate a commit. It deliberately does
-// NOT restate the invariants — it loads watch-overviewnew.html, stubs enough of the DOM for the
+// NOT restate the invariants — it loads watch-overview.html, stubs enough of the DOM for the
 // script to evaluate, and calls the page's selfCheck(). Two copies of an invariant is just a new
 // place for them to disagree.
 //
@@ -23,7 +23,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const FILE = path.join(__dirname, 'watch-overviewnew.html');
+const FILE = path.join(__dirname, 'watch-overview.html');
 
 function readPageHtml() {
   return fs.readFileSync(FILE, 'utf8');

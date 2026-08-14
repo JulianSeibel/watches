@@ -19,6 +19,24 @@
   .legend{margin:12px 22px 0;color:var(--muted);font-size:12.5px;max-width:1100px}
   .price-note{color:var(--muted);font-size:11.5px;margin:8px 22px 0;max-width:1100px}
 
+  /* Collapsible prose. Every explanatory block - the notes above the table and the research log
+     below it - lives in a closed <details>, so the page opens on the table rather than on three
+     screens of text. Two blocks are deliberately left outside one: the exchange rate and the band
+     legend are read at a glance *while* reading the table, not once. */
+  .disclosure{margin:12px 22px 0;max-width:1100px;border:1px solid var(--line);border-radius:8px;
+    background:var(--panel)}
+  .disclosure>summary{display:flex;align-items:center;gap:8px;list-style:none;cursor:pointer;
+    padding:8px 12px;color:var(--muted);font-size:12px;border-radius:7px}
+  .disclosure>summary::-webkit-details-marker{display:none}
+  .disclosure>summary::before{content:"\25B8";font-size:9px;color:var(--muted)}
+  .disclosure[open]>summary::before{content:"\25BE"}
+  .disclosure>summary:hover,.disclosure>summary:hover::before{color:var(--accent)}
+  .disclosure[open]>summary{border-bottom:1px solid var(--line);border-radius:7px 7px 0 0}
+  /* Children keep their own type scale but drop the page gutter, which the panel now supplies. */
+  .disclosure-body{padding:2px 14px 12px}
+  .disclosure-body>.sub,.disclosure-body>.legend,.disclosure-body>.price-note{margin:10px 0 0}
+  footer .disclosure{margin:0}
+
   .controls{margin:16px 22px 0;display:flex;flex-wrap:wrap;gap:8px 10px;align-items:flex-end}
   .controls input[type="search"],
   .controls select,
@@ -154,15 +172,14 @@
   .self-check ul{margin:8px 0 0;padding-left:20px}
   .self-check li{margin:3px 0}
   @media (max-width:640px){ header{padding:18px 14px 6px} h1{font-size:20px}
-    .self-check{margin:0 14px 14px} .ms-panel{max-width:calc(100vw - 28px)} }
+    .self-check{margin:0 14px 14px} .ms-panel{max-width:calc(100vw - 28px)}
+    .disclosure{margin:12px 14px 0} footer .disclosure{margin:0} }
 </style>
 </head>
 <body>
 <header>
   <h1>Watch Overview — {{rowCount}} models</h1>
-  <p class="sub">Specs and prices from each brand's site — treat as approximate.</p>
 </header>
-<div class="legend">L2L = lug-to-lug · Höhe = case height · "—" = not published by maker.</div>
 
 <div class="controls">
   <input type="search" id="searchInput" placeholder="Search name, movement, case, band, glass…">
@@ -219,10 +236,19 @@
   <button id="resetFilters" type="button">↺ Reset filters</button>
   <span class="count" id="resultCount"></span>
 </div>
-<p class="price-note">Leave Min/Max blank for no limit. Price sorts on an approx. EUR-equivalent (converted for $ listings).</p>
 <p class="price-note" id="rateInfo">Fetching exchange rate…</p>
+<!-- Everything explanatory about the table is collected here, closed. Only the exchange rate above
+     and the band legend below stay open: those two are read alongside the table, not once. -->
+<details class="disclosure">
+  <summary>How to read this table — sources, columns, and the Value score</summary>
+  <div class="disclosure-body">
+  <p class="sub">Specs and prices from each brand's site — treat as approximate.</p>
+  <div class="legend">L2L = lug-to-lug · Höhe = case height · "—" = not published by maker.</div>
+  <p class="price-note">Leave Min/Max blank for no limit. Price sorts on an approx. EUR-equivalent (converted for $ listings).</p>
 <p class="price-note"><b>Movement cost</b> = approx. price to buy that caliber loose (parts market), not the brand's wholesale cost. <b>"Not sold separately"</b> = maker only supplies it inside a finished watch. Shown for reference only — the Value score rates the movement by architecture tier, not by parts price.</p>
 <p class="price-note"><b>Value</b> = how many spec points a watch sits above or below what this list charges for specs at its price. A spec score (0–100) is built from seven weighted criterion groups — movement, timekeeping, case &amp; glass, water &amp; lume, wearability, fittings and complications — then compared against a robust baseline of spec vs ln(price) fitted separately for mechanical and quartz. <b>0 = priced exactly as its specs predict</b>; the badge shows the surplus or shortfall in spec points. Colour is banded rather than continuous: the residual carries about ±{{sigma}} spec points of noise, so watches within one band are ties, not a ranking. <b>n/s</b> = fewer than {{supportMin}} other watches within ±{{supportPct}}% of that price, so the list cannot say what it charges there. The <b>Score</b> column to its left is the same number on the 0–100 scale used up to revision 2 (50 = as predicted), kept for continuity; it sorts identically. <b>Specs</b> is step 1 alone — the weighted spec score with price taken out, answering “how much watch is this” rather than “how well is it priced”. It is the only one of the three defined for every row, but it correlates 0.85 with price and tilts toward tool watches, so read it alongside the other two rather than instead of them. Hover a badge for that watch’s inputs.</p>
+  </div>
+</details>
 <div class="band-legend" id="bandLegend"></div>
 <div class="self-check" id="selfCheck" hidden></div>
 
@@ -258,6 +284,9 @@
 </div>
 
 <footer>
+  <details class="disclosure">
+  <summary>Research log — model revisions, research passes, open questions and sources</summary>
+  <div class="disclosure-body">
   <p>* L2L not published by Certina/Tissot for these refs (Certina lists case ⌀ 38 mm and lug width 19 mm; real-world L2L ≈ 44 mm). Vaer prices start on strap and rise with bracelet/leather options. Citizen EUR prices marked "~" are indicative (from press/retailer listings) as the official EU shop shows regional pricing. The "Shore" refs (NJ0230/NJ0231) are the 10 bar / 100 m Tsuyosa variants — the rest of the Tsuyosa line remains 5 bar / 50 m.</p>
   <p>The NOMOS Club Campus accuracy figure (±1 s/day) is an observed best-case rate for a well-regulated, fully wound DUW 4001, not a manufacturer specification — NOMOS only commits to under 10 s/day, fine-regulated in six positions over seven days. The Longines HydroConquest is the one row with no accuracy figure at all: the L888.5 is the non-COSC version of the caliber (the certified −4/+6 s/day variant is the L888.4), and Longines publishes no rate specification for it, so the field is left at "—" rather than filled with owner-reported figures. Researched again in pass 6 without success: the figure quoted around the web, −5/+15 s/day, is the generic tolerance of the ETA A31 base rather than anything Longines publishes for this caliber, so it does not meet the standard the rest of this column is held to and the field stays empty. Revision 3 changed the handling: an unpublished-but-applicable figure is now imputed at the list average rather than having its weight redistributed, because redistribution silently rescores the row on its remaining criteria. This is the one row where that is arguably too harsh — a silicon-hairspring Longines almost certainly beats the list average — and the tooltip now flags the imputation rather than hiding it. Every other accuracy figure in this table is the maker's own spec, with eight exceptions that pass 14 below names and leaves standing.</p>
   <p>Value model, revision 2: the movement criterion is an architecture tier rather than a parts-market price; finishing and a fittings factor were added; ISO 6425 was folded into water resistance and bezel into case; antimagnetism was cut to a token weight; accuracy is ranked within movement class; all normalisation now uses fixed anchors instead of list min/max, so adding a row no longer re-scores the others; and the spec÷price ratio was replaced by the residual against a spec-vs-ln(price) curve. Finishing (0–1) and lume are estimates, not measurements, and are the softest inputs in the model. Fittings research, pass 1: Vaer (12 rows) and Tissot (9 rows) are now fully sourced for display back and clasp type, and the Citizen Tsuyosa family partially. Corrections made in the process: the Tissot Seastar bracelet clasp carries a diver extension and push-button safety (0.7 → 0.9), the Vaer figures were reduced to the tang buckle they actually ship on rather than the optional bracelet (0.4 → 0.3), and Tsuyosa bracelets use a fold-over push-button deployant (0.6 → 0.7). Rows not yet checked are held as unknown and skipped, never scored as though the feature were missing. Data correction from that pass: row 47 carried the specifications of a steel Tsuyosa (40 mm, cal. 8210, 50 m, ~€290) while its link and image pointed at the NJ0180-80M. Checked against Citizen’s own product page, that reference is a 40.5 mm Super Titanium case with Duratect TIC coating and a screwed glass bottom, calibre 8213 rated at ±20 s/day with 42 h reserve, 10 bar, on a solid Super Titanium bracelet with a safety folding clasp. All of those fields have been replaced.</p>
@@ -328,6 +357,8 @@
   <p>Sources: each brand's own product page, supplemented by manufacturer press releases and authorised-retailer spec sheets where a page omitted a field. {{linkCount}} of {{rowCount}} links covered — the tally had
   been left at "65 of 65" since the list was 65 rows long and was corrected in pass 16 by counting the
   link field on every row.</p>
+  </div>
+  </details>
 </footer>
 
 <div class="img-modal" id="imgModal" role="dialog" aria-modal="true" aria-hidden="true">
