@@ -398,6 +398,18 @@
 
   <p><b>The corrected range is more interesting than the stale one, because it no longer starts above 1×.</b> Across the {{measuredCalibers}} calibers carrying a figure in both columns it runs {{measuredRatioMin}}× on the {{measuredRatioMinCal}} to {{measuredRatioMax}}× on the {{measuredRatioMaxCal}}. The bottom end arrived with pass 26 and nobody noticed: the two Laco Top-grade rows are reported to run <i>worse</i> than the 0/+8 s/day Laco regulate them to, which makes them the first entry here contradicting the assumption this whole column rests on — that a published tolerance is the pessimistic number and the measured rate beats it. One caliber is not a finding about Laco, and the confidence on that entry is not high. It is a finding about the column: the phrase "whichever makers quote most conservatively" had been doing work that the data no longer entirely supports, and a ratio below 1× now has a stated meaning in the tooltip rather than reading as a mistake. <b>The rest of the pass is comment hygiene and is recorded here only so the deletions are traceable.</b> Roughly fifty lines of code comment went, all of it duplication rather than reasoning: an identical seven-line note on rows 87 and 88, two consecutive tellings of the revision-2 fittings failure above <code>blendSubs()</code> that shared their figures and their example and are told a third time in the revision-3 paragraph above, three statements of the "biases are reported, never fitted away" rule inside one section, and the "Nth maker to publish weight" chronology, which the header of the Weight block, the roster above <code>WEIGHT_MEASURED</code> and six per-maker sub-headers were each narrating in full. The roster is the copy kept, since it is the one that reconciles its own arithmetic. Nothing that recorded a judgement, a source or a rejected alternative was touched.</p>
 
+  <p><b>Pass 28 — seven rows added (121–127), and the list goes from 120 to 127.</b> Four brands, two of them new: a Citizen Series 8 on the cal. 9051, two watches from Second Hour of Melbourne, a Hamilton Khaki Aviation Pilot Pioneer, and three Baltic Aquascaphe references — the titanium, the bronze and the GMT — filling in a family this list has held only the steel divers of since pass 1. The vocabulary moved less than the brand count suggests: no new case category, glass, movement type, watch type or complication, and two new <code>MOVEMENT_TIER</code> keys. One genuinely new thing, though, and it is a currency: Second Hour price in Australian dollars, the first AUD rows here, so both carry a hand-set <code>priceEUR</code> with the rate in an inline comment — the mechanism rows 12 and 24 already use for Hong Kong dollars and rupees. <b>All seven are scored, with 35 to 46 comparable rows each</b>, so nothing rests on an extrapolation, and the unscored count stays at 2 — rows 16 and 56, still the two cheapest. The Shoal Deep at €321 was the one row with a chance of rescuing them and did not get close; the bottom of this range remains its thin end. <b>They land at 55 spec points and +4.50 for the Citizen, 49 and +2.70 for the Mandala, 48 and +7.10 for the Shoal Deep, 51 and −1.00 for the Hamilton, 48 and −0.10 for the Aquascaphe Titanium, 40 and −6.70 for the Bronze, and 42 and −8.20 for the GMT</b> — three above the curve, two as expected, one below and one well below.</p>
+
+  <p><b>The spread inside one Baltic family is the result worth reading, because the three references differ by less than their prices do.</b> All three are the same 39–41 mm case shape from the same maker with the same double-domed sapphire, and they run €645, €730 and €940. The titanium lands dead on the line and the other two do not, for reasons the column can name row by row. The Titanium at €730 buys a titanium case (0.85 against steel's 0.5 on the material criterion), a ceramic bezel, 300 m and Super-LumiNova X1 — four upgrades over the €600 Classic on row 2, and the model reads them as very nearly exactly worth the €130. The Bronze at €645 buys a <i>softer</i> case: CuAl8 scores 0.45, below steel, for the reason pass 17 set out on the Strela — bronze is the more expensive material and the more deliberate choice, and this column rates hardness and corrosion rather than desirability. Against that it drops to a sapphire insert and C1 lume, and −6.70 is what paying more for less measurable watch looks like. <b>The GMT at €940 is the pass's worst-priced row and the diagnosis is specific rather than general:</b> it is the only Aquascaphe rated 100 m rather than 200 or 300, its bezel is a 24-hour scale rather than a dive bezel, and its second time zone is a <i>caller</i> GMT, which this file has paid 0.25 for since pass 18 against the 0.5 a jumping local hour earns. So it costs €300 more than the Classic and, on the criteria this model scores, gives up water resistance to gain a quarter of a complication. Whether a Swiss movement in place of a Japanese one is worth the rest of that gap is exactly the question the Value column has no way to answer — it prices architecture through <code>MOVEMENT_TIER</code>, where the C125 is 0.60 against the Miyota's 0.40, and that 0.2 is already counted.</p>
+
+  <p><b>The judgement calls.</b> <b>Two new movement tiers.</b> The Hamilton H-10 takes 0.55, the same number as the Powermatic 80.111, because it is the same movement — the ETA C07.111 with a Nivachron hairspring, sold under two Swatch Group brands — and this column has rated architecture rather than marque since pass 12. Its 80-hour reserve earns nothing there, by the SW200-2 Power+ rule that power reserve is already its own sub-score. The SOPROD C125 takes 0.60, level with the Sellita SW330-2, and that row is the precedent rather than an analogy: the C125 is a GMT module over the Soprod A10-2, the Swiss-made licensed version of Seiko's cal. 4L25, which Seiko designed expressly as an ETA 2892 competitor for the Swiss OEM market — so it is a 2892-<i>class</i> ebauche, which is the property earning the SW330-2 and Mido's A31.111 their 0.60. Being a caller GMT it gets none of the +0.05 a jumping local hour earns, exactly as the SW330-2 gets none. <b>Lume splits three ways and every step is the maker's own wording.</b> Baltic name "Super-Luminova C3 X1" on the Titanium, and this file has one rule for a named X1 grade, which is the 1.0 rows 1, 77–86 and 106–109 carry; the Bronze and GMT name C1, a compound with no grade and the standard-output one, so 0.7, a notch under rows 2–3's 0.75 for BGW9. Second Hour's Shoal Deep says "Genuine Grade A Swiss BGW9" on all elements, which is verbatim the claim putting Traska and the Vaer DS2 rows at 0.85; the Mandala names BGW9 without a grade and takes 0.75. <b>The softest number in the pass is the Citizen's clasp at 0.8</b>, taken from row 43 because Citizen mark the bracelet "Armband massiv" and name no mechanism; if it turns out to be a plain foldover the row loses about half a spec point, comfortably inside the model's own noise. <b>Finishing:</b> the Mandala's 0.55 clears Traska's 0.50 on the one thing Traska are held down for — "the dials are printed" — where Second Hour's is an artisan guilloché centre, which is dial construction rather than dial printing. Its decorated rotor supports that and deliberately does not carry it, because the <i>window</i> is <code>fittings.displayBack</code> and is already scored.</p>
+
+  <p><b>The Citizen's weight is Citizen against Citizen, and the figure is not used.</b> The German shop's "Gewicht" field gives 100 g for the NB6080-51W; Citizen's own US product record for the same reference gives 147. Neither page qualifies its field, and 47 g is not a rounding difference — it is the difference between a watch head and a watch. Two independent checks say the larger number is the whole watch: row 48, a steel Tsuyosa on the same kind of bracelet, publishes 147 g exactly, and this file's own estimator — which knows nothing of either figure — puts the row at 143 g. So the likeliest reading is that the German field is head-only and the American one is not. <b>That is a reading and not a source, so the row goes to <code>WEIGHT_UNRESOLVED</code> rather than into the test set</b>, which is the decision row 43 records on the sibling reference for the same reason: two unverifiable figures far apart are not a measurement. Recording it either way would have been the more comfortable choice and both were available — 100 g was there in the maker's own field, and taking it would have handed the estimator its worst single miss in five passes, a 43% error that says more about which field was picked than about the estimator. The published-weight count therefore stays at 58 and every figure in the Weight tooltip is unchanged. Worth naming as the wider point: this is the second Citizen Series 8 reference in a row whose mass cannot be settled, which starts to look like a property of how Citizen publish rather than an accident of two pages.</p>
+
+  <p><b>A research-method finding that nearly cost two researched facts, and it is the tooling rather than the makers.</b> The script this project uses to read a maker's page de-tags the HTML and drops repeated lines, which is what makes a nav-heavy product page readable at all. On Hamilton's spec list that behaviour is actively misleading: "Offener Gehäuseboden" and "Nivachron" both appeared as labels with nothing after them, because their values are the third and fourth consecutive "Ja" in the list. Both are "Ja" in the raw body. Read from the de-tagged view, row 124 would have been filed with an unresearched caseback and no antimagnetism — two facts Hamilton publish plainly, recorded as gaps. The same thing hid four values on the Citizen page, where the glass, the water resistance and both bracelet fields came back blank and are in the source, carried in each attribute's own CSS class name. <b>This is the same failure mode passes 6 and 13 hit on Longines and pass 22 hit on five brands out of five, arriving by a new route:</b> there the rendered text was missing what the source held, here the de-tagged text was. The rule survives intact and is worth restating in its general form — "the maker publishes nothing" is a claim about the maker and needs the raw body to support it, whatever produced the readable version. <b>Baltic meanwhile changed shape.</b> They have moved off a stock Shopify storefront onto a headless front end, which breaks the fast route this project's notes record for them: <code>&lt;product-url&gt;.json</code> now returns the HTML page, and each product's own price renders client-side as a placeholder. Both are still recoverable from the same page — the embedded payload carries every product in the page's carousels with its price, so any one Aquascaphe page prices most of the others, and all three prices here were read from the GMT's.</p>
+
+  <p><b>What it did to everything else.</b> Value moved by at most <b>0.20</b> spec points across the existing 120 — row 16, the Delhi Tithi — with 81 of 120 moving at all and one crossing zero (row 119, the Laco Karlsruhe PRO, −0.1 → 0). <b>Four rows change band</b>, all in the same direction and all boundary crossings on their own residuals: rows 71 and 74, both Midos, and rows 78 and 81, both Christopher Wards, each from <i>as expected</i> to <i>above the curve</i>. Residual sigma holds at 5 and the spec range at 26–66, so unlike passes 12 and 25 the colour bands did not move underneath anyone. <b>The model gets slightly better and the bar it is measured against improves more.</b> Leave-one-out RMSE falls 5.95 → 5.89 while skill falls 58.3% → 57.3%, and the two are not in conflict — the naive baseline improves 9.21 → 9.01 underneath it, because seven rows priced €321–1,075 land in and just under the densest part of the range and make the naive guess easier. Resample tightens 0.46/0.89 → 0.40/0.82, the spec/price correlation slips 0.78 → 0.77, and sign flips go 0 → 1: one row now changes side when left out of the fit, the expected cost of adding rows that sit well off the line, and the same figure that has oscillated between 0 and 1 since pass 20. <b>Spec drift touched two rows by one rounding point each and in opposite directions</b> — row 59 gains a point, row 76 loses one — which is <code>imputeMissingSubs()</code> filling unresearched sub-scores with a list mean that seven new rows shifted. Pass 20's warning against claiming immunity stands, and pass 22's ceiling on it holds: no pass has yet moved more than three rows by more than one point.</p>
+
 
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
@@ -420,7 +432,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-120 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-127 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
 //                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
@@ -464,8 +476,8 @@
  * @property {number} waterResM
  * @property {string} priceDisplay
  * @property {number} priceValue - in priceCurrency's units
- * @property {'EUR'|'USD'|'GBP'|'HKD'|'INR'} priceCurrency
- * @property {number} [priceEUR] - precomputed only for the rows priced in a currency with no direct EUR figure given in the source (GBP, HKD, INR); EUR rows use priceValue as-is; USD rows are (re)computed from the live-fetched USD_TO_EUR rate — see recomputePriceEUR()
+ * @property {'EUR'|'USD'|'GBP'|'HKD'|'INR'|'AUD'} priceCurrency
+ * @property {number} [priceEUR] - precomputed only for the rows priced in a currency with no direct EUR figure given in the source (GBP, HKD, INR, AUD); EUR rows use priceValue as-is; USD rows are (re)computed from the live-fetched USD_TO_EUR rate — see recomputePriceEUR()
  * @property {number} [streetPriceEUR] - German street price where it is materially below the linked list price; the model prefers it over priceEUR — see effectivePrice(). NOT the mechanism for a seller's own markdown from a stated UVP, which goes in priceValue
  * @property {number} [valueScore] - computed 0–100 price-performance score, relative to all watches in this list — see computeValueScores()
  */
@@ -2420,6 +2432,156 @@ const WATCHES = [
   // and +100 the configurator charges on row 119, which is what identifies the two components of
   // the 330 without an itemised page of its own.
   priceDisplay:'€1,260 (€930 + options €330)', priceValue:1260, priceCurrency:'EUR' },
+
+// --- Citizen Series 8, pass 28 (row 121) ------------------------------------------------------
+// Citizen's German shop renders its whole spec table server-side, so this row needed no unusual
+// route. One trap worth naming, because it cost time on the Hamilton row below as well: the
+// de-tagger in scripts/page-text.js drops repeated lines, so a table whose consecutive values are
+// identical reads as a table of empty fields. Four values here - the glass, the water resistance
+// and both bracelet fields - came back blank in the de-tagged text and are present in the raw
+// body, where the attribute's own CSS class carries the value ("--anti-reflective-sapphire-glass",
+// "--10"). Read the class names, not the rendered text, when a value looks missing on this site.
+{ id:121, brand:'Citizen', name:'Citizen Series 8 Mechanical (NB6080-51W)', desc:'Series 8 automatic, light-green dial, display back · slimmer and smaller than the NB6051-59L on row 43, at the same money',
+  link:'https://de.citizenwatch.eu/de/p/nb6080-51w/',
+  img:'https://de.citizenwatch.eu/media/thumbs/2a/6a/0c55bba658777753a097a266a58fe3b6b5e5/1400x_crop=center;format=webp/managed/39/d9/39d9bfae43640d68ff429842c1a77db1/NB6080-51W-1a.png.thumb.webp',
+  // Citizen state 39.85 mm rather than rounding it, so this row does too.
+  diameterDisplay:'39.85 mm', diameterMm:39.85, l2lDisplay:'—',
+  heightDisplay:'10.4 mm', heightMm:10.4,
+  caseDisplay:'Stainless steel (sapphire display back, screwed)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet (solid links)',
+  glassDisplay:'Sapphire + AR', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — cal. 9051', movementType:'Automatic', movementCostDisplay:'not sold separately (Citizen in-house)',
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+20 s/day',
+  waterResDisplay:'100 m', waterResM:100,
+  priceDisplay:'€895', priceValue:895, priceCurrency:'EUR' },
+
+// --- Second Hour, pass 28 (rows 122-123) ------------------------------------------------------
+// A Squarespace storefront, and the first Australian maker here - both rows are priced in AUD and
+// carry a hand-set priceEUR, the mechanism rows 12 and 24 already use for HKD and INR.
+//
+// Neither page states a power reserve or a rate. The power reserve below is Miyota's own figure
+// for the caliber, borrowed and labelled, exactly as rows 118-120 borrow Sellita's; the rate stays
+// '—', because a movement family's tolerance band is the one figure this file will not borrow.
+// Second Hour's variant records carry a "shippingWeight" of 0.1 kg on every colour of both models.
+// That is the parcel, not the watch, and it is the same trap Traska's 454 g Summiteer variant set
+// in pass 22 - so both rows are WEIGHT_UNPUBLISHED, not measured.
+{ id:122, brand:'Second Hour', name:'Second Hour Mandala Mk3 — Midnight Black', desc:'Guilloché-dial sports auto on a seven-link bracelet · the Shoal Deep on row 123 is the same maker\'s 300 m diver',
+  link:'https://www.secondhour.com.au/shop/p/mandalamk3',
+  img:'https://images.squarespace-cdn.com/content/v1/6123bb21aa4dbe09edf66ca1/1e95d0b9-988f-4ac8-9797-334e13f4e523/Black+Dial+-+Front+copy.png',
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'47 mm',
+  // Second Hour give one thickness figure and say it includes the crystal, so there is no
+  // excl.-crystal half to state.
+  heightDisplay:'10.5 mm (incl. crystal)', heightMm:10.5,
+  caseDisplay:'316L stainless steel, surface-hardened to 1200 HV (sapphire display back)', caseCategory:'Steel',
+  bandDisplay:'Steel seven-link bracelet, 20→18 mm taper',
+  glassDisplay:'Flat sapphire, bevelled edge + 6-layer internal AR', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9015', movementType:'Automatic', movementCostDisplay:'~$85 (Miyota, new)',
+  // Power reserve borrowed from Miyota's own 9015 spec - Second Hour publish none. The rate stays
+  // '—' for the reason in the block above: they publish no figure of their own.
+  powerReserveDisplay:'42 h', accuracyDisplay:'—',
+  waterResDisplay:'100 m (10 ATM)', waterResM:100,
+  priceDisplay:'A$955 (~€585)', priceValue:955, priceCurrency:'AUD', priceEUR:585 /* A$955 at ECB AUD→EUR ≈0.6122 (16 Aug 2026); open.er-api.com agrees at 0.61217 */ },
+
+{ id:123, brand:'Second Hour', name:'Second Hour Shoal Deep 300 — Black', desc:'300 m ceramic-bezel diver, no date · the cheapest ceramic-bezel diver here, and the maker\'s tool piece against the Mandala on row 122',
+  link:'https://www.secondhour.com.au/shop/p/shoal-deep-300-metre-dive-watch',
+  img:'https://images.squarespace-cdn.com/content/v1/6123bb21aa4dbe09edf66ca1/015da2a6-26b4-4c23-8162-0546edc11c2b/Front+-+Black_WEB.jpg',
+  // 42.5 mm is Second Hour's own figure and they note it is measured with the crown at 4 o'clock.
+  diameterDisplay:'42.5 mm', diameterMm:42.5, l2lDisplay:'46 mm',
+  heightDisplay:'13.76 mm (incl. crystal)', heightMm:13.76,
+  caseDisplay:'316L stainless steel (lumed ceramic bezel insert, embossed screwed back)', caseCategory:'Steel',
+  bandDisplay:'Steel beads-of-rice bracelet (solid end links)',
+  glassDisplay:'Double-domed sapphire + 6-layer internal AR', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
+  powerReserveDisplay:'42 h', accuracyDisplay:'—',   // PR borrowed from Miyota as on row 122; Second Hour publish no rate
+  waterResDisplay:'300 m (30 ATM)', waterResM:300,
+  // The four steel dial colours are all A$525; the DLC Black variant is A$550 and is not this row.
+  priceDisplay:'A$525 (~€321)', priceValue:525, priceCurrency:'AUD', priceEUR:321 /* A$525 at ECB AUD→EUR ≈0.6122 (16 Aug 2026) */ },
+
+// --- Hamilton Khaki Aviation, pass 28 (row 124) -----------------------------------------------
+// Hamilton's Magento shop renders a label/value spec list in plain HTML. The de-tagged view of it
+// is actively misleading: "Offener Gehäuseboden" and "Nivachron" both appeared as labels with no
+// value, because their values are the third and fourth consecutive "Ja" in the list and the
+// de-tagger drops repeats. Both are "Ja" in the raw body. Taken from the de-tagged text this row
+// would have been filed with an unresearched caseback and no antimagnetism - a researched fact
+// recorded as a gap, which is the exact failure the phase-2 rule about raw source exists to stop.
+// Hamilton publish no rate and no weight for this reference; both are recorded as such.
+{ id:124, brand:'Hamilton', name:'Hamilton Khaki Aviation Pilot Pioneer Auto 38 (H76205530)', desc:'38 mm pilot automatic, 80 h H-10 with a Nivachron hairspring, open caseback',
+  link:'https://www.hamiltonwatch.com/de-de/h76205530-khaki-aviation-pilot-pioneer.html',
+  img:'https://www.hamiltonwatch.com/media/catalog/product/cache/6517c62f5899ad6aa0ba23ceb3eeff97/h/7/h76205530_lowresweb.png',
+  // Hamilton publish no lug-to-lug for any Khaki Aviation reference - the spec list runs from
+  // "Gehäusedimension" to "Anstoßbreite" with nothing between them.
+  diameterDisplay:'38 mm', diameterMm:38, l2lDisplay:'—',
+  heightDisplay:'11.4 mm', heightMm:11.4,
+  caseDisplay:'Stainless steel (open caseback, 18 mm lug width)', caseCategory:'Steel',
+  bandDisplay:'Calf leather, steel pin buckle',
+  glassDisplay:'Sapphire + AR', glassCategory:'Sapphire',
+  // The H-10 is the ETA C07.111 - the same base as the Tissot Powermatic 80.111 rows - with a
+  // Nivachron hairspring, which Hamilton state on this page. See MOVEMENT_TIER for the tier.
+  movementDisplay:'Automatic — Hamilton H-10 (ETA C07.111, Nivachron)', movementType:'Automatic', movementCostDisplay:'not sold separately (Swatch Group excl.)',
+  powerReserveDisplay:'80 h', accuracyDisplay:'—',
+  waterResDisplay:'100 m (10 ATM)', waterResM:100,
+  priceDisplay:'€1,075', priceValue:1075, priceCurrency:'EUR' },
+
+// --- Baltic Aquascaphe, pass 28 (rows 125-127) ------------------------------------------------
+// Baltic have moved off a stock Shopify storefront onto a headless Next.js front end, which breaks
+// the fast route the site-shapes table records for them: <product-url>.json now returns the HTML
+// page, and the product's own price renders client-side as "--.-€". Both are recoverable from the
+// same page. The embedded Next.js payload carries a products[] array of {handle, priceRange} for
+// every product in the page's carousels, so any one Aquascaphe page prices most of the others -
+// the GMT's own page is where all three prices below were read, from Baltic's own payload.
+//
+// Accuracy on the two Miyota rows is Miyota's own published spec for the 9039, the figure rows 2-4
+// already carry; Baltic publish no rate of their own for any reference. The GMT stays '—' because
+// neither Baltic nor Soprod publish one for the C125.
+//
+// Casebacks: the GMT's page has a titled "Engraved caseback" section, so it is recorded solid. The
+// Titanium and Bronze pages say nothing about theirs, and are deliberately left OUT of DISPLAY_BACK
+// rather than inheriting row 2's finding - which is also why neither caseDisplay below uses the
+// words "display back" or "exhibition", since displayBackFor() would read either as a window.
+{ id:125, brand:'Baltic', name:'Baltic Aquascaphe Titanium — Black', desc:'41 mm titanium diver, 300 m, ceramic bezel · the largest and deepest Aquascaphe, against the 39 mm steel rows 2-4',
+  link:'https://baltic-watches.com/en/products/aquascaphe-titanium-black',
+  img:'https://cdn.shopify.com/s/files/1/0012/9299/2583/products/aquascaphe-titanium-black-face-tropic-black.png?v=1676312460&width=2000',
+  diameterDisplay:'41 mm', diameterMm:41, l2lDisplay:'47 mm',
+  heightDisplay:'13.3 mm (11 mm excl. glass)', heightMm:13.3,
+  caseDisplay:'Titanium (unidirectional 120-click brushed ceramic bezel)', caseCategory:'Titanium',
+  // Priced on the rubber sport strap with a titanium buckle - the variant the bare link selects.
+  bandDisplay:'FKM rubber sport strap, titanium buckle',
+  glassDisplay:'Double-dome sapphire + internal AR', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',   // Miyota's own spec, as on rows 2-4
+  waterResDisplay:'300 m (30 ATM)', waterResM:300,
+  priceDisplay:'€730', priceValue:730, priceCurrency:'EUR' },
+
+{ id:126, brand:'Baltic', name:'Baltic Aquascaphe Bronze — Brown', desc:'39 mm CuAl8 bronze diver, sapphire bezel insert · the second bronze case here, after the Strela on row 89',
+  link:'https://baltic-watches.com/en/products/aquascaphe-bronze-brown',
+  img:'https://cdn.shopify.com/s/files/1/0012/9299/2583/products/aquascaphe-bronze-brown-face-tropic-black.png?v=1680701239',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'47 mm',
+  heightDisplay:'13 mm (11 mm excl. glass)', heightMm:13,
+  // CuAl8 - an aluminium bronze, not the CuSn8 tin bronze of row 89. Baltic name the alloy.
+  caseDisplay:'CuAl8 bronze (unidirectional 120-click bronze bezel, sapphire insert)', caseCategory:'Bronze',
+  bandDisplay:'FKM rubber sport strap, bronze buckle',
+  glassDisplay:'Double-dome sapphire + internal AR', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',   // Miyota's own spec, as on rows 2-4
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€645', priceValue:645, priceCurrency:'EUR' },
+
+{ id:127, brand:'Baltic', name:'Baltic Aquascaphe GMT — Grey', desc:'Swiss caller GMT, 24-h sapphire bezel, 100 m · the shallowest Aquascaphe and the only non-diver of the family',
+  link:'https://baltic-watches.com/en/products/aquascaphe-gmt-grey',
+  img:'https://cdn.shopify.com/s/files/1/0012/9299/2583/products/aquascaphe-gmt-grey-face-tropic-black.png?v=1676367234',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'47 mm',
+  heightDisplay:'13 mm (11.2 mm excl. glass)', heightMm:13,
+  caseDisplay:'316L stainless steel (bidirectional 24-click sapphire bezel, 24 h scale, engraved solid back)', caseCategory:'Steel',
+  bandDisplay:'FKM rubber sport strap, steel buckle',
+  glassDisplay:'Double-dome sapphire + internal AR', glassCategory:'Sapphire',
+  // Caller, not traveller: Caliber Corner and the Grail Watch reference both state the C125 quick-
+  // sets the 24-hour hand and leaves the local hour geared to the minutes, because the GMT module
+  // sits where the day disc would. Named in the string for the same reason pass 18 named the split
+  // on the Sellita SW330-2 rows - the distinction is worth seeing in the Movement column.
+  movementDisplay:'Automatic caller GMT — SOPROD C125', movementType:'Automatic', movementCostDisplay:'not sold separately (Soprod, supplied to brands)',
+  powerReserveDisplay:'42 h', accuracyDisplay:'—',
+  waterResDisplay:'100 m (10 ATM)', waterResM:100,
+  priceDisplay:'€940', priceValue:940, priceCurrency:'EUR' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -2437,7 +2599,7 @@ function recomputePriceEUR() {
     } else if (w.priceCurrency === 'USD') {
       w.priceEUR = Math.round(w.priceValue * USD_TO_EUR * 100) / 100;
     } else if (w.priceEUR === undefined) {
-      // GBP/HKD/INR rows: no direct EUR figure in the source and not a USD rate — leave undefined.
+      // GBP/HKD/INR/AUD rows: no direct EUR figure in the source and not a USD rate — leave undefined.
       // Rows in those currencies carry a hand-set priceEUR with the rate in an inline comment,
       // so reaching here means a row was added without one.
       w.priceEUR = null;
@@ -2550,6 +2712,7 @@ const MEASURED_ACCURACY = {
   'NOMOS DUW 4001':    { typ: 2,    range: '1\u20133',   conf: 'good', note: 'Club Campus 38 timed against an atomic clock at 1.2 s/day over a full loan; owner logs at +0.9 and +1; an Orion 33 on the same caliber reviewed at +3 to +5' },
   'Powermatic 80.611': { typ: 2,    range: '1\u20133',   conf: 'good', note: 'Certina diver owners at +0.5 to +2 and a DS-1 at +3; a Mido on the same base at +1 to +2. One outlier at +17 was exchanged as faulty' },
   'Powermatic 80.111': { typ: 3,    range: '2\u20134',   conf: 'good', note: 'Tissot Gentleman settling to about +2 after three months; guides report \u22123 to +5 and \u00b15 typical' },
+  'Hamilton H-10':     { typ: 3,    range: '1\u20135',   conf: 'good', note: 'Owner reports on the H-10 itself rather than borrowed from the Powermatic 80.111 it shares a base with: one logged +0.6 s/day over 63 days, one steady under +1 after settling for seven weeks, one at \u22122; guides put most examples inside \u00b15 out of the box. The two entries agreeing at typ 3 is a check on both, since they are the same ETA C07.111' },
   'Miyota 9039':       { typ: 8,    range: '5\u201311',  conf: 'good', note: 'An unregulated 9039 measured +11.2 on a timegrapher and +10.4 on the wrist over two weeks; the same movement regulated by a watchmaker fell to +0.2 with a delta of 4' },
   'Miyota 90S5':       { typ: 8,    range: '5\u201311',  conf: 'fair', note: 'No data specific to the 90S5; taken from the 9039, which shares the architecture' },
   'Miyota 9015':       { typ: 6,    range: '5\u20138',   conf: 'good', note: 'Individual owners at \u22126 and +6; guides report most regulated examples in the +5 to +10 band, well-regulated ones reaching chronometer range' },
@@ -2594,8 +2757,8 @@ function measuredRatioStats(watches) {
 
 // --- Weight (pass 10, rewritten in pass 11) ------------------------------------------------
 // Ten makers publish mass as a plain field in the same spec table as the diameter, which the
-// roster above WEIGHT_MEASURED sets out per maker. The column is 58 published figures and 62
-// estimates - 51 rows that genuinely publish nothing, 7 that could not be reached, and 4
+// roster above WEIGHT_MEASURED sets out per maker. The column is 58 published figures and 69
+// estimates - 56 rows that genuinely publish nothing, 8 that could not be reached, and 5
 // published head-only. The estimator below runs for anything not in WEIGHT_MEASURED.
 //
 // Pass 10 built this column on the premise that mass "is simply not in the spec sheets" and
@@ -2855,6 +3018,11 @@ const WEIGHT_HEAD_ONLY = {
   94: 75,   // Sinn 104 Klassik 12 - "Gewicht ohne Band: 75 Gramm"
   95: 73,   // Sinn 104 St Sa I    - "Gewicht ohne Band: 73 Gramm"
   96: 73,   // Sinn 104 St Sa I W  - same case, same figure
+  // Baltic, pass 28, and the first non-Sinn entry here. The Aquascaphe Titanium page states
+  // "Case weight: 55g" and the prose repeats it as "the 55-gram titanium case" - a head figure by
+  // Baltic's own wording, on a row priced on a rubber strap. The Bronze and GMT pages, and rows
+  // 2-4 before them, publish no weight at all, so this is the one Aquascaphe reference that does.
+  125: 55,  // Aquascaphe Titanium Black - "Case weight: 55g"
 };
 
 // Rows checked individually against the maker's own page and confirmed to publish NO weight.
@@ -2909,6 +3077,17 @@ const WEIGHT_UNPUBLISHED = new Set([
   110, 111, 112,          // Abinger - full specification blocks on abingerwatches.com covering
                           //   dimensions, movement, case, glass, dial, crown, bezel and strap.
                           //   No mass, and none on the Square listings either
+  122, 123,               // Second Hour - the SPECIFICATIONS block runs case, glass, dial,
+                          //   movement, crown, bracelet, water resistance and warranty with no
+                          //   mass. Their variant records DO carry "shippingWeight": 0.1 kg on
+                          //   every colour of both models, which is the parcel and not the watch -
+                          //   the same trap Traska's 454 g variant set in pass 22
+  124,                    // Hamilton - the Magento spec list has no weight field for this
+                          //   reference, and none of the label/value pairs is a mass
+  126, 127,               // Baltic Bronze and GMT - both Specifications blocks give lug-to-lug,
+                          //   thickness, bezel, glass, lume, movement, power reserve and water
+                          //   resistance, and neither states a weight. Only the Titanium on row
+                          //   125 does, and that one is head-only
 ]);
 
 // Checked, not settled. Separated from the set above because "the maker does not publish it" and
@@ -2924,7 +3103,17 @@ const WEIGHT_UNPUBLISHED = new Set([
 //   61          Swatch Royal Pop - swatch.com timed out, both locales
 //   66          NOMOS Club Campus - nomos-glashuette.com returns 403; two retailers list no
 //               weight; one search result claims 52 g but no page could be loaded to confirm
-const WEIGHT_UNRESOLVED = new Set([5, 13, 14, 15, 43, 61, 66]);
+//   121         Citizen Series 8 NB6080-51W, pass 28 - and this one is CITIZEN against CITIZEN.
+//               The German shop's "Gewicht" field reads 100 g; Citizen's own US product record
+//               for the same reference carries "c_dimWeight":"147". 47 g apart, both the maker's,
+//               and neither page qualifies its field. 100 g is what a 39.85 x 10.4 mm steel case
+//               weighs WITHOUT a bracelet; 147 g is what it weighs with one - row 48, a steel
+//               Tsuyosa on the same kind of bracelet, is 147 g exactly, and this file's own
+//               estimator puts the row at 143 g knowing nothing about either figure. So the
+//               likeliest reading is that the DE field is head-only and the US one is not. That
+//               is a reading, not a source, so the figure is not used - the same decision row 43
+//               above records, on the sibling reference, for the same reason.
+const WEIGHT_UNRESOLVED = new Set([5, 13, 14, 15, 43, 61, 66, 121]);
 
 // The physical model on its own, with the published-figure lookup deliberately left OUT, so the
 // estimator can be run against the rows where the answer is already known. estimateWeightG()
@@ -3122,6 +3311,19 @@ const WATCH_TYPES = {
   117: ['Pilot'],
   118: ['Diver', 'Sports'],
   119: ['Pilot'], 120: ['Pilot'],
+  // Pass 28. Row 121 follows rows 42/43, its own Series 8 siblings. Row 122 is 'Sports' on the
+  // same integrated-look, fixed-bezel, 100 m pattern and 'Dress' because Second Hour price the
+  // guilloché dial as the point of the watch - the row 108/116 call. Row 124 is 'Pilot' and
+  // nothing else: Hamilton file it under Khaki Aviation, and the maker's intent wins.
+  // Row 127 is the one to argue. It is an Aquascaphe case, but its bezel is a bidirectional 24-h
+  // scale rather than an elapsed-time one and it is rated 100 m, so it is NOT a diver - the same
+  // reasoning that keeps row 110 off 'Diver' at 200 m for having a 12 h bezel.
+  121: ['Sports'],
+  122: ['Sports', 'Dress'],
+  123: ['Diver'],
+  124: ['Pilot'],
+  125: ['Diver'], 126: ['Diver'],
+  127: ['GMT / traveller', 'Sports'],
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
@@ -3186,7 +3388,7 @@ const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (105 of 120 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (110 of 127 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -3313,6 +3515,29 @@ const MOVEMENT_TIER = {
   // spiral on both references' own product pages. One entry, one tier.
   'Automatic — Powermatic 80.111 (ETA C07.111, Nivachron)': 0.55,
   'Automatic — Powermatic 80.611 (Nivachron)': 0.55,
+  // Hamilton H-10, pass 28, at 0.55 - the same number as the Powermatic 80.111 directly above,
+  // because it is the same movement. Both are the ETA C07.111 with a Nivachron hairspring, sold
+  // inside Swatch Group under two brands' names, and this column rates architecture rather than
+  // marque - the identical argument the Mido block below uses to put the Caliber 80 on the
+  // Powermatic's number. It gets a key of its own only because Hamilton call it the H-10 on their
+  // own spec table, the same reason the Oris 733 and Laco 200 entries exist.
+  // The 80 h reserve earns nothing here: power reserve is its own sub-score at 40% of the
+  // timekeeping group, which is the SW200-2 Power+ rule. Nor does the Nivachron spiral, which is
+  // scored in EXTRAS.antimag at 0.5 exactly as the Tissot rows have it.
+  'Automatic — Hamilton H-10 (ETA C07.111, Nivachron)': 0.55,
+  // SOPROD C125, pass 28, at 0.60, level with the Sellita SW330-2 caller GMT above - and that row
+  // is the precedent this one is built on rather than an analogy. The C125 is a GMT module over
+  // the Soprod A10-2 (now the M100), which is the Swiss-made, licensed version of Seiko's cal.
+  // 4L25; Seiko designed the 4L family expressly as an ETA 2892-A2 competitor for the Swiss OEM
+  // market. So it is a conventional lever escapement with a real regulator in the 2892 CLASS, if
+  // not the 2892 line, which is the property that earns the SW330-2 and Mido's A31.111 their 0.60.
+  // It is a CALLER GMT - the module sits where the day disc would, so the quick-set hand is the
+  // 24-hour one and the local hour stays geared to the minutes - and so it gets none of the +0.05
+  // this table pays for a jumping local hour (C07.661, Miyota 9075). The second time zone is paid
+  // for in complications at the 'gmt' rate instead, which is precisely how the SW330-2 is handled.
+  // Soprod publish no finishing grade or regulated rate for the C125 as Baltic fit it, so it takes
+  // the raw number with no Élaboré-style step, the same treatment the bare SW200-1 key gets.
+  'Automatic caller GMT — SOPROD C125': 0.60,
   // Mido, pass 12. The Caliber 80 IS the Powermatic 80 - same ETA C07 family, same synthetic
   // escapement, same laser regulation - so it takes the same 0.55/0.50 pair, Nivachron or not.
   // Two Mido calibers sit above that and both for architectural reasons the base does not share:
@@ -3906,6 +4131,68 @@ const EXTRAS = {
   118:{lume:0.8,war:2,iso:0,antimag:0,clasp:0.7,service:0.6,bezel:1.0},
   119:{lume:0.8,war:2,iso:0,antimag:0,clasp:0.6,service:0.6,bezel:null},
   120:{lume:0.8,war:2,iso:0,antimag:0,clasp:0.3,service:0.6,bezel:null},
+  // --- Citizen Series 8, pass 28 (row 121) -------------------------------------------------
+  // Every value here is row 43's, the NB6051-59L, and that is the argument: same collection, same
+  // caliber, same bracelet construction, one case generation apart.
+  // lume 0.3 - Citizen name no luminous material on this page, and the Series 8 dress-sports rows
+  //   42, 43, 46, 48, 50 and 52-53 all sit at 0.3 for the same silence on the same shop.
+  // antimag 1.0 - the cal. 9051's rating, which Citizen put in this page's own headline copy
+  //   ("Das antimagnetische Kaliber 9051"). Rows 42-45 already carry it.
+  // clasp 0.8 - level with row 43 rather than row 42's 0.7: Citizen's "Armband massiv" field marks
+  //   the solid-link bracelet, which on Series 8 carries the push-button folding clasp.
+  //   The one soft number here, since Citizen do not name the clasp mechanism on this page.
+  // bezel null - no rotating bezel. war 5, service 0.9: Citizen's international terms, as row 43.
+  121:{lume:0.3,war:5,iso:0,antimag:1.0,clasp:0.8,service:0.9,bezel:null},
+  // --- Second Hour, pass 28 (rows 122-123) -------------------------------------------------
+  // lume splits, and the split is Second Hour's own wording rather than a judgement about glow.
+  //   Row 123 says "Genuine Grade A Swiss BGW9 SuperLuminova on all elements" - named compound,
+  //   named grade, and the bezel insert lume-treated too - which is verbatim the claim that puts
+  //   the four Traska rows and the five Vaer DS2 rows at 0.85. Row 122 names BGW9 on hands and
+  //   indices but no grade, so it takes 0.75, level with Baltic rows 2-3 for the same claim.
+  //   Neither reaches the 1.0 that X1 earns on rows 1, 77-86 and 106-109.
+  // clasp 0.8 on both - a milled clasp with push-button micro-adjustment (row 122) and with six
+  //   micro-adjustments (row 123). Deliberately BELOW Traska's 0.85, which is earned by a
+  //   tool-less clasp adjustable on the wrist; Second Hour claim neither of those words.
+  // bezel 1.0 on row 123, a ceramic insert they name outright, level with row 100. null on row
+  //   122, which has no rotating bezel at all.
+  // iso 0 on both, stated rather than assumed: ISO 6425 appears nowhere on either page, including
+  //   the 300 m Shoal Deep - which is the row where the claim would have been worth making.
+  // war 2 - "Two year international warranty", stated on both pages. service 0.5, the microbrand
+  //   rung Traska and Baltic sit on: direct sales, but a stock Miyota any watchmaker can service.
+  122:{lume:0.75,war:2,iso:0,antimag:0,clasp:0.8,service:0.5,bezel:null},
+  123:{lume:0.85,war:2,iso:0,antimag:0,clasp:0.8,service:0.5,bezel:1.0},
+  // --- Hamilton, pass 28 (row 124) ---------------------------------------------------------
+  // lume 0.5, the "standard unspecified" rung, and it is a finding rather than a placeholder:
+  //   Hamilton name no luminous material anywhere in this page's raw source - not a compound, not
+  //   a grade, not the words Super-LumiNova. That is the Oris case (rows 101-105) exactly, and a
+  //   weaker claim than the named-but-ungraded wording that puts rows 67 and 91-93 at 0.7.
+  // antimag 0.5 - Nivachron, which Hamilton state on this page and which the scale above prices
+  //   at 0.5. Row 17, a Tissot Powermatic with the same spiral, already carries it.
+  // clasp 0.3 - priced on the calf strap with Hamilton's "Dornschließe", a pin buckle.
+  // bezel null - fixed bezel. war 2 (Hamilton's stated international terms), service 0.9, the
+  //   Swatch Group rung rows 17-19 and 68-75 use.
+  124:{lume:0.5,war:2,iso:0,antimag:0.5,clasp:0.3,service:0.9,bezel:null},
+  // --- Baltic Aquascaphe, pass 28 (rows 125-127) -------------------------------------------
+  // lume 1.0 on row 125 and it is the only entry here that moves off the existing Baltic rows.
+  //   Baltic name "Super-Luminova C3 X1" on the Titanium - the X1 grade outright - and this file
+  //   has one rule for that, which is the 1.0 rows 1, 77-86 and 106-109 already carry. Rows 126
+  //   and 127 name C1: a compound with no grade, and the standard-output one where BGW9 and C3
+  //   are the high-output compounds, so 0.7 - a notch under rows 2-3's 0.75 for BGW9.
+  // clasp 0.3 on all three, which is pass 3's rule for this brand still applying: each row is
+  //   priced on the rubber sport strap and its buckle, and the bracelet is a paid upgrade. The
+  //   buckle is titanium, bronze and steel respectively, which changes the metal and not the
+  //   mechanism.
+  // bezel 1.0 on row 125, a ceramic insert Baltic name outright, level with row 100. 0.7 on rows
+  //   126 and 127, both sapphire inserts - the "steel/sapphire" rung, and below ceramic because
+  //   a sapphire insert chips where ceramic does not, though neither will scratch.
+  // comp ['gmt'] on row 127, the caller rate, not 'gmt_true'. See the C125 entry in MOVEMENT_TIER:
+  //   the quick-set hand is the 24-hour one, so this is the SW330-2 case and takes the SW330-2's
+  //   0.25 rather than the 0.5 rows 97 and 101 get for a jumping local hour.
+  // iso 0 on all three - Baltic claim no ISO 6425 anywhere, including on the 300 m Titanium.
+  // war 2 ("24 months warranty", stated on all three pages), service 0.5, as rows 2-4.
+  125:{lume:1.0,war:2,iso:0,antimag:0,clasp:0.3,service:0.5,bezel:1.0},
+  126:{lume:0.7,war:2,iso:0,antimag:0,clasp:0.3,service:0.5,bezel:0.7},
+  127:{lume:0.7,war:2,iso:0,antimag:0,clasp:0.3,service:0.5,bezel:0.7,comp:['gmt']},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -4082,6 +4369,27 @@ const FINISH = {
   // refuse. The window is not being scored here; it is the condition under which the decoration
   // behind it is, which is exactly the distinction between rows 119 and 120.
   117:0.50, 118:0.50, 119:0.60, 120:0.55,
+  // Pass 28.
+  //   121 Citizen Series 8, 0.70, taken from row 43 - the same collection, the same case-and-
+  //     bracelet construction, one generation apart. Row 42's 0.65 is the black-IP variant.
+  //   122 Second Hour Mandala 0.55 and 123 Shoal Deep 0.50. Traska is the anchor for both, and it
+  //     is an unusually close one: rows 97-100 sit at 0.50 for hand-applied indices, diamond-cut
+  //     hands and polished chamfers on a case hardened to ~1200 HV, held off 0.55 because "the
+  //     dials are printed". Second Hour's construction is the same to the Vickers number, so 123
+  //     lands on 0.50 exactly - an oil-pressed dial with applied lume-filled markers is that
+  //     level of craft - and 122 clears it on the one thing Traska is marked down for: an
+  //     artisan guilloché centre and a sloped chapter ring, which is dial construction rather
+  //     than dial printing. The custom-decorated rotor supports it rather than carrying it, and
+  //     that ordering is deliberate: the WINDOW is fittings.displayBack and is already scored, so
+  //     only decoration unusual in itself may count here - the Christopher Ward rule.
+  //   124 Hamilton 0.50, the middle of the Swatch Group mainstream band this file already holds
+  //     Tissot and Certina in at 0.45-0.55, and below the 0.60 the Longines and Oris rows take.
+  //     A brushed steel case and a matte dial with printed markings is Tissot-class work, and the
+  //     open caseback earns nothing here for the reason the Longines note above sets out.
+  //   125-127 Baltic 0.55, the figure rows 2-4 already carry. Nothing about the titanium, bronze
+  //     or GMT references changes the maker's level of finishing; the case material is scored in
+  //     CASE_SCORE and the bezel insert in EXTRAS.bezel, neither of them here.
+  121:0.70, 122:0.55, 123:0.50, 124:0.50, 125:0.55, 126:0.55, 127:0.55,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -4089,11 +4397,14 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 110 of 120 rows resolved - 50 see-through, 60 solid. The ten still open are
-// 12, 16, 38, 41, 54, 56, 58, 59, 82 and 91, all rows whose maker publishes no caseback detail,
-// and none of them was added after pass 21 - passes 22 to 26 settled every one of their own rows.
-// Row 91 is the newest and the best documented of the ten: Longines leave the field empty on the
-// Spirit 37 AND on the 40 mm sibling, so the gap is the collection's, not this reference's.
+// Research status: 115 of 127 rows resolved - 53 see-through, 62 solid. The twelve still open are
+// 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125 and 126, all rows whose maker publishes no caseback
+// detail. Row 91 is the best documented of them: Longines leave the field empty on the Spirit 37
+// AND on the 40 mm sibling, so the gap is the collection's, not this reference's.
+// 125 and 126 are pass 28's, and they are the first open rows since pass 21 - every pass from 22
+// to 26 settled all of its own. They stay open for the reason spelled out at the end of this
+// table: Baltic document the GMT's caseback and say nothing about the Titanium's or the Bronze's,
+// and rows 2-4's engraved solid backs are evidence about three other references.
 const DISPLAY_BACK = {
   // --- fittings research, pass 6 (see the footer note) ---
   // Vaer state the rule themselves: automatics get sapphire exhibition backs, quartz gets solid
@@ -4252,6 +4563,22 @@ const DISPLAY_BACK = {
   //   ROTOR engraving, which only makes sense on a watch whose rotor can be seen. Two independent
   //   signals from the maker's own page, against a field they simply left empty.
   117: 1, 118: 0, 119: 1, 120: 0,
+  // Pass 28. Five of the seven new rows are settled and two are deliberately left out.
+  // 121 is Citizen's own "Gehaeuseeigenschaften" field: "Glasboden, Gehaeuseboden verschraubt".
+  // 122 is Second Hour's own spec line, "Sapphire crystal exhibition case back for a glimpse of
+  //   the decorated movement"; 123 is the same block's "Embossed Case Back - our shark shoal
+  //   design", which is a solid disc.
+  // 124 is a 1, and it is the row this table nearly got wrong. Hamilton's spec list carries
+  //   "Offener Gehaeuseboden: Ja" - but the value is the third of four consecutive "Ja"s, and the
+  //   de-tagging step in the research script drops repeated lines, so the rendered-text view shows
+  //   the label with nothing after it. Read as an empty field this row would have been left absent
+  //   here, recording a fact Hamilton publish plainly as a gap. The raw body settles it.
+  // 127 is a 0 from Baltic's own titled "Engraved caseback" section on the GMT page.
+  // 125 and 126 are ABSENT on purpose. Baltic say nothing about the backs of the Titanium and
+  //   Bronze, and rows 2-4's engraved solid backs are a finding about three other references, not
+  //   this pair - inheriting it would be a guess wearing a citation. Absent costs these rows
+  //   nothing: imputeMissingSubs() fills the sub-score at the list mean.
+  121: 1, 122: 1, 123: 0, 124: 1, 127: 0,
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
@@ -4904,7 +5231,7 @@ function optionValuesFor(dim) {
 
 // How many rows each option would show, measured against every filter EXCEPT its own dimension's
 // (see matchesFilters). Recomputed on every pipeline pass, which is 5 x 90 predicate calls - the
-// same order as the search box, which rejoins a haystack string for all 120 rows per keystroke.
+// same order as the search box, which rejoins a haystack string for all 127 rows per keystroke.
 function optionCounts(dim) {
   const counts = new Map();
   WATCHES.filter(w => matchesFilters(w, dim.key)).filter(matchesSearch)
