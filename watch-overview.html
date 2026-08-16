@@ -353,6 +353,12 @@
 
   <p><b>What it did to everything else, which is less than any pass since 20.</b> Value moved by at most <b>0.10</b> spec points across the existing 112 — row 11, the AV86 Amalfi — with only 9 of 112 moving at all and none crossing zero. Four rows still changed band, which is what a boundary looks like rather than a reappraisal: rows 14 and 15, the two titanium Certinas, slip from <i>well above</i> to <i>above</i> the curve, while rows 105 and 108 rise from <i>well below</i> to <i>below</i> it. Sigma stays at 5, the spec range at 26–63, the spec/price correlation at 0.78 and the unscored count at 2 — rows 16 and 56, still the two cheapest, and this row was never going to rescue them at €385. The model gets slightly better: leave-one-out RMSE 5.91 → 5.88 and skill 58.3% → 59.0%, helped by the naive baseline worsening 9.14 → 9.19, and the resample figures tighten from 0.44/1.03 to 0.37/0.94. Sign flips go 0 → 1, which is the one figure moving the wrong way and is the expected cost of adding a row that sits well off the line. <b>Spec drift touched two rows</b>, by one rounding point each and in opposite directions: row 41 loses a point, row 55 gains one, both of them rows carrying an unresearched sub-score that <code>imputeMissingSubs()</code> fills with a list mean that just shifted. Pass 20's warning against claiming immunity stands, and pass 22's ceiling on it holds — nineteen rows moved three, one row moved two.</p>
 
+  <p><b>Christopher Ward reconfigured, pass 24 — no rows added, six rows re-specified (78, 80, 81, 82, 85, 86), and the list stays at 113.</b> This is the first pass here that changes which watch a row describes rather than adding a new one, and it exists because the shortlist had drifted from what was actually wanted: four of these six were listed on the strap or rubber CW happened to show, and two in a case size or dial that was never the intention. <b>The obstacle was that CW's options live nowhere in the URL.</b> Their storefront swaps dial, size and band client-side against a <code>Product-Variation</code> endpoint, so the address bar, cookies and session storage all stay identical whatever is selected on screen — which is why a chosen configuration cannot simply be sent as a link. That endpoint answers directly, though, and returns the resolved SKU, the EUR price, the image set and CW's full spec table for any combination, so every figure below is the maker's own data for the exact reference now listed, read the same way pass 16 read it. <b>Pass 16's rule survives intact:</b> each link is still a specific SKU rather than a model page, and each row is still scored on the exact band its own price buys.</p>
+
+  <p><b>Nothing here is a re-rating, and the price control says so.</b> Before any edit, all ten CW rows were re-fetched at the configurations pass 16 recorded, and every one still matched its listed price to the cent — €1,160, €1,260, €1,275 and the rest, unmoved since pass 16. So the entire movement in this pass is the option choice and none of it is CW repricing underneath the file. <b>What the options cost:</b> row 78 goes Blue → White/Black on the Consort bracelet (€1,260 → €1,315), row 80 from 36 mm to 39 mm on the Consort (€1,335 → €1,390), row 81 from the 36 mm on vintage oak leather to the 39 mm on the iLink Consort (€1,350 → €1,615), row 82 from the 44 mm on Aquaflex rubber to the 40 mm on the Consort (€1,375 → €1,640), row 85 from integrated rubber to the Grade 2 titanium bracelet (€1,695 → €2,195) and row 86 from Orange on rubber to Black on the titanium Bader bracelet (€2,250 → €2,705). <b>All ten CW rows are now bracelet rows</b>, which retires the four-strap-rows split pass 16 built its clasp reasoning around: nine sit at clasp 0.85 and only the Midnight stays at 0.7. <b>One clasp rating is not read off the watch's own page and is flagged as such.</b> The two C60 Consort rows say only "butterfly clasp" in their feature lists, which under pass 16's own precedent would mean 0.7; the Consort bracelet's separate product page states "Butterfly clasp with small micro adjust" plus quick-release, and that more specific source on the same component is what puts rows 78 and 82 at 0.85. Spec scores rise accordingly — row 81 by five points, 85 and 86 by three each, 82 by two, 80 by one — and <b>not one row outside the six drifted a single point</b>, which is what a change to researched fields rather than imputed ones should look like.</p>
+
+  <p><b>Where they land, and the bands moved underneath everyone.</b> The two titanium rows come out best: row 86 at 66 spec points extends a lead it already held as the highest-specified watch in the file, and row 85 rises from fifth to second at 64, pushing the €795 Tissot Seastar 1000 down to third. Both sit <i>above the curve</i> even after paying €455 and €500 for their bracelets — the model's verdict is that CW's bracelet prices buy more than this list charges for them. Rows 81 and 82 land <i>as expected</i> and row 80 <i>above</i>. Support is comfortable everywhere, 11 comparable rows at worst on the €2,705 Lumière, and the unscored count stays at 2 — rows 16 and 56, still the two cheapest. <b>The honest caveat is that residual sigma moves 5 → 6</b>, so unlike pass 16 the colour bands genuinely did shift under rows that did not change: 9 rows change band and 103 of 113 move at all, but the largest residual change on any row is 2.70 spec points and it belongs to row 81, which is one of the six. The model itself is fractionally worse and within noise — leave-one-out RMSE 5.88 → 5.95, skill 59.0% → 59.3% on a naive baseline that also worsened, resample 0.37/0.94 → 0.40/0.90, sign flips unchanged at 1. <b>The weight estimator improves, and the reason is the finding of this pass.</b> RMSE 14.6 → 13.8 g, median absolute error 6.5% → 6.0%, within ±15% 42 → 44 of 51, on a test set that did not grow. Pass 16 concluded that CW rows were about twice as hard to estimate as the rest and left the question of whether that was CW-specific open; pass 21 partly answered it on Longines. This closes it. <b>The same ten references, re-specified onto bracelets, halve their error</b> — mean absolute 15.0% → 8.7%, mean signed +5.2% → −1.3%, 9 of 10 now within ±15% — so the band mix was doing all of the work and the maker none of it. The whole-set split sharpens to 47 bracelet rows at +0.9% signed against 4 strap rows at +30.6%, with the caveat that 4 rows is now a thin base for a bias that large. <b>The one internally contradicted figure in the weight column also leaves it:</b> row 82's published 91 g implied an 8 g rubber strap where the identical strap on the Lumière implied 24 g, and on the Consort bracelet CW publish 158 g, which the estimator reads to within 4.4%. The contradiction is not resolved — the row simply no longer rests on it, and nothing was dropped to get there.</p>
+
 
   <p><b>MAEN Hudson 38 GMT MKII, pass 20 — one row added (90), and the list goes from 89 to 90.</b> The second MAEN here and the second row on the Sellita SW330-2, which means it needed no new movement tier: it takes the 0.60 already argued for the two Christopher Wards, and its caller GMT is paid for in complications at 0.25 rather than the 0.5 a jumping local hour earns. <b>It lands at 48 spec points and −5.7 on Value, below the curve</b>, in a well-populated stretch of the price range — 30 comparable rows, so this is not an extrapolation. The reason is legible rather than mysterious: a 38 mm 300 m steel diver with a box-domed sapphire, X1 lume and an Élaboré Swiss GMT is a genuinely good specification, but at €1,079 it is being compared against the Mido Ocean Star GMT and the Christopher Wards, which bring a true traveller GMT, a display back or a bracelet at similar money. Specs are strong; the price is where the list disagrees.</p>
   <p><b>Three judgement calls, all recorded beside the numbers.</b> The <b>price</b> is €1,079.20, MAEN's own 20% site-wide reduction from a €1,349 list — the same arrangement row 1 already carries, and handled the way pass 17 handled poljot24: the selling price goes in <code>priceValue</code> so the cell, the sort and the model read one number, with the UVP shown alongside. The <b>height</b> is the weakest figure on the row. MAEN publish 11 mm "excluding crystal" and no total, so 13 mm is carried across from the MK5 on row 1, which shares the case family and the box-domed sapphire; it is an inference, not a measurement. The <b>bezel</b> is scored 0.4, an aluminium insert, inferred from an absence: MAEN's spec line says only "60 Click Bi-Directional Sandblasted Bezel" where their MK5 page names ceramic, and this is a maker who advertises ceramic when it is ceramic. The insert is also two-tone — blue/black on this reference, brown/black on the M1.3.3, which is how the two are told apart — and two-tone is cheap to anodise and expensive to sinter. If it proves to be ceramic the row gains about 1.3 spec points, comfortably inside the model's own ±4 of noise. <b>Weight</b> is estimated despite MAEN publishing 129 g, because that figure belongs to the five-link bracelet and this reference is priced on the TPU strap — taking it would describe a watch costing €151.20 more than the one in the Price cell, which is the same trap the Christopher Ward "Case Weight" field sets.</p>
@@ -1483,18 +1489,18 @@ const WATCHES = [
   waterResDisplay:'200 m (20 ATM)', waterResM:200,
   priceDisplay:'€1,160', priceValue:1160, priceCurrency:'EUR' },
 
-{ id:78, brand:'Christopher Ward', name:'Christopher Ward C60 Trident Pro 300 38 (C60-38ADA31S0BB1-B0)', desc:'Blue · 300 m diver, zirconia ceramic bezel, date',
-  link:'https://www.christopherward.com/c60-trident-pro-300/C60-38ADA31S0BB1-B0.html',
-  img:'https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dw15e07f85/images/WATCHES/C60-38ADA31S0BB1-B0/C60-38ADA31S0BB1-B0_Picture_1.jpg?sw=600&sh=600',
+{ id:78, brand:'Christopher Ward', name:'Christopher Ward C60 Trident Pro 300 38 (C60-38ADA31S0KW1-B1)', desc:'White/Black · 300 m diver, zirconia ceramic bezel, date',
+  link:'https://www.christopherward.com/c60-trident-pro-300/C60-38ADA31S0KW1-B1.html',
+  img:'https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dw44e17291/images/WATCHES/C60-38ADA31S0KW1-B1/C60-38ADA31S0KW1-B1_Picture_1.jpg?sw=600&sh=600',
   diameterDisplay:'38 mm', diameterMm:38, l2lDisplay:'45 mm',
   heightDisplay:'11 mm', heightMm:11,
   caseDisplay:'Light-catcher stainless steel (zirconia ceramic bezel, sapphire display back)', caseCategory:'Steel',
-  bandDisplay:'Steel Bader bracelet (ratchet clasp, quick-release)',
+  bandDisplay:'Steel Consort bracelet (butterfly clasp w/ micro-adj., quick-release)',
   glassDisplay:'Sapphire, anti-reflective', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Sellita SW200-1 (Élaboré)', movementType:'Automatic', movementCostDisplay:'~$170 (Sellita, new)',
   powerReserveDisplay:'38 h', accuracyDisplay:'−5/+12 s/day',
   waterResDisplay:'300 m (30 ATM)', waterResM:300,
-  priceDisplay:'€1,260', priceValue:1260, priceCurrency:'EUR' },
+  priceDisplay:'€1,315', priceValue:1315, priceCurrency:'EUR' },
 
 { id:79, brand:'Christopher Ward', name:'Christopher Ward C65 Dune Aeolian 38 (C65-38A3H4-S00E0-B0)', desc:'Sand · field watch, glass-box sapphire, fixed bezel, no date',
   link:'https://www.christopherward.com/c65-dune-aeolian/C65-38A3H4-S00E0-B0.html',
@@ -1511,48 +1517,48 @@ const WATCHES = [
   waterResDisplay:'150 m (15 ATM)', waterResM:150,
   priceDisplay:'€1,275', priceValue:1275, priceCurrency:'EUR' },
 
-{ id:80, brand:'Christopher Ward', name:'Christopher Ward C63 Sealander Automatic 36 (C63-36ADA4-S00W0-B0)', desc:'White · everyday automatic, 65 h SW200-2 Power+, iLink bracelet, date',
-  link:'https://www.christopherward.com/c63-sealander-automatic/C63-36ADA4-S00W0-B0.html',
-  img:'https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dw48f514d0/images/WATCHES/C63-36ADA4-S00W0-B0/C63-36ADA4-S00W0-B0_Picture_1.jpg?sw=600&sh=600',
-  diameterDisplay:'36 mm', diameterMm:36, l2lDisplay:'42 mm',
+{ id:80, brand:'Christopher Ward', name:'Christopher Ward C63 Sealander Automatic 39 (C63-39ADA4-S00W0-B1)', desc:'White · everyday automatic, 65 h SW200-2 Power+, iLink bracelet, date',
+  link:'https://www.christopherward.com/c63-sealander-automatic/C63-39ADA4-S00W0-B1.html',
+  img:'https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dw06784b25/images/WATCHES/C63-39ADA4-S00W0-B1/C63-39ADA4-S00W0-B1_Picture_1.jpg?sw=600&sh=600',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'45 mm',
   heightDisplay:'10.9 mm', heightMm:10.9,
   caseDisplay:'Light-catcher stainless steel (fixed polished bezel, sapphire display back)', caseCategory:'Steel',
-  bandDisplay:'Steel Bader bracelet (iLink hand-removable links, ratchet clasp)',
+  bandDisplay:'Steel Consort bracelet (iLink hand-removable links, ratchet clasp)',
   glassDisplay:'Sapphire, anti-reflective', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Sellita SW200-2 Power+ (Élaboré)', movementType:'Automatic', movementCostDisplay:'~$190 (Sellita, new, est.)',
   // CW quote "minimum 60h - typical 65h". The guaranteed figure is the one comparable to the
   // nominal hours every other row in this column carries, so 60 is what sorts and scores.
   powerReserveDisplay:'60 h (typ. 65 h)', accuracyDisplay:'−5/+12 s/day',
   waterResDisplay:'150 m (15 ATM)', waterResM:150,
-  priceDisplay:'€1,335', priceValue:1335, priceCurrency:'EUR' },
+  priceDisplay:'€1,390', priceValue:1390, priceCurrency:'EUR' },
 
-{ id:81, brand:'Christopher Ward', name:'Christopher Ward C63 Sealander GMT 36 (C63-36AGM4-S00B0-VK)', desc:'Sky Blue · caller GMT on vintage oak leather, date',
-  link:'https://www.christopherward.com/c63-sealander-gmt/C63-36AGM4-S00B0-VK.html',
-  img:'https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dw89b4b27d/images/WATCHES/C63-36AGM4-S00B0-VK/C63-36AGM4-S00B0-VK_Picture_1.jpg?sw=600&sh=600',
-  diameterDisplay:'36 mm', diameterMm:36, l2lDisplay:'42 mm',
+{ id:81, brand:'Christopher Ward', name:'Christopher Ward C63 Sealander GMT 39 (C63-39AGM4-S00B0-B1)', desc:'Sky Blue · caller GMT on iLink Consort bracelet, date',
+  link:'https://www.christopherward.com/c63-sealander-gmt/C63-39AGM4-S00B0-B1.html',
+  img:'https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dwc8ed3677/images/WATCHES/C63-39AGM4-S00B0-B1/C63-39AGM4-S00B0-B1_Picture_1.jpg?sw=600&sh=600',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'45 mm',
   heightDisplay:'11.3 mm', heightMm:11.3,
   caseDisplay:'Light-catcher stainless steel (fixed bezel, sapphire display back)', caseCategory:'Steel',
-  bandDisplay:'Vintage oak leather strap (quick-release pins)',
+  bandDisplay:'Steel Consort bracelet (iLink hand-removable links, ratchet clasp)',
   glassDisplay:'Sapphire, anti-reflective', glassCategory:'Sapphire',
   movementDisplay:'Automatic caller GMT — Sellita SW330-2 (Élaboré)', movementType:'Automatic', movementCostDisplay:'~$300 (Sellita GMT, new, est.)',
   powerReserveDisplay:'50 h (typ. 56 h)', accuracyDisplay:'−5/+12 s/day',
   waterResDisplay:'150 m (15 ATM)', waterResM:150,
-  priceDisplay:'€1,350', priceValue:1350, priceCurrency:'EUR' },
+  priceDisplay:'€1,615', priceValue:1615, priceCurrency:'EUR' },
 
-{ id:82, brand:'Christopher Ward', name:'Christopher Ward C60 Trident GMT 300 44 (C60-44AGM31S0KK0-RK)', desc:'Black · 300 m caller-GMT diver, bi-directional ceramic 24 h bezel',
-  link:'https://www.christopherward.com/c60-trident-gmt-300/C60-44AGM31S0KK0-RK.html',
-  img:'https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dwaab84567/images/WATCHES/C60-44AGM31S0KK0-RK/C60-44AGM31S0KK0-RK_Picture_1.jpg?sw=600&sh=600',
-  diameterDisplay:'44 mm', diameterMm:44, l2lDisplay:'51.4 mm',
-  heightDisplay:'12.15 mm', heightMm:12.15,
+{ id:82, brand:'Christopher Ward', name:'Christopher Ward C60 Trident GMT 300 40 (C60-40AGM31S0KK0-B1)', desc:'Black · 300 m caller-GMT diver, bi-directional ceramic 24 h bezel',
+  link:'https://www.christopherward.com/c60-trident-gmt-300/C60-40AGM31S0KK0-B1.html',
+  img:'https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dwa6361a9e/images/WATCHES/C60-40AGM31S0KK0-B1/C60-40AGM31S0KK0-B1_Picture_1.jpg?sw=600&sh=600',
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'47.5 mm',
+  heightDisplay:'11.7 mm', heightMm:11.7,
   caseDisplay:'Light-Catcher stainless steel (bi-directional ceramic 24 h bezel)', caseCategory:'Steel',
-  bandDisplay:'Aquaflex rubber strap (quick-release)',
+  bandDisplay:'Steel Consort bracelet (butterfly clasp w/ micro-adj., quick-release)',
   glassDisplay:'Sapphire, anti-reflective', glassCategory:'Sapphire',
   movementDisplay:'Automatic caller GMT — Sellita SW330-2 (Élaboré)', movementType:'Automatic', movementCostDisplay:'~$300 (Sellita GMT, new, est.)',
   // The one CW reference quoted at ±20 s/day rather than −5/+12. Same caliber as row 81, same
   // Élaboré grade, four times the tolerance - CW's own figure, recorded rather than smoothed.
   powerReserveDisplay:'50 h (typ. 56 h)', accuracyDisplay:'±20 s/day',
   waterResDisplay:'300 m (30 ATM)', waterResM:300,
-  priceDisplay:'€1,375', priceValue:1375, priceCurrency:'EUR' },
+  priceDisplay:'€1,640', priceValue:1640, priceCurrency:'EUR' },
 
 { id:83, brand:'Christopher Ward', name:'Christopher Ward The Twelve 40 (C12-40ADA1-S00B1-B0)', desc:'Glacier Blue · integrated-bracelet sports auto, 12-sided bezel, date',
   link:'https://www.christopherward.com/the-twelve/C12-40ADA1-S00B1-B0.html',
@@ -1583,31 +1589,31 @@ const WATCHES = [
   waterResDisplay:'100 m (10 ATM)', waterResM:100,
   priceDisplay:'€1,425', priceValue:1425, priceCurrency:'EUR' },
 
-{ id:85, brand:'Christopher Ward', name:'Christopher Ward The Twelve 40 Ti (C12-40ADC1-T00B0-RK)', desc:'Astral Blue · Grade 2 titanium, COSC SW300-1, integrated rubber',
-  link:'https://www.christopherward.com/the-twelve-40-%28ti%29/C12-40ADC1-T00B0-RK.html',
-  img:'https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dw042448ae/images/WATCHES/C12-40ADC1-T00B0-RK/C12-40ADC1-T00B0-RK_Picture_1.jpg?sw=600&sh=600',
+{ id:85, brand:'Christopher Ward', name:'Christopher Ward The Twelve 40 Ti (C12-40ADC2-T00B1-B0)', desc:'Glacier Blue · Grade 2 titanium, COSC SW300-1, titanium bracelet',
+  link:'https://www.christopherward.com/the-twelve-40-%28ti%29/C12-40ADC2-T00B1-B0.html',
+  img:'https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dw74e106e6/images/WATCHES/C12-40ADC2-T00B1-B0/C12-40ADC2-T00B1-B0_Picture_1.jpg?sw=600&sh=600',
   diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'44.5 mm',
   heightDisplay:'8.95 mm', heightMm:8.95,
   caseDisplay:'Grade 2 titanium, 12-sided fixed bezel (sapphire exhibition back)', caseCategory:'Titanium',
-  bandDisplay:'Integrated rubber strap (dress buckle, quick-release)',
+  bandDisplay:'Grade 2 titanium bracelet (butterfly clasp w/ micro-adj., screw links, quick-release)',
   glassDisplay:'Sapphire, anti-reflective', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Sellita SW300-1 (COSC chronometer)', movementType:'Automatic', movementCostDisplay:'~$400 (Sellita, COSC grade, est.)',
   powerReserveDisplay:'56 h', accuracyDisplay:'−4/+6 s/day',
   waterResDisplay:'100 m (10 ATM)', waterResM:100,
-  priceDisplay:'€1,695', priceValue:1695, priceCurrency:'EUR' },
+  priceDisplay:'€2,195', priceValue:2195, priceCurrency:'EUR' },
 
-{ id:86, brand:'Christopher Ward', name:'Christopher Ward C60 Trident Lumière 41 (C60-41C3H31T0KO0-RKO)', desc:'Orange · 300 m titanium diver, Globolight XP indexes, helium valve, COSC',
-  link:'https://www.christopherward.com/c60-trident-lumi%C3%A8re/C60-41C3H31T0KO0-RKO.html',
-  img:'https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dwd952a947/images/WATCHES/C60-41C3H31T0KO0-RKO/C60-41C3H31T0KO0-RKO_Picture_1.jpg?sw=600&sh=600',
+{ id:86, brand:'Christopher Ward', name:'Christopher Ward C60 Trident Lumière 41 (C60-41C3H31T0KK0-B0)', desc:'Black · 300 m titanium diver, Globolight XP indexes, helium valve, COSC',
+  link:'https://www.christopherward.com/titanium-watches/c60-trident-lumi%C3%A8re/C60-41C3H31T0KK0-B0.html',
+  img:'https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dw90a1e5fd/images/WATCHES/C60-41C3H31T0KK0-B0/C60-41C3H31T0KK0-B0_Picture_1.jpg?sw=600&sh=600',
   diameterDisplay:'41 mm', diameterMm:41, l2lDisplay:'47.9 mm',
   heightDisplay:'10.85 mm', heightMm:10.85,
   caseDisplay:'Grade 2 titanium (ceramic dive bezel, helium valve, sapphire display back)', caseCategory:'Titanium',
-  bandDisplay:'Aquaflex rubber strap (quick-release pins)',
+  bandDisplay:'Grade 2 titanium Bader bracelet (ratchet clasp, screw links, quick-release)',
   glassDisplay:'Sapphire, anti-reflective', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Sellita SW300-1 (COSC chronometer)', movementType:'Automatic', movementCostDisplay:'~$400 (Sellita, COSC grade, est.)',
   powerReserveDisplay:'56 h', accuracyDisplay:'−4/+6 s/day',
   waterResDisplay:'300 m (30 ATM)', waterResM:300,
-  priceDisplay:'€2,250', priceValue:2250, priceCurrency:'EUR' },
+  priceDisplay:'€2,705', priceValue:2705, priceCurrency:'EUR' },
 
 // --- Seagull ST19 chronographs, pass 17 ----------------------------------------------------
 // Three rows from poljot24.de, the long-standing German specialist for Russian and Chinese
@@ -2360,26 +2366,32 @@ function measuredAccuracyFor(w) {
 // slightly worse again, in the same direction and for the same structural reason - see below.
 // Pass 23's ONE row moved it more than either: the Junkers on row 113 is the largest single error
 // in the set at +76.1%, and on its own it takes mean absolute error from 9.8% to 11.1%.
-//                        28 rows (p11)   36 rows (p12)   47 rows (p16)   50 rows (p21)   51 rows (p23)
-//   mean absolute error       8.5%           8.2%            9.5%            9.8%           11.1%
-//   median absolute error     6.1%           5.8%            6.1%            6.5%            6.5%
-//   RMSE                     11.8 g         11.9 g          13.5 g          13.9 g          14.6 g
-//   within +-15%             25 of 28       32 of 36        40 of 47        42 of 50        42 of 51
-//   mean signed error        +2.6%          +1.6%           +2.4%           +3.1%           +4.5%  (+ = reads heavy)
-// The ten CW rows on their own: mean absolute error 15.0%, RMSE 18.8 g, 7 of 10 within +-15%,
-// mean signed +5.2%. That is roughly twice the error the other 37 rows produce (8.0% / 11.7 g /
-// 33 of 37), and splitting the CW rows by band type says exactly where it comes from:
-//   on a bracelet   6 rows, mean signed  -2.2%, 5 of 6 within +-15%
-//   on a strap      4 rows, mean signed +16.4%, 2 of 4 within +-15%
+//                        28 rows (p11)   36 rows (p12)   47 rows (p16)   50 rows (p21)   51 rows (p23)   51 rows (p24)
+//   mean absolute error       8.5%           8.2%            9.5%            9.8%           11.1%            9.8%
+//   median absolute error     6.1%           5.8%            6.1%            6.5%            6.5%            6.0%
+//   RMSE                     11.8 g         11.9 g          13.5 g          13.9 g          14.6 g          13.8 g
+//   within +-15%             25 of 28       32 of 36        40 of 47        42 of 50        42 of 51        44 of 51
+//   mean signed error        +2.6%          +1.6%           +2.4%           +3.1%           +4.5%           +3.2%  (+ = reads heavy)
+// Pass 24 is the only column here that moved WITHOUT the test set growing. It re-specified six CW
+// rows onto the bracelets they are now priced on, swapping six published figures for six others,
+// and every statistic improved. That is not the estimator getting better: it is the test set losing
+// four of its eight strap rows, which is the entire finding below.
+// The ten CW rows on their own, now all bracelet rows: mean absolute error 8.7%, RMSE 15.0 g, 9 of
+// 10 within +-15%, mean signed -1.3%. Pass 16 measured 15.0% / 18.8 g / 7 of 10 / +5.2% on the same
+// ten REFERENCES and read it as CW being about twice as hard to estimate as the other 37 rows. That
+// reading was wrong, and it is worth saying so plainly rather than quietly restating the number:
+// four of those ten were priced on straps then and are priced on bracelets now, the figures come
+// from the same field of the same maker's spec table, and the error halved. The band mix was doing
+// all of the work; the maker was doing none of it.
 // The strap rows are where the estimator breaks, and the reason is structural rather than
-// CW-specific. The cylinder-times-0.55 term already lands near the mass of a COMPLETE watch head
-// on these cases - it predicts 50 g for the Sealander GMT's case, which is precisely the 50 g CW
-// publish for the head - and the estimator then adds 25 g of movement on top of it. On a bracelet
-// row the flat 62 g bracelet allowance is too HEAVY for CW's comparatively light bracelets, and
-// the two errors partly cancel; on a strap row nothing cancels and the double-count shows. This
-// is the same small-case pattern already recorded for the Seiko Presage and the 40 mm Seagull,
-// seen from a new angle: it is not really about case size, it is that the fill factor and the
-// movement allowance overlap.
+// maker-specific. The cylinder-times-0.55 term already lands near the mass of a COMPLETE watch head
+// on these cases - it predicted 50 g for the 36 mm Sealander GMT's case, which is precisely the
+// 50 g CW published for that head - and the estimator then adds 25 g of movement on top of it. On a
+// bracelet row the flat 62 g bracelet allowance is too HEAVY for CW's comparatively light
+// bracelets, and the two errors partly cancel; on a strap row nothing cancels and the double-count
+// shows. This is the same small-case pattern already recorded for the Seiko Presage and the 40 mm
+// Seagull, seen from a new angle: it is not really about case size, it is that the fill factor and
+// the movement allowance overlap.
 // Pass 21's three Longines rows confirm that on a different maker and on BRACELETS rather than
 // straps, which is what closes the question of whether it was CW-specific. All three read heavy
 // and they rank strictly by case size: Spirit 37 +23.8% (142 g estimated, 114.7 published),
@@ -2388,31 +2400,37 @@ function measuredAccuracyFor(w) {
 // Three systematic biases now show up, and all three are deliberately LEFT IN rather than fitted
 // away, because correcting any of them means tuning the estimator on the same rows used to test
 // it - which would leave no way to tell whether the remaining 62 estimates are any good:
-//   titanium   7 rows, mean -5.2%. Pass 12 saw -5.6% on 5 rows; the two CW titanium rows (-1.5%
-//              and -6.5%) sit inside that pattern, so the bias is now better evidenced, not
-//              smaller. The 4.5 density is right for the alloy, but titanium bracelets and straps
-//              are evidently more solid than the flat 38 g allowance.
+//   titanium   7 rows, mean -5.3%. Pass 12 saw -5.6% on 5 rows; the two CW titanium rows (-2.2%
+//              and -6.7%, both now on titanium bracelets) sit inside that pattern, so the bias is
+//              better evidenced, not smaller. The 4.5 density is right for the alloy, but titanium
+//              bracelets and straps are evidently more solid than the flat 38 g allowance. All
+//              seven land within +-15%, which no other cut of this test set manages.
 //   head/case  the fill-factor overlap described above, worst on small cases and on straps.
-//              Pass 23 measured this across the WHOLE set rather than one maker's rows, and the
-//              split is stark: the 43 bracelet rows are essentially unbiased at +1.0% mean signed
-//              and 8.0% mean absolute, while the 8 strap rows read +23.5% signed and 27.4%
-//              absolute. The two worst are the two LEATHER rows - the Junkers at +76.1% and the
-//              Sealander GMT at +45.0% - and on a case as light as the Junkers's the flat 12 g
-//              strap allowance is a rounding error beside the fill factor: the cylinder term
-//              alone returns 59 g where the published total leaves room for about 24 g, i.e. a
-//              fill fraction nearer 0.22 than 0.55 on a thin dress case with an acrylic crystal.
-//              That refines pass 16's reading, which put the strap bias on the band allowance
-//              colliding with the movement term. No thin quartz dress watch was in the test set
-//              before pass 23, so this end of the range had never been checked at all.
+//              Pass 23 measured this across the WHOLE set rather than one maker's rows, and pass
+//              24 sharpened it by moving four rows across the line: the 47 bracelet rows are
+//              essentially unbiased at +0.9% mean signed and 7.7% mean absolute, while the 4
+//              remaining strap rows read +30.6% signed and 34.3% absolute. Every strap row that
+//              left did so by being re-specified onto the bracelet its price buys, not by being
+//              dropped, so this is a cleaner cut of the same evidence rather than a smaller one -
+//              but 4 rows is a thin base for a bias this large, and it is now the weakest-evidenced
+//              number in this block. The two worst are the Junkers at +76.1% and the MoonSwatch at
+//              +44.8%, and on a case as light as the Junkers's the flat 12 g strap allowance is a
+//              rounding error beside the fill factor: the cylinder term alone returns 59 g where
+//              the published total leaves room for about 24 g, i.e. a fill fraction nearer 0.22
+//              than 0.55 on a thin dress case with an acrylic crystal. That refines pass 16's
+//              reading, which put the strap bias on the band allowance colliding with the movement
+//              term. No thin quartz dress watch was in the test set before pass 23, so this end of
+//              the range had never been checked at all. Just one LEATHER row is left in the set.
 //   bioceramic 1 row (MoonSwatch, id 63) at +44.8%: estimated 42 g against a published 29 g.
 //              Rows 61 and 62 are the same material with no published figure, so they are the
 //              least reliable estimates in the column. One data point is not enough to re-fit a
 //              density on, but it is enough to warn about.
-// One row in the test set is itself doubtful and is left in the arithmetic above rather than
-// quietly dropped: the Trident GMT 300 (id 82), whose published 91 g implies an 8 g rubber strap
-// where the identical strap on the Lumiere implies 24 g. Excluding it moves the 47-row figures to
-// 9.1% / 13.1 g / 40 of 46 / +1.8% - i.e. it accounts for a noticeable part of the degradation but
-// nothing like all of it. See the note on the row in WEIGHT_MEASURED.
+// The one figure in this set that was doubtful on its own maker's evidence has left it. Passes 16
+// to 23 carried the Trident GMT 300 (id 82) at a published 91 g that implied an 8 g rubber strap,
+// where the identical strap on the Lumiere implied 24 g - the only entry here contradicted by
+// another number from the same maker. Pass 24 re-specified that row onto the Consort bracelet, and
+// CW publish 158 g for it, which the estimator reads to within 4.4%. The contradiction was never
+// resolved; the row simply no longer depends on it. Nothing was dropped to achieve that.
 // Bronze at 8.8 is CuSn8 tin bronze, the alloy used for watch cases - denser than 316L, so the
 // estimator correctly reads the one bronze row as heavier than the same case in steel.
 const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceramic: 2.0 };
@@ -2499,26 +2517,15 @@ const WEIGHT_MEASURED = {
   // is the one used - which also makes CW the only maker here from whom the head-only figure
   // could have been taken by mistake. All ten rows, no gaps.
   77: 120,  // C60 Trident Reef 41, Bader bracelet (case 68 g)
-  78: 153,  // C60 Trident Pro 300 38, Bader bracelet (case 61 g)
+  78: 153,  // C60 Trident Pro 300 38, Consort bracelet (case 61 g)
   79: 150,  // C65 Dune Aeolian 38, Bader bracelet (case 55 g)
-  80: 141,  // C63 Sealander Automatic 36, Bader bracelet (case 50 g)
-  81: 60,   // C63 Sealander GMT 36, vintage oak leather (case 50 g)
-  // SUSPECT, and used anyway. CW give case 83 g and with-strap 91 g, so 8 g for a 22 mm Aquaflex
-  // rubber strap - while the Lumiere (row 86) gives 53 g and 77 g for the SAME 22 mm Aquaflex,
-  // i.e. 24 g. One of the two is wrong and it is almost certainly this one; a plausible total
-  // would be nearer 107 g. It is kept because it is CW's own published field and reproducible
-  // from their page, which is the standard row 21 was kept under, rather than the unreproducible
-  // figure row 43 was dropped for. It is called out here and in the footer because it is the one
-  // figure in this column contradicted by its OWN maker's other published number, which is a
-  // different and worse complaint than merely disagreeing with the estimator.
-  // (Corrected in pass 23: this note used to call it "the single worst outlier in the estimator's
-  // test set", which it was not even when written - rows 81 and 63 both miss by more - and row 113
-  // now misses by +76%. Its distinction is the internal contradiction, not the margin.)
-  82: 91,   // C60 Trident GMT 300 44, Aquaflex rubber (case 83 g) - see note above
+  80: 138,  // C63 Sealander Automatic 39, Consort bracelet (case 59 g)
+  81: 139,  // C63 Sealander GMT 39, Consort bracelet (case 60 g)
+  82: 158,  // C60 Trident GMT 300 40, Consort bracelet (case 67 g)
   83: 160,  // The Twelve 40, integrated steel bracelet (case 65 g)
   84: 157,  // The Twelve Midnight 38, integrated steel bracelet (case 60 g)
-  85: 66,   // The Twelve 40 Ti, integrated rubber (case 41 g)
-  86: 77,   // C60 Trident Lumiere 41, Aquaflex rubber (case 53 g)
+  85: 93,   // The Twelve 40 Ti, titanium bracelet (case 41 g)
+  86: 105,  // C60 Trident Lumiere 41, titanium Bader bracelet (case 53 g)
   // --- Longines, "case_weight" on the product record, pass 21 -------------------------------
   // An eighth maker publishing it, and it was here the whole time: the field is in the product
   // data behind the spec accordion rather than in the rendered prose, which is why passes 6 and
@@ -3251,22 +3258,26 @@ const EXTRAS = {
   // it for 60 months, and because a stock Sellita can be serviced by any watchmaker; well below
   // the 0.9 the Swatch Group and Citizen networks get, since CW sell direct with no dealers.
   // DATA ONLY, not scored.
-  // clasp - each row is rated on the strap its OWN price buys, per the rule pass 3 set. The four
-  // Bader/Sealander bracelet rows get 0.85 for a micro-adjustable ratchet clasp with quick
-  // release; The Twelve 40 gets the same for a butterfly with micro-adjustment; the Midnight 0.7
-  // for the same butterfly WITHOUT it, which is a difference CW's own feature lists spell out.
-  // The four rubber and leather rows are buckles with quick-release pins - 0.35, the same band
-  // MAEN and Baltic sit in for the same reason.
+  // clasp - each row is rated on the band its OWN price buys, per the rule pass 3 set. All ten are
+  // bracelet rows, so nine sit at 0.85 and only the Midnight is lower: the Bader and iLink Consort
+  // rows for a micro-adjustable ratchet clasp with quick release, The Twelve 40 and the titanium
+  // rows for a butterfly with micro-adjustment, and the Midnight 0.7 for the same butterfly
+  // WITHOUT it, which is a difference CW's own feature lists spell out.
+  // The two C60 Consort rows (78, 82) are the one place that rating is NOT read off the watch's
+  // own page, which says only "butterfly clasp". The Consort bracelet's own product page states
+  // "Butterfly clasp with small micro adjust" plus quick-release, and that is the more specific
+  // source on the same component, so it decides these two - the difference is 0.85 against the
+  // Midnight's 0.7, and it is recorded here because the watch page alone would have said 0.7.
   77:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.85,service:0.6,bezel:0.4},   // anodised aluminium insert - the only non-ceramic dive bezel of the three
   78:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.85,service:0.6,bezel:1.0},   // zirconia ceramic, lume-filled numerals
   79:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.85,service:0.6,bezel:null},  // field watch, fixed bezel - factor excluded, not penalised
   80:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.85,service:0.6,bezel:null},  // fixed polished steel bezel
-  81:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.35,service:0.6,bezel:null,comp:['gmt']},
-  82:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.35,service:0.6,bezel:1.0,comp:['gmt']},   // bi-directional ceramic 24 h bezel: functional, so it counts
+  81:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.85,service:0.6,bezel:null,comp:['gmt']},
+  82:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.85,service:0.6,bezel:1.0,comp:['gmt']},   // bi-directional ceramic 24 h bezel: functional, so it counts
   83:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.85,service:0.6,bezel:null},
   84:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.7,service:0.6,bezel:null},   // butterfly clasp, no micro-adjustment - see bandDisplay note on the row
-  85:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.35,service:0.6,bezel:null},
-  86:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.35,service:0.6,bezel:1.0},   // uni-directional ceramic dive bezel
+  85:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.85,service:0.6,bezel:null},
+  86:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.85,service:0.6,bezel:1.0},   // uni-directional ceramic dive bezel
   // --- Seagull ST19 chronographs, pass 17 --------------------------------------------------
   // lume 0.1 on all three, and it is a finding of ABSENCE rather than a placeholder: neither
   // poljot24's pages nor strela-watch.de mention lume, luminous material or Super-LumiNova

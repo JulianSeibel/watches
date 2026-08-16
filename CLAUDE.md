@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-`watch-overview.html` is the entire project: a single self-contained static page (~4880 lines)
+`watch-overview.html` is the entire project: a single self-contained static page (~4920 lines)
 holding a hand-researched comparison of 113 watches, plus a scoring model that rates each one's
 specs against what the rest of the list charges at that price. No build system, no dependencies,
 no package manager. HTML, CSS and JS live in the one file; `check.js` beside it is a Node harness
@@ -55,8 +55,8 @@ It also prints the validation figures, which are the closest thing here to a reg
 Current baseline:
 
 ```
-113 rows · spec 26–63 · sigma 5 · 2 n/s · 51 published weights
-model  LOO RMSE 5.88 vs naive 9.19 · skill 59.0% · 1 sign flip(s) · resample typical 0.37 worst 0.94
+113 rows · spec 26–66 · sigma 6 · 2 n/s · 51 published weights
+model  LOO RMSE 5.95 vs naive 9.33 · skill 59.3% · 1 sign flip(s) · resample typical 0.40 worst 0.90
 ```
 
 **If a change was not meant to touch the model and those numbers move, something is wrong.**
@@ -85,13 +85,13 @@ PR bodies. Drop both.
 
 Three layers inside the one `<script>`:
 
-1. **Data.** `WATCHES` (line ~432) — 113 object literals, one per watch, ids **1–113, contiguous and
+1. **Data.** `WATCHES` (line ~448) — 113 object literals, one per watch, ids **1–113, contiguous and
    unique**, each with display strings (`diameterDisplay`, `movementDisplay`, …), an `img` and
    `link`, and the few structured fields the code sorts or scores on (`diameterMm`, `heightMm`,
    `waterResM`, `priceValue`, `priceCurrency`, `caseCategory`, `glassCategory`, `movementType`,
    optional `streetPriceEUR`). Most columns are *display strings only*; sorting them goes through
    `parseLeadingNumber()`, which pulls the first number out of messy text.
-2. **Model.** `computeValueScores()` (line ~4001) — turns the data into `specScore`, `valueScore`,
+2. **Model.** `computeValueScores()` (line ~4039) — turns the data into `specScore`, `valueScore`,
    `specResidual`, `specExpected`, `specSubs`, `specGroups`, `valueBand`, `residualSigma` and
    `priceSupport`, written back onto each watch object as properties.
 3. **View.** `applyPipeline()` = filter → search → sort → `renderRows()` → `refreshFilterPanels()`,
@@ -111,14 +111,14 @@ The per-watch research does not live on the watch objects. It lives in parallel 
 
 | Table | Line | Keyed by | Holds |
 |---|---|---|---|
-| `EXTRAS` | ~3122 | `id` | lume, warranty, ISO 6425, antimagnetism, clasp, service, bezel, complications, optional `caseScore` override. **All 113 present.** |
-| `FINISH` | ~3465 | `id` | 0–1 finishing/decoration estimate. **All 113 present.** |
-| `DISPLAY_BACK` | ~3592 | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 103 of 113 researched, 10 open. |
-| `WATCH_TYPES` | ~2688 | `id` | array of types (filter only, never scored). **All 113 present.** |
-| `STATUS` | ~2832 | `id` | buying decision — `'bought'`, `'likely'`, `'sceptical'` or `'avoid'`; **absent = `'consider'`**, the default. Drives a filter, a name-cell chip and a bar on the row's left edge; never scored. The one id-keyed table with no coverage requirement, so adding a watch needs no entry — and the only one where a count would just drift, so none is stated here. |
-| `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | ~2427 / ~2557 / ~2619 / ~2545 | `id` | published grams (51); ids confirmed to publish none (51); ids whose page could not be reached (7); ids published without the band (4). The four are disjoint and together cover all 113 — keep it that way. |
-| `MOVEMENT_TIER` | ~2872 | **exact `movementDisplay` string** | 0–1 architecture tier. 61 keys for 61 distinct movements, no misses, no orphans. |
-| `MEASURED_ACCURACY` | ~2276 | caliber **substring** of `movementDisplay` | reported real-world rates |
+| `EXTRAS` | ~3156 | `id` | lume, warranty, ISO 6425, antimagnetism, clasp, service, bezel, complications, optional `caseScore` override. **All 113 present.** |
+| `FINISH` | ~3503 | `id` | 0–1 finishing/decoration estimate. **All 113 present.** |
+| `DISPLAY_BACK` | ~3630 | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 103 of 113 researched, 10 open. |
+| `WATCH_TYPES` | ~2705 | `id` | array of types (filter only, never scored). **All 113 present.** |
+| `STATUS` | ~2852 | `id` | buying decision — `'bought'`, `'likely'`, `'sceptical'` or `'avoid'`; **absent = `'consider'`**, the default. Drives a filter, a name-cell chip and a bar on the row's left edge; never scored. The one id-keyed table with no coverage requirement, so adding a watch needs no entry — and the only one where a count would just drift, so none is stated here. |
+| `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | ~2455 / ~2574 / ~2636 / ~2562 | `id` | published grams (51); ids confirmed to publish none (51); ids whose page could not be reached (7); ids published without the band (4). The four are disjoint and together cover all 113 — keep it that way. |
+| `MOVEMENT_TIER` | ~2906 | **exact `movementDisplay` string** | 0–1 architecture tier. 61 keys for 61 distinct movements, no misses, no orphans. |
+| `MEASURED_ACCURACY` | ~2292 | caliber **substring** of `movementDisplay` | reported real-world rates |
 
 **Row `id`s are load-bearing.** Renumbering or reordering rows silently reassigns lume, finishing,
 casebacks and types to the wrong watches. Adding a watch means adding an entry to `EXTRAS`,
@@ -167,7 +167,7 @@ Two steps, and keeping them separate is the point:
   case & glass 16%, water & lume 13%, wearability 11%, fittings 11%, complications 9%), each
   splitting its weight among sub-scores. Normalisation uses the **fixed** `ANCHOR` / `WEAR_ANCHOR`
   constants, never list min/max. Exposed as the `Specs` column; observed range on the current list
-  is 26–63, not 0–100.
+  is 26–66, not 0–100.
   **Caveat, measured in pass 20:** this is *nearly* but not entirely independent of the list. The
   anchors are fixed, but `imputeMissingSubs()` fills unresearched sub-scores with the list mean, so
   the rows carrying one drift a little as rows are added. Adding row 90 moved exactly one row
@@ -175,12 +175,15 @@ Two steps, and keeping them separate is the point:
   though pass 21's three rows moved none at all, so it does not fire every time either. Pass 22 put
   a ceiling on it: nineteen rows at once moved three rows by one rounding point each (41, 54, 55).
   Pass 23's single row moved two (41 down, 55 up), which is the clearest evidence yet that the
-  effect tracks how far the list mean shifts rather than how many rows are added.
+  effect tracks how far the list mean shifts rather than how many rows are added. Pass 24 is the
+  cleanest confirmation of that reading: it re-specified six existing rows and added none, so the
+  only spec scores that moved were those six, by design and on researched fields. Zero incidental
+  drift — changing a row you meant to change costs nothing elsewhere.
 - **Step 2 — value (signed spec points).** `robustBaseline()` fits spec vs `ln(price)` with
   Theil–Sen (median pairwise slope, within movement class) and a **separate median intercept per
   class**. Each row's residual against that line is the `Value` badge; `Score` is the same number
   rescaled to 0–100 (`50 + residual * 2.8`) and sorts identically. This step *is* fitted to the
-  list, so adding rows does move everyone's Value. `residualSigma` is currently ~5.0.
+  list, so adding rows does move everyone's Value. `residualSigma` is currently ~6.0.
 
 Guards worth knowing before touching either step:
 
@@ -229,7 +232,7 @@ either would turn the model into an echo of the shortlist. Say so before wiring 
   written up in prose in the `<footer>` — what was wrong before, what the evidence was, what is
   still unresolved. That reasoning is irreplaceable and belongs there. The bare chronology of what
   changed when is git's job now; don't grow the footer with it. The model is on revision 3;
-  research passes run to 23.
+  research passes run to 24.
 - **Footer paragraphs are dated snapshots, not live claims.** Do not retrofit them to current
   numbers — later passes explicitly refer back to earlier ones ("the earlier warning overstated
   the case"), and rewriting the earlier text destroys the correction it records. Live claims go in
