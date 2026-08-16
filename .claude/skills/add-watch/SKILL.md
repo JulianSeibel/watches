@@ -46,7 +46,8 @@ node check.js
 
 - Record the two `check.js` lines verbatim. That is the "before", and it must be green **now** — do
   not start on top of a broken tree.
-- If on `main`, branch first.
+- **Work on `main`.** Do not open a feature branch for a pass — CLAUDE.md's *Committing a change*
+  section is the rule, and it applies here.
 - Read `CLAUDE.md` if it is not already in context. It governs this repo tightly and its rules
   outrank anything you would otherwise default to. In particular: single file, no build step, no
   dependencies.

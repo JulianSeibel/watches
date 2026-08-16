@@ -162,7 +162,7 @@ For a pass, the subject line says which rows; `git show` says what changed; the 
 
 Commit without asking. Stage the tracked files this pass touched (`watch-overview.html`, and
 `CLAUDE.md` when the baseline moved); leave anything untracked alone. Do not amend an earlier
-commit, and branch first if on `main`.
+commit, and commit on `main` — a pass does not get a branch.
 
 If the working tree already carried unrelated changes when the pass started — phase 1 records
 this — say so in the report afterwards rather than trying to split them out. The two sets of edits

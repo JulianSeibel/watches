@@ -97,9 +97,13 @@ passed. The `colspan` check only runs there, since it counts real `<th>` element
 
 These rules hold for **every** change here, whatever produced it — a research pass through the
 `add-watch` skill, a model revision, a one-line typo fix. **They override the harness defaults**,
-which otherwise append a `Co-Authored-By` trailer to commit messages and a generated-with line to
-PR bodies. Drop both.
+which otherwise branch away from the default branch, append a `Co-Authored-By` trailer to commit
+messages and add a generated-with line to PR bodies. Drop all three.
 
+- **Commit straight to `main`. No feature branches.** This is a solo, single-file project with no
+  review flow, so a branch per change is pure overhead and strands the work off `main` — the branch
+  cut for pass 25 was already nothing but a pointer at `main`. That makes a pull request rare rather
+  than routine; the rule below stands for the occasions one is genuinely wanted.
 - **A commit message is one short subject line.** No body, no trailers, no session link. Plain
   ASCII, under about 72 characters — `->` not `→`, `Elabore` not `Élaboré`. See `git log` for the
   house style. The reason is the rule under Conventions: the footer records *why* and `git show`
