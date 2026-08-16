@@ -277,7 +277,7 @@
   <th data-key="diameter">Diameter<span class="sort-arrow"></span></th>
   <th data-key="l2l">L2L<span class="sort-arrow"></span></th>
   <th data-key="height" title="Case thickness/height, from each maker's spec sheet (or press/retailer listings where the maker page didn't list one).">Höhe<span class="sort-arrow"></span></th>
-  <th data-key="weight" title="Weight on the wrist including the band. {{weightPublished}} of the {{rowCount}} rows are a published figure, shown in bold and without the ≈: Tissot, Citizen, Seagull, Seiko, Mido, Timex, Christopher Ward, Longines and Junkers all state weight as a plain field in their spec tables, and two further rows come from a review or a specialist retailer where the maker omits it. The remaining rows are a physical estimate computed from case diameter, thickness, case material density and band type — case volume as a cylinder at a 0.55 fill factor, plus the movement, plus the bracelet or strap. Those estimates can now be checked, because the {{weightPublished}} published figures are exactly the test set the estimator never had: against them it lands within 15% on {{weightWithin15}} of {{weightPublished}}, with a median error of {{weightMedianErr}}% and an RMSE of {{weightRmse}} g, and runs {{weightSigned}}% heavy on average. The biases it shows are NOT corrected, because each rests on too little data — titanium reads about {{weightTiPct}}% light across {{weightTiN}} rows, and the one bioceramic row it could be tested on came out {{weightBioPct}}% heavy, so the Swatch estimates are the least trustworthy in the column. Rows quoted on a strap with the bracelet optional are estimated on the strap, matching the price they carry. This column is deliberately NOT part of any score: the estimate is a deterministic function of diameter, thickness, case material and band, all of which the spec score already uses, so scoring it would double-count. Titanium already scores above steel on the case criterion largely because it is light — paying for that again here would reward the same property twice.">Weight<span class="sort-arrow"></span></th>
+  <th data-key="weight" title="Weight on the wrist including the band. {{weightPublished}} of the {{rowCount}} rows are a published figure, shown in bold and without the ≈: Tissot, Citizen, Seagull, Seiko, Mido, Timex, Christopher Ward, Longines, Junkers and Laco all state weight as a plain field in their spec tables, and two further rows come from a review or a specialist retailer where the maker omits it. The remaining rows are a physical estimate computed from case diameter, thickness, case material density and band type — case volume as a cylinder at a 0.55 fill factor, plus the movement, plus the bracelet or strap. Those estimates can now be checked, because the {{weightPublished}} published figures are exactly the test set the estimator never had: against them it lands within 15% on {{weightWithin15}} of {{weightPublished}}, with a median error of {{weightMedianErr}}% and an RMSE of {{weightRmse}} g, and runs {{weightSigned}}% heavy on average. The biases it shows are NOT corrected, because each rests on too little data — titanium reads about {{weightTiPct}}% light across {{weightTiN}} rows, and the one bioceramic row it could be tested on came out {{weightBioPct}}% heavy, so the Swatch estimates are the least trustworthy in the column. Rows quoted on a strap with the bracelet optional are estimated on the strap, matching the price they carry. This column is deliberately NOT part of any score: the estimate is a deterministic function of diameter, thickness, case material and band, all of which the spec score already uses, so scoring it would double-count. Titanium already scores above steel on the case criterion largely because it is light — paying for that again here would reward the same property twice.">Weight<span class="sort-arrow"></span></th>
   <th data-key="case">Case<span class="sort-arrow"></span></th>
   <th data-key="band">Band<span class="sort-arrow"></span></th>
   <th data-key="glass">Glass<span class="sort-arrow"></span></th>
@@ -371,6 +371,18 @@
 
   <p><b>What it did to everything else.</b> Value moved by at most <b>0.30</b> spec points across the existing 113 — row 8, the AV86 1968 Mechanical — with 89 rows moving at all and two crossing zero, rows 82 and 83 from +0.1 to exactly on the curve. Three rows change band: row 10 <i>below</i> → <i>well below</i>, row 88 <i>as expected</i> → <i>below</i>, row 110 <i>above</i> → <i>as expected</i>. Residual sigma moves 6 → 5, which reverses pass 24's widening and is why three bands shifted on rows that did not change. Two rows drift on spec, both by one rounding point and both carrying an imputed sub-score — row 41 and row 113 — which is the <code>imputeMissingSubs()</code> effect pass 20 documented, behaving as pass 23 predicted it would: it tracks how far the list mean moves, not how many rows arrive. The model is unmoved, which is unusual for three added rows: leave-one-out RMSE holds at 5.95 and skill at 59.3% against a naive baseline that itself drifts 9.33 → 9.32, and resample goes 0.40/0.90 → 0.47/0.85. <b>Sign flips fall 1 → 0</b>, the spec range holds at 26–66, and the spec/price correlation eases 0.79 → 0.78.</p>
 
+  <p><b>Laco, pass 26 — four rows added (117–120), and the list goes from 116 to 120.</b> The first Laco references here, the first German pilot watches other than Sinn's 104s, and the first rows in this table bought <i>configured</i> rather than off the shelf. Three are Fliegeruhren — the entry-level Basis Aachen 39 MB, the B-Uhr-replica ORIGINAL Speyer and a Flieger PRO 37 specified through Laco's configurator — and the fourth is the Atlantik, a 300 m Sportuhr on a ceramic bezel. The vocabulary barely moved: no new case, glass, movement type, watch type or complication, and three new <code>MOVEMENT_TIER</code> keys on two calibers. <b>All four are scored, with 34 to 42 comparable rows each, so nothing here rests on an extrapolation</b>, and the two unscored rows stay 16 and 56 — still the two cheapest, and still the only thin part of this price range. <b>They land at 46 spec points and +0.30 for the Aachen, 49 and −3.60 for the Atlantik, 55 and −0.10 for the Karlsruhe PRO, and 45 and −8.20 for the Speyer</b> — two as expected, one below the curve and one well below it. The spread is the interesting part, because it is not the spread of the specifications: 10 spec points separate the best from the worst while 8.5 residual points separate them in very nearly the opposite order. The Karlsruhe PRO is the best-specified and lands exactly on the curve; the Speyer is specified within a point of the Aachen and costs well over twice as much.</p>
+
+  <p><b>The prices are configured, and that decision is what this pass is really about.</b> Every Laco product page carries option dropdowns that change the watch rather than its appearance, and the brief for this pass was to take the best anti-reflective coating, decoration and movement grade each SKU offers. So each row's <code>priceValue</code> is the base price plus exactly those surcharges, itemised in its own comment: the Aachen at €440 + €55 for the Laco 31 movement + €50 for double-sided AR, the Atlantik at €1,040 + €100 for the coating alone, the Speyer at €930 + €330 for coating, Top grade and decoration, and the Karlsruhe PRO at €950 + €520 of options. <b>The trap is that not every option is on the page, and the page cannot tell you which.</b> The Karlsruhe PRO is configured in Laco's configurator and the Aachen's two options are ordinary selects, both visible in the HTML — but the Speyer's Top-grade-and-decoration upgrade is Laco's separate "Uhrwerk Upgrade", added to the order rather than to the SKU, and it appears nowhere in the product page's source. The Atlantik's page looks <i>identical</i> in that respect and genuinely does not offer it. So a page showing no movement dropdown is not evidence either way, and the two rows had to be settled against order prices rather than research: €1,260 on the Speyer, which decomposes exactly into the +€130 and +€100 the configurator charges on row 119, and €1,140 on the Atlantik, which is the coating and nothing else. A first draft of this pass had both rows coating-only and a second had both upgraded; both were wrong in the same way, by treating the absence of a dropdown as a finding. <b>What the upgrade buys is small and was measured by running the row both ways:</b> on the Speyer the €230 moves the spec score 43 → 45 and the residual −8.30 → −8.20. Two points for €230 is the movement tier going 0.60 → 0.63 and the rate going 0/+14 → 0/+8, and nothing at all in finishing, for the reason the next paragraph gives. <b>What was deliberately not taken:</b> the crown-position and clasp-colour options on the Speyer, which are handedness and finish rather than quality, and the free engraving. If a later pass wants the base configurations instead, these four rows are the ones to revisit, and every option price is recorded beside them.</p>
+
+  <p><b>The judgement calls, all recorded beside the numbers.</b> <b>Two new movement tiers on one caliber</b> is the substantive one, and both keys are in use: Laco sell the same Sellita SW200-1 at two factory grades and publish the component table separating them, which no other maker here does. Élaboré takes <b>0.60</b>, level with every other SW200-1 in the list, and row 118 holds it because that reference offers no upgrade. Top grade takes <b>0.63</b> on rows 119 and 120 — the only entry in that table not on a 0.05 step, and the two decimals are the argument rather than an accident. A Glucydur balance instead of nickel-gilt, a Nivarox 1 hairspring instead of Nivarox 2, ruby instead of polyrubin jewels and five positions of regulation instead of three, taking the rate Laco regulate to from 0/+14 to 0/+8 s/day, is a components-and-regulation change, which this table's own header says is folded <i>into</i> the tier rather than added as a bonus, so it has to move the number; but it does not reach the 0.65 the SW300-1 COSC and the L888.5 hold, because COSC is the same factory work <i>plus</i> per-unit third-party certification, and scoring them level would erase the only evidence separating them. <b>The Laco 31 (Miyota 8315) takes 0.35</b>, level with the NH35, by two routes that agree: same 21,600 vph and hand-winding and one jewel short of it, or cal. 8210's 0.30 plus the +0.05 this table documents for one added merit on the same base. Its 60 h barrel earns nothing there, by the SW200-2 Power+ precedent, because power reserve is already its own sub-score. <b>The objection is named rather than inherited:</b> <code>cal. 8213</code> sits at 0.40 on a description this entry matches almost word for word — hand-windable, 3 Hz, 21 jewels — so either that entry is 0.05 high or this one is 0.05 low, and the comment says so. <b>Lume is 0.8 on all four</b>, one number for four watches: Laco name the compound and the variant (Superluminova C3) but never a grade, which puts them under Traska's 0.85 and well over the 0.4–0.5 of makers who write only "Super-LumiNova". <b>Clasp 0.6 on the two undescribed bracelets is the softest number here</b> — the Aachen's comes from the matching Basis bracelet Laco link from the page (accessory 402196, "Faltschliesse mit Laco Logo"), and the PRO's is the weaker inference of the two, following every Laco steel bracelet whose clasp they do describe. Evidence of micro-adjustment or a safety catch on the PRO bracelet would take it to 0.7–0.8. <b>Finishing runs 0.50/0.50/0.60/0.55, and two rows buy the same decoration while only one is credited for it.</b> That is this pass's sharpest call. Rows 119 and 120 both carry the €100 perlage-and-blued-screws option, but <code>FINISH</code>'s own header rates "movement decoration <i>where visible</i>", and only row 119 has the sapphire back to see it through — the Speyer keeps a solid engraved steel disc. Laco say as much themselves: choosing the decorated movement "ändert also nichts an der Bauweise der Uhr", and behind a closed back the finishing simply is not visible. So perlage nobody can see stays in the price, where the Value column charges for it, and out of the spec score. The alternative reading — that decoration is decoration whether or not you can see it — would put row 120 at about 0.60 and cost it roughly a spec point, and is the thing to revisit if this criterion is ever redefined. The display backs themselves are still pointedly <i>not</i> paid for here, since seeing the movement is already <code>fittings.displayBack</code>; the window is not being scored, it is the condition under which the decoration behind it is. <b>Row 117's caseback is the one field settled by a photograph:</b> Laco's spec text never mentions it, but their own caseback image for that exact reference shows the movement through the glass with "SAPPHIRE CRYSTAL" engraved around it, and the SKU offers a <i>rotor</i> engraving, which only makes sense on a watch whose rotor can be seen.</p>
+
+  <p><b>Laco publish a real lug-to-lug, which is worth saying immediately after pass 25.</b> That pass caught Tissot's "Laenge" masquerading as one and left three rows at '—'; Laco state "Bandanstoss zu Bandanstoss" for every reference, and it behaves the way the real measurement behaves — 46.5 and 47.5 mm on two different 39 mm cases, 44.5 on a 37 mm one, all 1.19–1.22× the diameter. The PRO's is the most convincing of the four because it comes from a three-column table where the same field reads 44.5/47.5/50.5 across the three case sizes: a field that tracks case size that way is measuring the lugs, not the case body. <b>One contradiction inside Laco's own page is recorded and not resolved.</b> The Atlantik's spec text describes an orange-lumed minute hand and never mentions a date; their own detail photograph of that reference shows a blue minute hand and a date window at 3. The prose is family copy written for four colourways and the photograph is of this SKU, so the photograph wins — and neither field is scored, which is why this is a note rather than a correction.</p>
+
+  <p><b>Four more published weights, and they are the worst-fitting group the estimator has met.</b> Laco state "Gewicht … (inklusive Armband)" for every reference — the tenth maker in this table's roster, and the first whose field answers the with-band question in its own text rather than leaving it to be inferred. The test set grows 54 → 58 and the headline figures degrade: mean absolute error 9.9% → 10.7%, RMSE 13.6 g → 14.8 g, mean signed error +3.7% → +4.4%, with within-±15% at 48 of 58. <b>The four rows alone run at 21.6% mean absolute error and 30.2% median</b>, against 9.9% for everything before them. <b>They split cleanly by case type, and the split is the finding.</b> The three fliegers all read <i>heavy</i> — the Karlsruhe PRO by +36.6% (138 g estimated against 101 published), the Speyer by +30.2%, the Aachen by only +5.0% — while the Atlantik, the one diver, reads <i>light</i> by −14.4% (154 g against 180). A flieger case is the thinnest-walled construction in this list: no crown guards, a narrow bezel, straight lugs and a flat or shallow crystal, so the cylinder-times-0.55 fill factor badly over-fills it. A 300 m diver is the opposite, and the ceramic bezel and thick screwed back push it past what the same formula allows. That is the fill-factor problem passes 20, 21 and 23 already identified, now visible in <i>both</i> directions within one maker and one pass, which is stronger evidence than any of those had. <b>Nothing is corrected</b>, for the reason given every time: the published figures are the held-out test set, and fitting a wall-thickness term to the rows meant to test the estimator would leave no way to tell whether the other 62 estimates are any good.</p>
+
+  <p><b>What it did to everything else.</b> Value moved by at most <b>0.30</b> spec points across the existing 116 — row 103, the Oris Divers Sixty-Five 60th Anniversary — with 84 rows moving at all and three crossing zero (row 33, a Vaer G2, 0.1 → 0; and rows 82 and 83, both Christopher Wards, 0 → 0.2 and 0 → 0.1). <b>One row changes band:</b> 110, the Abinger Nimrod Nightfire, from as expected to above the curve. Leave-one-out RMSE holds at <b>5.95</b> while <b>skill falls 59.3% → 58.3%</b>, and the two are not in conflict: all of that movement is the naive baseline improving underneath it, 9.32 → 9.21, because four rows priced €545–1,470 land in the densest part of the range and make the naive guess easier. The model is neither better nor worse for the addition; the bar it is measured against rose. Sign flips hold at 0, the residual sigma at 5, the spec range at 26–66 and the spec/price correlation at 0.78; resample goes 0.47/0.85 → 0.46/0.89. <b>Spec drift touched three rows by one rounding point each</b> — 55 down, 76 and 107 up — which is <code>imputeMissingSubs()</code> filling unresearched sub-scores with a list mean that four new rows moved slightly. That is the pass-23 and pass-25 pattern again, and it continues to track how far the mean shifts rather than how many rows arrive.</p>
+
 
   <p><b>MAEN Hudson 38 GMT MKII, pass 20 — one row added (90), and the list goes from 89 to 90.</b> The second MAEN here and the second row on the Sellita SW330-2, which means it needed no new movement tier: it takes the 0.60 already argued for the two Christopher Wards, and its caller GMT is paid for in complications at 0.25 rather than the 0.5 a jumping local hour earns. <b>It lands at 48 spec points and −5.7 on Value, below the curve</b>, in a well-populated stretch of the price range — 30 comparable rows, so this is not an extrapolation. The reason is legible rather than mysterious: a 38 mm 300 m steel diver with a box-domed sapphire, X1 lume and an Élaboré Swiss GMT is a genuinely good specification, but at €1,079 it is being compared against the Mido Ocean Star GMT and the Christopher Wards, which bring a true traveller GMT, a display back or a bracelet at similar money. Specs are strong; the price is where the list disagrees.</p>
   <p><b>Three judgement calls, all recorded beside the numbers.</b> The <b>price</b> is €1,079.20, MAEN's own 20% site-wide reduction from a €1,349 list — the same arrangement row 1 already carries, and handled the way pass 17 handled poljot24: the selling price goes in <code>priceValue</code> so the cell, the sort and the model read one number, with the UVP shown alongside. The <b>height</b> is the weakest figure on the row. MAEN publish 11 mm "excluding crystal" and no total, so 13 mm is carried across from the MK5 on row 1, which shares the case family and the box-domed sapphire; it is an inference, not a measurement. The <b>bezel</b> is scored 0.4, an aluminium insert, inferred from an absence: MAEN's spec line says only "60 Click Bi-Directional Sandblasted Bezel" where their MK5 page names ceramic, and this is a maker who advertises ceramic when it is ceramic. The insert is also two-tone — blue/black on this reference, brown/black on the M1.3.3, which is how the two are told apart — and two-tone is cheap to anodise and expensive to sinter. If it proves to be ceramic the row gains about 1.3 spec points, comfortably inside the model's own ±4 of noise. <b>Weight</b> is estimated despite MAEN publishing 129 g, because that figure belongs to the five-link bracelet and this reference is priced on the TPU strap — taking it would describe a watch costing €151.20 more than the one in the Price cell, which is the same trap the Christopher Ward "Case Weight" field sets.</p>
@@ -406,7 +418,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-116 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-120 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
 //                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
@@ -2265,6 +2277,153 @@ const WATCHES = [
   powerReserveDisplay:'— (battery)', accuracyDisplay:'—',
   waterResDisplay:'100 m (10 ATM)', waterResM:100,
   priceDisplay:'€425', priceValue:425, priceCurrency:'EUR' },
+
+// --- Laco, pass 26 (rows 117-120) -------------------------------------------------------------
+// The first Laco references here, and the first German pilot watches other than Sinn's 104s.
+// laco.de renders its whole spec table into the HTML as a <dt>/<dd> list - Werk, Gehaeuse,
+// Zifferblatt, Zeiger, Armband, Durchmesser, Hoehe, Bandbreite, Bandanstoss zu Bandanstoss,
+// Wasserdichtigkeit, Gewicht - so every dimension, the lug-to-lug and the weight on all four rows
+// are Laco's own fields read from the page source. No retailer supplied a scored number.
+//
+// Two things about this maker are worth recording because they are unusual in this list.
+// FIRST, Laco publish a real lug-to-lug, as "Bandanstoss zu Bandanstoss", for every reference.
+// That is the field Tissot do NOT publish (see the pass 25 block above, where their "Laenge" is a
+// case-body length and was mistaken for one), and only a minority of makers here state it at all.
+// It is taken at face value: 46.5 on a 39 mm case, 47.5 on another 39 mm case and 44.5 on a 37 mm
+// one are all ~1.19-1.22x the diameter, which is what a real L2L looks like, and the 37 mm PRO's
+// figure comes from a three-column table where the same field reads 44.5/47.5/50.5 across the
+// three case sizes - a field that tracks case size that way is measuring the lugs.
+// SECOND, Laco publish a with-band weight for every reference too, so all four rows go into
+// WEIGHT_MEASURED and Laco become the tenth maker in that table's roster.
+//
+// The prices are configured, not base, and that is this pass's one substantive decision.
+// Every Laco product page carries option dropdowns that change the watch's specification, and the
+// brief for this pass was to take the best anti-reflective coating, decoration and movement grade
+// each SKU offers. So each row's priceValue is the base price PLUS the surcharges for exactly
+// those options, each one named in the row's own comment, and the specification columns describe
+// the configured watch rather than the base one. Rows 117 and 119 are materially different
+// watches from their base configuration; rows 118 and 120 differ only in the coating.
+// What was deliberately NOT taken: crown-position and clasp-colour options (row 120 offers both),
+// which are handedness and finish choices rather than quality, and the free engraving.
+//
+// Laco's FAQ is the source for three things their product pages omit, and it is the maker's own
+// page: the caliber map (LACO 2S = Miyota 82S0, LACO 31 = Miyota 8315, LACO 200 = Sellita SW200),
+// the rate each movement is regulated to in-house, and the Elabore-vs-Top component table.
+{ id:117, brand:'Laco', name:'Laco Aachen 39 MB (862139, Laco 31 + double AR)', desc:'Baumuster B flieger, no date, sapphire display back · the Augsburg 39 MB is the Baumuster A dial on the same case',
+  link:'https://www.laco.de/de/uhren/fliegeruhr-basis/aachen-39-mb/862139#product',
+  img:'https://www.laco.de/media/fc/c3/03/1751016423/laco-fliegeruhr-typ-b-aachen-39-mb-862139.png',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'46.5 mm',
+  heightDisplay:'11.55 mm', heightMm:11.55,
+  // Display back confirmed from Laco's own caseback photograph for this reference, which shows the
+  // movement through the glass and "SAPPHIRE CRYSTAL" engraved on the surround. Laco's Gehaeuse
+  // field does not mention the back at all, so the photograph is the evidence - see DISPLAY_BACK.
+  caseDisplay:'Satin-brushed stainless steel (sapphire display back)', caseCategory:'Steel',
+  // Laco's own "Hochwertiges Edelstahlband mit gebogenen Endstuecken", 18 mm. The clasp is not
+  // named on this page; it is named on the matching Basis bracelet, accessory 402196 - see EXTRAS.
+  bandDisplay:'Steel bracelet, folding clasp',
+  // Base configuration is "Ohne Entspiegelung" - this is the one row of the four whose standard
+  // crystal carries NO anti-reflective coating at all. The +50 EUR option is the only one Laco
+  // offer on it and it is double-sided, so the configured row jumps from bare sapphire to the top
+  // of glassCoatingScore()'s range.
+  glassDisplay:'Flat sapphire + double-sided AR', glassCategory:'Sapphire',
+  // The +55 EUR "Laco 31" upgrade over the standard Laco 2S. Laco's FAQ gives both identities -
+  // LACO 2S = Miyota 82S0, LACO 31 = Miyota 8315 - and an explicit comparison table for the
+  // upgrade: power reserve 42 h -> "Mehr als 60 Stunden", and decoration from Zierschliffe to
+  // "Zierschliffe, gebl. Schrauben". The rate is unchanged at 0/+25, which is why this upgrade
+  // buys running time and finish rather than accuracy.
+  movementDisplay:'Automatic — Laco 31 (Miyota 8315)', movementType:'Automatic', movementCostDisplay:'~$90 (Miyota, new, est.)',
+  // Power reserve is Laco's own figure for the upgraded movement, stated as a minimum. Miyota's
+  // own 8315 spec sheet says "Running Time (approximately) 60 hours", 21 jewels, 21,600 vph,
+  // which corroborates it. Accuracy is Laco's in-house regulation figure from their FAQ, not
+  // Miyota's factory tolerance - Laco state it per caliber for every movement they fit.
+  powerReserveDisplay:'>60 h', accuracyDisplay:'0 to +25 s/day',
+  waterResDisplay:'50 m (5 ATM)', waterResM:50,
+  // 440 base + 55 (Laco 31) + 50 (double-sided AR).
+  priceDisplay:'€545 (€440 + Laco 31 €55 + double AR €50)', priceValue:545, priceCurrency:'EUR' },
+
+{ id:118, brand:'Laco', name:'Laco Atlantik 39 MB (862133.MB, double AR)', desc:'300 m diver, ceramic bezel, scorpion-relief caseback · one of four Sportuhren colourways (Himalaya, Amazonas, Mojave)',
+  link:'https://www.laco.de/de/uhren/sportuhren/atlantik-39-mb/862133.mb',
+  img:'https://www.laco.de/media/c6/fc/79/1751016561/laco-sportuhr-atlantik-mb-39-862133mb.png',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'47.5 mm',
+  heightDisplay:'13 mm', heightMm:13,
+  // Solid screwed back carrying a scorpion relief - Laco's own field, and the reason this row has
+  // a caseback claim where row 117 needed a photograph. The bezel is Laco's "einseitig drehbare
+  // Keramikluenette" with lumed indices.
+  caseDisplay:'316L stainless steel (unidirectional ceramic bezel, lumed indices, screwed solid back with scorpion relief, screw-down crown)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet, folding clasp with safety catch',
+  glassDisplay:'Double-domed sapphire + double-sided AR', glassCategory:'Sapphire',
+  // Elabore, and this is the one Laco row here where "best available" genuinely stops at the
+  // coating: no movement grade is offered on this reference at all. That is a stated finding and
+  // not an inference from the page source, which cannot establish it either way - rows 118 and 120
+  // both show no movement dropdown, and row 120 nonetheless takes the upgrade through Laco's
+  // separate "Uhrwerk Upgrade". So the absence had to be confirmed against the order rather than
+  // read off the HTML. Worth keeping: it makes this row the only SW200-1 Laco in the list on the
+  // base grade, and the 0.60/0.63 pair in MOVEMENT_TIER exists because of it.
+  movementDisplay:'Automatic — Laco 200 (Sellita SW200-1, Élaboré)', movementType:'Automatic', movementCostDisplay:'~$170 (Sellita, new)',
+  // Laco publish NO power reserve for the Laco 200 anywhere - not on the product pages and not in
+  // the FAQ, which gives one only for the 2S/31 pair. 38 h is Sellita's own minimum spec for the
+  // SW200-1, borrowed and labelled as such, and it matches what the Sinn and Christopher Ward
+  // Elabore rows in this list already carry for the same caliber at the same grade.
+  // Accuracy IS Laco's own: their FAQ states "LACO 200 Elabore = 0/+14 Sekunden pro Tag" as the
+  // value their watchmakers regulate to, which is a stronger claim than a Sellita grade tolerance.
+  powerReserveDisplay:'38 h', accuracyDisplay:'0 to +14 s/day',
+  waterResDisplay:'300 m (30 ATM)', waterResM:300,
+  // 1,040 base + 100 (double-sided AR) = 1,140, and the coating is the whole of the configuration
+  // here. Row 120 runs the same base caliber with 230 EUR MORE of options on top of its own
+  // coating - the Top grade and the decoration - which is the cleanest comparison in this pass
+  // between what Laco's movement upgrade costs and what the model scores it at.
+  priceDisplay:'€1,140 (€1,040 + double AR €100)', priceValue:1140, priceCurrency:'EUR' },
+
+{ id:119, brand:'Laco', name:'Laco Karlsruhe PRO 37 (862142, Top grade, decorated)', desc:'Configured Flieger PRO: Baumuster B, 200 m, display back, decorated Top-grade SW200-1 · the Stuttgart PRO is the Baumuster A dial',
+  link:'https://www.laco.de/de/configurator/flieger-pro/862142-FPB-37-G-D-G-A-T-D-D-L-M-R',
+  // Laco's own render of this reference with the dark date window; the strap shown is the leather
+  // option rather than this row's steel bracelet, since the configurator composes bracelet images
+  // per combination and none is served at a stable URL.
+  img:'https://www.laco.de/media/23/5b/28/1784801570/862142_809_front.png',
+  diameterDisplay:'37 mm', diameterMm:37, l2lDisplay:'44.5 mm',
+  heightDisplay:'10.95 mm', heightMm:10.95,
+  caseDisplay:'316L stainless steel, brushed with FL23883 flank engraving (sapphire display back, screw-down crown)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet',
+  glassDisplay:'Double-domed sapphire + double-sided AR', glassCategory:'Sapphire',
+  // Qualitaetsstufe "Top" (+130) and "Dekoriert" (+100), the two configurator options this pass's
+  // brief asks for. Laco's FAQ tabulates what Top buys over Elabore on this caliber: Glucydur
+  // balance for nickel-gilt, Nivarox 1 for Nivarox 2, red ruby for polyrubin jewels, and five
+  // positions of regulation for three. Decoration is perlage on plate and bridges plus thermally
+  // blued screws - Laco say themselves it "hat keinen Einfluss auf die Qualitaet oder Funktion",
+  // so it is scored in FINISH and NOT in the movement tier.
+  movementDisplay:'Automatic — Laco 200 (Sellita SW200-1, Top grade, decorated)', movementType:'Automatic', movementCostDisplay:'~$230 (Sellita, new, Top grade, est.)',
+  // Power reserve borrowed from Sellita as on row 118 - Laco publish none for this caliber either.
+  // The rate is Laco's own FAQ figure for the Top grade, "LACO 200 Top = 0/+8 Sekunden pro Tag",
+  // and the configurator repeats it in its own comparison table on this page.
+  powerReserveDisplay:'38 h', accuracyDisplay:'0 to +8 s/day',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  // 950 base (Karlsruhe PRO, 862142; the 37 mm size is the no-surcharge one) + 100 double AR
+  // + 50 sapphire display back + 130 Top grade + 100 decorated + 50 dark date + 90 steel bracelet.
+  // Baumuster B, brushed case with engraving, automatic, black dial and right-hand crown are all
+  // zero-surcharge options and are the ones the configured URL selects.
+  priceDisplay:'€1,470 (€950 + options €520)', priceValue:1470, priceCurrency:'EUR' },
+
+{ id:120, brand:'Laco', name:'Laco Speyer (862095, Top grade, decorated, double AR)', desc:'Fliegeruhr ORIGINAL B-Uhr replica, 39 mm, no logo, blued hands · the Basis Aachen on row 117 is the cheaper interpretation of the same dial',
+  link:'https://www.laco.de/de/uhren/fliegeruhr-original/speyer/862095#product',
+  img:'https://www.laco.de/media/79/12/59/1751015466/laco-fliegeruhr-typ-b-speyer-862095-neu-2020.png',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'46 mm',
+  heightDisplay:'12.15 mm', heightMm:12.15,
+  caseDisplay:'Dark sandblasted stainless steel with FL23883 flank engraving (solid steel back, engraved)', caseCategory:'Steel',
+  // Priced on the leather strap with the standard steel pin buckle, so the clasp is scored on that
+  // - Laco's dark-sandblasted buckle is a +30 colour option and is not taken.
+  bandDisplay:'Brown riveted calf leather, steel pin buckle',
+  glassDisplay:'Domed sapphire + double-sided AR', glassCategory:'Sapphire',
+  // Top grade and decorated, ordered through Laco's separate "Uhrwerk Upgrade" rather than through
+  // a dropdown on this page - the ORIGINAL product page offers only glass, crown position and
+  // clasp colour, so the upgrade is invisible in the page source and was confirmed against the
+  // order price instead. Laco's FAQ lists LACO 200 among the calibers it is available for.
+  movementDisplay:'Automatic — Laco 200 (Sellita SW200-1, Top grade, decorated)', movementType:'Automatic', movementCostDisplay:'~$230 (Sellita, new, Top grade, est.)',
+  powerReserveDisplay:'38 h', accuracyDisplay:'0 to +8 s/day',   // PR borrowed from Sellita as on row 118; the rate is Laco's own FAQ figure for the Top grade
+  waterResDisplay:'100 m (10 ATM)', waterResM:100,
+  // 930 base + 100 (double-sided AR) + 130 (Top grade) + 100 (decorated) = 1,260. The same +130
+  // and +100 the configurator charges on row 119, which is what identifies the two components of
+  // the 330 without an itemised page of its own.
+  priceDisplay:'€1,260 (€930 + options €330)', priceValue:1260, priceCurrency:'EUR' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -2427,7 +2586,9 @@ function measuredAccuracyFor(w) {
 // blocks and no mass in any of them, so its 19 rows split 16 unpublished and 3 head-only.
 // Pass 23 added Junkers as a ninth, covering its one row - a "Gewicht" field beside the diameter,
 // used only after their own catalogue showed it moving 21 g when just the band changes.
-// So the column is now 51 published figures and 62 estimates - 51 rows that genuinely publish
+// Pass 26 added Laco as a tenth, covering all 4 of its rows, and it is the first maker here whose
+// field states the band inclusion in its own text ("140,0 g (inklusive Armband)").
+// So the column is now 58 published figures and 62 estimates - 51 rows that genuinely publish
 // nothing, 7 that could not be reached, and 4 published head-only. The estimator below still runs
 // for anything not in WEIGHT_MEASURED.
 //
@@ -2445,10 +2606,10 @@ function measuredAccuracyFor(w) {
 //
 // Pass 10 wrote that "if a real set of measured weights ever exists that argument changes,
 // because measured mass carries information the dimensions do not - bracelet build, case wall
-// thickness". That set now partly exists: 54 of 116 rows carry a published figure. The condition
+// thickness". That set now partly exists: 58 of 120 rows carry a published figure. The condition
 // has been met and the question is genuinely open, so it is flagged rather than quietly ignored.
-// It is NOT acted on here, for two reasons. The 54 are not a random sample - they are nine makers
-// who happen to document well, three of them Japanese and six Western, so scoring on them would
+// It is NOT acted on here, for two reasons. The 58 are not a random sample - they are ten makers
+// who happen to document well, three of them Japanese and seven Western, so scoring on them would
 // score brands on their spec-sheet habits. And the double-counting objection still binds for the
 // other 62 rows, where the "weight" is a function of columns the score already reads. Scoring a
 // column that is measured for some rows and derived from other scored inputs for the rest would
@@ -2466,12 +2627,12 @@ function measuredAccuracyFor(w) {
 // slightly worse again, in the same direction and for the same structural reason - see below.
 // Pass 23's ONE row moved it more than either: the Junkers on row 113 is the largest single error
 // in the set at +76.1%, and on its own it takes mean absolute error from 9.8% to 11.1%.
-//                        28 rows (p11)   36 rows (p12)   47 rows (p16)   50 rows (p21)   51 rows (p23)   51 rows (p24)   54 rows (p25)
-//   mean absolute error       8.5%           8.2%            9.5%            9.8%           11.1%            9.8%            9.9%
-//   median absolute error     6.1%           5.8%            6.1%            6.5%            6.5%            6.0%            6.3%
-//   RMSE                     11.8 g         11.9 g          13.5 g          13.9 g          14.6 g          13.8 g          13.6 g
-//   within +-15%             25 of 28       32 of 36        40 of 47        42 of 50        42 of 51        44 of 51        46 of 54
-//   mean signed error        +2.6%          +1.6%           +2.4%           +3.1%           +4.5%           +3.2%           +3.7%  (+ = reads heavy)
+//                        28 rows (p11)   36 rows (p12)   47 rows (p16)   50 rows (p21)   51 rows (p23)   51 rows (p24)   54 rows (p25)   58 rows (p26)
+//   mean absolute error       8.5%           8.2%            9.5%            9.8%           11.1%            9.8%            9.9%           10.7%
+//   median absolute error     6.1%           5.8%            6.1%            6.5%            6.5%            6.0%            6.3%            6.6%
+//   RMSE                     11.8 g         11.9 g          13.5 g          13.9 g          14.6 g          13.8 g          13.6 g          14.8 g
+//   within +-15%             25 of 28       32 of 36        40 of 47        42 of 50        42 of 51        44 of 51        46 of 54        48 of 58
+//   mean signed error        +2.6%          +1.6%           +2.4%           +3.1%           +4.5%           +3.2%           +3.7%          +4.4%  (+ = reads heavy)
 // Pass 25's three Tissot PRX rows all read heavy (+6.5%, +11.9%, +15.5%), and the cause is
 // geometric rather than a density error: the PRX case is a tonneau whose length is SHORTER than
 // its width, while the method below models a cylinder of the stated diameter. Not corrected, for
@@ -2542,8 +2703,8 @@ function measuredAccuracyFor(w) {
 const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceramic: 2.0 };
 // Published weights, pass 11, extended in passes 12, 15 and 16. Every row was checked against the
 // maker's own product page - the link the row already carries - rather than sampled. That
-// overturned the premise this column was built on. Weight is NOT unpublishable: nine makers state
-// it outright, as a plain field in the same spec table as the diameter, covering 52 rows.
+// overturned the premise this column was built on. Weight is NOT unpublishable: ten makers state
+// it outright, as a plain field in the same spec table as the diameter, covering 56 rows.
 //   Citizen    "Gewicht"          12/16 rows on de.citizenwatch.eu
 //   CW         "Weight inc. Strap" 10/10 rows - and the only maker that also gives a separate
 //                                  "Case Weight", i.e. the only one it is possible to take the
@@ -2558,9 +2719,13 @@ const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceram
 //                                  13 both read this brand as publishing nothing
 //   Junkers    "Gewicht"           1/1 row - the ninth maker, found by pass 23 and missing from
 //                                  this roster until pass 25 restated it
+//   Laco       "Gewicht"           4/4 rows - the tenth maker, pass 26. States it "(inklusive
+//                                  Armband)" in the field itself, so the with-band question this
+//                                  column has to ask of every other maker is answered in advance,
+//                                  and to a decimal on row 120 (76.8 g)
 // Two more rows come from a third party where the maker omits it, marked below. Figures are
 // with the band the row is priced on, matching what this column claims to show.
-// The three counts above reconcile: 52 published by the maker + 2 borrowed = the 54 in the table.
+// The three counts above reconcile: 56 published by the maker + 2 borrowed = the 58 in the table.
 // They did not before pass 25 - the roster said eight makers and 47 rows while listing 48, had
 // never gained Junkers, and still counted row 67 as borrowed after pass 21 found Longines publish
 // it themselves. Corrected here rather than left, since a roster that does not add up is the kind
@@ -2672,6 +2837,17 @@ const WEIGHT_MEASURED = {
   114: 84,   // PRX 38 Powermatic 80, titanium case and titanium bracelet
   115: 138,  // PRX 40 Powermatic 80 ice blue, steel bracelet
   116: 97,   // PRX 35 Quartz MOP, steel bracelet
+  // --- Laco, "Gewicht: ... (inklusive Armband)" on laco.de, pass 26 -------------------------
+  // All four state the band inclusion in the field text, which is why all four qualify without
+  // the usual head-or-whole-watch judgement. Row 119's figure is the one that needed choosing:
+  // the Flieger PRO spec table gives TWO weight rows, "Gewicht (mit Lederband)" and "Gewicht (mit
+  // Edelstahlarmband)", each with a value per case size. That row is configured and priced on the
+  // steel bracelet, so it takes the bracelet figure (101.0) and not the leather one (66.0) - the
+  // same rule that makes row 120 a strap weight and rows 117/118 bracelet weights.
+  117: 140,   // Aachen 39 MB, steel bracelet
+  118: 180,   // Atlantik 39 MB, steel bracelet - the heaviest of the four, on a 13 mm 300 m case
+  119: 101,   // Karlsruhe PRO 37, steel bracelet (leather would be 66.0 g)
+  120: 76.8,  // Speyer 39, brown riveted leather. Laco's own decimal, kept rather than rounded
 };
 
 // Sinn is the one maker that publishes a head-only figure: "Gewicht ohne Band: 65 Gramm" for the
@@ -2944,6 +3120,14 @@ const WATCH_TYPES = {
   // the same call already made for row 108.
   114: ['Sports'], 115: ['Sports'],
   116: ['Sports', 'Dress'],
+  // Laco, pass 26. The three fliegers are 'Pilot' and nothing else, the same single-type call
+  // rows 60, 91-92 and 94-96 already get: where the maker states the intent, the maker wins, and
+  // Laco file all three under Fliegeruhren and have built nothing else since 1925. Row 118 is the
+  // exception and is the maker's call too - Laco sell it under Sportuhren, and 300 m behind a
+  // unidirectional ceramic bezel and a screw-down crown is the Diver pattern rows 100-107 use.
+  117: ['Pilot'],
+  118: ['Diver', 'Sports'],
+  119: ['Pilot'], 120: ['Pilot'],
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
@@ -2955,7 +3139,7 @@ const typesFor = w => WATCH_TYPES[w.id] ?? [];
 // an echo of the shortlist.
 //
 // Absent = 'consider', so the table lists only the rows with a decision on them rather than
-// restating the default 116 times, and adding a watch needs no entry here. That also means this
+// restating the default 120 times, and adding a watch needs no entry here. That also means this
 // is the one id-keyed side table selfCheck() does NOT require full coverage of.
 //
 // Held in the file rather than in localStorage: statuses are decisions worth keeping, and the
@@ -3008,7 +3192,7 @@ const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (101 of 116 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (105 of 120 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -3107,6 +3291,29 @@ const MOVEMENT_TIER = {
   'Automatic — Oris 733 (no date; Sellita SW200-1 base)': 0.60,
   'Automatic — Oris 733-1 (Sellita SW200-1 base)': 0.60,
   'Automatic — Oris 733-1 (no date; Sellita SW200-1 base)': 0.60,
+  // Laco, pass 26. Two entries on one caliber, and the pair is the point: Laco sell the SAME
+  // Sellita SW200-1 at two factory grades and publish the component table that separates them,
+  // which no other maker in this list does. Their own designation is "Laco 200", so these get
+  // maker-named keys for the same reason the Oris 733 entries above do, and both keys are in use -
+  // row 118 is Elabore because that reference offers no upgrade, rows 119 and 120 are Top.
+  //   Elabore     0.60, level with every other SW200-1 here. Nothing distinguishes it.
+  //   Top grade   0.63, the one entry in this table NOT on a 0.05 step, and the two decimals are
+  //               the argument rather than an accident. Top buys a Glucydur balance instead of
+  //               nickel-gilt, a Nivarox 1 hairspring instead of Nivarox 2, red ruby instead of
+  //               polyrubin jewels, and regulation in five positions instead of three, taking the
+  //               rate Laco regulate to from 0/+14 to 0/+8 s/day. That is a components-and-
+  //               regulation change, and the header of this table says regulation grade is folded
+  //               INTO the tier rather than added as a bonus, so it has to move the number. It
+  //               does NOT reach the 0.65 the SW300-1 COSC and the Longines L888.5 hold, because
+  //               COSC is the same kind of factory work PLUS per-unit third-party certification,
+  //               and scoring Top level with it would erase the only evidence separating them.
+  //               0.63 says "most of the way to COSC and not there", which is the honest position
+  //               and is why this is not a 0.05 step.
+  //   The DECORATION in the second key earns nothing here, by Laco's own statement that it "hat
+  //   keinen Einfluss auf die Qualitaet oder Funktion des Uhrwerks". It is scored in FINISH
+  //   instead, and only on the row where it can actually be seen - see FINISH's Laco block.
+  'Automatic — Laco 200 (Sellita SW200-1, Élaboré)': 0.60,
+  'Automatic — Laco 200 (Sellita SW200-1, Top grade, decorated)': 0.63,
   // Pass 14: the PR516 and the Seastar 1000 Powermatic were split 0.55/0.50 by a caliber string
   // that does not exist - there is no Powermatic 80.711, and Tissot advertise the Nivachron
   // spiral on both references' own product pages. One entry, one tier.
@@ -3136,6 +3343,21 @@ const MOVEMENT_TIER = {
   'Automatic — Miyota 9039': 0.40,
   'Automatic — Miyota 90S5': 0.40,
   'Automatic — Seiko/TMI NH35': 0.35,
+  // Laco 31 = Miyota 8315, pass 26, at 0.35 - level with the NH35 directly above, and two routes
+  // land there. Against the NH35: same 21,600 vph, same hand-winding, same commodity-ebauche role
+  // sold to third-party brands, one jewel short (21 against 24) per Miyota's own spec sheet.
+  // Against cal. 8210 below, which is the same Miyota 8200 architecture WITHOUT hand-winding:
+  // 0.30 + 0.05, and +0.05 for one added merit on the same base is this table's documented step
+  // (see the L888.4 note above). The 60 h barrel earns nothing here, by the SW200-2 Power+
+  // precedent - power reserve is its own sub-score at 40% of the timekeeping group, and row 117
+  // is already credited there for it. The decoration the upgrade also brings is scored in FINISH.
+  // The objection worth recording: 'Automatic (hand-wind) — cal. 8213' below sits at 0.40 on a
+  // description this entry matches almost word for word - hand-windable, 3 Hz, 21 jewels. If that
+  // entry is right, this one is 0.05 low; the alternative reading is that 8213 is 0.05 high for a
+  // 3 Hz movement sitting level with the 4 Hz Miyota 9000-series. This entry follows the
+  // documented +0.05 step rather than the undocumented +0.10 that 8210 -> 8213 implies, and names
+  // the inconsistency rather than quietly inheriting it.
+  'Automatic — Laco 31 (Miyota 8315)': 0.35,
   'Automatic — Seagull ST2130': 0.35,
   'Automatic — Seagull ST2147': 0.35,
   'Automatic — Seagull ST2100 (day-date)': 0.35,
@@ -3647,6 +3869,49 @@ const EXTRAS = {
   114:{lume:0.5,war:2,iso:0,antimag:0.5,clasp:0.8,service:0.9,bezel:null},
   115:{lume:0.5,war:2,iso:0,antimag:0.5,clasp:0.8,service:0.9,bezel:null},
   116:{lume:0.5,war:2,iso:0,antimag:0,clasp:0.8,service:0.9,bezel:null},
+  // --- Laco, pass 26 (rows 117-120) --------------------------------------------------------
+  // lume 0.8 on all four, ONE number for four watches, and the flat rate is the argument. Laco
+  //   name the compound and the variant - "Superluminova C3" - on the numerals, indices and hands
+  //   of every one, and their FAQ states C3 is the brightest variant they stock and that they use
+  //   only RC Tritec's Swiss pigments. That is a named compound without a named GRADE, which puts
+  //   it just under Traska's 0.85 ("Swiss Made Grade A BGW9", compound and grade both named) and
+  //   well above the 0.4-0.5 the makers who write only "Super-LumiNova" get. Row 118 is the one
+  //   that could argue for more, since it also carries a fully lumed bezel - held at 0.8 because
+  //   Laco name C3 only on its HANDS there and leave the dial and bezel indices as unspecified
+  //   "Superluminova", so the wider coverage comes with a weaker specification and the two cancel.
+  // clasp: 0.6 on rows 117 and 119, 0.7 on row 118, 0.3 on row 120.
+  //   0.7 on 118 is Laco's own "Faltschliesse mit Sicherheitsbuegel" - a folding clasp with a
+  //   safety catch, which is exactly the wording that earns row 104 (Oris) its 0.7 rung, against
+  //   the plain "folding clasp" 0.6 rows 102/103/105 get.
+  //   0.6 on 117 is INFERRED and labelled: the Aachen's own page names no clasp, but the matching
+  //   Basis bracelet Laco link from it (accessory 402196) describes a "Faltschliesse mit Laco
+  //   Logo" - a folding clasp with nothing further claimed, the same rung Sinn's bracelets take.
+  //   0.6 on 119 is the weaker inference of the two and is the softest number in this block: the
+  //   configurator's bracelet option says only "Edelstahlarmband". Every Laco steel bracelet whose
+  //   clasp they DO describe is a folding clasp, so it follows them. Evidence of micro-adjustment
+  //   or a safety catch on the PRO bracelet would take it to 0.7-0.8.
+  //   0.3 on 120, the pin-buckle rung: that row is priced on the riveted leather with the standard
+  //   steel buckle, per the rule that a row is scored on the band its own price buys.
+  // bezel 1.0 on row 118 alone - a sintered ceramic unidirectional dive bezel, Laco's own
+  //   "einseitig drehbare Keramikluenette", level with rows 100, 102 and 104-107. null on the
+  //   other three: a flieger has no rotating bezel at all, so the criterion cannot apply and its
+  //   weight is redistributed rather than the rows being penalised.
+  // antimag 0 on all four: a finding, not a gap. Laco make no antimagnetic claim on any of the
+  //   four pages, in the FAQ, or for either caliber - notable next to the Sinn 104s at 0.3, which
+  //   is the other German pilot watch here and does claim DIN ISO 764.
+  // iso 0 on all four, also a finding. Row 118 is the one where it bites: 300 m with a screw-down
+  //   crown and a unidirectional bezel is built to the pattern ISO 6425 describes, and Laco claim
+  //   no certification for it anywhere. Absence of the claim is 0, per this table's header.
+  // comp: nothing on any of the four. Rows 118 and 119 carry a date and 117 and 120 do not, and
+  //   date is not a key in COMPLICATION_VALUES, so the split costs nothing either way.
+  // war 2, Laco's own FAQ: "eine Garantie von 24 Monaten ab Kaufdatum". service 0.6 - a Pforzheim
+  //   manufacture with its own factory service, factory outlet and published dealer list, so above
+  //   the 0.4-0.5 microbrand rung, but one country and one workshop against Sinn's 0.8. Both are
+  //   data only and neither is scored.
+  117:{lume:0.8,war:2,iso:0,antimag:0,clasp:0.6,service:0.6,bezel:null},
+  118:{lume:0.8,war:2,iso:0,antimag:0,clasp:0.7,service:0.6,bezel:1.0},
+  119:{lume:0.8,war:2,iso:0,antimag:0,clasp:0.6,service:0.6,bezel:null},
+  120:{lume:0.8,war:2,iso:0,antimag:0,clasp:0.3,service:0.6,bezel:null},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -3789,6 +4054,40 @@ const FINISH = {
   // out. What would move these up is evidence of applied hand-finishing rather than machine
   // brushing; what would move them down is nothing found so far.
   114:0.50, 115:0.50, 116:0.50,
+  // Laco, pass 26. Case and dial work is the same across all four - brushed or blasted steel,
+  // printed dials, filled numerals - competent German industrial finishing, the band this file's
+  // own comment names Sinn in, and Sinn is the fair comparison at 0.50. So the spread is movement
+  // decoration, and the interesting part is that it does NOT follow which rows bought it: 119 and
+  // 120 buy the identical option and only 119 is credited, because only 119 can be seen into.
+  //   117 Aachen 0.50. The Basis line is Laco's entry case and dial, which on its own would sit at
+  //     0.45; what lifts it is the Laco 31 upgrade this row is priced with, which Laco's FAQ says
+  //     adds "Zierschliffe, gebl. Schrauben" over the standard movement's plain Zierschliffe, and
+  //     this row has the sapphire back to see it through.
+  //   118 Atlantik 0.50. Better case work than 117 - a ceramic bezel and a relief-cut caseback -
+  //     but it is the one Laco row here offered no movement upgrade at all, so there is no
+  //     decoration to score and it lands level rather than up.
+  //   120 Speyer 0.55, and it is NOT raised for the decoration it is configured with, which is the
+  //     most arguable call in this block. This is the header of this table taken literally: it
+  //     rates "movement decoration WHERE VISIBLE", and the Speyer keeps a solid engraved steel
+  //     back. Laco say the same thing themselves in the FAQ - choosing the decorated movement
+  //     "aendert also nichts an der Bauweise der Uhr", and on a closed back "bleibt die Veredelung
+  //     nicht sichtbar". Perlage nobody can see is a real thing bought and not a finishing quality
+  //     of the watch, so it stays in the price, where the Value column charges for it, and out of
+  //     the spec score. What DOES earn the 0.55 is visible: thermally blued steel hands, a genuine
+  //     extra operation, plus the sandblasted finish and cut flank engraving of the ORIGINAL line.
+  //     Scoring the invisible perlage anyway would put this row at about 0.60 and cost it roughly
+  //     a spec point; that is the alternative if this criterion is ever redefined.
+  //   119 Karlsruhe PRO 0.60, the highest of the four and the only one where the decoration counts
+  //     - the same +100 EUR perlage-and-blued-screws option as 120, but behind the sapphire
+  //     display back its configurator also selects. That is what the Christopher Ward rows reached
+  //     0.65 on, and it sits one rung under them because CW's case and dial work is a class above
+  //     what Laco do here - the decoration is on the movement alone.
+  // What is deliberately NOT paid for: the sapphire display backs on 117 and 119 as such. Being
+  // able to see the movement is already fittings.displayBack at 38% of that group, and charging
+  // FINISH for the window would be the double-count the Christopher Ward and Longines notes above
+  // refuse. The window is not being scored here; it is the condition under which the decoration
+  // behind it is, which is exactly the distinction between rows 119 and 120.
+  117:0.50, 118:0.50, 119:0.60, 120:0.55,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -3796,9 +4095,9 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 106 of 116 rows resolved - 48 see-through, 58 solid. The ten still open are
+// Research status: 110 of 120 rows resolved - 50 see-through, 60 solid. The ten still open are
 // 12, 16, 38, 41, 54, 56, 58, 59, 82 and 91, all rows whose maker publishes no caseback detail,
-// and none of them was added after pass 21 - passes 22 to 25 settled every one of their own rows.
+// and none of them was added after pass 21 - passes 22 to 26 settled every one of their own rows.
 // Row 91 is the newest and the best documented of the ten: Longines leave the field empty on the
 // Spirit 37 AND on the 40 mm sibling, so the gap is the collection's, not this reference's.
 const DISPLAY_BACK = {
@@ -3945,6 +4244,20 @@ const DISPLAY_BACK = {
   // reference. Two independent retailers agreeing with the gap in the maker's own table is what
   // makes this a confirmed solid rather than an omission.
   114: 1, 115: 1, 116: 0,
+  // Laco, pass 26, and all four are settled - two of them by the configurator, one by Laco's own
+  // field and one by a photograph.
+  // 119 is a 1 because the configured URL selects it: "Sichtboden mit Saphirglas" (+50 EUR), one
+  //   of the two options in the configurator's Boden group, the other being "Geschlossener Boden".
+  // 118 and 120 are 0s from Laco's own Gehaeuse field: "Edelstahlschraubboden mit Relief eines
+  //   Skorpions" and "massiver Edelstahlboden mit Gravur". Both describe a solid disc and neither
+  //   mentions glass.
+  // 117 is the interesting one. Laco's spec field for the Aachen says nothing about the back at
+  //   all, so on the text alone this row would be absent from this table. It is a 1 on their own
+  //   caseback photograph for this exact reference, which shows the movement through the glass and
+  //   "SAPPHIRE CRYSTAL" engraved around it - and the engraving option list for this SKU offers a
+  //   ROTOR engraving, which only makes sense on a watch whose rotor can be seen. Two independent
+  //   signals from the maker's own page, against a field they simply left empty.
+  117: 1, 118: 0, 119: 1, 120: 0,
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
@@ -4608,7 +4921,7 @@ function optionValuesFor(dim) {
 
 // How many rows each option would show, measured against every filter EXCEPT its own dimension's
 // (see matchesFilters). Recomputed on every pipeline pass, which is 5 x 90 predicate calls - the
-// same order as the search box, which rejoins a haystack string for all 116 rows per keystroke.
+// same order as the search box, which rejoins a haystack string for all 120 rows per keystroke.
 function optionCounts(dim) {
   const counts = new Map();
   WATCHES.filter(w => matchesFilters(w, dim.key)).filter(matchesSearch)
