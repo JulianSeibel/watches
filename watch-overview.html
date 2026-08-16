@@ -359,6 +359,18 @@
 
   <p><b>Where they land, and the bands moved underneath everyone.</b> The two titanium rows come out best: row 86 at 66 spec points extends a lead it already held as the highest-specified watch in the file, and row 85 rises from fifth to second at 64, pushing the €795 Tissot Seastar 1000 down to third. Both sit <i>above the curve</i> even after paying €455 and €500 for their bracelets — the model's verdict is that CW's bracelet prices buy more than this list charges for them. Rows 81 and 82 land <i>as expected</i> and row 80 <i>above</i>. Support is comfortable everywhere, 11 comparable rows at worst on the €2,705 Lumière, and the unscored count stays at 2 — rows 16 and 56, still the two cheapest. <b>The honest caveat is that residual sigma moves 5 → 6</b>, so unlike pass 16 the colour bands genuinely did shift under rows that did not change: 9 rows change band and 103 of 113 move at all, but the largest residual change on any row is 2.70 spec points and it belongs to row 81, which is one of the six. The model itself is fractionally worse and within noise — leave-one-out RMSE 5.88 → 5.95, skill 59.0% → 59.3% on a naive baseline that also worsened, resample 0.37/0.94 → 0.40/0.90, sign flips unchanged at 1. <b>The weight estimator improves, and the reason is the finding of this pass.</b> RMSE 14.6 → 13.8 g, median absolute error 6.5% → 6.0%, within ±15% 42 → 44 of 51, on a test set that did not grow. Pass 16 concluded that CW rows were about twice as hard to estimate as the rest and left the question of whether that was CW-specific open; pass 21 partly answered it on Longines. This closes it. <b>The same ten references, re-specified onto bracelets, halve their error</b> — mean absolute 15.0% → 8.7%, mean signed +5.2% → −1.3%, 9 of 10 now within ±15% — so the band mix was doing all of the work and the maker none of it. The whole-set split sharpens to 47 bracelet rows at +0.9% signed against 4 strap rows at +30.6%, with the caveat that 4 rows is now a thin base for a bias that large. <b>The one internally contradicted figure in the weight column also leaves it:</b> row 82's published 91 g implied an 8 g rubber strap where the identical strap on the Lumière implied 24 g, and on the Consort bracelet CW publish 158 g, which the estimator reads to within 4.4%. The contradiction is not resolved — the row simply no longer rests on it, and nothing was dropped to get there.</p>
 
+  <p><b>Tissot PRX, pass 25 — three rows added (114–116), and the list goes from 113 to 116.</b> The tenth to twelfth Tissots here and the first PRX references, chosen to put an integrated-bracelet case, a titanium case and a sub-€500 Swiss quartz into a list that had one, two and several of each but never the three in one family. All three are comfortably scored — 37 to 38 comparable rows apiece, since €425–875 is the thickest part of this price range — so nothing this pass rests on an extrapolation, and the two unscored rows stay 16 and 56, still the two cheapest. <b>The two Powermatic 80 rows land well above the curve, at 59 spec points and +9.40 for the 38 mm titanium and 57 and +8.20 for the 40 mm steel; the 35 mm quartz lands at 40 and −1.60, as expected.</b> The route was tissotwatches.com's own raw HTML, which renders the entire spec table as <code>aria-label="Field Value"</code> pairs — so the dimensions, weight, clasp, crystal, caseback and warranty on all three rows are Tissot's own fields, and no retailer supplied a scored number on either automatic.</p>
+
+  <p><b>Reading +9.40 as a verdict on the PRX would be reading it wrong, and the list itself says so.</b> Those two rows come seventh and eighth on residual across 116 — above them sit four Tissot Seastars at +13.40 to +15.40 and nothing else nearer than the Mido Multifort, with the PR516 ninth at +7.20. Six of the nine strongest Value results in this file are now Tissots, which is a statement about how this list prices Swatch Group specification at €400–900 and not a discovery about the PRX. What earns the number is unglamorous and all published: an 80-hour power reserve scoring a flat 1.0, a Nivachron hairspring, a display back, sapphire with inner AR, a butterfly clasp, and on row 114 a titanium case at 0.85 against steel's 0.5 — at €875.</p>
+
+  <p><b>Tissot publish a field that looks exactly like a lug-to-lug and is not one, and catching that is the finding of this pass.</b> Their spec table carries "Länge (mm)" directly beside "Breite (mm)", and on these three references it reads 37.5, 39.5 and 34.6 — in each case a shade under the diameter, which is precisely what an integrated-bracelet case with no lugs ought to measure. It was recorded as the L2L and then checked against references already in this list, which is what broke it. <b>On row 18's Seastar 36 the field reads 36.0 against a 36 mm diameter; on row 24's Seastar 40 it reads 40.0 against 40 mm; on row 17's PR516 it reads 37.0 where that row carries a real lug-to-lug of about 46 mm.</b> Tissot's Länge is the case body excluding lugs, and on a round case it is just the diameter restated. The PR516 is what settles it rather than the two divers, because the PR516 is itself an integrated-bracelet watch — if any case shape made this field mean the wearing length it would be that one, and it is 9 mm short. <b>What the mistake was worth is exactly one spec point on each of the three rows</b>, measured by running the model both ways: l2l/diameter of 0.99 sits under the fixed <code>WEAR_ANCHOR</code> floor of 1.13 and takes the maximum proportion sub-score, where imputing gives the list mean of 0.74. Rows 114–116 therefore carry <code>—</code>, and the honest position is that no usable lug-to-lug is published for the PRX at all. That a plausible number sat in the maker's own spec table, in the right units, next to the right neighbour, is the whole reason the evidence rule says to check a field against rows already scored rather than trust its label. The model agreed: leaving the bad figure in cost leave-one-out RMSE 5.95 → 5.97 and skill 59.3% → 59.0%, both of which came back on correction.</p>
+
+  <p><b>Tissot publish no caliber, and checking that turned up something about the nine rows already here.</b> Their Uhrwerk field reads "Swiss Made Automatikwerk" and "Quarz, 3 Zeiger" and stops. The raw source of all three pages was searched on both the de-de and en-us locales for ETA, F05, F06, Kaliber and Caliber, with zero hits — and then <b>T120.210.11.051.00, row 18's own page, was re-fetched and says exactly the same thing</b>, which means the ETA numbers rows 17–25 have carried since pass 6 were borrowed by earlier passes and never labelled as such. That is recorded here rather than quietly patched: those rows are not touched by this pass, and the finding belongs to whoever revisits them. The two new automatics can still be named, because "Powermatic 80" with the Nivachron hairspring is what Tissot market as the product and that exact string is already a tier key. <b>The quartz cannot, and becomes the third application of the Timex precedent</b> after Junkers in pass 23: <code>'Quartz — caliber not published (Swiss, EOL indicator)'</code> at tier 0.20, level with the ETA F05.412 and F06.412 entries and deliberately not below them, because a three-hand quartz with a date and an end-of-life indicator is that architecture whether or not its maker names it, and docking it would score the paperwork. The identification sits one step above the Junkers entry and one below the Timex: Tissot state Swiss manufacture, the EOL function and a 1.55 V cell, but unlike Timex not even the cell reference. Watchmaxx's "Caliber 10 1/2'''" is a movement size, not a name, and was not used. Its accuracy stays <code>—</code> rather than borrowed, because unlike the two automatics — which take rows 17 and 24's −4/+10 s/day, labelled on the row as the carried-over figure it is — there is no same-caliber sibling to carry anything from when the caliber itself is unidentified.</p>
+
+  <p><b>Three more published weights, and the same geometry shows up a second time.</b> Tissot's "Gewicht (g)" is a with-band figure and all three references are bracelets, so the test set grows 51 → 54, its first growth since pass 23. RMSE improves 13.8 → 13.6 g and within ±15% goes 44/51 → 46/54, while median absolute error worsens 6.0% → 6.3%. <b>All three read heavy — +6.5%, +11.9% and +15.5%, mean signed +11.3% against the whole set's +3.7%</b> — and the cause is the same Länge field read for what it actually is. <code>predictedWeightG()</code> models the case as a cylinder, <code>π r² h</code>, of the stated diameter; Tissot's Länge is the case body, and a tonneau body 37.5 mm long in a 38 mm circle holds less steel than that circle implies, so the estimator over-reads. The field is useless as a lug-to-lug and genuinely informative about case volume — which is the sense in which one number can be both wrong and worth having. It is not corrected for, because the published figures are the held-out test set and fitting a shape factor to the rows meant to test the estimator would leave nothing to test it with. <b>The titanium row is the useful addition to that table</b>: 84 g against 138 g for the steel 40 mm is 39% less on a case only 2 mm smaller, and it is the first titanium-versus-steel pair here where both halves are the same maker's published number rather than one measured and one estimated.</p>
+
+  <p><b>What it did to everything else.</b> Value moved by at most <b>0.30</b> spec points across the existing 113 — row 8, the AV86 1968 Mechanical — with 89 rows moving at all and two crossing zero, rows 82 and 83 from +0.1 to exactly on the curve. Three rows change band: row 10 <i>below</i> → <i>well below</i>, row 88 <i>as expected</i> → <i>below</i>, row 110 <i>above</i> → <i>as expected</i>. Residual sigma moves 6 → 5, which reverses pass 24's widening and is why three bands shifted on rows that did not change. Two rows drift on spec, both by one rounding point and both carrying an imputed sub-score — row 41 and row 113 — which is the <code>imputeMissingSubs()</code> effect pass 20 documented, behaving as pass 23 predicted it would: it tracks how far the list mean moves, not how many rows arrive. The model is unmoved, which is unusual for three added rows: leave-one-out RMSE holds at 5.95 and skill at 59.3% against a naive baseline that itself drifts 9.33 → 9.32, and resample goes 0.40/0.90 → 0.47/0.85. <b>Sign flips fall 1 → 0</b>, the spec range holds at 26–66, and the spec/price correlation eases 0.79 → 0.78.</p>
+
 
   <p><b>MAEN Hudson 38 GMT MKII, pass 20 — one row added (90), and the list goes from 89 to 90.</b> The second MAEN here and the second row on the Sellita SW330-2, which means it needed no new movement tier: it takes the 0.60 already argued for the two Christopher Wards, and its caller GMT is paid for in complications at 0.25 rather than the 0.5 a jumping local hour earns. <b>It lands at 48 spec points and −5.7 on Value, below the curve</b>, in a well-populated stretch of the price range — 30 comparable rows, so this is not an extrapolation. The reason is legible rather than mysterious: a 38 mm 300 m steel diver with a box-domed sapphire, X1 lume and an Élaboré Swiss GMT is a genuinely good specification, but at €1,079 it is being compared against the Mido Ocean Star GMT and the Christopher Wards, which bring a true traveller GMT, a display back or a bracelet at similar money. Specs are strong; the price is where the list disagrees.</p>
   <p><b>Three judgement calls, all recorded beside the numbers.</b> The <b>price</b> is €1,079.20, MAEN's own 20% site-wide reduction from a €1,349 list — the same arrangement row 1 already carries, and handled the way pass 17 handled poljot24: the selling price goes in <code>priceValue</code> so the cell, the sort and the model read one number, with the UVP shown alongside. The <b>height</b> is the weakest figure on the row. MAEN publish 11 mm "excluding crystal" and no total, so 13 mm is carried across from the MK5 on row 1, which shares the case family and the box-domed sapphire; it is an inference, not a measurement. The <b>bezel</b> is scored 0.4, an aluminium insert, inferred from an absence: MAEN's spec line says only "60 Click Bi-Directional Sandblasted Bezel" where their MK5 page names ceramic, and this is a maker who advertises ceramic when it is ceramic. The insert is also two-tone — blue/black on this reference, brown/black on the M1.3.3, which is how the two are told apart — and two-tone is cheap to anodise and expensive to sinter. If it proves to be ceramic the row gains about 1.3 spec points, comfortably inside the model's own ±4 of noise. <b>Weight</b> is estimated despite MAEN publishing 129 g, because that figure belongs to the five-link bracelet and this reference is priced on the TPU strap — taking it would describe a watch costing €151.20 more than the one in the Price cell, which is the same trap the Christopher Ward "Case Weight" field sets.</p>
@@ -394,7 +406,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-113 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-116 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
 //                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
@@ -2165,6 +2177,94 @@ const WATCHES = [
   powerReserveDisplay:'— (battery)', accuracyDisplay:'—',
   waterResDisplay:'50 m (5 ATM)', waterResM:50,
   priceDisplay:'€385', priceValue:385, priceCurrency:'EUR' },
+
+// --- Tissot PRX, pass 25 (rows 114-116) -----------------------------------------------------
+// The tenth to twelfth Tissots, and the first PRX references here. tissotwatches.com renders its
+// whole spec table into the HTML as aria-label="Field Value" pairs, so every dimension, the
+// weight, the clasp, the crystal and the warranty below are Tissot's own fields read from the
+// page source. Two things are not: row 116's solid caseback, which leans on two retailers as
+// well as on the gap in Tissot's own table, and the accuracy on the two automatics, carried over
+// from rows 17 and 24. Both are labelled where they sit.
+//
+// One field Tissot withhold on all three: the caliber. Their Uhrwerk field reads "Swiss Made
+// Automatikwerk" and "Quarz, 3 Zeiger" and nothing more, on these refs AND on T120.210.11.051.00
+// (row 18), which was re-fetched to check - so the ETA numbers rows 17-25 carry were borrowed by
+// earlier passes, not published. The two automatics can still be named, because Tissot market
+// "Powermatic 80" with the Nivachron hairspring as the product and that string is already a key
+// here; the quartz cannot, and follows the Timex/Junkers precedent instead.
+//
+// l2lDisplay is '—' on all three, and that is a correction made during this pass rather than a
+// gap. Tissot publish a "Laenge (mm)" field that sits right next to "Breite (mm)" and reads like
+// a lug-to-lug - 37.5, 39.5 and 34.6 here, each a shade under its own diameter. It is not one.
+// Three references already in this list settle it: on row 18's Seastar 36 the field reads 36.0
+// against a diameter of 36.0, on row 24's Seastar 40 it reads 40.0 against 40.0, and on row 17's
+// PR516 it reads 37.0 where that row records a real lug-to-lug of about 46 mm. Tissot's Laenge is
+// the case body excluding lugs, and on a round case it is simply the diameter again.
+// The PR516 is the decisive one, because it is also an integrated-bracelet watch: if any case
+// shape made Laenge equal the wearing length it would be that one, and it is 9 mm short.
+// Taking the field at face value would have scored all three rows at the maximum for
+// wearability.proportion - l2l/diameter of 0.99 against a WEAR_ANCHOR floor of 1.13 - and was
+// worth exactly one spec point per row, measured by running it both ways.
+{ id:114, brand:'Tissot', name:'Tissot PRX 38 mm Powermatic 80 Titanium', desc:'T137.807.44.041.00 · blue waffle dial, titanium case and bracelet · the steel 38 mm T137.407.11 is the cheaper sibling',
+  link:'https://www.tissotwatches.com/de-de/T1378074404100.html',
+  img:'https://www.tissotwatches.com/dw/image/v2/BKKD_PRD/on/demandware.static/-/Sites-Tissot-Catalogue/default/dw46721990/product-pictures/bfc139c5-3da5-4a57-849b-4711ef6b0f41_T137-807-44-041-00_Shadow.png?sm=fit&sw=800&sh=800,gravity=center',
+  // Tissot's "Laenge (mm)" for this ref is 37.5 and is NOT the lug-to-lug - see the block comment
+  // above. No usable L2L is published for the PRX, so the field imputes rather than guesses.
+  diameterDisplay:'38 mm', diameterMm:38, l2lDisplay:'—',
+  heightDisplay:'10.98 mm', heightMm:10.98,
+  // Lug width 11 mm, quick-release. The bezel is fixed and is the one part not made of titanium -
+  // Tissot's "Luenettenmaterial" field says 316L steel on a titanium case and bracelet.
+  caseDisplay:'Grade 2 titanium (fixed 316L steel bezel)', caseCategory:'Titanium',
+  bandDisplay:'Titanium bracelet',
+  glassDisplay:'Sapphire + AR (inner)', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Powermatic 80.111 (ETA C07.111, Nivachron)', movementType:'Automatic', movementCostDisplay:'not sold separately (Swatch Group excl.)',
+  // accuracy: Tissot state no rate on this reference's page. -4/+10 s/day is carried over from
+  // rows 17 and 24, which are the same caliber from the same maker, and is labelled here as the
+  // borrowed figure it is rather than restated as a spec of this SKU.
+  powerReserveDisplay:'80 h', accuracyDisplay:'−4/+10 s/day',
+  waterResDisplay:'100 m (10 ATM)', waterResM:100,
+  priceDisplay:'€875', priceValue:875, priceCurrency:'EUR' },
+
+{ id:115, brand:'Tissot', name:'Tissot PRX 40 mm Powermatic 80 — Ice Blue', desc:'T137.407.11.351.00 · ice-blue waffle dial, steel · the 38 mm titanium T137.807.44 is the row above',
+  link:'https://www.tissotwatches.com/de-de/T1374071135100.html',
+  img:'https://www.tissotwatches.com/dw/image/v2/BKKD_PRD/on/demandware.static/-/Sites-Tissot-Catalogue/default/dwe2f8f9e3/product-pictures/5f0c9cb0-604a-476e-8ba7-563133b91d5c_T137-407-11-351-00_shadow.png?sm=fit&sw=800&sh=800,gravity=center',
+  // Tissot's Laenge for this ref is 39.5, again not an L2L. Same handling as row 114.
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'—',
+  heightDisplay:'10.93 mm', heightMm:10.93,
+  caseDisplay:'316L stainless steel (fixed steel bezel)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet',
+  glassDisplay:'Sapphire + AR (inner)', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Powermatic 80.111 (ETA C07.111, Nivachron)', movementType:'Automatic', movementCostDisplay:'not sold separately (Swatch Group excl.)',
+  powerReserveDisplay:'80 h', accuracyDisplay:'−4/+10 s/day',   // borrowed from rows 17/24, as on row 114
+  waterResDisplay:'100 m (10 ATM)', waterResM:100,
+  priceDisplay:'€775', priceValue:775, priceCurrency:'EUR' },
+
+{ id:116, brand:'Tissot', name:'Tissot PRX 35 mm Quartz — White Mother-of-Pearl', desc:'T137.210.11.111.00 · MOP dial, 9.6 mm thick · the smallest and only quartz PRX here',
+  link:'https://www.tissotwatches.com/de-de/T1372101111100.html',
+  img:'https://www.tissotwatches.com/dw/image/v2/BKKD_PRD/on/demandware.static/-/Sites-Tissot-Catalogue/default/dw266f6655/product-pictures/21c9d8dc-848f-4d9b-b76a-9481961cbd96_T137-210-11-111-00_Shadow.png?sm=fit&sw=800&sh=800,gravity=center',
+  // Laenge 34.6, not an L2L. Same handling as rows 114 and 115.
+  diameterDisplay:'35 mm', diameterMm:35, l2lDisplay:'—',
+  heightDisplay:'9.6 mm', heightMm:9.6,
+  caseDisplay:'316L stainless steel (fixed steel bezel, pressed solid back)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet',
+  // Tissot's Glas field reads plain "Saphirglas" here against "Einseitig von innen entspiegeltes
+  // Saphirglas" on rows 114 and 115 - the same field, same site, filled differently, so the
+  // missing AR is the maker's own distinction and not an omission. Two US retailers do describe
+  // this ref's crystal as anti-reflective; Tissot's own field wins under the evidence rules.
+  glassDisplay:'Sapphire', glassCategory:'Sapphire',
+  // Tissot name no caliber: their Uhrwerk field says "Quarz, 3 Zeiger", and the raw page source
+  // was searched on both the de-de and en-us locales for ETA, F05, F06, Kaliber and Caliber with
+  // zero hits. What they do publish is Swiss manufacture, three hands with a date, an end-of-life
+  // indicator and a 1.55 V cell - so the row states the architecture and declines to guess the
+  // number. Watchmaxx list "Caliber 10 1/2'''", which is a movement SIZE, not an identification.
+  // Same handling as row 76 (Timex) and row 113 (Junkers); the non-disclosure is recorded in the
+  // Movement cost column rather than scored as a defect of the movement.
+  movementDisplay:'Quartz — caliber not published (Swiss, EOL indicator)', movementType:'Quartz', movementCostDisplay:'not published (Tissot name no caliber)',
+  // accuracy '—' and not borrowed: unlike rows 114/115 there is no same-caliber sibling in this
+  // list to carry a figure over from, because the caliber itself is unidentified.
+  powerReserveDisplay:'— (battery)', accuracyDisplay:'—',
+  waterResDisplay:'100 m (10 ATM)', waterResM:100,
+  priceDisplay:'€425', priceValue:425, priceCurrency:'EUR' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -2345,9 +2445,9 @@ function measuredAccuracyFor(w) {
 //
 // Pass 10 wrote that "if a real set of measured weights ever exists that argument changes,
 // because measured mass carries information the dimensions do not - bracelet build, case wall
-// thickness". That set now partly exists: 51 of 113 rows carry a published figure. The condition
+// thickness". That set now partly exists: 54 of 116 rows carry a published figure. The condition
 // has been met and the question is genuinely open, so it is flagged rather than quietly ignored.
-// It is NOT acted on here, for two reasons. The 51 are not a random sample - they are nine makers
+// It is NOT acted on here, for two reasons. The 54 are not a random sample - they are nine makers
 // who happen to document well, three of them Japanese and six Western, so scoring on them would
 // score brands on their spec-sheet habits. And the double-counting objection still binds for the
 // other 62 rows, where the "weight" is a function of columns the score already reads. Scoring a
@@ -2366,12 +2466,18 @@ function measuredAccuracyFor(w) {
 // slightly worse again, in the same direction and for the same structural reason - see below.
 // Pass 23's ONE row moved it more than either: the Junkers on row 113 is the largest single error
 // in the set at +76.1%, and on its own it takes mean absolute error from 9.8% to 11.1%.
-//                        28 rows (p11)   36 rows (p12)   47 rows (p16)   50 rows (p21)   51 rows (p23)   51 rows (p24)
-//   mean absolute error       8.5%           8.2%            9.5%            9.8%           11.1%            9.8%
-//   median absolute error     6.1%           5.8%            6.1%            6.5%            6.5%            6.0%
-//   RMSE                     11.8 g         11.9 g          13.5 g          13.9 g          14.6 g          13.8 g
-//   within +-15%             25 of 28       32 of 36        40 of 47        42 of 50        42 of 51        44 of 51
-//   mean signed error        +2.6%          +1.6%           +2.4%           +3.1%           +4.5%           +3.2%  (+ = reads heavy)
+//                        28 rows (p11)   36 rows (p12)   47 rows (p16)   50 rows (p21)   51 rows (p23)   51 rows (p24)   54 rows (p25)
+//   mean absolute error       8.5%           8.2%            9.5%            9.8%           11.1%            9.8%            9.9%
+//   median absolute error     6.1%           5.8%            6.1%            6.5%            6.5%            6.0%            6.3%
+//   RMSE                     11.8 g         11.9 g          13.5 g          13.9 g          14.6 g          13.8 g          13.6 g
+//   within +-15%             25 of 28       32 of 36        40 of 47        42 of 50        42 of 51        44 of 51        46 of 54
+//   mean signed error        +2.6%          +1.6%           +2.4%           +3.1%           +4.5%           +3.2%           +3.7%  (+ = reads heavy)
+// Pass 25's three Tissot PRX rows all read heavy (+6.5%, +11.9%, +15.5%), and the cause is
+// geometric rather than a density error: the PRX case is a tonneau whose length is SHORTER than
+// its width, while the method below models a cylinder of the stated diameter. Not corrected, for
+// the reason this table exists - the published figures are the held-out test set, and fitting a
+// shape factor to the rows meant to test the estimator would leave no way to tell whether the
+// remaining estimates are any good.
 // Pass 24 is the only column here that moved WITHOUT the test set growing. It re-specified six CW
 // rows onto the bracelets they are now priced on, swapping six published figures for six others,
 // and every statistic improved. That is not the estimator getting better: it is the test set losing
@@ -2436,13 +2542,13 @@ function measuredAccuracyFor(w) {
 const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceramic: 2.0 };
 // Published weights, pass 11, extended in passes 12, 15 and 16. Every row was checked against the
 // maker's own product page - the link the row already carries - rather than sampled. That
-// overturned the premise this column was built on. Weight is NOT unpublishable: eight makers state
-// it outright, as a plain field in the same spec table as the diameter, covering 47 rows.
-//   Citizen    "Gewicht"          12/14 rows on de.citizenwatch.eu
+// overturned the premise this column was built on. Weight is NOT unpublishable: nine makers state
+// it outright, as a plain field in the same spec table as the diameter, covering 52 rows.
+//   Citizen    "Gewicht"          12/16 rows on de.citizenwatch.eu
 //   CW         "Weight inc. Strap" 10/10 rows - and the only maker that also gives a separate
 //                                  "Case Weight", i.e. the only one it is possible to take the
 //                                  WRONG figure from without noticing
-//   Tissot     "Gewicht (g)"       9/9 rows
+//   Tissot     "Gewicht (g)"      12/12 rows
 //   Mido       "Gewicht (g)"       8/8 rows - states it to a decimal (168.1 g on the Tribute)
 //   Seagull    "Net Weight"        3/3 rows
 //   Seiko                          1/1 row
@@ -2450,8 +2556,15 @@ const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceram
 //   Longines   "case_weight"       4/4 rows - in the product record behind the spec accordion
 //                                  rather than in the rendered prose, which is why passes 6 and
 //                                  13 both read this brand as publishing nothing
-// Three more rows come from a third party where the maker omits it, marked below. Figures are
+//   Junkers    "Gewicht"           1/1 row - the ninth maker, found by pass 23 and missing from
+//                                  this roster until pass 25 restated it
+// Two more rows come from a third party where the maker omits it, marked below. Figures are
 // with the band the row is priced on, matching what this column claims to show.
+// The three counts above reconcile: 52 published by the maker + 2 borrowed = the 54 in the table.
+// They did not before pass 25 - the roster said eight makers and 47 rows while listing 48, had
+// never gained Junkers, and still counted row 67 as borrowed after pass 21 found Longines publish
+// it themselves. Corrected here rather than left, since a roster that does not add up is the kind
+// of comment this file treats as a bug.
 const WEIGHT_MEASURED = {
   // --- Tissot, "Gewicht (g)" on tissotwatches.com -------------------------------------------
   17: 146,  // PR516 Powermatic 80, steel bracelet
@@ -2551,6 +2664,14 @@ const WEIGHT_MEASURED = {
   // gram is the ordinary reading. It is the one figure in this block that a second source could
   // still overturn.
   113: 46,  // Bauhaus Chronograph 912.01.02, black leather strap
+  // --- Tissot PRX, pass 25. Same "Gewicht (g)" field as the block at the top of this table ----
+  // All three are bracelet references and the field is a with-band figure, so all three qualify.
+  // The titanium row is the useful one: 84 g against 138 g for the steel 40 mm is a 39% saving on
+  // a case only 2 mm smaller, which is the first titanium-vs-steel pair in this table where both
+  // halves are the same maker's published number rather than one measured and one estimated.
+  114: 84,   // PRX 38 Powermatic 80, titanium case and titanium bracelet
+  115: 138,  // PRX 40 Powermatic 80 ice blue, steel bracelet
+  116: 97,   // PRX 35 Quartz MOP, steel bracelet
 };
 
 // Sinn is the one maker that publishes a head-only figure: "Gewicht ohne Band: 65 Gramm" for the
@@ -2817,6 +2938,12 @@ const WATCH_TYPES = {
   113: ['Chronograph', 'Dress'],       // Bauhaus design, 50 m, fixed bezel, leather - a dress
                                        //   chronograph rather than a sports one, unlike every
                                        //   other Chronograph row here except 89
+  // Tissot PRX, pass 25. 'Sports' follows row 17, the PR516, and rows 42/43, the Citizen Series 8
+  // - the integrated-bracelet, fixed-bezel, 100 m sports watch. The 35 mm quartz also carries
+  // 'Dress': at 9.6 mm on a mother-of-pearl dial it is the one PRX here that reads either way,
+  // the same call already made for row 108.
+  114: ['Sports'], 115: ['Sports'],
+  116: ['Sports', 'Dress'],
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
@@ -2828,7 +2955,7 @@ const typesFor = w => WATCH_TYPES[w.id] ?? [];
 // an echo of the shortlist.
 //
 // Absent = 'consider', so the table lists only the rows with a decision on them rather than
-// restating the default 113 times, and adding a watch needs no entry here. That also means this
+// restating the default 116 times, and adding a watch needs no entry here. That also means this
 // is the one id-keyed side table selfCheck() does NOT require full coverage of.
 //
 // Held in the file rather than in localStorage: statuses are decisions worth keeping, and the
@@ -2881,7 +3008,7 @@ const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (99 of 113 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (101 of 116 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -3039,6 +3166,16 @@ const MOVEMENT_TIER = {
   'Solar quartz — Epson VS22': 0.24,
   'Quartz — ETA F05.412': 0.20,
   'Quartz — ETA F06.412': 0.20,
+  // Tissot PRX 35, pass 25. 0.20, exactly level with the two named ETA quartz above it and not
+  // below them, for the third application of the argument the Timex and Junkers notes below make
+  // at length: this column rates architecture, and a three-hand quartz with a date and an EOL
+  // indicator is that architecture whether or not its maker names the caliber. Docking it would
+  // score the paperwork. Level with F05.412/F06.412 specifically because those two ARE that
+  // movement - same Swatch Group supplier, same function set, same case sizes - so the row is
+  // placed on a match of function to two entries already here, not on a guess at a part number.
+  // The identification is a step stronger than the Junkers entry's and weaker than the Timex's:
+  // Tissot state Swiss manufacture and the EOL function but, unlike Timex, not even the cell.
+  'Quartz — caliber not published (Swiss, EOL indicator)': 0.20,
   'Quartz — TMI VH31 (sweep sec.)': 0.20,
   'Quartz — Miyota GM12': 0.18,
   'Quartz — cal. 1502 (day-date)': 0.18,
@@ -3485,6 +3622,31 @@ const EXTRAS = {
   //   service address and its own showroom, but one country and a generic Swiss quartz module
   //   rather than a dealer network - level with the microbrands. Data only, not scored.
   113:{lume:0.1,war:2,iso:0,antimag:0,clasp:0.3,service:0.5,bezel:null,comp:['chrono','small_sec']},
+  // --- Tissot PRX, pass 25 (rows 114-116) --------------------------------------------------
+  // Row 17, the PR516, is the anchor for all three: the other Tissot on an integrated bracelet
+  // with no rotating bezel, and every soft number here matches it.
+  // lume 0.5, the "standard unspecified SLN" band. Tissot's field is "Leuchtbeschichtung auf den
+  //   Zeigern: Super-LumiNova(R)" - the grade is not stated, which is exactly what 0.5 is for.
+  //   Not 0.7 like the Seastar rows: those are divers with lumed bezels and markers, this is
+  //   hands only, and the PRX is not marketed on its lume.
+  // clasp 0.8, matching row 17 and NOT the 0.9 the Seastars get. Tissot's field is the same
+  //   "Butterfly-Faltschliesse mit Druckern" on all three - a butterfly deployant with push-
+  //   buttons, but no on-the-fly micro-adjustment and no diver extension, which is what separates
+  //   0.8 from the 0.9 band. The quick-release bracelet is a convenience, not a clasp feature.
+  // bezel null on all three, not a low score: the PRX bezel is fixed and structural. Tissot's
+  //   "Luenettenmaterial" field names a material for it, but naming a material does not make a
+  //   bezel functional - same reading as row 73's fixed octagonal bezel.
+  // antimag 0.5 on the two Powermatics, Tissot's own "Patentierte Nivachron(TM)spirale", the same
+  //   basis as rows 17 and 24. 0 on the quartz, where no such claim is made and none would mean
+  //   anything.
+  // iso 0 on all three: a finding, not a gap. 100 m with a push-pull crown, and Tissot claim no
+  //   certification for the PRX anywhere on the pages.
+  // war 2 (Tissot's own "2 Jahre internationale Garantie"), service 0.9 (Swatch Group). Both data
+  //   only, not scored.
+  // comp omitted: date only, and date is not in COMPLICATION_VALUES.
+  114:{lume:0.5,war:2,iso:0,antimag:0.5,clasp:0.8,service:0.9,bezel:null},
+  115:{lume:0.5,war:2,iso:0,antimag:0.5,clasp:0.8,service:0.9,bezel:null},
+  116:{lume:0.5,war:2,iso:0,antimag:0,clasp:0.8,service:0.9,bezel:null},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -3615,6 +3777,18 @@ const FINISH = {
   // down for it as well would be the double-count the Longines and Oris notes above refuse in the
   // other direction. What would move this up is evidence of applied rather than printed indices.
   113:0.30,
+  // Tissot PRX, pass 25. 0.50 on all three, level with row 17 (PR516) and row 24 - the same
+  // maker, the same industrial finishing standard, and the band this file's own comment names
+  // Tissot in. The PRX case is genuinely well done for the money, with brushed tops against
+  // polished chamfers running unbroken into the bracelet, which is why it sits at the top of the
+  // mainstream band rather than the middle.
+  // What is deliberately NOT paid for here: the waffle-pattern dials on 114/115 and the mother-of-
+  // pearl on 116 are dial materials and textures, not a step up in execution, and the display
+  // backs on 114/115 are already fittings.displayBack at 38% of that group. Raising FINISH for
+  // either would charge the same feature twice - the trap the Christopher Ward note above sets
+  // out. What would move these up is evidence of applied hand-finishing rather than machine
+  // brushing; what would move them down is nothing found so far.
+  114:0.50, 115:0.50, 116:0.50,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -3622,9 +3796,9 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 103 of 113 rows resolved - 46 see-through, 57 solid. The ten still open are
+// Research status: 106 of 116 rows resolved - 48 see-through, 58 solid. The ten still open are
 // 12, 16, 38, 41, 54, 56, 58, 59, 82 and 91, all rows whose maker publishes no caseback detail,
-// and none of them was added after pass 21 - passes 22 and 23 settled every one of their own rows.
+// and none of them was added after pass 21 - passes 22 to 25 settled every one of their own rows.
 // Row 91 is the newest and the best documented of the ten: Longines leave the field empty on the
 // Spirit 37 AND on the 40 mm sibling, so the gap is the collection's, not this reference's.
 const DISPLAY_BACK = {
@@ -3763,6 +3937,14 @@ const DISPLAY_BACK = {
   // window mentioned anywhere on the page. A screwed steel disc over a quartz module is also the
   // only thing that makes sense of it, but the field alone settles it.
   113: 0,
+  // Tissot PRX, pass 25, and the split is one field of Tissot's own filled three ways. Their
+  // "Gehaeuseausfuehrung" field reads "Glaeserner Gehaeuseboden" (glass case back) on both
+  // Powermatic refs; on the quartz the field is absent from the spec table altogether.
+  // Absence of a field would normally mean "not researched" here, so the 0 on 116 does not rest
+  // on it: Timescape describe a "pressed case-back" and Watchmaxx a "Solid" one for that exact
+  // reference. Two independent retailers agreeing with the gap in the maker's own table is what
+  // makes this a confirmed solid rather than an omission.
+  114: 1, 115: 1, 116: 0,
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
@@ -4426,7 +4608,7 @@ function optionValuesFor(dim) {
 
 // How many rows each option would show, measured against every filter EXCEPT its own dimension's
 // (see matchesFilters). Recomputed on every pipeline pass, which is 5 x 90 predicate calls - the
-// same order as the search box, which rejoins a haystack string for all 113 rows per keystroke.
+// same order as the search box, which rejoins a haystack string for all 116 rows per keystroke.
 function optionCounts(dim) {
   const counts = new Map();
   WATCHES.filter(w => matchesFilters(w, dim.key)).filter(matchesSearch)
