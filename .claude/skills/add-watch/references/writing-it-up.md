@@ -16,9 +16,23 @@ The edits are the easy half. This file is the half that has drifted before.
 
 ## The footer paragraphs
 
-Inserted **after the newest pass paragraph**, before the older thematic blocks. The footer is
-ordered thematically, not chronologically; pass 20 went in directly after pass 19, above the pass-17
-material. There are no dates — **the pass number is the dating convention.**
+The footer has three parts, in this order:
+
+1. a **head** of model revisions and early criterion research (revision 2, fittings passes 2–5,
+   revision 3, the live validation note, then weight, watch type);
+2. a **chronological spine** of per-pass write-ups, ascending by pass number, currently 12 → 26;
+3. a **thematic tail** of criterion-level research (complications, accuracy, fittings), ending with
+   the `Sources` paragraph, which stays last because other paragraphs refer to it as "below".
+
+**A new pass block goes at the end of the spine** — directly after the newest pass's last paragraph,
+before the thematic tail. There are no dates; **the pass number is the dating convention.**
+
+**Keep a pass's paragraphs contiguous.** Continuation paragraphs ("Where they land", "What it did to
+everything else") carry no pass number of their own, so one left behind is unfindable: passes 15, 16,
+17 and 20 had all drifted out of the spine before this was noticed, and pass 16's write-up sat in two
+places 68 paragraphs apart. Two chains in the prose make the order checkable — each lead's "the list
+goes from X to Y" should link end-to-end, and each "Effect on the model" RMSE `A → B` should start
+where the previous one finished.
 
 Since the commit body is gone, **this is the only prose record of the pass.** Write it as though
 the reader has the diff open and wants to know why, not what. Every judgement call that would once
@@ -100,7 +114,6 @@ which it has. Grep for the surrounding words instead.
 | HTML | above `DISPLAY_BACK`: "N of M rows resolved — X see-through, Y solid", and the list of open ids | a researched caseback, or any row |
 | HTML | the search-box comment: "all N rows per keystroke" | any row |
 | CLAUDE.md | the baseline block, the watch count, the img count, the `WATCHES` id range, every "All N present", the `DISPLAY_BACK` coverage, the `MOVEMENT_TIER` key count, the `n/s` row list, `residualSigma`, and "research passes run to N" | various |
-| CLAUDE.md | the `~line` numbers in the side-table — they drift by hundreds of lines per pass | any insertion above them |
 
 **CLAUDE.md's baseline block is the important one.** It is the regression baseline every future
 change is compared against, so paste the literal new two lines of `node check.js` — do not retype

@@ -33,41 +33,23 @@ an `img`; rows 60 and 64 fall back to a `🔗 photo` link). Broken images degrad
 a dead CDN URL costs a thumbnail and nothing else. Scoring, validation and filtering all run
 locally, so `file://` is a fine way to work.
 
-Note that **`longines.com` cannot be fetched from this machine** — every path under it times out on
-both WebFetch and curl, while the bare root answers. The four Longines rows were researched through
-a text-extraction proxy, which returns the maker's own rendered page. Their full spec table lives in
-an embedded product record (`case_thickness`, `case_lug_to_lug`, `case_weight`, `case_case_back`,
-`mvt_fct_calibre_name`) rather than in the rendered prose, so a plain text scrape of that site looks
-as though Longines publish almost nothing. They publish more than most makers here.
+Three per-maker traps are worth knowing before you touch those rows. Each is written up in full in
+the code, under the `// --- <Brand>, pass N ---` banner named here — read the banner rather than
+working from this summary, and do not copy the reasoning back up here:
 
-Note also that **Tissot's `Länge (mm)` is not a lug-to-lug**, and it is the one field on that site
-built to be misread — it sits directly beside `Breite (mm)` in the same spec table, in the same
-units, and on an integrated-bracelet case it comes out just under the diameter, which is exactly
-what a real L2L would do. It is the case body excluding lugs: 36.0 on row 18's 36 mm Seastar,
-40.0 on row 24's 40 mm one, and 37.0 on row 17's PR516, whose actual lug-to-lug is about 46 mm.
-Pass 25 recorded it as an L2L on three PRX rows before that cross-check caught it, and it was
-worth a spec point each. Tissot publish no usable L2L; those rows carry `'—'`. The same field *is*
-sound as case-body length, which is why `predictedWeightG()`'s cylinder over-reads on a tonneau.
-
-Note finally that **the four Laco rows (117–120) are priced as configured, not as listed.** Laco
-sell options that change the watch itself — anti-reflective coating, movement grade, movement
-decoration, caseback, bracelet — and pass 26 was asked to take the best coating, decoration and
-movement grade each reference offers. So `priceValue` on those rows is Laco's base price *plus*
-named surcharges, itemised in a comment above each row, and the spec columns describe the
-configured watch. Row 119 is the extreme case: a €950 Karlsruhe PRO carrying €520 of options,
-selected by the config string in its own `link`. Do not "correct" one of these against Laco's
-headline price without reading the comment — the mismatch is the point, not a bug.
-
-**The trap is that not every option is on the page.** The configurator (row 119) and ordinary
-selects (row 117) are visible in the HTML, but the **Top-grade and decorated-movement upgrade is
-a separate "Uhrwerk Upgrade" added to the order**, and it appears nowhere in the product page's
-source. Row 120 carries it at +€130 and +€100; row 118 is not offered it at all — and their
-pages look identical in this respect, so `--probe` cannot separate them. **A page showing no
-movement dropdown is not evidence either way**, and both rows had to be settled against order
-prices rather than research. Laco's FAQ is the list of what *can* be upgraded (`LACO 200`, `210`,
-`330`, `500`, and `2S` → `31`), but it does not say which references offer it. The FAQ is also the
-only place they publish the caliber map (`LACO 31` = Miyota 8315, `LACO 200` = Sellita SW200-1),
-the in-house regulation rate per caliber, and the Élaboré-vs-Top component table.
+- **`longines.com` times out on this machine** — every path, on both WebFetch and curl, while the
+  bare root answers. Those four rows were researched through a text-extraction proxy returning the
+  maker's own rendered page. Their spec table lives in an embedded product record rather than the
+  rendered prose, so a plain scrape makes Longines look near-silent when they publish more than most
+  makers here. See `Longines Spirit / Conquest, pass 21`.
+- **Tissot's `Länge (mm)` is not a lug-to-lug** — it is the case body excluding lugs, and it sits
+  beside `Breite (mm)` in the same units looking exactly like one. Tissot publish no usable L2L;
+  those rows carry `'—'`. See `Tissot PRX, pass 25`.
+- **The four Laco rows (117–120) are priced as configured, not as listed** — `priceValue` is Laco's
+  base price plus named surcharges, itemised above each row, and the spec columns describe the
+  configured watch. Do not "correct" one against Laco's headline price. The Top-grade movement
+  upgrade is ordered separately and appears nowhere in the page source, so `--probe` cannot settle
+  it either way. See `Laco, pass 26`.
 
 ## Checking a change
 
@@ -118,13 +100,13 @@ messages and add a generated-with line to PR bodies. Drop all three.
 
 Three layers inside the one `<script>`:
 
-1. **Data.** `WATCHES` (line ~472) — 120 object literals, one per watch, ids **1–120, contiguous and
+1. **Data.** `WATCHES` — 120 object literals, one per watch, ids **1–120, contiguous and
    unique**, each with display strings (`diameterDisplay`, `movementDisplay`, …), an `img` and
    `link`, and the few structured fields the code sorts or scores on (`diameterMm`, `heightMm`,
    `waterResM`, `priceValue`, `priceCurrency`, `caseCategory`, `glassCategory`, `movementType`,
    optional `streetPriceEUR`). Most columns are *display strings only*; sorting them goes through
    `parseLeadingNumber()`, which pulls the first number out of messy text.
-2. **Model.** `computeValueScores()` (line ~4504) — turns the data into `specScore`, `valueScore`,
+2. **Model.** `computeValueScores()` — turns the data into `specScore`, `valueScore`,
    `specResidual`, `specExpected`, `specSubs`, `specGroups`, `valueBand`, `residualSigma` and
    `priceSupport`, written back onto each watch object as properties.
 3. **View.** `applyPipeline()` = filter → search → sort → `renderRows()` → `refreshFilterPanels()`,
@@ -142,16 +124,19 @@ The `<script>` opens with a contents banner listing the sections in order; grep 
 
 The per-watch research does not live on the watch objects. It lives in parallel lookup tables:
 
-| Table | Line | Keyed by | Holds |
-|---|---|---|---|
-| `EXTRAS` | ~3496 | `id` | lume, warranty, ISO 6425, antimagnetism, clasp, service, bezel, complications, optional `caseScore` override. **All 120 present.** |
-| `FINISH` | ~3911 | `id` | 0–1 finishing/decoration estimate. **All 120 present.** |
-| `DISPLAY_BACK` | ~4073 | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 110 of 120 researched, 10 open. |
-| `WATCH_TYPES` | ~2987 | `id` | array of types (filter only, never scored). **All 120 present.** |
-| `STATUS` | ~3148 | `id` | buying decision — `'bought'`, `'likely'`, `'sceptical'` or `'avoid'`; **absent = `'consider'`**, the default. Drives a filter, a name-cell chip and a bar on the row's left edge; never scored. The one id-keyed table with no coverage requirement, so adding a watch needs no entry — and the only one where a count would just drift, so none is stated here. |
-| `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | ~2718 / ~2856 / ~2918 / ~2844 | `id` | published grams (58); ids confirmed to publish none (51); ids whose page could not be reached (7); ids published without the band (4). The four are disjoint and together cover all 120 — keep it that way. |
-| `MOVEMENT_TIER` | ~3202 | **exact `movementDisplay` string** | 0–1 architecture tier. 65 keys for 65 distinct movements, no misses, no orphans. |
-| `MEASURED_ACCURACY` | ~2536 | caliber **substring** of `movementDisplay` | reported real-world rates |
+| Table | Keyed by | Holds |
+|---|---|---|
+| `EXTRAS` | `id` | lume, warranty, ISO 6425, antimagnetism, clasp, service, bezel, complications, optional `caseScore` override. **All 120 present.** |
+| `FINISH` | `id` | 0–1 finishing/decoration estimate. **All 120 present.** |
+| `DISPLAY_BACK` | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 110 of 120 researched, 10 open. |
+| `WATCH_TYPES` | `id` | array of types (filter only, never scored). **All 120 present.** |
+| `STATUS` | `id` | buying decision — `'bought'`, `'likely'`, `'sceptical'` or `'avoid'`; **absent = `'consider'`**, the default. Drives a filter, a name-cell chip and a bar on the row's left edge; never scored. The one id-keyed table with no coverage requirement, so adding a watch needs no entry — and the only one where a count would just drift, so none is stated here. |
+| `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | `id` | published grams (58); ids confirmed to publish none (51); ids whose page could not be reached (7); ids published without the band (4). The four are disjoint and together cover all 120 — keep it that way. |
+| `MOVEMENT_TIER` | **exact `movementDisplay` string** | 0–1 architecture tier. 65 keys for 65 distinct movements, no misses, no orphans. |
+| `MEASURED_ACCURACY` | caliber **substring** of `movementDisplay` | reported real-world rates |
+
+Grep the `const <NAME>` declaration to find one; line numbers are not quoted here because they moved
+by 15–30 lines every pass and were wrong for all nine of these before they were dropped.
 
 **Row `id`s are load-bearing.** Renumbering or reordering rows silently reassigns lume, finishing,
 casebacks and types to the wrong watches. Adding a watch means adding an entry to `EXTRAS`,
@@ -201,20 +186,13 @@ Two steps, and keeping them separate is the point:
   splitting its weight among sub-scores. Normalisation uses the **fixed** `ANCHOR` / `WEAR_ANCHOR`
   constants, never list min/max. Exposed as the `Specs` column; observed range on the current list
   is 26–66, not 0–100.
-  **Caveat, measured in pass 20:** this is *nearly* but not entirely independent of the list. The
-  anchors are fixed, but `imputeMissingSubs()` fills unresearched sub-scores with the list mean, so
-  the rows carrying one drift a little as rows are added. Adding row 90 moved exactly one row
-  (54, an unresearched display back) by one rounding point. Small, but do not claim immunity —
-  though pass 21's three rows moved none at all, so it does not fire every time either. Pass 22 put
-  a ceiling on it: nineteen rows at once moved three rows by one rounding point each (41, 54, 55).
-  Pass 23's single row moved two (41 down, 55 up), which is the clearest evidence yet that the
-  effect tracks how far the list mean shifts rather than how many rows are added. Pass 24 is the
-  cleanest confirmation of that reading: it re-specified six existing rows and added none, so the
-  only spec scores that moved were those six, by design and on researched fields. Zero incidental
-  drift — changing a row you meant to change costs nothing elsewhere. Pass 25's three rows moved
-  two (41 and 113, both up one), which is the pass-23 pattern again at three times the row count.
-  Pass 26's four rows moved three (55 down, 76 and 107 up), still one rounding point each and still
-  tracking the shift in the list mean rather than the number of rows.
+  **Caveat, measured across passes 20–26:** this is *nearly* but not entirely independent of the
+  list. The anchors are fixed, but `imputeMissingSubs()` fills unresearched sub-scores with the list
+  mean, so the rows carrying one drift a little as rows are added. Every pass since 20 has moved at
+  most three rows by one rounding point each, and the effect tracks **how far the list mean shifts,
+  not how many rows are added** — pass 24 re-specified six rows and added none, and moved nothing
+  incidentally at all. Small, but do not claim immunity. Each pass's actual figures are in its
+  footer paragraph.
 - **Step 2 — value (signed spec points).** `robustBaseline()` fits spec vs `ln(price)` with
   Theil–Sen (median pairwise slope, within movement class) and a **separate median intercept per
   class**. Each row's residual against that line is the `Value` badge; `Score` is the same number
@@ -225,15 +203,12 @@ Guards worth knowing before touching either step:
 
 - **`SUPPORT`** — `{ window: 0.40, min: 5 }`: a row with fewer than 5 other rows within ±0.40 in
   `ln(price)` shows `n/s` rather than being scored off an extrapolated curve. Two rows qualify
-  today (16 and 56) — the two cheapest. Pass 21 rescued 67 and 86 by adding neighbours above them
-  and put its own two priciest rows in their place; pass 22's five Oris rows at €2,100–2,600 then
-  rescued those two (91, 92) and added none of its own. Pass 23's single row at €385 landed in the
-  densest part of the range with 34 neighbours, so it neither joined the list nor rescued anyone.
-  Pass 25's three Tissots at €425–875 did the same, with 37–38 neighbours each — the €400–900
-  stretch is now the thickest part of the list. Pass 26's four Lacos at €545–1,470 also all scored,
-  with 34–42 neighbours each, and rescued nobody: the two `n/s` rows are still the two cheapest.
-  Whatever sits at the end of the price range is always the thing with nothing to compare against,
-  and this list is now thin only at the bottom.
+  today (16 and 56) — the two cheapest. Membership moves as the list grows: rows added together are
+  each other's neighbours, so a pass can rescue an existing `n/s` row and strand its own priciest
+  ones in their place, which is what pass 21 did and pass 22 then undid. Whatever sits at the end of
+  the price range is always the thing with nothing to compare against, and this list is now thin
+  only at the bottom — the €400–900 stretch is its thickest part. Each pass's figures are in its
+  footer paragraph.
 - **`BANDS`** — colour is quantised at ½σ and 1½σ of the residual, deliberately, because the
   model's own resolution is ~4–6 spec points. Don't replace it with a continuous ramp.
 - **`effectivePrice()`** — uses `streetPriceEUR` when a row carries one, else `priceEUR`. Rows 14,
@@ -271,11 +246,18 @@ either would turn the model into an echo of the shortlist. Say so before wiring 
   written up in prose in the `<footer>` — what was wrong before, what the evidence was, what is
   still unresolved. That reasoning is irreplaceable and belongs there. The bare chronology of what
   changed when is git's job now; don't grow the footer with it. The model is on revision 3;
-  research passes run to 26.
+  research passes run to 27.
 - **Footer paragraphs are dated snapshots, not live claims.** Do not retrofit them to current
   numbers — later passes explicitly refer back to earlier ones ("the earlier warning overstated
   the case"), and rewriting the earlier text destroys the correction it records. Live claims go in
-  tooltips as `{{tokens}}`; historical ones stay put.
+  tooltips as `{{tokens}}`; historical ones stay put. Moving a paragraph verbatim is not retrofitting
+  it, and is how the ordering below is repaired.
+- **The footer is a head, a chronological spine, and a thematic tail.** Model revisions and early
+  criterion research first, then the per-pass write-ups ascending by pass number, then the
+  criterion-level research, ending with `Sources`. A new pass block goes at the end of the spine, and
+  **a pass's paragraphs stay contiguous** — continuation paragraphs carry no pass number, so one left
+  behind cannot be found again. `references/writing-it-up.md` has the detail and the two prose chains
+  that make the order checkable.
 - **A code comment states current state.** Anything historical is either explicitly marked or
   belongs in the footer or git. Every stale comment found so far had started narrating its own
   past.
