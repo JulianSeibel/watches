@@ -201,7 +201,7 @@
   <!-- The six categorical filters. Triggers and panels are empty here and filled by
        buildFilterPanels() from WATCHES, so the options cannot drift from the data. -->
   <div class="ms" data-dim="status">
-    <button type="button" class="ms-trigger" aria-expanded="false" aria-haspopup="true" title="Where this watch stands in the buying decision — a personal shortlist held in the STATUS table, not a property of the watch. Rows carry no status until one is set, which reads as 'In consideration'. Never an input to any score: the Specs and Value columns do not know or care which rows are wanted. Only statuses actually in use are offered here."><span class="ms-label">All statuses</span><span class="ms-caret">▾</span></button>
+    <button type="button" class="ms-trigger" aria-expanded="false" aria-haspopup="true" title="Where this watch stands in the buying decision — a personal shortlist held in the STATUS table, not a property of the watch. Rows carry no status until one is set, which reads as 'In consideration'. Never an input to any score: the Specs and Value columns do not know or care which rows are wanted. Only statuses actually in use are offered here. The 'Do not buy' rows are hidden when the page loads — tick that option to show them again, or Clear this filter to show every row."><span class="ms-label">All statuses</span><span class="ms-caret">▾</span></button>
     <div class="ms-panel" hidden></div>
   </div>
   <div class="ms" data-dim="brand">
@@ -3356,6 +3356,9 @@ const STATUS_META = {
   // It exists because the vocabulary was lopsided — 'likely' had no negative counterpart, so
   // everything short of an outright reject collapsed into the default and read as untouched.
   sceptical: { label: 'Sceptical',        chip: true,  mark: '? ' },
+  // The one status that also changes what the page shows by default: 'avoid' rows are filtered out
+  // on load, via the status filter rather than by any special case in the pipeline. The default
+  // selection is built in defaultSelection(), keyed off STATUS_HIDDEN_ON_LOAD.
   avoid:     { label: 'Do not buy',       chip: true,  mark: '✕ ' },
 };
 const STATUS = {
@@ -5118,11 +5121,34 @@ const FILTER_DIMS = [
   { key: 'glass',    label: 'Glass',         allLabel: 'All glass',          order: GLASS_ORDER,    values: w => [w.glassCategory] },
 ];
 
+// The selection a dimension starts with, and the one Reset returns it to - one function so a fresh
+// load and a reset cannot drift apart. Every dimension starts off (empty) except status, which
+// starts with the 'Do not buy' rows hidden: they are decided against, so they are noise in the
+// default view, and leaving them in meant every glance down the table re-read four rejections.
+//
+// Expressed as "tick every OTHER status present" because the filter model has no exclusion
+// primitive - a dimension is either off or an OR-set of ticked values (see matchesFilters) - and
+// inventing one for this single case would give the status panel a second semantics its counts and
+// its Clear button do not share. The cost is that the trigger reads as active on load, which is
+// honest: rows ARE being withheld. 'Do not buy' sits unticked with its row count beside it, and
+// ticking it brings those rows back; the panel's own Clear empties the dimension and shows all.
+const STATUS_HIDDEN_ON_LOAD = 'avoid';
+
+function defaultSelection(dim) {
+  if (dim.key !== 'status') return new Set();
+  const values = optionValuesFor(dim);
+  const hidden = STATUS_META[STATUS_HIDDEN_ON_LOAD].label;
+  // Nothing to hide - no row carries the status - leaves the dimension off rather than ticking
+  // every option to show an active filter that excludes nothing.
+  if (!values.includes(hidden)) return new Set();
+  return new Set(values.filter(v => v !== hidden));
+}
+
 const state = {
   search: '',
   // One Set per dimension, keyed by FILTER_DIMS key. Empty = that dimension is off, which is the
   // same "no selection means no constraint" rule the empty-string selects had.
-  sel: Object.fromEntries(FILTER_DIMS.map(d => [d.key, new Set()])),
+  sel: Object.fromEntries(FILTER_DIMS.map(d => [d.key, defaultSelection(d)])),
   // Type only: false = show rows carrying ANY ticked type, true = only rows carrying ALL of them.
   // Meaningful because a row holds several types; the other four dimensions hold exactly one
   // value each, where "all of these" could only ever match nothing.
@@ -5265,8 +5291,17 @@ function optionCounts(dim) {
 // Nothing picked reads as the old "All brands" placeholder. A short selection is spelled out,
 // because seeing "Ceramic, Titanium" on the closed trigger is the whole point of the control; a
 // long one falls back to a count so the trigger cannot outgrow the selects beside it.
-function triggerLabel(dim, chosen) {
+//
+// Everything-but-one is named after the option left out instead. Ticking the complement is how an
+// exclusion has to be expressed here (matchesFilters ORs within a dimension), and it is the load
+// state of the status filter, where "Status: 3 selected" said nothing about the rows being withheld.
+// Written as a general rule rather than a status special case: it reads the same way for a brand or
+// a case material excluded by hand.
+function triggerLabel(dim, chosen, universe) {
   if (!chosen.length) return dim.allLabel;
+  if (chosen.length > 1 && universe.length - chosen.length === 1) {
+    return `All but ${universe.find(v => !chosen.includes(v))}`;
+  }
   const joined = chosen.join(', ');
   return joined.length <= 28 ? joined : `${dim.label}: ${chosen.length} selected`;
 }
@@ -5354,7 +5389,8 @@ function refreshFilterPanels() {
     });
     ref.clear.hidden = picked.size === 0;
     ref.root.classList.toggle('active', picked.size > 0);
-    ref.label.textContent = triggerLabel(dim, ref.opts.filter(o => picked.has(o.value)).map(o => o.value));
+    ref.label.textContent = triggerLabel(dim, ref.opts.filter(o => picked.has(o.value)).map(o => o.value),
+                                         ref.opts.map(o => o.value));
   });
 }
 
@@ -5444,7 +5480,10 @@ function wireControls() {
 
   document.getElementById('resetFilters').addEventListener('click', () => {
     state.search = '';
-    FILTER_DIMS.forEach(dim => state.sel[dim.key].clear());
+    // Back to the load state, not to "everything": Reset undoes what was filtered during the
+    // session, and the hidden 'Do not buy' rows were not one of those choices. The Status panel's
+    // own Clear is what reveals them.
+    FILTER_DIMS.forEach(dim => { state.sel[dim.key] = defaultSelection(dim); });
     state.typeMatchAll = false;
     state.waterMin = null; state.priceMin = null; state.priceMax = null; state.diaMin = null; state.diaMax = null;
     document.getElementById('searchInput').value = '';
