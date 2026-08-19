@@ -431,6 +431,16 @@
 
   <p><b>What it did to everything else, which is about as little as one row can do.</b> Value moved by at most <b>0.20</b> spec points across the existing 132 — row 91, the Longines Spirit 37 — with 72 of 132 moving at all, <b>no row changing band</b>, and two changing side without either of them crossing anything: rows 59 and 69 landed exactly <i>on</i> the curve, from +0.1 and −0.1 respectively, which the diff counts as a side change and which is really just rounding. That is the smallest reshuffle of any pass on record, and the reason is that the row landed at −0.90 — near enough to the fitted line that it barely tugs on it, where pass 29's five rows all arrived above the curve together and steepened it. <b>The model came out slightly ahead.</b> Leave-one-out RMSE is 5.91 → <b>5.87</b> against a naive baseline that rises 9.41 → 9.44, so skill goes <b>60.6% → 61.4%</b>, the highest it has been. The resampling figures split rather than agreeing: typical improves 0.38 → 0.31 while worst worsens 0.71 → 0.77, and <b>sign flips go 0 → 1</b>, which is the one figure moving the wrong way and is reported rather than buried — at this sample size a single leave-one-out fold changing the sign of a near-zero residual is noise, but the previous pass had none and this one has one. Residual sigma stays 6, the spec range stays 26–66, the spec/price correlation stays 0.79, and the two <code>n/s</code> rows are the same two: 16 and 56, the cheapest on the list, which a €1,751 row was never going to rescue. <b>Spec drift touched exactly one row</b> — row 101, the Oris Social Club Düsseldorf, 40 → 41 — which is <code>imputeMissingSubs()</code> filling its unresearched sub-scores against a list mean one row has nudged. Small, expected, and much smaller than pass 29's four, which is what the mechanism's own note predicts: drift tracks how far the list mean shifts, not how many rows arrive.</p>
 
+  <p><b>Venezianico, pass 31 — eight rows added (134–141), and the list goes from 133 to 141.</b> A new brand and the first Italian one here, in two collections: four Arsenale, a 37 mm integrated-bracelet watch 9 mm thick on a mother-of-pearl dial, and four Nereide, a 39 mm 200 m diver with a tungsten bezel insert. €765 to €1,450, all of it in the thickest part of this list's price range, so <b>all eight are scored on 42 to 54 comparable rows</b> and nothing here is extrapolated — the support guard was never in question and the two <code>n/s</code> rows are the same two as ever, 16 and 56, which no €765 row was going to rescue. The vocabulary barely moved: no new case category, glass, movement type, watch type or complication, one new <code>MOVEMENT_TIER</code> key for the Swiss row, and a new brand needs no array because brand is derived from the data. Seven of the eight reuse the existing <code>Automatic — Miyota 9039</code> key outright, which now carries sixteen rows and is comfortably the most common movement in this file. <b>The four Nereides land where a well-made diver at this price should — −0.70, −0.70, −0.90 and −1.40, all <i>as expected</i> — and the four Arsenales do not.</b> The two Arsenale 37s sit at −4.60, <i>below the curve</i>, and the two Arsenale Moissanite rows at <b>−9.20</b>, <i>well below</i>, which is the largest negative residual this pass could produce and among the weakest results in the table. The reason is worth its own paragraph, because it is a statement about the model rather than about the watch.</p>
+
+  <p><b>The gem-set rows are the finding, and what they expose is a boundary of what this model can price.</b> The Moissanite is the Arsenale 37 with baguette-cut lab-grown moissanite hand-set into the bezel and the twelve indexes, for €200 more. On every criterion this file scores, that transaction is a pure loss. The stones are not a complication, not a case material, not a glass, not a bezel this table rates — a fixed knurled bezel is excluded from <code>bezel</code> whether or not it has stones in it — so the €200 buys <i>nothing the score can see</i>. And it costs something the score can see: the stones replace the lumed applied markers, Venezianico's spec chart drops its <code>LUMINOUS MATERIAL</code> line on exactly those two references, and <code>lume</code> falls 0.75 → 0.1. <b>That single field is most of the gap.</b> Held at 0.75, level with their own siblings, rows 134 and 135 go 42 → 45 spec points and −9.20 → −6.30, moving from <i>well below</i> the curve to merely <i>below</i> it; the remaining three points of residual are the €200. <b>None of this says the watches are bad, and the table should not be read as saying so.</b> It says that a jewellery watch is priced on something this model does not measure and was never built to — the same shape as the note above <code>FINISH</code> that a manufacture piece could only ever look like bad value before finishing was scored, except that here the missing criterion is not one worth adding. Scoring stones would mean scoring cost, which is the one thing the Value column exists to hold constant. <b>The honest form of the result is that these two rows are outside the model's competence, not at the bottom of its ranking</b>, and this paragraph is where that is recorded because the badge cannot say it.</p>
+
+  <p><b>The judgement calls, all recorded beside the numbers and all measured rather than asserted.</b> <b>The bezel at 0.9 is a new value in a column that had none between Duratect's 0.85 and ceramic's 1.0</b>, and it is the call most open to argument. Venezianico publish a hardness for the insert — "Tungsten, Polished and Scratch-Resistant with a Hardness of 9/10 on the Mohs Scale" — which is above the hardened titanium surface Duratect's rung describes, and this criterion rates material durability and nothing else. It sits below ceramic because 1.0 is the scale's ceiling and every row holding it is a zirconia insert. What would move it is an independent hardness figure, or evidence that "tungsten" here means the pure metal at about 7.5 Mohs rather than the carbide, which would drop it to 0.8 beside the steel inserts. The whole width of that argument is worth about half a spec point: at 0.8 rows 140 and 141 go 48 → 47 and all four residuals fall 0.2–0.3, at 1.0 they rise by the same, and <b>no row changes band under either</b>. <b>The clasp splits 0.7 / 0.6 / 0.8 on three documented mechanisms</b>, each read off the bracelet's own product page rather than the watch's — the more specific source, which is how pass 16 settled rows 78 and 82. The Canova and Canova Concept are butterfly deployants with no micro-adjustment: 0.7 on the four Arsenales, which is row 84's number and row 84's reasoning, and 0.6 on the three Canova Nereides, which is row 76's, a diver marked down for having no wetsuit extension either. That split — penalising a diver for a missing extension where a sports watch is not — is deliberate and is the arguable part; at 0.7 across all seven, rows 140 and 141 hold 48 points and move −0.70 → 0.00 while row 138 goes 53 → 54 and −1.40 → −0.80, all still <i>as expected</i>. Row 139 takes 0.8 for the Sansovino's stated "solid closure, with dual finish and micro-adjustment". <b>Finishing runs 0.55 / 0.60 / 0.65 off one case-and-bracelet standard</b>, with 0.55 the baseline set against row 122 rather than Traska's 0.50, because Venezianico clear the one thing Traska are held down for — printed dials — on all eight, and their bracelets are their own registered designs. <b>The 0.65 on the two Moissanite rows is the softest number in the pass</b>, and it has to be distinguished from pass 29's refusal of 0.65 to row 132 for a mother-of-pearl dial <i>and</i> bezel. The distinction is the one pass 29 itself drew: 0.65 is withheld for a material bought and granted for an operation performed, and hand-setting every stone into the bezel and the indexes — documented, with a named gemsetter, and photographed mid-operation — is an operation. At 0.60 both rows hold 42 spec points and move −9.20 → −9.70 with no band change, so this number cannot carry the pass's result either way. <b>The new tier takes 0.60</b>, level with the SOPROD C125 directly below it, because Venezianico state their V3250's base themselves and it is the same Soprod M100 — 2892-class architecture, which is exactly what earns the C125, the SW330-2 and Mido's A31.111 their 0.60. Two things Venezianico add to it earn nothing there and both are the double-count rule: the skeletonised rotor is <code>FINISH</code>'s job, and the −4/+6 regulation is already visible in the timekeeping group where the row's <code>accuracyDisplay</code> carries it. At 0.65 row 138 goes 53 → 54 and −1.40 → −0.80, <i>as expected</i> either way.</p>
+
+  <p><b>Venezianico publish no power reserve for any reference in their catalogue, and no rate on seven of these eight — and this pass deliberately breaks step with nine existing rows over it.</b> The seven Miyota rows carry <code>'—'</code> in both fields and <code>imputeMissingSubs()</code> fills them at the list mean. Rows 2–4, 12, 98–100 and 110–112 are all Miyota 9039 rows and all carry 42 h, six of them a rate as well, so the inconsistency is real and is stated rather than hidden. The difference is who is speaking: Traska publish "regulated in 4 positions" and their own tolerance, Abinger publish theirs, and Miyota's 42 h and −10/+30 for the bare caliber are not transferable to a maker who states neither. <b>Pass 30 settled exactly this one row ago</b> on the ETA 7001 — rows 39 and 40 carry ~42 h and ±7 s/day because Heinrich state the Top Grade, row 133 carries <code>'—'</code> because Zelos do not — and rows 2–4 and 12 predate that rule and are left alone rather than retrofitted. <b>What makes this worth recording is that the rule runs against these rows rather than for them.</b> The 9039's real 42 h is below this list's mean and its real −10/+30 is well below it, so the imputation <i>flatters</i> all seven: writing Miyota's own figures in would lower them. The rule is about what the maker claims and not about which way it points, and a rule that only ever cost the row points would not have been tested. One oddity follows from it and is left standing: the Measured column still shows ≈5–11 s/day on these rows, because <code>MEASURED_ACCURACY</code> matches a caliber substring of <code>movementDisplay</code> and needs no published figure to fire, so the table reports what a 9039 is observed to do beside a blank for what it is specified to do. <b>Row 138 is the exception</b> — Venezianico regulate the V3250 themselves and publish −4/+6 s/day for it, self-declared rather than certified — and it still gets no power reserve, because Soprod's 42 h for the M100 is the same borrowing. <b>The weight column gained nothing from eight rows, and that is a finding about Venezianico.</b> Their feature chart runs case, material, bezel or insert, dial, movement, crystal, water resistance and crown and states no mass on any reference; neither does the description block that repeats most of it; and nothing in the catalogue's 227 products carries a weight field. The Shopify variants <i>do</i> carry grams, and it is the parcel — the pass 22 Traska trap, never a <code>WEIGHT_MEASURED</code> figure. All eight go to <code>WEIGHT_UNPUBLISHED</code>, which now holds 70 of the 141, and the estimator's test set is unchanged at 58 rows with every figure in the Weight tooltip unmoved. <b>Casebacks were all eight resolved and all eight are solid</b>, on prose for four references and on two photographs — an engraved Venetian Arsenal, an engraved St Mark's interior — for the two families. Rows 138 and 139 have no caseback sentence of their own and take 0 on collection-level evidence, which is the <i>opposite</i> of row 91's situation, where a collection-wide silence was itself the reason to leave the row open.</p>
+
+  <p><b>What it did to everything else, and one headline figure moves the wrong way.</b> Value moved by at most <b>0.50</b> spec points across the existing 133 — row 103, the Oris Divers Sixty-Five 60th Anniversary — with 111 of 133 moving at all, seven changing side (rows 59, 62, 69, 82, 83, 87 and 125, four of them landing exactly <i>on</i> the curve, which the diff counts as a side change and which is rounding) and <b>five changing band</b>: rows 46, 71, 110 and 122 from <i>as expected</i> to <i>above the curve</i>, and row 115, the Tissot PRX 40, from <i>above</i> to <i>well above</i>. The direction is uniform and has one cause — eight rows arriving together <i>below</i> the fitted line drag it down, so everything above it gains. <b>Leave-one-out RMSE improves 5.87 → 5.80, and skill falls 61.4% → 59.7% anyway.</b> That is not a contradiction and it is reported rather than buried: skill is measured against a naive baseline which fell further, 9.44 → 9.14, because eight rows clustered in the middle of the price range make the naive predictor's job easier faster than they make the model's. The model got absolutely better and relatively worse, and of the two the absolute figure is the one describing the model. Sign flips stay at 1, the resampling figures improve on both ends — typical 0.31 → 0.29, worst 0.77 → 0.68 — residual sigma stays 6, the spec range stays 26–66, and the spec/price correlation slips 0.79 → 0.78, which is the same eight rows saying the same thing: they are priced above what their specification predicts. <b>Spec drift touched two rows by one point each</b> — row 55, the Citizen Eco-Drive Core Collection, 32 → 33, and row 104, the Oris Aquis Date 36.5, 53 → 54 — which is <code>imputeMissingSubs()</code> filling their unresearched sub-scores against a list mean eight rows have shifted. Small for the largest pass since 22, and exactly what that mechanism's own note predicts: drift tracks how far the list mean moves, not how many rows arrive.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -452,7 +462,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-133 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-141 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
 //                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
@@ -2779,6 +2789,183 @@ const WATCHES = [
   powerReserveDisplay:'—', accuracyDisplay:'—',
   waterResDisplay:'50 m (5 ATM)', waterResM:50,
   priceDisplay:'$1,999', priceValue:1999, priceCurrency:'USD' },
+
+// --- Venezianico Arsenale and Nereide, pass 31 (rows 134-141) ----------------------------------
+// The first Venezianico rows. A stock Shopify storefront, so the fast route in the site-shapes
+// table worked unchanged: every spec renders server-side in a feature-chart block, and a second,
+// shorter copy sits in the product description. The two are not redundant and neither alone is
+// enough - the chart carries the Arsenale's BEZEL and CROWN lines the description omits, and the
+// description carries the Arsenale 37's water resistance and bracelet name the chart omits. Both
+// are Venezianico's own text on Venezianico's own page, so this is one source read twice rather
+// than two sources.
+//
+// The presentment currency is settled rather than assumed, the check pass 29 ran on YEMA and pass
+// 30 on Zelos. Every raw body agrees on EUR for an unprompted request from here, in four
+// independent places: Shopify.currency = 'EUR', the shop payload's {"active":"EUR"}, the
+// <meta ... currency" content="EUR"> tag, and the per-variant {"currencyCode":"EUR"}. So these are
+// EUR rows and priceValue is the listed figure.
+//
+// VENEZIANICO PUBLISH NO POWER RESERVE ON ANY REFERENCE IN THE CATALOGUE, and no rate on seven of
+// these eight. Both fields are '—' on those seven and imputeMissingSubs() fills them at the list
+// mean. That is deliberately NOT the treatment the nine existing Miyota 9039 rows get - rows 2-4,
+// 12, 98-100 and 110-112 all carry 42 h, and 98-100 and 110-112 carry a rate as well - and the
+// difference is who is speaking. Traska publish "regulated in 4 positions" and their own tolerance;
+// Abinger publish theirs. Miyota's own 42 h and −10/+30 for the caliber are not transferable to a
+// maker who states neither, and pass 30 settled exactly this on the ETA 7001: rows 39 and 40 carry
+// ~42 h and 7 s/day because Heinrich state the Top Grade, and row 133 carries '—' because Zelos
+// do not. Rows 2-4 and 12 predate that rule and are left alone rather than retrofitted.
+//   The honest cost is worth naming, because it runs AGAINST these rows rather than for them: the
+//   9039's real 42 h is below this list's mean and its real −10/+30 is well below it too, so the
+//   imputation flatters all seven. Recording Miyota's figures would LOWER them. They are still left
+//   out, because the rule is about what the maker claims and not about which way it points - and
+//   because the Measured column already shows the 9039 at ~5-11 s/day out of MEASURED_ACCURACY,
+//   which is a substring match on movementDisplay and needs no published figure to fire.
+//
+// Row 138 is the exception on both counts, and the only row here whose movement Venezianico name as
+// their own: the V3250, which their own Arsenale Platino description states is "based on the Soprod
+// M100". They publish a regulated rate for it - "adjusted to a range of -4/+6 seconds per day" -
+// and still no power reserve, so that row carries the rate and an empty reserve.
+//
+// ONE CONTRADICTION INSIDE VENEZIANICO'S OWN PAGE, recorded rather than resolved away. Row 138's
+// feature chart says "total thickness 10.5 mm"; its marketing prose two blocks down says "a
+// thickness of only 10.4mm". The chart wins - it is the spec field, the prose is a sentence, and
+// 10.5 is what the three sibling Nereide 39 charts say too. Nothing scored moves by 0.1 mm, but a
+// page loose about one figure is evidence about the others, which is why it is written down.
+//
+// CASEBACKS ARE SOLID ON ALL EIGHT, and the evidence is collection-level on purpose. Venezianico
+// engrave the back rather than glaze it: the Arsenale 37 pages say "The caseback depicts the
+// Venetian Arsenal", the Tungsteno pages say the submarine "is depicted submerged in the engraving
+// at the center of the caseback", and two photographs settle the two families outright - the
+// Moissanite pages' Fondello_desk render shows a screwed steel back engraved with the Arsenal, and
+// the Aureo's caseback render a six-screw steel back engraved with St Mark's interior. Both carry
+// the case specs around the rim (ACCIAIO 316L, VETRO ZAFFIRO, AUTOMATICO, 5 / 20 ATMOSFERE), which
+// independently confirms each family's water resistance.
+//   One asset worth flagging under pass 30's rule that a distinct URL is not a distinct asset: the
+//   Fondello render sits on both Moissanite pages and shows a PLAIN knurled bezel, not a gem-set
+//   one. It is an Arsenale collection render, so it is evidence about the back and not about these
+//   two references' bezels - which their own front packshots show set with stones.
+//
+// Row 138's skeletonised rotor is NOT evidence of a window. Venezianico photograph it on a movement
+// holder, out of the case, so the picture shows the movement rather than any view of it. That
+// photograph is FINISH's evidence and DISPLAY_BACK stays 0.
+{ id:134, brand:'Venezianico', name:'Venezianico Arsenale Moissanite 37 (ref. 6121514C)', desc:'Integrated-bracelet 37 mm on a black mother-of-pearl dial · baguette moissanite in the bezel and the indexes; the 6121512C is the same watch in light blue',
+  link:'https://www.venezianico.com/products/arsenale-moissanite-6121514c',
+  img:'https://cdn.shopify.com/s/files/1/2509/2418/files/ArsenaleMoissaniteref.6121514C.png?v=1779046775',
+  diameterDisplay:'37 mm', diameterMm:37, l2lDisplay:'41.1 mm',
+  heightDisplay:'9 mm (incl. crystal)', heightMm:9,
+  // "screwed engraved back", never "solid back" and never the two phrases displayBackFor() reads
+  // out of caseDisplay as a fallback - this row is in DISPLAY_BACK explicitly and needs no guess.
+  caseDisplay:'316L stainless steel (fixed knurled bezel, hand-set baguette-cut lab-grown moissanite, screwed engraved back, screw-down crown)', caseCategory:'Steel',
+  bandDisplay:'Steel Canova Concept integrated bracelet (butterfly clasp)',
+  glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
+  powerReserveDisplay:'—', accuracyDisplay:'—',
+  waterResDisplay:'50 m (5 ATM)', waterResM:50,
+  priceDisplay:'€1,050', priceValue:1050, priceCurrency:'EUR' },
+
+{ id:135, brand:'Venezianico', name:'Venezianico Arsenale Moissanite 37 (ref. 6121512C)', desc:'The 6121514C in light blue mother-of-pearl · same case, bezel, movement and price',
+  link:'https://www.venezianico.com/products/arsenale-moissanite-6121512c',
+  img:'https://cdn.shopify.com/s/files/1/2509/2418/files/1_fb896e85-89c4-4e0f-b965-5a9c7c42db2d.png?v=1779047146',
+  diameterDisplay:'37 mm', diameterMm:37, l2lDisplay:'41.1 mm',
+  heightDisplay:'9 mm (incl. crystal)', heightMm:9,
+  caseDisplay:'316L stainless steel (fixed knurled bezel, hand-set baguette-cut lab-grown moissanite, screwed engraved back, screw-down crown)', caseCategory:'Steel',
+  bandDisplay:'Steel Canova Concept integrated bracelet (butterfly clasp)',
+  glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
+  powerReserveDisplay:'—', accuracyDisplay:'—',
+  waterResDisplay:'50 m (5 ATM)', waterResM:50,
+  priceDisplay:'€1,050', priceValue:1050, priceCurrency:'EUR' },
+
+{ id:136, brand:'Venezianico', name:'Venezianico Arsenale 37 (ref. 6121502C)', desc:'The Moissanite without the stones, at €200 less · blue fumé mother-of-pearl, lumed applied markers, plain knurled bezel',
+  link:'https://www.venezianico.com/products/arsenale-37-6121502c',
+  img:'https://cdn.shopify.com/s/files/1/2509/2418/files/packshotarsenale37blu.png?v=1772624663',
+  diameterDisplay:'37 mm', diameterMm:37, l2lDisplay:'41.1 mm',
+  heightDisplay:'9 mm (incl. crystal)', heightMm:9,
+  caseDisplay:'316L stainless steel (fixed knurled bezel, screwed engraved back)', caseCategory:'Steel',
+  bandDisplay:'Steel Canova Concept integrated bracelet (butterfly clasp)',
+  glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
+  powerReserveDisplay:'—', accuracyDisplay:'—',
+  waterResDisplay:'50 m (5 ATM)', waterResM:50,
+  priceDisplay:'€850', priceValue:850, priceCurrency:'EUR' },
+
+{ id:137, brand:'Venezianico', name:'Venezianico Arsenale 37 (ref. 6121501C)', desc:'The 6121502C in green fumé mother-of-pearl · same case, movement and price',
+  link:'https://www.venezianico.com/products/arsenale-37-6121501c',
+  img:'https://cdn.shopify.com/s/files/1/2509/2418/files/packshotarsenale37verde.png?v=1772624530',
+  diameterDisplay:'37 mm', diameterMm:37, l2lDisplay:'41.1 mm',
+  heightDisplay:'9 mm (incl. crystal)', heightMm:9,
+  caseDisplay:'316L stainless steel (fixed knurled bezel, screwed engraved back)', caseCategory:'Steel',
+  bandDisplay:'Steel Canova Concept integrated bracelet (butterfly clasp)',
+  glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
+  powerReserveDisplay:'—', accuracyDisplay:'—',
+  waterResDisplay:'50 m (5 ATM)', waterResM:50,
+  priceDisplay:'€850', priceValue:850, priceCurrency:'EUR' },
+
+// The one Swiss-movement row of the eight, and the only Venezianico reference here publishing a
+// rate. 10.5 mm is the feature chart's figure - see the note on the page's own 10.4 mm above.
+{ id:138, brand:'Venezianico', name:'Venezianico Nereide Avventurina Nera 39 (ref. 3121550C)', desc:'200 m diver on a 0.4 mm black aventurine glass dial · Swiss V3250 regulated to −4/+6, the only non-Miyota Venezianico here',
+  link:'https://www.venezianico.com/products/nereide-avventurina-nera-3121550',
+  img:'https://cdn.shopify.com/s/files/1/2509/2418/files/1_f4d4f204-ccbb-4bb4-bded-b9089c378aa8.png?v=1716765440',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'45.5 mm',
+  heightDisplay:'10.5 mm', heightMm:10.5,
+  caseDisplay:'316L stainless steel (120-click unidirectional bezel, polished tungsten insert, screwed engraved back, screw-down crown)', caseCategory:'Steel',
+  bandDisplay:'Steel Canova bracelet (butterfly clasp)',
+  glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
+  // New MOVEMENT_TIER key - see that table. Named as Venezianico name it, carrying the base they
+  // themselves state. MEASURED_ACCURACY matches nothing on this string, deliberately: no real-world
+  // reports for this caliber were found and none is invented.
+  movementDisplay:'Automatic — Venezianico V3250 (Soprod M100 base)', movementType:'Automatic',
+  movementCostDisplay:'not sold separately (Soprod, supplied to brands)',
+  // Venezianico's own regulation claim, not Soprod's spec: "The V3250 caliber arrives at our
+  // laboratory, where it undergoes further regulation ... adjusted to a range of -4/+6 seconds per
+  // day". Self-declared rather than certified - no COSC, no third party - which is why the tier
+  // gets nothing for it; see MOVEMENT_TIER. The power reserve stays empty: Soprod publish 42 h for
+  // the M100, Venezianico publish nothing, and that is the borrowing this file does not do.
+  powerReserveDisplay:'—', accuracyDisplay:'−4/+6 s/day (regulated by Venezianico)',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€1,450', priceValue:1450, priceCurrency:'EUR' },
+
+// The only row of the eight on the Sansovino bracelet rather than a Canova, which is why its clasp
+// is 0.8 where the other seven are 0.6-0.7. See EXTRAS.
+{ id:139, brand:'Venezianico', name:'Venezianico Nereide Aureo 39 (ref. 3121590S)', desc:'200 m diver, 24-carat gold galvanic dial with a rippled finish · five-link Sansovino bracelet with a micro-adjustable clasp',
+  link:'https://www.venezianico.com/products/nereide-aureo-39-3121590s',
+  img:'https://cdn.shopify.com/s/files/1/2509/2418/files/0_00092bb5-1133-4ad4-8d43-b40970b4ab8c.png?v=1754297451',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'45.5 mm',
+  heightDisplay:'10.5 mm', heightMm:10.5,
+  caseDisplay:'316L stainless steel (120-click unidirectional bezel, polished tungsten insert, screwed engraved back, screw-down crown)', caseCategory:'Steel',
+  bandDisplay:'Steel Sansovino bracelet (folding clasp w/ micro-adjustment)',
+  glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
+  powerReserveDisplay:'—', accuracyDisplay:'—',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€900', priceValue:900, priceCurrency:'EUR' },
+
+{ id:140, brand:'Venezianico', name:'Venezianico Nereide Tungsteno 39 (ref. 3121541C)', desc:'The cheapest of the four Nereides here · 0.1 mm natural mother-of-pearl dial in blue, same case and tungsten bezel as the Aureo',
+  link:'https://www.venezianico.com/products/nereide-tungsteno-3121541c',
+  img:'https://cdn.shopify.com/s/files/1/2509/2418/files/Nereide_Tungsteno_Packshot_Blu.png?v=1708601369',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'45.5 mm',
+  heightDisplay:'10.5 mm', heightMm:10.5,
+  caseDisplay:'316L stainless steel (120-click unidirectional bezel, polished tungsten insert, screwed engraved back, screw-down crown)', caseCategory:'Steel',
+  bandDisplay:'Steel Canova bracelet (butterfly clasp)',
+  glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
+  powerReserveDisplay:'—', accuracyDisplay:'—',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€765', priceValue:765, priceCurrency:'EUR' },
+
+{ id:141, brand:'Venezianico', name:'Venezianico Nereide Tungsteno 39 (ref. 3121540C)', desc:'The 3121541C in black mother-of-pearl · same case, movement and price',
+  link:'https://www.venezianico.com/products/nereide-tungsteno-3121540c',
+  img:'https://cdn.shopify.com/s/files/1/2509/2418/files/Nereide_Tungsteno_Packshot_Nero.png?v=1708601309',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'45.5 mm',
+  heightDisplay:'10.5 mm', heightMm:10.5,
+  caseDisplay:'316L stainless steel (120-click unidirectional bezel, polished tungsten insert, screwed engraved back, screw-down crown)', caseCategory:'Steel',
+  bandDisplay:'Steel Canova bracelet (butterfly clasp)',
+  glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
+  powerReserveDisplay:'—', accuracyDisplay:'—',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€765', priceValue:765, priceCurrency:'EUR' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -2954,8 +3141,8 @@ function measuredRatioStats(watches) {
 
 // --- Weight (pass 10, rewritten in pass 11) ------------------------------------------------
 // Ten makers publish mass as a plain field in the same spec table as the diameter, which the
-// roster above WEIGHT_MEASURED sets out per maker. The column is 58 published figures and 75
-// estimates - 62 rows that genuinely publish nothing, 8 that could not be reached, and 5
+// roster above WEIGHT_MEASURED sets out per maker. The column is 58 published figures and 83
+// estimates - 70 rows that genuinely publish nothing, 8 that could not be reached, and 5
 // published head-only. The estimator below runs for anything not in WEIGHT_MEASURED.
 //
 // Pass 10 built this column on the premise that mass "is simply not in the spec sheets" and
@@ -2978,7 +3165,7 @@ function measuredRatioStats(watches) {
 // It is still NOT acted on, for two reasons. The 58 are not a random sample - they are ten makers
 // who happen to document well, three of them Japanese and seven Western, so scoring on them would
 // score brands on their spec-sheet habits. And the double-counting objection above still binds
-// for the other 75 rows, where the "weight" is a function of columns the score already reads.
+// for the other 83 rows, where the "weight" is a function of columns the score already reads.
 // Scoring a column that is measured for some rows and derived from other scored inputs for the
 // rest would mean two different things in one number. Completing the research is the prerequisite.
 //
@@ -3298,6 +3485,14 @@ const WEIGHT_UNPUBLISHED = new Set([
                           //   an unset field rather than a figure, and so do all five Comet 39
                           //   references - not the Traska 454 g parcel trap, since there is no
                           //   number here to mistake for a watch
+  134, 135, 136, 137,     // Venezianico Arsenale - the feature chart runs case, material, bezel,
+  138, 139, 140, 141,     //   dial, movement, crystal, water resistance and crown, and the Nereide
+                          //   chart adds insert and luminous material. Neither states mass, on any
+                          //   of the eight, and neither does the description block that repeats
+                          //   most of the same fields. Nothing in the catalogue's 227 products
+                          //   carries a weight field either. The Shopify variant records DO carry
+                          //   grams, and it is the parcel: the pass 22 Traska trap, and never a
+                          //   WEIGHT_MEASURED figure
 ]);
 
 // Checked, not settled. Separated from the set above because "the maker does not publish it" and
@@ -3550,6 +3745,17 @@ const WATCH_TYPES = {
   // with a nacre dial is one you choose to wear rather than one you default to. The full X1 lume
   // and the steel bracelet are what made it a question at all.
   133: ['Dress'],
+  // Venezianico, pass 31. The four Nereides are 'Diver' and nothing else, the pass 29 call: a
+  // 120-click unidirectional elapsed-time bezel, a screw-down crown and 200 m, with Venezianico's
+  // own collection page filing every one under a dive-watch heading. Row 139 could have argued for
+  // 'Dress' on its gold dial and 10.5 mm; it does not get one, for exactly the reason row 132 did
+  // not - the rows carrying that second type have fixed bezels and 50-100 m.
+  // The four Arsenales are 'Sports', 'Dress', which is the row 108 / 116 / 122 pattern outright:
+  // an integrated bracelet, a fixed bezel, 50 m, 9 mm of thickness and a mother-of-pearl dial. The
+  // two Moissanite rows make the 'Dress' half easier rather than harder to argue.
+  134: ['Sports', 'Dress'], 135: ['Sports', 'Dress'],
+  136: ['Sports', 'Dress'], 137: ['Sports', 'Dress'],
+  138: ['Diver'], 139: ['Diver'], 140: ['Diver'], 141: ['Diver'],
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
@@ -3620,7 +3826,7 @@ const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (115 of 133 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (123 of 141 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -3706,6 +3912,28 @@ const MOVEMENT_TIER = {
   // and costs the row points. What is left over, and what the 0.02 buys, is the construction
   // itself. 33 jewels against the CMM.10's 27, on YEMA's own caliber pages.
   'Automatic micro-rotor — YEMA CMM.20 (in-house, Morteau)': 0.70,
+  // Venezianico V3250, pass 31, at 0.60 - LEVEL with the SOPROD C125 below, and that row is the
+  // precedent rather than an analogy. Venezianico state the base themselves, on their Arsenale
+  // Platino page: the V3250 is "based on the Soprod M100", which is the same ebauche the C125 is a
+  // GMT module over - the Swiss-made licensed version of Seiko's cal. 4L25, designed as an ETA 2892
+  // competitor for the Swiss OEM market. 2892-class architecture is the property earning the C125,
+  // the Sellita SW330-2 and Mido's A31.111 their 0.60, and it is what this key gets 0.60 for too.
+  // TWO things Venezianico add to it earn nothing HERE, both by this table's own header:
+  //   The decoration - a rhodium-plated skeletonised rotor over sandblasted bridges - is FINISH's
+  //     job, and row 138 is at 0.60 there partly because of it. This is the Laco precedent that
+  //     decoration is finishing's, and the Oris one that a finisher's work on a bought ebauche does
+  //     not lift the architecture.
+  //   The regulation to -4/+6 s/day is already visible in the timekeeping group, where row 138's
+  //     accuracyDisplay carries it and earns real points for it - the only one of these eight rows
+  //     with any published rate at all. Paying for it again here is the double-count the L888.4
+  //     comment argues out at length. It is also self-declared rather than certified: the SW300-1
+  //     COSC sits at 0.65 on per-unit third-party certification, which this has not got, so 0.65
+  //     would be claiming a grade of evidence Venezianico have not produced.
+  // What would move it: a component list showing the V3250 differs from a stock M100 in the going
+  // train or the regulating organ, rather than in its finish and its final adjustment. The
+  // exposure is measured: at 0.65 row 138 goes 53 -> 54 spec points and -1.40 -> -0.80, reading
+  // AS EXPECTED either way, so this pass's result does not rest on the choice.
+  'Automatic — Venezianico V3250 (Soprod M100 base)': 0.60,
   'Hand-wound — ETA 7001 Top Grade': 0.60,
   // Zelos, pass 30, at 0.60 - LEVEL with the Top Grade entry directly above, and the level-ness is
   // the call to argue. Zelos say "Swiss ETA/Peseux 7001 with reworked bridges" and name no grade,
@@ -4589,6 +4817,73 @@ const EXTRAS = {
   // comp ['small_sec'] - a genuine sub-seconds register at 6, on its own hand and its own track,
   //   confirmed on Zelos's photograph. Identical treatment to rows 39 and 40, the other 7001s.
   133:{lume:1.0,war:1,iso:0,antimag:0,clasp:0.9,service:0.5,bezel:null,comp:['small_sec']},
+  // --- Venezianico, pass 31 (rows 134-141) -------------------------------------------------
+  // lume splits 0.75 / 0.1 and the split is a difference in the spec table, not a judgement about
+  //   glow. Six rows say "BGW9 Super-LumiNova" (the Nereides add "Swiss-Made") and name no grade,
+  //   which is verbatim row 122's claim at 0.75 and rows 2-3's at the same. The two Moissanite
+  //   rows take 0.1, and it is a finding of ABSENCE rather than a gap: their feature chart runs
+  //   CASE, MATERIAL, BEZEL, DIAL, MOVEMENT, CRYSTAL, WATER RESISTANCE and CROWN and has no
+  //   LUMINOUS MATERIAL line at all, where the Arsenale 37's chart - same case, same collection -
+  //   does. Venezianico's own packshot agrees: the indexes are baguette stones rather than lumed
+  //   markers and the hands carry no lume channel. Same reasoning as rows 7-11 and 113.
+  //   This is the largest single number in the pass, so it is measured rather than asserted: at
+  //   0.75, level with their own siblings, rows 134/135 go 42 -> 45 spec points and their residual
+  //   -9.20 -> -6.30, which moves them from WELL BELOW the curve to BELOW it. Most of what puts
+  //   the two most expensive Arsenales at the bottom of this pass is therefore the lume they gave
+  //   up for the stones - so the finding had better be right, and it rests on Venezianico's own
+  //   chart omitting the field on exactly those two references, not on the photograph alone.
+  // clasp runs 0.7 / 0.6 / 0.8 and every step is a documented mechanism on the bracelet's OWN
+  //   product page, which is the more specific source pass 16 used to settle rows 78 and 82.
+  //   0.7 on the four Arsenales: the Canova Concept is a butterfly deployant integrated into the
+  //     final link, with no micro-adjustment stated or visible on its product render. That is
+  //     exactly row 84's number and row 84's reasoning - CW's Midnight, "the same butterfly
+  //     WITHOUT it", where their micro-adjustable butterflies take 0.85.
+  //   0.6 on the three Canova Nereides: the same butterfly with no micro-adjustment AND no wetsuit
+  //     extension, on a 200 m dive watch. That is row 76's number and row 76's reasoning verbatim.
+  //     The split against the Arsenales is deliberate and is the one call here open to argument:
+  //     a diver is marked down for a missing extension where a sports watch is not, because the
+  //     extension is expected equipment on one and irrelevant on the other. Measured: at 0.7
+  //     across all seven, rows 140/141 hold 48 spec points and move -0.70 -> 0.00, and row 138
+  //     goes 53 -> 54 and -1.40 -> -0.80. All three read AS EXPECTED under either number, so
+  //     nothing this pass reports turns on the split.
+  //   0.8 on row 139: the Sansovino's page states "The solid closure, with dual finish and
+  //     micro-adjustment", which is the push-button-with-micro-adjustment band, level with the
+  //     Longines rows 88-93 and row 15.
+  // bezel 0.9 on the four Nereides, and it is a NEW value in this column - no row held it before.
+  //   The insert is tungsten, and Venezianico publish a hardness for it: "Polished and
+  //   Scratch-Resistant with a Hardness of 9/10 on the Mohs Scale". It sits ABOVE Duratect's 0.85,
+  //   which is a hardened titanium surface around 1200-1500 HV, because 9 Mohs is harder still and
+  //   the figure is the maker's own published number rather than an inference. It sits BELOW
+  //   ceramic's 1.0 because that rung is this scale's ceiling and every row holding it is a
+  //   zirconia insert - reserving the top for the material the scale names. What would move it:
+  //   an independent hardness measurement, or evidence that "tungsten" here is the pure metal
+  //   (~7.5 Mohs) rather than the carbide, which would put it at 0.8 with the steel inserts.
+  //   Measured both ways, because a new value in a column deserves its exposure stated: at 0.8
+  //   rows 140/141 go 48 -> 47 and all four residuals fall ~0.2-0.3; at ceramic's 1.0 they rise
+  //   by the same. No row changes band under either, so the whole width of the argument is worth
+  //   about half a spec point.
+  //   The four Arsenales are bezel null - their knurled bezel is fixed and decorative, so the
+  //   criterion is EXCLUDED rather than scored 0, the treatment rows 73, 79-80 and 133 get.
+  // war 2 - "2-Year Warranty. Internationally valid through our website and authorized retailers",
+  //   stated on the product pages. The list's commonest figure. DATA ONLY, so it costs nothing.
+  // iso 0, stated rather than assumed: ISO 6425 appears nowhere in the catalogue, including on the
+  //   four 200 m divers where it would count.
+  // antimag 0 - Venezianico claim nothing, not even loose wording. The scale's 0.3 needs a rated
+  //   4,800 A/m.
+  // service 0.5 on the seven Miyota rows and 0.4 on row 138, and the split is parts rather than
+  //   brand: the 9039 is a commodity caliber any watchmaker can source, where the Soprod M100 is
+  //   supplied to brands and its parts move through OEM accounts. Venezianico's own channel is the
+  //   same for both - direct sales plus an authorised retailer network. DATA ONLY.
+  // comp - none on any of the eight. All eight are three-hand, no date; Venezianico's own movement
+  //   lines say so ("3 Hands with No Date Function"), and a date would earn nothing here anyway.
+  134:{lume:0.1,war:2,iso:0,antimag:0,clasp:0.7,service:0.5,bezel:null},
+  135:{lume:0.1,war:2,iso:0,antimag:0,clasp:0.7,service:0.5,bezel:null},
+  136:{lume:0.75,war:2,iso:0,antimag:0,clasp:0.7,service:0.5,bezel:null},
+  137:{lume:0.75,war:2,iso:0,antimag:0,clasp:0.7,service:0.5,bezel:null},
+  138:{lume:0.75,war:2,iso:0,antimag:0,clasp:0.6,service:0.4,bezel:0.9},
+  139:{lume:0.75,war:2,iso:0,antimag:0,clasp:0.8,service:0.5,bezel:0.9},
+  140:{lume:0.75,war:2,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:0.9},
+  141:{lume:0.75,war:2,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:0.9},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -4838,6 +5133,50 @@ const FINISH = {
   // coating pass 29 declined to credit YEMA for. That is the distinction, and it is why this row
   // gets movement-decoration credit where the YEMA rows got none.
   133:0.70,
+  // --- Venezianico, pass 31 (rows 134-141) -------------------------------------------------
+  // One case-and-bracelet standard covers all eight and the spread is entirely dial and bezel
+  // work, the same way pass 29 split its five YEMAs. The BASELINE is 0.55, set against Second
+  // Hour's Mandala on row 122 rather than against Traska's 0.50: Venezianico clear the one thing
+  // Traska are held down for - "the dials are printed" - on every one of these, and their bracelets
+  // are their own registered designs rather than bought blanks, the Canova needing sixteen moulds
+  // and carrying a double glossy-and-satin finish that the case repeats. That is above competent
+  // microbrand and below Baltic's and Sinn's 0.60, which is where the mainstream band starts.
+  //   140, 141 - 0.55, the baseline. A 0.1 mm natural mother-of-pearl layer over the dial, applied
+  //     polished markers, satin-and-polished case. Cut-and-fitted bought shell, which pass 29 was
+  //     explicit is "a material choice more than an operation" the maker performs - so it holds the
+  //     baseline rather than lifting it.
+  //   139 - 0.55 as well, and it was the candidate to go lower rather than higher. Its dial is a
+  //     galvanic 24-carat gold treatment over a rippled base, and pass 29 declined to credit YEMA
+  //     for exactly a galvanic coating. It stays level with 140/141 because the rippling underneath
+  //     is real surface work and the Sansovino bracelet is the better of Venezianico's two.
+  //   138 - 0.60, one rung up, and the rung is bought with three things rather than the dial alone:
+  //     a precision-cut 0.4 mm aventurine layer on a brass base, a rhodium-plated skeletonised
+  //     rotor against sandblasted bridges, and Venezianico's own regulation pass. That puts it
+  //     level with Baltic and Sinn. NOT paid for here: the movement decoration would normally be
+  //     invisible, and it IS invisible - this row has a solid engraved back - so the credit is for
+  //     work done rather than for a view of it, which is the reverse of the double-count the
+  //     Christopher Ward rule guards against.
+  //   136, 137 - 0.60. The dial is graduated fume over mother-of-pearl, which is two operations on
+  //     bought shell rather than one, and the case work is a step past the Nereides': a 9 mm
+  //     integrated design where each bracelet link carries two polished bevels against satin
+  //     surfaces, hand-finished per Venezianico's own bracelet page.
+  //   134, 135 - 0.65, and this is the pass's softest number and the one most open to argument,
+  //     because pass 29 refused 0.65 to row 132 for a mother-of-pearl dial AND bezel. The
+  //     distinction is the one pass 29 itself drew to refuse it: 0.65 is withheld for a MATERIAL
+  //     bought, and granted for an OPERATION performed. Venezianico hand-set every baguette stone
+  //     into both the bezel and the indexes, document the setting's development with a named
+  //     gemsetter, and photograph the operation. That is an operation, and it is on top of the
+  //     0.60 case and bracelet the two Arsenale 37s already earn. It is still below the 0.70-0.75
+  //     band because the underlying case, dial and bracelet are the same 0.60 work.
+  //     What would settle it against row 132 is a close look at the setting itself - burr marks,
+  //     seat depth, alignment across the bezel - not another look at the stones. Measured rather
+  //     than asserted, and the exposure is small: at 0.60 both rows hold 42 spec points and their
+  //     residual moves -9.20 -> -9.70, with no band change. FINISH is 8% of one 11% group, so it
+  //     cannot carry this pass's result either way - the lume above is what does.
+  134:0.65, 135:0.65,
+  136:0.60, 137:0.60,
+  138:0.60,
+  139:0.55, 140:0.55, 141:0.55,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -4845,7 +5184,7 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 121 of 133 rows resolved - 59 see-through, 62 solid. The twelve still open are
+// Research status: 129 of 141 rows resolved - 59 see-through, 70 solid. The twelve still open are
 // 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125 and 126, all rows whose maker publishes no caseback
 // detail. Row 91 is the best documented of them: Longines leave the field empty on the Spirit 37
 // AND on the 40 mm sibling, so the gap is the collection's, not this reference's.
@@ -5041,6 +5380,21 @@ const DISPLAY_BACK = {
   // collection, so it is worth nothing as evidence about this reference specifically; here it
   // happens not to matter, because the collection shares one case.
   133: 1,
+  // Venezianico, pass 31. All eight are 0 and none is a guess - Venezianico engrave the back
+  // rather than glaze it, on both families and in two independent forms of evidence. Prose: the
+  // Arsenale 37 pages describe the Venetian Arsenal depicted on the caseback, the Tungsteno pages
+  // the submarine "depicted submerged in the engraving at the center of the caseback". Renders:
+  // the Moissanite pages carry a screwed steel back engraved with the Arsenal, the Aureo a
+  // six-screw steel back engraved with St Mark's interior. Rows 138 and 139 have no caseback
+  // sentence of their OWN, and take 0 on the collection-level evidence - the Tungsteno prose says
+  // the engraving belongs to "the entire collection", and the Aureo render is a second Nereide 39
+  // reference showing it. That is the opposite of row 91's situation, where the collection-wide
+  // silence was itself the reason to leave the row open.
+  //   Row 138's skeletonised rotor does not argue the other way. Venezianico photograph it on a
+  //   movement holder with the movement out of its case, so the image shows the rotor and not any
+  //   view of it - it is FINISH's evidence, not this table's.
+  134: 0, 135: 0, 136: 0, 137: 0,
+  138: 0, 139: 0, 140: 0, 141: 0,
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
@@ -5716,7 +6070,7 @@ function optionValuesFor(dim) {
 
 // How many rows each option would show, measured against every filter EXCEPT its own dimension's
 // (see matchesFilters). Recomputed on every pipeline pass, which is 5 x 90 predicate calls - the
-// same order as the search box, which rejoins a haystack string for all 133 rows per keystroke.
+// same order as the search box, which rejoins a haystack string for all 141 rows per keystroke.
 function optionCounts(dim) {
   const counts = new Map();
   WATCHES.filter(w => matchesFilters(w, dim.key)).filter(matchesSearch)
