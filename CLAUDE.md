@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this is
 
 `watch-overview.html` is the entire project: a single self-contained static page (~5400 lines)
-holding a hand-researched comparison of 132 watches, plus a scoring model that rates each one's
+holding a hand-researched comparison of 133 watches, plus a scoring model that rates each one's
 specs against what the rest of the list charges at that price. No build system, no dependencies,
 no package manager. HTML, CSS and JS live in the one file; `check.js` beside it is a Node harness
 that runs the page's own checks.
@@ -28,7 +28,7 @@ key-less exchange-rate APIs to convert the USD-priced rows — USD is the only l
 HKD, INR and AUD rows carry a hand-set `priceEUR` with the rate in an inline comment instead. It never
 throws, and on failure (offline, or `file://` CORS) the hardcoded `USD_TO_EUR` fallback stays in
 use and the page renders normally. The `Pic` column hotlinks product photos from the makers' own
-CDNs (all 132 rows carry
+CDNs (all 133 rows carry
 an `img`; a row without one renders a `🔗 photo` link to the maker instead, and that branch has no
 rows in it today). A dead CDN URL costs a thumbnail and nothing else — the name cell links out too. Scoring, validation and filtering all run
 locally, so `file://` is a fine way to work.
@@ -71,8 +71,8 @@ It also prints the validation figures, which are the closest thing here to a reg
 Current baseline:
 
 ```
-132 rows · spec 26–66 · sigma 6 · 2 n/s · 58 published weights
-model  LOO RMSE 5.91 vs naive 9.41 · skill 60.6% · 0 sign flip(s) · resample typical 0.38 worst 0.71
+133 rows · spec 26–66 · sigma 6 · 2 n/s · 58 published weights
+model  LOO RMSE 5.87 vs naive 9.44 · skill 61.4% · 1 sign flip(s) · resample typical 0.31 worst 0.77
 ```
 
 **If a change was not meant to touch the model and those numbers move, something is wrong.**
@@ -105,7 +105,7 @@ messages and add a generated-with line to PR bodies. Drop all three.
 
 Three layers inside the one `<script>`:
 
-1. **Data.** `WATCHES` — 132 object literals, one per watch, ids **1–132, contiguous and
+1. **Data.** `WATCHES` — 133 object literals, one per watch, ids **1–133, contiguous and
    unique**, each with display strings (`diameterDisplay`, `movementDisplay`, …), an `img` and
    `link`, and the few structured fields the code sorts or scores on (`diameterMm`, `heightMm`,
    `waterResM`, `priceValue`, `priceCurrency`, `caseCategory`, `glassCategory`, `movementType`,
@@ -131,13 +131,13 @@ The per-watch research does not live on the watch objects. It lives in parallel 
 
 | Table | Keyed by | Holds |
 |---|---|---|
-| `EXTRAS` | `id` | lume, warranty, ISO 6425, antimagnetism, clasp, service, bezel, complications, optional `caseScore` override. **All 132 present.** |
-| `FINISH` | `id` | 0–1 finishing/decoration estimate. **All 132 present.** |
-| `DISPLAY_BACK` | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 120 of 132 researched, 12 open. |
-| `WATCH_TYPES` | `id` | array of types (filter only, never scored). **All 132 present.** |
+| `EXTRAS` | `id` | lume, warranty, ISO 6425, antimagnetism, clasp, service, bezel, complications, optional `caseScore` override. **All 133 present.** |
+| `FINISH` | `id` | 0–1 finishing/decoration estimate. **All 133 present.** |
+| `DISPLAY_BACK` | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 121 of 133 researched, 12 open. |
+| `WATCH_TYPES` | `id` | array of types (filter only, never scored). **All 133 present.** |
 | `STATUS` | `id` | buying decision — `'bought'`, `'likely'`, `'sceptical'` or `'avoid'`; **absent = `'consider'`**, the default. Drives a filter, a name-cell chip and a bar on the row's left edge; never scored. The one id-keyed table with no coverage requirement, so adding a watch needs no entry — and the only one where a count would just drift, so none is stated here. |
-| `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | `id` | published grams (58); ids confirmed to publish none (61); ids whose page could not be reached (8); ids published without the band (5). The four are disjoint and together cover all 132 — keep it that way. |
-| `MOVEMENT_TIER` | **exact `movementDisplay` string** | 0–1 architecture tier. 70 keys for 70 distinct movements, no misses, no orphans. |
+| `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | `id` | published grams (58); ids confirmed to publish none (62); ids whose page could not be reached (8); ids published without the band (5). The four are disjoint and together cover all 133 — keep it that way. |
+| `MOVEMENT_TIER` | **exact `movementDisplay` string** | 0–1 architecture tier. 71 keys for 71 distinct movements, no misses, no orphans. |
 | `MEASURED_ACCURACY` | caliber **substring** of `movementDisplay` | reported real-world rates |
 
 Grep the `const <NAME>` declaration to find one; line numbers are not quoted here because they moved
@@ -202,7 +202,7 @@ Two steps, and keeping them separate is the point:
   Theil–Sen (median pairwise slope, within movement class) and a **separate median intercept per
   class**. Each row's residual against that line is the `Value` badge; `Score` is the same number
   rescaled to 0–100 (`50 + residual * 2.8`) and sorts identically. This step *is* fitted to the
-  list, so adding rows does move everyone's Value. `residualSigma` is currently ~5.9.
+  list, so adding rows does move everyone's Value. `residualSigma` is currently ~5.7.
 
 Guards worth knowing before touching either step:
 
@@ -251,7 +251,7 @@ either would turn the model into an echo of the shortlist. Say so before wiring 
   written up in prose in the `<footer>` — what was wrong before, what the evidence was, what is
   still unresolved. That reasoning is irreplaceable and belongs there. The bare chronology of what
   changed when is git's job now; don't grow the footer with it. The model is on revision 3;
-  research passes run to 29.
+  research passes run to 30.
 - **Footer paragraphs are dated snapshots, not live claims.** Do not retrofit them to current
   numbers — later passes explicitly refer back to earlier ones ("the earlier warning overstated
   the case"), and rewriting the earlier text destroys the correction it records. Live claims go in
