@@ -72,7 +72,7 @@ Current baseline:
 
 ```
 141 rows · spec 26–66 · sigma 6 · 2 n/s · 2 o/s · 58 published weights
-model  LOO RMSE 5.80 vs naive 9.14 · skill 59.7% · 1 sign flip(s) · resample typical 0.29 worst 0.68
+model  LOO RMSE 5.81 vs naive 9.14 · skill 59.6% · 1 sign flip(s) · resample typical 0.25 worst 0.70
 ```
 
 **If a change was not meant to touch the model and those numbers move, something is wrong.**
@@ -109,11 +109,12 @@ Three layers inside the one `<script>`:
    unique**, each with display strings (`diameterDisplay`, `movementDisplay`, …), an `img` and
    `link`, and the few structured fields the code sorts or scores on (`diameterMm`, `heightMm`,
    `waterResM`, `priceValue`, `priceCurrency`, `caseCategory`, `glassCategory`, `movementType`,
-   optional `streetPriceEUR`). Most columns are *display strings only*; sorting them goes through
+   optional `marketPrice`). Most columns are *display strings only*; sorting them goes through
    `parseLeadingNumber()`, which pulls the first number out of messy text.
 2. **Model.** `computeValueScores()` — turns the data into `specScore`, `valueScore`,
-   `specResidual`, `specExpected`, `specSubs`, `specGroups`, `valueBand`, `residualSigma` and
-   `priceSupport`, written back onto each watch object as properties.
+   `specResidual`, `specExpected`, `specSubs`, `specGroups`, `valueBand`, `residualSigma`,
+   `priceSupport` and (only on rows with a `marketPrice`) `listValue`, written back onto each
+   watch object as properties.
 3. **View.** `applyPipeline()` = filter → search → sort → `renderRows()` → `refreshFilterPanels()`,
    which rebuilds `tbody` via `innerHTML` with `escapeHtml()` on every interpolated value, then
    repaints the filter panels' checkboxes, live counts and trigger labels. Sorting is driven by
@@ -179,8 +180,10 @@ directions; `DISPLAY_BACK` values strictly 1/0; unknown complication tags, watch
 glass categories; `caseCategory` / `glassCategory` / `movementType` against `CASE_ORDER` /
 `GLASS_ORDER` / `MOVEMENT_ORDER` in both directions; `STATUS` keys against real rows and its values
 against `STATUS_ORDER`; `PLAIN_TWIN` keys and twins against real rows, neither self-paired, chained nor
-reversed by price, and the twin itself scored; `EMPTY_ROW_COLSPAN` against the real `<th>` count;
-unresolved figure tokens.
+reversed by price, and the twin itself scored; `marketPrice` shape — a usable `eur` strictly below
+the row's list price, a `kind` in `MARKET_PRICE_KINDS`, a non-empty `note`, a `listValue` computed
+— plus the removed `streetPriceEUR` not reappearing on any row; `EMPTY_ROW_COLSPAN` against the
+real `<th>` count; unresolved figure tokens.
 
 **When you add an invariant to this file, add it there too.** Prose in this document enforces
 nothing — that is the lesson the whole self-check exists to encode.
@@ -205,7 +208,7 @@ Two steps, and keeping them separate is the point:
   Theil–Sen (median pairwise slope, within movement class) and a **separate median intercept per
   class**. Each row's residual against that line is the `Value` badge; `Score` is the same number
   rescaled to 0–100 (`50 + residual * 2.8`) and sorts identically. This step *is* fitted to the
-  list, so adding rows does move everyone's Value. `residualSigma` is currently ~5.5.
+  list, so adding rows does move everyone's Value. `residualSigma` is currently ~5.6.
 
 Guards worth knowing before touching either step:
 
@@ -227,9 +230,20 @@ Guards worth knowing before touching either step:
   the trigger falsifiable.
 - **`BANDS`** — colour is quantised at ½σ and 1½σ of the residual, deliberately, because the
   model's own resolution is ~4–6 spec points. Don't replace it with a continuous ramp.
-- **`effectivePrice()`** — uses `streetPriceEUR` when a row carries one, else `priceEUR`. Rows 14,
-  15 and 18 carry one. A seller's markdown from a stated UVP is *not* this mechanism — that goes in
-  `priceValue` (see rows 87–89).
+- **`effectivePrice()` / `marketPrice`** — a row may carry a second, lower EUR price it can
+  actually be bought at from someone other than the maker: `{ eur, kind, note }`, where `kind` is
+  `'street'` (authorised dealer, full warranty) or `'grey'` (grey dealer, warranty usually not
+  honoured). Four rows carry one today — 13, 91, 92 and 93 — and all four are `'grey'`; no row
+  carries a `'street'` price, and an unused `kind` is normal rather than a bug. A marketplace
+  listing is grey even when it includes the papers: a warranty card only carries a warranty where
+  an authorised dealer stamped it at first sale. **That price is the primary**
+  — `effectivePrice()` returns it, and the Value/Score columns, the price sort and the price-range
+  filter all read it. **The list price is not discarded:** `computeValueScores()` step 2b reads the
+  *same fitted line* a second time at the list price and writes `w.listValue`, which renders as a
+  second badge marked `list` and a second number in the Score cell. It is deliberately **not** a
+  second row in the fit — one watch at two prices would let a row vote twice on the line measuring
+  it — so recording a second price moves nothing but that row. A seller's markdown from its own
+  stated UVP is *not* this mechanism — that goes in `priceValue` (see rows 87–89).
 - **`validateModel()`** — leave-one-out plus 80% resampling, rendered into the footer. It is the
   closest thing here to a test suite.
 
@@ -280,8 +294,8 @@ either would turn the model into an echo of the shortlist. Say so before wiring 
 - **Code comments carry the reasoning, not just the mechanics.** The long block comments above
   `GROUPS`, `MOVEMENT_TIER`, `COMPLICATION_VALUES`, `blendSubs()`, `robustBaseline()` and
   `effectivePrice()` record why a number is what it is and what evidence would change it. Keep that
-  standard when editing them. They have drifted before — the `streetPriceEUR` note claimed no row
-  carried one long after three did, and the `gmt` complication definition described a mechanism no
+  standard when editing them. They have drifted before — the `effectivePrice()` note claimed no row
+  carried a second price long after three did, and the `gmt` complication definition described a mechanism no
   row in the list has — so treat a comment that contradicts the data as a bug, and correct it in
   the footer as well.
 - **Estimates are labelled as estimates.** `FINISH`, `lume`, `clasp` and the weight column are

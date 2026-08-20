@@ -132,6 +132,13 @@
   td.num{color:var(--muted);text-align:right;width:34px;font-variant-numeric:tabular-nums}
   .price{white-space:nowrap;font-weight:600}
   .eur-approx{font-weight:400;color:var(--muted);font-size:12px}
+  /* Second price line, on the rows that can be had below the maker's list price. The list price
+     stays on the first line because it is the reference everyone quotes; the buyable one sits
+     under it and carries the accent, because that is the number the model actually scores on.
+     The muted prefix names which kind it is - a discount from an authorised dealer and a grey
+     dealer's price are not the same proposition, and the tooltip says so. */
+  .market-price{display:block;font-weight:600;font-size:12px;color:var(--accent);margin-top:2px}
+  .market-price i{font-style:normal;font-weight:400;color:var(--muted);font-size:11px;margin-right:3px}
   .brand-tag{display:inline-block;font-size:10.5px;color:var(--muted);border:1px solid var(--line);
     border-radius:20px;padding:1px 7px;margin-top:4px}
   /* Buying status. Two marks, neither of which costs the table any width: a bar bled into the
@@ -175,6 +182,13 @@
   .measured-cell.na{color:var(--muted)}
   .measured-cell.weak{opacity:.55;font-style:italic}
   .value-badge{display:inline-flex;align-items:center;justify-content:center;min-width:38px;height:23px;border-radius:11px;font-weight:700;font-size:12.5px;color:#fff;padding:0 9px;letter-spacing:.2px}
+  /* A row with two prices gets two verdicts, in the same order the Price cell puts them: list
+     first, buyable second. Each badge is coloured by its OWN band rather than both taking the
+     primary's, because they are two separate readings of the same curve and colouring them alike
+     would hide the very difference the pair exists to show. The superscript names which is which. */
+  .value-pair{display:inline-flex;align-items:center;gap:4px;justify-content:center}
+  .value-badge sup{font-size:9px;font-weight:700;opacity:.8;margin-left:3px;letter-spacing:0}
+  .score-cell .sep{color:var(--muted);font-weight:400;margin:0 3px}
   .band-legend{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:10px 22px 0;max-width:1100px;font-size:11.5px;color:var(--muted)}
   .band-chip{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:11px;color:#fff;font-size:11px;font-weight:600;white-space:nowrap}
   .band-chip i{font-style:normal;opacity:.78;font-weight:400}
@@ -288,9 +302,9 @@
   <th data-key="waterres">Water&nbsp;res.<span class="sort-arrow"></span></th>
   <th data-key="movementcost" title="Approx. cost of buying the movement itself, loose, from the parts/hobbyist market (Cousins UK, Esslinger, Otto Frei, eBay parts sellers, etc.) — not the same as what the brand pays wholesale. 'Not sold separately' = the maker only supplies it inside a finished watch (Swatch Group's Powermatic 80, Citizen's in-house Series 8 and Orient's in-house calibers all fall in this category). Reference data only — no longer an input to the Value score.">Movement&nbsp;cost<span class="sort-arrow"></span></th>
   <th data-key="specs" title="Step 1 of the Value model on its own: the weighted spec score, 0–100, with price taken out entirely. This is what the watch offers; the two columns to the right are what it offers relative to what it costs. Useful when the budget is already fixed, and it is the only one of the three defined for every row — the {{nsCount}} watches with too few comparable prices to score for Value still have a spec score. It is also the more stable number: it rests on fixed anchors (30–300 m, 38–80 h and so on) rather than on a curve fitted to this list, so adding a row leaves it almost untouched — the one exception is a row carrying an unresearched sub-score, which is imputed at the list average and so drifts slightly as the list grows. Three things to know before ranking by it. It correlates {{specPriceCorr}} with price, so sorting by it gives you something close to a price sort — that is precisely why the Value column exists. It tilts toward tool watches by construction: divers average {{diverSpec}} here against {{shallowSpec}} for watches rated 50 m or less, because depth rating, lume and bezel are things a dress watch cannot collect, and the Value column cancels that tilt while this one does not. And accuracy is ranked within movement class, so a quartz and a mechanical scoring alike on it are not actually keeping time alike. The observed range here is {{specMin}}–{{specMax}}, not 0–100: {{specMax}} is the top of this list, not a perfect watch.">Specs<span class="sort-arrow"></span></th>
-  <th data-key="price" title="Sorted using an approximate EUR-equivalent across currencies (live USD→EUR rate)">Price<span class="sort-arrow"></span></th>
-  <th data-key="score" title="The same number as the Value column on the right, on the 0–100 scale this table used up to revision 2, kept for continuity: 50 = priced exactly as its specs predict, and each spec point of surplus moves it 2.8 points. Sorting by it gives exactly the same order as sorting by Value, because the two are one number on two scales. For judging how big a gap is, prefer the Value column: the ×2.8 makes differences here look about three times larger than the model can resolve — the residual carries roughly ±{{sigma}} spec points of noise, which is about ±{{sigmaOnScore}} on this scale, so anything inside ~{{sigmaOnScore}} points is a tie. “—” = too few comparable prices to score.">Score<span class="sort-arrow"></span></th>
-  <th data-key="value" title="Spec points above or below what this list charges for specs at this price. Step 1: a spec score from seven criterion GROUPS, each with one weight shared by its members — movement (24%: tier, finishing, antimagnetism), timekeeping (16%: accuracy, power reserve), case &amp; glass (16%), water &amp; lume (13%, incl. ISO 6425), wearability (11%: thickness and lug-to-lug, both as a ratio of diameter), fittings (11%: clasp, display back) and complications (9%). Grouping replaces revision 2’s eleven separate weights, which let correlated criteria stack — water and lume correlated at 0.75, movement tier and finishing at 0.72, and the eleven carried about 6.4 effective dimensions. Anything that cannot apply (power reserve on quartz, lug-to-lug on a pocket watch) has its weight redistributed; anything that applies but has not been researched is imputed at the list average, so looking a row up moves it on what is found rather than on being looked at. Accuracy is still ranked within movement class. Step 2: the spec score is compared against a Theil–Sen baseline of spec vs ln(price), with a separate intercept per movement class. Median-based, so no single row can steer it, and class-aware, so quartz and mechanical are not measured against one shared line. The badge is signed spec points, not a 0–100 rating, and the colour is banded at ½ and 1½ sigma of the residual because differences smaller than that are not real. “n/s” = too few comparable prices to score; “o/s” = out of scope, meaning a plain twin the same maker sells — the identical watch without the decoration — scores more than half a sigma higher, so the price is buying something no criterion here measures. Price, depreciation, service cost and warranty are not inputs. Hover-visible inputs include estimates — finishing and lume especially.">Value<span class="sort-arrow"></span></th>
+  <th data-key="price" title="Sorted using an approximate EUR-equivalent across currencies (live USD→EUR rate). Rows that show two prices ({{marketPriceRows}} of {{rowCount}} today) give the maker’s own asking price on the first line, and underneath it a lower figure the watch can actually be bought at from someone else — marked “street” for an authorised dealer’s discount, which is a new watch with the full warranty, or “grey” for a grey-market dealer, where the maker’s warranty is usually not honoured and part of the saving is therefore paid for in cover. The lower figure is what this column sorts on, what the price range filter reads, and what the Score and Value columns are computed from; the maker’s price is judged too and shows as the second badge, marked “list”. A seller’s own markdown from its own stated UVP is not this — that is simply the price and sits on the first line.">Price<span class="sort-arrow"></span></th>
+  <th data-key="score" title="The same number as the Value column on the right, on the 0–100 scale this table used up to revision 2, kept for continuity: 50 = priced exactly as its specs predict, and each spec point of surplus moves it 2.8 points. Sorting by it gives exactly the same order as sorting by Value, because the two are one number on two scales. For judging how big a gap is, prefer the Value column: the ×2.8 makes differences here look about three times larger than the model can resolve — the residual carries roughly ±{{sigma}} spec points of noise, which is about ±{{sigmaOnScore}} on this scale, so anything inside ~{{sigmaOnScore}} points is a tie. “—” = too few comparable prices to score. Two numbers separated by a slash mean the row carries two prices: the maker’s list price first, the price it can actually be had for second, each read off the same curve and coloured by its own band.">Score<span class="sort-arrow"></span></th>
+  <th data-key="value" title="Spec points above or below what this list charges for specs at this price. Step 1: a spec score from seven criterion GROUPS, each with one weight shared by its members — movement (24%: tier, finishing, antimagnetism), timekeeping (16%: accuracy, power reserve), case &amp; glass (16%), water &amp; lume (13%, incl. ISO 6425), wearability (11%: thickness and lug-to-lug, both as a ratio of diameter), fittings (11%: clasp, display back) and complications (9%). Grouping replaces revision 2’s eleven separate weights, which let correlated criteria stack — water and lume correlated at 0.75, movement tier and finishing at 0.72, and the eleven carried about 6.4 effective dimensions. Anything that cannot apply (power reserve on quartz, lug-to-lug on a pocket watch) has its weight redistributed; anything that applies but has not been researched is imputed at the list average, so looking a row up moves it on what is found rather than on being looked at. Accuracy is still ranked within movement class. Step 2: the spec score is compared against a Theil–Sen baseline of spec vs ln(price), with a separate intercept per movement class. Median-based, so no single row can steer it, and class-aware, so quartz and mechanical are not measured against one shared line. The badge is signed spec points, not a 0–100 rating, and the colour is banded at ½ and 1½ sigma of the residual because differences smaller than that are not real. “n/s” = too few comparable prices to score; “o/s” = out of scope, meaning a plain twin the same maker sells — the identical watch without the decoration — scores more than half a sigma higher, so the price is buying something no criterion here measures. Two badges mean two prices: the one marked “list” is the maker’s asking price, and the one marked “s” or “g” is the street or grey-market price the row is scored and sorted on. Both are measured against the same fitted curve — the second price is never added to the fit itself, so recording one moves nothing but that row’s own badges. Price, depreciation, service cost and warranty are not inputs. Hover-visible inputs include estimates — finishing and lume especially.">Value<span class="sort-arrow"></span></th>
 </tr>
 </thead>
 <tbody id="tbody">
@@ -445,6 +459,18 @@
 
   <p><b>What it deliberately does not do is touch the fit</b>, and that is the whole difference between a display change and a model revision. Both rows stay in the baseline, so the Theil–Sen line, the residual sigma, every other row's Value and all four validation figures are exactly what they were — leave-one-out RMSE 5.80 against a naive 9.14, skill 59.7%, one sign flip. Dropping them from the fit would have been defensible, and would have moved all 141 rows; this is the narrower claim, about what the page is entitled to <i>display</i> rather than about what the curve should be fitted through. Their spec scores and residuals are still computed, and the tooltip names the twin and the gap, so nothing is hidden — the badge simply stops asserting a verdict the footer had already disowned. <b>Row 105, the Oris Aquis Date Diamonds, is listed in the table and does not trigger</b>, which is the rule being seen to decline rather than only to fire: its diamonds cost it 1.9 spec points against row 104, short of the 2.8 the cut needs, because €200 of stones is a small share of an already-high price and the model's verdict on an Oris at €2,600 stands either way. <b>The limit worth naming is that the mechanism needs a twin.</b> A limited edition has none at a stated price, so the Oris block's observation that a share of that price buys the edition rather than the watch is still not reachable from here, and stays what it was — a known blind spot with no measurement behind it.</p>
 
+  <p><b>Two prices per row, added after the scope guard — the list price stopped being thrown away.</b> The old <code>streetPriceEUR</code> hook, wired in at revision 3 and populated by pass 10, quietly <i>replaced</i> one price with the other: the model scored the street price, the Price column displayed the list price, and nothing on the page said which of the two the badge beside it was a verdict on. On the three rows that carried one, the reader saw €1,075 and a badge computed from €990. A row can now carry a <code>marketPrice</code> instead — a lower EUR figure the watch can actually be bought at, from someone other than the maker — and <b>both prices are shown and both are judged</b>: the maker's asking price on the first line of the Price cell, the buyable one underneath it, and a badge each in the Value column, coloured by its own band. <b>Two kinds, and the kind is stored rather than inferred</b>, because they are not the same proposition. A <i>street</i> price is an authorised dealer's discount — a new watch with the full manufacturer warranty, so the lower number simply is the price. A <i>grey</i> price is a grey-market dealer's — usually unworn, but the maker's warranty is not honoured, so part of the saving is paid for in cover rather than banked. This model does not score warranty, for the reasons set out beside <code>EXTRAS</code>, so the badge cannot price that difference and does not pretend to; naming the kind on the cell is what lets the reader price it instead. The buyable price is the one the row now <b>ranks</b> on — the Price column sorts on it, the price-range filter reads it and the Value and Score columns are computed from it — on the plain ground that a budget of €2,200 ought to find a watch that can be had for €2,100.</p>
+
+  <p><b>The second reading is of the same curve, never a second row in the fit</b>, and that is the same distinction the scope guard above turns on. Putting one watch into the baseline twice — one spec score at two prices — would let a row vote twice on the very line it is being measured against, and would move all 141 rows every time a price was recorded. So the list-price residual is taken by reading the fitted line at the list price and nothing more: the Theil–Sen slope, the per-class intercepts, the residual sigma and the support test are what they would be if the second price had never been written down. The support test is applied to it on the same terms, so a list price landing where the list is thin reads <code>n/s</code> on its own, and the scope guard withholds <i>both</i> badges where it fires, since an objection that the price is buying something no criterion here measures holds at whichever price you pay.</p>
+
+  <p><b>Re-checking the three rows that carried the old hook corrected one of them, and the correction is not the one expected.</b> All three were fetched again from the makers' own pages. <b>Row 18 was wrong.</b> tissotwatches.com quote 475,00 € for the black Seastar 1000 36 mm quartz themselves — the figure pass 10 recorded as a street price is Tissot's own asking price, and the €495 that had been sitting in <code>priceValue</code> was simply stale. That row now carries €475 as its price and no second price at all, which is the honest shape: there is no discount there to record. Its silver/white sibling on row 19 was checked in the same sitting and really is 495,00 € on the same site, so the two dials differ by €20 and that is Tissot's pricing rather than an error in one of them. <b>Rows 14 and 15 survived the check</b> — certina.com still quote 1.075 € for both titanium DS Action Diver references, so the €990 was a genuine street discount and not a stale list price — <b>and their figures were dropped anyway.</b> They dated from pass 10, street prices move, and a number that has to be trusted rather than seen is worse than no number: both rows are back on Certina's list price until the street figures are re-sourced.</p>
+
+  <p><b>Four rows carry a second price today and all four are grey-market listings, which is the case the mechanism was built for.</b> Three are the Longines block from pass 21 — <b>row 91, the Spirit 37</b>, at €2,100 unworn against a €2,750 ask; <b>row 92, the Spirit Pilot 39</b>, at €2,350 against €2,900; <b>row 93, the Conquest 38</b>, at €1,700 against €2,250 — and the fourth is <b>row 13, the steel Certina DS Action Diver</b>, at €750 against €890. Every list price in those four pairs was re-fetched when the second price went in, longines.com through the text-extraction proxy the pass-21 note describes and certina.com directly, so each pair is a live list price against a live listing rather than two numbers of different vintages. <b>What the pairs say is not uniform, and that is the point.</b> The Conquest goes from −2.1 to +0.4 and the Spirit 37 from −4.6 to −1.9, both landing at <i>as expected</i> — at the grey price these stop being poorly-priced watches and become ordinary ones. The Spirit Pilot goes from −5.6 to −3.9 and stays <i>below the curve</i> at both, which is the more useful kind of answer: the discount is real and the row is still not good value for what it is, so the badge declines to flatter it. The Certina moves +6.6 → +8.1 and stays <i>above</i>, a smaller cut in percentage terms but applied far lower down the curve, where the same money buys more specs.</p>
+
+  <p><b>A grey listing is not a discount, and the badge is careful not to say it is.</b> All four of these are marketplace listings rather than authorised-dealer prices, and a Chrono24 listing that includes the papers is still grey: the warranty card only carries a manufacturer's warranty where an authorised dealer stamped and dated it at first sale, so papers present is not the same as warranty valid. That gap is exactly why <code>kind</code> is stored on the row rather than inferred from the size of the discount. This model does not score warranty — the reasons are set out beside <code>EXTRAS</code> — so no badge here prices the difference between a watch with cover behind it and one without; the label on the cell is what lets a reader price it. The <i>street</i> kind exists alongside it, for an authorised dealer's discount on a new watch with the full warranty, and <b>no row carries one today</b>: the pass-10 figures on rows 14 and 15 were dropped rather than carried forward, and an unused kind is normal here rather than a bug.</p>
+
+  <p><b>What it did to everything else, and one figure moves the wrong way.</b> Six rows change the price they are fitted at — 13, 91, 92 and 93 downward to their listings, 14 and 15 upward as their pass-10 street figures come off — which is enough to move the fit rather than just the rows. <b>Value moved by at most 0.50 spec points across the untouched rows</b>, on row 16, the Delhi Tithi, at the far end of the price range where the line has least to hold it; <b>no spec score moved at all</b>, which is what step 1 being price-free is supposed to guarantee and is worth checking rather than asserting. The residual sigma widens 5.5 → 5.6, and three rows cross a band boundary as a result: row 71 (Mido Ocean Star 39 Two-Tone) from <i>above</i> back to <i>as expected</i>, and rows 108 and 120 (Nomadic Cíor, Laco Speyer) from <i>below</i> to <i>well below</i>. None moved as much as half a spec point; a wider sigma moves the boundary rather than the watch. <b>Leave-one-out RMSE rises 5.80 → 5.81 and skill falls 59.7% → 59.6%</b>, which is reported as found rather than tuned away: pulling four rows down in price while their spec scores stay put spreads the residuals slightly, and a model that fits marked-down prices marginally worse than list prices is telling the truth about what it was fitted on. One sign flip either way, and the typical resample shift falls 0.29 → 0.25. The <code>n/s</code> and <code>o/s</code> counts are both unmoved at two. <b>The caveat pass 10 attached to street prices applies here with more force.</b> A grey listing is one seller on one day, not a market: it moves faster than a maker's list price and can be gone tomorrow. That is why the Certina titanium figures came off rather than being carried forward, and why the kind and the note travel with every second price — between them they say where the number came from, so a reader can decide how much to trust it.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -473,8 +499,9 @@
 //                 MOVEMENT_TIER (exact movementDisplay string) and MEASURED_ACCURACY (caliber
 //                 substring). STATUS is the only one where an absent row is legal.
 //   Model         Wearability · Criterion groups · Robust baseline · Support guard ·
-//                 computeValueScores() · Validation. Step 1 (specs) uses fixed anchors; step 2
-//                 (value) is fitted to the list, so adding a row moves every Value.
+//                 Second price · Scope guard · computeValueScores() · Validation. Step 1 (specs)
+//                 uses fixed anchors; step 2 (value) is fitted to the list, so adding a row moves
+//                 every Value.
 //   View          Rendering, sorting, filtering, the image modal.
 //   Figures       computedFigures() — every derived number the page quotes in its own prose.
 //   Self-check    selfCheck() — the invariants above, enforced instead of merely documented.
@@ -512,7 +539,7 @@
  * @property {number} priceValue - in priceCurrency's units
  * @property {'EUR'|'USD'|'GBP'|'HKD'|'INR'|'AUD'} priceCurrency
  * @property {number} [priceEUR] - precomputed only for the rows priced in a currency with no direct EUR figure given in the source (GBP, HKD, INR, AUD); EUR rows use priceValue as-is; USD rows are (re)computed from the live-fetched USD_TO_EUR rate — see recomputePriceEUR()
- * @property {number} [streetPriceEUR] - German street price where it is materially below the linked list price; the model prefers it over priceEUR — see effectivePrice(). NOT the mechanism for a seller's own markdown from a stated UVP, which goes in priceValue
+ * @property {{eur:number, kind:string, note:string}} [marketPrice] - a second, lower EUR price the watch can actually be bought at, from someone other than the maker: `kind` is 'street' (authorised dealer, full warranty) or 'grey' (grey-market dealer, maker's warranty usually not honoured). The model scores on this one — see effectivePrice() — and the list price gets its own second verdict beside it. NOT the mechanism for a seller's own markdown from a stated UVP, which goes in priceValue
  * @property {number} [valueScore] - computed 0–100 price-performance score, relative to all watches in this list — see computeValueScores()
  */
 
@@ -685,6 +712,11 @@ const WATCHES = [
   movementDisplay:'Automatic — Powermatic 80.611 (Nivachron)', movementType:'Automatic', movementCostDisplay:'not sold separately (Swatch Group excl.)',
   powerReserveDisplay:'80 h', accuracyDisplay:'−4/+10 s/day',
   waterResDisplay:'300 m', waterResM:300,
+  // 890 EUR is certina.com's own UVP, re-checked when the second price went in, so the pair is a
+  // live list price against a live listing rather than two figures of different vintages. The 750
+  // is a grey-market listing, not an authorised dealer's discount - see the note above row 93 for
+  // why a marketplace listing stays grey even with the papers.
+  marketPrice:{ eur:750, kind:'grey', note:'grey-market listing' },
   priceDisplay:'€890', priceValue:890, priceCurrency:'EUR' },
 
 { id:14, brand:'Certina', name:'Certina DS Action Diver 38 mm — Titanium / Black', desc:'C048.807.44.051.00',
@@ -698,7 +730,9 @@ const WATCHES = [
   movementDisplay:'Automatic — Powermatic 80.611 (Nivachron)', movementType:'Automatic', movementCostDisplay:'not sold separately (Swatch Group excl.)',
   powerReserveDisplay:'80 h', accuracyDisplay:'−4/+10 s/day',
   waterResDisplay:'300 m', waterResM:300,
-  streetPriceEUR:990,   // DE street, idealo cheapest incl. voucher; other shops still 1075
+  // 1.075 EUR is certina.com's own UVP, re-checked when the dual-price display went in. The DE
+  // street price this row used to be scored on was dropped with row 15's at the same time - the
+  // figures dated from pass 10 and are being re-sourced rather than carried forward on trust.
   priceDisplay:'€1,075', priceValue:1075, priceCurrency:'EUR' },
 
 { id:15, brand:'Certina', name:'Certina DS Action Diver 38 mm Titanium — Grey', desc:'C048.807.44.081.00',
@@ -712,7 +746,8 @@ const WATCHES = [
   movementDisplay:'Automatic — Powermatic 80.611 (Nivachron)', movementType:'Automatic', movementCostDisplay:'not sold separately (Swatch Group excl.)',
   powerReserveDisplay:'80 h', accuracyDisplay:'−4/+10 s/day',
   waterResDisplay:'300 m', waterResM:300,
-  streetPriceEUR:990,   // DE street, same titanium reference, grey dial
+  // Same as row 14: certina.com quote 1.075 EUR for this reference too, and the pass-10 street
+  // figure was dropped rather than re-used unchecked.
   priceDisplay:'€1,075', priceValue:1075, priceCurrency:'EUR' },
 
 { id:16, brand:'DWC', name:'Delhi Watch Co. Tithi (× Timegrapher)', desc:'Quartz moonphase dress watch',
@@ -752,8 +787,11 @@ const WATCHES = [
   movementDisplay:'Quartz — ETA F05.412', movementType:'Quartz', movementCostDisplay:'~$35 (ETA, new)',
   powerReserveDisplay:'— (battery)', accuracyDisplay:'±10 s/yr',
   waterResDisplay:'300 m', waterResM:300,
-  streetPriceEUR:475,   // DE street, idealo cheapest, multiple DE shops
-  priceDisplay:'€495', priceValue:495, priceCurrency:'EUR' },
+  // 475 EUR is Tissot's OWN price for this reference, not a street discount - pass 10 recorded it
+  // as one and left a stale 495 in priceValue. There is no marketPrice here as a result. The
+  // silver/white sibling below really is 495 on the same site, re-checked at the same time, so the
+  // two dials differ by 20 EUR and that is Tissot's pricing rather than an error in one of them.
+  priceDisplay:'€475', priceValue:475, priceCurrency:'EUR' },
 
 { id:19, brand:'Tissot', name:'Tissot Seastar 1000 36 mm Quartz — Silver/White', desc:'T120.210.11.011.00',
   link:'https://www.tissotwatches.com/de-de/T1202101101100.html',
@@ -1701,13 +1739,14 @@ const WATCHES = [
 // swan-neck fine regulator, 21,600 A/h and about 45 h.
 //
 // PRICES ARE THE SHOP'S CURRENT SELLING PRICES, and all three are marked down from a stated UVP
-// (shown in the Price cell). streetPriceEUR is deliberately NOT used, even though these look at
-// first glance like the case it exists for: that hook is for a row whose LIST price comes from
-// the maker and whose STREET price comes from a different seller, which is why the three Certina
-// and Tissot rows carry one. Here both numbers come from the same page, so the selling price is
-// simply the price and goes in priceValue - which also keeps the Price column's display, its
-// sort and the value model all reading the same figure. The caveat is that a promotion can end;
-// these were read in one sitting, the same caveat pass 10 attached to the street-price research.
+// (shown in the Price cell). marketPrice is deliberately NOT used, even though these look at
+// first glance like the case it exists for: that field is for a row whose LIST price comes from
+// the maker and whose lower price comes from a DIFFERENT seller, which is why the Longines on
+// row 91 carries one. Here both numbers come from the same page, so the selling
+// price is simply the price and goes in priceValue - which also keeps the Price column's
+// display, its sort and the value model all reading the same figure. The caveat is that a
+// promotion can end; these were read in one sitting, the same caveat pass 10 attached to the
+// street-price research.
 { id:87, brand:'Seagull', name:'Red Star Seagull 1963 38 mm — Sapphire (Art. 7001)', desc:'Reissue of the 1963 Chinese Air Force chronograph · column-wheel ST19 · 3 straps incl.',
   link:'https://www.poljot24.de/marken/seagull/7001.html',
   img:'https://www.poljot24.de/media/catalog/product/cache/6517c62f5899ad6aa0ba23ceb3eeff97/7/0/7001august1963a.png',
@@ -1826,6 +1865,10 @@ const WATCHES = [
   // generic A31 tolerance that passes 6 and 13 rejected for the L888.5.
   powerReserveDisplay:'~72 h', accuracyDisplay:'−4/+6 s/day',
   waterResDisplay:'100 m (10 bar)', waterResM:100,
+  // Grey-market, unworn, no maker's warranty. It is the price the row is scored on, with the
+  // 2,750 EUR Longines ask carried alongside it and scored too - see the marketPrice note in the
+  // footer for why both are shown rather than one replacing the other.
+  marketPrice:{ eur:2100, kind:'grey', note:'grey-market listing, unworn' },
   priceDisplay:'€2,750', priceValue:2750, priceCurrency:'EUR' },
 
 { id:92, brand:'Longines', name:'Longines Spirit Pilot 39 mm (L3.809.4.53.6)', desc:'Matte black dial, gilt hands · no date · COSC L888.4, screwed solid back',
@@ -1842,6 +1885,10 @@ const WATCHES = [
   // it costs the row nothing: date is not a key in COMPLICATION_VALUES and is not scored.
   powerReserveDisplay:'~72 h', accuracyDisplay:'−4/+6 s/day',
   waterResDisplay:'100 m (10 bar)', waterResM:100,
+  // 2.900,00 EUR is longines.com's own price, re-checked through the text-extraction proxy the
+  // pass-21 banner describes, so the pair is a live list price against a live listing. The 2,350
+  // is grey-market, like the other two Longines here.
+  marketPrice:{ eur:2350, kind:'grey', note:'grey-market listing' },
   priceDisplay:'€2,900', priceValue:2900, priceCurrency:'EUR' },
 
 { id:93, brand:'Longines', name:'Longines Conquest 38 mm (L3.720.4.62.6)', desc:'Sunray gilt dial, applied indexes · L888.5 (non-COSC), sapphire display back',
@@ -1861,6 +1908,12 @@ const WATCHES = [
   // borrowing the generic A31 tolerance and would look far more plausible.
   powerReserveDisplay:'~72 h', accuracyDisplay:'—',
   waterResDisplay:'100 m (10 bar)', waterResM:100,
+  // 2.250 EUR is longines.com's own price. The 1,700 is a Chrono24 listing WITH the papers, and
+  // that is still grey rather than street: the marketplace is not an authorised channel, and a
+  // warranty card only carries a Longines warranty where an authorised dealer stamped and dated
+  // it at first sale. Papers present is not the same as warranty valid, and that gap is the whole
+  // reason kind is stored rather than inferred from the discount.
+  marketPrice:{ eur:1700, kind:'grey', note:'Chrono24 listing with official papers' },
   priceDisplay:'€2,250', priceValue:2250, priceCurrency:'EUR' },
 
 // --- Sinn 104, pass 22 (rows 94-96) ---------------------------------------------------------
@@ -2155,8 +2208,8 @@ const WATCHES = [
 // Abinger's Square storefront carries no specifications at all; every figure below comes from the
 // maker's own /nimrod and /phantom specification blocks on abingerwatches.com. The two Phantoms
 // are pre-orders below a stated RRP, which is the rows 87-90 mechanism - selling price in
-// priceValue, both figures in priceDisplay - and NOT streetPriceEUR, which is for a retailer
-// discounting a maker's list price.
+// priceValue, both figures in priceDisplay - and NOT marketPrice, which is for a seller other
+// than the maker undercutting the maker's own list price.
 //
 // All three carry a rotating 12-hour bezel and none carries a GMT tag. Abinger say why in their
 // own FAQ: the 12-hour bezel is there INSTEAD of a GMT movement, because the Miyota 9075 is 1 mm
@@ -3038,12 +3091,21 @@ function escapeHtml(s) {
 // Builds the Price cell's inner HTML: original listed price, plus (for $ listings) the
 // live-converted €-equivalent in parentheses.
 function priceCellHtml(w) {
-  const base = escapeHtml(w.priceDisplay);
+  let out = escapeHtml(w.priceDisplay);
   if (w.priceCurrency === 'USD' && typeof w.priceEUR === 'number') {
     const eur = Math.round(w.priceEUR).toLocaleString('en-US');
-    return `${base} <span class="eur-approx">(≈ €${eur})</span>`;
+    out += ` <span class="eur-approx">(≈ €${eur})</span>`;
   }
-  return base;
+  // The maker's asking price stays on the first line because it is the figure everyone quotes;
+  // the one it can actually be bought for goes underneath, named, and is what the model scores.
+  if (w.marketPrice) {
+    const k = MARKET_PRICE_KINDS[w.marketPrice.kind];
+    const eur = Math.round(w.marketPrice.eur).toLocaleString('en-US');
+    out += `<span class="market-price" title="${escapeHtml(k.label + ' — ' + w.marketPrice.note +
+      '. This is the price the Value and Score columns are computed from; the badge marked “list” ' +
+      'is the same watch judged at the maker’s price instead.')}"><i>${k.short}</i>€${eur}</span>`;
+  }
+  return out;
 }
 
 // Extracts the first number found in a messy display string (handles unicode minus/en-dash,
@@ -5647,18 +5709,36 @@ function robustBaseline(rows) {
 // (+/- 0.40 is roughly +/- 50%). Unsupported rows show "n/s" rather than a flattering number.
 const SUPPORT = { window: 0.40, min: 5 };
 
-// Street price hook. The single largest remaining bias in the model is that list price is the
-// right number for a micro-brand and the wrong one for a Swiss group brand that street-discounts
-// 20-30%: applying a 20% cut to the Swiss rows alone moves them 6-7 points, so the error is
-// systematic rather than noise. Set streetPriceEUR on a row and the value model will use it in
-// place of priceEUR. THREE ROWS CARRY ONE - 14, 15 and 18, all from the pass-10 German street
-// price research, which found the expected 20-30% Swiss discount was not actually there and left
-// the rest of the list on list price. Completing it should still be done for
-// every brand or none, since a partial pass just relocates the bias. Note that a shop's own sale
-// price is NOT this mechanism: rows 87-89 are marked down from a stated UVP by the same seller,
-// so the reduced figure is simply their price and sits in priceValue - see the note on those rows.
-const effectivePrice = w => (typeof w.streetPriceEUR === 'number' && w.streetPriceEUR > 0)
-  ? w.streetPriceEUR : w.priceEUR;
+// --- Second price: what the watch can actually be bought for -------------------------------
+// The single largest remaining bias in the model is that list price is the right number for a
+// micro-brand and the wrong one for a brand that reliably sells below list: applying a 20% cut
+// to the Swiss rows alone moves them 6-7 points, so the error is systematic rather than noise.
+// A row can therefore carry a marketPrice - a lower EUR figure the watch can actually be had for
+// from someone other than the maker - and the model scores on that one instead.
+//
+// The list price is NOT discarded when it does. It gets its own residual against the same curve
+// and its own badge, so the row shows what the maker asks and what it goes for, each judged.
+// Replacing one number with the other was the mistake this shape exists to avoid: it put a badge
+// computed from one price next to a cell displaying the other, with nothing on screen to say so.
+//
+// Two kinds, and they are NOT the same proposition, which is why the kind is stored rather than
+// inferred. 'street' is an authorised dealer's discount: a new watch with the full manufacturer
+// warranty, so the lower number simply is the price. 'grey' is a grey-market dealer: usually
+// unworn, but the maker's warranty is not honoured, so the saving is partly paid for in cover.
+// Neither difference is scored - warranty is info-only here, for the reasons set out beside
+// EXTRAS - but the badge names which one it is so the reader can price it themselves.
+//
+// Nothing here is a shop's own markdown from its own stated UVP: rows 87-89 are reduced by the
+// same seller who set the UVP, so the reduced figure is simply their price and sits in
+// priceValue - see the note on those rows.
+const MARKET_PRICE_KINDS = {
+  street: { short: 'street', mark: 's', label: 'authorised-dealer street price, full maker warranty' },
+  grey:   { short: 'grey',   mark: 'g', label: 'grey-market price, maker warranty usually not honoured' },
+};
+const effectivePrice = w => (w.marketPrice && w.marketPrice.eur > 0)
+  ? w.marketPrice.eur : w.priceEUR;
+// The maker's own asking price, which is what effectivePrice() steps aside from on those rows.
+const listPrice = w => w.priceEUR;
 
 // --- Scope guard: rows priced on something no criterion here measures ----------------------
 // The second of two guards, and the same idea as SUPPORT above pointed at a different failure.
@@ -5776,6 +5856,38 @@ function computeValueScores(watches) {
     });
   });
 
+  // --- step 2b: the same curve read a second time, at the maker's list price ----------------
+  // Only the rows carrying a marketPrice have anything to add here. Step 2 scored them at the
+  // price they can actually be bought for; this scores them at the price the maker asks, so the
+  // table can show both and judge both instead of quietly picking one.
+  //
+  // It is a SECOND READING OF THE SAME FIT, not a second row in it. Putting one watch into the
+  // baseline twice - one spec score at two prices - would let a row vote twice on the very line
+  // it is being measured against, and would move all 141 rows every time a second price was
+  // recorded. So the Theil-Sen slope, the intercepts, the sigma and all four validation figures
+  // are exactly what they would be without this step; the only thing that changes is how many
+  // badges a row draws. Same argument as the scope guard above: display, not model.
+  const listValueFor = r => {
+    const lp = listPrice(r.w);
+    if (!(typeof lp === 'number' && lp > 0) || r.lnp == null) return null;
+    const lnp = Math.log(lp);
+    const expected = fit.expected({ lnp, isMech: r.isMech });
+    const residual = r.spec - expected;
+    // Support is counted against the other rows' primary prices - the same population step 2
+    // uses - so a list price landing in a thin band gets the same n/s refusal, on the same terms.
+    const support = priced.filter(o => o !== r && Math.abs(o.lnp - lnp) <= SUPPORT.window).length;
+    return {
+      price: lp,
+      expected: Math.round(expected),
+      residual: Math.round(residual * 10) / 10,
+      support,
+      band: support < SUPPORT.min ? null : bandFor(residual / sigma),
+      score: support < SUPPORT.min ? null
+        : Math.max(0, Math.min(100, Math.round(50 + residual * RESIDUAL_SCALE))),
+    };
+  };
+  rows.forEach(r => { r.w.listValue = r.w.marketPrice ? listValueFor(r) : null; });
+
   // --- step 3: scope guard, which reads other rows and so cannot run inside the loop --------
   const byId = new Map(watches.map(w => [w.id, w]));
   const gaps = watches.map(w => {
@@ -5787,7 +5899,12 @@ function computeValueScores(watches) {
   watches.forEach((w, i) => {
     w.plainTwinGap = gaps[i];
     w.outOfScope = gaps[i] != null && gaps[i] >= OUT_OF_SCOPE.z * sigma;
-    if (w.outOfScope) Object.assign(w, { valueBand: null, valueScore: null });
+    // Withheld at BOTH prices where it fires: the objection is that the price is buying something
+    // no criterion here measures, and that is true of whichever price you pay.
+    if (w.outOfScope) {
+      Object.assign(w, { valueBand: null, valueScore: null });
+      if (w.listValue) Object.assign(w.listValue, { band: null, score: null });
+    }
   });
 
   return {
@@ -5820,10 +5937,17 @@ const BANDS = [
 ];
 function bandFor(z) { return BANDS.find(b => z >= b.min) ?? BANDS[BANDS.length - 1]; }
 
-function valueColor(w) {
-  if (!w || w.valueBand == null) return '#2a2f38';
-  return w.valueBand.fill;
-}
+// A row carries one figure set, or two where it has a marketPrice: what it is worth at the price
+// you can actually pay, and what it is worth at the price the maker asks. Both have the same
+// shape, so the colour, the label and the badge are written once and applied to either. The
+// primary is always the one the model scored on and the one every sort reads.
+const primaryFigures = w => ({
+  price: effectivePrice(w), expected: w.specExpected, residual: w.specResidual,
+  support: w.priceSupport, band: w.valueBand, score: w.valueScore,
+});
+const figureColor = f => (f && f.band) ? f.band.fill : '#2a2f38';
+const figureInk = f => (f && f.band) ? f.band.ink : 'var(--muted)';
+function valueColor(w) { return figureColor(primaryFigures(w)); }
 
 // The spec score gets a single-hue intensity ramp, deliberately NOT the diverging band palette.
 // That palette means "above or below what this price should buy", which is a verdict. The spec
@@ -5839,19 +5963,40 @@ function specColor(w) {
 }
 
 // Brighter counterpart for the Score column, so the two columns read as one signal.
-function scoreColor(w) {
-  if (!w || w.valueBand == null) return 'var(--muted)';
-  return w.valueBand.ink;
-}
+function scoreColor(w) { return figureInk(primaryFigures(w)); }
 
 // Signed spec points, which is what the number actually is. "+6" means six spec points more
-// than watches at this price deliver on average, not "68 out of 100".
-function valueLabel(w) {
-  if (w.specResidual == null) return '—';
+// than watches at this price deliver on average, not "68 out of 100". o/s is tested before the
+// band because the scope guard withholds a verdict at every price, not only the one scored.
+function figureLabel(w, f) {
+  if (!f || f.residual == null) return '—';
   if (w.outOfScope) return 'o/s';
-  if (w.valueBand == null) return 'n/s';
-  const v = Math.round(w.specResidual);
+  if (f.band == null) return 'n/s';
+  const v = Math.round(f.residual);
   return v > 0 ? `+${v}` : v < 0 ? `\u2212${Math.abs(v)}` : '0';
+}
+function valueLabel(w) { return figureLabel(w, primaryFigures(w)); }
+
+// The Score and Value cells. A row with one price renders exactly what it always did; a row with
+// two renders the pair in the order the Price cell puts them - the maker's list price first, the
+// price it can actually be had for second, marked with its kind. Each half takes its OWN band
+// colour, because the difference between them is the only reason to show both.
+function scoreCellHtml(w) {
+  const half = f => `<span style="color:${figureInk(f)}">${(f && f.score != null) ? f.score : '—'}</span>`;
+  const primary = primaryFigures(w);
+  if (!w.listValue) return half(primary);
+  return `${half(w.listValue)}<span class="sep">/</span>${half(primary)}`;
+}
+
+function valueCellHtml(w) {
+  const tip = escapeHtml(valueTooltip(w));
+  const badge = (f, mark) =>
+    `<span class="value-badge" title="${tip}" style="background:${figureColor(f)}">` +
+    `${figureLabel(w, f)}${mark ? `<sup>${mark}</sup>` : ''}</span>`;
+  const primary = primaryFigures(w);
+  if (!w.listValue) return badge(primary, '');
+  return `<span class="value-pair">${badge(w.listValue, 'list')}` +
+         `${badge(primary, MARKET_PRICE_KINDS[w.marketPrice.kind].mark)}</span>`;
 }
 
 // --- Validation --------------------------------------------------------------------------
@@ -5930,6 +6075,26 @@ function valueTooltip(w) {
   } else if (w.specResidual != null) {
     const s = w.specResidual > 0 ? '+' : w.specResidual < 0 ? '\u2212' : '';
     parts.push(`${s}${Math.abs(w.specResidual)} spec points vs this price band \u00b1${w.residualSigma} \u2014 ${w.valueBand.label}`);
+  }
+  // Rows with two prices get both readings spelled out, so the pair of badges is never a puzzle:
+  // which price the model scored on, what kind of price it is, and where the maker's own price lands.
+  if (w.marketPrice) {
+    const k = MARKET_PRICE_KINDS[w.marketPrice.kind];
+    parts.push(`Scored at the ${k.short} price \u20ac${Math.round(w.marketPrice.eur).toLocaleString('en-US')}` +
+               ` \u2014 ${k.label}. ${w.marketPrice.note}`);
+    const lv = w.listValue;
+    if (lv) {
+      const at = `at the maker's list price \u20ac${Math.round(lv.price).toLocaleString('en-US')}`;
+      if (w.outOfScope) {
+        parts.push(`Not scored ${at} either \u2014 the objection above holds at whichever price you pay`);
+      } else if (lv.band == null) {
+        parts.push(`Not scored ${at}: only ${lv.support} other watches within \u00b150% of it`);
+      } else {
+        const s = lv.residual > 0 ? '+' : lv.residual < 0 ? '\u2212' : '';
+        parts.push(`${s}${Math.abs(lv.residual)} spec points ${at} \u2014 ${lv.band.label}` +
+                   ` (that is the badge marked "list")`);
+      }
+    }
   }
   parts.push(`Spec score ${w.specScore ?? '?'}/100, against ${w.specExpected ?? '?'} expected at ` +
              `\u20ac${Math.round(effectivePrice(w))}`);
@@ -6039,8 +6204,10 @@ function matchesFilters(w, skipKey) {
     if (!ok) return false;
   }
   if (state.waterMin !== null && w.waterResM < state.waterMin) return false;
-  if (state.priceMin !== null && w.priceEUR < state.priceMin) return false;
-  if (state.priceMax !== null && w.priceEUR > state.priceMax) return false;
+  // Filtered on the same number the row is sorted and scored on, so a budget of 2,200 finds the
+  // Longines that can be had for 2,100 rather than hiding it behind a list price nobody need pay.
+  if (state.priceMin !== null && effectivePrice(w) < state.priceMin) return false;
+  if (state.priceMax !== null && effectivePrice(w) > state.priceMax) return false;
   if (state.diaMin !== null && w.diameterMm < state.diaMin) return false;
   if (state.diaMax !== null && w.diameterMm > state.diaMax) return false;
   return true;
@@ -6073,7 +6240,9 @@ function compareWatches(a, b, key, dir) {
     case 'accuracy': av = accuracyMagnitudePerDay(a.accuracyDisplay); bv = accuracyMagnitudePerDay(b.accuracyDisplay); break;
     case 'waterres': av = a.waterResM; bv = b.waterResM; break;
     case 'movementcost': av = parseLeadingNumber(a.movementCostDisplay); bv = parseLeadingNumber(b.movementCostDisplay); break;
-    case 'price': av = a.priceEUR; bv = b.priceEUR; break;
+    // effectivePrice(), not priceEUR: on a row with a marketPrice the sort has to agree with the
+    // column the Value badge ranks on, or the two would disagree about the same watch.
+    case 'price': av = effectivePrice(a); bv = effectivePrice(b); break;
     case 'specs': av = a.specScore; bv = b.specScore; break;
     case 'score': av = a.valueScore; bv = b.valueScore; break;
     case 'value': av = a.valueScore; bv = b.valueScore; break;
@@ -6116,7 +6285,7 @@ function renderRows(list) {
  <td class="name"><a href="${safeLink}" target="_blank">${escapeHtml(w.name)}</a><small>${escapeHtml(w.desc)}</small><span class="brand-tag">${escapeHtml(w.brand)}</span>${statusTag}</td>
  <td>${escapeHtml(w.diameterDisplay)}</td><td>${escapeHtml(w.l2lDisplay)}</td><td>${escapeHtml(w.heightDisplay)}</td><td class="weight-cell">${(() => { const e = estimateWeightG(w); return e ? (e.measured ? `<b>${e.g} g</b>` : `\u2248${e.g} g`) : '\u2014'; })()}</td><td>${escapeHtml(w.caseDisplay)}</td>
  <td>${escapeHtml(w.bandDisplay)}</td>
- <td>${escapeHtml(w.glassDisplay)}</td><td class="movement">${escapeHtml(w.movementDisplay)}</td><td>${escapeHtml(w.powerReserveDisplay)}</td><td>${escapeHtml(w.accuracyDisplay)}</td><td class="measured-cell${measuredAccuracyFor(w) ? (measuredAccuracyFor(w).conf === 'weak' ? ' weak' : '') : ' na'}" title="${measuredAccuracyFor(w) ? escapeHtml(measuredAccuracyFor(w).conf.toUpperCase() + ' confidence \u00b7 ' + measuredAccuracyFor(w).note) : 'No measured rates published for this caliber'}">${measuredAccuracyFor(w) ? '\u2248' + measuredAccuracyFor(w).range : '\u2014'}</td><td>${escapeHtml(w.waterResDisplay)}</td><td class="movement-cost${w.movementCostDisplay.startsWith('not sold') ? ' na' : ''}">${escapeHtml(w.movementCostDisplay)}</td><td class="score-cell" style="color:${specColor(w)}">${w.specScore != null ? w.specScore : '\u2014'}</td><td class="price">${priceCellHtml(w)}</td><td class="score-cell${w.valueScore == null ? ' na' : ''}" style="color:${scoreColor(w)}">${w.valueScore != null ? w.valueScore : '\u2014'}</td><td class="value-cell"><span class="value-badge" title="${escapeHtml(valueTooltip(w))}" style="background:${valueColor(w)}">${valueLabel(w)}</span></td>
+ <td>${escapeHtml(w.glassDisplay)}</td><td class="movement">${escapeHtml(w.movementDisplay)}</td><td>${escapeHtml(w.powerReserveDisplay)}</td><td>${escapeHtml(w.accuracyDisplay)}</td><td class="measured-cell${measuredAccuracyFor(w) ? (measuredAccuracyFor(w).conf === 'weak' ? ' weak' : '') : ' na'}" title="${measuredAccuracyFor(w) ? escapeHtml(measuredAccuracyFor(w).conf.toUpperCase() + ' confidence \u00b7 ' + measuredAccuracyFor(w).note) : 'No measured rates published for this caliber'}">${measuredAccuracyFor(w) ? '\u2248' + measuredAccuracyFor(w).range : '\u2014'}</td><td>${escapeHtml(w.waterResDisplay)}</td><td class="movement-cost${w.movementCostDisplay.startsWith('not sold') ? ' na' : ''}">${escapeHtml(w.movementCostDisplay)}</td><td class="score-cell" style="color:${specColor(w)}">${w.specScore != null ? w.specScore : '\u2014'}</td><td class="price">${priceCellHtml(w)}</td><td class="score-cell${w.valueScore == null && !w.listValue ? ' na' : ''}">${scoreCellHtml(w)}</td><td class="value-cell">${valueCellHtml(w)}</td>
 </tr>`;
   }).join('');
 }
@@ -6482,6 +6651,7 @@ function computedFigures(watches) {
     sigmaOnScore: Math.round(sigma * 2.8),        // the Score column's ×2.8 rescale
     supportMin: SUPPORT.min,
     supportPct: Math.round((Math.exp(SUPPORT.window) - 1) * 100),
+    marketPriceRows: watches.filter(w => w.marketPrice).length,
   };
   const mr = measuredRatioStats(watches);
   if (mr) Object.assign(f, {
@@ -6600,6 +6770,31 @@ function selfCheck(watches, missingFigureTokens = []) {
                `compares against the twin's badge, so it can never fire for this row`);
     }
   }
+
+  // marketPrice is the one field here that can be wrong without looking wrong: a malformed or
+  // absent kind renders an undefined marker, and a figure that is not actually BELOW the list
+  // price would have the row scored on the dearer of the two while the cell still shows a saving.
+  // The legacy streetPriceEUR is checked for too, because a row reintroducing it would simply be
+  // ignored by effectivePrice() and score at list price with nothing on screen to say so.
+  watches.forEach(w => {
+    if ('streetPriceEUR' in w) {
+      out.push(`row ${w.id} carries streetPriceEUR, which nothing reads any more — it is marketPrice now`);
+    }
+    const m = w.marketPrice;
+    if (m == null) return;
+    if (typeof m.eur !== 'number' || !(m.eur > 0)) {
+      out.push(`row ${w.id} has a marketPrice with no usable eur figure`);
+    } else if (typeof w.priceEUR === 'number' && m.eur >= w.priceEUR) {
+      out.push(`row ${w.id} has a marketPrice of €${m.eur} at or above its list price €${w.priceEUR} — ` +
+               `the second price is only worth recording where it is lower`);
+    }
+    if (!(m.kind in MARKET_PRICE_KINDS)) {
+      out.push(`row ${w.id} has marketPrice kind ${JSON.stringify(m.kind)}, which is not one of ` +
+               `${list(Object.keys(MARKET_PRICE_KINDS))}`);
+    }
+    if (!m.note) out.push(`row ${w.id} has a marketPrice with no note saying where the figure came from`);
+    if (w.listValue == null) out.push(`row ${w.id} has a marketPrice but no second reading at its list price`);
+  });
 
   const badBack = Object.entries(DISPLAY_BACK).filter(([, v]) => v !== 0 && v !== 1).map(([id]) => id);
   if (badBack.length) out.push(`DISPLAY_BACK must be 1 or 0 (absent = not researched); row ${list(badBack)} is neither`);
