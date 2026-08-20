@@ -471,6 +471,22 @@
 
   <p><b>What it did to everything else, and one figure moves the wrong way.</b> Six rows change the price they are fitted at — 13, 91, 92 and 93 downward to their listings, 14 and 15 upward as their pass-10 street figures come off — which is enough to move the fit rather than just the rows. <b>Value moved by at most 0.50 spec points across the untouched rows</b>, on row 16, the Delhi Tithi, at the far end of the price range where the line has least to hold it; <b>no spec score moved at all</b>, which is what step 1 being price-free is supposed to guarantee and is worth checking rather than asserting. The residual sigma widens 5.5 → 5.6, and three rows cross a band boundary as a result: row 71 (Mido Ocean Star 39 Two-Tone) from <i>above</i> back to <i>as expected</i>, and rows 108 and 120 (Nomadic Cíor, Laco Speyer) from <i>below</i> to <i>well below</i>. None moved as much as half a spec point; a wider sigma moves the boundary rather than the watch. <b>Leave-one-out RMSE rises 5.80 → 5.81 and skill falls 59.7% → 59.6%</b>, which is reported as found rather than tuned away: pulling four rows down in price while their spec scores stay put spreads the residuals slightly, and a model that fits marked-down prices marginally worse than list prices is telling the truth about what it was fitted on. One sign flip either way, and the typical resample shift falls 0.29 → 0.25. The <code>n/s</code> and <code>o/s</code> counts are both unmoved at two. <b>The caveat pass 10 attached to street prices applies here with more force.</b> A grey listing is one seller on one day, not a market: it moves faster than a maker's list price and can be gone tomorrow. That is why the Certina titanium figures came off rather than being carried forward, and why the kind and the note travel with every second price — between them they say where the number came from, so a reader can decide how much to trust it.</p>
 
+  <p><b>Longines Spirit Zulu Time and Legend Diver, pass 32 — three rows added (142–144), and the list goes from 141 to 144.</b> Longines was already the best-documented maker here, with four rows, and these three attack the one thing those four could not show: what the top of this list's price range actually buys. They are a €3,450 steel traveller GMT, the same watch in titanium at €4,400, and a €3,700 300 m diver — the three most expensive rows in the file, and the first Longines here with a rotating bezel since row 67. The vocabulary barely moved: no new case category, glass, movement type, watch type or complication, and two new <code>MOVEMENT_TIER</code> keys for the L844.4 and the L888.6. <b>Only one of the three can be scored.</b> Row 142 lands at <b>62 spec points and −1.30 on Value, <i>as expected</i></b>, on 7 comparable rows. Rows 143 and 144 come back <code>n/s</code> on 2 and 4 comparable rows — the support guard doing exactly what it was built to do, and the subject of the next paragraph rather than a footnote to this one. Where row 142 lands is unremarkable and that is the point: a COSC traveller GMT with a ceramic bezel and a silicon hairspring is a strong spec, and at €3,450 this list charges about what it is worth.</p>
+
+  <p><b>Two of the three rows cannot be scored, and this is the first pass where the guard fired on the EXPENSIVE end hard enough to swallow most of the pass.</b> <code>SUPPORT</code> needs five other rows within ±0.40 in <code>ln(price)</code>. Row 144 at €3,700 found four — one short — and row 143 at €4,400 found two. The reason is the shape of the list rather than anything about the watches: the €400–900 stretch is its thickest part, and above €3,000 it has almost nothing, so <b>the rows this pass added are very nearly each other's only neighbours.</b> That is the mechanism CLAUDE.md describes working in the least convenient direction — rows added together rescue each other, and three rows spread across €3,450 to €4,400 are too far apart to do it. <b>The sharpest way to put it: row 143 carries the joint-fifth-highest spec score in the whole file at 64 points, and the model still declines to say whether it is good value.</b> It is not a near miss either; at €4,400 it would need three more rows in that range. This is also worth saying plainly because it is the opposite of pass 21's result, where three added rows <i>rescued</i> two existing ones: <b>rows 16 and 56 are still <code>n/s</code> and were never in reach</b>, being the two cheapest on the list, so the count goes 2 → 4 by pure addition. What would change it is more rows between €2,500 and €5,000, and nothing else.</p>
+
+  <p><b>The maker's own data payload names its COSC flag after a different certification, and reading the key instead of its label would have put a wrong accuracy figure on all three rows.</b> Longines' embedded product record carries the attribute <code>general_ultra_chronometer</code>, which reads unmistakably as their Ultra-Chron / TIMELAB certification — a stricter, separately-marketed standard tested on the assembled watch. Its <code>attribute_label</code> is <b>"Chronometer Officially Certified"</b>, i.e. plain COSC. The label is the truth and the key is a legacy name, and rather than assert that, <b>it was tested against a fact this file had already established independently</b>: pass 13 and pass 21 concluded, against a widely-cited caliber guide that has it backwards, that the L888.4 is COSC and the L888.5 is not. Re-fetched for this pass, row 91's payload carries the flag set and <b>row 93's carries it null</b> — the flag reproduces this file's own prior finding on the one reference known to lack the certification. That is what makes it safe to read. Longines' marketing prose on all three new pages then says it in words, so nothing here rests on the inference alone, and all three carry the COSC <b>−4/+6 s/day</b> on the same published, per-unit, third-party-verified footing as rows 85, 86, 91 and 92 — not the generic A31 tolerance passes 6 and 13 rejected. The general lesson belongs beside pass 30's "a distinct URL is not a distinct asset": <b>in a hydrated payload the field name is not the specification</b>, and where a numeric id or a legacy key resolves through a lookup table, the resolved label is the source and the key is a guess.</p>
+
+  <p><b>The judgement calls, and the movement tier is the one to argue about.</b> <b>The L844.4 takes 0.75, and that is the highest non-manufacture entry this table has ever carried.</b> The arithmetic is not new: the L844.4 is the L888.4 plus a jumping local hour, and this table's stated rate for exactly that is <b>+0.05</b>, written into the SW330-2 entry as "the +0.05 the C07.661 and the Miyota 9075 get for a jumping local hour" and already applied twice. 0.70 + 0.05 lands on 0.75. <b>The objection is real and is recorded beside the number</b>: 0.75 is the top of the "in-house from a major" band and puts a reworked ETA ebauche level with Citizen's cal. 0950 and 9051, which are manufacture movements — and pass 21 was careful to place the L888.4 <i>at</i> the 0.70 boundary rather than inside that band. It is applied anyway because the alternative is worse: withholding it here alone would mean the caller/traveller distinction is scored for Mido and Miyota and not for Longines, keyed on nothing but where the base caliber happens to sit. A rule applied twice and dropped on the third case is not a rule. At 0.70 rows 142 and 143 lose about a point and a half of spec, and row 142's band does not change. <b>"true GMT" in the movement string is sourced, not inferred from the name</b> — Longines' own L844 instruction manual moves the <i>hour</i> hand at crown position 2, carrying the date past midnight, which is a traveller and not a caller; the Zulu Time badge on the dial would not have been evidence. <b>The Legend Diver's bezel takes 0.8</b>, the value rows 3 and 97 already hold for an internal rotating bezel whose ring material the maker does not name. <b>Finishing is 0.60 flat across all three</b>, level with rows 91–93 and for their reason, and the titanium row is deliberately <i>not</i> raised above the steel one: a case material is not finishing, and it is already scored through <code>caseCategory</code>. <b>The two Zulu Times are the only rows this pass leaves open</b>, on the caseback: Longines leave <code>case_case_back</code> null on both, exactly as pass 21 found for the Spirit, so they stay absent from <code>DISPLAY_BACK</code> rather than being guessed at solid. Their own caseback photograph would have settled it, and <code>api.ecom.longines.com</code> timed out on every attempt to fetch one.</p>
+
+  <p><b>One row claims ISO 6425 and it is the only Longines here that does, which was tested rather than assumed.</b> Longines state on the Legend Diver's own page that these models "entsprechen der Norm ISO 6425 für Taucheruhren", so row 144 takes <code>iso</code> 1 — the eighth row in the file to earn it, and the first that is not a Certina or a Citizen. The obvious risk was that this is boilerplate Longines put on every diver, which would make it evidence about the brand rather than the reference, so <b>row 67 — the 300 m HydroConquest, carrying <code>iso</code> 0 since pass 13 — was re-fetched to check.</b> The string "ISO 6425" appears nowhere on its page. The claim is per-reference, row 67 is unchanged, and the two Zulu Times stay at 0 where at 10 bar with no such claim the absence is a finding rather than a gap. <b>The Legend Diver is also the one row of the three with no complication at all</b>: Longines' own function list reads "Stunden, Minuten und Sekunden" and the special-evolution field is empty, so it has no date, and this file scores no <code>date</code> key in any case.</p>
+
+  <p><b>The pass-21 fetch trap is gone, and saying so is the point of recording it.</b> That pass found every path under longines.com timing out while the bare root answered, and read three rows through a text-extraction proxy. All five pages opened for this pass — the three new references plus rows 67 and 91 as controls — returned HTTP 200 to a plain direct fetch. The banner above row 91 is left standing as the dated snapshot it is, and a new one beside these rows records that it no longer holds. <b>What has not changed is where the specs live</b>: the embedded product record still carries thickness, lug-to-lug, weight, caseback and caliber per SKU while the rendered prose still carries none of them, which is the finding pass 21 was actually built on and which two earlier passes lost to a rendering artefact. One thing is new and is the reason a summarising fetch would still fail here — <b>most attributes are now numeric option ids</b> resolved against a table elsewhere in the same payload, so the case material reads <code>280</code> until it is looked up. That is the mechanism behind the mislabelled COSC flag above. <b>The one part of the trap still standing is <code>api.ecom.longines.com</code></b>, which serves images to a browser and timed out on every direct fetch from here — costing this pass the caseback photographs and Longines' L844 manual PDF, which had to be read through a proxy instead.</p>
+
+  <p><b>Three rows into <code>WEIGHT_MEASURED</code>, and the titanium bias they land in has been quietly wrong in a code comment for several passes.</b> The test set goes <b>58 → 61</b> and the estimator improves on every measure but the median: mean absolute error 10.7% → <b>10.5%</b>, RMSE 14.8 g → <b>14.5 g</b>, within ±15% 48/58 → <b>51/61</b>, median 6.6% → 6.7%. The three read heavy — +6.8%, +7.9% and +5.4%, mean signed +6.7% against the set's own +4.5% — and improving the totals while reading heavy is not a contradiction: they sit near the middle of the error distribution, so they add mass where the estimator is unremarkable and dilute the two outliers that dominate RMSE. Nothing was refitted on them, for the reason <code>weightEstimatorStats()</code> states once. <b>The finding is what row 143 does to the titanium cut.</b> That comment claimed "7 rows, mean −5.3%"; the set had already reached 8 rows at −3.1% before this pass, so it was stale on arrival, and row 143 takes it to <b>9 rows at −1.9%</b>. More usefully, it is the second titanium row to read <i>heavy</i> and the first with a plain round case — the Tissot PRX's +11.9% was explained away by its tonneau geometry, and this one cannot be. The bias is real, still points the same way, and is now small enough to sit inside the noise, which is an argument for the standing refusal to fit it away rather than against it. All nine land within ±15%, which no other cut of this test set manages. <b>The steel/titanium Zulu Time pair also settles a question about the field itself</b>: the two references are identical in diameter, thickness and lug-to-lug and differ only in material, and Longines' <code>case_weight</code> moves 147.0 g → 95.5 g between them. A case-only figure could not do that on an unchanged case geometry, so the field is a with-band measurement, as pass 21 assumed without being able to prove it.</p>
+
+  <p><b>What it did to everything else, and every headline figure moves the right way for once.</b> Value moved by at most <b>0.70</b> spec points across the existing 141 — row 16, the Delhi Tithi, at the cheap end of the range where the line has least holding it — with 119 of 141 moving at all and <b>six crossing zero</b>, all of them rounding rather than reversal (rows 50, 52, 55 and 65 from exactly 0.0 to −0.1 or −0.3; rows 82 and 83 the other way). <b>Five rows changed band</b>: row 13 (Certina DS Action Diver 38) and row 123 (Second Hour Shoal Deep 300) from <i>above the curve</i> to <i>well above</i>, rows 71 (Mido Ocean Star 39 Two-Tone) and 74 (Mido Baroncelli Midnight Blue) from <i>as expected</i> to <i>above</i>, and row 34 (Vaer D4 Meridian) from <i>as expected</i> to <i>below</i>. Residual sigma tightens <b>6 → 5</b>, which is what moves most of those: a narrower sigma pulls the band boundaries in, so rows move bands without moving much. <b>Leave-one-out RMSE is 5.81 → 5.73 against a naive baseline that rises 9.14 → 9.28, so skill goes 59.6% → 61.9%</b>, the highest recorded here, and <b>sign flips go 1 → 0</b>. The resample figures split as usual, typical 0.25 → 0.26 and worst 0.70 → 0.58. The spec/price correlation goes 0.78 → 0.79 and the spec range holds at 26–66. That the model got better while two of the three new rows were too isolated to enter the scoring at all is not a paradox — they are still in the <i>fit</i>, since <code>SUPPORT</code> withholds a badge rather than a row, and three well-specified high-priced watches give the Theil–Sen line something to hold onto at an end where it had almost nothing. <b>Spec drift touched two rows</b> — row 59 (Seagull Cedar Dial Couple, 36 → 35) and row 127 (Baltic Aquascaphe GMT Grey, 42 → 43) — which is <code>imputeMissingSubs()</code> filling unresearched sub-scores against a list mean three rows have shifted, and is the mechanism's own note behaving as documented. The <code>o/s</code> count is unmoved at two.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -492,7 +508,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-141 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-144 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
 //                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
@@ -3023,6 +3039,96 @@ const WATCHES = [
   powerReserveDisplay:'—', accuracyDisplay:'—',
   waterResDisplay:'200 m (20 ATM)', waterResM:200,
   priceDisplay:'€765', priceValue:765, priceCurrency:'EUR' },
+// --- Longines Spirit Zulu Time / Legend Diver, pass 32 (rows 142-144) ------------------------
+// THE PASS-21 FETCH TRAP IS GONE, and that is the first finding. Every path under longines.com
+// timed out from this machine in pass 21, which is why those rows were read through a text-
+// extraction proxy. All five pages read for this pass - the three new references plus rows 67 and
+// 91 re-fetched as controls - returned HTTP 200 to a plain direct fetch, 1.5-1.7 MB each. The
+// banner above row 91 records the state of the world in pass 21 and is left standing; this one
+// records that it no longer holds. What has NOT changed is where the specs live: the embedded
+// product record still carries case_thickness, case_lug_to_lug, case_weight, case_case_back and
+// mvt_fct_calibre_name per SKU, and the rendered prose still does not. One thing is new - most
+// attributes are now numeric option ids resolved against an attribute_options table elsewhere in
+// the same payload, so case_material reads 280 rather than a material.
+//
+// THE COSC FLAG IS MISNAMED IN THE PAYLOAD, and reading the key rather than its label would have
+// put a wrong figure on all three rows. The attribute is general_ultra_chronometer, which reads
+// as Longines' separate Ultra-Chron / TIMELAB certification; its own attribute_label is
+// "Chronometer Officially Certified", i.e. plain COSC. The label is decisive and it was TESTED
+// rather than taken on trust, against the caliber split passes 13 and 21 established
+// independently: row 91 (L888.4, COSC) carries 8117 "Ja", and row 93 (L888.5, non-COSC) carries
+// null. A flag that reproduces this file's own prior finding on the one reference known to LACK
+// the certification is the flag it claims to be. Longines' own prose on all three new pages then
+// says it in words - "von der COSC als Chronometer zertifiziert" - so nothing below rests on the
+// inference alone. All three carry the COSC −4/+6 s/day on the same footing as rows 85, 86, 91
+// and 92: published, per-unit, third-party verified under ISO 3159. It is NOT the generic A31
+// tolerance that passes 6 and 13 rejected for the L888.5.
+//
+// The two Zulu Times are the same watch in two case materials at a 950 EUR spread, which is the
+// cleanest material comparison in this list: identical diameter, thickness, lug-to-lug, caliber,
+// bezel, glass and clasp, differing in case and bracelet material and in dial colour. Longines'
+// own case_weight makes the difference concrete - 147.0 g against 95.5 g - and that pair is also
+// the evidence that the field is a with-band figure rather than a case-only one, since nothing
+// but the material changes between them.
+{ id:142, brand:'Longines', name:'Longines Spirit Zulu Time 39 mm (L3.802.4.50.6)', desc:'Matte black dial, rose-gold-coloured hands · true traveller GMT, ceramic bezel · the 42 mm is a separate ref',
+  link:'https://www.longines.com/de/p/watch-longines-spirit-zulu-time-l3-802-4-50-6',
+  img:'https://api.ecom.longines.com/media/catalog/product/w/a/watch-collection-longines-spirit-zulu-time-l3-802-4-50-6-f056da-hero.png?w=800',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'46.8 mm',
+  heightDisplay:'13.5 mm', heightMm:13.5,
+  // case_case_back is null on both Zulu Time references, exactly as pass 21 found for the Spirit
+  // and its 40 mm sibling - so the back is not claimed here either and both rows stay absent from
+  // DISPLAY_BACK. Longines' own caseback photograph could not settle it: api.ecom.longines.com
+  // serves images to a browser but timed out on every direct fetch from here, the one part of the
+  // pass-21 trap still standing. The wording below therefore avoids "display back" and
+  // "exhibition", which displayBackFor() reads out of caseDisplay and would silently score as 1.
+  caseDisplay:'Stainless steel, bidirectional rotating bezel with ceramic insert (screw-down crown, caseback not specified by Longines)', caseCategory:'Steel',
+  bandDisplay:'Solid steel bracelet (double-security folding clasp, push-buttons)',
+  glassDisplay:'Sapphire + AR both sides', glassCategory:'Sapphire',
+  // "true GMT" in the string is the pass-18 convention and it is sourced, not inferred from the
+  // name: Longines' own L844 instruction manual sets the HOUR hand at crown position 2, turning
+  // either way and carrying the date past midnight, with position 3 for the full time. That is an
+  // independently adjustable local hour hand - a traveller/flyer GMT - not a caller.
+  movementDisplay:'Automatic true GMT — Longines L844.4 (silicon hairspring, COSC)', movementType:'Automatic', movementCostDisplay:'not sold separately (Longines-exclusive ETA A31 derivative, GMT, COSC grade)',
+  powerReserveDisplay:'~72 h', accuracyDisplay:'−4/+6 s/day',
+  waterResDisplay:'100 m (10 bar)', waterResM:100,
+  priceDisplay:'€3,450', priceValue:3450, priceCurrency:'EUR' },
+
+{ id:143, brand:'Longines', name:'Longines Spirit Zulu Time Titanium 39 mm (L3.802.1.53.6)', desc:'Anthracite dial, gilt hands · the steel L3.802.4.50.6 on row 142 in titanium, +€950',
+  link:'https://www.longines.com/de/p/watch-longines-spirit-zulu-time-l3-802-1-53-6',
+  img:'https://api.ecom.longines.com/media/catalog/product/w/a/watch-collection-longines-spirit-zulu-time-titanium-l3-802-1-53-6-e62a3e-hero.png?w=800',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'46.8 mm',
+  heightDisplay:'13.5 mm', heightMm:13.5,
+  // Same caseback finding as row 142, and the same wording precaution.
+  caseDisplay:'Titanium, bidirectional rotating bezel with ceramic insert (screw-down crown, caseback not specified by Longines)', caseCategory:'Titanium',
+  bandDisplay:'Solid titanium bracelet (double-security folding clasp, push-buttons)',
+  glassDisplay:'Sapphire + AR both sides', glassCategory:'Sapphire',
+  movementDisplay:'Automatic true GMT — Longines L844.4 (silicon hairspring, COSC)', movementType:'Automatic', movementCostDisplay:'not sold separately (Longines-exclusive ETA A31 derivative, GMT, COSC grade)',
+  powerReserveDisplay:'~72 h', accuracyDisplay:'−4/+6 s/day',
+  waterResDisplay:'100 m (10 bar)', waterResM:100,
+  priceDisplay:'€4,400', priceValue:4400, priceCurrency:'EUR' },
+
+// The Legend Diver is the one row in this group that is a dive watch, and the only Longines here
+// that claims ISO 6425. That claim is per-reference rather than brand-wide, which was tested
+// rather than assumed: row 67, the 300 m HydroConquest, was re-fetched for this pass and the
+// string "ISO 6425" appears nowhere on its page, so its iso 0 stands unchanged.
+{ id:144, brand:'Longines', name:'Longines Legend Diver 39 mm (L3.764.4.06.6)', desc:'Green lacquered dial · no date · inner rotating dive bezel on a second crown, 300 m, ISO 6425',
+  link:'https://www.longines.com/de/p/watch-longines-legend-diver-l3-764-4-06-6',
+  img:'https://api.ecom.longines.com/media/catalog/product/w/a/watch-collection-longines-legend-diver-l3-764-4-06-6-2c19d8-hero.png?w=800',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'47 mm',
+  heightDisplay:'12.7 mm', heightMm:12.7,
+  // Unlike the two above, case_case_back IS populated here - "Verschraubter Gehaeuseboden", a
+  // screwed solid back - so this row is researched and carries DISPLAY_BACK 0.
+  caseDisplay:'Stainless steel, inner rotating dive bezel (two screw-down crowns, screwed solid back)', caseCategory:'Steel',
+  bandDisplay:'Solid steel bracelet (double-security folding clasp, micro-adjust)',
+  glassDisplay:'Sapphire + AR both sides', glassCategory:'Sapphire',
+  // The L888.6 is COSC and the L888.5 on rows 67 and 93 is not, so this row carries a rate where
+  // those two carry an empty cell. That is not a new claim: pass 13's footer already recorded
+  // that −4/+6 "attaches to the L888.4 and L888.6, not the L888.5 in this row", and Longines'
+  // prose on this page states the certification outright.
+  movementDisplay:'Automatic — Longines L888.6 (silicon hairspring, COSC)', movementType:'Automatic', movementCostDisplay:'not sold separately (Longines-exclusive ETA A31 derivative, COSC grade)',
+  powerReserveDisplay:'~72 h', accuracyDisplay:'−4/+6 s/day',
+  waterResDisplay:'300 m (30 bar)', waterResM:300,
+  priceDisplay:'€3,700', priceValue:3700, priceCurrency:'EUR' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -3228,7 +3334,7 @@ function measuredRatioStats(watches) {
 // Pass 10 added that "if a real set of measured weights ever exists that argument changes,
 // because measured mass carries information the dimensions do not - bracelet build, case wall
 // thickness". That set now partly exists, so the question is flagged rather than quietly ignored.
-// It is still NOT acted on, for two reasons. The 58 are not a random sample - they are ten makers
+// It is still NOT acted on, for two reasons. The 61 are not a random sample - they are ten makers
 // who happen to document well, three of them Japanese and seven Western, so scoring on them would
 // score brands on their spec-sheet habits. And the double-counting objection above still binds
 // for the other 83 rows, where the "weight" is a function of columns the score already reads.
@@ -3247,12 +3353,19 @@ function measuredRatioStats(watches) {
 // slightly worse again, in the same direction and for the same structural reason - see below.
 // Pass 23's ONE row moved it more than either: the Junkers on row 113 is the largest single error
 // in the set at +76.1%, and on its own it takes mean absolute error from 9.8% to 11.1%.
-//                        28 rows (p11)   36 rows (p12)   47 rows (p16)   50 rows (p21)   51 rows (p23)   51 rows (p24)   54 rows (p25)   58 rows (p26)
-//   mean absolute error       8.5%           8.2%            9.5%            9.8%           11.1%            9.8%            9.9%           10.7%
-//   median absolute error     6.1%           5.8%            6.1%            6.5%            6.5%            6.0%            6.3%            6.6%
-//   RMSE                     11.8 g         11.9 g          13.5 g          13.9 g          14.6 g          13.8 g          13.6 g          14.8 g
-//   within +-15%             25 of 28       32 of 36        40 of 47        42 of 50        42 of 51        44 of 51        46 of 54        48 of 58
-//   mean signed error        +2.6%          +1.6%           +2.4%           +3.1%           +4.5%           +3.2%           +3.7%          +4.4%  (+ = reads heavy)
+//                        28 rows (p11)   36 rows (p12)   47 rows (p16)   50 rows (p21)   51 rows (p23)   51 rows (p24)   54 rows (p25)   58 rows (p26)   61 rows (p32)
+//   mean absolute error       8.5%           8.2%            9.5%            9.8%           11.1%            9.8%            9.9%           10.7%           10.5%
+//   median absolute error     6.1%           5.8%            6.1%            6.5%            6.5%            6.0%            6.3%            6.6%            6.7%
+//   RMSE                     11.8 g         11.9 g          13.5 g          13.9 g          14.6 g          13.8 g          13.6 g          14.8 g          14.5 g
+//   within +-15%             25 of 28       32 of 36        40 of 47        42 of 50        42 of 51        44 of 51        46 of 54        48 of 58        51 of 61
+//   mean signed error        +2.6%          +1.6%           +2.4%           +3.1%           +4.5%           +3.2%           +3.7%          +4.4%           +4.5%  (+ = reads heavy)
+// Pass 32's three Longines rows are the first enlargement since pass 12 to move every measure but
+// the median the RIGHT way, and they did it while READING HEAVY - +6.7% mean signed across the
+// three, above the set's own +4.5%. Those two facts look contradictory and are not: the three sit
+// near the middle of the error distribution rather than at its tails, so they add mass where the
+// estimator is unremarkable and dilute the two outliers that dominate RMSE. All three are big
+// bracelet watches, which is the case this method handles best, and none is a new kind of
+// evidence - which is why nothing was refitted on them. See weightEstimatorStats().
 // Pass 25's three Tissot PRX rows all read heavy (+6.5%, +11.9%, +15.5%), and the cause is
 // geometric rather than a density error: the PRX case is a tonneau whose length is SHORTER than
 // its width, while the method below models a cylinder of the stated diameter. Not corrected - see
@@ -3284,11 +3397,18 @@ function measuredRatioStats(watches) {
 // points is not a sample, but they fall exactly where the overlap above predicts they would.
 // Three systematic biases now show up, and all three are deliberately LEFT IN rather than fitted
 // away, for the reason weightEstimatorStats() gives:
-//   titanium   7 rows, mean -5.3%. Pass 12 saw -5.6% on 5 rows; the two CW titanium rows (-2.2%
-//              and -6.7%, both now on titanium bracelets) sit inside that pattern, so the bias is
-//              better evidenced, not smaller. The 4.5 density is right for the alloy, but titanium
-//              bracelets and straps are evidently more solid than the flat 38 g allowance. All
-//              seven land within +-15%, which no other cut of this test set manages.
+//   titanium   9 rows, mean -1.9%. The bias is REAL BUT SHRINKING, and the shrinking is the
+//              interesting part rather than a reason to stop reporting it. Pass 12 saw -5.6% on 5
+//              rows and the two CW rows (-2.2%, -6.7%) sat inside that; the two most recent
+//              titanium additions do not, and both read HEAVY - the Tissot PRX 38 Ti at +11.9%,
+//              whose tonneau case is explained above, and pass 32's Longines Spirit Zulu Time
+//              Titanium at +7.9%, which is a plain round case and is not. Those two pull the mean
+//              from -5.3% across 7 rows to -1.9% across 9. The 4.5 density is still right for the
+//              alloy and titanium bands are still more solid than the flat 38 g allowance, but on
+//              this evidence the size of the correction that would be justified is now small
+//              enough to be inside the noise - which is a further argument for the standing refusal
+//              to fit it away, not against it. All nine land within +-15%, which no other cut of
+//              this test set manages.
 //   head/case  the fill-factor overlap described above, worst on small cases and on straps.
 //              Pass 23 measured this across the WHOLE set rather than one maker's rows, and pass
 //              24 sharpened it by moving four rows across the line: the 47 bracelet rows are
@@ -3420,6 +3540,14 @@ const WEIGHT_MEASURED = {
   91: 114.7,  // Spirit 37, steel bracelet
   92: 143.0,  // Spirit Pilot 39, steel bracelet
   93: 122.7,  // Conquest 38, steel bracelet
+  // --- Longines, same field, pass 32 --------------------------------------------------------
+  // The steel/titanium Zulu Time pair is the proof that this field is a WITH-BAND figure and not
+  // a case-only one: the two references are identical in diameter, thickness and lug-to-lug and
+  // differ only in case and bracelet material, and the field moves 51.5 g between them. A
+  // case-only number could not do that on an unchanged case geometry.
+  142: 147.0,  // Spirit Zulu Time 39, steel bracelet
+  143: 95.5,   // Spirit Zulu Time 39 Titanium, titanium bracelet
+  144: 145.2,  // Legend Diver 39, steel bracelet
   // --- Junkers, "Gewicht" in the spec table on junkers.de, pass 23 --------------------------
   // This one needed a test before it could be used, because 46 g appears on the Bauhaus 40
   // three-hander as well as on all three Bauhaus Chronograph references - which is the exact shape
@@ -3740,6 +3868,9 @@ const WATCH_TYPES = {
   91: ['Pilot'],
   92: ['Pilot'],
   93: ['Everyday', 'Sports'],
+  142: ['GMT / traveller', 'Pilot'],  // Spirit Zulu Time: the two Spirits above are Pilot, this one adds the hand
+  143: ['GMT / traveller', 'Pilot'],
+  144: ['Diver'],                    // 300 m, inner rotating dive bezel, ISO 6425
   // Pass 22. Three calls in this block are worth stating rather than leaving to be inferred.
   // Rows 94-96 are Pilot and nothing else, the same single-type call rows 60 and 91-92 get: Sinn
   //   file the whole 104 line under "Fliegeruhr" and the 104 St Sa I text opens by calling it one.
@@ -3892,7 +4023,7 @@ const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (123 of 141 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (125 of 144 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -3935,6 +4066,31 @@ const MOVEMENT_TIER = {
   // inconsistency, not the double-count. If this entry is ever revisited, 0.65 level with the
   // other two is the alternative, and it costs these rows about a point and a half of spec.
   'Automatic — Longines L888.4 (silicon hairspring, COSC)': 0.70,
+  // Longines L844.4, pass 32, at 0.75 - and this is the number in THIS pass most open to
+  // disagreement, in the same way and for the same reason the L888.4 above was in pass 21.
+  // The arithmetic is that entry's own. The L844.4 is the L888.4 plus a jumping local hour, and
+  // this table's established rate for exactly that is +0.05, stated in the SW330-2 entry below
+  // as "the +0.05 the C07.661 and the Miyota 9075 get for a jumping local hour" and applied
+  // twice already (C07.611 0.55 -> C07.661 0.60, Miyota 9039 0.40 -> 9075 0.45). 0.70 + 0.05
+  // lands on 0.75.
+  // THE OBJECTION, and it is a real one: 0.75 is the top of the "in-house from a major" band and
+  // puts a reworked ebauche level with Citizen's cal. 0950 and 9051, which are manufacture
+  // movements. The L888.4 entry above was careful to sit AT the 0.70 boundary rather than inside
+  // that band, and this goes inside it. The reason it is applied anyway is that the alternative
+  // is worse: withholding the +0.05 here alone would mean the caller/traveller distinction is
+  // scored for Mido and Miyota and not for Longines, keyed on nothing but where the base caliber
+  // happens to sit. A rule applied twice and then dropped on the third case is not a rule.
+  // Note that the traveller mechanism is ALSO paid for in complications, at the gmt_true rate of
+  // 0.5 - that is not a double-count introduced here but the same arrangement rows 36, 37 and 72
+  // already carry, and the alternative would be to change it for all of them rather than for one.
+  // If this entry is ever revisited, 0.70 level with the L888.4 is the alternative, and it costs
+  // rows 142 and 143 about a point and a half of spec.
+  'Automatic true GMT — Longines L844.4 (silicon hairspring, COSC)': 0.75,
+  // Longines L888.6, pass 32, at 0.70 - level with the L888.4 and needing no separate argument.
+  // Same base, same silicon hairspring, same COSC certification; the .4 and the .6 differ in
+  // which references they are fitted to, not in architecture or regulation grade. It sits 0.05
+  // above the L888.5 below for the COSC exactly as the L888.4 does.
+  'Automatic — Longines L888.6 (silicon hairspring, COSC)': 0.70,
   'Automatic — Longines L888.5 (silicon hairspring)': 0.65,  // top of the reworked-ebauche band: Longines-exclusive ETA A31.L11, silicon hairspring ranks above the Nivachron Powermatics, below a true manufacture
   // YEMA, pass 29. Three keys, and 0.68 is the number to argue - it is the first entry in this
   // table for a caliber that is an INDEPENDENT'S OWN ARCHITECTURE, which is a case the 0.55-0.60
@@ -4523,9 +4679,43 @@ const EXTRAS = {
   // bezel null on all three - no rotating bezel anywhere in this group. Excluded, not penalised.
   // comp omitted on all three. The two dated rows get nothing for it because date is not a key in
   //   COMPLICATION_VALUES, so the Pilot loses nothing for going without one.
+  // Rows 142-144, Longines Spirit Zulu Time / Zulu Time Titanium / Legend Diver, pass 32. The
+  // three carry the SAME lume, warranty, antimagnetism, clasp and service as rows 91-93 above,
+  // and for the same reasons - one maker making the same declarations - so only the fields that
+  // genuinely differ are argued here.
+  // lume 0.7 on all three, level with rows 67 and 91-93. Longines say "Swiss Super-LumiNova®" in
+  //   dial_specificities and name no grade on any of the three, which is the identical claim the
+  //   other four Longines rows carry, so it takes the identical score.
+  // war 5, Longines' "5-Jahres-Garantie", on all three pages. Data only, not scored.
+  // antimag 0.9 on all three, level with rows 67 and 91-93: a monocrystalline silicon balance
+  //   spring, stated by Longines on every one of these references and echoed by the payload's
+  //   general_magnetic_resistant flag.
+  // clasp 0.8 on all three, level with rows 67 and 91-93. The two Zulu Times carry Longines'
+  //   double-security folding clasp with push-pieces; the Legend Diver carries the same clasp WITH
+  //   the micro-adjustment system, word for word what rows 67 and 92 have. The 0.7-0.8 band does
+  //   not separate them and none is on-the-fly, so none reaches 0.9.
+  // bezel - the one field that splits this group three ways, and only two values are used:
+  //   142 and 143 at 1.0. A bidirectional rotating bezel with a CERAMIC insert, stated in
+  //     case_material and again in Longines' prose. Same credit row 67's ceramic dive bezel gets,
+  //     and row 82's bi-directional ceramic 24 h bezel - a 24 h bezel is functional, so it counts.
+  //   144 at 0.8. An INNER rotating dive bezel on a second crown, and Longines name no material
+  //     for the ring. 0.8 is exactly where rows 3 and 97 sit - the Baltic compressor-style and the
+  //     Traska internal 24 h bezel - and row 3 is the anchor those two were set against.
+  // iso - 144 is the ONE row in this file's four Longines dive-capable references to score 1, and
+  //   it is stated rather than inferred: "entsprechen der Norm ISO 6425 fuer Taucheruhren", in
+  //   Longines' own marketing prose on this reference's page. 142 and 143 are 0 - at 10 bar with
+  //   no such claim, the absence is a finding per this table's rule. Row 67 was re-fetched to test
+  //   whether the claim was brand-wide and it is not: "ISO 6425" appears nowhere on its page.
+  // comp - 142 and 143 take ['gmt_true'], the traveller rate, sourced from Longines' own L844
+  //   manual rather than from the Zulu Time name; see the row comment. 144 takes NOTHING, and
+  //   that is the maker's own spec: mvt_fct_functions reads "Stunden, Minuten und Sekunden" and
+  //   mvt_fct_special_evo is empty, so the Legend Diver has no date and no complication to score.
   91:{lume:0.7,war:5,iso:0,antimag:0.9,clasp:0.8,service:0.9,bezel:null},
   92:{lume:0.7,war:5,iso:0,antimag:0.9,clasp:0.8,service:0.9,bezel:null},
   93:{lume:0.7,war:5,iso:0,antimag:0.9,clasp:0.8,service:0.9,bezel:null},
+  142:{lume:0.7,war:5,iso:0,antimag:0.9,clasp:0.8,service:0.9,bezel:1.0,comp:['gmt_true']},
+  143:{lume:0.7,war:5,iso:0,antimag:0.9,clasp:0.8,service:0.9,bezel:1.0,comp:['gmt_true']},
+  144:{lume:0.7,war:5,iso:1,antimag:0.9,clasp:0.8,service:0.9,bezel:0.8},
   // --- Sinn 104, pass 22 (rows 94-96) ------------------------------------------------------
   // Everything here is anchored on row 60, the Sinn 556, because it is the same maker making the
   // same declarations about a watch one model line away.
@@ -5025,6 +5215,15 @@ const FINISH = {
   // a Colimacon-finished, twin-flag-engraved rotor; what this window shows is an undecorated
   // ETA-derived rotor, so the window is the merit and the window is already counted.
   91:0.60, 92:0.60, 93:0.60,
+  // Rows 142-144, pass 32, all three level with rows 91-93 at 0.60 - the top of the "solid
+  // mainstream" band and the same level of craft from the same maker. Nothing here is a step up:
+  // the Zulu Times' applied Arabics and the Legend Diver's lacquered dial are variations of
+  // execution within one level, which is word for word the argument rows 91-93 were set on.
+  // The titanium row is NOT raised above the steel one. A different case material is not
+  // finishing, and it is already scored where it belongs - caseCategory feeds CASE_SCORE, and it
+  // moves the weight estimate through DENSITY. Raising FINISH for it would be the double-count
+  // the entry above refuses for the Conquest's display back.
+  142:0.60, 143:0.60, 144:0.60,
   // Sinn, pass 22. Row 60 is the anchor and sits at 0.60. The 104 Klassik 12 matches it - sunray
   // dial, rhodium-plated appliqués and hands, and a chamois sub-dial with turned rilling and
   // polished facets, which is more dial construction than the 556's guilloché, not less. The two
@@ -5251,10 +5450,14 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 129 of 141 rows resolved - 59 see-through, 70 solid. The twelve still open are
-// 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125 and 126, all rows whose maker publishes no caseback
-// detail. Row 91 is the best documented of them: Longines leave the field empty on the Spirit 37
-// AND on the 40 mm sibling, so the gap is the collection's, not this reference's.
+// Research status: 130 of 144 rows resolved - 59 see-through, 71 solid. The fourteen still open are
+// 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125, 126, 142 and 143, all rows whose maker publishes no
+// caseback detail. Row 91 is the best documented of them: Longines leave the field empty on the
+// Spirit 37 AND on the 40 mm sibling, so the gap is the collection's, not this reference's.
+// 142 and 143 are pass 32's, and they extend that same finding rather than adding a new one:
+// Longines leave case_case_back null on both Zulu Time references too, while populating it on the
+// Legend Diver in the same pass - so the silence is per-collection, and the one Longines row this
+// pass could resolve is the one where they broke it.
 // 125 and 126 are pass 28's, and they are the first open rows since pass 21 - every pass from 22
 // to 26 settled all of its own. They stay open for the reason spelled out at the end of this
 // table: Baltic document the GMT's caseback and say nothing about the Titanium's or the Bronze's,
@@ -5462,6 +5665,15 @@ const DISPLAY_BACK = {
   //   view of it - it is FINISH's evidence, not this table's.
   134: 0, 135: 0, 136: 0, 137: 0,
   138: 0, 139: 0, 140: 0, 141: 0,
+  // Pass 32, and only ONE of the three Longines rows can be entered here. The Legend Diver's
+  // case_case_back reads "Verschraubter Gehaeuseboden" - a screwed solid back - so it is
+  // researched and it is 0. Both Zulu Times leave that same field null, which is what pass 21
+  // found for the Spirit and its 40 mm sibling and concluded was collection-wide rather than
+  // per-SKU. They stay ABSENT rather than being guessed at 0: absent is imputed at the list mean
+  // and costs nothing, and a guess that happened to be wrong would cost the row about four
+  // percent of its spec score. Longines' own caseback photograph would have settled it, but
+  // api.ecom.longines.com timed out on every direct fetch from here.
+  144: 0,
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
@@ -6312,7 +6524,7 @@ function optionValuesFor(dim) {
 
 // How many rows each option would show, measured against every filter EXCEPT its own dimension's
 // (see matchesFilters). Recomputed on every pipeline pass, which is 5 x 90 predicate calls - the
-// same order as the search box, which rejoins a haystack string for all 141 rows per keystroke.
+// same order as the search box, which rejoins a haystack string for all 144 rows per keystroke.
 function optionCounts(dim) {
   const counts = new Map();
   WATCHES.filter(w => matchesFilters(w, dim.key)).filter(matchesSearch)

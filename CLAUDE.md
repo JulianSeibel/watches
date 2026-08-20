@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this is
 
 `watch-overview.html` is the entire project: a single self-contained static page (~5400 lines)
-holding a hand-researched comparison of 141 watches, plus a scoring model that rates each one's
+holding a hand-researched comparison of 144 watches, plus a scoring model that rates each one's
 specs against what the rest of the list charges at that price. No build system, no dependencies,
 no package manager. HTML, CSS and JS live in the one file; `check.js` beside it is a Node harness
 that runs the page's own checks.
@@ -28,7 +28,7 @@ key-less exchange-rate APIs to convert the USD-priced rows — USD is the only l
 HKD, INR and AUD rows carry a hand-set `priceEUR` with the rate in an inline comment instead. It never
 throws, and on failure (offline, or `file://` CORS) the hardcoded `USD_TO_EUR` fallback stays in
 use and the page renders normally. The `Pic` column hotlinks product photos from the makers' own
-CDNs (all 141 rows carry
+CDNs (all 144 rows carry
 an `img`; a row without one renders a `🔗 photo` link to the maker instead, and that branch has no
 rows in it today). A dead CDN URL costs a thumbnail and nothing else — the name cell links out too. Scoring, validation and filtering all run
 locally, so `file://` is a fine way to work.
@@ -71,8 +71,8 @@ It also prints the validation figures, which are the closest thing here to a reg
 Current baseline:
 
 ```
-141 rows · spec 26–66 · sigma 6 · 2 n/s · 2 o/s · 58 published weights
-model  LOO RMSE 5.81 vs naive 9.14 · skill 59.6% · 1 sign flip(s) · resample typical 0.25 worst 0.70
+144 rows · spec 26–66 · sigma 5 · 4 n/s · 2 o/s · 61 published weights
+model  LOO RMSE 5.73 vs naive 9.28 · skill 61.9% · 0 sign flip(s) · resample typical 0.26 worst 0.58
 ```
 
 **If a change was not meant to touch the model and those numbers move, something is wrong.**
@@ -105,7 +105,7 @@ messages and add a generated-with line to PR bodies. Drop all three.
 
 Three layers inside the one `<script>`:
 
-1. **Data.** `WATCHES` — 141 object literals, one per watch, ids **1–141, contiguous and
+1. **Data.** `WATCHES` — 144 object literals, one per watch, ids **1–144, contiguous and
    unique**, each with display strings (`diameterDisplay`, `movementDisplay`, …), an `img` and
    `link`, and the few structured fields the code sorts or scores on (`diameterMm`, `heightMm`,
    `waterResM`, `priceValue`, `priceCurrency`, `caseCategory`, `glassCategory`, `movementType`,
@@ -132,14 +132,14 @@ The per-watch research does not live on the watch objects. It lives in parallel 
 
 | Table | Keyed by | Holds |
 |---|---|---|
-| `EXTRAS` | `id` | lume, warranty, ISO 6425, antimagnetism, clasp, service, bezel, complications, optional `caseScore` override. **All 141 present.** |
-| `FINISH` | `id` | 0–1 finishing/decoration estimate. **All 141 present.** |
-| `DISPLAY_BACK` | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 129 of 141 researched, 12 open. |
-| `WATCH_TYPES` | `id` | array of types (filter only, never scored). **All 141 present.** |
+| `EXTRAS` | `id` | lume, warranty, ISO 6425, antimagnetism, clasp, service, bezel, complications, optional `caseScore` override. **All 144 present.** |
+| `FINISH` | `id` | 0–1 finishing/decoration estimate. **All 144 present.** |
+| `DISPLAY_BACK` | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 130 of 144 researched, 14 open. |
+| `WATCH_TYPES` | `id` | array of types (filter only, never scored). **All 144 present.** |
 | `STATUS` | `id` | buying decision — `'bought'`, `'likely'`, `'sceptical'` or `'avoid'`; **absent = `'consider'`**, the default. Drives a filter, a name-cell chip and a bar on the row's left edge; never scored. The one id-keyed table with no coverage requirement, so adding a watch needs no entry — and the only one where a count would just drift, so none is stated here. |
-| `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | `id` | published grams (58); ids confirmed to publish none (70); ids whose page could not be reached (8); ids published without the band (5). The four are disjoint and together cover all 141 — keep it that way. |
+| `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | `id` | published grams (61); ids confirmed to publish none (70); ids whose page could not be reached (8); ids published without the band (5). The four are disjoint and together cover all 144 — keep it that way. |
 | `PLAIN_TWIN` | `id` | the row id of the reference identical in every scored field but without the decorative content, plus what the decoration is. Drives the scope guard, never the score. **Absent = no twin exists**, which is every row but three. Listing a row is not the same as marking it: 105 is listed and does not trigger. |
-| `MOVEMENT_TIER` | **exact `movementDisplay` string** | 0–1 architecture tier. 72 keys for 72 distinct movements, no misses, no orphans. |
+| `MOVEMENT_TIER` | **exact `movementDisplay` string** | 0–1 architecture tier. 74 keys for 74 distinct movements, no misses, no orphans. |
 | `MEASURED_ACCURACY` | caliber **substring** of `movementDisplay` | reported real-world rates |
 
 Grep the `const <NAME>` declaration to find one; line numbers are not quoted here because they moved
@@ -208,18 +208,19 @@ Two steps, and keeping them separate is the point:
   Theil–Sen (median pairwise slope, within movement class) and a **separate median intercept per
   class**. Each row's residual against that line is the `Value` badge; `Score` is the same number
   rescaled to 0–100 (`50 + residual * 2.8`) and sorts identically. This step *is* fitted to the
-  list, so adding rows does move everyone's Value. `residualSigma` is currently ~5.6.
+  list, so adding rows does move everyone's Value. `residualSigma` is currently ~5.3.
 
 Guards worth knowing before touching either step:
 
 - **`SUPPORT`** — `{ window: 0.40, min: 5 }`: a row with fewer than 5 other rows within ±0.40 in
-  `ln(price)` shows `n/s` rather than being scored off an extrapolated curve. Two rows qualify
-  today (16 and 56) — the two cheapest. Membership moves as the list grows: rows added together are
-  each other's neighbours, so a pass can rescue an existing `n/s` row and strand its own priciest
-  ones in their place, which is what pass 21 did and pass 22 then undid. Whatever sits at the end of
-  the price range is always the thing with nothing to compare against, and this list is now thin
-  only at the bottom — the €400–900 stretch is its thickest part. Each pass's figures are in its
-  footer paragraph.
+  `ln(price)` shows `n/s` rather than being scored off an extrapolated curve. Four rows qualify
+  today: 16 and 56, the two cheapest, and 143 and 144, two of the three most expensive. Membership
+  moves as the list grows: rows added together are each other's neighbours, so a pass can rescue an
+  existing `n/s` row and strand its own priciest ones in their place, which is what pass 21 did and
+  pass 22 then undid. Whatever sits at the end of the price range is always the thing with nothing
+  to compare against, and the list is thin at **both** ends — the €400–900 stretch is its thickest
+  part, while above €3,000 it holds almost nothing, which is why pass 32 could not score two of the
+  three rows it added. Each pass's figures are in its footer paragraph.
 - **`PLAIN_TWIN` / `OUT_OF_SCOPE`** — the second refusal, and the sibling of `SUPPORT` above: where
   a row's plain twin scores more than ½σ above it, the price is buying something no criterion here
   measures and the badge reads `o/s` instead of a verdict. Two rows qualify today (134 and 135);
@@ -276,7 +277,7 @@ either would turn the model into an echo of the shortlist. Say so before wiring 
   written up in prose in the `<footer>` — what was wrong before, what the evidence was, what is
   still unresolved. That reasoning is irreplaceable and belongs there. The bare chronology of what
   changed when is git's job now; don't grow the footer with it. The model is on revision 3;
-  research passes run to 31.
+  research passes run to 32.
 - **Footer paragraphs are dated snapshots, not live claims.** Do not retrofit them to current
   numbers — later passes explicitly refer back to earlier ones ("the earlier warning overstated
   the case"), and rewriting the earlier text destroys the correction it records. Live claims go in

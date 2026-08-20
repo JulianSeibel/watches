@@ -69,11 +69,21 @@ Three separate mechanisms; do not confuse them.
 | Priced in USD | `priceValue` in dollars, `priceCurrency:'USD'`. **Do not set `priceEUR`** — `recomputePriceEUR()` overwrites it from the live rate |
 | Priced in HKD/INR | set `priceEUR` by hand with the conversion in an inline `/* */` comment (row 12 is the model) |
 | Maker sells below its own stated UVP | selling price in `priceValue`, both in `priceDisplay`: `'€1079.20 (UVP €1349)'`. Rows 87–90 |
-| A *retailer* discounts a maker's list price | `streetPriceEUR` alongside `priceValue`, with a `//` comment naming the shop. Rows 14, 15, 18 |
+| Someone *other than the maker* sells it below the maker's list price | `marketPrice:{ eur, kind, note }` alongside `priceValue`, with a `//` comment naming the source. Rows 13, 91, 92, 93 |
 
-The difference: `priceValue` is what this row costs from the source it links to. `streetPriceEUR`
-is the evidence that the market charges less than the linked list price. `effectivePrice()` prefers
-`streetPriceEUR` when present.
+The difference: `priceValue` is what this row costs from the source it links to. `marketPrice` is
+the evidence that it can actually be bought for less somewhere else. `effectivePrice()` returns it
+when present, so it is what the Value and Score columns, the price sort and the price-range filter
+all read — and the list price is judged too, as a second badge marked `list`.
+
+`kind` is `'street'` (authorised dealer, full manufacturer warranty) or `'grey'` (grey-market
+dealer, the maker's warranty usually not honoured). **A marketplace listing is grey even when it
+includes the papers** — a warranty card only carries a warranty where an authorised dealer stamped
+it at first sale. All four rows carrying one today are `'grey'`; an unused `kind` is normal, not a
+bug. `note` is non-empty and says where the number came from, because a second price is one seller
+on one day and ages faster than a maker's list price.
+
+The old `streetPriceEUR` field was **removed** — `selfCheck()` fails if a row reintroduces it.
 
 ## Site shapes: where each kind of storefront keeps its specs
 
@@ -88,7 +98,8 @@ Worked out the hard way, one brand at a time. Check here before deriving a route
 | **Nuxt / Vue (Oris)** | oris.ch | Technical Details render in the HTML. Prices do not appear for the page's *own* reference — they appear in the **variations list of its siblings**, so fetch a sibling and map `/product/…/<ref>"` → the next `"price" content="…"`. Two refs cross-check each other |
 | **Squarespace-style maker site** | abingerwatches.com | Plain HTML, full spec block, `--around "Specifications"` |
 | **Square storefront** | abingerwatches.square.site | Client-rendered: price, warranty and package contents only, and even those need a text-extraction proxy. **Specs are never here** — go to the brand's own domain, which the site's logo links to |
-| **Text-extraction proxy** | longines.com (pass 21), Square (pass 22) | Last resort for a page that will not load or will not render. Returns the maker's own rendered page, so it is a change of route, not of source — no borrowed label needed. Say in the footer that it was used |
+| **Hydrated Magento (Longines)** | longines.com | Product pages fetch **directly** as of pass 32 — the pass-21 timeout is gone, so do not reach for the proxy first. Specs are NOT in the rendered prose: they live in an embedded product record carrying `case_thickness`, `case_lug_to_lug`, `case_weight`, `case_case_back` and `mvt_fct_calibre_name` per SKU. Most attributes are **numeric option ids**, resolved against `"attribute_code":"…",…,"attribute_options":[{"label":…,"value":…}]` elsewhere in the same body — **read the resolved label, never the key name**: the COSC flag is keyed `general_ultra_chronometer` and labelled "Chronometer Officially Certified". Price is in the schema.org offer (`"priceCurrency":"EUR","price":…`). `api.ecom.longines.com` (images, manual PDFs) still times out on a direct fetch |
+| **Text-extraction proxy** | Square (pass 22), longines.com's asset host (pass 32) | Last resort for a page that will not load or will not render. Returns the maker's own rendered page, so it is a change of route, not of source — no borrowed label needed. Say in the footer that it was used |
 
 Two traps that come with the fast routes, both found by running the script against pass 22's rows:
 
