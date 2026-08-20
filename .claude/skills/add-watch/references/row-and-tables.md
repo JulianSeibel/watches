@@ -69,7 +69,7 @@ Three separate mechanisms; do not confuse them.
 | Priced in USD | `priceValue` in dollars, `priceCurrency:'USD'`. **Do not set `priceEUR`** — `recomputePriceEUR()` overwrites it from the live rate |
 | Priced in HKD/INR | set `priceEUR` by hand with the conversion in an inline `/* */` comment (row 12 is the model) |
 | Maker sells below its own stated UVP | selling price in `priceValue`, both in `priceDisplay`: `'€1079.20 (UVP €1349)'`. Rows 87–90 |
-| Someone *other than the maker* sells it below the maker's list price | `marketPrice:{ eur, kind, note }` alongside `priceValue`, with a `//` comment naming the source. Rows 13, 91, 92, 93 |
+| Someone *other than the maker* sells it below the maker's list price | `marketPrice:{ eur, kind, note }` alongside `priceValue`, with a `//` comment naming the source. Rows 13, 91, 92, 93, 142, 143, 144 |
 
 The difference: `priceValue` is what this row costs from the source it links to. `marketPrice` is
 the evidence that it can actually be bought for less somewhere else. `effectivePrice()` returns it
@@ -79,7 +79,7 @@ all read — and the list price is judged too, as a second badge marked `list`.
 `kind` is `'street'` (authorised dealer, full manufacturer warranty) or `'grey'` (grey-market
 dealer, the maker's warranty usually not honoured). **A marketplace listing is grey even when it
 includes the papers** — a warranty card only carries a warranty where an authorised dealer stamped
-it at first sale. All four rows carrying one today are `'grey'`; an unused `kind` is normal, not a
+it at first sale. All seven rows carrying one today are `'grey'`; an unused `kind` is normal, not a
 bug. `note` is non-empty and says where the number came from, because a second price is one seller
 on one day and ages faster than a maker's list price.
 

@@ -71,8 +71,8 @@ It also prints the validation figures, which are the closest thing here to a reg
 Current baseline:
 
 ```
-144 rows · spec 26–66 · sigma 5 · 4 n/s · 2 o/s · 61 published weights
-model  LOO RMSE 5.73 vs naive 9.28 · skill 61.9% · 0 sign flip(s) · resample typical 0.26 worst 0.58
+144 rows · spec 26–66 · sigma 5 · 2 n/s · 2 o/s · 61 published weights
+model  LOO RMSE 5.72 vs naive 9.28 · skill 61.9% · 0 sign flip(s) · resample typical 0.24 worst 0.65
 ```
 
 **If a change was not meant to touch the model and those numbers move, something is wrong.**
@@ -213,14 +213,18 @@ Two steps, and keeping them separate is the point:
 Guards worth knowing before touching either step:
 
 - **`SUPPORT`** — `{ window: 0.40, min: 5 }`: a row with fewer than 5 other rows within ±0.40 in
-  `ln(price)` shows `n/s` rather than being scored off an extrapolated curve. Four rows qualify
-  today: 16 and 56, the two cheapest, and 143 and 144, two of the three most expensive. Membership
-  moves as the list grows: rows added together are each other's neighbours, so a pass can rescue an
-  existing `n/s` row and strand its own priciest ones in their place, which is what pass 21 did and
-  pass 22 then undid. Whatever sits at the end of the price range is always the thing with nothing
-  to compare against, and the list is thin at **both** ends — the €400–900 stretch is its thickest
-  part, while above €3,000 it holds almost nothing, which is why pass 32 could not score two of the
-  three rows it added. Each pass's figures are in its footer paragraph.
+  `ln(price)` shows `n/s` rather than being scored off an extrapolated curve. Two rows qualify
+  today (16 and 56) — the two cheapest. Membership moves as the list grows: rows added together are
+  each other's neighbours, so a pass can rescue an existing `n/s` row and strand its own priciest
+  ones in their place, which is what pass 21 did and pass 22 then undid. Whatever sits at the end of
+  the price range is always the thing with nothing to compare against, and the list is thin at
+  **both** ends — the €400–900 stretch is its thickest part, while above €3,000 it holds almost
+  nothing. Pass 32 is the worked example in both directions: it could not score two of the three
+  rows it added at their list prices, and recording a grey price for each rescued both.
+  **The guard applies to `effectivePrice()`**, so a second price moves a row's membership — and
+  `listValue`'s second reading is support-tested separately, which is why rows 143 and 144 today
+  carry a scored grey badge beside an `n/s` list badge. Each pass's figures are in its footer
+  paragraph.
 - **`PLAIN_TWIN` / `OUT_OF_SCOPE`** — the second refusal, and the sibling of `SUPPORT` above: where
   a row's plain twin scores more than ½σ above it, the price is buying something no criterion here
   measures and the badge reads `o/s` instead of a verdict. Two rows qualify today (134 and 135);
@@ -234,8 +238,8 @@ Guards worth knowing before touching either step:
 - **`effectivePrice()` / `marketPrice`** — a row may carry a second, lower EUR price it can
   actually be bought at from someone other than the maker: `{ eur, kind, note }`, where `kind` is
   `'street'` (authorised dealer, full warranty) or `'grey'` (grey dealer, warranty usually not
-  honoured). Four rows carry one today — 13, 91, 92 and 93 — and all four are `'grey'`; no row
-  carries a `'street'` price, and an unused `kind` is normal rather than a bug. A marketplace
+  honoured). Seven rows carry one today — 13, 91, 92, 93, 142, 143 and 144 — and all seven are
+  `'grey'`; no row carries a `'street'` price, and an unused `kind` is normal rather than a bug. A marketplace
   listing is grey even when it includes the papers: a warranty card only carries a warranty where
   an authorised dealer stamped it at first sale. **That price is the primary**
   — `effectivePrice()` returns it, and the Value/Score columns, the price sort and the price-range
