@@ -71,7 +71,7 @@ It also prints the validation figures, which are the closest thing here to a reg
 Current baseline:
 
 ```
-141 rows · spec 26–66 · sigma 6 · 2 n/s · 58 published weights
+141 rows · spec 26–66 · sigma 6 · 2 n/s · 2 o/s · 58 published weights
 model  LOO RMSE 5.80 vs naive 9.14 · skill 59.7% · 1 sign flip(s) · resample typical 0.29 worst 0.68
 ```
 
@@ -137,6 +137,7 @@ The per-watch research does not live on the watch objects. It lives in parallel 
 | `WATCH_TYPES` | `id` | array of types (filter only, never scored). **All 141 present.** |
 | `STATUS` | `id` | buying decision — `'bought'`, `'likely'`, `'sceptical'` or `'avoid'`; **absent = `'consider'`**, the default. Drives a filter, a name-cell chip and a bar on the row's left edge; never scored. The one id-keyed table with no coverage requirement, so adding a watch needs no entry — and the only one where a count would just drift, so none is stated here. |
 | `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | `id` | published grams (58); ids confirmed to publish none (70); ids whose page could not be reached (8); ids published without the band (5). The four are disjoint and together cover all 141 — keep it that way. |
+| `PLAIN_TWIN` | `id` | the row id of the reference identical in every scored field but without the decorative content, plus what the decoration is. Drives the scope guard, never the score. **Absent = no twin exists**, which is every row but three. Listing a row is not the same as marking it: 105 is listed and does not trigger. |
 | `MOVEMENT_TIER` | **exact `movementDisplay` string** | 0–1 architecture tier. 72 keys for 72 distinct movements, no misses, no orphans. |
 | `MEASURED_ACCURACY` | caliber **substring** of `movementDisplay` | reported real-world rates |
 
@@ -177,7 +178,9 @@ directions; the four weight tables disjoint and total; `movementDisplay` ↔ `MO
 directions; `DISPLAY_BACK` values strictly 1/0; unknown complication tags, watch types, case and
 glass categories; `caseCategory` / `glassCategory` / `movementType` against `CASE_ORDER` /
 `GLASS_ORDER` / `MOVEMENT_ORDER` in both directions; `STATUS` keys against real rows and its values
-against `STATUS_ORDER`; `EMPTY_ROW_COLSPAN` against the real `<th>` count; unresolved figure tokens.
+against `STATUS_ORDER`; `PLAIN_TWIN` keys and twins against real rows, neither self-paired, chained nor
+reversed by price, and the twin itself scored; `EMPTY_ROW_COLSPAN` against the real `<th>` count;
+unresolved figure tokens.
 
 **When you add an invariant to this file, add it there too.** Prose in this document enforces
 nothing — that is the lesson the whole self-check exists to encode.
@@ -214,6 +217,14 @@ Guards worth knowing before touching either step:
   the price range is always the thing with nothing to compare against, and this list is now thin
   only at the bottom — the €400–900 stretch is its thickest part. Each pass's figures are in its
   footer paragraph.
+- **`PLAIN_TWIN` / `OUT_OF_SCOPE`** — the second refusal, and the sibling of `SUPPORT` above: where
+  a row's plain twin scores more than ½σ above it, the price is buying something no criterion here
+  measures and the badge reads `o/s` instead of a verdict. Two rows qualify today (134 and 135);
+  105 is listed and falls short of the cut, which is the rule declining rather than firing. **It
+  does not touch the fit** — those rows stay in the baseline and every validation figure is
+  unchanged, so this is a display guard, not a model revision. Widening it into "any row that looks
+  overpriced for reasons I like" is exactly what anchoring it on a maker-sold twin prevents; keep
+  the trigger falsifiable.
 - **`BANDS`** — colour is quantised at ½σ and 1½σ of the residual, deliberately, because the
   model's own resolution is ~4–6 spec points. Don't replace it with a continuous ramp.
 - **`effectivePrice()`** — uses `streetPriceEUR` when a row carries one, else `priceEUR`. Rows 14,

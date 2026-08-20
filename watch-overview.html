@@ -261,7 +261,7 @@
   <div class="legend">L2L = lug-to-lug · Höhe = case height · "—" = not published by maker.</div>
   <p class="price-note">Leave Min/Max blank for no limit. Price sorts on an approx. EUR-equivalent (converted for $ listings).</p>
 <p class="price-note"><b>Movement cost</b> = approx. price to buy that caliber loose (parts market), not the brand's wholesale cost. <b>"Not sold separately"</b> = maker only supplies it inside a finished watch. Shown for reference only — the Value score rates the movement by architecture tier, not by parts price.</p>
-<p class="price-note"><b>Value</b> = how many spec points a watch sits above or below what this list charges for specs at its price. A spec score (0–100) is built from seven weighted criterion groups — movement, timekeeping, case &amp; glass, water &amp; lume, wearability, fittings and complications — then compared against a robust baseline of spec vs ln(price) fitted separately for mechanical and quartz. <b>0 = priced exactly as its specs predict</b>; the badge shows the surplus or shortfall in spec points. Colour is banded rather than continuous: the residual carries about ±{{sigma}} spec points of noise, so watches within one band are ties, not a ranking. <b>n/s</b> = fewer than {{supportMin}} other watches within ±{{supportPct}}% of that price, so the list cannot say what it charges there. The <b>Score</b> column to its left is the same number on the 0–100 scale used up to revision 2 (50 = as predicted), kept for continuity; it sorts identically. <b>Specs</b> is step 1 alone — the weighted spec score with price taken out, answering “how much watch is this” rather than “how well is it priced”. It is the only one of the three defined for every row, but it correlates 0.85 with price and tilts toward tool watches, so read it alongside the other two rather than instead of them. Hover a badge for that watch’s inputs.</p>
+<p class="price-note"><b>Value</b> = how many spec points a watch sits above or below what this list charges for specs at its price. A spec score (0–100) is built from seven weighted criterion groups — movement, timekeeping, case &amp; glass, water &amp; lume, wearability, fittings and complications — then compared against a robust baseline of spec vs ln(price) fitted separately for mechanical and quartz. <b>0 = priced exactly as its specs predict</b>; the badge shows the surplus or shortfall in spec points. Colour is banded rather than continuous: the residual carries about ±{{sigma}} spec points of noise, so watches within one band are ties, not a ranking. <b>n/s</b> = fewer than {{supportMin}} other watches within ±{{supportPct}}% of that price, so the list cannot say what it charges there. <b>o/s</b> = out of scope: the same maker sells a plain twin — the identical watch without the decorative content — and it scores more than half a sigma higher, which is where the badge stops saying <i>as expected</i>. What separates the two is priced by something no criterion here measures, so the model declines to rank the row rather than call it bad value ({{oosCount}} rows on this list). Both markers are the model refusing to answer, which is not the same as a poor score. The <b>Score</b> column to its left is the same number on the 0–100 scale used up to revision 2 (50 = as predicted), kept for continuity; it sorts identically. <b>Specs</b> is step 1 alone — the weighted spec score with price taken out, answering “how much watch is this” rather than “how well is it priced”. It is the only one of the three defined for every row, but it correlates 0.85 with price and tilts toward tool watches, so read it alongside the other two rather than instead of them. Hover a badge for that watch’s inputs.</p>
   </div>
 </details>
 <div class="band-legend" id="bandLegend"></div>
@@ -290,7 +290,7 @@
   <th data-key="specs" title="Step 1 of the Value model on its own: the weighted spec score, 0–100, with price taken out entirely. This is what the watch offers; the two columns to the right are what it offers relative to what it costs. Useful when the budget is already fixed, and it is the only one of the three defined for every row — the {{nsCount}} watches with too few comparable prices to score for Value still have a spec score. It is also the more stable number: it rests on fixed anchors (30–300 m, 38–80 h and so on) rather than on a curve fitted to this list, so adding a row leaves it almost untouched — the one exception is a row carrying an unresearched sub-score, which is imputed at the list average and so drifts slightly as the list grows. Three things to know before ranking by it. It correlates {{specPriceCorr}} with price, so sorting by it gives you something close to a price sort — that is precisely why the Value column exists. It tilts toward tool watches by construction: divers average {{diverSpec}} here against {{shallowSpec}} for watches rated 50 m or less, because depth rating, lume and bezel are things a dress watch cannot collect, and the Value column cancels that tilt while this one does not. And accuracy is ranked within movement class, so a quartz and a mechanical scoring alike on it are not actually keeping time alike. The observed range here is {{specMin}}–{{specMax}}, not 0–100: {{specMax}} is the top of this list, not a perfect watch.">Specs<span class="sort-arrow"></span></th>
   <th data-key="price" title="Sorted using an approximate EUR-equivalent across currencies (live USD→EUR rate)">Price<span class="sort-arrow"></span></th>
   <th data-key="score" title="The same number as the Value column on the right, on the 0–100 scale this table used up to revision 2, kept for continuity: 50 = priced exactly as its specs predict, and each spec point of surplus moves it 2.8 points. Sorting by it gives exactly the same order as sorting by Value, because the two are one number on two scales. For judging how big a gap is, prefer the Value column: the ×2.8 makes differences here look about three times larger than the model can resolve — the residual carries roughly ±{{sigma}} spec points of noise, which is about ±{{sigmaOnScore}} on this scale, so anything inside ~{{sigmaOnScore}} points is a tie. “—” = too few comparable prices to score.">Score<span class="sort-arrow"></span></th>
-  <th data-key="value" title="Spec points above or below what this list charges for specs at this price. Step 1: a spec score from seven criterion GROUPS, each with one weight shared by its members — movement (24%: tier, finishing, antimagnetism), timekeeping (16%: accuracy, power reserve), case &amp; glass (16%), water &amp; lume (13%, incl. ISO 6425), wearability (11%: thickness and lug-to-lug, both as a ratio of diameter), fittings (11%: clasp, display back) and complications (9%). Grouping replaces revision 2’s eleven separate weights, which let correlated criteria stack — water and lume correlated at 0.75, movement tier and finishing at 0.72, and the eleven carried about 6.4 effective dimensions. Anything that cannot apply (power reserve on quartz, lug-to-lug on a pocket watch) has its weight redistributed; anything that applies but has not been researched is imputed at the list average, so looking a row up moves it on what is found rather than on being looked at. Accuracy is still ranked within movement class. Step 2: the spec score is compared against a Theil–Sen baseline of spec vs ln(price), with a separate intercept per movement class. Median-based, so no single row can steer it, and class-aware, so quartz and mechanical are not measured against one shared line. The badge is signed spec points, not a 0–100 rating, and the colour is banded at ½ and 1½ sigma of the residual because differences smaller than that are not real. “n/s” = too few comparable prices to score. Price, depreciation, service cost and warranty are not inputs. Hover-visible inputs include estimates — finishing and lume especially.">Value<span class="sort-arrow"></span></th>
+  <th data-key="value" title="Spec points above or below what this list charges for specs at this price. Step 1: a spec score from seven criterion GROUPS, each with one weight shared by its members — movement (24%: tier, finishing, antimagnetism), timekeeping (16%: accuracy, power reserve), case &amp; glass (16%), water &amp; lume (13%, incl. ISO 6425), wearability (11%: thickness and lug-to-lug, both as a ratio of diameter), fittings (11%: clasp, display back) and complications (9%). Grouping replaces revision 2’s eleven separate weights, which let correlated criteria stack — water and lume correlated at 0.75, movement tier and finishing at 0.72, and the eleven carried about 6.4 effective dimensions. Anything that cannot apply (power reserve on quartz, lug-to-lug on a pocket watch) has its weight redistributed; anything that applies but has not been researched is imputed at the list average, so looking a row up moves it on what is found rather than on being looked at. Accuracy is still ranked within movement class. Step 2: the spec score is compared against a Theil–Sen baseline of spec vs ln(price), with a separate intercept per movement class. Median-based, so no single row can steer it, and class-aware, so quartz and mechanical are not measured against one shared line. The badge is signed spec points, not a 0–100 rating, and the colour is banded at ½ and 1½ sigma of the residual because differences smaller than that are not real. “n/s” = too few comparable prices to score; “o/s” = out of scope, meaning a plain twin the same maker sells — the identical watch without the decoration — scores more than half a sigma higher, so the price is buying something no criterion here measures. Price, depreciation, service cost and warranty are not inputs. Hover-visible inputs include estimates — finishing and lume especially.">Value<span class="sort-arrow"></span></th>
 </tr>
 </thead>
 <tbody id="tbody">
@@ -440,6 +440,10 @@
   <p><b>Venezianico publish no power reserve for any reference in their catalogue, and no rate on seven of these eight — and this pass deliberately breaks step with nine existing rows over it.</b> The seven Miyota rows carry <code>'—'</code> in both fields and <code>imputeMissingSubs()</code> fills them at the list mean. Rows 2–4, 12, 98–100 and 110–112 are all Miyota 9039 rows and all carry 42 h, six of them a rate as well, so the inconsistency is real and is stated rather than hidden. The difference is who is speaking: Traska publish "regulated in 4 positions" and their own tolerance, Abinger publish theirs, and Miyota's 42 h and −10/+30 for the bare caliber are not transferable to a maker who states neither. <b>Pass 30 settled exactly this one row ago</b> on the ETA 7001 — rows 39 and 40 carry ~42 h and ±7 s/day because Heinrich state the Top Grade, row 133 carries <code>'—'</code> because Zelos do not — and rows 2–4 and 12 predate that rule and are left alone rather than retrofitted. <b>What makes this worth recording is that the rule runs against these rows rather than for them.</b> The 9039's real 42 h is below this list's mean and its real −10/+30 is well below it, so the imputation <i>flatters</i> all seven: writing Miyota's own figures in would lower them. The rule is about what the maker claims and not about which way it points, and a rule that only ever cost the row points would not have been tested. One oddity follows from it and is left standing: the Measured column still shows ≈5–11 s/day on these rows, because <code>MEASURED_ACCURACY</code> matches a caliber substring of <code>movementDisplay</code> and needs no published figure to fire, so the table reports what a 9039 is observed to do beside a blank for what it is specified to do. <b>Row 138 is the exception</b> — Venezianico regulate the V3250 themselves and publish −4/+6 s/day for it, self-declared rather than certified — and it still gets no power reserve, because Soprod's 42 h for the M100 is the same borrowing. <b>The weight column gained nothing from eight rows, and that is a finding about Venezianico.</b> Their feature chart runs case, material, bezel or insert, dial, movement, crystal, water resistance and crown and states no mass on any reference; neither does the description block that repeats most of it; and nothing in the catalogue's 227 products carries a weight field. The Shopify variants <i>do</i> carry grams, and it is the parcel — the pass 22 Traska trap, never a <code>WEIGHT_MEASURED</code> figure. All eight go to <code>WEIGHT_UNPUBLISHED</code>, which now holds 70 of the 141, and the estimator's test set is unchanged at 58 rows with every figure in the Weight tooltip unmoved. <b>Casebacks were all eight resolved and all eight are solid</b>, on prose for four references and on two photographs — an engraved Venetian Arsenal, an engraved St Mark's interior — for the two families. Rows 138 and 139 have no caseback sentence of their own and take 0 on collection-level evidence, which is the <i>opposite</i> of row 91's situation, where a collection-wide silence was itself the reason to leave the row open.</p>
 
   <p><b>What it did to everything else, and one headline figure moves the wrong way.</b> Value moved by at most <b>0.50</b> spec points across the existing 133 — row 103, the Oris Divers Sixty-Five 60th Anniversary — with 111 of 133 moving at all, seven changing side (rows 59, 62, 69, 82, 83, 87 and 125, four of them landing exactly <i>on</i> the curve, which the diff counts as a side change and which is rounding) and <b>five changing band</b>: rows 46, 71, 110 and 122 from <i>as expected</i> to <i>above the curve</i>, and row 115, the Tissot PRX 40, from <i>above</i> to <i>well above</i>. The direction is uniform and has one cause — eight rows arriving together <i>below</i> the fitted line drag it down, so everything above it gains. <b>Leave-one-out RMSE improves 5.87 → 5.80, and skill falls 61.4% → 59.7% anyway.</b> That is not a contradiction and it is reported rather than buried: skill is measured against a naive baseline which fell further, 9.44 → 9.14, because eight rows clustered in the middle of the price range make the naive predictor's job easier faster than they make the model's. The model got absolutely better and relatively worse, and of the two the absolute figure is the one describing the model. Sign flips stay at 1, the resampling figures improve on both ends — typical 0.31 → 0.29, worst 0.77 → 0.68 — residual sigma stays 6, the spec range stays 26–66, and the spec/price correlation slips 0.79 → 0.78, which is the same eight rows saying the same thing: they are priced above what their specification predicts. <b>Spec drift touched two rows by one point each</b> — row 55, the Citizen Eco-Drive Core Collection, 32 → 33, and row 104, the Oris Aquis Date 36.5, 53 → 54 — which is <code>imputeMissingSubs()</code> filling their unresearched sub-scores against a list mean eight rows have shifted. Small for the largest pass since 22, and exactly what that mechanism's own note predicts: drift tracks how far the list mean moves, not how many rows arrive.</p>
+
+  <p><b>The scope guard, added after pass 31 — a second way for the model to decline, and the reason for it is that this page was contradicting itself in public.</b> The two Arsenale Moissanite rows rendered as <i>well below the curve</i>, the worst band there is, while the pass-31 paragraph about them said — correctly — that they sit outside the model's competence rather than at the bottom of its ranking. Only one of those two statements was next to the watch, and it was the wrong one. <code>SUPPORT</code> already held the answer in a different form: where the list has nothing to compare a row against, the badge reads <code>n/s</code> and the model says nothing rather than extrapolating a flattering number. <b>The same refusal now covers a row whose price is substantially buying something no criterion here measures</b>, marked <code>o/s</code>. What makes it a mechanism rather than an opinion is that the trigger is not a judgement about which watches are jewellery — a trigger like that would be an excuse hatch for any row that scored badly. It is anchored on a <b>plain twin</b>: a reference the same maker sells that is identical in every scored field and does without the decorative content. Where one exists, the model can measure its own blind spot directly, as the twin's residual minus the row's, instead of being told about it. The cut is half a sigma because that is the first band boundary — the point at which the badge stops saying <i>as expected</i> — and therefore the finest distinction this model is willing to draw at all. Being derived rather than typed, it maintains itself: if the list shifts until the gap closes, the marker disappears without anyone editing a threshold.</p>
+
+  <p><b>What it deliberately does not do is touch the fit</b>, and that is the whole difference between a display change and a model revision. Both rows stay in the baseline, so the Theil–Sen line, the residual sigma, every other row's Value and all four validation figures are exactly what they were — leave-one-out RMSE 5.80 against a naive 9.14, skill 59.7%, one sign flip. Dropping them from the fit would have been defensible, and would have moved all 141 rows; this is the narrower claim, about what the page is entitled to <i>display</i> rather than about what the curve should be fitted through. Their spec scores and residuals are still computed, and the tooltip names the twin and the gap, so nothing is hidden — the badge simply stops asserting a verdict the footer had already disowned. <b>Row 105, the Oris Aquis Date Diamonds, is listed in the table and does not trigger</b>, which is the rule being seen to decline rather than only to fire: its diamonds cost it 1.9 spec points against row 104, short of the 2.8 the cut needs, because €200 of stones is a small share of an already-high price and the model's verdict on an Oris at €2,600 stands either way. <b>The limit worth naming is that the mechanism needs a twin.</b> A limited edition has none at a stated price, so the Oris block's observation that a share of that price buys the edition rather than the watch is still not reachable from here, and stays what it was — a known blind spot with no measurement behind it.</p>
 
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
@@ -5171,8 +5175,9 @@ const FINISH = {
   //     What would settle it against row 132 is a close look at the setting itself - burr marks,
   //     seat depth, alignment across the bezel - not another look at the stones. Measured rather
   //     than asserted, and the exposure is small: at 0.60 both rows hold 42 spec points and their
-  //     residual moves -9.20 -> -9.70, with no band change. FINISH is 8% of one 11% group, so it
-  //     cannot carry this pass's result either way - the lume above is what does.
+  //     residual moves -9.20 -> -9.70, with no band change. FINISH is 35% of the 24% movement
+  //     group and 8% of the score, so it cannot carry this pass's result either way - the lume
+  //     above is what does.
   134:0.65, 135:0.65,
   136:0.60, 137:0.60,
   138:0.60,
@@ -5655,6 +5660,48 @@ const SUPPORT = { window: 0.40, min: 5 };
 const effectivePrice = w => (typeof w.streetPriceEUR === 'number' && w.streetPriceEUR > 0)
   ? w.streetPriceEUR : w.priceEUR;
 
+// --- Scope guard: rows priced on something no criterion here measures ----------------------
+// The second of two guards, and the same idea as SUPPORT above pointed at a different failure.
+// SUPPORT refuses to score a row the list cannot compare against; this refuses to score a row
+// whose price is substantially buying something the model has no criterion for. Both print a
+// marker instead of a number, because a badge that says "well below the curve" is a verdict, and
+// the model is not entitled to one in either case.
+//
+// It exists because the page was contradicting itself in public. The two Arsenale Moissanite
+// rows rendered as WELL BELOW THE CURVE - the worst band there is - while the footer paragraph
+// about them said, correctly, that they are outside the model's competence rather than at the
+// bottom of its ranking. Only one of those two statements was next to the watch.
+//
+// The trigger has to be falsifiable or it becomes an excuse hatch for any row that scores badly,
+// so it is not a judgement about which watches are jewellery. It is anchored on a PLAIN TWIN: a
+// reference the same maker sells that is identical in every scored field and does without the
+// decorative content. Where one exists, the model can measure its own blind spot directly - the
+// twin's residual minus this row's - instead of being told about it.
+//
+// The cut is half a sigma because that is the first band boundary - the point at which the badge
+// stops saying "as expected" - and so the finest distinction this model is willing to draw at all.
+// A gap under it is not a real difference and needs no marker. Being derived rather than typed, it
+// maintains itself: if the list shifts until the gap closes, the marker goes away without anyone
+// editing a threshold.
+//
+// What this deliberately does NOT do is touch the fit. These rows stay in the baseline, sigma and
+// the leave-one-out figures are exactly what they were, and their specScore and specResidual are
+// still computed. Only the badge is withheld. Dropping them from the fit would be a model change
+// and would move all 141 rows; this is a statement about what the page is entitled to display.
+//
+// Row 105 is listed and does not trigger, which is the rule being seen to decline rather than
+// only to fire: its diamonds cost it under two spec points against row 104, short of the half-sigma
+// cut, because EUR 200 of stones is a small share of an already-high price and the model's verdict
+// on an Oris at EUR 2,600 stands either way. The limit worth naming is that a limited edition has
+// no plain twin at a stated price, so the Oris block's "a share of the price buys the edition
+// rather than the watch" is not reachable by this mechanism and stays unfixed.
+const PLAIN_TWIN = {
+  105: { twin: 104, buys: 'diamond-set indexes' },
+  134: { twin: 136, buys: 'hand-set baguette moissanite' },
+  135: { twin: 137, buys: 'hand-set baguette moissanite' },
+};
+const OUT_OF_SCOPE = { z: 0.5 };
+
 // Computes the spec score and its residual against what this list charges for specs.
 // Must be re-run whenever priceEUR changes - see the call sites after recomputePriceEUR().
 function computeValueScores(watches) {
@@ -5729,7 +5776,25 @@ function computeValueScores(watches) {
     });
   });
 
-  return { fit, sigma, priced, unsupported: priced.filter(r => r.support < SUPPORT.min).length };
+  // --- step 3: scope guard, which reads other rows and so cannot run inside the loop --------
+  const byId = new Map(watches.map(w => [w.id, w]));
+  const gaps = watches.map(w => {
+    const t = PLAIN_TWIN[w.id];
+    const twin = t ? byId.get(t.twin) : null;
+    return (twin && twin.valueBand != null && w.specResidual != null)
+      ? Math.round((twin.specResidual - w.specResidual) * 10) / 10 : null;
+  });
+  watches.forEach((w, i) => {
+    w.plainTwinGap = gaps[i];
+    w.outOfScope = gaps[i] != null && gaps[i] >= OUT_OF_SCOPE.z * sigma;
+    if (w.outOfScope) Object.assign(w, { valueBand: null, valueScore: null });
+  });
+
+  return {
+    fit, sigma, priced,
+    unsupported: priced.filter(r => r.support < SUPPORT.min).length,
+    outOfScope: watches.filter(w => w.outOfScope).length,
+  };
 }
 
 // Five bands, cut at half and one and a half sigma of the residual. Quantising the colour is
@@ -5783,6 +5848,7 @@ function scoreColor(w) {
 // than watches at this price deliver on average, not "68 out of 100".
 function valueLabel(w) {
   if (w.specResidual == null) return '—';
+  if (w.outOfScope) return 'o/s';
   if (w.valueBand == null) return 'n/s';
   const v = Math.round(w.specResidual);
   return v > 0 ? `+${v}` : v < 0 ? `\u2212${Math.abs(v)}` : '0';
@@ -5851,7 +5917,14 @@ function valueTooltip(w) {
   const sub = w.specSubs ?? {};
   const parts = [];
 
-  if (w.valueBand == null && w.specResidual != null) {
+  if (w.outOfScope) {
+    const t = PLAIN_TWIN[w.id];
+    parts.push(`Not scored: row ${t.twin} is the same watch without the ${t.buys}, and sits ` +
+               `${w.plainTwinGap} spec points higher. That is wider than the ` +
+               `${(OUT_OF_SCOPE.z * w.residualSigma).toFixed(1)} this list can resolve, and it is priced ` +
+               `by something no criterion here measures, so the model declines to rank this row ` +
+               `rather than call it bad value`);
+  } else if (w.valueBand == null && w.specResidual != null) {
     parts.push(`Not scored: only ${w.priceSupport} other watches within \u00b150% of this price, ` +
                `too few to say what this list charges here`);
   } else if (w.specResidual != null) {
@@ -6333,7 +6406,8 @@ function renderValidationNote() {
   // The sigma this paragraph used to patch into a <span> is now a {{sigma}} token filled by
   // fillComputedFigures(), along with every other derived number in the page's prose.
   if (!v) { el.textContent = 'Model validation: too few priced rows to test.'; return; }
-  const unscored = WATCHES.filter(w => w.priceEUR > 0 && w.valueBand == null).length;
+  const unscored = WATCHES.filter(w => w.priceEUR > 0 && w.valueBand == null && !w.outOfScope).length;
+  const oos = WATCHES.filter(w => w.outOfScope).length;
   el.innerHTML =
     `<b>Model validation.</b> Leave-one-out: dropping each of the ${v.n} priced rows, refitting the baseline ` +
     `and predicting that row's spec from price and movement class alone gives an RMSE of ${v.looRmse.toFixed(1)} ` +
@@ -6344,7 +6418,9 @@ function renderValidationNote() {
     `typical row's residual by ${v.resampleShift.toFixed(1)} spec points and the worst-placed row by ` +
     `${v.resampleWorst.toFixed(1)}, which is how much of a score is a property of the watch rather than of the ` +
     `company it keeps in this list. ${unscored} row${unscored === 1 ? '' : 's'} sit outside the supported price ` +
-    `range and are shown as n/s. None of this says the weights are correct — only an external check against ` +
+    `range and are shown as n/s${oos === 0 ? '' : `, and ${oos} more ${oos === 1 ? 'is' : 'are'} shown ` +
+    `as o/s because a plain twin the same maker sells shows the price buying something no criterion ` +
+    `here measures`}. None of this says the weights are correct — only an external check against ` +
     `something the model never saw, such as used-market retention, could do that.`;
 }
 
@@ -6395,7 +6471,8 @@ function computedFigures(watches) {
   const f = {
     rowCount: watches.length,
     linkCount: watches.filter(w => w.link).length,
-    nsCount: watches.filter(w => w.priceEUR > 0 && w.valueBand == null).length,
+    nsCount: watches.filter(w => w.priceEUR > 0 && w.valueBand == null && !w.outOfScope).length,
+    oosCount: watches.filter(w => w.outOfScope).length,
     specMin: specs.length ? Math.min(...specs) : '—',
     specMax: specs.length ? Math.max(...specs) : '—',
     specPriceCorr: specs.length ? pearson(specs, scored.map(w => Math.log(w.priceEUR))).toFixed(2) : '—',
@@ -6500,6 +6577,29 @@ function selfCheck(watches, missingFigureTokens = []) {
   }
   const unlabelledStatus = STATUS_ORDER.filter(k => !(k in STATUS_META));
   if (unlabelledStatus.length) out.push(`STATUS_ORDER lists ${list(unlabelledStatus)}, which STATUS_META has no label for`);
+
+  // PLAIN_TWIN fails silently in every direction: a wrong id on either side, a reversed pair or
+  // a twin that is itself unscored all render a completely normal page on which the guard just
+  // never fires, which is the same shape of bug as a MOVEMENT_TIER key that stopped matching.
+  for (const [idStr, t] of Object.entries(PLAIN_TWIN)) {
+    const id = Number(idStr);
+    if (!idSet.has(id)) { out.push(`PLAIN_TWIN has an entry for row ${id}, which does not exist`); continue; }
+    if (!idSet.has(t.twin)) { out.push(`PLAIN_TWIN points row ${id} at row ${t.twin}, which does not exist`); continue; }
+    if (t.twin === id) out.push(`PLAIN_TWIN points row ${id} at itself`);
+    if (t.twin in PLAIN_TWIN) {
+      out.push(`PLAIN_TWIN points row ${id} at row ${t.twin}, which is itself twinned — the twin must be ` +
+               `the plain reference, not another decorated one`);
+    }
+    const self = watches.find(w => w.id === id), twin = watches.find(w => w.id === t.twin);
+    if (twin && self && effectivePrice(twin) > effectivePrice(self)) {
+      out.push(`PLAIN_TWIN points row ${id} at row ${t.twin}, which is the more expensive of the two — ` +
+               `the twin is the reference without the decorative content, so the pair is reversed`);
+    }
+    if (twin && twin.valueBand == null) {
+      out.push(`PLAIN_TWIN points row ${id} at row ${t.twin}, which is not itself scored — the guard ` +
+               `compares against the twin's badge, so it can never fire for this row`);
+    }
+  }
 
   const badBack = Object.entries(DISPLAY_BACK).filter(([, v]) => v !== 0 && v !== 1).map(([id]) => id);
   if (badBack.length) out.push(`DISPLAY_BACK must be 1 or 0 (absent = not researched); row ${list(badBack)} is neither`);

@@ -93,7 +93,7 @@ if (require.main === module) {
   const f = computedFigures(WATCHES);
 
   console.log(`${WATCHES.length} rows · spec ${f.specMin}–${f.specMax} · sigma ${f.sigma} · ` +
-              `${f.nsCount} n/s · ${f.weightPublished} published weights`);
+              `${f.nsCount} n/s · ${f.oosCount} o/s · ${f.weightPublished} published weights`);
   if (v) {
     console.log(`model  LOO RMSE ${v.looRmse.toFixed(2)} vs naive ${v.naiveRmse.toFixed(2)} · ` +
                 `skill ${(v.skill * 100).toFixed(1)}% · ${v.signFlips} sign flip(s) · ` +
