@@ -553,6 +553,16 @@
 
   <p><b>What it did to everything else.</b> Value moved by at most <b>2.50</b> residual points across the 154, on row 109; 86 rows moved at all, 148 of the 154 by 0.5 or less, and the median shift is 0.10. Three rows crossed zero — 33, 62 and 109, the first two by a tenth of a point — and <b>11 changed band</b>: rows 10 and 154 from <i>well below</i> to <i>below</i>, 13 and 128 from <i>well above</i> to <i>above</i>, 74, 78, 81, 88, 92 and 95 into <i>as expected</i>, and 106 from <i>as expected</i> to <i>above the curve</i>. Leave-one-out RMSE is 5.83 → 5.86 against a naive 9.08 → 9.13, skill unchanged at 58.8%, sign flips 0, worst-case resampling shift 0.67 → 0.64. The residual sigma holds at 6 and the spec range at 26–66, so the bands themselves did not move and every colour change above is a row travelling inside fixed boundaries. <b>Seven rows changed spec score and only six of them were touched</b>: row 105 goes 52 → 53 with none of its own data altered, which is <code>imputeMissingSubs()</code> behaving as documented — three rows leaving the unresearched pool moved the list mean the imputation fills from, and the row sitting closest to a rounding boundary crossed it.</p>
 
+  <p><b>Accuracy sourcing rule, pass 38 — nine rows gain a rate, and the rule pass 31 wrote is replaced rather than bent.</b> Pass 31 left the seven Venezianico Miyota rows and pass 28 the two Second Hour rows at <code>'—'</code>, on the principle that a caliber's tolerance band is not transferable to a maker who states nothing: "the difference is who is speaking". <b>The table had never actually followed that rule.</b> Rows 2–4, 5, 12, 125 and 126 carry Miyota's −10/+30 although Baltic, Lorier and Earthen publish no rate; row 41 carries Seiko/TMI's −20/+40 although Revelot publish none. All three pages were re-read this pass to be sure. So eight rows had the caliber figure written in and nine had a blank, for one evidential situation — and pass 31 knew, recording that rows 2–4 and 12 "predate that rule and are left alone rather than retrofitted". Row 41 is the one that settles which way to resolve it, because it is a <i>Seiko</i> caliber: this was never a judgement about Miyota, just an accident of which pass added which row. All nine now carry −10/+30 s/day.</p>
+
+  <p><b>The replacement rule is the grade ladder, and it is what makes the split principled instead of national.</b> Miyota, Seiko/TMI, Orient and Citizen publish <b>one figure per caliber</b> — Miyota's own 9039 page gives "Accuracy −10～+30 sec/day" and there is no grade above or below it, so the figure describes the movement in <i>this</i> watch no matter who cased it. Sellita and ETA sell one ébauche at <b>four grades</b> spanning ±12 to −4/+6, so the string "Sellita SW200-1" states nothing at all about the rate, and a row whose maker does not name the grade keeps <code>'—'</code>. That is why this pass fills nine rows and not thirty-four: the five Oris, three Sinn, three Maurice Lacroix and two Farer rows are Sellita or La Joux-Perret with no grade named; the Longines L888.5, both Mido Caliber 72s, the Soprod C125 and P024 and the Hamilton H-10 have no published figure at <i>any</i> grade; and Timex, Junkers and the PRX quartz do not name a caliber. <b>Pass 30's ETA 7001 decision stands unchanged underneath this</b>, and the ladder is what explains it: Heinrich name the Top Grade so rows 39 and 40 carry a figure, Zelos name no grade so row 133 does not. The rule degrades gracefully, which is the property worth having — a caliber appearing nowhere in the ladder simply has no figure to lend.</p>
+
+  <p><b>The change costs every row it touches, and that is the reason to trust it.</b> All nine fall: the two Second Hours 49 → 48 and 48 → 47, the Arsenale Moissanites 42 → 41, the Arsenale 37s 45 → 43, the Nereide Aureo 49 → 48 and the two Tungstenos 48 → 46, each losing a uniform <b>1.50 residual points</b>. Pass 31 had already named this and declined to act on it — "recording Miyota's figures would LOWER them" — so the argument for filling has never been that it pays. The imputation those rows were getting is the thing being corrected: <code>imputeMissingSubs()</code> fills the accuracy sub-score at <b>0.279</b>, where a −10/+30 Miyota earns <b>0.119</b>. The silent rows were being scored as keeping time better than a Seagull ST21 and roughly level with a Sellita Élaboré, on a caliber that guarantees neither. <b>One band changes</b>, row 122 from <i>above the curve</i> to <i>as expected</i>, and row 133 crosses zero by a tenth of a point.</p>
+
+  <p><b>What it did to everything else, and the fit gets slightly worse.</b> Spillover is nil: of the 145 untouched rows the median residual shift is <b>0.00</b> and the largest is 0.20, so nothing outside the nine moved in any way a reader would notice. Leave-one-out RMSE is <b>5.86 → 5.93</b> against a naive 9.13 → 9.14, skill 58.8% → 57.9%, and <b>sign flips go 0 → 1</b>. That is the one figure pointing the other way and it is reported rather than explained away — but it should not be read as the model disagreeing with the data. Seven of the nine are Venezianico rows already sitting below the curve, so pushing them further down makes them worse-fitting outliers; that is a fact about Venezianico's pricing, not evidence about Miyota's specification. Leave-one-out measures how well spec predicts price, which is not a truth criterion for filling in a published figure. Sigma holds at 6 and the spec range at 26–66. <b>Eleven rows changed spec score and only nine were touched</b>: rows 105 and 127 drift by a point because they still carry <code>'—'</code> and nine rows leaving the unresearched pool moved the mean the imputation fills from.</p>
+
+  <p><b>One inconsistency is left open on purpose, and it is this pass's own.</b> The grade-ladder argument applies to the <i>power reserve</i> word for word — Miyota publish 42 hours for the 9039, one figure, no grades — so the seven Venezianico rows should arguably carry it, as rows 2–4, 12, 98–100, 110–112 and both Second Hours all do. This pass was scoped to the rate and did not do it, so those seven still show an empty reserve beside a filled rate, which is exactly the shape of inconsistency the pass exists to remove. It is named here rather than quietly fixed because it would <b>raise</b> those rows, and a pass that took every point it could find while deferring the one that gave points back would not deserve to be believed. <b>The deeper problem the pass sharpens rather than solves</b> is the imputation itself: after this, every Japanese-caliber row carries a real published figure while the rows on opaque Swiss ébauches keep the generous 0.279. Worse, <code>imputeMissingSubs()</code> pools mechanical and quartz together for this sub-score although the two are normalised on different anchors — mechanical-only mean 0.318, quartz-only 0.144, pooled 0.279 — so a silent mechanical row is imputed partly off quartz. Imputing within movement class, or within caliber where the caliber is known, is the next thing worth costing.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -2666,9 +2676,12 @@ const WATCHES = [
 // A Squarespace storefront, and the first Australian maker here - both rows are priced in AUD and
 // carry a hand-set priceEUR, the mechanism rows 12 and 24 already use for HKD and INR.
 //
-// Neither page states a power reserve or a rate. The power reserve below is Miyota's own figure
-// for the caliber, borrowed and labelled, exactly as rows 118-120 borrow Sellita's; the rate stays
-// '—', because a movement family's tolerance band is the one figure this file will not borrow.
+// Neither page states a power reserve or a rate. Both fields below are therefore Miyota's own
+// figures for the caliber, borrowed and labelled, exactly as rows 118-120 borrow Sellita's. The
+// rate was '—' until pass 38 on the rule that a family tolerance band is the one figure this file
+// will not borrow; that rule is gone, replaced by the grade ladder set out in the Venezianico
+// banner below - Miyota publish one figure per caliber, so it describes the movement in this
+// watch, where a Sellita or ETA number would depend on a grade the maker has not named.
 // Second Hour's variant records carry a "shippingWeight" of 0.1 kg on every colour of both models.
 // That is the parcel, not the watch, and it is the same trap Traska's 454 g Summiteer variant set
 // in pass 22 - so both rows are WEIGHT_UNPUBLISHED, not measured.
@@ -2683,9 +2696,9 @@ const WATCHES = [
   bandDisplay:'Steel seven-link bracelet, 20→18 mm taper',
   glassDisplay:'Flat sapphire, bevelled edge + 6-layer internal AR', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Miyota 9015', movementType:'Automatic', movementCostDisplay:'~$85 (Miyota, new)',
-  // Power reserve borrowed from Miyota's own 9015 spec - Second Hour publish none. The rate stays
-  // '—' for the reason in the block above: they publish no figure of their own.
-  powerReserveDisplay:'42 h', accuracyDisplay:'—',
+  // Both borrowed from Miyota's own 9015 spec - Second Hour publish neither. See the block above
+  // for why the rate is now written in where pass 28 left it '—'.
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',
   waterResDisplay:'100 m (10 ATM)', waterResM:100,
   priceDisplay:'A$955 (~€585)', priceValue:955, priceCurrency:'AUD', priceEUR:585 /* A$955 at ECB AUD→EUR ≈0.6122 (16 Aug 2026); open.er-api.com agrees at 0.61217 */ },
 
@@ -2699,7 +2712,7 @@ const WATCHES = [
   bandDisplay:'Steel beads-of-rice bracelet (solid end links)',
   glassDisplay:'Double-domed sapphire + 6-layer internal AR', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
-  powerReserveDisplay:'42 h', accuracyDisplay:'—',   // PR borrowed from Miyota as on row 122; Second Hour publish no rate
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',   // both borrowed from Miyota as on row 122; Second Hour publish neither
   waterResDisplay:'300 m (30 ATM)', waterResM:300,
   // The four steel dial colours are all A$525; the DLC Black variant is A$550 and is not this row.
   priceDisplay:'A$525 (~€321)', priceValue:525, priceCurrency:'AUD', priceEUR:321 /* A$525 at ECB AUD→EUR ≈0.6122 (16 Aug 2026) */ },
@@ -2979,20 +2992,31 @@ const WATCHES = [
 // EUR rows and priceValue is the listed figure.
 //
 // VENEZIANICO PUBLISH NO POWER RESERVE ON ANY REFERENCE IN THE CATALOGUE, and no rate on seven of
-// these eight. Both fields are '—' on those seven and imputeMissingSubs() fills them at the list
-// mean. That is deliberately NOT the treatment the nine existing Miyota 9039 rows get - rows 2-4,
-// 12, 98-100 and 110-112 all carry 42 h, and 98-100 and 110-112 carry a rate as well - and the
-// difference is who is speaking. Traska publish "regulated in 4 positions" and their own tolerance;
-// Abinger publish theirs. Miyota's own 42 h and −10/+30 for the caliber are not transferable to a
-// maker who states neither, and pass 30 settled exactly this on the ETA 7001: rows 39 and 40 carry
-// ~42 h and 7 s/day because Heinrich state the Top Grade, and row 133 carries '—' because Zelos
-// do not. Rows 2-4 and 12 predate that rule and are left alone rather than retrofitted.
-//   The honest cost is worth naming, because it runs AGAINST these rows rather than for them: the
-//   9039's real 42 h is below this list's mean and its real −10/+30 is well below it too, so the
-//   imputation flatters all seven. Recording Miyota's figures would LOWER them. They are still left
-//   out, because the rule is about what the maker claims and not about which way it points - and
-//   because the Measured column already shows the 9039 at ~5-11 s/day out of MEASURED_ACCURACY,
-//   which is a substring match on movementDisplay and needs no published figure to fire.
+// these eight. The reserve is '—' on those seven and imputeMissingSubs() fills it at the list mean.
+// THE RATE IS NOT, since pass 38: all seven carry Miyota's own −10/+30 s/day for the 9039, and so
+// do rows 122 and 123. Pass 31 left them empty on the rule that a caliber figure is not
+// transferable to a maker who states nothing, and pass 38 replaced that rule rather than bending
+// it, because the table had never actually followed it - rows 2-4, 5, 12, 125 and 126 carry
+// Miyota's figure and row 41 carries Seiko/TMI's −20/+40, none of those seven makers publishing a
+// rate either. Eight rows one way and nine the other, for one evidential situation.
+//   THE RULE NOW IS THE GRADE LADDER, and it is what makes the split principled rather than
+//   national. Miyota, Seiko/TMI, Orient and Citizen publish ONE figure per caliber: a 9039 is a
+//   9039 and −10/+30 is its specification wherever it is fitted, so the figure describes the
+//   movement in THIS watch and is written in. Sellita and ETA sell one ébauche at four grades
+//   spanning ±12 to −4/+6, so naming "Sellita SW200-1" states nothing about the rate, and a row
+//   whose maker does not name the grade keeps '—'. That is why the five Oris, the three Sinn, the
+//   three Maurice Lacroix, the two Farer and the Zelos on row 133 are all still empty, and pass
+//   30's ETA 7001 decision stands unchanged underneath it: Heinrich name the Top Grade, Zelos
+//   name no grade, and the ladder is the reason that distinction matters there and not here.
+//   THE COST RUNS AGAINST THESE ROWS and is the reason the change is worth trusting: the 9039's
+//   −10/+30 is well below this list's mean, so the imputation had been flattering all seven and
+//   writing Miyota's figure in LOWERS them by about 1.5 residual points each. A rule that only
+//   ever paid the rows adopting it would not have been tested.
+//   ONE INCONSISTENCY IS OPEN AND DELIBERATE. The ladder argument applies to the power reserve
+//   word for word - Miyota publish 42 h for the 9039, one figure, no grades - so these seven
+//   should arguably carry it as rows 2-4, 12, 98-100, 110-112, 122 and 123 all do. Pass 38 was
+//   scoped to the rate and did not do it. This is the first thing to settle if the reserve column
+//   is revisited, and it would RAISE these rows, so it is not being deferred because it is costly.
 //
 // Row 138 is the exception on both counts, and the only row here whose movement Venezianico name as
 // their own: the V3250, which their own Arsenale Platino description states is "based on the Soprod
@@ -3032,7 +3056,7 @@ const WATCHES = [
   bandDisplay:'Steel Canova Concept integrated bracelet (butterfly clasp)',
   glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
-  powerReserveDisplay:'—', accuracyDisplay:'—',
+  powerReserveDisplay:'—', accuracyDisplay:'−10/+30 s/day',
   waterResDisplay:'50 m (5 ATM)', waterResM:50,
   priceDisplay:'€1,050', priceValue:1050, priceCurrency:'EUR' },
 
@@ -3045,7 +3069,7 @@ const WATCHES = [
   bandDisplay:'Steel Canova Concept integrated bracelet (butterfly clasp)',
   glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
-  powerReserveDisplay:'—', accuracyDisplay:'—',
+  powerReserveDisplay:'—', accuracyDisplay:'−10/+30 s/day',
   waterResDisplay:'50 m (5 ATM)', waterResM:50,
   priceDisplay:'€1,050', priceValue:1050, priceCurrency:'EUR' },
 
@@ -3058,7 +3082,7 @@ const WATCHES = [
   bandDisplay:'Steel Canova Concept integrated bracelet (butterfly clasp)',
   glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
-  powerReserveDisplay:'—', accuracyDisplay:'—',
+  powerReserveDisplay:'—', accuracyDisplay:'−10/+30 s/day',
   waterResDisplay:'50 m (5 ATM)', waterResM:50,
   priceDisplay:'€850', priceValue:850, priceCurrency:'EUR' },
 
@@ -3071,7 +3095,7 @@ const WATCHES = [
   bandDisplay:'Steel Canova Concept integrated bracelet (butterfly clasp)',
   glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
-  powerReserveDisplay:'—', accuracyDisplay:'—',
+  powerReserveDisplay:'—', accuracyDisplay:'−10/+30 s/day',
   waterResDisplay:'50 m (5 ATM)', waterResM:50,
   priceDisplay:'€850', priceValue:850, priceCurrency:'EUR' },
 
@@ -3110,7 +3134,7 @@ const WATCHES = [
   bandDisplay:'Steel Sansovino bracelet (folding clasp w/ micro-adjustment)',
   glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
-  powerReserveDisplay:'—', accuracyDisplay:'—',
+  powerReserveDisplay:'—', accuracyDisplay:'−10/+30 s/day',
   waterResDisplay:'200 m (20 ATM)', waterResM:200,
   priceDisplay:'€900', priceValue:900, priceCurrency:'EUR' },
 
@@ -3123,7 +3147,7 @@ const WATCHES = [
   bandDisplay:'Steel Canova bracelet (butterfly clasp)',
   glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
-  powerReserveDisplay:'—', accuracyDisplay:'—',
+  powerReserveDisplay:'—', accuracyDisplay:'−10/+30 s/day',
   waterResDisplay:'200 m (20 ATM)', waterResM:200,
   priceDisplay:'€765', priceValue:765, priceCurrency:'EUR' },
 
@@ -3136,7 +3160,7 @@ const WATCHES = [
   bandDisplay:'Steel Canova bracelet (butterfly clasp)',
   glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
-  powerReserveDisplay:'—', accuracyDisplay:'—',
+  powerReserveDisplay:'—', accuracyDisplay:'−10/+30 s/day',
   waterResDisplay:'200 m (20 ATM)', waterResM:200,
   priceDisplay:'€765', priceValue:765, priceCurrency:'EUR' },
 // --- Longines Spirit Zulu Time / Legend Diver, pass 32 (rows 142-144) ------------------------

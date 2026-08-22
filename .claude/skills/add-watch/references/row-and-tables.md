@@ -40,7 +40,7 @@ Read it — it documents each field's meaning and which are optional. 26 fields 
 | `heightDisplay` | if the maker gives only "excluding crystal", say both: `'13 mm (11 mm excl. crystal)'` |
 | `caseDisplay` | put the bezel insert material here — it is the evidence for the `bezel` score |
 | `movementCostDisplay` | loose parts-market price of the movement, or `'not sold separately (…)'`. Display only, not scored |
-| `accuracyDisplay` | `'—'` when the maker publishes nothing. See the evidence rules below |
+| `accuracyDisplay` | when the maker publishes nothing, the caliber's figure if the caliber has exactly one, else `'—'`. Evidence rule 2 below is the test |
 
 ### `bandDisplay` is load-bearing, not prose
 
@@ -116,10 +116,21 @@ Two traps that come with the fast routes, both found by running the script again
 These are rules the file has been bitten by, not preferences.
 
 1. **The maker's own product page first.** Reviews and retailers only where the maker omits a field.
-2. **An unpublished figure stays `'—'`.** Do not fill it with a movement family's generic tolerance.
-   Passes 6, 13 and 15 each rejected exactly that: −5/+15 s/day is ETA's generic A31 tolerance and
-   is not what Longines states for the L888.5; "milliseconds per day" is Timex marketing about
-   quartz as a technology. An imputed blank is honest; a borrowed number that looks published is not.
+2. **A rate the maker does not publish is filled only from a caliber that has ONE published figure**
+   — the grade-ladder test, set in pass 38. Miyota, Seiko/TMI, Orient and Citizen publish one
+   accuracy figure per caliber and no grade above or below it, so "Miyota 9039 → −10/+30 s/day"
+   describes the movement in *this* watch whoever cased it, and rows 122, 123 and 134–141 carry it
+   although Second Hour and Venezianico state nothing. Sellita and ETA sell one ébauche at **four
+   grades** spanning ±12 to −4/+6, so `'Sellita SW200-1'` states nothing about the rate: a row whose
+   maker does not name the grade keeps `'—'` (the five Oris, three Sinn, three Maurice Lacroix, two
+   Farer, and Zelos on row 133). Where the maker *does* name the grade, the grade's figure is
+   borrowable and labelled — rows 60, 90, 145 and 149 on Sellita's Élaboré, rows 39/40 on ETA's Top.
+   **Still refused, and these are the cases to check yourself against:** a family band for a caliber
+   with no published figure at any grade (−5/+15 s/day is ETA's generic A31 and is not what Longines
+   state for the L888.5 — passes 6 and 13), and marketing about a technology rather than a movement
+   ("milliseconds per day" is Timex on quartz as a category — pass 15). An imputed blank is honest;
+   so is a caliber figure that genuinely describes the movement. A number that looks published and
+   is neither is not.
 3. **A borrowed or inferred figure is labelled in a `//` comment naming what it was borrowed from.**
    Row 90's accuracy is Sellita's Élaboré spec, not MAEN's, and the comment says so.
 4. **The maker's statement about the watch in front of it beats the family figure.** Pass 14, row 52:

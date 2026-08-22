@@ -99,8 +99,9 @@ material, complications, finishing, watch types, caseback, published weight.
 
 The evidence rules in the reference are rules, not preferences. The two that get broken most:
 
-- **An unpublished figure stays `'—'`.** Do not fill an accuracy field with the movement family's
-  generic tolerance. Three separate passes rejected exactly that and said so in the footer.
+- **An unpublished accuracy figure is filled only from a caliber that publishes exactly one rate**
+  — Miyota, Seiko/TMI, Orient, Citizen. A Sellita or ETA ébauche is sold at four grades, so it lends
+  a figure only when the maker names the grade; otherwise `'—'`. Reference rule 2 has the cases.
 - **The link is a specific SKU.** The row is scored on the band its own price buys — that decides
   `bandDisplay`, `clasp`, and which weight table it lands in.
 

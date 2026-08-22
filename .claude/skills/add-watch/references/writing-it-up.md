@@ -20,7 +20,7 @@ The footer has three parts, in this order:
 
 1. a **head** of model revisions and early criterion research (revision 2, fittings passes 2–5,
    revision 3, the live validation note, then weight, watch type);
-2. a **chronological spine** of per-pass write-ups, ascending by pass number, currently 12 → 26;
+2. a **chronological spine** of per-pass write-ups, ascending by pass number, currently 12 → 38;
 3. a **thematic tail** of criterion-level research (complications, accuracy, fittings), ending with
    the `Sources` paragraph, which stays last because other paragraphs refer to it as "below".
 
