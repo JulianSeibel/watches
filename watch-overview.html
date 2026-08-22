@@ -519,6 +519,14 @@
 
   <p><b>What it did to everything else, and this is the pass where the model got measurably worse.</b> Value moved by at most <b>0.80</b> spec points across the existing 145 — row 16, the Delhi Tithi, as in pass 27 — with 129 of 145 moving at all and <b>7 crossing zero</b>: rows 50, 59, 65 and 87 down across it, rows 82, 83 and 125 up. <b>Four rows change band</b>: row 10 (AV86 1968 Moonphase) from <i>below</i> to <i>well below</i>, row 34 (Vaer D4 Meridian) from <i>as expected</i> to <i>below</i>, row 74 (Mido Baroncelli) from <i>as expected</i> to <i>above</i>, and row 105 (Oris Aquis Diamonds) from <i>well below</i> to <i>below</i>. <b>Spec drift touched one row</b> — row 41, the Revelot Hexmariner, 41 → 40 — which is <code>imputeMissingSubs()</code> doing exactly what it is documented to do: that row carries an unresearched sub-score, four new rows moved the list mean it is filled with, and the rounding fell. <b>Leave-one-out RMSE is 5.75 → 5.85 and skill 61.2% → 59.1%</b>, the largest single-pass fall in skill recorded here, and the honest reading is that three of the four rows sit more than a sigma below a line they also help fit. The spec/price correlation slips 0.79 → 0.78 and the resample spread widens 0.25/0.54 → 0.29/0.61; naive RMSE improves 9.24 → 9.15 and sign flips stay at 1. Sigma, the spec range and the two <code>n/s</code> and two <code>o/s</code> rows are all unchanged. <b>A pass that lowers skill is not a pass that went wrong</b> — it means the four watches are less predictable from their price than the list average, which is a fact about them and the thing the Value column exists to show.</p>
 
+  <p><b>Farer, pass 35 — two rows added (150–151), and the list goes from 149 to 151.</b> A new brand, British, design-led, and the first here whose whole catalogue is one reference sold across a dozen bands: eleven or twelve leather and rubber straps at one price and a Milanese mesh at €20 more. <b>Both rows are the Milanese SKU deliberately</b> — W-VEN-MIL at €1,295 and W-NEV-38-MIL at €1,615 — which is not a cosmetic choice: it sets <code>bandDisplay</code>, which <code>predictedWeightG()</code> reads for the 62 g bracelet allowance; it sets the clasp score; and it sets the image, since Farer's variant records carry a per-band photograph. This is the band rule that cost rows 87–90 and the Sinn 104s their clasp scores, applied the other way up for once, because here the dearer band is the one being priced. Two new <code>MOVEMENT_TIER</code> keys, no new case category, glass, movement type, watch type or complication. <b>They land at 55 and 58 spec points and +1.30 and +2.20 on Value, both <i>as expected</i></b>, on 54 and 47 comparable rows — ranks 58 and 50 of 151. That is the least dramatic result any pass has produced here and it is worth one sentence: a Swiss top-grade caliber, an exhibition back, X-grade lume and a sapphire bezel at €1,295–€1,615 is a strong specification, and this list charges very nearly what it is worth.</p>
+
+  <p><b>Two new tiers and both are the same +0.03, which now looks like a rate rather than a one-off.</b> The <b>La Joux-Perret G101 takes 0.63</b> over the G100's 0.60 on row 1: same architecture, but Farer name the grade — “soignée finish, the highest grade available” — and state four positions of adjustment, which is a regulation-and-finishing step this table's header folds INTO the tier. The <b>Sellita SW330-2 ‘Top Grade' takes 0.63</b> over the Élaboré SW330-2's 0.60 on rows 78, 79 and 90, and this one is not an analogy at all: Top Grade is Sellita's own designation for a Glucydur balance, a Nivarox 1 hairspring and five positions instead of three, which is the identical factory step pass 26 priced at +0.03 on the Laco SW200-1 pair and pass 34 reused for Soprod's TOP. Three passes have now set the same increment for the same kind of evidence, so it is precedent rather than improvisation. Neither reaches 0.65, which needs per-unit certification or a silicon hairspring. <b>The GMT earns nothing in the tier</b>, by pass 16's rule: the SW330-2 moves the 24-hour hand rather than the local one, so it is a caller and its second time zone is paid for in complications at 0.25. <b>And both upgrades are invisible in the timekeeping group</b>, the same complaint pass 34 recorded against row 146: Farer publish positions of adjustment, not a tolerance, so <code>accuracyDisplay</code> is empty on both rows and the tier is the only place the grade shows up. Borrowing a figure would have been easy here and is refused for the reason passes 6, 13 and 15 each give — and refused twice over on row 150, since row 1's ±12 s/day is read off La Joux-Perret's LOWEST grade and this is their highest, so the borrowed number would not merely be unsourced, it would point the wrong way.</p>
+
+  <p><b>Row 150 is the first watch here whose lume arguably deserves more than the scale's ceiling.</b> This table's top rung is defined as “SLN X1” and fourteen rows hold it. Row 151 is exactly that — Farer state “heavy applications of X1 Super-LumiNova” on hands and markers. Row 150 is a grade above: “Grade X2 Super-LumiNova”, and its applied batons are <i>moulded from solid blocks</i> of the compound rather than filled with it, which is a component made of lume rather than a surface carrying it. It still takes 1.0, because 1.0 is the cap and rebasing a rung fourteen rows already sit on to accommodate one watch would move all of them to say something about this one. <b>The consequence is recorded rather than hidden</b>: this column cannot presently distinguish X2 from X1, and the moment to reconsider is when a second X2 row arrives, not now. <b>The clasp is the softest number in the pass</b> and it is one number for one bracelet: Farer call the Milanese “an engraved 316L brushed double fasten clasp” and, on the same page, “a fold-over clasp”, with no adjustment mechanism stated, which is row 145's photographed situation and takes its 0.6. The argument against is real and is in the code beside the number — a mesh clasp normally clamps anywhere along the mesh, which is stepless sizing and better than the micro-adjustment the 0.7–0.8 band is written for. Farer never say so, and this table scores what the maker states. <b>The exposure was measured rather than asserted</b>: at 0.8 row 150 goes 55 → 56 spec points and +1.30 → +2.70, row 151 goes 58 → 59 and +2.20 → +3.50, which takes row 151 from <i>as expected</i> to <i>above the curve</i>. One sentence from Farer about sliding adjustment would change a band.</p>
+
+  <p><b>What it did to everything else, and the model got slightly better for once.</b> Value moved by at most <b>0.20</b> spec points across the existing 149 — row 101, the Oris Social Club — with 126 of 149 moving at all and <b>4 crossing zero</b>, rows 82, 83 and 125 down onto it and row 87 through it. <b>Two rows change band</b>, and both are recoveries from the previous pass: row 10 (AV86 1968 Moonphase) goes <i>well below the curve</i> → <i>below</i>, exactly reversing the step pass 34 pushed it down, and row 123 (Second Hour Shoal Deep 300) goes <i>well above</i> → <i>above</i>. <b>Spec drift touched one row and it is the same row as last time, moving back</b>: row 41, the Revelot Hexmariner, 40 → 41, having gone 41 → 40 in pass 34. That is <code>imputeMissingSubs()</code> behaving precisely as documented — the row carries an unresearched sub-score filled at the list mean, two passes moved that mean in opposite directions, and the rounding followed. It is the clearest illustration this file has of why the imputation is worth stating out loud. <b>Leave-one-out RMSE is 5.85 → 5.82 and skill 59.1% → 59.4%</b>, recovering a fraction of what pass 34 cost, because unlike that pass's three sub-curve rows these two sit close to the line they help fit. Naive RMSE is 9.15 → 9.14 and sign flips stay at 1. The resample spread widens, 0.29/0.61 → 0.32/0.79, which is the one figure moving the wrong way and is worth watching rather than acting on. Sigma, the spec range, the spec/price correlation at 0.78, the two <code>n/s</code> rows and the two <code>o/s</code> rows are all unchanged, and the weight tables did not move at all — Farer state no mass on either reference, and their Shopify variants carry <code>"weight":0</code>, an unset field rather than a figure, which is the pass 31 Venezianico reading and not the pass 22 Traska parcel trap.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -540,7 +548,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-149 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-151 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
 //                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
@@ -3322,6 +3330,62 @@ const WATCHES = [
   powerReserveDisplay:'38 h', accuracyDisplay:'~±7 s/day (Élaboré, max ±20)',
   waterResDisplay:'600 m (60 ATM)', waterResM:600,
   priceDisplay:'€1,750', priceValue:1750, priceCurrency:'EUR' },
+
+// --- Farer, pass 35 (rows 150-151) -------------------------------------------------------------
+// A NEW BRAND, British, and the first here to sell one reference across a dozen bands at two
+// prices only. BOTH ROWS ARE THE MILANESE SKU, deliberately and at the buyer's instruction: Farer
+// list eleven or twelve leather and rubber straps at one price and the Milanese mesh at EUR 20
+// more, so W-VEN-MIL at EUR 1,295 and W-NEV-38-MIL at EUR 1,615 are what these rows cost. That
+// choice is not cosmetic - it sets bandDisplay, which predictedWeightG() reads for the 62 g
+// bracelet allowance, and it sets the clasp score, and it sets the image, since Farer's own
+// variant record carries a per-band photograph and the mesh ones are BLUE-MESH and BROWN-MESH.
+// This is the rule that cost rows 87-90 and the Sinn 104s their band scores, applied the other
+// way up for once: here the dearer band is the one being scored.
+//
+// FARER'S SHOPIFY IS THE ORDINARY SHAPE and the .json route works, but the price it returns has no
+// currency field - the pass 22 Traska trap. It was checked against the rendered page rather than
+// assumed: eur.farer.com carries "currency":"EUR" and renders EUR 1,275.00, so the storefront is
+// presenting euros and priceCurrency is EUR with no conversion.
+//
+// NEITHER PUBLISHES A RATE and both go to '-'. Farer state the regulation instead - four positions
+// on row 150, five on row 151 - which is a statement about the work and not a tolerance, and this
+// file has refused to convert one into the other since pass 6. The Shopify variants carry
+// "weight":0, an unset field rather than a figure, so neither row is a WEIGHT_MEASURED candidate;
+// that is the Venezianico reading from pass 31, not the Traska parcel trap, since there is no
+// number here to mistake for a watch.
+{ id:150, brand:'Farer', name:'Farer Venture (Three Hand Series III, Milanese)', desc:'Metallic-blue lacquered textured dial, no date · the Milanese SKU at €20 over the strap variants',
+  link:'https://eur.farer.com/products/venture',
+  img:'https://cdn.shopify.com/s/files/1/1279/6191/files/BLUE-MESH_14fd6ffc-dba5-4e2f-8326-b006dc62c651.png?v=1764931646',
+  // Farer give one "Case size" string per reference: 39mm x 45mm x 11.8mm, i.e. diameter,
+  // lug-to-lug and height in that order.
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'45 mm',
+  heightDisplay:'11.8 mm', heightMm:11.8,
+  caseDisplay:'316L marine-grade stainless steel (no rotating bezel, screw-down crown)', caseCategory:'Steel',
+  bandDisplay:'Milanese mesh bracelet (quick-release)',
+  glassDisplay:'Boxed sapphire, inner AR (sapphire exhibition back)', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — La Joux-Perret G101 (soignée, 4 positions)', movementType:'Automatic', movementCostDisplay:'~$290 (Swiss LJP G100 family, new)',
+  // Farer name the grade and the number of positions and no tolerance. Row 1 carries ±12 s/day for
+  // the G100 read off La Joux-Perret's LOWEST grade, which pass 14 already flagged as an inference;
+  // borrowing it here would be worse, since this is the highest grade of the same caliber and the
+  // figure would understate it. Empty is the honest cell.
+  powerReserveDisplay:'~68 h', accuracyDisplay:'—',
+  waterResDisplay:'100 m (10 ATM)', waterResM:100,
+  priceDisplay:'€1,295 (Milanese; €1,275 on a strap)', priceValue:1295, priceCurrency:'EUR' },
+
+{ id:151, brand:'Farer', name:'Farer Nevada Mocha 38 mm (GMT Bezel, Milanese)', desc:'Caller GMT, bidirectional 24-h sapphire bezel · cocoa dial, 200 m; the Milanese SKU',
+  link:'https://eur.farer.com/products/nevada-mocha-38mm',
+  img:'https://cdn.shopify.com/s/files/1/1279/6191/files/BROWN-MESH.png?v=1779891973',
+  // "38mm x 42.25mm x 12.5mm including crystal, 10.75mm without" - Farer give both heights, so
+  // both are shown, per the rule that produced row 1's and row 2's height strings.
+  diameterDisplay:'38 mm', diameterMm:38, l2lDisplay:'42.25 mm',
+  heightDisplay:'12.5 mm (10.75 mm excl. crystal)', heightMm:12.5,
+  caseDisplay:'316L marine-grade stainless steel (bidirectional 24-h bezel, sapphire insert; screw-down crown)', caseCategory:'Steel',
+  bandDisplay:'Milanese mesh bracelet (quick-release)',
+  glassDisplay:'Boxed sapphire, inner AR (exhibition back)', glassCategory:'Sapphire',
+  movementDisplay:'Automatic caller GMT — Sellita SW330-2 (Top Grade)', movementType:'Automatic', movementCostDisplay:'~$300 (Sellita GMT, new, est.)',
+  powerReserveDisplay:'~56 h', accuracyDisplay:'—',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€1,615 (Milanese; €1,595 on a strap)', priceValue:1615, priceCurrency:'EUR' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -3530,7 +3594,7 @@ function measuredRatioStats(watches) {
 // It is still NOT acted on, for two reasons. The 62 are not a random sample - they are ten makers
 // who happen to document well, three of them Japanese and seven Western, so scoring on them would
 // score brands on their spec-sheet habits. And the double-counting objection above still binds
-// for the other 87 rows, where the "weight" is a function of columns the score already reads.
+// for the other 89 rows, where the "weight" is a function of columns the score already reads.
 // Scoring a column that is measured for some rows and derived from other scored inputs for the
 // rest would mean two different things in one number. Completing the research is the prerequisite.
 //
@@ -3882,6 +3946,12 @@ const WEIGHT_UNPUBLISHED = new Set([
                           //   carries a weight field either. The Shopify variant records DO carry
                           //   grams, and it is the parcel: the pass 22 Traska trap, and never a
                           //   WEIGHT_MEASURED figure
+  150, 151,               // Farer - the spec panel runs case size, case material, glass,
+                          //   movement, power reserve, water resistance, lug width, functions,
+                          //   shock protection, winding and jewels, and states no mass on either.
+                          //   The Shopify variants carry "weight":0, an unset field rather than a
+                          //   figure - the pass 31 Venezianico reading, not the pass 22 Traska
+                          //   parcel trap, since there is no number here to mistake for a watch
   146, 147,               // Hanhart PIONEER Preventor - both spec blocks run MASSE, LUENETTE,
                           //   GLAS, WASSERDICHTIGKEIT, KALIBER, GANGRESERVE, FUNKTIONEN,
                           //   ZIFFERBLATT and ARMBAND, and neither states a mass. Row 146 gives a
@@ -4171,6 +4241,9 @@ const WATCH_TYPES = {
   147: ['Pilot'],
   148: ['Dress', 'Everyday'],       // Sharp Edged: 10 bar and a bracelet, but a Presage dress case
   149: ['Diver'],                   // 600 m, unidirectional dive bezel, screw-down crown
+  150: ['Everyday'],                // Farer's own "Three Hand Series III"; no bezel, no date
+  151: ['GMT / traveller'],         // 24-h bezel and hand. NOT Diver: 200 m but a BIDIRECTIONAL
+                                    //   bezel, which is a travel scale rather than a timing one
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
@@ -4241,7 +4314,7 @@ const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (130 of 149 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (132 of 151 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -4411,6 +4484,14 @@ const MOVEMENT_TIER = {
   'Hand-wound — ETA/Peseux 7001 (reworked bridges)': 0.60,
   'Automatic — Sellita SW200-1 (Élaboré)': 0.60,
   'Automatic — La Joux-Perret G100': 0.60,
+  // Pass 35. The G100 above is row 1's, at whatever grade MAEN buy; Farer name theirs - "soignée
+  // finish, the highest grade available" - and state four positions of adjustment. That is a
+  // regulation-and-finishing step on an unchanged architecture, which this table's header folds
+  // INTO the tier, and +0.03 is the rate pass 26 set for exactly that on the Laco SW200-1 pair
+  // and pass 34 reused for Soprod's TOP. It stops short of 0.65, which needs per-unit
+  // certification or a silicon hairspring, and neither is claimed. As with row 146, the upgrade
+  // is invisible in the timekeeping group, because Farer publish positions rather than a rate.
+  'Automatic — La Joux-Perret G101 (soignée, 4 positions)': 0.63,
   // Christopher Ward, pass 16. Three new Sellita entries, and the reasoning is the same one the
   // Mido block below uses - this column rates ARCHITECTURE, and anything already scored elsewhere
   // must not be paid for twice.
@@ -4433,6 +4514,13 @@ const MOVEMENT_TIER = {
   //                    sit level rather than being split on a distinction this column cannot rank.
   'Automatic — Sellita SW200-2 Power+ (Élaboré)': 0.60,
   'Automatic caller GMT — Sellita SW330-2 (Élaboré)': 0.60,
+  // Pass 35, and the same +0.03 for the same reason: this is Sellita's own Top Grade of the
+  // caliber directly above - Glucydur balance, Nivarox 1 hairspring, five positions instead of
+  // three - which is the identical factory step pass 26 priced on the Laco SW200-1 Élaboré ->
+  // Top pair. It gets nothing for being a GMT: pass 16 established that a caller GMT earns no
+  // tier bonus at all, because the second time zone is paid for in complications at the 'gmt'
+  // rate of 0.25.
+  'Automatic caller GMT — Sellita SW330-2 (Top Grade)': 0.63,
   'Automatic — Sellita SW300-1 (COSC chronometer)': 0.65,
   // Pass 22. Eight new entries, all 0.60, and the uniformity is the argument rather than laziness:
   // every one of them is an SW200 - Sellita's 2824 clone - or an Oris-finished SW200, and this
@@ -5486,6 +5574,48 @@ const EXTRAS = {
   // comp - none. It has a date at 3, confirmed on Squale's own photograph, and a date scores
   //   nothing here.
   149:{lume:0.7,war:2,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:0.7},
+
+  // --- Farer, pass 35 (rows 150-151) -------------------------------------------------------
+  // lume 1.0 on both, and row 150 is the first entry in this file that arguably deserves MORE
+  //   than the ceiling. This table's top rung is defined as "SLN X1" and rows 1, 77-86, 106-109
+  //   and 125 hold it. Row 151 is exactly that: "heavy applications of X1 Super-LumiNova" on
+  //   hands and markers. Row 150 is a grade ABOVE it - "Grade X2 Super-LumiNova", with the
+  //   applied batons moulded from solid blocks of the stuff rather than filled - and it still
+  //   takes 1.0, because the scale is capped at 1 and nothing here is worth rebasing a rung that
+  //   fourteen rows already sit on. The consequence is recorded rather than hidden: this column
+  //   cannot currently distinguish X2 from X1, and if a second X2 row ever arrives that is the
+  //   moment to reconsider, not now.
+  // war 5 on both: Farer's own "5 Year Guarantee", which only the Citizen and YEMA rows match.
+  //   DATA ONLY.
+  // iso 0 on both: no ISO 6425 claim anywhere. Row 151's 200 m comes with a BIDIRECTIONAL bezel,
+  //   which is a 24-hour scale and not a dive bezel, so the standard would not apply to it even
+  //   if Farer claimed it.
+  // antimag 0 on both. Row 150 states a KIF anti-shock system, which is shock and not magnetism -
+  //   a different criterion, and this table has no column for it. Row 151's shock-protection
+  //   field is an empty dash.
+  // clasp 0.6 on both, one number for one bracelet, and it is the softest call in the pass.
+  //   Farer describe the Milanese as "an engraved 316L brushed double fasten clasp" and, on the
+  //   same page, "a fold-over clasp" - a foldover with a safety fastener and no stated
+  //   adjustment, which is exactly row 145's photographed situation and takes its 0.6. The
+  //   argument against is real and is recorded: a mesh bracelet's clasp normally clamps anywhere
+  //   along the mesh, which is stepless sizing and better than the micro-adjustment the 0.7-0.8
+  //   band is written for. Farer never say so, and this table scores what the maker states. One
+  //   sentence from them about sliding or infinite adjustment would take both rows to 0.8, and
+  //   the exposure is measured rather than asserted: row 150 goes 55 -> 56 spec points and
+  //   +1.30 -> +2.70, row 151 goes 58 -> 59 and +2.20 -> +3.50, which moves row 151 from
+  //   AS EXPECTED to ABOVE THE CURVE. It is the only number in this pass that changes a band.
+  // service 0.5 on both: a small independent selling direct, with a bought-in Swiss caliber any
+  //   watchmaker can service. Level with Baltic and Squale. DATA ONLY.
+  // bezel - null on row 150, which has no rotating bezel at all, and 0.8 on row 151. That 0.8 is
+  //   the top of this table's 0.7-0.8 steel/sapphire band and is the insert Farer state:
+  //   "a 24-hour scale protected by a scratch-resistant sapphire crystal insert". Sapphire is the
+  //   hardest thing in that band and the only reason it is not level with ceramic's 1.0 is that
+  //   1.0 is the ceiling and every row holding it is zirconia.
+  // comp - 150 none: hours, minutes, seconds and a stop-seconds, no date. 151 takes ['gmt'], the
+  //   CALLER rate of 0.25 rather than 'gmt_true', because the SW330-2 moves the 24-hour hand and
+  //   not the local hour - the split pass 18 made visible and pass 16 priced.
+  150:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:null},
+  151:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:0.8,comp:['gmt']},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -5814,6 +5944,16 @@ const FINISH = {
   // than an operation - the distinction pass 29 drew for row 132 and pass 31 for the moissanite
   // rows, where 0.65 is withheld for a material bought and granted for an operation performed.
   149:0.55,
+  // Rows 150 and 151, Farer: 0.60 both, one number for one maker's single standard. Above the
+  // 0.55 of Baltic and Squale on dial CONSTRUCTION rather than dial printing - Farer press the
+  // pattern, then lacquer it in stages, and row 150's applied batons are moulded from solid
+  // blocks of Super-LumiNova rather than filled, which is a component made rather than a surface
+  // decorated. Below the 0.65 of the Christopher Ward rows, whose case and dial work is a class
+  // above and whose rotor is engraved and Colimaçon-finished. Nothing is added for the exhibition
+  // backs on either row: that window is fittings.displayBack and is already scored, the rule rows
+  // 119-120 and 122 turn on, and what these two show is an undecorated LJP and an undecorated
+  // Sellita.
+  150:0.60, 151:0.60,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -5821,7 +5961,7 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 135 of 149 rows resolved - 60 see-through, 75 solid. The fourteen still open are
+// Research status: 137 of 151 rows resolved - 62 see-through, 75 solid. The fourteen still open are
 // 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125, 126, 142 and 143, all rows whose maker publishes no
 // caseback detail. Row 91 is the best documented of them: Longines leave the field empty on the
 // Spirit 37 AND on the 40 mm sibling, so the gap is the collection's, not this reference's.
@@ -6068,6 +6208,10 @@ const DISPLAY_BACK = {
   // The "SAPPHIRE CRYSTAL" engraving refers to the front glass and is exactly the wording that
   // would mislead a text-only read of this caseback into scoring it 1.
   149: 0,
+  // Rows 150 and 151, Farer. Both stated in the Glass field rather than a caseback one: row 150
+  // "Sapphire exhibition glass on the watch's rear", row 151 "Exhibition glass on the rear".
+  150: 1,
+  151: 1,
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
@@ -6918,7 +7062,7 @@ function optionValuesFor(dim) {
 
 // How many rows each option would show, measured against every filter EXCEPT its own dimension's
 // (see matchesFilters). Recomputed on every pipeline pass, which is 5 x 90 predicate calls - the
-// same order as the search box, which rejoins a haystack string for all 149 rows per keystroke.
+// same order as the search box, which rejoins a haystack string for all 151 rows per keystroke.
 function optionCounts(dim) {
   const counts = new Map();
   WATCHES.filter(w => matchesFilters(w, dim.key)).filter(matchesSearch)
