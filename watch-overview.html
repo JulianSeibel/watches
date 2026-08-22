@@ -563,6 +563,18 @@
 
   <p><b>One inconsistency is left open on purpose, and it is this pass's own.</b> The grade-ladder argument applies to the <i>power reserve</i> word for word — Miyota publish 42 hours for the 9039, one figure, no grades — so the seven Venezianico rows should arguably carry it, as rows 2–4, 12, 98–100, 110–112 and both Second Hours all do. This pass was scoped to the rate and did not do it, so those seven still show an empty reserve beside a filled rate, which is exactly the shape of inconsistency the pass exists to remove. It is named here rather than quietly fixed because it would <b>raise</b> those rows, and a pass that took every point it could find while deferring the one that gave points back would not deserve to be believed. <b>The deeper problem the pass sharpens rather than solves</b> is the imputation itself: after this, every Japanese-caliber row carries a real published figure while the rows on opaque Swiss ébauches keep the generous 0.279. Worse, <code>imputeMissingSubs()</code> pools mechanical and quartz together for this sub-score although the two are normalised on different anchors — mechanical-only mean 0.318, quartz-only 0.144, pooled 0.279 — so a silent mechanical row is imputed partly off quartz. Imputing within movement class, or within caliber where the caliber is known, is the next thing worth costing.</p>
 
+  <p><b>Grades chased, pass 39 — every row on a graded ébauche without a rate was taken back to its maker, and three of the ten resolve.</b> Pass 38's grade-ladder rule says a Sellita or ETA row keeps <code>'—'</code> because the ébauche is sold at four grades and the string alone states none of them — but it also says the grade's figure is borrowable <i>where the maker names the grade</i>. That turns the empty cells into a research question rather than a settled state, and this pass asks it of all ten: the five Oris, the three Sinn, the Zelos, the Hanhart Preventor9, the three Maurice Lacroix, and the three where a grade <i>was</i> named but no figure had been found. <b>Oris turned out not to need the ladder at all.</b> They publish a rate — not on any product page, which is where pass 22 looked and correctly found nothing, but in their help centre, per caliber: "watches with Cal. 733 have a rate tolerance of +7 seconds/-12 seconds. This means that the average daily rate may be between -5 seconds and +19 seconds." The English parses as an asymmetric band and is a mistranslation; the German settles it — "eine Gangtoleranz von 7 Sekunden +/-12 Sekunden" is a nominal of +7 with a ±12 tolerance. All five rows now carry Oris's own <b>−5/+19 s/day</b>. Two cross-checks say it is the standard tier, which Oris never name: the magnitude is 12 s/day, identical to Sellita's Standard ±12, and Caliber Corner cite this same article for the claim that the 733 is standard grade and never Élaboré.</p>
+
+  <p><b>The Oris result is the one worth reading twice, because the five rows do not move at all.</b> Their accuracy sub-score comes out at <b>0.269</b> where <code>imputeMissingSubs()</code> had been filling them at <b>0.279</b> — a gap of one hundredth, which is below the rounding of every column it feeds. Spec scores hold at 41, 51, 43, 54 and 52 and residuals at −17.10, −7.80, −15.00, −5.40 and −7.30, unchanged to the digit. Five rows were researched and nothing happened, which is exactly what the invariant in CLAUDE.md promises — "researching a row has zero expected effect on its score" — and it is the first time this file has been able to show it landing that precisely. It also puts pass 38's complaint in proportion. That pass argued the imputation was too generous, and it was, by 2.3× on a Miyota 9039; on a standard-grade Sellita it turns out to be accurate to a hundredth. The imputation is not uniformly wrong, it is wrong where the caliber is unusually loose, which is a narrower and more useful statement than the one pass 38 made.</p>
+
+  <p><b>Both Farer rows resolve, and one of them is not an inference.</b> Row 150's G101 was left empty by pass 35 because the only figure to hand was row 1's ±12 — La Joux-Perret's <i>lowest</i> G100 grade — which would have understated the highest. The right figure exists: LJP grade the G101 in two tiers, standard at ±12 over three positions with a 30 s maximum, soignée at ±7 over four with a 20 s maximum. <b>And Farer state the ±7 themselves</b>, in their own journal piece on the caliber — "at Farer, we use the Soigné grade of movement, which is accurate to ±7 seconds per day" — so the average half is the maker's own word on their own site, and only the max ±20 is borrowed from the grade. The same page corroborates row 1's ±12 as the standard grade, which is the first support that figure has had from anyone but La Joux-Perret. Row 151 is the plainer case: Farer name "Sellita SW330-2 'Top Grade'" and add that it is "been adjusted for accuracy in 5 positions", and five positions is what defines Sellita's Premium tier against Élaboré's three, so the row takes <b>~±4 s/day, max ±15</b>. <b>It is the only row in the pass to gain</b>, 58 → 59 spec and +2.60 → +3.20, crossing into <i>above the curve</i>.</p>
+
+  <p><b>The seven that stay empty are findings, not gaps, and each was checked at the maker.</b> <b>Sinn name no grade</b>: the movement accordion on the 104 St Sa I reads "SW 220-1, Automatikaufzug, 26 Rubinlagersteine, 28.800 Halbschwingungen pro Stunde, Sekundenstopp, Antimagnetisch nach DIN ISO 764" and stops, and the 556's is the same shape. Third parties are worse than silent here — one review says Sinn use the top grade, another says Élaboré, which is the ML115 situation exactly and disqualifies both. <b>Zelos</b> still say only "Swiss ETA/Peseux 7001 with reworked bridges" (pass 30 unchanged). <b>Hanhart's Preventor9</b> gives "Automatikwerk HAN4112, Basis: Sellita SW 200 mit Aufbau von Dubois Dépraz, 28.800 A/h, 4 Hz, 30 Steine" — no grade. <b>Maurice Lacroix</b> give "KALIBER: Automatic ML115" and "LEISTUNGSRESERVE: 38 Stunden" and nothing else, confirming pass 36. And <b>row 146 is the one where the grade is named and the figure still does not exist</b>: Hanhart state Soprod's TOP execution and its components, but Soprod publish no grade table at all — their own P024 technical documentation has no tolerance in it and no tier list, so there is nothing for the ladder to borrow. That row is the clean demonstration that the rule can fail in the maker's favour and still has to be obeyed.</p>
+
+  <p><b>A claim in pass 38's own write-up was wrong and is corrected here rather than edited there.</b> That paragraph listed "rows 60, 90, 145 and 149" as cases where the maker names the grade and the Élaboré figure is therefore borrowable. <b>Row 60 does not belong in that list.</b> Squale print "Control grade: Elabore" and MAEN "Elaboré Grade", but Sinn print no grade on the 556 — pass 14 said so plainly when it set the figure, calling it "an inference, not a spec" — so row 60's <code>~±7 s/day (Élaboré, max ±20)</code> rests on an attribution nobody at Sinn has made. <b>The row is left as it is and the exposure is stated instead</b>, because pass 14's decision was deliberate and documented and this pass has no new evidence to overturn it with, only a rule written afterwards. What it does create is a visible anomaly: rows 94, 95 and 96 are the same maker in the same position and carry <code>'—'</code>, so Sinn now has one row inferred to a grade and three not. Emptying row 60 would <b>raise</b> it about 0.3 of a residual point — the mirror of what row 150 just lost arriving at the identical sub-score of 0.235 — so this is not being deferred because it is expensive. It is the first thing to settle if the Élaboré cells are revisited.</p>
+
+  <p><b>What it did to everything else, and almost nothing did.</b> Seven rows changed data and <b>one changed spec score</b>. Value moved by at most <b>0.60</b> residual points, on row 151; 17 rows moved at all; of the 147 untouched the median shift is 0.00 and the largest 0.10. <b>Two bands change</b> — 151 into <i>above the curve</i> on its own gain, and row 95 from <i>as expected</i> to <i>below the curve</i> on a tenth of a point of line movement. Leave-one-out RMSE is 5.93 → 5.94 against an unchanged naive 9.14, skill 57.9% → 57.8%, sign flips unchanged at 1, worst-case resampling 0.63. Sigma holds at 6 and the spec range at 26–66. A pass that fills seven cells and moves one score is the outcome to want from a research pass that found the answers rather than guessed them.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -2157,6 +2169,20 @@ const WATCHES = [
 // therefore '—' on all five, which costs each row the wearability group's proportion sub-score
 // and, with heightMm null, its thinness sub-score too; both are imputed.
 //
+// THE RATE IS THE EXCEPTION SINCE PASS 39, and it was never on the product pages: Oris publish it
+// in their help centre, per caliber, at helpcenter.oris.ch "How accurate are Oris watches?". The
+// English reads "watches with Cal. 733 have a rate tolerance of +7 seconds/-12 seconds. This means
+// that the average daily rate may be between -5 seconds and +19 seconds", which parses as an
+// asymmetric band and is a mistranslation. The German is unambiguous - "eine Gangtoleranz von
+// 7 Sekunden +/-12 Sekunden" - a nominal of +7 with a ±12 tolerance, giving Oris's own stated
+// −5 to +19. The cell carries the range Oris state rather than the tolerance they express it as.
+// This is Oris's OWN figure, not a grade inference, so the grade-ladder rule never has to fire on
+// these five - which is fortunate, because Oris name no grade anywhere. Two cross-checks that it
+// is the standard tier anyway: −5/+19 has the same 12 s/day magnitude as Sellita's Standard ±12,
+// and Caliber Corner cite this same help-centre article for the claim that the 733 is standard
+// grade and never Élaboré. Oris name Cal. 733; rows 102, 104 and 105 are the 733-1, the date
+// variant of the same SW200-1 base, and take the same figure.
+//
 // Oris DO name the bezel material when it is ceramic, on the Divers Date and both Aquis, and do
 // not on the two Divers Sixty-Five references. That silence is read as evidence rather than as a
 // gap - see EXTRAS - and the maker's own product photos show a glossy black insert on both.
@@ -2172,7 +2198,7 @@ const WATCHES = [
   bandDisplay:'Black leather strap, stainless steel buckle',
   glassDisplay:'Sapphire, domed both sides, AR inside', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Oris 733 (no date; Sellita SW200-1 base)', movementType:'Automatic', movementCostDisplay:'not sold separately (Oris-finished Sellita SW200-1)',
-  powerReserveDisplay:'38 h', accuracyDisplay:'—',
+  powerReserveDisplay:'38 h', accuracyDisplay:'−5/+19 s/day',
   waterResDisplay:'100 m (10 bar)', waterResM:100,
   priceDisplay:'€2,100', priceValue:2100, priceCurrency:'EUR' },
 
@@ -2185,7 +2211,7 @@ const WATCHES = [
   bandDisplay:'Steel bracelet, folding clasp (additional black rubber strap included)',
   glassDisplay:'Sapphire, domed both sides, AR inside', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Oris 733-1 (Sellita SW200-1 base)', movementType:'Automatic', movementCostDisplay:'not sold separately (Oris-finished Sellita SW200-1)',
-  powerReserveDisplay:'41 h', accuracyDisplay:'—',
+  powerReserveDisplay:'41 h', accuracyDisplay:'−5/+19 s/day',
   waterResDisplay:'200 m (20 bar)', waterResM:200,
   priceDisplay:'€2,450', priceValue:2450, priceCurrency:'EUR' },
 
@@ -2201,7 +2227,7 @@ const WATCHES = [
   bandDisplay:'Steel bracelet, folding clasp (additional leather strap included)',
   glassDisplay:'Sapphire, domed both sides, AR inside', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Oris 733-1 (no date; Sellita SW200-1 base)', movementType:'Automatic', movementCostDisplay:'not sold separately (Oris-finished Sellita SW200-1)',
-  powerReserveDisplay:'41 h', accuracyDisplay:'—',
+  powerReserveDisplay:'41 h', accuracyDisplay:'−5/+19 s/day',
   waterResDisplay:'100 m (10 bar)', waterResM:100,
   priceDisplay:'€2,250', priceValue:2250, priceCurrency:'EUR' },
 
@@ -2214,7 +2240,7 @@ const WATCHES = [
   bandDisplay:'Steel bracelet, security folding clasp',
   glassDisplay:'Sapphire, domed both sides, AR inside', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Oris 733-1 (Sellita SW200-1 base)', movementType:'Automatic', movementCostDisplay:'not sold separately (Oris-finished Sellita SW200-1)',
-  powerReserveDisplay:'41 h', accuracyDisplay:'—',
+  powerReserveDisplay:'41 h', accuracyDisplay:'−5/+19 s/day',
   waterResDisplay:'300 m (30 bar)', waterResM:300,
   priceDisplay:'€2,400', priceValue:2400, priceCurrency:'EUR' },
 
@@ -2235,7 +2261,7 @@ const WATCHES = [
   bandDisplay:'Steel bracelet, folding clasp',
   glassDisplay:'Sapphire, domed both sides, AR inside', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Oris 733-1 (Sellita SW200-1 base)', movementType:'Automatic', movementCostDisplay:'not sold separately (Oris-finished Sellita SW200-1)',
-  powerReserveDisplay:'41 h', accuracyDisplay:'—',
+  powerReserveDisplay:'41 h', accuracyDisplay:'−5/+19 s/day',
   waterResDisplay:'300 m (30 bar)', waterResM:300,
   priceDisplay:'€2,600', priceValue:2600, priceCurrency:'EUR' },
 
@@ -3448,11 +3474,18 @@ const WATCHES = [
   bandDisplay:'Milanese mesh bracelet (quick-release)',
   glassDisplay:'Boxed sapphire, inner AR (sapphire exhibition back)', glassCategory:'Sapphire',
   movementDisplay:'Automatic — La Joux-Perret G101 (soignée, 4 positions)', movementType:'Automatic', movementCostDisplay:'~$290 (Swiss LJP G100 family, new)',
-  // Farer name the grade and the number of positions and no tolerance. Row 1 carries ±12 s/day for
-  // the G100 read off La Joux-Perret's LOWEST grade, which pass 14 already flagged as an inference;
-  // borrowing it here would be worse, since this is the highest grade of the same caliber and the
-  // figure would understate it. Empty is the honest cell.
-  powerReserveDisplay:'~68 h', accuracyDisplay:'—',
+  // Farer name the grade and the number of positions on this page and no tolerance - "La Joux-Perret
+  // G101 with soignée finish, the highest grade available". Pass 35 left the cell empty because the
+  // only figure to hand was row 1's ±12, which is the G100's LOWEST grade and would point the wrong
+  // way. Pass 39 found the right one instead of borrowing the wrong one: La Joux-Perret grade the
+  // G101 in two tiers, standard at ±12 s/day over 3 positions with a 30 s maximum and soignée at
+  // ±7 over 4 positions with a 20 s maximum - and FARER STATE THE ±7 THEMSELVES, in their own
+  // journal piece on the caliber: "at Farer, we use the Soigné grade of movement, which is accurate
+  // to ±7 seconds per day". Their own site, their own words, so the average half is not an
+  // inference at all; the max ±20 is the grade's and is labelled with it, exactly as the Élaboré
+  // cells carry Sellita's. The same source confirms row 1's ±12 as the standard grade, which is the
+  // first corroboration that figure has had from anyone but La Joux-Perret.
+  powerReserveDisplay:'~68 h', accuracyDisplay:'~±7 s/day (soignée, max ±20)',
   waterResDisplay:'100 m (10 ATM)', waterResM:100,
   priceDisplay:'€1,295 (Milanese; €1,275 on a strap)', priceValue:1295, priceCurrency:'EUR' },
 
@@ -3467,7 +3500,12 @@ const WATCHES = [
   bandDisplay:'Milanese mesh bracelet (quick-release)',
   glassDisplay:'Boxed sapphire, inner AR (exhibition back)', glassCategory:'Sapphire',
   movementDisplay:'Automatic caller GMT — Sellita SW330-2 (Top Grade)', movementType:'Automatic', movementCostDisplay:'~$300 (Sellita GMT, new, est.)',
-  powerReserveDisplay:'~56 h', accuracyDisplay:'—',
+  // Farer name the grade - "Swiss Made Sellita SW330-2 'Top Grade' movement" - and no tolerance,
+  // so this is Sellita's Premium/Top tier: ±4 s/day rising to ±15, adjusted in five positions.
+  // Farer corroborate the tier without quoting it, writing that "this is the 'Top Grade' version of
+  // the SW330, so it's been adjusted for accuracy in 5 positions" - five positions is what defines
+  // Premium against Élaboré's three. Same borrow as rows 90, 145 and 149 take at the tier below.
+  powerReserveDisplay:'~56 h', accuracyDisplay:'~±4 s/day (Top Grade, max ±15)',
   waterResDisplay:'200 m (20 ATM)', waterResM:200,
   priceDisplay:'€1,615 (Milanese; €1,595 on a strap)', priceValue:1615, priceCurrency:'EUR' },
 

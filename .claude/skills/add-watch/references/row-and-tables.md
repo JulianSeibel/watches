@@ -115,16 +115,30 @@ Two traps that come with the fast routes, both found by running the script again
 
 These are rules the file has been bitten by, not preferences.
 
-1. **The maker's own product page first.** Reviews and retailers only where the maker omits a field.
+1. **The maker's own product page first, then the maker's own FAQ or help centre.** Reviews and
+   retailers only where the maker omits a field everywhere. Pass 39 is why the second clause exists:
+   Oris publish a per-caliber rate — "watches with Cal. 733 have a rate tolerance of…" — in their
+   help centre and on no product page, so pass 22 looked in the right place and correctly found
+   nothing, and five rows sat empty for seventeen passes. Nomadic's ±5 s/day is the same shape, in a
+   FAQ answer rather than a spec table. **Check the non-English locale of a maker statement before
+   trusting its wording**: Oris's English reads "+7 seconds/-12 seconds", which parses as an
+   asymmetric band, and the German "7 Sekunden +/-12 Sekunden" shows it is a nominal with a
+   tolerance. The two disagree and the translation is the wrong one.
 2. **A rate the maker does not publish is filled only from a caliber that has ONE published figure**
    — the grade-ladder test, set in pass 38. Miyota, Seiko/TMI, Orient and Citizen publish one
    accuracy figure per caliber and no grade above or below it, so "Miyota 9039 → −10/+30 s/day"
    describes the movement in *this* watch whoever cased it, and rows 122, 123 and 134–141 carry it
    although Second Hour and Venezianico state nothing. Sellita and ETA sell one ébauche at **four
    grades** spanning ±12 to −4/+6, so `'Sellita SW200-1'` states nothing about the rate: a row whose
-   maker does not name the grade keeps `'—'` (the five Oris, three Sinn, three Maurice Lacroix, two
-   Farer, and Zelos on row 133). Where the maker *does* name the grade, the grade's figure is
-   borrowable and labelled — rows 60, 90, 145 and 149 on Sellita's Élaboré, rows 39/40 on ETA's Top.
+   maker does not name the grade keeps `'—'` (three Sinn, three Maurice Lacroix, Zelos on row 133,
+   Hanhart's HAN4112 on row 147). Where the maker *does* name the grade, the grade's figure is
+   borrowable and labelled — rows 90, 145 and 149 on Sellita's Élaboré, row 151 on Sellita's Top
+   Grade, row 150 on La Joux-Perret's soignée, rows 39/40 on ETA's Top. Naming the grade is not
+   sufficient on its own: row 146's Soprod TOP stays `'—'` because Soprod publish no grade table at
+   all, so there is nothing to borrow. **Row 60 is the known exception** — Sinn name no grade on the
+   556, so its `~±7 s/day (Élaboré, max ±20)` fails this rule; pass 14 set it deliberately as "an
+   inference, not a spec" and pass 39 left it standing while recording that rows 94–96 are the same
+   maker in the same position with `'—'`. Do not cite row 60 as a grade-named precedent.
    **Still refused, and these are the cases to check yourself against:** a family band for a caliber
    with no published figure at any grade (−5/+15 s/day is ETA's generic A31 and is not what Longines
    state for the L888.5 — passes 6 and 13), and marketing about a technology rather than a movement
