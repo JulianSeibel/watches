@@ -505,6 +505,20 @@
 
   <p><b>The weight roster had gone stale in three places and is corrected here, since this pass touched nothing in it.</b> The comment above <code>WEIGHT_MEASURED</code> is the one place in the file that reconciles its own arithmetic maker by maker, and it had been left behind twice: Citizen read “12/16 rows” against an actual 13 of 17 — pass 28's Tsuyosa was never added — and Longines read “4/4 rows” against an actual 7 of 7, because pass 32 put three rows into the table and its own footer paragraph rather than into the roster. The total therefore said “56 published by the maker + 2 borrowed = the 58 in the table” while the table held 61. It now reads 59 + 2 = 61 and reconciles again. <b>This is the second time this exact comment has drifted</b> — pass 25 found it claiming eight makers and 47 rows while listing 48 — and the pattern is the same both times: the count beside a maker's name is prose, the table it describes is data, and only the data is checked. The counts either side of it in the Weight tooltip are <code>{{tokens}}</code> and had of course updated themselves. Worth stating plainly for whoever writes pass 34: <b>the roster is the one weight literal that no <code>{{token}}</code> maintains and no invariant guards</b>, so it has to be re-derived by hand every time a row enters <code>WEIGHT_MEASURED</code>. Nothing about the estimator moved — the test set is unchanged at 61 rows and every figure in the Weight tooltip with it, because row 145 goes to <code>WEIGHT_UNPUBLISHED</code>: Squale's 27-pair spec block states no mass, and neither does the matching bracelet's own page, which does carry the bracelet's width and its clasp width.</p>
 
+  <p><b>Hanhart, Seiko and Squale, pass 34 — four rows added (146–149), and the list goes from 145 to 149.</b> Three makers and one new brand: two Hanhart PIONEER Preventors at €1,340 and €1,390, a Seiko Presage Sharp Edged at £860, and a second Squale, the 600 m Matic-S at €1,750. The vocabulary moved only where it had to — no new case category, glass, movement type, watch type or complication — but <b>three new <code>MOVEMENT_TIER</code> keys</b>, which is the most since pass 22. All four are scored on 44 to 58 comparable rows, so nothing here is extrapolated and neither <code>n/s</code> row was ever in play. <b>They land 47, 44, 56 and 46 spec points and −6.40, −10.20, +4.80 and −10.20 on Value</b> — which is the widest spread any four-row pass has produced here, from 31st of 149 to 144th. The Seiko is the only one above the curve and the reason is not subtle: at £860 it is the cheapest of the four and the only one with a 70-hour barrel, a display back and a push-button deployant, so it wins three groups outright while costing a third less.</p>
+
+  <p><b>The three that land below all lose in the same two groups, and it is worth naming because they are not the same kind of watch.</b> <b>Timekeeping</b> scores 0.16, 0.16 and 0.14 of 1 on rows 146, 147 and 149 against the Seiko's 0.40: all three run 38-hour barrels, which is the floor of the power-reserve anchor, and two of the three carry no published rate at all so the accuracy sub-score is imputed rather than earned. <b>Fittings</b> scores 0.37 on all three against 0.88 — each has a solid caseback and a clasp whose mechanism its maker declines to describe, where the Seiko has a window and a named push-button deployant. Beyond that they diverge completely: row 146 is 10.5 mm thick and takes the best wearability of the four at 0.70, row 149 has the best water-and-lume score in the file's whole diver population at 0.90, and row 147 is the only one of the three with a complication to its name. <b>What the pass really measures is a German and a Swiss maker charging €1,340–€1,750 into a curve where a Japanese in-house automatic with a 70-hour reserve costs €1,004</b>, and the Value column has no opinion about which is the better object.</p>
+
+  <p><b>Three new movement tiers, and only one of them is an argument.</b> The <b>Seiko 6R35 takes 0.70</b>, level with the 6R51 on row 64, because this column has rated architecture rather than model number since pass 12 and the two are the same architecture — Seiko's in-house 6R, Spron hairspring and mainspring, Diashock, 24 jewels, and the identical −15/+25 published rate. Its 70 hours earn nothing extra by the SW200-2 Power+ rule. The <b>Hanhart HAN4112 takes 0.60</b>, level with every other SW200 derivative here and deliberately not above them: it is a Sellita SW 200 with a Dubois Dépraz module for the small seconds, and a module is a function rather than an architecture. Crediting it would be the pass-17 ST19 error in reverse — that caliber was refused a promotion for containing a chronograph because complications already pay for it, and this row's small seconds is already paid for at the <code>small_sec</code> rate of 0.15. <b>The <code>Soprod SOP P024</code> at 0.63 is the one to argue about</b>, and like Laco's Top grade it is deliberately not on a 0.05 step, because the position between two rungs is the claim. The base is 0.60, Soprod's 2892-class architecture, which is exactly what earns the C125 and Venezianico's V3250 theirs. Hanhart then buy it in Soprod's TOP execution and publish the components that make it one — a Glucydur balance, an Incabloc double-cone shock — and pass 26 already set +0.03 as this table's rate for precisely that step, on the Laco Élaboré → Top-grade pair. It stops short of the 0.65 that per-unit COSC and a silicon hairspring hold. <b>The uncomfortable part is that the upgrade is invisible everywhere else on the row</b>: Soprod publish no TOP tolerance, so row 146's rate cell is empty and the timekeeping group cannot see what the tier just paid for. At 0.60 the row loses about half a spec point and stays <i>below the curve</i>.</p>
+
+  <p><b>The judgement calls, and two rows turned on photographs again.</b> <b>Row 146's <code>caseScore</code> of 0.6</b> is the same override row 64 carries for Seiko's super-hard coating: HD12 is a surface-hardened stainless steel, not a coating and not another alloy family — Hanhart's own caseback engraving reads “15 ATM/HD 12 STEEL” — and the category's 0.5 understates a case whose selling point is scratch resistance. It is not higher because Hanhart publish no hardness number; a stated HV figure well above 316L's 150–200 would argue for more. <b>Row 149's bezel at 0.7</b> is the softest number in the pass, one notch under row 145's plain-steel 0.8: Squale call the insert “Glasierter Stahl”, glazed steel, so the wear surface is a coat rather than the steel, which is the reasoning that put row 132's resin-over-nacre at 0.4. It does not fall that far because a fired glaze is hard and the substrate is steel regardless. At 0.8 the row gains about 0.4 of a spec point, at 0.4 it loses about 1.6, and it stays <i>well below the curve</i> under all three. <b>Lume is 0.7 on three rows and 0.5 on the Seiko</b>, each off the maker's own wording: rows 146 and 149 name “Super-LumiNova C1”, which is the Baltic and row-145 case, row 147 names the compound with no class at all, which is the Longines wording that also takes 0.7, and Seiko name “Lumibrite” with no grade, the scale's unspecified-compound rung. That 0.5 is five times row 64's 0.1 deliberately: the Aijiro's lume is a token, this one is on every hand and marker. <b>Row 148's antimagnetism is 0 and row 64's is 0.3</b>, which is the one place the Seiko anchor was refused — Seiko state a 4,800 A/m rating on the Classic and no magnetic-resistance field at all on this reference, and absence is a finding here. <b>The clasps are 0.6, 0.6, 0.8 and 0.6</b>, and the three sixes are all the same admission: neither Hanhart nor Squale names a mechanism for its bracelet, so all three follow the Laco precedent from pass 26 rather than being invented. Row 149's is the weakest of them, because unlike row 145 there was no clasp photograph on its page to settle it.</p>
+
+  <p><b>Squale's scrambled spec labels are a template, not a typo, and that is this pass's most reusable finding.</b> Pass 33 recorded that row 145's “Lugs Depth 18 MM” and “Lugs Width 45 mm” are the lug width and the lug-to-lug with the words swapped. Row 149 is a different model on a different page and reads “Lugs Depth 19 mm” and “Lugs Width 47 mm” — the same two labels, the same swap, and confirmed the same way, since 47 mm cannot be a lug width on a 39.5 mm case and the 19 mm reappears as the bracelet's own stated width. One page is an error; two pages on two models is Squale's spec template, and <b>any later Squale row should be read that way rather than re-derived</b>. <b>The Seiko page carries a trap of a different kind</b> and it nearly put a wrong dial on row 148: the body contains the string “Cocktail Time STAR BAR Limited Edition”, which belongs to a carousel of other Presage references further down the page. SPB169J1 is the Sharp Edged — green Asanoha dial, date at 3 — as Seiko's own product image for that exact reference shows. A string near the product is not a claim about the product, which is the same lesson pass 22 learned from Traska's “FreeDiver_38” filenames on a 40.5 mm watch.</p>
+
+  <p><b>The Seiko is the whole weight story, and Seiko become the second maker here to be caught under-documented rather than silent.</b> Seiko's French page states “Poids 155.0” as an ordinary field, so row 148 goes to <code>WEIGHT_MEASURED</code> and the test set grows <b>61 → 62</b>. The estimator barely notices and improves fractionally on every measure: mean absolute error 10.5% → <b>10.4%</b>, within ±15% 51/61 → <b>52/62</b>, median 6.7% → 6.6%, RMSE unchanged at 14.5 g. The row itself reads <b>light</b> — 146 g estimated against 155 g published, −5.8% — which is the opposite sign to pass 32's three Longines and lands comfortably inside the band. Nothing was refitted on it, for the reason <code>weightEstimatorStats()</code> states once. <b>The roster above <code>WEIGHT_MEASURED</code> needed correcting again</b>, one pass after pass 33 corrected it: Seiko's line read “1/1 row” with no field name, because the German site row 64 came from leaves the field unlabelled. The French site names it, so the line now reads “Poids, 2/2 rows” and the maker-published total goes 59 → 60, reconciling to the 62 in the table. <b>The other three rows publish no mass at all</b> and go to <code>WEIGHT_UNPUBLISHED</code>: both Hanhart spec blocks run nine headed sections without one, and the Matic-S repeats row 145's 27-pair template and its silence, as does the matching bracelet's own page, which does give the bracelet's width and its clasp width.</p>
+
+  <p><b>What it did to everything else, and this is the pass where the model got measurably worse.</b> Value moved by at most <b>0.80</b> spec points across the existing 145 — row 16, the Delhi Tithi, as in pass 27 — with 129 of 145 moving at all and <b>7 crossing zero</b>: rows 50, 59, 65 and 87 down across it, rows 82, 83 and 125 up. <b>Four rows change band</b>: row 10 (AV86 1968 Moonphase) from <i>below</i> to <i>well below</i>, row 34 (Vaer D4 Meridian) from <i>as expected</i> to <i>below</i>, row 74 (Mido Baroncelli) from <i>as expected</i> to <i>above</i>, and row 105 (Oris Aquis Diamonds) from <i>well below</i> to <i>below</i>. <b>Spec drift touched one row</b> — row 41, the Revelot Hexmariner, 41 → 40 — which is <code>imputeMissingSubs()</code> doing exactly what it is documented to do: that row carries an unresearched sub-score, four new rows moved the list mean it is filled with, and the rounding fell. <b>Leave-one-out RMSE is 5.75 → 5.85 and skill 61.2% → 59.1%</b>, the largest single-pass fall in skill recorded here, and the honest reading is that three of the four rows sit more than a sigma below a line they also help fit. The spec/price correlation slips 0.79 → 0.78 and the resample spread widens 0.25/0.54 → 0.29/0.61; naive RMSE improves 9.24 → 9.15 and sign flips stay at 1. Sigma, the spec range and the two <code>n/s</code> and two <code>o/s</code> rows are all unchanged. <b>A pass that lowers skill is not a pass that went wrong</b> — it means the four watches are less predictable from their price than the list average, which is a fact about them and the thing the Value column exists to show.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -526,7 +540,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-145 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-149 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
 //                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
@@ -3201,6 +3215,113 @@ const WATCHES = [
   powerReserveDisplay:'38 h', accuracyDisplay:'~±7 s/day (Élaboré, max ±20)',
   waterResDisplay:'200 m (20 ATM)', waterResM:200,
   priceDisplay:'€1,440', priceValue:1440, priceCurrency:'EUR' },
+
+// --- Hanhart PIONEER Preventor, pass 34 (rows 146-147) -----------------------------------------
+// A NEW BRAND, and the first German maker here since Laco and Sinn. Both references are WooCommerce
+// pages whose spec block renders server-side as plain headed lists - MASSE, LUENETTE, GLAS,
+// WASSERDICHTIGKEIT, KALIBER, GANGRESERVE, FUNKTIONEN, ZIFFERBLATT, ARMBAND - so --probe returns
+// everything in one request. No embedded product record, no configurator. The schema.org offer
+// carries the price and is the figure used; the page also renders a larger number that belongs to
+// a watch-plus-strap bundle rather than to the watch.
+//
+// NEITHER REFERENCE PUBLISHES A RATE, so both carry '-'. This is the rule passes 6, 13 and 15 each
+// enforced: Hanhart name the caliber, the grade, the frequency and the jewel count and never a
+// tolerance, and Soprod publish no TOP-grade figure comparable to Sellita's Elabore spec, so there
+// is nothing to borrow with a label the way rows 60 and 145 borrow Sellita's. Neither publishes a
+// mass either - both go to WEIGHT_UNPUBLISHED.
+//
+// NEITHER HAS A ROTATING BEZEL. "Glatte Luenette" is a smooth fixed bezel on both, so EXTRAS.bezel
+// is null - excluded from the fittings average rather than scored 0, which is the distinction that
+// table's header draws.
+{ id:146, brand:'Hanhart', name:'Hanhart PIONEER Preventor HD12 39 mm, black', desc:'Hardened-steel everyday three-hander, no date · 39 mm against the 40 mm Preventor9 below',
+  link:'https://www.hanhart.com/produkt/pioneer-preventor-hd12-schwarz-39-mm/',
+  img:'https://www.hanhart.com/wp-content/uploads/2024/09/hanhart-pioneer-preventor-front-black-bracelet-xl.jpg',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'46 mm',
+  heightDisplay:'10.5 mm', heightMm:10.5,
+  // HD12 is a hardened stainless steel, not a coating and not a different alloy family: Hanhart
+  // describe "aussergewoehnliche Oberflaechenhaerte ohne die Korrosionsbestaendigkeit des
+  // Edelstahls zu beeintraechtigen", and their own caseback engraving reads "15 ATM/HD 12 STEEL".
+  // So caseCategory stays Steel and the hardness is taken as a caseScore override - see EXTRAS.
+  caseDisplay:'Hardened HD12 stainless steel (smooth fixed bezel, screwed back + crown)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet (PVD hard-coated, folding clasp)',
+  glassDisplay:'Convex sapphire, inner AR', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Soprod SOP P024 (TOP)', movementType:'Automatic', movementCostDisplay:'not sold separately (Soprod, supplied to brands)',
+  // Hanhart state the grade and its components - TOP execution, Glucydur balance, Incabloc - and
+  // no rate. Soprod publish no TOP tolerance, so unlike rows 60 and 145 there is nothing to borrow.
+  powerReserveDisplay:'38 h', accuracyDisplay:'—',
+  waterResDisplay:'150 m (15 ATM, DIN 8310)', waterResM:150,
+  priceDisplay:'€1,340', priceValue:1340, priceCurrency:'EUR' },
+
+{ id:147, brand:'Hanhart', name:'Hanhart PIONEER Preventor9 40 mm, black', desc:'Small-seconds pilot three-hander on a Dubois Dépraz module · plain steel against row 146\'s hardened case',
+  link:'https://www.hanhart.com/produkt/pioneer-preventor9-schwarz-40-mm/',
+  img:'https://www.hanhart.com/wp-content/uploads/2024/10/Stahl-16.jpg',
+  // Hanhart give diameter and height for this reference and no lug-to-lug, where they give one for
+  // row 146. Unpublished stays '-' rather than being inferred from the sibling: different case.
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'—',
+  heightDisplay:'12.5 mm', heightMm:12.5,
+  caseDisplay:'Stainless steel (smooth fixed bezel, screwed solid back)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet (folding clasp)',
+  glassDisplay:'Sapphire, single-sided AR', glassCategory:'Sapphire',
+  movementDisplay:'Automatic small seconds — Hanhart HAN4112 (Sellita SW 200 + Dubois Dépraz)', movementType:'Automatic', movementCostDisplay:'not sold separately (Hanhart-specified SW 200 with a DD module)',
+  powerReserveDisplay:'38 h', accuracyDisplay:'—',
+  waterResDisplay:'100 m (10 ATM, DIN 8310)', waterResM:100,
+  priceDisplay:'€1,390', priceValue:1390, priceCurrency:'EUR' },
+
+// --- Seiko Presage Sharp Edged, pass 34 (row 148) ----------------------------------------------
+// SEIKO PUBLISH EVERY FIELD THIS TABLE WANTS except the price, and the price is the whole research
+// problem. seikowatches.com/fr-fr renders the full dt/dd spec list - thickness, diameter, lug-to-
+// lug, lug width, clasp type, weight, caseback - and shows no price at all, as Seiko's French site
+// never does. The SAME reference on Seiko's UK site carries GBP 860.00 in Seiko's own price
+// element. That is a change of locale, not of source: it is still the maker quoting its own RRP,
+// so it is used directly rather than labelled borrowed, and it is handled as a GBP row the way the
+// Abinger rows 110-112 are - priceEUR hand-set, rate in the comment, because recomputePriceEUR()
+// only fetches USD.
+//
+// THE PAGE ALSO CARRIES A TRAP that cost a wrong dial description before the photograph settled it:
+// the body contains the string "Cocktail Time STAR BAR Limited Edition", which belongs to a
+// carousel of OTHER Presage references further down the page and not to this one. SPB169J1 is the
+// Sharp Edged series - green Asanoha-patterned dial, date at 3 - as Seiko's own product image for
+// this exact reference shows.
+{ id:148, brand:'Seiko', name:'Seiko Presage Sharp Edged "Kanro" (SPB169J1)', desc:'Green Asanoha-pattern dial, Zaratsu-polished case, 70 h 6R35 · the sports-dress Presage against row 64\'s Classic',
+  link:'https://www.seikowatches.com/fr-fr/products/presage/spb169j1',
+  img:'https://www.seikowatches.com/fr-fr/-/media/Images/Product--Image/All/Seiko/2022/02/20/00/53/SPB169J1/SPB169J1.png',
+  diameterDisplay:'39.3 mm', diameterMm:39.3, l2lDisplay:'47.2 mm',
+  heightDisplay:'11.1 mm', heightMm:11.1,
+  caseDisplay:'Stainless steel (super-hard coating, screwed + display back)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet (push-button deployant)',
+  glassDisplay:'Sapphire, inner AR', glassCategory:'Sapphire',
+  movementDisplay:'Automatic (hand-wind + hack) — Seiko 6R35', movementType:'Automatic', movementCostDisplay:'not sold separately (Seiko in-house 6R)',
+  powerReserveDisplay:'~70 h', accuracyDisplay:'−15/+25 s/day',
+  waterResDisplay:'100 m (10 bar)', waterResM:100,
+  priceDisplay:'£860 (~€1,004)', priceValue:860, priceCurrency:'GBP', priceEUR:1004 /* £860 at ECB GBP→EUR ≈1.1673, 21 Aug 2026 */ },
+
+// --- Squale Matic-S, pass 34 (row 149) ---------------------------------------------------------
+// THE PASS-33 LABEL TRAP GENERALISES, and that is worth as much as the row. Row 145 recorded that
+// Squale's "Lugs Depth" and "Lugs Width" are lug width and lug-to-lug with the words swapped. This
+// is a different model on a different page and it reads "Lugs Depth 19 mm" and "Lugs Width 47 mm",
+// the same swap on the same two labels - so it is Squale's spec template rather than one page's
+// mistake, and any later Squale row should be read the same way.
+//
+// 60 ATM IS THE DEEPEST RATING IN THIS FILE and it is the maker's own, stated in the spec block,
+// on the dial ("60 ATMOS") and engraved on the caseback ("60 ATMOS PROFESSIONAL"). Three
+// independent statements of the same number on the same watch, which is why it is taken at face
+// value rather than treated as marketing.
+{ id:149, brand:'Squale', name:'Squale Matic-S Two-Tone Bracelet (MATICGBKBK.SSBI)', desc:'600 m two-tone diver, gold PVD bezel ring and centre links · the deepest-rated watch here',
+  link:'https://www.squale.ch/de/matic-s-two-tone-bracelet',
+  img:'https://eu.squale.ch/live/assets/media/upload/SQUALE_MATICGBKBK_SSBI_FRONT_NOBG.png',
+  // 47 mm is Squale's "Lugs Width" read as the lug-to-lug it can only be; 19 mm their "Lugs Depth"
+  // read as the lug width, which the bracelet's own "Width 19 mm" confirms. See the banner above.
+  diameterDisplay:'39.5 mm', diameterMm:39.5, l2lDisplay:'47 mm',
+  heightDisplay:'12.6 mm', heightMm:12.6,
+  caseDisplay:'Brushed 316L steel with polished chamfers (unidirectional bezel, glazed steel insert; screwed back + crown)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet (two-tone, gold PVD centre links)',
+  glassDisplay:'Domed sapphire + AR', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Sellita SW200-1 (Élaboré)', movementType:'Automatic', movementCostDisplay:'~$170 (Sellita, new)',
+  // Same treatment as row 145 and for the same reason: Squale name the caliber and the grade
+  // ("Control grade: Elabore") and no rate, so this is Sellita's Elabore spec, not Squale's claim.
+  powerReserveDisplay:'38 h', accuracyDisplay:'~±7 s/day (Élaboré, max ±20)',
+  waterResDisplay:'600 m (60 ATM)', waterResM:600,
+  priceDisplay:'€1,750', priceValue:1750, priceCurrency:'EUR' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -3406,10 +3527,10 @@ function measuredRatioStats(watches) {
 // Pass 10 added that "if a real set of measured weights ever exists that argument changes,
 // because measured mass carries information the dimensions do not - bracelet build, case wall
 // thickness". That set now partly exists, so the question is flagged rather than quietly ignored.
-// It is still NOT acted on, for two reasons. The 61 are not a random sample - they are ten makers
+// It is still NOT acted on, for two reasons. The 62 are not a random sample - they are ten makers
 // who happen to document well, three of them Japanese and seven Western, so scoring on them would
 // score brands on their spec-sheet habits. And the double-counting objection above still binds
-// for the other 83 rows, where the "weight" is a function of columns the score already reads.
+// for the other 87 rows, where the "weight" is a function of columns the score already reads.
 // Scoring a column that is measured for some rows and derived from other scored inputs for the
 // rest would mean two different things in one number. Completing the research is the prerequisite.
 //
@@ -3513,7 +3634,7 @@ const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceram
 // Published weights, pass 11, extended in passes 12, 15 and 16. Every row was checked against the
 // maker's own product page - the link the row already carries - rather than sampled. That
 // overturned the premise this column was built on. Weight is NOT unpublishable: ten makers state
-// it outright, as a plain field in the same spec table as the diameter, covering 59 rows.
+// it outright, as a plain field in the same spec table as the diameter, covering 60 rows.
 //   Citizen    "Gewicht"          13/17 rows on de.citizenwatch.eu
 //   CW         "Weight inc. Strap" 10/10 rows - and the only maker that also gives a separate
 //                                  "Case Weight", i.e. the only one it is possible to take the
@@ -3521,7 +3642,8 @@ const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceram
 //   Tissot     "Gewicht (g)"      12/12 rows
 //   Mido       "Gewicht (g)"       8/8 rows - states it to a decimal (168.1 g on the Tribute)
 //   Seagull    "Net Weight"        3/3 rows
-//   Seiko                          1/1 row
+//   Seiko      "Poids"             2/2 rows - the field is unlabelled on the German site and
+//                                  named on the French one; both give a with-band figure
 //   Timex      "Weight"            1/1 row - to two decimals, the most precise here
 //   Longines   "case_weight"       7/7 rows - in the product record behind the spec accordion
 //                                  rather than in the rendered prose, which is why passes 6 and
@@ -3534,7 +3656,7 @@ const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceram
 //                                  and to a decimal on row 120 (76.8 g)
 // Two more rows come from a third party where the maker omits it, marked below. Figures are
 // with the band the row is priced on, matching what this column claims to show.
-// The three counts above reconcile: 59 published by the maker + 2 borrowed = the 61 in the table.
+// The three counts above reconcile: 60 published by the maker + 2 borrowed = the 62 in the table.
 // They did not before pass 25 - the roster said eight makers and 47 rows while listing 48, had
 // never gained Junkers, and still counted row 67 as borrowed after pass 21 found Longines publish
 // it themselves. Corrected here rather than left, since a roster that does not add up is the kind
@@ -3574,6 +3696,7 @@ const WEIGHT_MEASURED = {
   59: 121,  // 6182. Page gives "121g/84g" for the 40 mm and the 32 mm halves of a couple set.
   // --- Seiko --------------------------------------------------------------------------------
   64: 118,  // Presage SPB521J1, steel
+  148: 155,  // Presage SPB169J1, steel bracelet - Seiko's "Poids" field, 155.0 g
   // --- Maker omits it; sourced elsewhere and marked as such ---------------------------------
   44: 111,  // Fujitsubo NB6025-59H - Long Island Watch spec table. Citizen's own DE and US
             //   pages both omit this reference while publishing it for its siblings.
@@ -3759,6 +3882,14 @@ const WEIGHT_UNPUBLISHED = new Set([
                           //   carries a weight field either. The Shopify variant records DO carry
                           //   grams, and it is the parcel: the pass 22 Traska trap, and never a
                           //   WEIGHT_MEASURED figure
+  146, 147,               // Hanhart PIONEER Preventor - both spec blocks run MASSE, LUENETTE,
+                          //   GLAS, WASSERDICHTIGKEIT, KALIBER, GANGRESERVE, FUNKTIONEN,
+                          //   ZIFFERBLATT and ARMBAND, and neither states a mass. Row 146 gives a
+                          //   lug-to-lug where row 147 does not, so the omission is per-field
+                          //   rather than a thin template
+  149,                    // Squale Matic-S - same 27-pair template as row 145 and the same
+                          //   silence on mass; the matching bracelet page gives its width and
+                          //   clasp width and no weight either
   145,                    // Squale Super-Squale - the spec block runs Uhrwerk, Gehause, Diameter,
                           //   Insert, Lunette, Armband, Glas and Zifferblatt, 27 key/value pairs
                           //   in all, and none of them is a mass. Neither is there one in the
@@ -4032,6 +4163,14 @@ const WATCH_TYPES = {
   136: ['Sports', 'Dress'], 137: ['Sports', 'Dress'],
   138: ['Diver'], 139: ['Diver'], 140: ['Diver'], 141: ['Diver'],
   145: ['Diver'],                   // 200 m, unidirectional dive bezel, screw-down crown
+  // Hanhart, pass 34. The maker states the intent on 146 and it wins: "der neue, alltagstaugliche
+  // Allrounder". 147 has no such sentence and takes Pilot on the PIONEER line's aviation heritage,
+  // its large luminous Arabics and its small-seconds layout. Neither has a rotating bezel, so
+  // neither is a Diver at any depth rating.
+  146: ['Everyday'],
+  147: ['Pilot'],
+  148: ['Dress', 'Everyday'],       // Sharp Edged: 10 bar and a bracelet, but a Presage dress case
+  149: ['Diver'],                   // 600 m, unidirectional dive bezel, screw-down crown
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
@@ -4102,7 +4241,7 @@ const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (126 of 145 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (130 of 149 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -4129,6 +4268,13 @@ const MOVEMENT_TIER = {
   'Automatic — cal. 0950': 0.75,
   'Automatic — cal. 9051': 0.75,
   'Automatic (hand-wind + hack) — Seiko 6R51': 0.70,
+  // Pass 34. Level with the 6R51 above, because this column rates architecture rather than model
+  // number and the two are the same architecture: Seiko's own 6R, made in-house down to the Spron
+  // hairspring and mainspring alloys, with Diashock and the same 24-jewel three-quarter layout.
+  // The 6R35's 70 h earns nothing extra here - power reserve is timekeeping's own sub-score, the
+  // SW200-2 Power+ rule - and its -15/+25 is the same figure row 64 carries, so nothing separates
+  // them that this table can rank.
+  'Automatic (hand-wind + hack) — Seiko 6R35': 0.70,
   // Longines L888.4, pass 21, at 0.70 - the highest non-manufacture entry in this table, and the
   // one number in that pass most open to disagreement. The argument is arithmetic on this table's
   // own precedents rather than an opinion about Longines. The L888.5 below sits at 0.65 for a
@@ -4368,6 +4514,26 @@ const MOVEMENT_TIER = {
   // Soprod publish no finishing grade or regulated rate for the C125 as Baltic fit it, so it takes
   // the raw number with no Élaboré-style step, the same treatment the bare SW200-1 key gets.
   'Automatic caller GMT — SOPROD C125': 0.60,
+  // Pass 34, and 0.63 is deliberately not on a 0.05 step for the same reason Laco's Top grade is
+  // not: the position between two rungs is the argument. The base is 0.60 - Soprod's own 2892-
+  // class architecture, which is exactly what earns the C125 directly above and Venezianico's
+  // V3250 their 0.60. Hanhart then buy it in Soprod's TOP execution and publish the component
+  // list that makes it one: a Glucydur balance and an Incabloc double-cone shock. That is a
+  // components-and-regulation change, which this table's header folds INTO the tier rather than
+  // adding as a bonus, so it has to move the number - and +0.03 is the rate pass 26 set for
+  // exactly this step on the Laco SW200-1 Elabore -> Top grade pair. It does not reach the 0.65
+  // of the SW300-1 COSC or the L888.5, because neither per-unit certification nor a silicon
+  // hairspring is claimed here. A published TOP tolerance from Soprod would let the timekeeping
+  // group see the same upgrade the tier does; today it cannot, because the rate cell is empty.
+  'Automatic — Soprod SOP P024 (TOP)': 0.63,
+  // Pass 34. 0.60, level with every other SW200 derivative here and NOT above them. The HAN4112
+  // is a Sellita SW 200 with a Dubois Depraz module bolted on top for the small seconds, and a
+  // module is a function rather than an architecture: the escapement, the balance and the barrel
+  // are the SW200's. Crediting the module here would be the ST19 error in reverse - pass 17
+  // refused to promote that caliber for having a chronograph because complications already pay
+  // for it, and this row's small seconds is already paid for at the 'small_sec' rate of 0.15 in
+  // the complications group. The 30 jewels are the module's, not a finishing claim.
+  'Automatic small seconds — Hanhart HAN4112 (Sellita SW 200 + Dubois Dépraz)': 0.60,
   // Mido, pass 12. The Caliber 80 IS the Powermatic 80 - same ETA C07 family, same synthetic
   // escapement, same laser regulation - so it takes the same 0.55/0.50 pair, Nivachron or not.
   // Two Mido calibers sit above that and both for architectural reasons the base does not share:
@@ -5245,6 +5411,81 @@ const EXTRAS = {
   //   ceramic and is not aluminium.
   // comp - none. No date, no complication; see the row banner.
   145:{lume:0.7,war:2,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:0.8},
+
+  // --- Hanhart PIONEER Preventor, pass 34 (rows 146-147) -----------------------------------
+  // lume 0.7 on both: row 146 names the compound and a class - "Super-LumiNova C1" - which is the
+  //   Baltic/Squale C1 case and takes their 0.7. Row 147 names only "Super-LumiNova", no class at
+  //   all, which is the Longines wording that rows 67 and 91-93 hold 0.7 for. The two arrive at
+  //   the same number from opposite directions and are left there rather than split on a
+  //   distinction neither maker draws.
+  // war 2 on both: Hanhart's own warranty page - "ab Kaufdatum zwei Jahre". DATA ONLY.
+  // iso 0 on both: DIN 8310 is cited for the pressure rating on both pages, which is the German
+  //   water-resistance standard and NOT ISO 6425. No diver certification is claimed anywhere.
+  // antimag 0 on both. Row 147 needed checking rather than assuming, because "Preventor" is a
+  //   Hanhart name with an antimagnetic history and the page has a heading reading "GARANTIERTER
+  //   SCHUTZ" that looks like one. It is not: the text under it is about the screwed caseback and
+  //   the pressure rating. No soft-iron cage, no A/m figure, nothing to score.
+  // clasp 0.6 on both, and this is the softest pair of numbers in the pass. Hanhart write
+  //   "Faltschliesse" for both bracelets and name no mechanism - no push-button, no micro-
+  //   adjustment, no safety catch - which is exactly the Laco situation on rows 117 and 120 and
+  //   takes their 0.6. The butterfly clasp Hanhart sell separately is a LEATHER-strap accessory
+  //   and belongs to neither row. Evidence of a push-button or micro-adjustment takes either to
+  //   0.7-0.8 and the row about half a spec point.
+  // service 0.5 on both: a small independent German manufacturer selling direct and through a
+  //   dealer network. Below Sinn's 0.8 on row 60, which is a larger operation with a published
+  //   service tariff. DATA ONLY.
+  // bezel null on both: "Glatte Luenette" is a smooth FIXED bezel on both references. Null is the
+  //   criterion not applying, not a zero - excluded from the fittings average.
+  // caseScore 0.6 on row 146 ONLY. HD12 is a surface-hardened stainless steel, and this is the
+  //   same override row 64 carries for Seiko's super-hard coating: steel's category 0.5 understates
+  //   a case whose selling point is scratch resistance. It is deliberately NOT higher, because
+  //   Hanhart publish no hardness figure - a stated HV number well above 316L's 150-200 would
+  //   argue for more. Row 147 is plain steel and takes no override.
+  // comp - 146 none, a true three-hander with no date. 147 takes ['small_sec']: the Dubois Depraz
+  //   module drives an actual small-seconds subdial, which is what that tag is for.
+  146:{lume:0.7,war:2,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:null,caseScore:0.6},
+  147:{lume:0.7,war:2,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:null,comp:['small_sec']},
+
+  // --- Seiko Presage Sharp Edged, pass 34 (row 148) ----------------------------------------
+  // Row 148, Seiko Presage Sharp Edged SPB169J1. Anchored throughout on row 64, the other Seiko.
+  // lume 0.5: Seiko state "Aiguilles et index Lumibrite" - the compound named, no grade, on hands
+  //   AND applied indexes. That is this table's 0.5 rung for an unspecified compound. It is
+  //   deliberately five times row 64's 0.1: the Aijiro is a dress watch whose lume is a token,
+  //   this is a 10-bar sports-dress watch lumed on every hand and marker. It stays under the 0.7
+  //   the named-C1 rows hold because Lumibrite has no published grade to name.
+  // war 2, service 0.9: both straight off row 64, same maker, same network. DATA ONLY.
+  // iso 0: 10 bar, no diver claim.
+  // antimag 0, and this is where row 64 is deliberately NOT copied. That row carries 0.3 for a
+  //   stated 4,800 A/m rating; Seiko's spec list for THIS reference has no magnetic-resistance row
+  //   at all, and absence is a finding of 0 per this table's rule.
+  // clasp 0.8: "Fermoir a boucle deployante avec ouverture par bouton-poussoir" - a push-button
+  //   deployant, which is row 64's number and row 64's wording.
+  // bezel null: no rotating bezel.
+  // caseScore 0.6: "revetement anti-eraflure", Seiko's super-hard coating, the same override and
+  //   the same number as row 64.
+  // comp - none. The date is not a scored complication here and never has been; COMPLICATION_VALUES
+  //   has no key for it, which is the same reason row 144 scores nothing for its functions.
+  148:{lume:0.5,war:2,iso:0,antimag:0,clasp:0.8,service:0.9,bezel:null,caseScore:0.6},
+
+  // --- Squale Matic-S, pass 34 (row 149) ---------------------------------------------------
+  // Row 149, Squale Matic-S Two-Tone. Anchored on row 145, the other Squale.
+  // lume 0.7: "SuperLuminova C1", identical wording to row 145 and to the Baltic C1 rows.
+  // war 2, service 0.5, iso 0, antimag 0: all four as row 145, same maker, same claims, same
+  //   silences. 60 ATM is stated three times over and ISO 6425 nowhere.
+  // clasp 0.6: as row 145, and the weaker inference of the two - Squale give only "Fibbia 16 mm"
+  //   with no mechanism, and unlike row 145 there is no clasp photograph on this product's page to
+  //   settle it. It follows its sibling rather than being guessed independently.
+  // bezel 0.7, one notch UNDER row 145's plain-steel 0.8, and this is the pass's most arguable
+  //   number. Squale call the insert "Glasierter Stahl" - glazed steel, i.e. steel under a
+  //   vitreous or lacquer coat, which the photograph supports: black field with gold markings.
+  //   This criterion rates the wear surface, and the wear surface here is the coating rather than
+  //   the steel, which is precisely the reasoning that put row 132's resin-over-nacre at 0.4. It
+  //   does not fall that far because a fired glaze is hard and the substrate is steel either way.
+  //   At 0.8, level with row 145, the row gains about 0.4 of a spec point; at 0.4 it loses about
+  //   1.6. Evidence of what the coating actually is would settle it.
+  // comp - none. It has a date at 3, confirmed on Squale's own photograph, and a date scores
+  //   nothing here.
+  149:{lume:0.7,war:2,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:0.7},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -5556,6 +5797,23 @@ const FINISH = {
   // further construction step. Nothing is added for the movement: the back is solid steel, so
   // there is no visible finishing to rate.
   145:0.55,
+  // Rows 146 and 147, Hanhart: 0.55 both. Above Traska's 0.50 on case work - German manufacture,
+  // brushed cases with polished flanks, a solid three-link bracelet - and below the Sinn 556's
+  // 0.60 on row 60 for the one thing that separates them: both Hanhart dials are PRINTED, large
+  // luminous Arabics on a matt ground, where the 556 Eisblau's is guilloche. One number for the
+  // two references because they share a case-and-dial standard.
+  146:0.55, 147:0.55,
+  // Row 148, Seiko: 0.75, level with row 64 and for the same reasons - Zaratsu-polished case
+  // surfaces, applied faceted indexes, a stamped-pattern dial and an in-house 6R. The Sharp Edged
+  // series' whole premise is the case finishing, so it is not placed under the Presage Classic.
+  // Nothing is added for the display back: that window is fittings.displayBack and is already
+  // scored, the rule rows 119-120 and 122 turn on.
+  148:0.75,
+  // Row 149, Squale: 0.55, level with row 145. The polished chamfers and the gold PVD are real
+  // work but they are the same brushed-316L construction standard, and PVD is a coating rather
+  // than an operation - the distinction pass 29 drew for row 132 and pass 31 for the moissanite
+  // rows, where 0.65 is withheld for a material bought and granted for an operation performed.
+  149:0.55,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -5563,7 +5821,7 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 131 of 145 rows resolved - 59 see-through, 72 solid. The fourteen still open are
+// Research status: 135 of 149 rows resolved - 60 see-through, 75 solid. The fourteen still open are
 // 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125, 126, 142 and 143, all rows whose maker publishes no
 // caseback detail. Row 91 is the best documented of them: Longines leave the field empty on the
 // Spirit 37 AND on the 40 mm sibling, so the gap is the collection's, not this reference's.
@@ -5793,6 +6051,23 @@ const DISPLAY_BACK = {
   // a solid steel disc, guilloche-patterned, engraved STAINLESS STEEL / AUTOMATIC / SWISS MADE /
   // 20 ATMOS around a Super Squale logo, with no window. Researched, solid.
   145: 0,
+  // Row 146, Hanhart Preventor HD12. Hanhart's spec says "Geschraubter Gehaeuseboden", which is
+  // how it is fixed and not what it is - the same gap row 145 had. Their own caseback photograph
+  // settles it: a solid disc engraved Hanhart / Hergestellt in Deutschland, with PIONEER,
+  // PREVENTOR 39MM, AUTOMATIX and 15 ATM/HD 12 STEEL around the rim. No window.
+  146: 0,
+  // Row 147, Hanhart Preventor9. Stated in the prose rather than photographed: "mit einem
+  // geschlossenen, geschraubten Gehaeuseboden versehen, der drei Ausbuchtungen fuer den
+  // Gehaeuseschluessel besitzt" - closed, screwed, and with tool notches.
+  147: 0,
+  // Row 148, Seiko SPB169J1. Seiko state both facts in one field: "Fond de boitier transparent /
+  // Fond de boitier visse".
+  148: 1,
+  // Row 149, Squale Matic-S. Squale's own caseback image shows a solid engraved disc - STAINLESS
+  // STEEL / SAPPHIRE CRYSTAL / AUTOMATIC / SWISS MADE / 60 ATMOS PROFESSIONAL, serial 2000090.
+  // The "SAPPHIRE CRYSTAL" engraving refers to the front glass and is exactly the wording that
+  // would mislead a text-only read of this caseback into scoring it 1.
+  149: 0,
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
@@ -6643,7 +6918,7 @@ function optionValuesFor(dim) {
 
 // How many rows each option would show, measured against every filter EXCEPT its own dimension's
 // (see matchesFilters). Recomputed on every pipeline pass, which is 5 x 90 predicate calls - the
-// same order as the search box, which rejoins a haystack string for all 145 rows per keystroke.
+// same order as the search box, which rejoins a haystack string for all 149 rows per keystroke.
 function optionCounts(dim) {
   const counts = new Map();
   WATCHES.filter(w => matchesFilters(w, dim.key)).filter(matchesSearch)
