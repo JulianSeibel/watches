@@ -527,6 +527,18 @@
 
   <p><b>What it did to everything else, and the model got slightly better for once.</b> Value moved by at most <b>0.20</b> spec points across the existing 149 — row 101, the Oris Social Club — with 126 of 149 moving at all and <b>4 crossing zero</b>, rows 82, 83 and 125 down onto it and row 87 through it. <b>Two rows change band</b>, and both are recoveries from the previous pass: row 10 (AV86 1968 Moonphase) goes <i>well below the curve</i> → <i>below</i>, exactly reversing the step pass 34 pushed it down, and row 123 (Second Hour Shoal Deep 300) goes <i>well above</i> → <i>above</i>. <b>Spec drift touched one row and it is the same row as last time, moving back</b>: row 41, the Revelot Hexmariner, 40 → 41, having gone 41 → 40 in pass 34. That is <code>imputeMissingSubs()</code> behaving precisely as documented — the row carries an unresearched sub-score filled at the list mean, two passes moved that mean in opposite directions, and the rounding followed. It is the clearest illustration this file has of why the imputation is worth stating out loud. <b>Leave-one-out RMSE is 5.85 → 5.82 and skill 59.1% → 59.4%</b>, recovering a fraction of what pass 34 cost, because unlike that pass's three sub-curve rows these two sit close to the line they help fit. Naive RMSE is 9.15 → 9.14 and sign flips stay at 1. The resample spread widens, 0.29/0.61 → 0.32/0.79, which is the one figure moving the wrong way and is worth watching rather than acting on. Sigma, the spec range, the spec/price correlation at 0.78, the two <code>n/s</code> rows and the two <code>o/s</code> rows are all unchanged, and the weight tables did not move at all — Farer state no mass on either reference, and their Shopify variants carry <code>"weight":0</code>, an unset field rather than a figure, which is the pass 31 Venezianico reading and not the pass 22 Traska parcel trap.</p>
 
+  <p><b>Maurice Lacroix AIKON Automatic 39 mm, pass 36 — three rows added (152–154), and the list goes from 151 to 154.</b> A new brand and the first integrated-bracelet luxury-sports watches here above €2,000: the plain steel-bracelet AI6007-SS002-331-1 at €2,250, the blue AI6007-SS00F-430-C at €2,300, and the turquoise Limited Summer Edition AI6007-SS00F-431-C at €2,700, limited to 888 pieces. One new <code>MOVEMENT_TIER</code> key and nothing else — no new case category, glass, movement type, watch type or complication. All three are scored, on 29, 30 and 19 comparable rows, which is the thinnest support any recent pass has run on and a reminder that above €2,000 this list is still sparse. <b>All three land on 52 spec points — the same number, from identical group scores in every one of the seven groups — and at −6.70, −6.90 and −8.40 on Value</b>, the first two <i>below the curve</i> and the Summer Edition <i>well below</i>. <b>Three rows whose scored fields are byte-for-byte identical, separated only by price, is something this file has never held before</b>, and it makes the Value column do in public what it is for: the entire €450 spread across the three is invisible to step 1 and shows up, undiluted, in step 2.</p>
+
+  <p><b>Where the 52 comes from, and it is one group doing nearly all the damage.</b> <b>Timekeeping scores 0.16 of 1</b>, the worst group on all three rows: the ML115's 38-hour barrel is the floor of the power-reserve anchor at a price where the list is full of 70- and 80-hour movements, and Maurice Lacroix publish no rate at all, so the accuracy sub-score is imputed rather than earned. <b>Complications score 0.000</b> — a date at 3 and nothing else, and a date has never been a scored complication here. Against that, <b>fittings score 0.75</b> on the AR-coated sapphire caseback, <b>water and lume 0.78</b> on 200 m and an undifferentiated Super-LumiNova, and the case-and-glass group 0.63 on double-sided AR sapphire. The shape is familiar from pass 34's Hanharts and pass 33's Squale: a well-made Swiss three-hander whose specification is respectable and whose price is buying design, brand and an integrated bracelet, none of which this model has a column for. <b>The interesting row is 154.</b> Its plain sibling row 153 is the same watch in a different dial colour with the same two-band set, €400 cheaper, and scores identically — so the whole of that €400 is the 888-piece limitation, and the model charges it 1.5 residual points for it.</p>
+
+  <p><b>Row 154 is a <code>PLAIN_TWIN</code> candidate and was deliberately not listed, which is worth recording because the reasoning is the mechanism's own.</b> The scope guard added after pass 31 marks a row <code>o/s</code> when a maker-sold twin, identical in every scored field, scores more than half a sigma above it — the point being that the price is buying something no criterion here measures. Row 153 is exactly such a twin for row 154: same case, same movement, same glass, same depth rating, same band set, same everything the score reads. <b>Two things argued against adding it.</b> First, it would not fire: the gap is 1.5 residual points against a cut of 2.75, so it would join row 105 as listed-and-silent and change no output at all. Second and more important, <code>PLAIN_TWIN</code>'s <code>buys</code> field is documented as <i>decorative content</i> — the three entries in it today are diamond-set indexes and hand-set baguette moissanite — and what row 154's premium buys is <b>scarcity, not decoration</b>. Those are different claims about why a model cannot see something, and smuggling the second in through a row that does not trigger would widen the table's meaning without anyone having to argue for it. If a limited edition ever appears here at a premium large enough to fire the guard, that is the moment to decide whether edition size belongs in this mechanism, and it should be decided on its own terms rather than inherited from this row.</p>
+
+  <p><b>The judgement calls.</b> <b>Finishing is 0.65 on all three, the first time that number has been granted outside Christopher Ward</b>, and it is granted on the CW rows' own terms rather than by analogy: pass 16 defined their 0.65 as an engraved, Colimaçon-finished rotor, and Maurice Lacroix state “Rhodiniertes Uhrwerk mit Perlage und Colimaçon; Genfer Streifen auf dem Rotor” — the same operation plus perlage and côtes de Genève. The stamped clous-de-paris dial with applied plated indexes supports it independently, on the dial-construction axis rows 122 and 128–132 were placed on. What does <i>not</i> earn it is the window: that is <code>fittings.displayBack</code>, already scored, and the decoration is what is rated while the sapphire is only the condition for seeing it — pass 26's formulation for row 119, reused verbatim. <b>The movement tier is 0.60 and the decoration buys nothing there</b>, which is the other half of the same argument. ML publish 38 h, 28,800 A/h and 26 jewels for the ML115, the SW200-1's specification to the digit, and name no grade; paying for the finishing a second time in the tier would be the double-count this column has refused since the SW200-2 Power+. A published ML grade or regulation figure is what would move it, on the +0.03 precedent passes 26, 34 and 35 set. <b>The clasp at 0.6 is the most arguable number and for an unusual reason</b> — not that the evidence is thin, but that ML state a clasp which belongs to the wrong band. Rows 153 and 154 give “Dornschliesse”, a steel pin buckle, which is the rubber strap's; row 152 describes no clasp at all. Scoring the pin buckle would score the accessory rather than the band the watch is worn on, so all three take the 0.6 that rows 117, 120, 145, 149, 150 and 151 hold for a bracelet whose clasp its maker does not describe. At 0.8 all three gain about 0.9 of a spec point.</p>
+
+  <p><b>Maurice Lacroix's own <code>ARMBAND</code> field merges two bands into one record, and taken literally it puts a wrong band and a wrong clasp on two of the three rows.</b> Row 153 reads “Blau, kautschukarmband, mit Maurice Lacroix m-logo”; row 154 reads “Türkis, edelstahlarmband, mit Maurice Lacroix m-logo” — a turquoise steel bracelet fastened, per the next field, by a pin buckle, which is not a thing that exists. <b>ML's own product photograph for each reference settles it in one look</b>: the image shows the same watch twice, side by side, on a steel bracelet and on a coloured rubber strap. Both references are two-band sets, the record concatenates them, and the buckle belongs to the rubber. Row 152 has one band and no clasp field. <b>All three are then scored on the bracelet, and that is a judgement call rather than a rule</b>, recorded in the row banner: “the row is scored on the band its price buys” settles a row priced on <i>one</i> of several bands, which is what rows 87–90 and the Sinn 104s were, and here the price buys both. The bracelet wins on three grounds — it is the only band on row 152, it is the band ML photograph first on all three, and it is the dearer component. One consequence is worth naming: row 153 costs €50 more than row 152 for an extra rubber strap, and <b>the model cannot see that at all</b>, so it reads the €50 as pure premium and marks row 153 fractionally worse than its bracelet-only sibling.</p>
+
+  <p><b>What it did to everything else, and this is the first pass in a long while to move sigma.</b> The residual sigma goes <b>5.3 → 5.5</b>, which the page displays as 5 → 6, and that single change is why this pass has <b>nine band changes</b> against the two of pass 35 — every band boundary is quantised at ½σ and 1½σ, so widening sigma moves all four of them at once and rows sitting near an edge cross it without their own residual having moved much. The nine: row 10 (AV86 1968 Moonphase) <i>below</i> → <i>well below</i>; rows 78 and 81 (Christopher Ward Trident Pro 300 38 and Sealander GMT 39) <i>as expected</i> → <i>above</i>; row 88 (Red Star 1963 Acrylic) <i>as expected</i> → <i>below</i>; rows 102 (Oris Divers Date 39), 108 (Nomadic Cíor 928) and 120 (Laco Speyer) all <i>well below</i> → <i>below</i>; row 109 (Nomadic Turas 914) <i>below</i> → <i>as expected</i>; and row 128 (YEMA Superman Steel) <i>above</i> → <i>well above</i>. Value itself moved by at most <b>1.20</b> spec points — row 16, the Delhi Tithi, as in passes 27 and 34 — with 136 of 151 moving and 8 crossing zero. <b>Spec drift touched one row</b>, row 59 (Seagull Cedar Dial Couple) at 35 → 36, the <code>imputeMissingSubs()</code> mechanism again. <b>Leave-one-out RMSE is essentially flat at 5.82 → 5.83 and skill slips 59.4% → 58.8%</b>, while naive RMSE improves 9.14 → 9.08 and <b>sign flips fall 1 → 0</b>, recovering the one pass 34 introduced. The spec/price correlation eases 0.78 → 0.77 and the resample worst case improves 0.79 → 0.67. The two <code>n/s</code> and two <code>o/s</code> rows are unchanged, and the weight tables did not move: ML publish about twenty label/value pairs per reference, including the band width and the clasp material, and no mass on any of the three.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -548,7 +560,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-151 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-154 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
 //                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
@@ -3386,6 +3398,83 @@ const WATCHES = [
   powerReserveDisplay:'~56 h', accuracyDisplay:'—',
   waterResDisplay:'200 m (20 ATM)', waterResM:200,
   priceDisplay:'€1,615 (Milanese; €1,595 on a strap)', priceValue:1615, priceCurrency:'EUR' },
+
+// --- Maurice Lacroix AIKON Automatic 39 mm, pass 36 (rows 152-154) -----------------------------
+// A NEW BRAND and the first integrated-bracelet luxury-sports watches here above EUR 2,000. Three
+// references of one watch: the plain steel-bracelet AI6007-SS002-331-1 at EUR 2,250, the blue
+// AI6007-SS00F-430-C at EUR 2,300, and the turquoise Limited Summer Edition AI6007-SS00F-431-C at
+// EUR 2,700, limited to 888 pieces. Case, movement, glass, depth rating and dial pattern are
+// identical across all three; what differs is the dial colour, the plating of the indexes and
+// hands, and what comes in the box.
+//
+// SALESFORCE COMMERCE CLOUD, and the spec accordion renders server-side in full - GEHAUSE,
+// ZIFFERBLATT & ZEIGER, WERK & FUNKTIONEN, ARMBAND, each a label/value list - so --probe returns
+// everything including the caseback, the decoration and the band width in one request. The
+// schema.org "price" field carries the reference's own price; the other euro figures on the page
+// belong to the cross-sell rail and are not this product's.
+//
+// ML'S OWN ARMBAND FIELD IS A MERGE OF TWO BANDS ON TWO OF THE THREE, and taken literally it puts
+// a wrong band and a wrong clasp on both. Row 153 reads "Blau, kautschukarmband, mit Maurice
+// Lacroix m-logo" with SCHLIESSE "Dornschliesse"; row 154 reads "Tuerkis, edelstahlarmband, mit
+// Maurice Lacroix m-logo" with the same Dornschliesse - a turquoise steel bracelet fastened by a
+// pin buckle, which is not a thing. Maurice Lacroix's own product photograph for each reference
+// settles it and shows the same watch twice, side by side: on a steel bracelet AND on a coloured
+// rubber strap. Both are two-band sets, the ARMBAND record concatenates them, and the pin buckle
+// belongs to the rubber. Row 152 has no SCHLIESSE row at all and one band.
+//
+// ALL THREE ARE SCORED ON THE BRACELET and that is a judgement call, recorded here because the
+// usual rule does not decide it. "The row is scored on the band its price buys" settles a row
+// priced on ONE of several bands - rows 87-90, the Sinn 104s, row 145 - but here the price buys
+// both. The bracelet is taken as the primary band on three grounds: it is the only band on row
+// 152, it is the band ML photograph first on all three, and it is the more expensive component.
+// The consequence is in EXTRAS: the pin buckle ML do state is NOT the clasp scored.
+//
+// NONE OF THE THREE PUBLISHES A RATE OR A MASS. ML give power reserve, frequency, jewel count and
+// the decoration and no tolerance, so accuracyDisplay is '-' on all three; and no weight field
+// exists anywhere in the accordion, so all three go to WEIGHT_UNPUBLISHED.
+{ id:152, brand:'Maurice Lacroix', name:'Maurice Lacroix AIKON Automatic Date 39 mm (AI6007-SS002-331-1)', desc:'Anthracite clous-de-paris dial, rose-gold-plated indexes · bracelet only, against the two-band sets below',
+  link:'https://www.mauricelacroix.com/de_de/uhren/aikon-uhren/aikon-automatic/aikon-automatic-date-39mm/AI6007-SS002-331-1.html',
+  img:'https://www.mauricelacroix.com/on/demandware.static/-/Sites-mla_masterCatalog/default/dw939774e6/images/hi-res/AI6007-SS002-331-1_soldat_1.png',
+  // ML publish diameter and height and no lug-to-lug on any AIKON reference. Unpublished stays
+  // '-' rather than being measured off a photograph.
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'—',
+  heightDisplay:'11 mm', heightMm:11,
+  caseDisplay:'Brushed and polished steel, fixed six-claw bezel (screw-down crown, sapphire back)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet (23 mm, easy-change)',
+  glassDisplay:'Sapphire, double AR (AR sapphire caseback)', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Maurice Lacroix ML115 (Sellita SW200-1 base)', movementType:'Automatic', movementCostDisplay:'not sold separately (ML-decorated Sellita SW200-1)',
+  powerReserveDisplay:'38 h', accuracyDisplay:'—',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€2,250', priceValue:2250, priceCurrency:'EUR' },
+
+{ id:153, brand:'Maurice Lacroix', name:'Maurice Lacroix AIKON Automatic Date 39 mm (AI6007-SS00F-430-C)', desc:'Blue clous-de-paris dial · two-band set, steel bracelet plus blue rubber strap for €50 over row 152',
+  link:'https://www.mauricelacroix.com/de_de/uhren/aikon-uhren/aikon-automatic/aikon-automatic-date-39mm/AI6007-SS00F-430-C.html',
+  img:'https://www.mauricelacroix.com/on/demandware.static/-/Sites-mla_masterCatalog/default/dw67f827c9/images/hi-res/AI6007-SS00F-430-C_soldat_1.png',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'—',
+  heightDisplay:'11 mm', heightMm:11,
+  caseDisplay:'Brushed and polished steel, fixed six-claw bezel (screw-down crown, sapphire back)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet (23 mm, easy-change; blue rubber strap included)',
+  glassDisplay:'Sapphire, double AR (AR sapphire caseback)', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Maurice Lacroix ML115 (Sellita SW200-1 base)', movementType:'Automatic', movementCostDisplay:'not sold separately (ML-decorated Sellita SW200-1)',
+  powerReserveDisplay:'38 h', accuracyDisplay:'—',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€2,300', priceValue:2300, priceCurrency:'EUR' },
+
+{ id:154, brand:'Maurice Lacroix', name:'Maurice Lacroix AIKON Automatic Limited Summer Edition 39 mm (AI6007-SS00F-431-C)', desc:'Turquoise clous-de-paris dial, 888 pieces · same two-band set as row 153 at €400 more',
+  link:'https://www.mauricelacroix.com/de_de/watches/watches-aikon/watches-aikon-automatic/watches-aikon-automatic-limitedsummeredition/aikon-automatic-limited-summer-edition-39mm/AI6007-SS00F-431-C.html',
+  img:'https://www.mauricelacroix.com/on/demandware.static/-/Sites-mla_masterCatalog/default/dw70da293d/images/hi-res/AI6007-SS00F-431-C_soldat_1.png',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'—',
+  heightDisplay:'11 mm', heightMm:11,
+  caseDisplay:'Brushed and polished steel, fixed six-claw bezel (screw-down crown, sapphire back)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet (23 mm, easy-change; turquoise rubber strap included)',
+  glassDisplay:'Sapphire, double AR (AR sapphire caseback)', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Maurice Lacroix ML115 (Sellita SW200-1 base)', movementType:'Automatic', movementCostDisplay:'not sold separately (ML-decorated Sellita SW200-1)',
+  powerReserveDisplay:'38 h', accuracyDisplay:'—',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  // EUR 2,700 against row 153's EUR 2,300 for the same watch in a different dial colour. Nothing
+  // this model scores changes between them, so the whole EUR 400 is the 888-piece limitation, and
+  // the Value column is about to say exactly that.
+  priceDisplay:'€2,700 (ltd. 888)', priceValue:2700, priceCurrency:'EUR' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -3594,7 +3683,7 @@ function measuredRatioStats(watches) {
 // It is still NOT acted on, for two reasons. The 62 are not a random sample - they are ten makers
 // who happen to document well, three of them Japanese and seven Western, so scoring on them would
 // score brands on their spec-sheet habits. And the double-counting objection above still binds
-// for the other 89 rows, where the "weight" is a function of columns the score already reads.
+// for the other 92 rows, where the "weight" is a function of columns the score already reads.
 // Scoring a column that is measured for some rows and derived from other scored inputs for the
 // rest would mean two different things in one number. Completing the research is the prerequisite.
 //
@@ -3946,6 +4035,10 @@ const WEIGHT_UNPUBLISHED = new Set([
                           //   carries a weight field either. The Shopify variant records DO carry
                           //   grams, and it is the parcel: the pass 22 Traska trap, and never a
                           //   WEIGHT_MEASURED figure
+  152, 153, 154,          // Maurice Lacroix AIKON - the accordion runs GEHAUSE, ZIFFERBLATT &
+                          //   ZEIGER, WERK & FUNKTIONEN and ARMBAND, about twenty label/value
+                          //   pairs per reference including band width and clasp material, and
+                          //   states no mass on any of the three
   150, 151,               // Farer - the spec panel runs case size, case material, glass,
                           //   movement, power reserve, water resistance, lug width, functions,
                           //   shock protection, winding and jewels, and states no mass on either.
@@ -4244,6 +4337,11 @@ const WATCH_TYPES = {
   150: ['Everyday'],                // Farer's own "Three Hand Series III"; no bezel, no date
   151: ['GMT / traveller'],         // 24-h bezel and hand. NOT Diver: 200 m but a BIDIRECTIONAL
                                     //   bezel, which is a travel scale rather than a timing one
+  // Maurice Lacroix, pass 36. Integrated-bracelet luxury-sports watches, the Venezianico Arsenale
+  // reading from pass 31: 200 m and a screw-down crown make them sports, the clous-de-paris dial
+  // and the 11 mm case make them dress, and neither type alone describes the AIKON. NOT Diver -
+  // the six-claw bezel is fixed.
+  152: ['Sports', 'Dress'], 153: ['Sports', 'Dress'], 154: ['Sports', 'Dress'],
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
@@ -4314,7 +4412,7 @@ const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (132 of 151 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (135 of 154 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -4483,6 +4581,16 @@ const MOVEMENT_TIER = {
   // either way, so this pass's verdict on the row does not depend on the number.
   'Hand-wound — ETA/Peseux 7001 (reworked bridges)': 0.60,
   'Automatic — Sellita SW200-1 (Élaboré)': 0.60,
+  // Pass 36. 0.60, level with the SW200-1 above, and the decoration deliberately buys nothing
+  // here. Maurice Lacroix publish 38 h, 28,800 A/h and 26 jewels for the ML115, which is the
+  // SW200-1's specification to the digit, and name no grade. What they add is finishing -
+  // rhodium plating, perlage, Colimaçon, côtes de Genève on the rotor - and finishing is FINISH's
+  // job, where these three rows are the first non-Christopher-Ward rows to reach 0.65. Paying for
+  // it again in the tier would be the double-count this column has refused since the SW200-2
+  // Power+, and the fact that the decoration is VISIBLE is a third thing, already scored as
+  // fittings.displayBack. A published ML grade or regulation figure would be the evidence that
+  // moves this number, on the +0.03 precedent passes 26, 34 and 35 set.
+  'Automatic — Maurice Lacroix ML115 (Sellita SW200-1 base)': 0.60,
   'Automatic — La Joux-Perret G100': 0.60,
   // Pass 35. The G100 above is row 1's, at whatever grade MAEN buy; Farer name theirs - "soignée
   // finish, the highest grade available" - and state four positions of adjustment. That is a
@@ -5616,6 +5724,37 @@ const EXTRAS = {
   //   not the local hour - the split pass 18 made visible and pass 16 priced.
   150:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:null},
   151:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:0.8,comp:['gmt']},
+
+  // --- Maurice Lacroix AIKON Automatic, pass 36 (rows 152-154) -----------------------------
+  // One set of numbers for three references, because case, movement, glass, depth rating and dial
+  // construction are identical across them and only the dial colour and the plating differ.
+  // lume 0.7 on all three: ML write "weisses super-luminova" on indexes and hands and name no
+  //   grade, which is the undifferentiated claim rows 67 and 91-93 hold 0.7 for and row 147 took
+  //   in pass 34. A named grade would move it; a named class like C1 would not, since that is
+  //   also 0.7 here.
+  // war 2 on all three: "2 Jahre Garantie" on each product page. DATA ONLY.
+  // iso 0 on all three: 20 ATM, and no ISO 6425 claim. The AIKON has no rotating bezel, so the
+  //   standard could not apply to it in any case.
+  // antimag 0 on all three: no antimagnetic claim in the accordion or the prose.
+  // clasp 0.6 on all three, and this is the pass's most arguable number for a reason that has
+  //   nothing to do with the bracelet. ML describe NO clasp at all on row 152, and on rows 153
+  //   and 154 they give "Dornschliesse" in steel - a pin buckle, which belongs to the rubber
+  //   strap in the set and not to the bracelet all three are scored on (see the row banner).
+  //   Scoring that 0.35 would score the accessory rather than the band the watch is worn on.
+  //   0.6 is the Laco/Squale/Farer treatment for a bracelet whose clasp its maker does not
+  //   describe - rows 117, 120, 145, 149, 150 and 151 - and it is where this sits until ML say
+  //   otherwise. The AIKON bracelet is widely a folding clasp with pushers; ML's own pages do not
+  //   say so, and this table scores what the maker states. At 0.8 all three gain about 0.9 of a
+  //   spec point.
+  // service 0.6: a mid-sized Swiss house with its own service centres and a Sellita base any
+  //   watchmaker can work on - above Baltic and Squale's 0.5, below Longines' 0.9. DATA ONLY.
+  // bezel null on all three: the six-claw bezel is fixed and decorative. Null is the criterion
+  //   not applying, not a zero.
+  // comp - none on any of the three. All three have a date at 3 and nothing else, and a date is
+  //   not a scored complication here.
+  152:{lume:0.7,war:2,iso:0,antimag:0,clasp:0.6,service:0.6,bezel:null},
+  153:{lume:0.7,war:2,iso:0,antimag:0,clasp:0.6,service:0.6,bezel:null},
+  154:{lume:0.7,war:2,iso:0,antimag:0,clasp:0.6,service:0.6,bezel:null},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -5954,6 +6093,17 @@ const FINISH = {
   // 119-120 and 122 turn on, and what these two show is an undecorated LJP and an undecorated
   // Sellita.
   150:0.60, 151:0.60,
+  // Rows 152-154, Maurice Lacroix: 0.65 on all three, and this is the first time that number has
+  // been granted outside Christopher Ward. It is granted on the CW rows' own terms rather than by
+  // analogy: their 0.65 is defined in pass 16 as an engraved, Colimaçon-finished rotor, and ML
+  // state "Rhodiniertes Uhrwerk mit Perlage und Colimaçon; Genfer Streifen auf dem Rotor" - the
+  // same operation, plus perlage and côtes de Genève, and visible through the sapphire back. The
+  // dial supports it independently: a stamped clous-de-paris ground with applied plated indexes
+  // is dial construction, which is the axis rows 122 and 128-132 were placed on. What does NOT
+  // earn it is the window itself - that is fittings.displayBack and is already scored, the rule
+  // rows 119-120 turn on. The decoration is what is rated; the glass is the condition for seeing
+  // it, exactly as pass 26 put it for row 119.
+  152:0.65, 153:0.65, 154:0.65,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -5961,7 +6111,7 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 137 of 151 rows resolved - 62 see-through, 75 solid. The fourteen still open are
+// Research status: 140 of 154 rows resolved - 65 see-through, 75 solid. The fourteen still open are
 // 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125, 126, 142 and 143, all rows whose maker publishes no
 // caseback detail. Row 91 is the best documented of them: Longines leave the field empty on the
 // Spirit 37 AND on the 40 mm sibling, so the gap is the collection's, not this reference's.
@@ -6212,6 +6362,12 @@ const DISPLAY_BACK = {
   // "Sapphire exhibition glass on the watch's rear", row 151 "Exhibition glass on the rear".
   150: 1,
   151: 1,
+  // Rows 152-154, Maurice Lacroix. Stated per reference in the GEHAUSE block: "Offener
+  // Gehaeuseboden mit Saphirglas mit Anti-Reflexbeschichtung" - an open back in AR-coated
+  // sapphire, on all three.
+  152: 1,
+  153: 1,
+  154: 1,
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
@@ -7062,7 +7218,7 @@ function optionValuesFor(dim) {
 
 // How many rows each option would show, measured against every filter EXCEPT its own dimension's
 // (see matchesFilters). Recomputed on every pipeline pass, which is 5 x 90 predicate calls - the
-// same order as the search box, which rejoins a haystack string for all 151 rows per keystroke.
+// same order as the search box, which rejoins a haystack string for all 154 rows per keystroke.
 function optionCounts(dim) {
   const counts = new Map();
   WATCHES.filter(w => matchesFilters(w, dim.key)).filter(matchesSearch)
