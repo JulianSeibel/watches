@@ -40,7 +40,7 @@ Read it — it documents each field's meaning and which are optional. 26 fields 
 | `heightDisplay` | if the maker gives only "excluding crystal", say both: `'13 mm (11 mm excl. crystal)'` |
 | `caseDisplay` | put the bezel insert material here — it is the evidence for the `bezel` score |
 | `movementCostDisplay` | loose parts-market price of the movement, or `'not sold separately (…)'`. Display only, not scored |
-| `accuracyDisplay` | when the maker publishes nothing, the caliber's figure if the caliber has exactly one, else `'—'`. Evidence rule 2 below is the test |
+| `accuracyDisplay` | when the maker publishes nothing, the caliber's figure if the caliber has exactly one, else `'—'`. Evidence rule 2 below is the test. **A parenthetical is prose and is not scored** — `accuracyMagnitudePerDay()` strips it, except a clause naming a maximum (`(Élaboré, max ±20)` keeps its 20). Put any number that should count into the main clause; pass 40 fixed four rows whose "(regulated in 4 positions)" was being averaged in as a 4 |
 
 ### `bandDisplay` is load-bearing, not prose
 
@@ -135,10 +135,11 @@ These are rules the file has been bitten by, not preferences.
    borrowable and labelled — rows 90, 145 and 149 on Sellita's Élaboré, row 151 on Sellita's Top
    Grade, row 150 on La Joux-Perret's soignée, rows 39/40 on ETA's Top. Naming the grade is not
    sufficient on its own: row 146's Soprod TOP stays `'—'` because Soprod publish no grade table at
-   all, so there is nothing to borrow. **Row 60 is the known exception** — Sinn name no grade on the
-   556, so its `~±7 s/day (Élaboré, max ±20)` fails this rule; pass 14 set it deliberately as "an
-   inference, not a spec" and pass 39 left it standing while recording that rows 94–96 are the same
-   maker in the same position with `'—'`. Do not cite row 60 as a grade-named precedent.
+   all, so there is nothing to borrow. **Row 60 used to be the exception and no longer is** — Sinn
+   name no grade on the 556, pass 14 set `~±7 s/day (Élaboré, max ±20)` anyway as "an inference, not
+   a spec", and pass 40 emptied it so Sinn's four rows agree. Do not cite row 60 as a grade-named
+   precedent, and note that its `movementDisplay` still says "(Élaboré)" because that string is a
+   shared `MOVEMENT_TIER` key — the label is stale, editing it would fork the key and move the tier.
    **Still refused, and these are the cases to check yourself against:** a family band for a caliber
    with no published figure at any grade (−5/+15 s/day is ETA's generic A31 and is not what Longines
    state for the L888.5 — passes 6 and 13), and marketing about a technology rather than a movement

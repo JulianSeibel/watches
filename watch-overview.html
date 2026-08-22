@@ -575,6 +575,16 @@
 
   <p><b>What it did to everything else, and almost nothing did.</b> Seven rows changed data and <b>one changed spec score</b>. Value moved by at most <b>0.60</b> residual points, on row 151; 17 rows moved at all; of the 147 untouched the median shift is 0.00 and the largest 0.10. <b>Two bands change</b> — 151 into <i>above the curve</i> on its own gain, and row 95 from <i>as expected</i> to <i>below the curve</i> on a tenth of a point of line movement. Leave-one-out RMSE is 5.93 → 5.94 against an unchanged naive 9.14, skill 57.9% → 57.8%, sign flips unchanged at 1, worst-case resampling 0.63. Sigma holds at 6 and the spec range at 26–66. A pass that fills seven cells and moves one score is the outcome to want from a research pass that found the answers rather than guessed them.</p>
 
+  <p><b>Parser defect, reserve consistency and one withdrawn inference, pass 40 — three unrelated fixes, and the pass's most useful output is that it caught pass 38 lying about which way a change would push.</b> <b>The defect first, because it is unambiguous.</b> <code>accuracyMagnitudePerDay()</code> extracted every number in the cell and averaged the magnitudes, so rows 97–100's <code>−10/+20 s/day (regulated in 4 positions)</code> yielded <i>three</i> numbers — −10, +20 and <b>4</b> — and scored 11.33 s/day instead of 15. The 4 came from the phrase "4 positions". The visible consequence was that Traska's guarantee scored as <i>tighter</i> than Abinger's −10/+15 on rows 110–112, when Traska's is the looser of the two. The parser now drops parentheticals before matching and folds back only a clause naming a maximum, so <code>(Élaboré, max ±20)</code> keeps contributing its 20 and <code>(regulated in 4 positions)</code>, <code>(regulated)</code>, <code>(Nomadic, regulated in Belfast)</code>, <code>(regulated by Venezianico)</code> and <code>(ETA quartz)</code> contribute nothing. Every other cell in the table parses to the same number it did before; only the four Traska rows move. <b>On its own this change improves the model</b> — leave-one-out RMSE 5.94 → 5.91, skill 57.8% → 58.3%, and the single sign flip pass 38 introduced disappears — which is the outcome to expect when a wrong number is replaced by a right one.</p>
+
+  <p><b>The seven Venezianico Miyota rows take Miyota's 42 h, closing the inconsistency pass 38 opened and named.</b> Every other 9039 row in the list has always carried it — Baltic, Earthen, Traska, Abinger, Second Hour, thirteen rows — and the grade-ladder rule adopted in pass 38 is about the caliber, not about which field is read off it: Miyota publish 42 h as one figure with no grades above or below it, exactly as they publish −10/+30. <b>Row 138 is deliberately excluded and it is the case that proves the rule has an edge.</b> Its caliber is not a Miyota; it is the Venezianico V3250, which their own copy calls "based on" the Soprod M100. Soprod's 42 h describes the movement this one was built from, not this one, and a derivative under the maker's own name is the ML115 situation — which passes 36 and 39 both left empty on that same reasoning. So row 138 keeps an empty reserve beside its published −4/+6, and the asymmetry across the eight rows is now principled rather than accidental.</p>
+
+  <p><b>Pass 38 said filling the reserve would raise those rows. It lowers them, and the error is worth more than the fix.</b> 42 h scores <b>0.134</b> against the fixed [38, 80] anchor, where <code>imputeMissingSubs()</code> had been filling the field at <b>0.394</b> — the mean over the 112 mechanicals that publish a reserve, a list thick with 70- and 80-hour movements. So the correction costs each of the seven about <b>1.6 residual points</b>, on top of the 1.5 the rate cost them in pass 38: rows 134 and 135 go 41 → 39 spec and −10.40 → −12.00, rows 136 and 137 43 → 42 and −5.90 → −7.50, row 139 48 → 46 and −2.20 → −3.80, rows 140 and 141 46 → 45 and −2.10 → −3.60. <b>Pass 31 had this right the first time</b> and wrote it down — "the 9039's real 42 h is below this list's mean … recording Miyota's figures would LOWER them" — and pass 38 reversed the sign while congratulating itself for not deferring a change that gave points back. Nothing about the decision turns on it; the rule is the same rule and the seven rows land where the caliber puts them. What was wrong was the account of the rule, and an account that flatters the pass writing it is the kind that needs checking hardest. <b>Three more rows change band on it</b> — 139, 140 and 141 from <i>as expected</i> to <i>below the curve</i>.</p>
+
+  <p><b>Row 60 loses the Élaboré inference, and this is the rule being applied against its own convenience.</b> The Sinn 556 carried <code>~±7 s/day (Élaboré, max ±20)</code> from pass 6 to pass 39, but Sinn name no grade: their accordion reads "Mechanisches Ankerwerk SW 200-1, Automatikaufzug, 26 Rubinlagersteine, 28.800 Halbschwingungen pro Stunde, Sekundenstopp, Antimagnetisch nach DIN 8309" and stops — re-read in pass 39, and identical in shape to the three 104s on rows 94–96, which have carried <code>'—'</code> all along. Pass 14 set the figure knowing this, calling it "an inference, not a spec"; the ladder written in pass 38 makes that inference unavailable, and pass 39 then caught pass 38 citing this very row as a <i>grade-named</i> precedent when it is the clearest counter-example in the table. The cell is now empty and Sinn's four rows agree with each other for the first time. It <b>raises</b> row 60 by 0.4 of a residual point, −4.40 → −4.00, which is the direction that should make a reader suspicious rather than satisfied — the justification has to be that Sinn do not say it, and it would have to hold if the number went the other way. <b>One thing is knowingly left inconsistent:</b> <code>movementDisplay</code> still reads "Sellita SW200-1 (Élaboré)" on this row. That string is a <code>MOVEMENT_TIER</code> key shared with rows 77–79, 83, 84, 145 and 149, where the makers <i>do</i> name the grade, so editing it here would fork the key and move this row's movement tier rather than relabel it. That is a tier decision, not a labelling one, and it is not this pass's.</p>
+
+  <p><b>What it did to everything else.</b> Twelve rows changed data and <b>nine changed spec score</b> — the seven Venezianico rows plus 97 and 100. Value moved by at most <b>1.60</b> residual points, on rows 134 and 135; 124 of the 154 moved at all, which is the fitted line shifting rather than the rows. <b>Eight bands change</b>: 139, 140 and 141 into <i>below the curve</i>; 34, 95 and 145 up a band and 74 and 81 into <i>above the curve</i>, all of those on line movement rather than their own data. Five rows cross zero. Leave-one-out RMSE is 5.94 → 5.98 against a naive 9.14 → 9.18, skill 57.8% → 57.5%, and <b>sign flips go 1 → 0</b>, undoing the one pass 38 added. Sigma holds at 6 and the spec range at 26–66. The parser fix alone would have left RMSE at 5.91; the reserve fill is what carries it back up, for the same reason it did in pass 38 — seven of the moved rows are Venezianico rows already below the curve, and pushing them further down makes them worse-fitting outliers rather than making the model worse at its job.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -1446,7 +1456,21 @@ const WATCHES = [
   bandDisplay:'Canvas-Alcantara strap (solid/fine-link bracelet opt.)',
   glassDisplay:'Sapphire, double-sided AR (+ sapphire caseback)', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Sellita SW200-1 (Élaboré)', movementType:'Automatic', movementCostDisplay:'~$170 (Sellita, new)',
-  powerReserveDisplay:'38 h', accuracyDisplay:'~±7 s/day (Élaboré, max ±20)',
+  // THE RATE IS EMPTY SINCE PASS 40 and this row is the reason the grade-ladder rule got written.
+  // It carried ~±7 s/day (Élaboré, max ±20) from pass 6 to pass 39. Sinn name no grade: their
+  // movement accordion reads "Mechanisches Ankerwerk SW 200-1, Automatikaufzug, 26 Rubinlagersteine,
+  // 28.800 Halbschwingungen pro Stunde, Sekundenstopp, Antimagnetisch nach DIN 8309" and stops -
+  // re-read in pass 39, identical in shape to the three 104s on rows 94-96, which have always been
+  // empty. Pass 14 knew this and set the figure anyway, calling it "an inference, not a spec"; the
+  // ladder pass 38 wrote makes that inference unavailable, and pass 39 caught pass 38 citing this
+  // very row as a grade-named precedent when it is the opposite. Third parties do not rescue it -
+  // one review says Sinn use the top grade and another says Élaboré, which is the ML115 situation
+  // and disqualifies both. Emptying it RAISES the row by about 0.3 residual, so this is a rule
+  // being applied against its own convenience.
+  //   movementDisplay still reads "(Élaboré)" and that is knowingly left alone: the string is a
+  //   MOVEMENT_TIER key shared with rows 77-79, 83, 84, 145 and 149, where the makers DO name the
+  //   grade, so editing it here would fork the key and move this row's tier rather than relabel it.
+  powerReserveDisplay:'38 h', accuracyDisplay:'—',
   waterResDisplay:'200 m (20 bar, low-pressure-proof)', waterResM:200,
   priceDisplay:'from €1,450', priceValue:1450, priceCurrency:'EUR' },
 
@@ -3018,9 +3042,12 @@ const WATCHES = [
 // EUR rows and priceValue is the listed figure.
 //
 // VENEZIANICO PUBLISH NO POWER RESERVE ON ANY REFERENCE IN THE CATALOGUE, and no rate on seven of
-// these eight. The reserve is '—' on those seven and imputeMissingSubs() fills it at the list mean.
-// THE RATE IS NOT, since pass 38: all seven carry Miyota's own −10/+30 s/day for the 9039, and so
-// do rows 122 and 123. Pass 31 left them empty on the rule that a caliber figure is not
+// these eight. NEITHER FIELD IS EMPTY ANY MORE on those seven: since pass 38 they carry Miyota's
+// own −10/+30 s/day for the 9039, and since pass 40 Miyota's own 42 h beside it, which is what
+// every other 9039 row in the list has always carried. Rows 122 and 123 carry both too.
+// Pass 38 filled the rate and left the reserve, recording the gap as its own inconsistency; pass
+// 40 closed it, because the grade-ladder argument below is about the caliber and does not care
+// which field is being read off it. Row 138 is deliberately NOT included - see its own comment. Pass 31 left them empty on the rule that a caliber figure is not
 // transferable to a maker who states nothing, and pass 38 replaced that rule rather than bending
 // it, because the table had never actually followed it - rows 2-4, 5, 12, 125 and 126 carry
 // Miyota's figure and row 41 carries Seiko/TMI's −20/+40, none of those seven makers publishing a
@@ -3038,11 +3065,17 @@ const WATCHES = [
 //   −10/+30 is well below this list's mean, so the imputation had been flattering all seven and
 //   writing Miyota's figure in LOWERS them by about 1.5 residual points each. A rule that only
 //   ever paid the rows adopting it would not have been tested.
-//   ONE INCONSISTENCY IS OPEN AND DELIBERATE. The ladder argument applies to the power reserve
-//   word for word - Miyota publish 42 h for the 9039, one figure, no grades - so these seven
-//   should arguably carry it as rows 2-4, 12, 98-100, 110-112, 122 and 123 all do. Pass 38 was
-//   scoped to the rate and did not do it. This is the first thing to settle if the reserve column
-//   is revisited, and it would RAISE these rows, so it is not being deferred because it is costly.
+//   THE RESERVE FOLLOWED IN PASS 40, and the argument is the one pass 38 had already written out
+//   and declined to act on: the ladder applies to the reserve word for word, since Miyota publish
+//   42 h for the 9039 as one figure with no grades above or below it.
+//   PASS 38 SAID THIS WOULD RAISE THESE SEVEN AND IT WAS WRONG, in the one direction that matters.
+//   42 h scores 0.134 against the [38, 80] anchor where imputeMissingSubs() had been filling them
+//   at 0.394 - the mean over the 112 mechanicals that publish a reserve, a list full of 70 and 80
+//   hour movements. Filling the field COSTS each row about 1.6 residual points, on top of the 1.5
+//   the rate cost in pass 38. Pass 31 had it right first time - "the 9039's real 42 h is below this
+//   list's mean ... recording Miyota's figures would LOWER them" - and pass 38 reversed the sign
+//   while claiming to be resisting temptation. The rule is unchanged and so is the outcome; what
+//   was wrong was the story told about it.
 //
 // Row 138 is the exception on both counts, and the only row here whose movement Venezianico name as
 // their own: the V3250, which their own Arsenale Platino description states is "based on the Soprod
@@ -3082,7 +3115,7 @@ const WATCHES = [
   bandDisplay:'Steel Canova Concept integrated bracelet (butterfly clasp)',
   glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
-  powerReserveDisplay:'—', accuracyDisplay:'−10/+30 s/day',
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',
   waterResDisplay:'50 m (5 ATM)', waterResM:50,
   priceDisplay:'€1,050', priceValue:1050, priceCurrency:'EUR' },
 
@@ -3095,7 +3128,7 @@ const WATCHES = [
   bandDisplay:'Steel Canova Concept integrated bracelet (butterfly clasp)',
   glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
-  powerReserveDisplay:'—', accuracyDisplay:'−10/+30 s/day',
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',
   waterResDisplay:'50 m (5 ATM)', waterResM:50,
   priceDisplay:'€1,050', priceValue:1050, priceCurrency:'EUR' },
 
@@ -3108,7 +3141,7 @@ const WATCHES = [
   bandDisplay:'Steel Canova Concept integrated bracelet (butterfly clasp)',
   glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
-  powerReserveDisplay:'—', accuracyDisplay:'−10/+30 s/day',
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',
   waterResDisplay:'50 m (5 ATM)', waterResM:50,
   priceDisplay:'€850', priceValue:850, priceCurrency:'EUR' },
 
@@ -3121,7 +3154,7 @@ const WATCHES = [
   bandDisplay:'Steel Canova Concept integrated bracelet (butterfly clasp)',
   glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
-  powerReserveDisplay:'—', accuracyDisplay:'−10/+30 s/day',
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',
   waterResDisplay:'50 m (5 ATM)', waterResM:50,
   priceDisplay:'€850', priceValue:850, priceCurrency:'EUR' },
 
@@ -3143,8 +3176,14 @@ const WATCHES = [
   // Venezianico's own regulation claim, not Soprod's spec: "The V3250 caliber arrives at our
   // laboratory, where it undergoes further regulation ... adjusted to a range of -4/+6 seconds per
   // day". Self-declared rather than certified - no COSC, no third party - which is why the tier
-  // gets nothing for it; see MOVEMENT_TIER. The power reserve stays empty: Soprod publish 42 h for
-  // the M100, Venezianico publish nothing, and that is the borrowing this file does not do.
+  // gets nothing for it; see MOVEMENT_TIER.
+  // THE POWER RESERVE STAYS EMPTY, and pass 40 is when that stopped being automatic. The seven
+  // sibling rows just took Miyota's 42 h because the caliber in them IS a Miyota 9039 and Miyota
+  // publish one figure for it. This row is not a Soprod M100: it is the Venezianico V3250, which
+  // their own copy calls "based on" the M100, and a derivative under the maker's own name is the
+  // ML115 situation rather than the 9039 one - pass 36 and pass 39 both left the ML115 empty on
+  // exactly that reasoning. Soprod's 42 h describes the caliber this one was built from, not this
+  // one, and the difference is the whole distinction the grade-ladder rule turns on.
   powerReserveDisplay:'—', accuracyDisplay:'−4/+6 s/day (regulated by Venezianico)',
   waterResDisplay:'200 m (20 ATM)', waterResM:200,
   priceDisplay:'€1,450', priceValue:1450, priceCurrency:'EUR' },
@@ -3160,7 +3199,7 @@ const WATCHES = [
   bandDisplay:'Steel Sansovino bracelet (folding clasp w/ micro-adjustment)',
   glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
-  powerReserveDisplay:'—', accuracyDisplay:'−10/+30 s/day',
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',
   waterResDisplay:'200 m (20 ATM)', waterResM:200,
   priceDisplay:'€900', priceValue:900, priceCurrency:'EUR' },
 
@@ -3173,7 +3212,7 @@ const WATCHES = [
   bandDisplay:'Steel Canova bracelet (butterfly clasp)',
   glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
-  powerReserveDisplay:'—', accuracyDisplay:'−10/+30 s/day',
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',
   waterResDisplay:'200 m (20 ATM)', waterResM:200,
   priceDisplay:'€765', priceValue:765, priceCurrency:'EUR' },
 
@@ -3186,7 +3225,7 @@ const WATCHES = [
   bandDisplay:'Steel Canova bracelet (butterfly clasp)',
   glassDisplay:'Sapphire, anti-reflective coating', glassCategory:'Sapphire',
   movementDisplay:'Automatic — Miyota 9039', movementType:'Automatic', movementCostDisplay:'~$100 (Miyota, new)',
-  powerReserveDisplay:'—', accuracyDisplay:'−10/+30 s/day',
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',
   waterResDisplay:'200 m (20 ATM)', waterResM:200,
   priceDisplay:'€765', priceValue:765, priceCurrency:'EUR' },
 // --- Longines Spirit Zulu Time / Legend Diver, pass 32 (rows 142-144) ------------------------
@@ -3701,13 +3740,22 @@ function parseLeadingNumber(str) {
 // --- Value (price-performance) score -----------------------------------------------------
 // Converts the mixed-unit accuracy strings ("±12 s/day", "±15 s/mo", "±10 s/yr", "−20/+40 s/day")
 // into a single "seconds per day" magnitude so all movements can be compared on one scale.
+//
+// A PARENTHETICAL IS PROSE AND IS NOT SCORED, with one exception. Pass 40 found the reason:
+// rows 97-100 read "−10/+20 s/day (regulated in 4 positions)", and the 4 from "4 positions" was
+// being averaged in with the rate as though it were one, giving 11.33 s/day instead of 15. That
+// scored Traska's guarantee as TIGHTER than Abinger's −10/+15 when it is the looser of the two.
+// The exception is a clause naming a maximum - "(Élaboré, max ±20)" - where the number genuinely
+// is part of the specification, so those are folded back in before matching. The unit is read off
+// the whole string rather than the stripped one, so a parenthetical can never change /mo or /yr.
 function accuracyMagnitudePerDay(str) {
   if (!str) return null;
   const s = str.replace(/−/g, '-');
   let divisor = 1;
   if (/\/mo\b/.test(s)) divisor = 30.44;
   else if (/\/yr\b/.test(s)) divisor = 365.25;
-  const nums = s.match(/[+-]?\d+(?:\.\d+)?/g);
+  const scored = s.replace(/\(([^)]*)\)/g, (_, inner) => /\bmax\b/i.test(inner) ? ' ' + inner : ' ');
+  const nums = scored.match(/[+-]?\d+(?:\.\d+)?/g);
   if (!nums) return null;
   const abs = nums.map(n => Math.abs(parseFloat(n)));
   return abs.reduce((a, b) => a + b, 0) / abs.length / divisor;
