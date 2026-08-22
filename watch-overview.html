@@ -493,6 +493,18 @@
 
   <p><b>What the three second prices did to everything else, and step 1 held perfectly still.</b> <b>Spec drift is <i>none</i></b> — not one row moved a spec point, which is what a price-only change must do if the two steps are as separate as they claim to be, and is worth checking rather than asserting. Value moved by at most <b>2.40</b> spec points, on row 144 itself; 129 of 144 rows moved at all and seven crossed zero, five of them by a rounding step. <b>Eight rows changed band</b>: 143 and 144 from <code>n/s</code> to <i>as expected</i>; rows 27 and 28 (both Vaer DS2 quartz) from <i>as expected</i> to <i>above the curve</i>; rows 105 (Oris Aquis Date Diamonds) and 127 (Baltic Aquascaphe GMT Grey) from <i>below</i> to <i>well below</i>; and rows 71 and 74 (the two Midos) from <i>above</i> back to <i>as expected</i>, <b>exactly reversing the move this same pass had given them an hour earlier</b> — a reminder that a row sitting on a band boundary will cross it on almost any change, and that the boundary is the thing moving rather than the watch. <b>The headline figures barely register the change</b>: leave-one-out RMSE 5.73 → <b>5.72</b>, skill unchanged at <b>61.9%</b>, sign flips still 0, residual sigma still 5, the spec/price correlation still 0.79 and the naive baseline untouched. The resample figures split as they usually do, typical 0.26 → 0.24 and worst 0.58 → 0.65. That so little moved is the mechanism working as designed: a second price is deliberately <b>not</b> a second row in the fit, so recording three of them re-prices three rows and leaves the line they are measured against where it was.</p>
 
+  <p><b>Squale Super-Squale, pass 33 — one row added (145), and the list goes from 144 to 145.</b> A new brand, and the angle it attacks the list from is one nothing here covers: a 38 mm no-date skin diver from a Swiss maker trading on a 1960s dive-case lineage, at €1,440 on a beads-of-rice bracelet. The vocabulary did not move at all — no new case category, glass, movement type, watch type or complication, no new <code>MOVEMENT_TIER</code> key, since it reuses <code>Automatic — Sellita SW200-1 (Élaboré)</code> verbatim from the eight rows that already carry it, and a new brand needs no array because brand is derived from the data. Price support was never in doubt: €1,440 sits in the thickest part of this list with <b>44 comparable rows</b>, so nothing here is extrapolated. <b>It lands at 45 spec points and −9.70 on Value, <i>well below the curve</i></b> — the sixth-lowest residual among all 145 scored rows, and the second-lowest of the 44 in its own support window, above only the Oris Social Club Düsseldorf at −17.80. The list expects 55 spec points at this price and gets 45, which is a wide miss by the standards of a model whose sigma is 5.4.</p>
+
+  <p><b>Why it lands there, and none of it is a defect — it is a watch built to a 1960s specification being priced into a list scored on a 2020s one.</b> Four groups do the damage and they are the four a skin diver of this design has no answer to. <b>Timekeeping scores 0.14 of 1</b>, the worst group on the row: the SW200-1's 38-hour barrel is the floor of the power-reserve anchor in a list full of 80-hour Powermatics and 72-hour Longines, and the rate is Élaboré's ±7 rather than a certification. <b>Complications score 0.000</b>, because there is no date — Squale fit a no-date dial to a movement that has the wheel, so the 9% of the spec score that group carries is simply forfeit. <b>Fittings score 0.37</b>: a solid caseback is <code>displayBack</code> 0 and the clasp is a basic foldover. And <b>antimagnetism is 0</b>, conceding ground to every Nivachron and every 4,800 A/m row it is priced against. What it does well the model also sees — water and lume at 0.78, case and glass at 0.67, 200 m with a steel bezel insert and double-domed AR sapphire — but those are the two cheapest groups to be good at. The fair reading is the pass-16 one about Christopher Ward, sharpened: <b>Squale charge Swiss-made prices for a design whose period-correctness is exactly what costs it points here</b>, and the Value column measures that without any opinion about whether the watch is nice.</p>
+
+  <p><b>Squale's own spec labels are scrambled, and taken literally they put two wrong numbers on the row.</b> The Gehäuse block reads “Lugs Depth 18 MM” and “Lugs Width 45 mm”, which is lug width and lug-to-lug with the words swapped. That is not a judgement call: 45 mm cannot be a lug width on a 38 mm case, and the 18 mm reappears verbatim as the bracelet's own “Width 18 mm” one section down. “Width 12 mm” under Gehäuse is the case thickness, and “Glass shape: Doppelkrone” — double <i>crown</i> — is a mistranslation of double-domed, on a watch whose single crown is in the photograph above it. This is the same class of trap as Tissot's <code>Länge (mm)</code>, which is a case body and not a lug-to-lug, and it is recorded for the same reason: the block looks like a spec table and reads like one, and it is wrong in a way no invariant here can catch. <b>The one thing Squale get right that most makers here do not is putting the whole block in the rendered HTML</b> — no embedded product record, no configurator, no second hop, so a plain <code>--probe</code> returns all 27 key/value pairs, the reference number and the price in a single request.</p>
+
+  <p><b>The judgement calls, and two of them were settled by Squale's own photographs rather than inferred.</b> <b>The caseback is solid</b>, so <code>DISPLAY_BACK</code> 0 and researched: the spec field says only “Case Back Type: Zurückschrauben”, which states how the back is fixed and not what it is made of, and would have left the row unresearched — but Squale's own caseback image shows a guilloché steel disc engraved <i>STAINLESS STEEL / AUTOMATIC / SWISS MADE / 20 ATMOS</i> with no window. <b>The clasp is 0.6</b> on the same basis: the bracelet photograph shows a folding clasp with a flip-lock safety latch, no push-buttons, no visible micro-adjustment and no diver's extension, which is the top of this table's 0.5–0.6 basic-foldover band and a step under the 0.7 the Venezianico bracelets hold. Evidence of micro-adjustment would take it to 0.7–0.8 and the row about half a spec point. <b>Lume is 0.7 and is the softest number here.</b> Squale name the compound and a tint — “SuperLuminova Old Radium” — and no grade, which is the Baltic C1 case from pass 28 exactly, so it takes C1's 0.7 rather than the 0.8 Laco's named C3 earns. Old Radium is a pigment tint and not a brightness class, and a tinted compound emits at best what its untinted parent does, so if that number is wrong it is generous rather than harsh. <b>Accuracy follows row 60 verbatim.</b> Squale name the caliber and the grade — “Control grade: Élaboré” — and no rate, which is precisely the Sinn 556's situation, so the row carries Élaboré's ±7 s/day labelled as Sellita's spec and not as Squale's claim. <b>Finishing is 0.55</b>, level with the Baltic Aquascaphes and for the same construction: brushed 316L, applied indexes rather than printed ones, engraved bezel and caseback. Nothing was added for the movement, because behind a solid back there is no visible finishing to rate — the pass-26 rule. <b>And the row is the bracelet SKU deliberately:</b> Squale sell this dial on leather at €1,290, so the beads-of-rice is a €150 upgrade, and <code>bandDisplay</code>, the clasp score and the weight table all follow the band the €1,440 buys.</p>
+
+  <p><b>What it did to everything else.</b> Value moved by at most <b>0.30</b> spec points across the existing 144 — the largest on row 144, the Legend Diver — with 108 of 144 moving at all and <b>3 crossing zero</b> within that: rows 55 and 65 by 0.1 in opposite directions and row 125 likewise, all three of them rows sitting on the curve to begin with. <b>Five rows change band</b>: rows 27 and 28 (Vaer DS2 Arctic and Meridian quartz) from <i>above the curve</i> to <i>as expected</i>, row 34 (Vaer D4 Meridian solar) from <i>below</i> to <i>as expected</i>, row 71 (Mido Ocean Star 39 Two-Tone) from <i>as expected</i> to <i>above</i>, and row 127 (Baltic Aquascaphe GMT Grey) from <i>well below</i> to <i>below</i>. <b>Spec drift is none</b>, which is worth saying explicitly: this row researched every sub-score it was capable of carrying, so <code>imputeMissingSubs()</code> had no new blank to average and no existing row's step-1 score moved by even a rounding point. Leave-one-out RMSE is <b>5.72 → 5.75</b> and skill <b>61.9% → 61.2%</b>, so the model is very slightly worse for the addition; naive RMSE falls 9.28 → 9.24 and sign flips go <b>0 → 1</b>. That is the honest shape of adding a single large-residual row to a fitted line: one row nearly two sigma below the curve pulls the fit a little and costs the resample its previous perfect record, while the resample spread itself actually tightens, 0.24/0.65 → 0.25/0.54. Sigma, the spec range 26–66, the spec/price correlation at 0.79, the two <code>n/s</code> rows and the two <code>o/s</code> rows are all unchanged — €1,440 was never going to rescue rows 16 and 56, which are the two cheapest in the file.</p>
+
+  <p><b>The weight roster had gone stale in three places and is corrected here, since this pass touched nothing in it.</b> The comment above <code>WEIGHT_MEASURED</code> is the one place in the file that reconciles its own arithmetic maker by maker, and it had been left behind twice: Citizen read “12/16 rows” against an actual 13 of 17 — pass 28's Tsuyosa was never added — and Longines read “4/4 rows” against an actual 7 of 7, because pass 32 put three rows into the table and its own footer paragraph rather than into the roster. The total therefore said “56 published by the maker + 2 borrowed = the 58 in the table” while the table held 61. It now reads 59 + 2 = 61 and reconciles again. <b>This is the second time this exact comment has drifted</b> — pass 25 found it claiming eight makers and 47 rows while listing 48 — and the pattern is the same both times: the count beside a maker's name is prose, the table it describes is data, and only the data is checked. The counts either side of it in the Weight tooltip are <code>{{tokens}}</code> and had of course updated themselves. Worth stating plainly for whoever writes pass 34: <b>the roster is the one weight literal that no <code>{{token}}</code> maintains and no invariant guards</b>, so it has to be re-derived by hand every time a row enters <code>WEIGHT_MEASURED</code>. Nothing about the estimator moved — the test set is unchanged at 61 rows and every figure in the Weight tooltip with it, because row 145 goes to <code>WEIGHT_UNPUBLISHED</code>: Squale's 27-pair spec block states no mass, and neither does the matching bracelet's own page, which does carry the bracelet's width and its clasp width.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -514,7 +526,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-144 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-145 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
 //                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
@@ -3148,6 +3160,47 @@ const WATCHES = [
   // and is the largest cut of the three at 26%.
   marketPrice:{ eur:2750, kind:'grey', note:'grey-market listing' },
   priceDisplay:'€3,700', priceValue:3700, priceCurrency:'EUR' },
+
+// --- Squale Super-Squale, pass 33 (row 145) ---------------------------------------------------
+// SQUALE'S OWN SPEC LABELS ARE SCRAMBLED, and taking them literally puts two wrong numbers on the
+// row. The Gehause block reads "Lugs Depth 18 MM" and "Lugs Width 45 mm" - which is lug width and
+// lug-to-lug with the two words swapped, and it is not a judgement call: 45 mm cannot be a lug
+// width on a 38 mm case, and the 18 mm reappears verbatim as the bracelet's own "Width 18 mm" in
+// the Armband block one section down. "Width 12 mm" under Gehause is the case thickness, and
+// "Glass shape: Doppelkrone" - double crown - is the German for double-domed, on a watch whose
+// single crown is pictured. This is the same class of trap as Tissot's "Lange (mm)" and it is
+// recorded here for the same reason: the labels look like a spec table and are not one.
+//
+// THE SPECS ARE IN THE RENDERED HTML, not in an embedded product record - a plain --probe finds
+// the whole block as <span>Key <strong>Value</strong></span> pairs under spec-title headings. No
+// JSON payload, no configurator, no second hop. The reference number is in the page as
+// "REF. SUPERSSBK.AC" and the price as a bare id="prezzo" span.
+//
+// NO DATE, and that is settled by Squale's own product photograph rather than by absence: the
+// functions list names none, and the front image shows a clean three-hand dial with lume plots at
+// every hour and no aperture. The SW200-1 underneath has a date wheel; this reference does not use
+// it. So no 'date' entry in comp, and nothing to score in complications.
+//
+// PRICED ON THE BRACELET, deliberately. Squale sell this dial on a leather strap as
+// SUPERSSBK.PN for EUR 1,290, so the beads-of-rice bracelet is a EUR 150 upgrade and this row is
+// the bracelet SKU at EUR 1,440 - bandDisplay, clasp and the weight table all follow that SKU,
+// per the rule that cost rows 87-90 and the Sinn 104s their band scores.
+{ id:145, brand:'Squale', name:'Squale Super-Squale Sunray Black Bracelet (SUPERSSBK.AC)', desc:'38 mm no-date skin diver, 200 m · sunray dial against the applied-marker Big Arrows; bracelet SKU, not the EUR 1,290 leather',
+  link:'https://www.squale.ch/de/super-squale-sunray-black-bracelet',
+  img:'https://eu.squale.ch/live/assets/media/upload/SUPERSSBKAC-1.png',
+  // 45 mm is Squale's "Lugs Width" read as the lug-to-lug it can only be - see the banner above.
+  diameterDisplay:'38 mm', diameterMm:38, l2lDisplay:'45 mm',
+  heightDisplay:'12 mm', heightMm:12,
+  caseDisplay:'Brushed 316L stainless steel (unidirectional bezel, steel insert; screwed back + crown)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet (beads of rice)',
+  glassDisplay:'Double-domed sapphire + AR', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Sellita SW200-1 (Élaboré)', movementType:'Automatic', movementCostDisplay:'~$170 (Sellita, new)',
+  // Squale name the caliber and the grade - "Control grade: Elabore" - and no rate, which is
+  // exactly row 60's situation, so it takes row 60's figure and its label. Sellita's Elabore
+  // spec, not Squale's own claim.
+  powerReserveDisplay:'38 h', accuracyDisplay:'~±7 s/day (Élaboré, max ±20)',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€1,440', priceValue:1440, priceCurrency:'EUR' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -3460,8 +3513,8 @@ const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceram
 // Published weights, pass 11, extended in passes 12, 15 and 16. Every row was checked against the
 // maker's own product page - the link the row already carries - rather than sampled. That
 // overturned the premise this column was built on. Weight is NOT unpublishable: ten makers state
-// it outright, as a plain field in the same spec table as the diameter, covering 56 rows.
-//   Citizen    "Gewicht"          12/16 rows on de.citizenwatch.eu
+// it outright, as a plain field in the same spec table as the diameter, covering 59 rows.
+//   Citizen    "Gewicht"          13/17 rows on de.citizenwatch.eu
 //   CW         "Weight inc. Strap" 10/10 rows - and the only maker that also gives a separate
 //                                  "Case Weight", i.e. the only one it is possible to take the
 //                                  WRONG figure from without noticing
@@ -3470,7 +3523,7 @@ const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceram
 //   Seagull    "Net Weight"        3/3 rows
 //   Seiko                          1/1 row
 //   Timex      "Weight"            1/1 row - to two decimals, the most precise here
-//   Longines   "case_weight"       4/4 rows - in the product record behind the spec accordion
+//   Longines   "case_weight"       7/7 rows - in the product record behind the spec accordion
 //                                  rather than in the rendered prose, which is why passes 6 and
 //                                  13 both read this brand as publishing nothing
 //   Junkers    "Gewicht"           1/1 row - the ninth maker, found by pass 23 and missing from
@@ -3481,7 +3534,7 @@ const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceram
 //                                  and to a decimal on row 120 (76.8 g)
 // Two more rows come from a third party where the maker omits it, marked below. Figures are
 // with the band the row is priced on, matching what this column claims to show.
-// The three counts above reconcile: 56 published by the maker + 2 borrowed = the 58 in the table.
+// The three counts above reconcile: 59 published by the maker + 2 borrowed = the 61 in the table.
 // They did not before pass 25 - the roster said eight makers and 47 rows while listing 48, had
 // never gained Junkers, and still counted row 67 as borrowed after pass 21 found Longines publish
 // it themselves. Corrected here rather than left, since a roster that does not add up is the kind
@@ -3706,6 +3759,12 @@ const WEIGHT_UNPUBLISHED = new Set([
                           //   carries a weight field either. The Shopify variant records DO carry
                           //   grams, and it is the parcel: the pass 22 Traska trap, and never a
                           //   WEIGHT_MEASURED figure
+  145,                    // Squale Super-Squale - the spec block runs Uhrwerk, Gehause, Diameter,
+                          //   Insert, Lunette, Armband, Glas and Zifferblatt, 27 key/value pairs
+                          //   in all, and none of them is a mass. Neither is there one in the
+                          //   prose or on the matching bracelet's own product page, which does
+                          //   carry the bracelet's width and clasp width. Page opened, no figure
+                          //   stated: a finding, not a gap
 ]);
 
 // Checked, not settled. Separated from the set above because "the maker does not publish it" and
@@ -3972,6 +4031,7 @@ const WATCH_TYPES = {
   134: ['Sports', 'Dress'], 135: ['Sports', 'Dress'],
   136: ['Sports', 'Dress'], 137: ['Sports', 'Dress'],
   138: ['Diver'], 139: ['Diver'], 140: ['Diver'], 141: ['Diver'],
+  145: ['Diver'],                   // 200 m, unidirectional dive bezel, screw-down crown
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
@@ -4042,7 +4102,7 @@ const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (125 of 144 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (126 of 145 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -5159,6 +5219,32 @@ const EXTRAS = {
   139:{lume:0.75,war:2,iso:0,antimag:0,clasp:0.8,service:0.5,bezel:0.9},
   140:{lume:0.75,war:2,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:0.9},
   141:{lume:0.75,war:2,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:0.9},
+
+  // --- Squale Super-Squale, pass 33 (row 145) ----------------------------------------------
+  // Row 145, Squale Super-Squale Sunray Black Bracelet.
+  // lume 0.7: Squale name the compound and a tint - "SuperLuminova Old Radium" - and no grade.
+  //   That is the Baltic C1 case exactly (rows 126-127, pass 28: "a compound with no grade and
+  //   the standard-output one"), so it takes the same 0.7 rather than the 0.8 Laco's named C3
+  //   earns. Old Radium is a pigment tint, not a brightness class, and a tinted compound emits
+  //   at best what its untinted parent does - so if this number is wrong it is generous, not
+  //   harsh. A published grade or an X1 claim would move it.
+  // war 2: Squale's own product-warranty page, "2 JAHRE GARANTIE". DATA ONLY.
+  // iso 0: 20 ATM claimed, ISO 6425 claimed nowhere on the page. Absence is a finding of 0.
+  // antimag 0: no antimagnetic claim anywhere in the spec block or the prose.
+  // clasp 0.6: settled by Squale's own bracelet photograph, not inferred. It shows a folding
+  //   clasp with a flip-lock safety latch, engraved Squale cover, no push-buttons, no visible
+  //   micro-adjustment and no diver's extension. The spec block says only "Fibbia 16 mm" with a
+  //   brushed finish. That is the top of this table's 0.5-0.6 basic-foldover band, one step under
+  //   the 0.7 the Venezianico bracelets on rows 136-139 hold for push-button clasps. Evidence of
+  //   micro-adjustment or an extension would take it to 0.7-0.8.
+  // service 0.5: level with Baltic (rows 2-4) - a small independent Swiss maker selling direct
+  //   and through a dealer network, with a common Sellita ebauche any watchmaker can service.
+  //   DATA ONLY.
+  // bezel 0.8: a steel insert, engraved and lumed at 12, on a unidirectional bezel. Level with
+  //   the Baltic Aquascaphe on row 2 and inside this table's 0.7-0.8 steel band; it is not
+  //   ceramic and is not aluminium.
+  // comp - none. No date, no complication; see the row banner.
+  145:{lume:0.7,war:2,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:0.8},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -5462,6 +5548,14 @@ const FINISH = {
   136:0.60, 137:0.60,
   138:0.60,
   139:0.55, 140:0.55, 141:0.55,
+  // Row 145, Squale Super-Squale: 0.55, level with the Baltic Aquascaphe rows 2-4 and for the
+  // same construction - brushed 316L with a polished bezel flank, a sunray-brushed dial with
+  // APPLIED indexes rather than printed ones, engraved bezel and caseback, beads-of-rice
+  // bracelet, Swiss assembly. It clears Traska's 0.50 on the one thing Traska are held down for
+  // (printed dials) and stays under the 0.60 the Sinn 556 holds, whose guilloche dial is a
+  // further construction step. Nothing is added for the movement: the back is solid steel, so
+  // there is no visible finishing to rate.
+  145:0.55,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -5469,7 +5563,7 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 130 of 144 rows resolved - 59 see-through, 71 solid. The fourteen still open are
+// Research status: 131 of 145 rows resolved - 59 see-through, 72 solid. The fourteen still open are
 // 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125, 126, 142 and 143, all rows whose maker publishes no
 // caseback detail. Row 91 is the best documented of them: Longines leave the field empty on the
 // Spirit 37 AND on the 40 mm sibling, so the gap is the collection's, not this reference's.
@@ -5693,6 +5787,12 @@ const DISPLAY_BACK = {
   // percent of its spec score. Longines' own caseback photograph would have settled it, but
   // api.ecom.longines.com timed out on every direct fetch from here.
   144: 0,
+  // Row 145, Squale Super-Squale. Squale's spec block says only "Case Back Type:
+  // Zuruckschrauben", which states how the back is fixed and not what it is made of - so the
+  // field alone would leave this unresearched. Squale's own caseback photograph settles it:
+  // a solid steel disc, guilloche-patterned, engraved STAINLESS STEEL / AUTOMATIC / SWISS MADE /
+  // 20 ATMOS around a Super Squale logo, with no window. Researched, solid.
+  145: 0,
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
@@ -6543,7 +6643,7 @@ function optionValuesFor(dim) {
 
 // How many rows each option would show, measured against every filter EXCEPT its own dimension's
 // (see matchesFilters). Recomputed on every pipeline pass, which is 5 x 90 predicate calls - the
-// same order as the search box, which rejoins a haystack string for all 144 rows per keystroke.
+// same order as the search box, which rejoins a haystack string for all 145 rows per keystroke.
 function optionCounts(dim) {
   const counts = new Map();
   WATCHES.filter(w => matchesFilters(w, dim.key)).filter(matchesSearch)
