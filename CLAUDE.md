@@ -72,7 +72,7 @@ Current baseline:
 
 ```
 154 rows · spec 26–66 · sigma 6 · 2 n/s · 2 o/s · 62 published weights
-model  LOO RMSE 5.83 vs naive 9.08 · skill 58.8% · 0 sign flip(s) · resample typical 0.32 worst 0.67
+model  LOO RMSE 5.86 vs naive 9.13 · skill 58.8% · 0 sign flip(s) · resample typical 0.31 worst 0.64
 ```
 
 **If a change was not meant to touch the model and those numbers move, something is wrong.**
@@ -208,7 +208,7 @@ Two steps, and keeping them separate is the point:
   Theil–Sen (median pairwise slope, within movement class) and a **separate median intercept per
   class**. Each row's residual against that line is the `Value` badge; `Score` is the same number
   rescaled to 0–100 (`50 + residual * 2.8`) and sorts identically. This step *is* fitted to the
-  list, so adding rows does move everyone's Value. `residualSigma` is currently ~5.5.
+  list, so adding rows does move everyone's Value. `residualSigma` is currently 6.
 
 Guards worth knowing before touching either step:
 
@@ -281,7 +281,7 @@ either would turn the model into an echo of the shortlist. Say so before wiring 
   written up in prose in the `<footer>` — what was wrong before, what the evidence was, what is
   still unresolved. That reasoning is irreplaceable and belongs there. The bare chronology of what
   changed when is git's job now; don't grow the footer with it. The model is on revision 3;
-  research passes run to 36.
+  research passes run to 37.
 - **Footer paragraphs are dated snapshots, not live claims.** Do not retrofit them to current
   numbers — later passes explicitly refer back to earlier ones ("the earlier warning overstated
   the case"), and rewriting the earlier text destroys the correction it records. Live claims go in
