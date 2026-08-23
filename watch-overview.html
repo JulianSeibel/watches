@@ -291,7 +291,7 @@
   <th data-key="diameter">Diameter<span class="sort-arrow"></span></th>
   <th data-key="l2l">L2L<span class="sort-arrow"></span></th>
   <th data-key="height" title="Case thickness/height, from each maker's spec sheet (or press/retailer listings where the maker page didn't list one).">Höhe<span class="sort-arrow"></span></th>
-  <th data-key="weight" title="Weight on the wrist including the band. {{weightPublished}} of the {{rowCount}} rows are a published figure, shown in bold and without the ≈: Tissot, Citizen, Seagull, Seiko, Mido, Timex, Christopher Ward, Longines, Junkers and Laco all state weight as a plain field in their spec tables, and two further rows come from a review or a specialist retailer where the maker omits it. The remaining rows are a physical estimate computed from case diameter, thickness, case material density and band type — case volume as a cylinder at a 0.55 fill factor, plus the movement, plus the bracelet or strap. Those estimates can now be checked, because the {{weightPublished}} published figures are exactly the test set the estimator never had: against them it lands within 15% on {{weightWithin15}} of {{weightPublished}}, with a median error of {{weightMedianErr}}% and an RMSE of {{weightRmse}} g, and runs {{weightSigned}}% heavy on average. The biases it shows are NOT corrected, because each rests on too little data — titanium reads about {{weightTiPct}}% light across {{weightTiN}} rows, and the one bioceramic row it could be tested on came out {{weightBioPct}}% heavy, so the Swatch estimates are the least trustworthy in the column. Rows quoted on a strap with the bracelet optional are estimated on the strap, matching the price they carry. This column is deliberately NOT part of any score: the estimate is a deterministic function of diameter, thickness, case material and band, all of which the spec score already uses, so scoring it would double-count. Titanium already scores above steel on the case criterion largely because it is light — paying for that again here would reward the same property twice.">Weight<span class="sort-arrow"></span></th>
+  <th data-key="weight" title="Weight on the wrist including the band. {{weightPublished}} of the {{rowCount}} rows are a published figure, shown in bold and without the ≈: Tissot, Citizen, Seagull, Seiko, Mido, Timex, Christopher Ward, Longines, Junkers, Laco and Circula all state weight as a plain field in their spec tables, and two further rows come from a review or a specialist retailer where the maker omits it. The remaining rows are a physical estimate computed from case diameter, thickness, case material density and band type — case volume as a cylinder at a 0.55 fill factor, plus the movement, plus the bracelet or strap. Those estimates can now be checked, because the {{weightPublished}} published figures are exactly the test set the estimator never had: against them it lands within 15% on {{weightWithin15}} of {{weightPublished}}, with a median error of {{weightMedianErr}}% and an RMSE of {{weightRmse}} g, and runs {{weightSigned}}% heavy on average. The biases it shows are NOT corrected, because each rests on too little data — titanium reads about {{weightTiPct}}% light across {{weightTiN}} rows, and the one bioceramic row it could be tested on came out {{weightBioPct}}% heavy, so the Swatch estimates are the least trustworthy in the column. Rows quoted on a strap with the bracelet optional are estimated on the strap, matching the price they carry. This column is deliberately NOT part of any score: the estimate is a deterministic function of diameter, thickness, case material and band, all of which the spec score already uses, so scoring it would double-count. Titanium already scores above steel on the case criterion largely because it is light — paying for that again here would reward the same property twice.">Weight<span class="sort-arrow"></span></th>
   <th data-key="case">Case<span class="sort-arrow"></span></th>
   <th data-key="band">Band<span class="sort-arrow"></span></th>
   <th data-key="glass">Glass<span class="sort-arrow"></span></th>
@@ -585,6 +585,20 @@
 
   <p><b>What it did to everything else.</b> Twelve rows changed data and <b>nine changed spec score</b> — the seven Venezianico rows plus 97 and 100. Value moved by at most <b>1.60</b> residual points, on rows 134 and 135; 124 of the 154 moved at all, which is the fitted line shifting rather than the rows. <b>Eight bands change</b>: 139, 140 and 141 into <i>below the curve</i>; 34, 95 and 145 up a band and 74 and 81 into <i>above the curve</i>, all of those on line movement rather than their own data. Five rows cross zero. Leave-one-out RMSE is 5.94 → 5.98 against a naive 9.14 → 9.18, skill 57.8% → 57.5%, and <b>sign flips go 1 → 0</b>, undoing the one pass 38 added. Sigma holds at 6 and the spec range at 26–66. The parser fix alone would have left RMSE at 5.91; the reserve fill is what carries it back up, for the same reason it did in pass 38 — seven of the moved rows are Venezianico rows already below the curve, and pushing them further down makes them worse-fitting outliers rather than making the model worse at its job.</p>
 
+  <p><b>Circula, Damasko and Tutima, pass 41 — six rows added (155–160), and the list goes from 154 to 160.</b> Three German makers, all three new here, and all three sitting in the €2,000–2,950 stretch that pass 22 opened and nothing since has filled densely: a Circula Facet 38 on the La Joux-Perret G100, two Damasko three-handers on their own A26-1 caliber at its two factory grades, and three Tutima Sky 34 mm references that are one watch in three dial colours. The vocabulary barely moved — no new case category, glass, movement type, watch type or complication — and the four new <code>MOVEMENT_TIER</code> keys are the whole of it. <b>All six are scored</b>, with 24 to 45 comparable rows each, so nothing here rests on an extrapolation, and the unscored count stays at 2 — rows 16 and 56, still the two cheapest, and nothing at €2,000 was ever going to reach them. <b>They land at 59 spec points and +2.60 for the Circula, <i>as expected</i>; 51 and −8.80 for the Damasko DF20 and 55 and −4.50 for the DK26, both <i>below the curve</i>; and 43 and −14.00 for all three Tutimas, <i>well below</i>.</b> That is a spread of 16 spec points across six watches priced within €900 of each other, which is the most the model has separated a single pass's rows since the Oris block.</p>
+
+  <p><b>The Tutima result is the finding of the pass, and it is worth reading rather than dismissing.</b> −14.00 is the third-largest negative residual in the table, behind only two of the Oris rows, and three rows share it because the three references are the same watch. Almost all of it is specification the maker does not have rather than specification the maker withholds. A Sky is 34 mm and 5 ATM against a list whose middle is 39 mm and 200 m; it has no lume at all; its clasp is a plain foldover; and its caliber is an undeclared Sellita SW200-1 at 41 h. Every one of those is a real number in a scored group, and there are four of them. What the model cannot see, and correctly declines to invent, is that this is a Glashütte-made watch with a hexagon-relief dial and a decorated rotor behind sapphire — real things, priced at €2,200, that this file scores at 0.60 in <code>FINISH</code> and nowhere else. <b>The honest reading is that Tutima charge Glashütte money for a specification this list buys for a third of it, and that the model is measuring exactly that and nothing more.</b> The Damasko pair is the same story with the arithmetic running the other way: they are 200 m, 9.95 mm, X1-lumed and on an in-house caliber, and they still land below the curve at €2,835 and €2,928 — but at −8.80 and −4.50 rather than −14.00, and the gap between those two rows is almost entirely the TOP-grade movement and the adjustable clasp the DK26's extra €93 buys.</p>
+
+  <p><b>The judgement calls, all recorded beside the numbers.</b> <b>Four new movement tiers, and the Damasko pair is the substantive one.</b> The A26-1 is an independent's own architecture, which is the case the 0.55–0.60 ébauche band and the 0.70–0.75 "in-house from a major" band between them do not describe — so it starts from the YEMA CMM.10's <b>0.68</b>, which was written for exactly that gap, and shares its limitation: Damasko buy the regulating organ. What they have that YEMA do not is a silicon escape wheel of their own, plus a rotor on two ceramic ball bearings, and <b>+0.02</b> for one added construction merit on the same architecture class is the step pass 29 set moving the CMM.10 to the CMM.20. That lands the Élaboré at <b>0.70</b> and the TOP at <b>0.73</b>, the latter on the same +0.03 passes 26, 34 and 35 paid for a named factory grade with a published component list — Glucydur instead of nickel-gilt, a finished barrel, a worst-position bound tightening 25 s to 20 s. <b>The exposure is measured and it is not the usual "the verdict holds either way":</b> dropping both keys 0.05 costs row 156 one spec point and row 157 none, moving them to −9.50 and −5.20, and <i>row 156 crosses into well below the curve</i>. The other two keys need less argument. <code>La Joux-Perret G100 (soignée)</code> at <b>0.63</b> is row 150's G101 entry applied to the G100, Circula naming the grade exactly as Farer do. <code>Tutima 335 (Sellita SW200-1 base)</code> at <b>0.60</b> is the ML115 arrangement: Tutima name the caliber and nothing else, so the base is identified on a spec match — 26 jewels and 41 h are the SW200-1's own figures — and the Glashütte decoration buys nothing here because it is <code>FINISH</code>'s and the window it is seen through is <code>fittings.displayBack</code>.</p>
+
+  <p><b>Damasko's antimagnetism is the number most open to disagreement, and it is the one that carries a band on its back.</b> Their caliber page rates the A26-X "antimagnetisch nach DIN 8309", which is precisely the 4,800 A/m rung this file's <b>0.3</b> is defined as. Their magnetism page then claims up to 80,000 A/m — but attaches it to "alle DAMASKO Modelle aus eisgehärtetem Edelstahl <i>und ohne Glasboden</i>", and these two references are submarine steel, one of them with a sapphire back. For submarine-steel models Damasko say only that extra shielding is not "necessary" because the case body shields, with no figure at all. So the only <i>rated</i> number that applies here is DIN 8309. <b>At 1.0 instead, row 156 gains one spec point and row 157 gains two — and row 157 moves from <i>below the curve</i> at −4.50 to <i>as expected</i> at −2.90.</b> A published A/m figure for a submarine-steel reference is what would settle it. <b>Tutima's lume at 0.1 is the softest number in the pass</b> and the one most likely to be wrong: Tutima state no luminous material on any Sky page, WatchTime's launch piece does not mention one, and Tutima's own 1600 px front photographs show polished ribbed batons and solid faceted hands with no fill and no dial plots — so it is a finding of absence, the treatment rows 87–89 carry. It is contradicted by one US retailer's listing claiming Super-LumiNova on hands and indices, which loses to the maker's own photograph but is recorded rather than ignored; at 0.5 the three rows go 43 → 45 and −14.00 → −12.20, still well below. <b>Circula's clasp at 0.85</b> is the Christopher Ward butterfly number granted to a folding body, because the merit being scored is on-the-fly tool-free micro-adjustment and Circula both describe and photograph one; at 0.80 the row goes +2.60 → +2.20. <b>Damasko's two clasps split 0.5/0.7 on their own SKU naming</b> — the DF20's is "feststehend", a fixed clasp offered beside an adjustable one, which is evidence of absence and sits below the 0.6 this file gives an undescribed bracelet; the DK26's 10 mm adjustment takes the <i>floor</i> of the micro-adjust band, because Damasko describe push-buttons and adjustment without opening the bracelet in detail for their new 22 mm clasp and say none of it about this one.</p>
+
+  <p><b>Three fields were missing from the product pages and each was resolved on the maker's own site rather than borrowed — and two of them by photographs.</b> <b>Damasko publish no water resistance anywhere on either product page</b>, in German or English, and the probe finds no key for it in the source either. Their own product brochure has a DF2X/DK2X page listing "200m Wasserdicht" for DF20 Old Radium, DF20 Schwarz, DK20 and DK26 by name, and the DK26's caseback photograph is engraved "WD 20 BAR/200M" — the same maker, twice, so no borrowed label is needed. <b>That caseback photograph also overturns the DK26's own spec text</b>, which says "Boden, Lünette und Krone verschraubt" and reads as a solid back while showing a sapphire one. <b>Which is exactly why row 156 is left out of <code>DISPLAY_BACK</code>:</b> the DF20's caseback field is worded identically to the DK26's, so it is no evidence either way, and the DF20's four-image gallery has no caseback shot. Inferring it from its sibling would be inferring from a different reference, which is what rows 125–126 were left open rather than do. <b>The third photograph settles a Tutima contradiction:</b> 6705-06's function list reads "Datumsanzeige. Stunde, Minute." and omits the central seconds its two siblings list — and Tutima's own front photograph shows a sweep hand. That is the YEMA row 131 shape in its milder form, an omission from a copy-pasted list rather than a positive claim, and 6705-10's band field drops "mit Faltschließe" the same way. <b>What is deliberately <i>not</i> in the Damasko accuracy cells is the other half of this:</b> Damasko publish two numbers per grade and only one is a rate. "Maximum deviation between positions ≤ 10s, tested in 6 positions" is a positional <i>spread</i> — precisely the shape of number pass 40 caught being averaged in as though it were a rate — so the cells carry the worst-position bounds, <code>max 25 s/day in any position</code> and <code>max 20 s/day</code>, and the spread stays in a comment.</p>
+
+  <p><b>What it did to everything else.</b> Value moved by at most <b>1.70</b> spec points across the existing 154 — row 16, the Delhi Tithi — with 140 of 154 moving at all and ten crossing zero (rows 20, 22, 29, 30, 33, 62, 67, 91, 133 and 144). <b>Ten rows changed band</b>, in both directions and none by much: rows 26, 74 and 110 from <i>above the curve</i> to <i>as expected</i>; rows 96 and 118 from <i>below</i> to <i>as expected</i>; rows 78, 142 and 143 from <i>as expected</i> to <i>above</i>; rows 34 and 88 from <i>as expected</i> to <i>below</i>. Sigma holds at 6 and the spec range at 26–66, so the boundaries did not move underneath anyone — every one of those ten is the row's own residual crossing a fixed line. <b>Spec drift touched three rows by one point each</b> — 152, 153 and 154, the Maurice Lacroix trio, all down 52 → 51 — which is <code>imputeMissingSubs()</code> filling their unresearched sub-scores with a list mean that six new rows have shifted. <b>The model gets measurably worse and it is reported as found.</b> Leave-one-out RMSE rises 5.98 → 6.25 and skill falls <b>57.5% → 52.7%</b>, the largest single-pass fall since pass 22, and it is squeezed from both ends: the naive baseline improves 9.18 → 9.09 while the spec/price correlation falls 0.77 → 0.74. The Tutima block is doing most of it — three rows sharing a residual of −14.00 is three copies of the same outlier, which is the worst shape a fit can be handed. Sign flips stay at 0 and the resampling figures widen, 0.29/0.62 → 0.34/0.84. None of this is tuned away.</p>
+
+  <p><b>The weight estimator's test set grows by one and the added row is the largest light-reading miss it has ever had.</b> Circula are the eleventh maker in this roster to publish mass as a plain spec field, and the only one that gives both bands in a single line — "95 g mit Lederband, 170 g mit Stahlband ungekürzt" — so row 119's rule decides it and the row takes the bracelet figure it is priced on. <b>The estimator reads 136 g against that 170 g, −20.0%</b>, where the whole set runs mean signed +4.0%: it is the first entry here to read light by more than 15%, and the second-largest single error after the Junkers. The cause is in the published number rather than the method, and Circula name it themselves — <i>ungekürzt</i>, the bracelet at full length, where every other maker in this roster publishes a fitted watch, so a flat 62 g bracelet allowance is being compared against an unshortened one. <b>Nothing was refitted on it</b>, which is the standing refusal this block states every time the question comes up; the set goes 62 → 63 rows, mean absolute error 10.4% → 10.6%, RMSE 14.5 g → 15.0 g, median unchanged at 6.7%, within ±15% 52 of 62 → 52 of 63. <b>Two stale literals were corrected in passing, and both had drifted before this pass touched them.</b> The weight block described the column as "58 published figures and 83 estimates" when the tables held 62 and 92, and the roster's reconciliation line still said "60 published by the maker + 2 borrowed = the 62 in the table" while claiming ten makers. They now read 63 and 97, and eleven makers. That is the third time this particular block has been found out of date, which is the argument for pushing a figure into <code>computedFigures()</code> rather than against the sweep.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -606,7 +620,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-154 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-160 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
 //                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
@@ -3641,6 +3655,167 @@ const WATCHES = [
   // this model scores changes between them, so the whole EUR 400 is the 888-piece limitation, and
   // the Value column is about to say exactly that.
   priceDisplay:'€2,700 (ltd. 888)', priceValue:2700, priceCurrency:'EUR' },
+
+// --- Circula Facet 38, pass 41 (row 155) -------------------------------------------------------
+// Circula run Shopware, and it is the most generous spec table of the three brands in this pass:
+// case construction, glass, water resistance, lug width, DIAMETER EXCLUDING CROWN, weight on both
+// bands, lug-to-lug, height, caliber, frequency, reserve, RATE, jewels, shock protection, rotor,
+// dial, hands and bracelet, all in one accordion that renders server-side. No probe needed beyond
+// finding it.
+//
+// The rate is the interesting field. Circula publish "-5/+7 Sek./Tag, feinreguliert in Pforzheim"
+// for this reference - their own regulation, not La Joux-Perret's grade tolerance - so this is
+// rule 4 rather than rule 2: the maker's statement about the watch in front of it beats the family
+// figure. Row 150's soignée cell carries Farer's borrowed ±7/max ±20 for the sibling G101; this
+// one is narrower and is Circula's own. The parenthetical names no maximum, so
+// accuracyMagnitudePerDay() drops it and the cell scores 6 - the two figures in the main clause -
+// which is the pass-40 rule working as intended.
+//
+// The date at 6 is NOT in Circula's function list, which they simply do not print; their own
+// product photograph shows the window. Not a contradiction like row 131's, just an omission, and a
+// date is not a scored complication here in any case.
+{ id:155, brand:'Circula', name:'Circula Facet 38 Petrol (FS-SV-PP+SF-AE)', desc:'Faceted integrated-bracelet sports watch, LJP G100 soignée · the bracelet SKU with the quick-adjust folding clasp, not the butterfly or the leather',
+  link:'https://circulawatches.com/de/uhren/stahl-sportuhren/facet-38-petrol-stahlband-faltschliesse-und-schnellverstellung/fs-sv-pp-sf-ae',
+  img:'https://circulawatches.com/thumbnail/5c/69/09/1785399353/circula-produktbild-facet-petrol-01_%281%29_800x800.webp',
+  // "Durchmesser: 38 mm (ohne Krone)" - Circula qualify the figure themselves, which is rarer than
+  // it should be and is why this row needs no judgement about what the number includes.
+  diameterDisplay:'38 mm', diameterMm:38, l2lDisplay:'44.5 mm',
+  heightDisplay:'9.9 mm', heightMm:9.9,
+  caseDisplay:'316L stainless steel, hand-brushed and polished, fixed faceted bezel (engraved crown; four-screw sapphire back)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet (integrated, quick-change, screwed links; safety clasp with tool-free quick adjustment)',
+  glassDisplay:'Flat sapphire, triple inner AR', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — La Joux-Perret G100 (soignée)', movementType:'Automatic', movementCostDisplay:'~$290 (Swiss LJP G100 family, new)',
+  powerReserveDisplay:'68 h', accuracyDisplay:'−5/+7 s/day (regulated in Pforzheim)',
+  waterResDisplay:'100 m (10 ATM)', waterResM:100,
+  priceDisplay:'€2,040', priceValue:2040, priceCurrency:'EUR' },
+
+// --- Damasko DF20 / DK26, pass 41 (rows 156-157) ----------------------------------------------
+// Two references on one caliber at its two factory grades, which is the Laco arrangement from pass
+// 26 and gets the same treatment: two MOVEMENT_TIER keys, because Damasko publish the component
+// table that separates Elaboré from TOP, and two different accuracy cells, because they publish a
+// bound for each. Both rows are the exact configured SKU the link points at - Shopware returns the
+// variant's own price in an itemprop="price" meta, so unlike the Laco rows there is no surcharge
+// arithmetic to record.
+//
+// THREE FIELDS DAMASKO DO NOT PUT ON A PRODUCT PAGE, and each was resolved somewhere else on their
+// own site rather than borrowed:
+//   Water resistance appears on NEITHER product page, in German or English, and the probe finds
+//     nothing. Damasko's own product brochure (Service > Broschüre, DE_Produktsortiment Prospekt)
+//     has a DF2X/DK2X page listing "200m Wasserdicht" for DF20 Old Radium, DF20 Schwarz, DK20 and
+//     DK26 by name, and the DK26's own caseback engraving reads "WD 20 BAR/200M". Same maker, two
+//     independent statements, so both rows take 200 m.
+//   The rate bounds are on the Manufakturkaliber A26-X page, not the product pages.
+//   The warranty period is published nowhere - not the product pages, not the AGB, not the repair
+//     conditions - so EXTRAS carries the German statutory two years, labelled there as inferred.
+//
+// WHAT IS DELIBERATELY NOT IN THE ACCURACY CELLS: Damasko give TWO numbers per grade and only one
+// of them is a rate. "Maximum deviation between positions <= 10s, tested in 6 positions" is a
+// positional SPREAD, which is exactly the shape of number pass 40 caught being averaged in as if it
+// were a rate. "25 seconds maximum deviation in all positions" (Elaboré) and "20 seconds" (TOP) are
+// worst-position bounds and go in the cell; the spread stays here, in a comment. The wording is
+// "max N s/day in any position" rather than "max N s/day across 6 positions" for a mechanical
+// reason as well as an honest one - a 6 in the main clause would be averaged in with the 25.
+{ id:156, brand:'Damasko', name:'Damasko DF20 Old Radium (SW10391.3)', desc:'Bead-blasted submarine-steel field watch, sandwich dial · the Elaboré grade on the manufacture bracelet with the FIXED clasp',
+  link:'https://www.damasko-watches.com/DF20-Old-Radium/SW10391.3',
+  img:'https://www.damasko-watches.com/thumbnail/4f/cc/3b/1753905431/DF20.Old-Radium_U-Boot-Stahlarmband_800x800.png',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'48 mm',
+  heightDisplay:'9.95 mm', heightMm:9.95,
+  // "Krone gesteckt" - a PUSH-IN crown on a 200 m watch, which is unusual enough to be worth
+  // naming here rather than leaving the reader to assume the DK26's screw-down. Damasko's own
+  // profile photograph of this reference shows a plain crown with no guards. The caseback is not
+  // described on either page and no photograph of this one exists in the gallery, so row 156 is
+  // absent from DISPLAY_BACK - and neither "display back" nor "exhibition" appears in this string,
+  // so displayBackFor()'s caseDisplay fallback cannot quietly score it 1.
+  caseDisplay:'Hardened German submarine steel, bead-blasted (screwed back and bezel; push-in crown)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet (Damasko manufacture, submarine steel; fixed clasp, no adjustment)',
+  glassDisplay:'Flat sapphire, AR both sides', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Damasko A26-1 (in-house, Elaboré)', movementType:'Automatic', movementCostDisplay:'not sold separately (Damasko in-house manufacture caliber)',
+  powerReserveDisplay:'42 h', accuracyDisplay:'max 25 s/day in any position (Elaboré)',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€2,835', priceValue:2835, priceCurrency:'EUR' },
+
+{ id:157, brand:'Damasko', name:'Damasko DK26 (SW10262.4.B06E)', desc:'Same 39 mm submarine-steel case with 3D Old Radium lume blocks · the TOP grade, screw-down crown and the 10 mm-adjust clasp',
+  link:'https://www.damasko-watches.com/DK26/SW10262.4.B06E',
+  img:'https://www.damasko-watches.com/thumbnail/0d/95/37/1732620390/DK26-U-Boot-Stahlarmband_800x800.jpg',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'48 mm',
+  heightDisplay:'9.95 mm', heightMm:9.95,
+  caseDisplay:'Hardened German submarine steel, bead-blasted (back, bezel and crown screwed, "System DAMASKO" crown protection; sapphire back)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet (Damasko manufacture, submarine steel; folding clasp, 10 mm adjustment range)',
+  glassDisplay:'Flat sapphire, AR both sides (sapphire caseback)', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Damasko A26-1 (in-house, TOP)', movementType:'Automatic', movementCostDisplay:'not sold separately (Damasko in-house manufacture caliber)',
+  powerReserveDisplay:'42 h', accuracyDisplay:'max 20 s/day in any position (TOP)',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€2,928', priceValue:2928, priceCurrency:'EUR' },
+
+// --- Tutima Sky 34 mm, pass 41 (rows 158-160) -------------------------------------------------
+// The thinnest spec table in this pass by a wide margin, and the whole page is 30 KB: Tutima print
+// caliber name, case material, dial colour, band, DIAMETER and price, then two prose lines for
+// movement and case details. No height, no lug-to-lug, no weight, no rate, no luminous material,
+// no warranty - on any reference, in any locale, and the probe confirms none of it is hiding in
+// the source. Three of those stay unresolved on the rows below; two were settled elsewhere and
+// both are labelled as borrowed where they sit.
+//
+// THREE REFERENCES, ONE WATCH. Case, bracelet, glass, caseback, crown, depth rating, caliber and
+// price are identical across 6705-10, -08 and -06; only the dial colour and the plating of the
+// hands and indexes differ (gold on -10, rhodium on the other two). So one set of side-table
+// numbers covers all three, the same arrangement rows 152-154 use.
+//
+// TWO PLACES TUTIMA'S OWN TEXT IS WRONG OR INCOMPLETE, both settled by their own photographs:
+//   6705-06's function list reads "Datumsanzeige. Stunde, Minute." and omits the central seconds
+//     that -10 and -08 list. The full-resolution front photograph shows a sweep seconds hand. This
+//     is the YEMA row 131 shape - a spec table contradicted by the maker's own picture - but it is
+//     the milder version, an omission from a copy-pasted list rather than a positive claim, and it
+//     changes nothing this file scores.
+//   6705-10's band field reads "Edelstahlband" where -08 and -06 read "Edelstahlband mit
+//     Faltschließe". The photographs show one bracelet across all three. Treated as the same
+//     omission, and all three take the same clasp number.
+{ id:158, brand:'Tutima', name:'Tutima Sky 34 mm (6705-10)', desc:'Glashütte three-hander, hexagon-relief Asanoha dial · black with gold-plated hands and indexes; sibling of the sage 6705-08 and ice-blue 6705-06',
+  link:'https://tutima.com/de/uhr/sky-6705-10/',
+  img:'https://tutima.com/wp-content/uploads/2026/03/6705-10_front_a-840x1106.jpg',
+  // BORROWED, and the only borrowed figure in this pass: Tutima publish no height for any Sky
+  // reference. WatchTime's launch piece on this exact reference gives "einem Durchmesser von 34
+  // Millimetern und einer Höhe von 10 Millimetern" - a named independent magazine on the row's own
+  // SKU, which is rule 3's licence rather than rule 2's refusal. Lug-to-lug is published by nobody
+  // and stays '—' rather than being measured off a photograph.
+  diameterDisplay:'34 mm', diameterMm:34, l2lDisplay:'—',
+  heightDisplay:'~10 mm', heightMm:10,
+  caseDisplay:'Stainless steel, polished bezel and brushed flanks (screw-down crown; sapphire back)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet (folding clasp)',
+  glassDisplay:'Box-domed sapphire, AR (sapphire caseback)', glassCategory:'Sapphire',
+  // Tutima name the caliber and nothing about its origin. The base is named here on the same
+  // evidence the ML115 key carries - a spec match to the digit, 26 jewels and 41 h being the
+  // SW200-1's own figures - corroborated by WatchTime calling it a "Sellita-basiertes Automatikwerk
+  // Kaliber Tutima 335". No grade is named by anyone, so accuracyDisplay stays '—' under rule 2.
+  movementDisplay:'Automatic — Tutima 335 (Sellita SW200-1 base)', movementType:'Automatic', movementCostDisplay:'not sold separately (Tutima-decorated Sellita SW200-1)',
+  powerReserveDisplay:'41 h', accuracyDisplay:'—',
+  waterResDisplay:'50 m (5 ATM)', waterResM:50,
+  priceDisplay:'€2,200', priceValue:2200, priceCurrency:'EUR' },
+
+{ id:159, brand:'Tutima', name:'Tutima Sky 34 mm (6705-08)', desc:'Sage-green Asanoha dial, rhodium-plated hands and indexes · same case, caliber and price as rows 158 and 160',
+  link:'https://tutima.com/de/uhr/sky-6705-08/',
+  img:'https://tutima.com/wp-content/uploads/2025/03/6705-08_front_a-840x1106.jpg',
+  diameterDisplay:'34 mm', diameterMm:34, l2lDisplay:'—',
+  heightDisplay:'~10 mm', heightMm:10,
+  caseDisplay:'Stainless steel, polished bezel and brushed flanks (screw-down crown; sapphire back)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet (folding clasp)',
+  glassDisplay:'Box-domed sapphire, AR (sapphire caseback)', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Tutima 335 (Sellita SW200-1 base)', movementType:'Automatic', movementCostDisplay:'not sold separately (Tutima-decorated Sellita SW200-1)',
+  powerReserveDisplay:'41 h', accuracyDisplay:'—',
+  waterResDisplay:'50 m (5 ATM)', waterResM:50,
+  priceDisplay:'€2,200', priceValue:2200, priceCurrency:'EUR' },
+
+{ id:160, brand:'Tutima', name:'Tutima Sky 34 mm (6705-06)', desc:'Ice-blue Asanoha dial · the reference whose function list omits the seconds hand its own photograph shows',
+  link:'https://tutima.com/de/uhr/sky-6705-06/',
+  img:'https://tutima.com/wp-content/uploads/2024/06/6705-06_front_a-840x1106.jpg',
+  diameterDisplay:'34 mm', diameterMm:34, l2lDisplay:'—',
+  heightDisplay:'~10 mm', heightMm:10,
+  caseDisplay:'Stainless steel, polished bezel and brushed flanks (screw-down crown; sapphire back)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet (folding clasp)',
+  glassDisplay:'Box-domed sapphire, AR (sapphire caseback)', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Tutima 335 (Sellita SW200-1 base)', movementType:'Automatic', movementCostDisplay:'not sold separately (Tutima-decorated Sellita SW200-1)',
+  powerReserveDisplay:'41 h', accuracyDisplay:'—',
+  waterResDisplay:'50 m (5 ATM)', waterResM:50,
+  priceDisplay:'€2,200', priceValue:2200, priceCurrency:'EUR' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -3845,8 +4020,8 @@ function measuredRatioStats(watches) {
 
 // --- Weight (pass 10, rewritten in pass 11) ------------------------------------------------
 // Ten makers publish mass as a plain field in the same spec table as the diameter, which the
-// roster above WEIGHT_MEASURED sets out per maker. The column is 58 published figures and 83
-// estimates - 70 rows that genuinely publish nothing, 8 that could not be reached, and 5
+// roster above WEIGHT_MEASURED sets out per maker. The column is 63 published figures and 97
+// estimates - 82 rows that genuinely publish nothing, 8 that could not be reached, and 7
 // published head-only. The estimator below runs for anything not in WEIGHT_MEASURED.
 //
 // Pass 10 built this column on the premise that mass "is simply not in the spec sheets" and
@@ -3866,10 +4041,10 @@ function measuredRatioStats(watches) {
 // Pass 10 added that "if a real set of measured weights ever exists that argument changes,
 // because measured mass carries information the dimensions do not - bracelet build, case wall
 // thickness". That set now partly exists, so the question is flagged rather than quietly ignored.
-// It is still NOT acted on, for two reasons. The 62 are not a random sample - they are ten makers
-// who happen to document well, three of them Japanese and seven Western, so scoring on them would
-// score brands on their spec-sheet habits. And the double-counting objection above still binds
-// for the other 92 rows, where the "weight" is a function of columns the score already reads.
+// It is still NOT acted on, for two reasons. The 63 are not a random sample - they are eleven
+// makers who happen to document well, three of them Japanese and eight Western, so scoring on them
+// would score brands on their spec-sheet habits. And the double-counting objection above still
+// binds for the other 97 rows, where the "weight" is a function of columns the score already reads.
 // Scoring a column that is measured for some rows and derived from other scored inputs for the
 // rest would mean two different things in one number. Completing the research is the prerequisite.
 //
@@ -3885,12 +4060,20 @@ function measuredRatioStats(watches) {
 // slightly worse again, in the same direction and for the same structural reason - see below.
 // Pass 23's ONE row moved it more than either: the Junkers on row 113 is the largest single error
 // in the set at +76.1%, and on its own it takes mean absolute error from 9.8% to 11.1%.
-//                        28 rows (p11)   36 rows (p12)   47 rows (p16)   50 rows (p21)   51 rows (p23)   51 rows (p24)   54 rows (p25)   58 rows (p26)   61 rows (p32)
-//   mean absolute error       8.5%           8.2%            9.5%            9.8%           11.1%            9.8%            9.9%           10.7%           10.5%
-//   median absolute error     6.1%           5.8%            6.1%            6.5%            6.5%            6.0%            6.3%            6.6%            6.7%
-//   RMSE                     11.8 g         11.9 g          13.5 g          13.9 g          14.6 g          13.8 g          13.6 g          14.8 g          14.5 g
-//   within +-15%             25 of 28       32 of 36        40 of 47        42 of 50        42 of 51        44 of 51        46 of 54        48 of 58        51 of 61
-//   mean signed error        +2.6%          +1.6%           +2.4%           +3.1%           +4.5%           +3.2%           +3.7%          +4.4%           +4.5%  (+ = reads heavy)
+//                        28 rows (p11)   36 rows (p12)   47 rows (p16)   50 rows (p21)   51 rows (p23)   51 rows (p24)   54 rows (p25)   58 rows (p26)   61 rows (p32)   63 rows (p41)
+//   mean absolute error       8.5%           8.2%            9.5%            9.8%           11.1%            9.8%            9.9%           10.7%           10.5%           10.6%
+//   median absolute error     6.1%           5.8%            6.1%            6.5%            6.5%            6.0%            6.3%            6.6%            6.7%            6.7%
+//   RMSE                     11.8 g         11.9 g          13.5 g          13.9 g          14.6 g          13.8 g          13.6 g          14.8 g          14.5 g          15.0 g
+//   within +-15%             25 of 28       32 of 36        40 of 47        42 of 50        42 of 51        44 of 51        46 of 54        48 of 58        51 of 61        52 of 63
+//   mean signed error        +2.6%          +1.6%           +2.4%           +3.1%           +4.5%           +3.2%           +3.7%          +4.4%           +4.5%           +4.0%  (+ = reads heavy)
+// Pass 41 added ONE row and it is the largest single miss in the set after the Junkers: the Circula
+// on row 155 is estimated at 136 g against a published 170 g, -20.0%, and it is the first entry
+// here that reads LIGHT by more than 15%. The cause is in the figure rather than the method -
+// Circula publish the bracelet at full length, "ungekürzt", where every other maker in this roster
+// publishes a fitted watch, so the estimator's flat 62 g bracelet allowance is being compared
+// against an unshortened one. Left in and not corrected, for the reason weightEstimatorStats()
+// gives once for the whole block; it is also why this is the only row here whose comment says what
+// the published number is measuring.
 // Pass 32's three Longines rows are the first enlargement since pass 12 to move every measure but
 // the median the RIGHT way, and they did it while READING HEAVY - +6.7% mean signed across the
 // three, above the set's own +4.5%. Those two facts look contradictory and are not: the three sit
@@ -3972,8 +4155,8 @@ function measuredRatioStats(watches) {
 const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceramic: 2.0 };
 // Published weights, pass 11, extended in passes 12, 15 and 16. Every row was checked against the
 // maker's own product page - the link the row already carries - rather than sampled. That
-// overturned the premise this column was built on. Weight is NOT unpublishable: ten makers state
-// it outright, as a plain field in the same spec table as the diameter, covering 60 rows.
+// overturned the premise this column was built on. Weight is NOT unpublishable: eleven makers
+// state it outright, as a plain field in the same spec table as the diameter, covering 61 rows.
 //   Citizen    "Gewicht"          13/17 rows on de.citizenwatch.eu
 //   CW         "Weight inc. Strap" 10/10 rows - and the only maker that also gives a separate
 //                                  "Case Weight", i.e. the only one it is possible to take the
@@ -3993,9 +4176,14 @@ const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceram
 //                                  Armband)" in the field itself, so the with-band question this
 //                                  column has to ask of every other maker is answered in advance,
 //                                  and to a decimal on row 120 (76.8 g)
+//   Circula    "Gewicht"           1/1 row - the eleventh maker, pass 41, and the only one that
+//                                  gives BOTH bands in one field ("95 g mit Lederband, 170 g mit
+//                                  Stahlband ungekürzt"), so row 119's choose-the-priced-band rule
+//                                  decides it. Circula also qualify the bracelet figure as
+//                                  unshortened, which no other maker here does
 // Two more rows come from a third party where the maker omits it, marked below. Figures are
 // with the band the row is priced on, matching what this column claims to show.
-// The three counts above reconcile: 60 published by the maker + 2 borrowed = the 62 in the table.
+// The three counts above reconcile: 61 published by the maker + 2 borrowed = the 63 in the table.
 // They did not before pass 25 - the roster said eight makers and 47 rows while listing 48, had
 // never gained Junkers, and still counted row 67 as borrowed after pass 21 found Longines publish
 // it themselves. Corrected here rather than left, since a roster that does not add up is the kind
@@ -4117,6 +4305,16 @@ const WEIGHT_MEASURED = {
   118: 180,   // Atlantik 39 MB, steel bracelet - the heaviest of the four, on a 13 mm 300 m case
   119: 101,   // Karlsruhe PRO 37, steel bracelet (leather would be 66.0 g)
   120: 76.8,  // Speyer 39, brown riveted leather. Laco's own decimal, kept rather than rounded
+  // --- Circula, "Gewicht" on circulawatches.com, pass 41 -------------------------------------
+  // Circula publish BOTH bands in one field - "95 g mit Lederband, 170 g mit Stahlband ungekürzt"
+  // - so the row-119 rule decides it outright: this row is priced and specified on the steel
+  // bracelet, so it takes the bracelet figure. The caveat is Circula's own word "ungekürzt": 170 g
+  // is the bracelet at full length, before links come out to fit a wrist, so it is the high end of
+  // what this row would actually weigh. It is kept rather than adjusted, because every other
+  // figure in this table is the maker's number as published and inventing a link allowance would
+  // make this one neither published nor estimated - the reasoning the Sinn head-only block below
+  // uses in the other direction.
+  155: 170,  // Facet 38 Petrol, steel bracelet at full length
 };
 
 // Sinn is the one maker that publishes a head-only figure: "Gewicht ohne Band: 65 Gramm" for the
@@ -4135,6 +4333,12 @@ const WEIGHT_HEAD_ONLY = {
   // Baltic's own wording, on a row priced on a rubber strap. The Bronze and GMT pages, and rows
   // 2-4 before them, publish no weight at all, so this is the one Aquascaphe reference that does.
   125: 55,  // Aquascaphe Titanium Black - "Case weight: 55g"
+  // Damasko, pass 41, and the third maker with this house style. Their dimension line ends
+  // "Gewicht ohne Band: 56,00 g" - the band excluded in the field's own wording, exactly as Sinn's
+  // does - and the manufacture bracelet these two rows are priced on carries no published mass of
+  // its own anywhere on the site. Same decision as the Sinn rows above: recorded, not used.
+  156: 56,  // DF20 Old Radium - "Gewicht ohne Band: 56,00 g"
+  157: 55,  // DK26            - "Gewicht ohne Band: 55,00 g", same case, one gram apart
 };
 
 // Rows checked individually against the maker's own page and confirmed to publish NO weight.
@@ -4245,6 +4449,10 @@ const WEIGHT_UNPUBLISHED = new Set([
                           //   prose or on the matching bracelet's own product page, which does
                           //   carry the bracelet's width and clasp width. Page opened, no figure
                           //   stated: a finding, not a gap
+  158, 159, 160,          // Tutima Sky 34 mm - the whole spec table is six fields and mass is not
+                          //   one of them, on any of the three references or in either locale. The
+                          //   probe finds no weight key in the source either, so this is the page
+                          //   stating nothing rather than the page hiding it
 ]);
 
 // Checked, not settled. Separated from the set above because "the maker does not publish it" and
@@ -4528,6 +4736,18 @@ const WATCH_TYPES = {
   // and the 11 mm case make them dress, and neither type alone describes the AIKON. NOT Diver -
   // the six-claw bezel is fixed.
   152: ['Sports', 'Dress'], 153: ['Sports', 'Dress'], 154: ['Sports', 'Dress'],
+  // Circula, pass 41. Circula file it under "Stahl-Sportuhren" and describe it as "eine echte
+  // Go-Anywhere-Do-Anything Uhr", which is the maker stating the intent - the rule this table
+  // follows. NOT Diver: 100 m and a fixed faceted bezel.
+  155: ['Sports', 'Everyday'],
+  // Damasko, pass 41. Damasko call the DF20 a "Field-Watch" in their own first sentence, and the
+  // DK26 carries the same 24-hour inner scale, 3/6/9 numerals and cream lume on the same case, so
+  // both take Field. Everyday alongside it on 200 m and a 9.95 mm case. NOT Diver on either: the
+  // bezel is screwed down and does not turn.
+  156: ['Field', 'Everyday'], 157: ['Field', 'Everyday'],
+  // Tutima, pass 41. 34 mm, 5 ATM, a polished bezel and no lume: dress, with Everyday alongside
+  // for the bracelet and the screw-down crown. The same pairing rows 148 and 152-154 carry.
+  158: ['Dress', 'Everyday'], 159: ['Dress', 'Everyday'], 160: ['Dress', 'Everyday'],
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
@@ -4598,7 +4818,7 @@ const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (135 of 154 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (141 of 160 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -4716,6 +4936,44 @@ const MOVEMENT_TIER = {
   // and costs the row points. What is left over, and what the 0.02 buys, is the construction
   // itself. 33 jewels against the CMM.10's 27, on YEMA's own caliber pages.
   'Automatic micro-rotor — YEMA CMM.20 (in-house, Morteau)': 0.70,
+  // Damasko A26-1, pass 41. TWO keys on one caliber at its two factory grades, which is the Laco
+  // arrangement from pass 26 and rests on the same kind of evidence: Damasko publish, on their own
+  // Manufakturkaliber A26-X page, the component list that separates them.
+  //   Elaboré  0.70. The base number is the YEMA CMM.10's 0.68 - an INDEPENDENT'S OWN
+  //     ARCHITECTURE, the case that neither the 0.55-0.60 ebauche band nor the 0.70-0.75
+  //     "in-house from a major" band describes - because Damasko are in exactly that position and
+  //     share its limitation: they buy the regulating organ, a Nivarox-class hairspring on a
+  //     nickel-gilt or Glucydur rim, so the part that actually determines the rate is bought.
+  //     What they have and YEMA do not is a SILICON ESCAPE WHEEL, made in-house, plus a rotor on
+  //     two ceramic ball bearings and bidirectional pawl winding. +0.02 for one added construction
+  //     merit on the same architecture class is the step pass 29 set when it moved the CMM.10 to
+  //     the CMM.20 for its micro-rotor, and it lands on 0.70 - level with the Seiko 6R51 and the
+  //     Longines L888.4, on pass 16's precedent that different merits can rank level.
+  //     The alternative worth naming is that silicon in the ESCAPEMENT is a weaker claim than
+  //     silicon in the HAIRSPRING, which is what earns the L888.5 its 0.65 over a bare ebauche: an
+  //     escape wheel is about friction and lubrication, a hairspring about the rate itself. That
+  //     is precisely why this takes +0.02 and not the L888.5's +0.05.
+  //   TOP      0.73. +0.03 for the grade, which is the rate pass 26 set on the Laco SW200-1
+  //     Elaboré -> Top pair and passes 34 and 35 reused for Soprod's TOP and La Joux-Perret's
+  //     soignée. Damasko buy it the same evidence those entries needed: a Glucydur gold-plated
+  //     balance rim instead of nickel-gilt, a finished mainspring barrel, and a worst-position
+  //     bound that tightens from 25 s to 20 s. It stays inside the 0.70-0.75 band and below
+  //     Citizen's manufacture cal. 0950/9051 at 0.75, which is where it should be.
+  // WHAT EARNS NOTHING HERE, all of it scored elsewhere: the 42 h reserve, which is
+  // timekeeping.powerReserve at 40% of that group - the SW200-2 Power+ rule; the DIN 8309
+  // antimagnetic rating, which is EXTRAS.antimag at 0.3 on both rows; the tighter TOP bound, which
+  // is also row 157's own accuracyDisplay and earns real points there - the same double exposure
+  // rows 119-120 and 85-86 already carry, and refusing it here would be the inconsistency; and the
+  // sapphire back on row 157, which is fittings.displayBack.
+  // Measured, so a revisit does not have to guess, and the result is NOT the usual "the verdict
+  // holds either way": dropping both keys 0.05 - to 0.65 and 0.68, the most sceptical reading,
+  // that a bought regulating organ caps this at the ebauche band's top - costs row 156 one spec
+  // point (51 -> 50) and row 157 none at all, and moves their residuals from -8.80 and -4.50 to
+  // -9.50 and -5.20. Row 157 stays BELOW THE CURVE. Row 156 crosses into WELL BELOW, so on that
+  // row the band does depend on this number, and it is the one to check first if these entries
+  // are ever revisited.
+  'Automatic — Damasko A26-1 (in-house, TOP)': 0.73,
+  'Automatic — Damasko A26-1 (in-house, Elaboré)': 0.70,
   // Venezianico V3250, pass 31, at 0.60 - LEVEL with the SOPROD C125 below, and that row is the
   // precedent rather than an analogy. Venezianico state the base themselves, on their Arsenale
   // Platino page: the V3250 is "based on the Soprod M100", which is the same ebauche the C125 is a
@@ -4777,6 +5035,18 @@ const MOVEMENT_TIER = {
   // fittings.displayBack. A published ML grade or regulation figure would be the evidence that
   // moves this number, on the +0.03 precedent passes 26, 34 and 35 set.
   'Automatic — Maurice Lacroix ML115 (Sellita SW200-1 base)': 0.60,
+  // Pass 41. 0.60, level with the ML115 above and with every other SW200 derivative in this table,
+  // and the key exists for the same reason that one does: Tutima name the caliber and say nothing
+  // whatever about its origin or its grade, so the string must not claim either. The base is named
+  // on the ML115's own evidence - 26 jewels and 41 h are the SW200-1's published figures to the
+  // digit - with the difference that here a named independent magazine corroborates it in words
+  // ("Sellita-basiertes Automatikwerk Kaliber Tutima 335"), which is one step better than the
+  // ML115 had. What Tutima add is Glashütte DECORATION - a rhodium-plated rotor with a gold seal
+  // and polished screws, seen through the sapphire back - and decoration is FINISH's job, where
+  // these three rows sit at 0.60. Paying for it here would be the double-count this column has
+  // refused since the SW200-2 Power+, and the window itself is fittings.displayBack besides.
+  // A published Tutima grade or regulation figure is the evidence that moves this number.
+  'Automatic — Tutima 335 (Sellita SW200-1 base)': 0.60,
   'Automatic — La Joux-Perret G100': 0.60,
   // Pass 35. The G100 above is row 1's, at whatever grade MAEN buy; Farer name theirs - "soignée
   // finish, the highest grade available" - and state four positions of adjustment. That is a
@@ -4786,6 +5056,17 @@ const MOVEMENT_TIER = {
   // certification or a silicon hairspring, and neither is claimed. As with row 146, the upgrade
   // is invisible in the timekeeping group, because Farer publish positions rather than a rate.
   'Automatic — La Joux-Perret G101 (soignée, 4 positions)': 0.63,
+  // Pass 41, and it needs no separate argument: this is the entry directly above applied to the
+  // G100 rather than the G101. Circula name the grade themselves - "Manufacture La Joux-Perret
+  // G100 Soigné Ausführung" - so the +0.03 over row 1's bare G100 is the same regulation-and-
+  // finishing step on the same unchanged architecture, at the rate pass 26 set and passes 34 and
+  // 35 reused. The one difference from row 150 is a point in this row's favour and still buys
+  // nothing here: Farer publish POSITIONS and no rate, so their upgrade is invisible in the
+  // timekeeping group, while Circula publish −5/+7 s/day of their own regulation and row 155
+  // therefore scores it there. That is the L888.4 arrangement, not a double-count introduced here.
+  // The palladium-coated tungsten rotor earns nothing: a coating is not an operation, which is the
+  // Venezianico V3250 precedent, and what decoration there is belongs to FINISH.
+  'Automatic — La Joux-Perret G100 (soignée)': 0.63,
   // Christopher Ward, pass 16. Three new Sellita entries, and the reasoning is the same one the
   // Mido block below uses - this column rates ARCHITECTURE, and anything already scored elsewhere
   // must not be paid for twice.
@@ -5941,6 +6222,106 @@ const EXTRAS = {
   152:{lume:0.7,war:2,iso:0,antimag:0,clasp:0.6,service:0.6,bezel:null},
   153:{lume:0.7,war:2,iso:0,antimag:0,clasp:0.6,service:0.6,bezel:null},
   154:{lume:0.7,war:2,iso:0,antimag:0,clasp:0.6,service:0.6,bezel:null},
+
+  // --- Circula Facet 38, pass 41 (row 155) -------------------------------------------------
+  // lume 0.8: "Swiss Super-LumiNova® BGW9 (blau leuchtend)" on indexes AND hands, named compound
+  //   with no grade. That is one step above rows 2-3's 0.75, which is the same compound on a
+  //   semi-sandwich dial where Baltic name it once, because Circula name it separately for the
+  //   dial and for the hands and the applied indexes are filled rather than printed; and a step
+  //   below the 0.85 of Traska and Second Hour, who name the compound AND the grade. A named
+  //   grade would move it to 0.85.
+  // war 2: Circula's own warranty statement - two years on movement, hands and dial from the
+  //   invoice date, and it transfers to a second or third owner. DATA ONLY.
+  // iso 0: 10 ATM and no ISO 6425 claim anywhere. The Facet has no rotating bezel, so the
+  //   standard could not apply to it in any case.
+  // antimag 0: no antimagnetic claim on the page or in the caliber block. KIF Parechoc is shock
+  //   protection, not magnetic shielding, and is not read as one.
+  // clasp 0.85, and this is the pass's highest clasp number. Circula describe a
+  //   "Sicherheitsschließe mit werkzeugloser Schnellverstellung" and photograph it: a folding
+  //   safety clasp with a sliding ADJUST lever that moves without tools and without taking the
+  //   watch off. 0.85 is what the Christopher Ward rows 77-80, 82 and 86 hold for "butterfly clasp
+  //   with small micro adjust", and this is the same merit - on-the-fly micro-adjustment - in a
+  //   folding rather than a butterfly body, which is a style rather than a function. It stops
+  //   short of the 0.9 this table reserves for the on-the-fly butterfly.
+  // service 0.5: a small Pforzheim maker selling direct, with its own workshop offering
+  //   servicing, and a bought-in Swiss LJP any watchmaker can work on. Level with Baltic, Squale
+  //   and Farer. DATA ONLY.
+  // bezel null: the faceted bezel is fixed. Null is the criterion not applying, not a zero.
+  // comp none: three hands and a date, and a date is not a scored complication here.
+  155:{lume:0.8,war:2,iso:0,antimag:0,clasp:0.85,service:0.5,bezel:null},
+
+  // --- Damasko DF20 / DK26, pass 41 (rows 156-157) -----------------------------------------
+  // lume 1.0 on both: Damasko name "GL X1 Qualität" on the DF20's hands and "GL X1 Qualität" on
+  //   the DK26's 3D luminous blocks. X1 is the top grade this table's 1.0 is defined as, the same
+  //   claim rows 1, 128-132 and 150-151 hold it for. The DF20's optional orange seconds hand is
+  //   explicitly NOT luminous, but this row is the Old Radium hand variant, where it is.
+  // war 2 on both, and this is the one number here that is inferred rather than sourced: Damasko
+  //   publish no warranty period anywhere - not the product pages, not the AGB, not the repair
+  //   conditions - so this is the German statutory two years, not a Damasko statement. DATA ONLY,
+  //   so nothing scored rests on it.
+  // iso 0 on both: 200 m, and no ISO 6425 or DIN 8306 claim. Damasko certify to DIN 8310 for water
+  //   resistance and DIN 8308/8309 for shock and magnetism, which are different standards.
+  // antimag 0.3 on both, and this is the number most open to disagreement in the pass. Damasko's
+  //   own caliber page rates the A26-X "antimagnetisch nach DIN 8309", which is precisely what
+  //   this scale's 0.3 is defined as - the 4,800 A/m rung the Sinn 556 holds. Their magnetism page
+  //   then claims up to 80,000 A/m, but ATTACHES THAT to "alle DAMASKO Modelle aus eisgehärtetem
+  //   Edelstahl und ohne Glasboden" - ice-hardened steel, no glass back - and these two are
+  //   submarine steel, with a sapphire back on row 157. For those Damasko say only that no extra
+  //   shielding is "necessary" because the case body itself shields, with no figure at all. So the
+  //   only RATED number that applies to these references is DIN 8309, and 0.3 is what this table
+  //   pays for it. Measured, because this one is expensive: at 1.0 - reading the case claim as
+  //   equivalent to a 16,000 A/m rating - row 156 gains one spec point and row 157 gains two, and
+  //   ROW 157 CHANGES BAND, from below the curve at -4.50 to as expected at -2.90. So unlike most
+  //   of the soft numbers here, this one carries a verdict on its back. A published A/m figure for
+  //   a submarine-steel model is the evidence that would move it.
+  // clasp 0.5 on row 156 and 0.7 on row 157, and the split is Damasko's own SKU naming rather than
+  //   a judgement. Row 156 is "Stahlarmband mit feststehender Schließe" - a FIXED clasp, and the
+  //   configurator offers an adjustable one beside it, so this is evidence of absence rather than
+  //   silence, which is why it sits below the 0.6 this file gives a bracelet whose clasp its maker
+  //   does not describe. Row 157 is "Schließe-10mm Verstellbereich" - a folding clasp with 10 mm
+  //   of adjustment, so the 0.7-0.8 band. It takes the FLOOR of that band because Damasko describe
+  //   push-buttons, 2.5 mm steps and adjustment without opening the bracelet in detail for their
+  //   NEW 22 mm Manufaktur-Faltschließe, on its own technology page, and say none of those things
+  //   about this 20 mm one - so the on-the-fly operation that would earn 0.85 is not claimable.
+  // service 0.5 on both: an independent German manufacture with its own repair department and a
+  //   published partner list, but an in-house caliber nobody else can fully service. The two
+  //   considerations pull opposite ways and land on the microbrand rung. DATA ONLY.
+  // bezel null on both: screwed down and fixed on both references. Not a zero.
+  // comp none on either: hour, minute, central seconds and no date on either reference - the
+  //   A26-1 by Damasko's own function list, against the A26-2 and A26-3 which have one.
+  156:{lume:1.0,war:2,iso:0,antimag:0.3,clasp:0.5,service:0.5,bezel:null},
+  157:{lume:1.0,war:2,iso:0,antimag:0.3,clasp:0.7,service:0.5,bezel:null},
+
+  // --- Tutima Sky 34 mm, pass 41 (rows 158-160) --------------------------------------------
+  // One set of numbers for three references: same case, same bracelet, same caliber, same price,
+  // and only the dial colour and the plating differ. Rows 152-154's arrangement.
+  // lume 0.1 on all three, and this is the softest number in the pass. Tutima state no luminous
+  //   material on any Sky page; WatchTime's launch piece on 6705-10 does not mention one either;
+  //   and Tutima's own 1600 px front photographs show polished, ribbed applied batons and solid
+  //   faceted hands with no luminous fill and no dial plots. So 0.1 is a finding of absence, the
+  //   treatment rows 87-89 carry for the same shape of evidence. IT IS CONTRADICTED: one US
+  //   retailer's listing claims "Super-LumiNova" on hands and indices. That is a retailer against
+  //   the maker's own photograph, which is why it loses - but it is recorded here rather than
+  //   ignored, and measured: at 0.5, the unspecified-SLN rung, all three go 43 -> 45 spec points
+  //   and -14.00 -> -12.20. They stay WELL BELOW THE CURVE either way, so the pass's verdict on
+  //   them does not rest on it.
+  // war 2 on all three, inferred exactly as the Damasko rows above: Tutima publish no warranty
+  //   period on any page, and their FAQ answers three questions, none of them this one. DATA ONLY.
+  // iso 0: 5 ATM, no bezel, no claim.
+  // antimag 0: nothing claimed.
+  // clasp 0.6 on all three: "Faltschließe" on two of the three references and nothing at all on
+  //   6705-10, with no micro-adjustment, safety catch or pusher named anywhere. 0.6 is this file's
+  //   number for a bracelet whose clasp its maker leaves undescribed - rows 117, 120, 145, 149,
+  //   150, 151 and 152-154 - and naming it as a plain foldover and no more does not take it
+  //   further. Evidence of micro-adjustment would move it to 0.7-0.8.
+  // service 0.6: a Glashütte house selling through concessionaires, who forward a watch to the
+  //   factory for service, on a Sellita base any watchmaker can work on. Level with Maurice
+  //   Lacroix, above Baltic and Squale, below Longines. DATA ONLY.
+  // bezel null on all three: the polished bezel is fixed.
+  // comp none on any of the three: date at 3 and nothing else, and a date is not scored here.
+  158:{lume:0.1,war:2,iso:0,antimag:0,clasp:0.6,service:0.6,bezel:null},
+  159:{lume:0.1,war:2,iso:0,antimag:0,clasp:0.6,service:0.6,bezel:null},
+  160:{lume:0.1,war:2,iso:0,antimag:0,clasp:0.6,service:0.6,bezel:null},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -6290,6 +6671,45 @@ const FINISH = {
   // rows 119-120 turn on. The decoration is what is rated; the glass is the condition for seeing
   // it, exactly as pass 26 put it for row 119.
   152:0.65, 153:0.65, 154:0.65,
+  // Row 155, Circula: 0.60, level with Farer and above the 0.55 of Baltic and Squale, on dial
+  // CONSTRUCTION rather than dial printing - the axis rows 122 and 128-132 were placed on. Circula
+  // press the dial with a relief of their own gear-tooth logo, brush the minute ring separately,
+  // fill applied rhodium-plated indexes with Super-LumiNova, and hand-brush and polish the case
+  // with engraving on the caseback and the crown. It stops short of the 0.65 the Christopher Ward
+  // and Maurice Lacroix rows hold, because that number is defined by NAMED movement operations -
+  // engraving, Colimaçon, perlage, côtes de Genève - and what Circula name on the rotor is a
+  // palladium COATING plus an unspecified "verziert". A coating is not an operation, which is the
+  // Venezianico V3250 precedent, and the sapphire window it is seen through is fittings.displayBack
+  // and already scored.
+  155:0.60,
+  // Rows 156-157, Damasko: 0.60 both, and the number is argued against Sinn, which is the closest
+  // comparison this list holds in every respect - German, tool-first, hardened and bead-blasted
+  // steel, decoration deliberately absent. Sinn sit at 0.60 (row 60) and 0.55 (rows 95-96). These
+  // land on the upper of those two for dial construction the Sinn rows do not have: a multi-level
+  // sandwich dial on row 156, backlit through a pierced upper plate, and moulded 3D luminous
+  // blocks at 3, 6, 9 and 12 on row 157, which is a component made rather than a surface printed -
+  // the same distinction row 150's moulded Super-LumiNova batons earned.
+  // They go NO HIGHER, and row 157 is the test of that: it has the sapphire back, and what it
+  // shows is an undecorated A26 - plain skeletonised bridges, no perlage, no côtes, no blued
+  // screws. That is exactly what held rows 150 and 151 at 0.60 ("what these two show is an
+  // undecorated LJP and an undecorated Sellita"), and it is why both Damasko rows take one number
+  // rather than the row with the window taking more.
+  156:0.60, 157:0.60,
+  // Rows 158-160, Tutima: 0.60 on all three, the same number for one maker's single standard.
+  // This is the pass's closest call against 0.65. In its favour: Tutima name two real operations
+  // on a movement you can see - "Rotor rhodiniert mit Goldsiegel. Schrauben poliert." - and press
+  // the dial with a hexagon Asanoha relief carrying applied, facetted, ribbed indexes, over a
+  // mirror-polished bezel and brushed flanks. Against: the Christopher Ward and Maurice Lacroix
+  // 0.65 is defined by THREE named movement operations each (engraving and Colimaçon; perlage,
+  // Colimaçon and côtes de Genève), and of Tutima's two, "rhodiniert" is a plating rather than an
+  // operation by the Venezianico rule, which leaves polished screws and an applied gold seal. That
+  // is one operation and one component, and it is not the Christopher Ward standard. 0.60 also
+  // puts them level with Farer, whose pressed-and-lacquered dial is the nearest thing here to the
+  // Asanoha relief. A named Glashütte finish on the bridges is the evidence that would take these
+  // to 0.65, and it is worth one spec point each - 43 -> 44, residual -14.00 -> -13.60, still
+  // well below the curve. Row 155's 0.60 was measured the same way: at 0.65 it goes 59 -> 60 and
+  // +2.60 -> +3.00, and reads as expected either way.
+  158:0.60, 159:0.60, 160:0.60,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -6297,9 +6717,12 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 140 of 154 rows resolved - 65 see-through, 75 solid. The fourteen still open are
-// 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125, 126, 142 and 143, all rows whose maker publishes no
-// caseback detail. Row 91 is the best documented of them: Longines leave the field empty on the
+// Research status: 145 of 160 rows resolved - 70 see-through, 75 solid. The fifteen still open are
+// 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125, 126, 142, 143 and 156, all rows whose maker publishes
+// no caseback detail. Row 156 is pass 41's, and it is the DK26 that explains why it is open rather
+// than assumed: Damasko word the two references' caseback fields identically and one of them turns
+// out to have a sapphire back, so the text is no evidence either way and the DF20 has no caseback
+// photograph. Row 91 is the best documented of them: Longines leave the field empty on the
 // Spirit 37 AND on the 40 mm sibling, so the gap is the collection's, not this reference's.
 // 142 and 143 are pass 32's, and they extend that same finding rather than adding a new one:
 // Longines leave case_case_back null on both Zulu Time references too, while populating it on the
@@ -6554,6 +6977,26 @@ const DISPLAY_BACK = {
   152: 1,
   153: 1,
   154: 1,
+  // Row 155, Circula. Stated twice in their own Gehäuse block: "Aufbau: 2-teilig, vierfach
+  // verschraubter Sichtboden mit Saphirglas" and "Boden: Vierfach verschraubter Sichtboden mit
+  // Saphirglas".
+  155: 1,
+  // Row 157, Damasko DK26 - and settled by a photograph, not by text. Damasko's caseback field
+  // says only "Boden, Lünette und Krone verschraubt", which reads as a solid back; their own
+  // caseback image for this reference shows the movement through sapphire, with "SAPHIRGLAS" and
+  // "WD 20 BAR/200M" engraved around it. That image is also where the water-resistance figure on
+  // rows 156-157 gets its second confirmation.
+  157: 1,
+  // ROW 156 IS DELIBERATELY ABSENT. The DF20's spec text is worded exactly like the DK26's and is
+  // therefore no evidence either way, and its four-image gallery has no caseback shot - a dial, a
+  // night shot, a close-up and a profile. Inferring it from the DK26 would be inferring from a
+  // different reference, which is what rows 125-126 were left open rather than do. Absent means
+  // not researched, and imputeMissingSubs() fills it at the list mean; a Damasko caseback
+  // photograph or a spec line naming the back is what closes it.
+  // Rows 158-160, Tutima. "Sichtboden mit Saphirglas", identically on all three references.
+  158: 1,
+  159: 1,
+  160: 1,
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
@@ -7404,7 +7847,7 @@ function optionValuesFor(dim) {
 
 // How many rows each option would show, measured against every filter EXCEPT its own dimension's
 // (see matchesFilters). Recomputed on every pipeline pass, which is 5 x 90 predicate calls - the
-// same order as the search box, which rejoins a haystack string for all 154 rows per keystroke.
+// same order as the search box, which rejoins a haystack string for all 160 rows per keystroke.
 function optionCounts(dim) {
   const counts = new Map();
   WATCHES.filter(w => matchesFilters(w, dim.key)).filter(matchesSearch)
