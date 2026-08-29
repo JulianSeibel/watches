@@ -613,6 +613,14 @@
 
   <p><b>Two stale literals in the weight block's own prose, and the second was wrong from the day it was written.</b> The block's opening sentence said &ldquo;<i>Ten</i> makers publish mass as a plain field&rdquo; above a roster listing eleven &mdash; pass 41 added Circula to the roster and to the reconciliation line beneath it and missed the sentence on top. It now reads twelve, with the roster, the &ldquo;covering N rows&rdquo; figure and the reconciliation all recomputed rather than incremented. The second is older and is a different kind of error. The argument for not scoring this column describes its published rows as &ldquo;not a random sample &mdash; they are eleven makers who happen to document well, <i>three of them Japanese and eight Western</i>&rdquo;. Eleven makers, correctly counted; but Citizen and Seiko are two, and the third Japanese maker was Seagull, who are in Shenzhen. Adding a second Chinese maker is what made the arithmetic visible at all. It now reads two Japanese, two Chinese and eight Western, and the correction is left in the comment as well as here, because a comment that contradicts the table is treated as a bug in this file rather than as prose.</p>
 
+  <p><b>Vaer D5 Pacific Anacapa, pass 43 &mdash; one row added (162), and the list goes from 161 to 162.</b> A thirteenth Vaer, and it is here for what it is <i>configured</i> as rather than for what it is: the linked variant is <code>41343655542918</code>, whose SKU buys the FKM dive strap <i>and</i> the Premium 3-Link steel bracelet for $839 against $749 for the strap-only SKU. <b>That makes it the only one of the thirteen Vaer rows priced on a bracelet.</b> Rows 26&ndash;37 all link the base SKU, read <code>Straps (bracelet opt.)</code> and carry <code>clasp</code> 0.3 &mdash; pass 1's correction, reduced from 0.4 to the tang buckle they actually ship on, and the rule pass 3 then generalised to MAEN and Baltic and pass 16 to Christopher Ward. This row is that same rule pointing the other way for once, and it is why the pass is worth recording at all: the file has twelve rows saying what a Vaer costs on a strap and none saying what the bracelet is worth. The vocabulary did not move: no new case category, glass, movement type, watch type or complication, and <b>no new <code>MOVEMENT_TIER</code> key</b> &mdash; <code>Automatic &mdash; Miyota 9015</code> is row 35's string reused verbatim, which is also what makes the <code>MEASURED_ACCURACY</code> substring fire. <b>It lands at 49 spec points and +0.90 on Value, <i>as expected</i></b>, on <b>54 comparable rows</b>, so nothing here is an extrapolation &mdash; &euro;735 sits in the thickest part of this list's price range and the support guard was never going to be near it. <b>Where it lands is best read against row 35, the D5 Meridian in the identical case</b>, which is 48 spec points and +1.30 at &euro;595. One spec point for &euro;140: the bracelet's clasp gains three tenths, the multi-layer dial gains half a rung of finishing, and the sapphire bezel gives two tenths back against the Meridian's ceramic. So the row sits fractionally <i>below</i> its own strap sibling on Value, which is the model saying that at this list's going rate a $90 bracelet upgrade is priced a little ahead of what it delivers &mdash; not that it is bad, but that it is fairly charged for rather than a bargain.</p>
+
+  <p><b>The judgement calls, and the bezel is the one to argue about.</b> <b>Bezel 0.8, with a contradiction inside Vaer's own copy recorded rather than smoothed.</b> Their feature list says &ldquo;a two-toned <i>sapphire crystal</i> 120-click bezel&rdquo;; their marketing prose two paragraphs down the same page says &ldquo;two-toned, <i>sapphire-coated</i> bezel&rdquo;. Those are different watches &mdash; a sapphire insert against a coating on steel &mdash; and the spec-style statement is taken over the marketing one. 0.8 is the top of the band the <code>EXTRAS</code> scale names sapphire in, above the plain steel 0.7 of rows 26&ndash;30, 33 and 36&ndash;37 and below the ceramic 1.0 of rows 34&ndash;35. <b>If it is only a coating the row belongs at 0.7</b>, which costs it about a third of a spec point, comfortably inside the model's own resolution; nothing else on the page settles it. <b>Clasp 0.6, and deliberately not 0.7.</b> Read off the bracelet's own product page rather than the watch's: a milled Oyster-style clasp, solid end links, screw links, described as &ldquo;fully adjustable&rdquo; with a &ldquo;secure locking mechanism&rdquo;. Vaer name <i>no</i> push-button release and <i>no</i> diver extension, which is exactly what the 0.7&ndash;0.8 band is for and what puts the Tissot Seastar bracelet at 0.9, so this is the top of the basic-foldover band rather than the bottom of the next one. <b>Lume 0.9, not 1.0, although &ldquo;X1&rdquo; is on the page.</b> Vaer's own split is &ldquo;BGW9 A Grade Lume (25x Layers)&rdquo; on the dial and &ldquo;X1 C1 lume&rdquo; on the hour, minute and second hands only; the 1.0 rows here &mdash; 1, 77&ndash;86, 106&ndash;109 &mdash; carry a named X1 grade across the whole watch, and three hands is not that. It stays level with rows 34&ndash;37. <b>Finishing 0.50</b>, one rung above rows 34&ndash;35 and level with the G5s, on dial and case <i>construction</i> &mdash; two dial layers, lume-filled applied markers, a contrast-polished handset and a coin-edged flank, against the Meridian's flat printed dial in the same case. It is pointedly <i>not</i> raised for the sapphire display back, which is <code>fittings.displayBack</code> at 38% of that group and would then be paid for twice, the double-count the Christopher Ward 0.65 rows avoid by earning theirs on a decorated rotor instead.</p>
+
+  <p><b>Two things the sources settled that a single fetch would have got wrong.</b> <b>The bracelet's identity is decided by SKU, because Vaer's site contradicts itself about it.</b> The watch page's <code>STEEL BRACELETS</code> accordion describes a &ldquo;3-Link Bracelet&rdquo; with &ldquo;friction fit pins&rdquo; tapering to 18&nbsp;mm; the bracelet's own product page describes solid end links, screw links and a 20&rarr;16&nbsp;mm taper. The variant SKU ends <code>BRVSBR39A</code>, which is that product's own 39&nbsp;mm variant code, so the dedicated page is this bracelet and the accordion is stale copy for the one it replaced. Taken from the SKU match rather than from either prose block, and it matters because the clasp above is read off the page the match selects. <b>The glass records what this page says and not what its siblings say.</b> Rows 34 and 35 read &ldquo;+ AR&rdquo; from earlier passes; grepping the Anacapa's raw body for <i>anti-reflect</i>, <i>AR</i> and <i>coating</i> returns nothing at all, so this row reads &ldquo;Flat sapphire&rdquo;. Nothing scored turns on it &mdash; <code>glassCategory</code> is what <code>GLASS_SCORE</code> reads and it is <code>Sapphire</code> either way &mdash; but inheriting a claim from a sibling is how a spec table becomes fiction. <b>The caseback is the maker's own evidence for once.</b> Vaer list &ldquo;flat sapphire crystal, and case-back&rdquo; among the core D5 features and the gallery carries the photograph, where row 35 has been 1 since pass 6 on a review's word plus the brand-wide rule Vaer publish themselves. <b>And the weight is the 70.6&nbsp;g boilerplate again</b>, the sentence pass 6 rejected because the identical figure describes the 36&nbsp;mm DS2 and the 11.9&nbsp;mm D5 alike. It is doubly unusable here: this row is priced on the bracelet, so even a genuine case figure would be head-only. Row 162 goes to <code>WEIGHT_UNPUBLISHED</code>, the estimator's test set is unchanged at 64 rows and every figure in the Weight tooltip with it.</p>
+
+  <p><b>What it did to everything else, and the numbers that moved are the stability ones.</b> Value moved by at most <b>0.10</b> spec points across the existing 161 &mdash; row 128, the YEMA Superman Steel &mdash; with 25 of 161 moving at all and <b>two crossing zero</b>, both rounding rather than reversal: row 41, the Revelot Hexmariner, 0 &rarr; 0.1, and row 91, the Longines Spirit 37, &minus;0.1 &rarr; 0. <b>One row changes band</b>: 110, the Abinger Nimrod Nightfire, from <i>as expected</i> to <i>above the curve</i>. <b>Spec drift is none</b>, and that is worth stating: this row researched every sub-score it was capable of carrying, so <code>imputeMissingSubs()</code> had no new blank to average and no existing row's step-1 score moved by even a rounding point. Leave-one-out RMSE is <b>6.23 &rarr; 6.22</b> against a naive baseline that also falls, 9.06 &rarr; 9.03, so <b>skill slips 52.7% &rarr; 52.6%</b> &mdash; a tenth of a point, and the two moving together means the row is neither more nor less predictable from its price than the list average. What actually improved is elsewhere: <b>sign flips go 1 &rarr; 0</b> and the resample spread tightens on both ends, typical 0.38 &rarr; 0.34 and worst 0.83 &rarr; 0.71. A row landing half a point off the line in the densest part of the price range is the cheapest kind of evidence a fitted curve can get, and those three figures are what that looks like. Sigma holds at 6, the spec range at 26&ndash;66, the spec/price correlation at 0.74, and the two <code>n/s</code> and two <code>o/s</code> rows are all unchanged &mdash; &euro;735 was never going to rescue rows 16 and 56, which are the two cheapest in the file.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -634,7 +642,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-161 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-162 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
 //                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
@@ -3893,6 +3901,38 @@ const WATCHES = [
   powerReserveDisplay:'~42 h', accuracyDisplay:'−10/+30 s/day',
   waterResDisplay:'100 m (10 bar)', waterResM:100,
   priceDisplay:'$508', priceValue:508, priceCurrency:'USD' },
+// --- Vaer D5 Pacific Anacapa, pass 43 (row 162) -----------------------------------------------
+// THE ONE VAER ROW PRICED ON A BRACELET. Every other Vaer row here (26-37) links the base SKU and
+// reads 'Straps (bracelet opt.)' at clasp 0.3, which is pass 1's correction and pass 3's rule: the
+// row is scored on the band its own price buys. The linked variant is 41343655542918, whose SKU
+// D5-POLVG39-TRP20BLK-BRVSBR39A buys the FKM dive strap AND the steel bracelet for $839 against
+// $749 for the strap-only SKU. So bandDisplay says "bracelet" without "opt.", which is what
+// predictedWeightG() reads, and the clasp is the bracelet's rather than a tang buckle's.
+//
+// BRACELET IDENTITY, settled by SKU because Vaer's own site contradicts itself about it. The D5
+// page's STEEL BRACELETS accordion describes a "3-Link Bracelet" with "friction fit pins" tapering
+// to 18 mm; the bracelet's own product page (premium-quick-release-bracelet-v2, "Premium Quick
+// Release 3-Link Bracelet", $99 standalone) describes solid end links, screw links and a 20->16 mm
+// taper. The variant SKU ends BRVSBR39A, which is that product's own DS2/G2/D4/D5/D7/G5/G7 39 mm
+// variant code, so the dedicated page is this bracelet and the accordion is stale copy for the
+// bracelet it replaced. Taken from the SKU match, not from either prose block on its own.
+//
+// GLASS: Vaer state "Flat Sapphire Crystal" and nothing more - grepping the raw body for
+// anti-reflect/AR/coating returns nothing at all. Rows 34 and 35 read "+ AR" from earlier passes;
+// this row records what its own page says instead of inheriting the claim. Nothing scored turns on
+// it - glassCategory is what GLASS_SCORE reads and it is 'Sapphire' either way.
+{ id:162, brand:'Vaer', name:'Vaer D5 Pacific Anacapa — 39 mm USA Auto', desc:'Automatic dive watch on the steel bracelet · multi-layered green dial, two-tone sapphire bezel — the D5 Meridian on row 35 is the plain-dial, ceramic-bezel sibling',
+  link:'https://www.vaerwatches.com/products/d5-pacific-anacapa-usa-auto-39mm?variant=41343655542918',
+  img:'https://www.vaerwatches.com/cdn/shop/files/D5-2025-QR-BR-39_45e9bd0b-8d20-4d27-bbd4-d7c082cb5b9d.jpg?v=1756402295&width=1200',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'46 mm',
+  heightDisplay:'12.5 mm (11.9 mm excl. crystal)', heightMm:12.5,
+  caseDisplay:'316L stainless steel (two-tone sapphire 120-click dive bezel, coin-edge grip)', caseCategory:'Steel',
+  bandDisplay:'Premium 3-link steel bracelet, 20→16 mm taper (FKM dive strap included too)',
+  glassDisplay:'Flat sapphire', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9015', movementType:'Automatic', movementCostDisplay:'~$85 (Miyota, new)',
+  powerReserveDisplay:'42 h', accuracyDisplay:'−5/+10 s/day',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'$839', priceValue:839, priceCurrency:'USD' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -4097,8 +4137,8 @@ function measuredRatioStats(watches) {
 
 // --- Weight (pass 10, rewritten in pass 11) ------------------------------------------------
 // Twelve makers publish mass as a plain field in the same spec table as the diameter, which the
-// roster above WEIGHT_MEASURED sets out per maker. The column is 64 published figures and 97
-// estimates - 82 rows that genuinely publish nothing, 8 that could not be reached, and 7
+// roster above WEIGHT_MEASURED sets out per maker. The column is 64 published figures and 98
+// estimates - 83 rows that genuinely publish nothing, 8 that could not be reached, and 7
 // published head-only. The estimator below runs for anything not in WEIGHT_MEASURED.
 //
 // Pass 10 built this column on the premise that mass "is simply not in the spec sheets" and
@@ -4560,6 +4600,12 @@ const WEIGHT_UNPUBLISHED = new Set([
                           //   one of them, on any of the three references or in either locale. The
                           //   probe finds no weight key in the source either, so this is the page
                           //   stating nothing rather than the page hiding it
+  162,                    // Vaer D5 Pacific Anacapa - the boilerplate again, and doubly unusable
+                          //   here. The page carries the same "case weight of 70.6 grams" sentence
+                          //   rejected for rows 26-30 and 34-35 above, on a case Vaer themselves
+                          //   describe with different dimensions from three of them; and this row
+                          //   is priced on the steel bracelet, so even a genuine case figure would
+                          //   be head-only and could not enter this table
 ]);
 
 // Checked, not settled. Separated from the set above because "the maker does not publish it" and
@@ -4861,6 +4907,7 @@ const WATCH_TYPES = {
   // it; the one buyer review on their own page calls it a GADA watch, which agrees but is not
   // evidence this table takes. NOT Diver: the bezel is fixed.
   161: ['Sports', 'Everyday'],
+  162: ['Diver'],                      // 200 m, unidirectional 120-click timing bezel, as rows 34-35
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
@@ -4931,7 +4978,7 @@ const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (142 of 161 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (143 of 162 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -6475,6 +6522,34 @@ const EXTRAS = {
   //   Jianghun's own photographs. The 90S5's open-heart aperture is covered by this dial, and an
   //   open heart is not a key in COMPLICATION_VALUES in any case.
   161:{lume:0.85,war:2,iso:0,antimag:0,clasp:0.85,service:0.4,bezel:null},
+  // Row 162, Vaer D5 Pacific Anacapa. lume 0.9: level with rows 34-37, the other D-series and
+  //   G5 rows, and deliberately NOT 1.0 although "X1" appears on the page. Vaer's own split is
+  //   "BGW9 A Grade Lume (25x Layers)" on the dial and "X1 C1 lume" on the hour, minute and
+  //   second hands only. The 1.0 rows here - 1, 77-86, 106-109 - carry a named X1 grade across
+  //   the whole watch; three hands is not that. A dial-wide X1 claim would move it to 1.0.
+  // war 2 / iso 0 / antimag 0 / service 0.5: the Vaer house figures rows 26-37 already carry.
+  //   The 2-year term is Vaer's "2-year guaranteed waterproof warranty", stated on this page. No
+  //   ISO 6425 claim appears anywhere on it, which is a finding of 0 rather than a gap, and no
+  //   hairspring or A/m figure is claimed either.
+  // clasp 0.6: THE ONE VAER ROW THAT IS NOT 0.3, because it is the one priced on the bracelet -
+  //   see the row comment. Read off the bracelet's own product page, which gives a milled
+  //   Oyster-style clasp, solid end links and screw links, and describes it as "fully adjustable"
+  //   with a "secure locking mechanism". Vaer name NO push-button release and NO diver extension,
+  //   which is what the 0.7-0.8 band is for and what puts the Tissot Seastar bracelet at 0.9. So
+  //   this is the top of the 0.5-0.6 basic-foldover band rather than the bottom of the next one.
+  //   A Vaer statement naming push-buttons or a wetsuit extension would move it to 0.7.
+  // bezel 0.8: a sapphire bezel insert, above the plain steel 0.7 of rows 26-30/33/36-37 and
+  //   below the ceramic 1.0 of rows 34-35. The EXTRAS scale names sapphire in its own 0.7-0.8
+  //   band and this is the top of it. RECORDED CONTRADICTION: Vaer's feature list says "a
+  //   two-toned sapphire crystal 120-click bezel" and their marketing prose two paragraphs later
+  //   says "sapphire-coated bezel". Those are different claims - an insert against a coating on
+  //   steel - and the spec-style statement is taken over the marketing one. If it is only a
+  //   coating the row belongs at 0.7 with the other steel Vaers, worth about a third of a spec
+  //   point. Nothing on the page settles it further.
+  // comp none: the roulette 6 o'clock date is the dial feature Vaer lead on, and this file has no
+  //   'date' key in COMPLICATION_VALUES because a date is near-universal here - the same reason
+  //   row 131's date carries nothing. Not an omission.
+  162:{lume:0.9,war:2,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:0.8},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -6881,6 +6956,17 @@ const FINISH = {
   // row than the lume one above it. An independent inspection of the dial's edges and the case's
   // transitions is what would settle it in either direction.
   161:0.60,
+  // Row 162, Vaer D5 Pacific Anacapa: 0.50, one rung above the 0.45 rows 34-35 hold for the plain
+  // D4/D5 and level with the G5s on rows 36-37. The step is DIAL AND CASE CONSTRUCTION, which is
+  // the axis row 122 and row 161 were placed on: a two-layer dial with lume-filled applied
+  // markers, a contrast-polished handset and a coin-edged case flank, against the D5 Meridian's
+  // flat printed dial in the identical case. Deliberately NOT raised for the sapphire display
+  // back, which is fittings.displayBack at 38% of that group and would be paid for twice - the
+  // rule the Christopher Ward 0.65 rows obey by earning it on a decorated rotor instead. Still
+  // below the 0.55-0.60 mainstream rung because the case finishing itself is unchanged from the
+  // rows above it, and one owner review on Vaer's own bracelet page calls that bracelet's edges
+  // rough. Hands-on inspection of the dial layers is what would move it.
+  162:0.50,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -6888,7 +6974,7 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 146 of 161 rows resolved - 70 see-through, 76 solid. The fifteen still open are
+// Research status: 147 of 162 rows resolved - 71 see-through, 76 solid. The fifteen still open are
 // 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125, 126, 142, 143 and 156, all rows whose maker publishes
 // no caseback detail. Row 156 is pass 41's, and it is the DK26 that explains why it is open rather
 // than assumed: Damasko word the two references' caseback fields identically and one of them turns
@@ -7174,6 +7260,13 @@ const DISPLAY_BACK = {
   // 90S5, 10 BAR, 316L STAINLESS STEEL and SAPPHIRE CRYSTAL engraved around it. That last word is
   // the front crystal, and it is the reason the field alone was not taken as sufficient.
   161: 0,
+  // Row 162, Vaer D5 Pacific Anacapa: 1. Vaer's own feature sentence lists "flat sapphire crystal,
+  // and case-back" among the core D5 features this reference inherits, and the page's own caseback
+  // photograph (D5-caseback.jpg) is the seventh image in the gallery. It also agrees with the rule
+  // Vaer publish and pass 6 recorded for the whole brand: automatics get sapphire exhibition
+  // backs, quartz gets solid steel. Row 35, the other D5, is already 1 on a review's evidence;
+  // this one is the maker's.
+  162: 1,
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
@@ -8024,7 +8117,7 @@ function optionValuesFor(dim) {
 
 // How many rows each option would show, measured against every filter EXCEPT its own dimension's
 // (see matchesFilters). Recomputed on every pipeline pass, which is 5 x 90 predicate calls - the
-// same order as the search box, which rejoins a haystack string for all 161 rows per keystroke.
+// same order as the search box, which rejoins a haystack string for all 162 rows per keystroke.
 function optionCounts(dim) {
   const counts = new Map();
   WATCHES.filter(w => matchesFilters(w, dim.key)).filter(matchesSearch)
