@@ -621,6 +621,14 @@
 
   <p><b>What it did to everything else, and the numbers that moved are the stability ones.</b> Value moved by at most <b>0.10</b> spec points across the existing 161 &mdash; row 128, the YEMA Superman Steel &mdash; with 25 of 161 moving at all and <b>two crossing zero</b>, both rounding rather than reversal: row 41, the Revelot Hexmariner, 0 &rarr; 0.1, and row 91, the Longines Spirit 37, &minus;0.1 &rarr; 0. <b>One row changes band</b>: 110, the Abinger Nimrod Nightfire, from <i>as expected</i> to <i>above the curve</i>. <b>Spec drift is none</b>, and that is worth stating: this row researched every sub-score it was capable of carrying, so <code>imputeMissingSubs()</code> had no new blank to average and no existing row's step-1 score moved by even a rounding point. Leave-one-out RMSE is <b>6.23 &rarr; 6.22</b> against a naive baseline that also falls, 9.06 &rarr; 9.03, so <b>skill slips 52.7% &rarr; 52.6%</b> &mdash; a tenth of a point, and the two moving together means the row is neither more nor less predictable from its price than the list average. What actually improved is elsewhere: <b>sign flips go 1 &rarr; 0</b> and the resample spread tightens on both ends, typical 0.38 &rarr; 0.34 and worst 0.83 &rarr; 0.71. A row landing half a point off the line in the densest part of the price range is the cheapest kind of evidence a fitted curve can get, and those three figures are what that looks like. Sigma holds at 6, the spec range at 26&ndash;66, the spec/price correlation at 0.74, and the two <code>n/s</code> and two <code>o/s</code> rows are all unchanged &mdash; &euro;735 was never going to rescue rows 16 and 56, which are the two cheapest in the file.</p>
 
+  <p><b>Hamilton Khaki Field Murph 38 mm, pass 44 &mdash; one row added (163), and the list goes from 162 to 163.</b> A second Hamilton, and it is here for the comparison rather than for the watch: row 124's Khaki Aviation Pilot Pioneer is the same 38&nbsp;mm case size, the same H-10, the same 100&nbsp;m, the same open caseback and the <i>same</i> &euro;1,075, and differs in the band it is priced on and in one researched field. The list has never held two references from one maker at an identical price with an identical movement before, so this pair is the cleanest available reading of what the model charges for fittings alone. The vocabulary did not move at all: no new case category, glass, movement type, watch type or complication, and <b>no new <code>MOVEMENT_TIER</code> key</b> &mdash; <code>Automatic &mdash; Hamilton H-10 (ETA C07.111, Nivachron)</code> is row 124's string reused verbatim, which is also what makes the <code>MEASURED_ACCURACY</code> substring fire on both. <b>It lands at 54 spec points and +2.90 on Value, <i>as expected</i></b>, on <b>61 comparable rows</b> &mdash; the deepest support any row has been added on here, since &euro;1,075 sits squarely in the thickest part of this list's price range and nothing about it is an extrapolation. <b>Row 124 is 51 spec points and &minus;0.50 at the same price</b>, so the gap is 3 spec points and 3.4 residual points, and it decomposes exactly: movement, timekeeping and case-and-glass are <i>identical to the fourth decimal</i>, fittings go 0.566&nbsp;&rarr;&nbsp;0.752 on the clasp, water-and-lume 0.515&nbsp;&rarr;&nbsp;0.585 on the lume, and wearability 0.563&nbsp;&rarr;&nbsp;0.597 on 0.3&nbsp;mm of thickness. Most of it is the bracelet. The honest reading is that this list rates a steel bracelet with a folding clasp well above a calf strap with a pin buckle, and Hamilton charge the same for both &mdash; which is the model's verdict, not a claim that the Pioneer is overpriced.</p>
+
+  <p><b>The judgement calls, and the interesting one is the same maker scoring differently on two pages.</b> <b>Lume 0.7 against row 124's 0.5, and this is a difference in the evidence rather than in the watch.</b> Hamilton carry a <code>Super Luminova: Ja</code> attribute on this reference plus a named feature block for it; the Khaki Aviation page has neither, and its raw body was re-fetched for this pass to check &mdash; the string <i>luminova</i> appears on it zero times. So row 124 stays on the &ldquo;maker names no compound at all&rdquo; rung and row 163 takes the compound-named-without-a-grade 0.7 that rows 67, 91&ndash;93, 147 and 152&ndash;154 hold. That both watches almost certainly carry the same lume is beside the point: this column scores what the maker states, and a per-reference attribute list is exactly the kind of source that makes the distinction checkable rather than notional. A named grade or an X1 would move it further. <b>Clasp 0.6 is the softest number on the row.</b> Hamilton write <code>Art der Schlie&szlig;e: Faltschlie&szlig;e</code> and no more &mdash; no pusher, no micro-adjustment, no safety catch &mdash; which is the settled situation rows 117, 120, 145, 149&ndash;154 and 158&ndash;160 all take 0.6 for. <code>Easy Click: Ja</code> is quick-release spring bars at the <i>lug</i> end and is deliberately not read as a clasp feature. Evidence of a push-button or micro-adjustment takes it to 0.7&ndash;0.8 and the row about half a spec point, which would not change its band. <b>Finishing 0.50, held level with row 124 rather than raised for the dial</b>, and this is the call to push back on. The Murph's blue-to-black gradient with its grained &ldquo;stardust&rdquo; texture is genuinely more dial than the Pioneer's matte print. It still does not clear the 0.55 rung, because the line pass 28 drew for row 122 is dial <i>construction</i> against dial <i>printing</i> &mdash; a guilloch&eacute; centre or a sloped chapter ring is construction; a gradient coating and a texture are decoration applied to a flat printed dial &mdash; and the case work either side of it is unchanged Swatch Group brushed steel. The open caseback earns nothing here for the reason the Christopher Ward rows record: the window is <code>fittings.displayBack</code> and is already scored. Applied markers or visible movement decoration would move this to 0.55, worth well under a spec point.</p>
+
+  <p><b>Two things Hamilton's attribute list settled that reading one reference could not, and both correct a claim this file was making.</b> <b>Hamilton do have a lug-to-lug field.</b> Row 124's comment said the spec list &ldquo;runs from <code>Geh&auml;usedimension</code> to <code>Ansto&szlig;breite</code> with nothing between them&rdquo;, which read as a claim about Hamilton's schema. Sibling H70455133, the Khaki Field Auto 38, carries <code>Lug to lug = 47mm</code> as an ordinary attribute. So the field exists and is simply unpopulated on this reference and on row 124's &mdash; a maker leaving a field empty, not a maker without one, which is a weaker finding and is now worded as such in both places. The 47&nbsp;mm is <i>not</i> borrowed here: that is a different case, 11&nbsp;mm thick against this one's 11.1, and evidence rule 5 is precisely that one number cannot describe several cases. <b>And Hamilton's attribute list carries no functions or date field on any reference.</b> H70455133 has a date window and its list does not mention one either, so the page cannot state whether this dial carries a date, and the row does not assert one. It costs nothing &mdash; there is no <code>date</code> key in <code>COMPLICATION_VALUES</code>, for the reason row 131 records &mdash; but it is worth naming, because an absent field on a page that publishes 22 attributes looks like a finding and is not one. <b>Pass 28's de-tagging warning applied again and was needed again:</b> this page runs <i>four</i> consecutive <code>Ja</code> values &mdash; Anti Reflection, Offener Geh&auml;useboden, Nivachron, Super Luminova &mdash; and the de-tagged view drops repeats, so all four were read from the raw body. Taken from the readable text the row would have lost its AR coating, its caseback, its antimagnetism and the lume finding above, which is the whole of what separates it from row 124. <b>The weight column gained nothing, and that is a finding about the reference rather than the maker's silence:</b> no mass field on this page, none on either sibling read beside it, and no weight key anywhere in the raw body &mdash; a distinction that carries weight precisely because four other attributes on this page <i>are</i> published and visible only at source. Row 163 goes to <code>WEIGHT_UNPUBLISHED</code>, which now holds 84 of the 163, and the estimator's test set is unchanged at 64 rows with every figure in the Weight tooltip unmoved.</p>
+
+  <p><b>What it did to everything else, and one band change with no number behind it.</b> Value moved by at most <b>0.10</b> spec points across the existing 162 &mdash; row 128, the YEMA Superman Steel &mdash; with only <b>8 of 162 moving at all</b>, none crossing zero, and <b>no spec drift on any row</b>, which is the smallest reshuffle recorded here and is what adding a single row into the densest part of the price range looks like. <b>One row changes band and its residual does not move:</b> row 118, the Laco Atlantik 39 MB, goes <i>as expected</i> &rarr; <i>below the curve</i> while reading &minus;3.0 against a sigma of 6 both before and after. It sits exactly on the &frac12;&sigma; cut, so the crossing happens in the unrounded ratio the band is quantised from, below the resolution either displayed figure has. That is the bands doing what pass 12 designed them to do and is reported rather than smoothed: a boundary has to fall somewhere, and a row sitting on it will flip on arithmetic invisible in the cell. Nothing about that watch changed. <b>Leave-one-out RMSE is 6.22 &rarr; 6.21 against a naive baseline of 9.03 &rarr; 9.02, so skill is unchanged at 52.6%</b>, and the resampling figures both improve, typical 0.34 &rarr; 0.29 and worst 0.71 &rarr; 0.69. <b>Sign flips go 0 &rarr; 1</b>, the one figure moving the wrong way, and it is reported for the reason pass 17 first set out: at this sample size a single leave-one-out fold changing the sign of a near-zero residual is noise, and this particular figure has oscillated between 0 and 1 every few passes since pass 20. Sigma holds at 6, the spec range at 26&ndash;66, the spec/price correlation at 0.74, and the two <code>n/s</code> and two <code>o/s</code> rows are all unchanged &mdash; a &euro;1,075 row was never going to reach rows 16 and 56, which are the two cheapest in the file.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -642,7 +650,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-162 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-163 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
 //                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
@@ -2814,8 +2822,10 @@ const WATCHES = [
 { id:124, brand:'Hamilton', name:'Hamilton Khaki Aviation Pilot Pioneer Auto 38 (H76205530)', desc:'38 mm pilot automatic, 80 h H-10 with a Nivachron hairspring, open caseback',
   link:'https://www.hamiltonwatch.com/de-de/h76205530-khaki-aviation-pilot-pioneer.html',
   img:'https://www.hamiltonwatch.com/media/catalog/product/cache/6517c62f5899ad6aa0ba23ceb3eeff97/h/7/h76205530_lowresweb.png',
-  // Hamilton publish no lug-to-lug for any Khaki Aviation reference - the spec list runs from
-  // "Gehäusedimension" to "Anstoßbreite" with nothing between them.
+  // Hamilton state no lug-to-lug for this reference. Pass 44 sharpened what that means: the
+  // attribute EXISTS in Hamilton's schema - sibling H70455133 carries "Lug to lug = 47mm" - it
+  // is simply unpopulated here and on row 163, so this is the maker leaving a field empty
+  // rather than not having one.
   diameterDisplay:'38 mm', diameterMm:38, l2lDisplay:'—',
   heightDisplay:'11.4 mm', heightMm:11.4,
   caseDisplay:'Stainless steel (open caseback, 18 mm lug width)', caseCategory:'Steel',
@@ -3933,6 +3943,48 @@ const WATCHES = [
   powerReserveDisplay:'42 h', accuracyDisplay:'−5/+10 s/day',
   waterResDisplay:'200 m (20 ATM)', waterResM:200,
   priceDisplay:'$839', priceValue:839, priceCurrency:'USD' },
+
+// --- Hamilton Khaki Field Murph, pass 44 (row 163) --------------------------------------------
+// Second Hamilton here, and the pair is more useful than either row alone: row 124's Khaki
+// Aviation Pilot Pioneer is the same 38 mm case size, the same H-10, the same 100 m and the same
+// open caseback at the SAME €1,075, differing in the band it is priced on and in one researched
+// field. So the Value column reads the two against an identical price and an identical movement.
+//
+// Hamilton's Magento attribute list is per-reference, and pass 28's warning about the de-tagged
+// view still applies - this page runs FOUR consecutive "Ja" values (Anti Reflection, Offener
+// Gehäuseboden, Nivachron, Super Luminova) and the de-tagger drops repeats, so all four were read
+// from the raw body. Two things that list settles which pass 28 could not see from one reference:
+//   - Hamilton DO have a "Lug to lug" attribute. Sibling H70455133 (Khaki Field Auto 38) carries
+//     "Lug to lug = 47mm". It is simply absent for this reference and for row 124's, so l2l is
+//     unpublished rather than unpublishable - and 47 mm is NOT borrowable here, because that is a
+//     different case (11 mm thick against this one's 11.1) and evidence rule 5 forbids one number
+//     describing several cases.
+//   - Hamilton's attribute list has NO functions or date field on ANY reference - H70455133 has a
+//     date window and its list does not mention one either - so the page cannot settle whether
+//     this dial carries a date. It costs nothing: a date has never been a scored complication
+//     here (there is no 'date' key in COMPLICATION_VALUES), so the field is left unstated rather
+//     than guessed, and comp is omitted for want of anything scored.
+// Hamilton publish no rate for the H-10 at any grade and no weight for this reference; both are
+// recorded as such, exactly as on row 124.
+{ id:163, brand:'Hamilton', name:'Hamilton Khaki Field Murph 38 mm (H70405140)', desc:'Blue-to-black gradient "comet" dial on the steel bracelet · the Interstellar field watch, against row 124\u2019s leather-strap Pilot Pioneer at the same \u20ac1,075',
+  link:'https://www.hamiltonwatch.com/de-de/h70405140-khaki-field-murph-auto.html',
+  img:'https://www.hamiltonwatch.com/media/catalog/product/cache/6517c62f5899ad6aa0ba23ceb3eeff97/h/7/h70405140_soldier.png',
+  // "Gehäusedimension 38mm", "Dicke (mm) 11.1". No "Lug to lug" attribute on this reference - see
+  // the banner above; Hamilton populate that field for other Khaki Field references.
+  diameterDisplay:'38 mm', diameterMm:38, l2lDisplay:'—',
+  heightDisplay:'11.1 mm', heightMm:11.1,
+  caseDisplay:'Stainless steel (open caseback, 20 mm lug width)', caseCategory:'Steel',
+  // "Art des Armbands: Edelstahl", "Art der Schließe: Faltschließe", "Easy Click: Ja" - Hamilton's
+  // quick-release spring bars. The bracelet is what this SKU's €1,075 buys, so it is what is scored.
+  bandDisplay:'Steel bracelet (quick-release), folding clasp',
+  // "Uhrenglas: Saphirglas" and "Anti Reflection: Ja", both attributes on this reference.
+  glassDisplay:'Sapphire + AR', glassCategory:'Sapphire',
+  // Exactly row 124's string, reused verbatim: same caliber, same MOVEMENT_TIER key, and editing
+  // it here would fork the key and move both rows' tier.
+  movementDisplay:'Automatic — Hamilton H-10 (ETA C07.111, Nivachron)', movementType:'Automatic', movementCostDisplay:'not sold separately (Swatch Group excl.)',
+  powerReserveDisplay:'80 h', accuracyDisplay:'—',
+  waterResDisplay:'100 m (10 ATM)', waterResM:100,
+  priceDisplay:'€1,075', priceValue:1075, priceCurrency:'EUR' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -4137,8 +4189,8 @@ function measuredRatioStats(watches) {
 
 // --- Weight (pass 10, rewritten in pass 11) ------------------------------------------------
 // Twelve makers publish mass as a plain field in the same spec table as the diameter, which the
-// roster above WEIGHT_MEASURED sets out per maker. The column is 64 published figures and 98
-// estimates - 83 rows that genuinely publish nothing, 8 that could not be reached, and 7
+// roster above WEIGHT_MEASURED sets out per maker. The column is 64 published figures and 99
+// estimates - 84 rows that genuinely publish nothing, 8 that could not be reached, and 7
 // published head-only. The estimator below runs for anything not in WEIGHT_MEASURED.
 //
 // Pass 10 built this column on the premise that mass "is simply not in the spec sheets" and
@@ -4606,6 +4658,13 @@ const WEIGHT_UNPUBLISHED = new Set([
                           //   describe with different dimensions from three of them; and this row
                           //   is priced on the steel bracelet, so even a genuine case figure would
                           //   be head-only and could not enter this table
+  163,                    // Hamilton Khaki Field Murph - Hamilton's Magento attribute list has no
+                          //   mass field on this reference, and none on the two siblings read
+                          //   beside it (H76205530 on row 124, H70455133). The probe finds no
+                          //   weight key anywhere in the raw body either, so this is the maker
+                          //   stating nothing rather than the de-tagged view hiding it - a
+                          //   distinction that matters on this page, where four other attributes
+                          //   ARE published and only visible in the source
 ]);
 
 // Checked, not settled. Separated from the set above because "the maker does not publish it" and
@@ -4908,6 +4967,10 @@ const WATCH_TYPES = {
   // evidence this table takes. NOT Diver: the bezel is fixed.
   161: ['Sports', 'Everyday'],
   162: ['Diver'],                      // 200 m, unidirectional 120-click timing bezel, as rows 34-35
+  // Pass 44. Row 163 is 'Field' first because Hamilton file it under Khaki Field, which is the
+  // same maker's-intent rule that made row 124 'Pilot' and nothing else; 'Everyday' follows the
+  // 100 m fixed-bezel bracelet rows 99, 109 and 156-157, not a second reading of the collection.
+  163: ['Field', 'Everyday'],
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
@@ -4978,7 +5041,7 @@ const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (143 of 162 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (144 of 163 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -6550,6 +6613,28 @@ const EXTRAS = {
   //   'date' key in COMPLICATION_VALUES because a date is near-universal here - the same reason
   //   row 131's date carries nothing. Not an omission.
   162:{lume:0.9,war:2,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:0.8},
+  // --- Hamilton Khaki Field Murph, pass 44 (row 163) ---------------------------------------
+  // lume 0.7, and the split from row 124's 0.5 is the whole point of this entry: it is the SAME
+  //   MAKER at the SAME PRICE scoring differently because the two pages say different things.
+  //   Hamilton carry a "Super Luminova: Ja" attribute on this reference plus a named feature
+  //   block for it; the Khaki Aviation page on row 124 has neither - re-checked against its raw
+  //   body for this pass, and the word luminova appears zero times on it. So 124 stays at the
+  //   "maker names no compound at all" rung and 163 takes the compound-named-without-a-grade 0.7
+  //   that rows 67, 91-93, 147 and 152-154 hold. A named grade or an X1 would move it further.
+  // antimag 0.5 - "Nivachron: Ja", the scale's own figure for that hairspring, as rows 17 and 124.
+  // clasp 0.6 - "Art der Schliesse: Faltschliesse" and nothing more: no pusher, no micro-
+  //   adjustment, no safety catch. 0.6 is this file's settled number for a bracelet whose clasp
+  //   its maker leaves undescribed - rows 117, 120, 145, 149-154 and 158-160. "Easy Click: Ja" is
+  //   quick-release spring bars at the LUG end and is not a clasp mechanism, so it adds nothing
+  //   here. Evidence of a push-button or micro-adjustment takes it to 0.7-0.8, worth about half a
+  //   spec point. This is the softest number on the row.
+  // iso 0 - 100 m, no rotating bezel, no ISO 6425 claim. Absence of the claim is a finding.
+  // bezel null - fixed bezel. war 2 and service 0.9, both following row 124: Hamilton's stated
+  //   international terms and the Swatch Group service rung rows 17-19 and 68-75 use.
+  // comp omitted - see the row banner. Hamilton's attribute list carries no functions field on any
+  //   reference, so the page cannot state a date either way, and this file has no scored 'date'
+  //   key regardless. Nothing else on the dial is a complication.
+  163:{lume:0.7,war:2,iso:0,antimag:0.5,clasp:0.6,service:0.9,bezel:null},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -6967,6 +7052,17 @@ const FINISH = {
   // rows above it, and one owner review on Vaer's own bracelet page calls that bracelet's edges
   // rough. Hands-on inspection of the dial layers is what would move it.
   162:0.50,
+  //   163 Hamilton 0.50, held level with row 124 deliberately rather than raised for the dial.
+  //     The Murph's blue-to-black gradient with its grained "stardust" texture is genuinely more
+  //     dial than the Pilot Pioneer's matte print, and it still does not clear the 0.55 rung,
+  //     because the line pass 28 drew for row 122 is dial CONSTRUCTION against dial PRINTING: an
+  //     artisan guilloche centre or a sloped chapter ring is construction, a gradient coating and
+  //     a texture are decoration applied to a flat printed dial. Case work is unchanged Swatch
+  //     Group brushed steel, which is the Tissot-class 0.45-0.55 band both Hamiltons sit in. The
+  //     open caseback earns nothing here - it is fittings.displayBack, already scored, and paying
+  //     for it twice is the trap the Christopher Ward 0.65 rows avoid by earning theirs on a
+  //     decorated rotor. Applied markers or visible movement decoration would move this to 0.55.
+  163:0.50,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -6974,7 +7070,7 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 147 of 162 rows resolved - 71 see-through, 76 solid. The fifteen still open are
+// Research status: 148 of 163 rows resolved - 72 see-through, 76 solid. The fifteen still open are
 // 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125, 126, 142, 143 and 156, all rows whose maker publishes
 // no caseback detail. Row 156 is pass 41's, and it is the DK26 that explains why it is open rather
 // than assumed: Damasko word the two references' caseback fields identically and one of them turns
@@ -7267,6 +7363,10 @@ const DISPLAY_BACK = {
   // backs, quartz gets solid steel. Row 35, the other D5, is already 1 on a review's evidence;
   // this one is the maker's.
   162: 1,
+  // Pass 44. 163 is Hamilton's own "Offener Gehaeuseboden: Ja" on this reference - one of the
+  // four consecutive "Ja" values the de-tagged view drops, read from the raw body exactly as row
+  // 124's was. Same field, same maker, same trap, and it is published both times.
+  163: 1,
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
@@ -8117,7 +8217,7 @@ function optionValuesFor(dim) {
 
 // How many rows each option would show, measured against every filter EXCEPT its own dimension's
 // (see matchesFilters). Recomputed on every pipeline pass, which is 5 x 90 predicate calls - the
-// same order as the search box, which rejoins a haystack string for all 162 rows per keystroke.
+// same order as the search box, which rejoins a haystack string for all 163 rows per keystroke.
 function optionCounts(dim) {
   const counts = new Map();
   WATCHES.filter(w => matchesFilters(w, dim.key)).filter(matchesSearch)
