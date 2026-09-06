@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arena Club Time Box — Twilight &amp; Steel, priced in Germany</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#161a21; --line:#28303c; --text:#e7ecf3; --muted:#9aa7b6;
+    --accent:#6ea8fe; --row:#12161d; --rowalt:#151a22; --head:#1b2531;
+    --bad:#f0736a; --warn:#e3b341; --good:#5fd08a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font:14px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;}
+  main{max-width:1180px;margin:0 auto;padding:28px 22px 60px}
+  h1{margin:0 0 6px;font-size:24px;letter-spacing:.2px}
+  h2{margin:34px 0 10px;font-size:17px;border-bottom:1px solid var(--line);padding-bottom:6px}
+  p{margin:10px 0;max-width:900px}
+  .sub{color:var(--muted);font-size:13px;max-width:900px}
+  a{color:var(--accent)}
+  code{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:12.5px}
+  .verdict{margin:18px 0 0;border:1px solid var(--line);border-left:4px solid var(--bad);
+    background:var(--panel);border-radius:8px;padding:14px 16px}
+  .verdict b{color:var(--bad)}
+  .cards{display:flex;flex-wrap:wrap;gap:12px;margin:16px 0 0}
+  .card{flex:1 1 250px;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+  .card .k{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.6px}
+  .card .v{font-size:22px;font-weight:600;margin-top:4px}
+  .card .n{color:var(--muted);font-size:12px;margin-top:4px}
+  table{border-collapse:collapse;width:100%;margin-top:10px;font-size:13px}
+  th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  th{background:var(--head);color:var(--muted);font-weight:600;font-size:11.5px;
+    text-transform:uppercase;letter-spacing:.5px;position:sticky;top:0}
+  tbody tr:nth-child(odd){background:var(--row)}
+  tbody tr:nth-child(even){background:var(--rowalt)}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .tier{font-size:10.5px;font-weight:700;letter-spacing:.5px;padding:1px 6px;border-radius:99px;
+    border:1px solid var(--line);color:var(--muted)}
+  .tier.grail{color:#e3b341;border-color:#5a4a1c}
+  .tier.chase{color:#6ea8fe;border-color:#2b4a77}
+  .conf{font-size:11px;color:var(--muted)}
+  .conf.low{color:var(--warn)}
+  .win{color:var(--good)}
+  .lose{color:var(--bad)}
+  .scroller{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+  ul{max-width:900px}
+  li{margin:5px 0}
+  footer{margin-top:44px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:14px}
+</style>
+</head>
+<body>
+<main>
+
+<h1>Arena Club Time Box — is it worth it from Germany?</h1>
+<p class="sub">
+  Two boxes: <b>Twilight</b> and <b>Steel</b>, $1,000 each, one watch per box. Both checklists were
+  pulled from Arena Club's own API (<code>/v3/repacks/{id}</code> and <code>/v3/items/{id}</code>), so
+  the models, references, conditions and per-item hit rates below are theirs, not a transcription of
+  the marketing page. Every watch then got a German market price looked up individually —
+  Chrono24.de, German authorised dealers and German discounters, falling back to the maker's EUR list
+  price where no German offer exists. Everything on this page is computed from the table at the
+  bottom; nothing is typed twice.
+</p>
+
+<div class="verdict" id="verdict"></div>
+
+<div class="cards" id="cards"></div>
+
+<h2>What you are actually buying</h2>
+<ul>
+  <li><b>Price:</b> $1,000 per box, one watch, <span id="fxNote"></span></li>
+  <li><b>Odds:</b> published per item, not per tier — Grail 0.03% each, Chase 0.44% each, Lineup 3.86% each.
+    With 3 / 8 / 25 items that is <b id="tierOdds"></b>. The Lineup is 96.5% of all outcomes, so the
+    Lineup <em>is</em> the product; the Rolexes are decoration.</li>
+  <li><b>No returns, no warranty.</b> Arena Club's own policy: "Arena Club does not offer returns for
+    any watches, for any reason" and "does not offer a warranty of any kind. All watches are sold
+    as-is." Some watches carry a transferable manufacturer warranty, which you must ask them to
+    activate within 7 days.</li>
+  <li><b>Buyback:</b> a 24-hour instant offer at <b>90%</b> of <em>their</em> estimated value, paid
+    into your Arena Club wallet — not your bank account. The valuation is theirs and is not published
+    in advance.</li>
+  <li><b>Collect Safe:</b> pay a 10% premium ($1,100 total) and the buyback offer is guaranteed to be
+    at least 80% of the box price ($800). That caps the downside at <b id="csLoss"></b> per box and
+    drops the buyback rate on a good hit from 90% to 80%.</li>
+  <li><b>You are in Germany.</b> The watch sits in a US vault. Retrieving it means a US&rarr;DE shipment:
+    roughly 4.5% duty plus 19% Einfuhrumsatzsteuer on value + freight + duty, so about
+    <b>+24% of the watch's value</b> on top of the $1,000 you already paid, plus insured shipping.
+    Selling it back into the US wallet avoids that, but then you never owned a watch — you played a
+    slot machine denominated in dollars.</li>
+</ul>
+
+<h2>The maths</h2>
+<p>
+  Expected value is dominated by the Lineup tier, which is where 96.5% of the probability sits. Two
+  numbers matter, and they are very different:
+</p>
+<div class="scroller"><table id="evTable"></table></div>
+<p class="sub">
+  <b>Market value</b> is what the watch costs in Germany — Chrono24.de or a German dealer, in the
+  condition stated. <b>Resale</b> is what you would realistically get back out of it selling privately
+  in Germany: 92% of market for Rolex / Omega / Tudor, 70% for Nomos, Breitling, Oris, Longines,
+  TAG Heuer, Seiko and Citizen, 55% for the Tissot / Mido / Hamilton / Gucci / Movado / Frederique
+  Constant / Armand Nicolet end of the list, where new-for-old discounting is brutal and the
+  secondhand bid is thin.
+</p>
+
+<h2>Reading it</h2>
+<p>
+  At sticker value the boxes are roughly fair: about <b id="mktPct"></b> of the purchase price comes
+  back as retail value. That is the number the format is designed to produce, and it is genuinely not
+  a scam by the standards of mystery boxes. But retail value is not a thing you can spend. On what the
+  watch is actually worth to you as a German buyer, the two honest readings are:
+</p>
+<ul>
+  <li><b>If you would sell the watch:</b> expected recovery is <b id="resalePct"></b> of the box price.
+    That is a <b id="resaleLoss"></b> expected loss per box. Roughly <b id="pWinResale"></b> of the
+    time the watch is worth more than you paid; the other <b id="pLoseResale"></b> of the time you are
+    holding a €600–900 Tissot, Mido, Seiko or Armand Nicolet you paid €861 for and cannot return.</li>
+  <li><b>If you would keep the watch:</b> you are paying €861 plus roughly 24% import tax for a watch
+    whose median German price is <b id="medianTxt"></b> — and, crucially, you do not get to choose it.
+    Buying the specific watch you want on Chrono24.de costs the same money, comes with a chooseable
+    reference, condition and colour, and skips the <b id="pBelowMkt"></b> chance of ending up with
+    something worth less at retail than you paid and that you would never have picked.</li>
+</ul>
+<p>
+  The Grail tier does almost nothing for the arithmetic. All three Rolexes and the Snoopy together
+  contribute <b id="grailEv"></b> of expected value — under 2% of the box price — because 0.03% each
+  is one box in 3,333. You would need to open about <b id="grailN"></b> boxes, roughly
+  <b id="grailCost"></b>, to expect one grail. The story is the product; the Lineup is the price.
+</p>
+<p>
+  Between the two, <b id="whichBetter"></b> is the marginally better bet, but the gap is inside the
+  error bars on my price estimates and neither is close to break-even after resale.
+</p>
+
+<h2>What would change this answer</h2>
+<ul>
+  <li>Arena Club publishing their per-item estimated values. The buyback is 90% of a number they do
+    not show you before purchase; if their estimates run at US retail rather than European street
+    prices, the buyback is worth materially more than my resale column and the Collect Safe floor
+    becomes the real product.</li>
+  <li>A box priced under about €600. At $1,000 the Lineup tier has to average €861 of realisable value
+    to break even and it averages roughly <b id="lineupResale"></b>.</li>
+  <li>Wanting the gamble itself. If the €300 expected loss is entertainment spend rather than a watch
+    purchase, that is a legitimate reason to buy one — it is simply not a way to acquire a watch
+    cheaply, and it should be sized like a bet, not like a watch budget.</li>
+</ul>
+
+<h2>Full checklists, priced</h2>
+<p class="sub">
+  Every row is one item id in Arena Club's checklist, including duplicates — three Seiko Presage
+  SPB465J1 and two Movado Series 800 in Steel, two T-Touch and two Glycine Airman in Twilight, which
+  is why some models appear twice. <b>Conf.</b> is how much weight the German price deserves:
+  <span class="conf">high</span> means a German dealer or Chrono24.de listing for that exact
+  reference, <span class="conf">mid</span> a converted or adjacent-reference figure,
+  <span class="conf low">low</span> a thin market where I found only US pricing or a list price no
+  one pays.
+</p>
+<div class="scroller"><table id="itemTable"></table></div>
+
+<footer>
+  <p>
+    Checklists and odds: Arena Club API, 5 September 2026. Policy quotes: Arena Club support centre
+    ("Time Box Warranty and Return Policy", "What if I don't like the watch I receive?"). USD&rarr;EUR rate
+    fixed at the value shown above, taken from open.er-api.com on the same day.
+  </p>
+  <p>
+    Prices researched per reference on Chrono24.de, German authorised dealers (uhrenlounge.de,
+    zeitlounge.com, olfert-co.de, steiner-juwelier.com, rueschenbeck.de, timeshop24.de,
+    uhrinstinkt.com) and maker EUR list prices (oris.ch, longines.com, norqain.com, jacquesbianchi.com,
+    nomos-glashuette.com). Where only USD asks were available the figure is converted and marked
+    <span class="conf low">low</span> confidence. These are estimates, not quotes: a real purchase
+    would move each by a hundred euros in either direction, which is why the conclusion is stated as a
+    ratio and not as a euro figure to the last digit.
+  </p>
+</footer>
+
+</main>
+
+<script>
+// ---------------------------------------------------------------------------
+// Data. One row per item id in Arena Club's two checklists (36 each, 72 total).
+// eur  = German market price for that watch in the condition stated - what it
+//        costs to buy here, not the maker's UVP where those differ.
+// conf = confidence in that price. See the prose above.
+// The resale factor is derived from the brand rather than typed per row, so a
+// price edit cannot leave the two out of step.
+// ---------------------------------------------------------------------------
+const RATES = { grail: 0.0003, chase: 0.0044, line_up: 0.0386 };
+const TIER_LABEL = { grail: 'Grail', chase: 'Chase', line_up: 'Lineup' };
+const BOX_USD = 1000;
+const USD_EUR = 0.8611;          // open.er-api.com, 2026-09-05
+const IMPORT_LOAD = 0.245;       // 4.5% duty + 19% EUSt, compounded, on value+freight
+
+const LIQ_A = ['Rolex', 'Omega', 'Tudor'];                                                 // 0.92
+const LIQ_B = ['Nomos', 'Breitling', 'Oris', 'Longines', 'TAG Heuer', 'Seiko', 'Citizen']; // 0.70
+
+const ITEMS = [
+  // --- Twilight ---
+  ['Twilight','grail','Rolex','Sky-Dweller green dial','336934','new/unworn',21000,'mid','Chrono24.de steel/WG listings 20.8-27.9k'],
+  ['Twilight','grail','Rolex','Sky-Dweller','326934','very good',17500,'mid','Chrono24.de used steel, condition-adjusted'],
+  ['Twilight','grail','Rolex','Submariner Date "Hulk"','116610LV','like new',17000,'mid','Chrono24.de 15.9-22.7k, like-new mid'],
+  ['Twilight','chase','Nomos','Ahoi neomatik 38 Datum sky','526','new/unworn',3050,'high','DE dealers 3,165 vs UVP 3,820'],
+  ['Twilight','chase','Norqain','Independence Skeleton','N3000.07S01.A01','new/unworn',2200,'low','List ~4,000; brand discounts hard, thin resale'],
+  ['Twilight','chase','Breitling','Superocean Heritage Chronograph 46','A13320','good',2500,'mid','Chrono24 used 1,985-3,700; "good" low-mid'],
+  ['Twilight','chase','Frederique Constant','Classics Vintage Rally Healey','FC-397HLBN5B6','new/unworn',1500,'low','UVP 3,395, grey market roughly half'],
+  ['Twilight','chase','Isotope','Mercury Oracle Green Spearmint','ISO-MO-GS-I7','new/unworn',1200,'low','Microbrand, GBP list, no German market'],
+  ['Twilight','chase','Longines','Spirit Pilot 39','L3.809.4.53.6','new/unworn',1900,'high','Chrono24 2,513-3,208 USD; DE street ~1,900'],
+  ['Twilight','chase','Longines','Spirit Zulu Time 39','L3.802.4.63.6','new/unworn',2300,'high','Chrono24 2,870-2,999 USD new'],
+  ['Twilight','chase','Longines','Spirit Flyback Chronograph 42','L3.821.4.93.6','new/unworn',2900,'high','List 3,950 USD; DE street below'],
+  ['Twilight','line_up','Oris','x Cervo Volante Big Crown 38','01 754 7779 4067-Set','new/unworn',1600,'mid','Oris EUR list 2,250, DE street below'],
+  ['Twilight','line_up','Oris','Aquis Date Relief 43.5','01 733 7789 4153','new/unworn',1600,'mid','Chrono24 2,325 USD ask; DE street lower'],
+  ['Twilight','line_up','Frederique Constant','Highlife Automatic COSC 39','FC-303G3NH6B','new/unworn',1450,'mid','IT dealer 1,600; FC discounts heavily'],
+  ['Twilight','line_up','Oris','ProPilot Date 41','01 733 7805 4167','new/unworn',1350,'mid','List ~1,950; DE street materially under'],
+  ['Twilight','line_up','Mido','Ocean Star Tribute','M026.807.11.041.01','new/unworn',900,'high','Chrono24.de 885-1,170'],
+  ['Twilight','line_up','Gevril','GV2 XO Submarine','4555','like new',320,'low','US discounters only; no papers'],
+  ['Twilight','line_up','Mido','Multifort Chronograph','M025.627.16.061.00','new/unworn',1050,'high','Chrono24 1,075-1,150 EUR'],
+  ['Twilight','line_up','Hamilton','Khaki Navy Frogman green','H77455360','new/unworn',900,'high','Chrono24 980-1,275; DE street ~900'],
+  ['Twilight','line_up','Tissot','T-Touch Connect Solar','T121.420.46.051.00','new/unworn',800,'high','Chrono24 815 EUR trusted seller'],
+  ['Twilight','line_up','Tissot','T-Touch Connect Solar','T121.420.46.051.00','new/unworn',800,'high','Duplicate item in the checklist'],
+  ['Twilight','line_up','Gucci','Grip 38','YA157412','new/unworn',620,'high','DE retailer 621 (46% off 1,310 RRP)'],
+  ['Twilight','line_up','Mido','Ocean Star 39','M026.907.11.041.00','new/unworn',850,'high','List 1,190; street 850-900'],
+  ['Twilight','line_up','Tissot','Heritage Navigator 160th','T078.641.16.037.00','new/unworn',950,'mid','DE AD 1,070; discontinued LE'],
+  ['Twilight','line_up','Tissot','PRX Powermatic 80 Carbon 40','T137.907.97.201.00','new/unworn',750,'high','Chrono24.de from 755; eBay.de 734'],
+  ['Twilight','line_up','Glycine','Airman 44 GMT bronze','GL0549','new/unworn',600,'mid','Brand store sale 995 USD; no papers'],
+  ['Twilight','line_up','Glycine','Airman 44 GMT bronze','GL0549','new/unworn',600,'mid','Duplicate item in the checklist'],
+  ['Twilight','line_up','Mido','Multifort Patrimony','M040.407.16.040.00','new/unworn',700,'high','Chrono24 765 USD; FR dealer ~800'],
+  ['Twilight','line_up','Gucci','G-Timeless 40','YA126325','new/unworn',600,'mid','DE offers from 679 incl. used'],
+  ['Twilight','line_up','Hamilton','Khaki Pilot Day Date 42','H64615735','new/unworn',700,'mid','Chrono24 710-1,254 USD, wide'],
+  ['Twilight','line_up','Mathey-Tissot','Type 21 Chrono Automatic','H1821CHATLNO','new/unworn',650,'low','Jomashop 749 USD; no German market'],
+  ['Twilight','line_up','Hamilton','Khaki Navy Frogman Titanium','H77805335','new/unworn',1000,'mid','DE list 1,345; no papers, street lower'],
+  ['Twilight','line_up','Armand Nicolet','JH9 Automatic 41','A660HAA-NZ-GG4710N','new/unworn',650,'low','US discounters 713-840 USD'],
+  ['Twilight','line_up','Armand Nicolet','JH9 Automatic 41','A660HAA-NZ-GG4710N','new/unworn',650,'low','Duplicate item in the checklist'],
+  ['Twilight','line_up','Armand Nicolet','M2H Automatic 42','Y-A4M2J','new/unworn',600,'low','eBay.de 663'],
+  ['Twilight','line_up','Armand Nicolet','JH9 Aqua Blue 41','A660HAA-ZO-GG4710N','new/unworn',650,'low','Same family as the JH9 above'],
+  // --- Steel ---
+  ['Steel','grail','Rolex','Day-Date Oysterquartz WG diamond dial','19019','like new',20000,'low','Chrono24 14.8-47k; dial-dependent, very wide'],
+  ['Steel','grail','Rolex','Cosmograph Daytona','116520','new/unworn',25000,'mid','Market 23.5k; unworn asks ~28k'],
+  ['Steel','grail','Omega','Speedmaster "Silver Snoopy Award" 50th','310.32.42.50.02.001','excellent',14500,'high','Chrono24 15.7-18.8k USD'],
+  ['Steel','chase','TAG Heuer','Carrera Chronograph Cal.16 44','CBN2A1AA.BA0643','new/unworn',2800,'mid','DE UVP 5,850; street roughly half'],
+  ['Steel','chase','Tudor','Black Bay 58 GMT "Coke"','M7939G1A0NRU-0003','new/unworn',4300,'high','List 4,630 bracelet; market ~4,300'],
+  ['Steel','chase','Tudor','Black Bay 58 burgundy 39','M7939A1A0RU-0001','new/unworn',3900,'high','Chrono24 3,952-4,646 USD'],
+  ['Steel','chase','Tudor','Black Bay 41 burgundy','M7941A1A0RU-0003','new/unworn',3700,'high','Chrono24 3,571-5,115 USD'],
+  ['Steel','chase','Tudor','Black Bay One 41 champagne','M79680-0003','new/unworn',3300,'mid','List 4,975 USD; discounts on secondary'],
+  ['Steel','chase','Norqain','Freedom 60 Chrono 40','N2201.19S01.A03.S01','new/unworn',2000,'low','List 4,990 USD; Chrono24 2,781 private'],
+  ['Steel','chase','Oris','Big Crown Calibre 473 38','01 473 7786 4065','new/unworn',2800,'mid','EUR list 4,200-4,300; Chronext 2,850'],
+  ['Steel','chase','Oris','ProPilot X Kermit Edition','01 400 7778 7157-Set','new/unworn',3600,'mid','Chrono24 3,802-4,670 USD'],
+  ['Steel','line_up','Hamilton','Khaki Field Titanium 42','H70545140','new/unworn',850,'high','Chrono24.de from 935; typical buy ~940'],
+  ['Steel','line_up','Frederique Constant','Highlife Heart Beat 41','FC-310B4NH6B','new/unworn',1300,'mid','DE ADs 1,877-1,895; Chrono24 from 1,290'],
+  ['Steel','line_up','Oris','Big Crown Pointer Date 40','01 754 7798 4064','new/unworn',1500,'mid','List 2,400 USD; DE street lower'],
+  ['Steel','line_up','Jacques Bianchi','JB200 Aquastrike 42','JB200','new/unworn',990,'high','Maker price 990 incl. VAT'],
+  ['Steel','line_up','Hamilton','Khaki Aviation X-Wind Chrono 46','H77912135','new/unworn',700,'mid','Discounters 816-822 USD; quartz'],
+  ['Steel','line_up','Longines','Conquest V.H.P. Chronograph 44','L3.727.4.96.6','new/unworn',900,'mid','eBay.de ~994; list 1,825 USD'],
+  ['Steel','line_up','Longines','HydroConquest 41 quartz','L3.740.4.96.6','new/unworn',850,'mid','Chrono24 974-1,445 USD'],
+  ['Steel','line_up','Movado','Series 800 Chronograph 42','2600142','new/unworn',450,'mid','Chrono24 837 USD ask; weak resale'],
+  ['Steel','line_up','Movado','Series 800 Chronograph 42','2600142','new/unworn',450,'mid','Duplicate item in the checklist'],
+  ['Steel','line_up','Duxot','Atlantica 40 Rainbow','DX-2077-33','new/unworn',250,'mid','Maker 289 USD'],
+  ['Steel','line_up','Mido','Ocean Star 39','M026.907.11.041.00','new/unworn',850,'high','Also in Twilight; same price'],
+  ['Steel','line_up','Tsao Baltimore','OLD BAY Timepiece','OLD BAY','new/unworn',470,'mid','Maker 550 USD, LE of 999'],
+  ['Steel','line_up','Longines','Conquest Chronograph 41 quartz','L3.702.4.56.6','new/unworn',950,'mid','Chrono24 1,149 USD; list 1,650 USD'],
+  ['Steel','line_up','Longines','Conquest Chronograph 41 quartz','L3.702.4.56.6','new/unworn',950,'mid','Duplicate item in the checklist'],
+  ['Steel','line_up','Armand Nicolet','JH9 Automatic 43','Z-NE7LK','new/unworn',650,'low','Same family as the Twilight JH9s'],
+  ['Steel','line_up','Hamilton','Jazzmaster Day Date 40','H32505141','new/unworn',780,'high','Chrono24 817-827 EUR'],
+  ['Steel','line_up','Citizen','Attesa UNITE with BLUE','CB0288-65L','new/unworn',850,'mid','US 759-1,225; JDM LE, thin DE market'],
+  ['Steel','line_up','Armand Nicolet','M2H Automatic 42','Y-A4M2J','new/unworn',600,'low','eBay.de 663; also in Twilight'],
+  ['Steel','line_up','Seiko','Presage Classic "Sensaicha"','SPB465J1','new/unworn',830,'high','DE AD 891; Chrono24.de from 820'],
+  ['Steel','line_up','Seiko','Presage Classic "Sensaicha"','SPB465J1','new/unworn',830,'high','Duplicate item in the checklist'],
+  ['Steel','line_up','Seiko','Presage Classic "Sensaicha"','SPB465J1','new/unworn',830,'high','Third copy in the checklist'],
+  ['Steel','line_up','Seiko','Presage Classic "Araigaki"','SPB467J1','new/unworn',845,'high','Chrono24.de 845; DE ADs 891-990'],
+  ['Steel','line_up','Longines','Conquest 41 blue quartz','L3.759.4.96.6','new/unworn',700,'mid','Chrono24.de 492-840, cluster ~790'],
+  ['Steel','line_up','Tissot','Seastar 1000 Powermatic 80 43','T120.407.11.051.00','new/unworn',600,'high','DE street well under the 969 list'],
+  ['Steel','line_up','Tissot','Gentleman Powermatic 80 Silicium 40','T127.407.11.091.01','new/unworn',650,'high','List 1,019; discounters 713 USD'],
+];
+
+const F = ITEMS.map(r => ({
+  box: r[0], tier: r[1], brand: r[2], model: r[3], ref: r[4], cond: r[5],
+  eur: r[6], conf: r[7], note: r[8],
+  liq: LIQ_A.includes(r[2]) ? 0.92 : LIQ_B.includes(r[2]) ? 0.70 : 0.55,
+}));
+
+const BOX_EUR = BOX_USD * USD_EUR;
+const eur = n => '€' + Math.round(n).toLocaleString('de-DE');
+const pct = n => (n * 100).toFixed(n < 0.1 ? 1 : 0) + '%';
+
+function stats(boxName) {
+  const rows = F.filter(w => w.box === boxName);
+  const tot = rows.reduce((s, w) => s + RATES[w.tier], 0);   // ~1.0011, the published rounding
+  const p = w => RATES[w.tier] / tot;
+  const ev = f => rows.reduce((s, w) => s + p(w) * f(w), 0);
+  const evMkt = ev(w => w.eur);
+  const evRes = ev(w => w.eur * w.liq);
+  const sorted = [...rows].sort((a, b) => a.eur - b.eur);
+  let cum = 0, med = 0, p10 = 0, p90 = 0;
+  for (const w of sorted) {
+    cum += p(w);
+    if (!p10 && cum >= 0.10) p10 = w.eur;
+    if (!med && cum >= 0.50) med = w.eur;
+    if (!p90 && cum >= 0.90) p90 = w.eur;
+  }
+  return {
+    name: boxName, rows, evMkt, evRes, med, p10, p90,
+    pWinMkt: rows.filter(w => w.eur >= BOX_EUR).reduce((s, w) => s + p(w), 0),
+    pWinRes: rows.filter(w => w.eur * w.liq >= BOX_EUR).reduce((s, w) => s + p(w), 0),
+    evGrail: rows.filter(w => w.tier === 'grail').reduce((s, w) => s + p(w) * w.eur, 0),
+    evChase: rows.filter(w => w.tier === 'chase').reduce((s, w) => s + p(w) * w.eur, 0),
+    evLine: rows.filter(w => w.tier === 'line_up').reduce((s, w) => s + p(w) * w.eur, 0),
+    lineRes: (() => {
+      const l = rows.filter(w => w.tier === 'line_up');
+      return l.reduce((s, w) => s + w.eur * w.liq, 0) / l.length;
+    })(),
+  };
+}
+
+const S = ['Twilight', 'Steel'].map(stats);
+const both = { evMkt: (S[0].evMkt + S[1].evMkt) / 2, evRes: (S[0].evRes + S[1].evRes) / 2 };
+
+// --- headline cards -------------------------------------------------------
+document.getElementById('cards').innerHTML = [
+  ['Box price', eur(BOX_EUR), '$1,000 at ' + USD_EUR.toFixed(4) + ' USD/EUR'],
+  ['Expected retail value', eur(both.evMkt), pct(both.evMkt / BOX_EUR) + ' of the price — roughly fair'],
+  ['Expected resale value', eur(both.evRes), pct(both.evRes / BOX_EUR) + ' of the price — the real number'],
+  ['Expected loss per box', eur(BOX_EUR - both.evRes), 'before German import tax on a kept watch'],
+].map(([k, v, n]) => `<div class="card"><div class="k">${k}</div><div class="v">${v}</div><div class="n">${n}</div></div>`).join('');
+
+document.getElementById('verdict').innerHTML =
+  `<b>No — not as a way to buy a watch.</b> Both boxes hand back about ${pct(both.evMkt / BOX_EUR)} of ` +
+  `their price in German retail value but only about ${pct(both.evRes / BOX_EUR)} in money you could ` +
+  `actually get back out, an expected loss of roughly ${eur(BOX_EUR - both.evRes)} per box before you ` +
+  `pay German import tax on anything you keep. ${pct(0.965)} of openings land in the Lineup tier — a ` +
+  `mainstream €250–1,600 Tissot, Mido, Seiko, Longines or Armand Nicolet you did not choose — and ` +
+  `${pct(1 - (S[0].pWinRes + S[1].pWinRes) / 2)} of all openings resell for less than the box cost, ` +
+  `with no returns and no warranty. The same ${eur(BOX_EUR)} spent deliberately on Chrono24.de buys a ` +
+  `watch you picked.`;
+
+document.getElementById('fxNote').textContent =
+  eur(BOX_EUR) + ' at ' + USD_EUR.toFixed(4) + ' USD/EUR — before any German import tax.';
+document.getElementById('tierOdds').textContent =
+  '0.09% Grail, 3.5% Chase, 96.5% Lineup';
+document.getElementById('csLoss').textContent =
+  eur(1100 * USD_EUR - 800 * USD_EUR) + ' (pay ' + eur(1100 * USD_EUR) + ', floor ' + eur(800 * USD_EUR) + ')';
+document.getElementById('mktPct').textContent = pct(both.evMkt / BOX_EUR);
+document.getElementById('resalePct').textContent = pct(both.evRes / BOX_EUR);
+document.getElementById('resaleLoss').textContent = eur(BOX_EUR - both.evRes) + ' per box';
+document.getElementById('pWinResale').textContent = pct((S[0].pWinRes + S[1].pWinRes) / 2);
+document.getElementById('pLoseResale').textContent = pct(1 - (S[0].pWinRes + S[1].pWinRes) / 2);
+document.getElementById('pBelowMkt').textContent = pct(1 - (S[0].pWinMkt + S[1].pWinMkt) / 2);
+document.getElementById('medianTxt').textContent =
+  eur(S[0].med) + ' (Twilight) and ' + eur(S[1].med) + ' (Steel)';
+document.getElementById('grailEv').textContent =
+  eur(S[0].evGrail) + ' and ' + eur(S[1].evGrail);
+document.getElementById('grailN').textContent = Math.round(1 / (3 * RATES.grail)).toLocaleString('de-DE');
+document.getElementById('grailCost').textContent = eur(BOX_EUR / (3 * RATES.grail));
+document.getElementById('whichBetter').textContent =
+  (S[0].evRes >= S[1].evRes ? 'Twilight' : 'Steel') +
+  ' (' + eur(Math.max(S[0].evRes, S[1].evRes)) + ' vs ' + eur(Math.min(S[0].evRes, S[1].evRes)) + ' expected resale)';
+document.getElementById('lineupResale').textContent =
+  eur((S[0].lineRes + S[1].lineRes) / 2);
+
+// --- EV table -------------------------------------------------------------
+document.getElementById('evTable').innerHTML =
+  '<thead><tr><th>Box</th><th class="num">EV, retail</th><th class="num">vs price</th>' +
+  '<th class="num">EV, resale</th><th class="num">vs price</th><th class="num">P(retail ≥ price)</th>' +
+  '<th class="num">P(resale ≥ price)</th><th class="num">10th pct</th><th class="num">Median</th>' +
+  '<th class="num">90th pct</th></tr></thead><tbody>' +
+  S.map(s => `<tr><td><b>${s.name}</b></td>
+    <td class="num">${eur(s.evMkt)}</td>
+    <td class="num ${s.evMkt >= BOX_EUR ? 'win' : 'lose'}">${pct(s.evMkt / BOX_EUR)}</td>
+    <td class="num">${eur(s.evRes)}</td>
+    <td class="num lose">${pct(s.evRes / BOX_EUR)}</td>
+    <td class="num">${pct(s.pWinMkt)}</td>
+    <td class="num">${pct(s.pWinRes)}</td>
+    <td class="num">${eur(s.p10)}</td>
+    <td class="num">${eur(s.med)}</td>
+    <td class="num">${eur(s.p90)}</td></tr>`).join('') +
+  `<tr><td colspan="10" class="conf">Tier split of retail EV — Twilight: grail ${eur(S[0].evGrail)},
+    chase ${eur(S[0].evChase)}, lineup ${eur(S[0].evLine)}. Steel: grail ${eur(S[1].evGrail)},
+    chase ${eur(S[1].evChase)}, lineup ${eur(S[1].evLine)}. Import load on a kept watch adds about
+    ${pct(IMPORT_LOAD)} of its value on top of the box price.</td></tr></tbody>`;
+
+// --- item table -----------------------------------------------------------
+const order = { grail: 0, chase: 1, line_up: 2 };
+const items = [...F].sort((a, b) =>
+  (a.box === 'Twilight' ? 0 : 1) - (b.box === 'Twilight' ? 0 : 1) ||
+  order[a.tier] - order[b.tier] || b.eur - a.eur);
+document.getElementById('itemTable').innerHTML =
+  '<thead><tr><th>Box</th><th>Tier</th><th class="num">Odds</th><th>Brand</th><th>Model</th>' +
+  '<th>Ref.</th><th>Condition</th><th class="num">DE price</th><th class="num">Resale</th>' +
+  '<th>Conf.</th><th>Price basis</th></tr></thead><tbody>' +
+  items.map(w => `<tr>
+    <td>${w.box}</td>
+    <td><span class="tier ${w.tier}">${TIER_LABEL[w.tier]}</span></td>
+    <td class="num">${(RATES[w.tier] * 100).toFixed(2)}%</td>
+    <td>${w.brand}</td><td>${w.model}</td><td>${w.ref}</td><td>${w.cond}</td>
+    <td class="num">${eur(w.eur)}</td>
+    <td class="num ${w.eur * w.liq >= BOX_EUR ? 'win' : ''}">${eur(w.eur * w.liq)}</td>
+    <td class="conf ${w.conf === 'low' ? 'low' : ''}">${w.conf}</td>
+    <td class="conf">${w.note}</td></tr>`).join('') + '</tbody>';
+</script>
+</body>
+</html>
