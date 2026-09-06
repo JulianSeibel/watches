@@ -629,6 +629,18 @@
 
   <p><b>What it did to everything else, and one band change with no number behind it.</b> Value moved by at most <b>0.10</b> spec points across the existing 162 &mdash; row 128, the YEMA Superman Steel &mdash; with only <b>8 of 162 moving at all</b>, none crossing zero, and <b>no spec drift on any row</b>, which is the smallest reshuffle recorded here and is what adding a single row into the densest part of the price range looks like. <b>One row changes band and its residual does not move:</b> row 118, the Laco Atlantik 39 MB, goes <i>as expected</i> &rarr; <i>below the curve</i> while reading &minus;3.0 against a sigma of 6 both before and after. It sits exactly on the &frac12;&sigma; cut, so the crossing happens in the unrounded ratio the band is quantised from, below the resolution either displayed figure has. That is the bands doing what pass 12 designed them to do and is reported rather than smoothed: a boundary has to fall somewhere, and a row sitting on it will flip on arithmetic invisible in the cell. Nothing about that watch changed. <b>Leave-one-out RMSE is 6.22 &rarr; 6.21 against a naive baseline of 9.03 &rarr; 9.02, so skill is unchanged at 52.6%</b>, and the resampling figures both improve, typical 0.34 &rarr; 0.29 and worst 0.71 &rarr; 0.69. <b>Sign flips go 0 &rarr; 1</b>, the one figure moving the wrong way, and it is reported for the reason pass 17 first set out: at this sample size a single leave-one-out fold changing the sign of a near-zero residual is noise, and this particular figure has oscillated between 0 and 1 every few passes since pass 20. Sigma holds at 6, the spec range at 26&ndash;66, the spec/price correlation at 0.74, and the two <code>n/s</code> and two <code>o/s</code> rows are all unchanged &mdash; a &euro;1,075 row was never going to reach rows 16 and 56, which are the two cheapest in the file.</p>
 
+  <p><b>KNIS KN007 GMT and KUOE Old Smith 90-002 Bronze, pass 45 &mdash; three rows added (164&ndash;166), and the list goes from 163 to 166.</b> Two Kyoto microbrands, neither previously here, and the pass exists for what the first of them makes possible. KNIS sell the KN007 in two dial variants that are the <i>same watch</i>: one 40&nbsp;&times;&nbsp;47&nbsp;&times;&nbsp;13&nbsp;mm 316L case, one Seiko/TMI NH34, one ceramic bezel, one sapphire, one bracelet, one published 160&nbsp;g, and two spec blocks differing in a single line &mdash; the dearer one adds &ldquo;Dial: Genuine Muonionalusta Meteorite&rdquo;. Every field this page scores is identical and the price is <b>2.0&times;</b>. That is the cleanest <code>PLAIN_TWIN</code> pair this file has held and the first researched deliberately as a pair rather than noticed after the fact. KUOE's Old Smith 90-002 comes from the other direction: a 35&nbsp;mm CuSn8 bronze no-date field watch on a nylon pass-through, the list's <b>third bronze row</b> and its second-smallest automatic case. <b>The vocabulary moved once.</b> Two new <code>MOVEMENT_TIER</code> keys, on the NH34 and the NH38, both held level with the NH35 already here; no new case category, glass, movement type, watch type or complication, and the two new brands needed no array because the brand filter is derived from <code>WATCHES</code> itself. <b>Row 164 lands at 42 spec points and &minus;0.50, <i>as expected</i>, on 41 comparable rows; row 165 at the same 42 spec points and &minus;6.70, its badge withheld as <code>o/s</code>, on 60; row 166 at 33 spec points and &minus;13.50, <i>well below the curve</i>, on 51.</b> None of the three is an extrapolation &mdash; all sit in the &euro;390&ndash;810 stretch that is the thickest part of this list &mdash; and the two <code>n/s</code> rows are unchanged at 16 and 56, which no row at these prices was ever going to reach.</p>
+
+  <p><b>The meteorite row is the point of the pass, and the scope guard fires on it exactly as designed.</b> Rows 164 and 165 carry identical <code>specScore</code>s, so the whole of the gap between them is price: at &euro;394 the fitted line expects 42 spec points and gets 42, and at &euro;806 it expects 49 and still gets 42. The twin's residual minus this row's is <b>6.2 spec points</b> against a &frac12;&sigma; cut of 3.1, so row 165 renders <code>o/s</code> instead of a verdict and the count of such rows goes 2&nbsp;&rarr;&nbsp;3. <b>What makes this pair worth more than the two Arsenale rows that prompted the mechanism is that nothing here is inferred.</b> Rows 134&ndash;135 are matched to references that differ in more than the stones, so their gap is a good estimate of what the decoration costs; 164 and 165 differ in the dial and in nothing else the page reads, are sold by one maker on one storefront on one day, and their gap therefore <i>is</i> the decoration's price rather than an estimate of it. The guard is not saying the meteorite dial is bad value. It is saying that &euro;412 of the &euro;806 buys a material this page has no criterion for, so a badge reading <i>well below the curve</i> &mdash; which is what row 165 would otherwise show &mdash; would be the model asserting competence it does not have. <b>The pair also constrains the rest of the pass:</b> <code>PLAIN_TWIN</code> requires the twin to be identical in every scored field, so any temptation to reward row 165's dial in <code>FINISH</code> would break the pair while double-counting the decoration the guard exists to hold out. That is refused below on the file's own precedent rather than on a fresh opinion.</p>
+
+  <p><b>Row 166 is the one row here whose <code>link</code> is not the maker's, and the choice was measured rather than argued.</b> KUOE sell this reference themselves at <b>$599</b> ex-Kyoto; the row links to and is priced at japanese-microbrands.com, a German stockist listing it at <b>&euro;650</b> with EU shipping included and no import handling to follow. Those two numbers are closer than they look &mdash; $599 is about &euro;527, and 19% German import VAT on that is &euro;627 before any handling fee &mdash; so the stockist's price is less a markup over the maker than the same watch with the border already crossed, which is what <code>priceValue</code> means here: what this row costs from the source it links to. <b>It is deliberately not a <code>marketPrice</code></b>, because that mechanism is for a second price <i>below</i> the maker's list and this one is nominally above it; recording it as one would put the deliverable price in the <code>list</code> slot and the undeliverable price in the primary, which is backwards. <b>The exposure is 1.9 residual points and no band change.</b> Run at &euro;527 the row reads 33 spec points against an expected 45, residual &minus;11.6; at &euro;650 it reads 33 against 47, residual &minus;13.5. Both are <i>well below the curve</i> and both sit on 51 comparable rows, so nothing about the verdict on this watch turns on which price is used &mdash; worth knowing before anyone re-argues the choice. <b>The specs are still KUOE's own</b>, read from the product record behind their Wix page rather than from the stockist's German summary, which is a faithful translation that omits the case thickness. One trap is recorded on the row: the stockist's URL slug says &ldquo;38-mm&rdquo; and ends in &ldquo;kopie&rdquo;, while their own product title, their spec block and KUOE's page all say 35&nbsp;mm. A duplicated-product artefact is not evidence about a watch.</p>
+
+  <p><b>The judgement calls, and the two movement tiers are both arguments for adding nothing.</b> <b>The NH34 takes 0.35, level with the NH35</b>, because its 24-hour wheel drives a <i>caller</i> GMT and this file has already priced that decision at zero twice: the SW330-2 earns 0.60 on 2892 lineage and gets none of the &plus;0.05 a jumping local hour brings, and pass 18 states the split outright. The hand is paid for once, at 0.25 in <code>COMPLICATION_VALUES</code>. <b>The NH38 takes 0.35 for the mirror-image reason</b> &mdash; it is the NH35 with the date work removed, and a date scores nothing anywhere in this file, so removing one cannot cost a row anything either. <b>Lume is 0.7 on all three rows, from one kind of evidence.</b> KNIS write &ldquo;Swiss Super-LumiNova&rdquo; and KUOE &ldquo;Super-LumiNova hands and dial&rdquo;: the compound named, no variant, no grade, which is the rung rows 67, 91&ndash;93, 147, 152&ndash;154 and 163 hold. KNIS's own lume photograph shows hands, every applied marker, the GMT tip <i>and</i> the whole 24-hour chapter ring lit in the blue of the BGW9 family, and that deliberately does not lift the number: the bands above 0.7 are for a named grade and a photograph is not one. Recorded against it, since it cuts the other way: the KN007's bezel pip is a printed white triangle with no lume plot in it, which is unusual on a 200&nbsp;m diver. <b>Clasp 0.7 on the KNIS rows is the softest number in the pass.</b> They name a &ldquo;Push-Button Folding Clasp&rdquo; outright, which is what the 0.7&ndash;0.8 band is for, and it sits at the bottom of that band because no micro-adjustment and no diver extension is named; row 162 is the mirror image and the anchor, a foldover with a &ldquo;secure locking mechanism&rdquo; and explicitly <i>no</i> push-button at 0.6. Evidence of micro-adjustment would take it to 0.8, worth about half a spec point. <b>Finishing: 0.45 on both KNIS rows and 0.50 on the KUOE</b>, and the equality of the first two is the substantive part. Row 165 is not raised for the meteorite because pass 29 refused 0.65 to row 132's mother-of-pearl and pass 31 granted it to rows 134&ndash;135, on the distinction that 0.65 is withheld for a <i>material bought</i> and granted for an <i>operation performed</i> &mdash; and a Muonionalusta slice is a material bought. The KUOE's 0.50 is one rung under row 89's 0.55, the list's other bronze watch, matching it on the grained dial with applied lume-filled Arabics and falling short on the case, which is a single satin finish without the Strela's polished-flank contrast. <b>One field is left open on purpose.</b> KUOE publish a caseback line, &ldquo;Caseback: SUS 316L&rdquo;, and it is tempting to read a metal caseback as a solid one &mdash; but a display back <i>is</i> a steel caseback with a window in it, and naming the alloy says nothing about the window. Neither gallery photographs the back, so row 166 stays absent from <code>DISPLAY_BACK</code> and is imputed at the list mean, where a guessed 0 would cost it fittings points on the strength of a material name. The two KNIS rows are the contrast: their spec text is no better, reading only &ldquo;Case Back: Screw-Down&rdquo;, and a photograph settled both at once. <b>And one small finding worth naming because it looks like an omission:</b> KNIS state sapphire and never claim an anti-reflective coating, on a page where every other spec is stated outright, so <code>glassDisplay</code> reads bare &ldquo;Sapphire&rdquo; rather than the &ldquo;+ AR&rdquo; almost every other sapphire row here carries.</p>
+
+  <p><b>The weight estimator's test set grows by two, and the pair is the closest in it &mdash; which is a caveat rather than a result.</b> KNIS are the <b>thirteenth maker</b> in this roster to publish mass as a plain spec field, and the first whose field does not say whether the band is included. &ldquo;Weight: Approx. 160g&rdquo; sits in a block headed [Dimensions] whose other entries are case diameter, lug-to-lug, thickness, lug width and <i>&ldquo;Fits Wrists Up To: 21cm&rdquo;</i> &mdash; and a wrist-circumference limit is a bracelet dimension, not a case one, so the block describes the watch as delivered on its bracelet. <b>That argument is textual and it came first, which matters here more than usual:</b> this file's own estimator returns 158&nbsp;g for a 40&nbsp;&times;&nbsp;13&nbsp;mm steel case on a bracelet, and had the reading been decided <i>by</i> that number the two rows would then have been scored against it, which is circular. It was not, but the two rows are still weaker evidence about the method than the 64 whose band-inclusion was never in question, and they are reported as such rather than counted as a triumph. Both read <b>&minus;1.3%</b>, 158&nbsp;g estimated against 160&nbsp;g published. <b>Nothing was refitted on them</b>, which is the standing refusal this block states every time the question arises. The set goes 64&nbsp;&rarr;&nbsp;66 rows, mean absolute error 10.5%&nbsp;&rarr;&nbsp;10.2%, median 6.7%&nbsp;&rarr;&nbsp;6.5%, RMSE 14.9&nbsp;g&nbsp;&rarr;&nbsp;14.7&nbsp;g, within &plusmn;15% 53 of 64&nbsp;&rarr;&nbsp;55 of 66, mean signed &plus;4.0%&nbsp;&rarr;&nbsp;&plus;3.8%. <b>Row 166 goes to <code>WEIGHT_UNPUBLISHED</code> and that is a finding, not a gap:</b> KUOE's three accordions run to seventeen fields including the caseback alloy and the buckle coating and state no mass, their Wix product record carries <code>&quot;weight&quot;:0</code> as an unset field, and the stockist's Shopify variants carry <code>grams 0</code> &mdash; the pass 31 Venezianico reading on both, not the pass 22 Traska parcel trap, since there is no number here to mistake for a watch. That table now holds 85 of the 166.</p>
+
+  <p><b>What it did to everything else, and the pass costs the model a little skill.</b> Value moved by at most <b>0.40</b> spec points across the existing 163 &mdash; row 8, the AV86 1968 &mdash; with <b>129 of 163</b> moving at all and <b>four crossing zero</b>: rows 29 and 30 from 0 to &plus;0.1, row 33 from 0 to &minus;0.1 and row 97 from &minus;0.2 to &plus;0.1, all inside a tenth of a point and all of them rows sitting on the line already. <b>Five rows change band:</b> row 74 (Mido Baroncelli) <i>as expected</i>&nbsp;&rarr;&nbsp;<i>above the curve</i>; rows 88 (Red Star Seagull 1963 Acrylic), 96 (Sinn 104 St Sa I W) and 118 (Laco Atlantik 39 MB) <i>below</i>&nbsp;&rarr;&nbsp;<i>as expected</i>; and row 149 (Squale Matic-S) <i>well below</i>&nbsp;&rarr;&nbsp;<i>below</i>. Four of the five move upward, which is the direction three rows arriving <i>under</i> the curve should push everything else. <b>Leave-one-out RMSE is 6.21&nbsp;&rarr;&nbsp;6.27 against an unchanged naive baseline of 9.02, so skill falls 52.6%&nbsp;&rarr;&nbsp;51.8%</b>, and that is the honest cost of the pass: rows 165 and 166 are both a long way below the line, so the curve has more scatter to fit and fits it slightly worse. It is not hidden by the compensating figures, which are real &mdash; sign flips go 1&nbsp;&rarr;&nbsp;0 and the worst resample improves 0.69&nbsp;&rarr;&nbsp;0.68, while typical goes 0.29&nbsp;&rarr;&nbsp;0.32. Sigma holds at 6, the spec range at 26&ndash;66, and the spec/price correlation slips 0.74&nbsp;&rarr;&nbsp;0.73. <b>Spec drift touched two rows</b>, 70 and 71 (both Mido Ocean Star 39), each 56&nbsp;&rarr;&nbsp;55, which is <code>imputeMissingSubs()</code> filling their unresearched sub-scores with a list mean that three rows have shifted. <b>Why row 166 lands where it does, since &minus;13.5 is a hard verdict and ought to be legible.</b> Its spec score of 33 is not one weak criterion but four: wearability 0.22, because 12.95&nbsp;mm on a 35&nbsp;mm case is a thickness-to-diameter ratio of exactly 0.37, which is the <i>ceiling</i> of <code>WEAR_ANCHOR</code>'s band and therefore a zero on that sub-score; timekeeping 0.04, since TMI's &minus;20/+40 puts all three of this pass's rows among the eleven lowest in the list on that group, alongside the only other NH row here; complications 0, this being a three-hand no-date watch; and fittings 0.37 on a pin buckle. Against that the list expects 47 spec points at &euro;650. What the price is actually buying &mdash; bronze, 35&nbsp;mm, and KUOE's design &mdash; the model either scores <i>below</i> steel, since <code>CASE_SCORE</code> rates hardness and puts CuSn8 at 0.45, or does not score at all. That is the model's verdict and not a claim the watch is bad; it is the same shape as row 89's, the list's other tin-bronze row. <b>Three stale literals were corrected in passing</b>, all found by the sweep rather than by this pass's edits: the scope guard's comment and the second-price comment both said dropping a row from the fit &ldquo;would move all 141 rows&rdquo; when the list has held more than that since pass 32, and the weight block's roster still said twelve makers in one sentence while the maker list beneath it was about to run to thirteen.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -650,7 +662,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-163 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-166 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
 //                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
@@ -3985,6 +3997,113 @@ const WATCHES = [
   powerReserveDisplay:'80 h', accuracyDisplay:'—',
   waterResDisplay:'100 m (10 ATM)', waterResM:100,
   priceDisplay:'€1,075', priceValue:1075, priceCurrency:'EUR' },
+
+// --- KNIS KN007 GMT diver, pass 45 (rows 164-165) ---------------------------------------------
+// Two references from one Kyoto microbrand, and they are here as a PAIR rather than as two
+// watches: KN007-BK and KN007-MTBL are the same 40 x 47 x 13 mm case, the same NH34, the same
+// 200 m, the same ceramic bezel, the same sapphire, the same bracelet, the same published 160 g,
+// and KNIS's own spec blocks differ in exactly one line - the meteorite one adds "Dial: Genuine
+// Muonionalusta Meteorite". Every field this file scores is identical and the price is 2.0x. That
+// makes them the fourth PLAIN_TWIN pair here and the first researched deliberately as a pair
+// rather than noticed afterwards.
+//
+// KNIS's international storefront is geo-aware in both directions and the Traska trap (pass 22)
+// applies verbatim: fetched unprompted it returns USD 450 / USD 920 with Shopify.currency active
+// USD, and fetched with Accept-Language de-DE it returns EUR 395.95 / EUR 809 off a JPY base at
+// the shop's own rate. The unprompted default currency is what the row records, so these are USD
+// rows and recomputePriceEUR() does the conversion at the live rate - a converted figure frozen
+// into the file drifts. The .json route reproduces the same split, so it is the storefront and
+// not the transport.
+//
+// Sapphire with NO anti-reflective claim: KNIS write "Crystal: Sapphire Crystal" in the materials
+// block and "scratch-resistant sapphire crystal" in the prose, and the string anti-reflect
+// appears nowhere in the body. Recorded as a finding rather than assumed, since every other spec
+// on this page is stated outright.
+{ id:164, brand:'KNIS', name:'KNIS GMT Automatic Diver 40 mm — Black (KN007-BK)', desc:'Ceramic-bezel NH34 GMT diver, Japan-assembled · the plain twin of row 165: the identical watch without the meteorite dial, at half the price',
+  link:'https://en.knis-kyoto.com/products/kn007-bk',
+  img:'https://cdn.shopify.com/s/files/1/0822/8195/5632/files/kn007-bk-10.jpg?v=1784283357',
+  // "Case Diameter: 40mm", "Lug-to-Lug: 47mm", "Case Thickness: 13mm", "Lug Width: 20mm" - all
+  // four in KNIS's own Dimensions block, which renders server-side and needed no probe.
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'47 mm',
+  heightDisplay:'13 mm', heightMm:13,
+  // "Case: 316L Stainless Steel", "Bezel: Ceramic", "Crown: Screw-Down". The bezel is a 60-minute
+  // dive scale, not a 24-hour GMT scale - KNIS's own photographs show 10/20/30/40/50, and the pip
+  // is a printed white triangle rather than a lume plot. This string deliberately says nothing
+  // about the caseback: its wording is what displayBackFor() falls back to, and DISPLAY_BACK
+  // carries this row explicitly instead.
+  caseDisplay:'316L stainless steel (60-min dive bezel, ceramic insert, screw-down crown, 20 mm lug width)', caseCategory:'Steel',
+  // "Bracelet: Solid Stainless Steel", "Clasp: Push-Button Folding Clasp (Solid Stainless Steel)".
+  bandDisplay:'Steel bracelet, push-button folding clasp',
+  glassDisplay:'Sapphire', glassCategory:'Sapphire',
+  movementDisplay:'Automatic caller GMT — Seiko/TMI NH34', movementType:'Automatic', movementCostDisplay:'~$60 (Seiko/TMI, new, est.)',
+  // 41 h is KNIS's own prose ("a 41-hour power reserve"). The rate is NOT theirs: they publish
+  // none, and -20/+40 s/day is Seiko/TMI's single published figure for the caliber, borrowable
+  // under evidence rule 2 for the reason row 41 carries it on the NH35 - TMI sell one grade.
+  powerReserveDisplay:'41 h', accuracyDisplay:'−20/+40 s/day',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'~$450', priceValue:450, priceCurrency:'USD' },
+
+{ id:165, brand:'KNIS', name:'KNIS Meteorite GMT Automatic Diver 40 mm — Blue (KN007-MTBL)', desc:'Genuine Muonionalusta meteorite dial · identical to row 164 in every field this page scores, at 2.0× the price',
+  link:'https://en.knis-kyoto.com/products/kn007-mtbl',
+  img:'https://cdn.shopify.com/s/files/1/0822/8195/5632/files/kn007-mtbl-7.jpg?v=1784272420',
+  // Every dimension below is the same string on KNIS's own page as row 164's, checked line by
+  // line rather than copied across: the two Dimensions blocks are identical and the Materials
+  // block differs by one added line naming the dial. If a later pass finds KNIS re-cased this
+  // reference, the PLAIN_TWIN entry is what has to go, not just these numbers.
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'47 mm',
+  heightDisplay:'13 mm', heightMm:13,
+  caseDisplay:'316L stainless steel (60-min dive bezel, ceramic insert, screw-down crown, 20 mm lug width)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet, push-button folding clasp',
+  glassDisplay:'Sapphire', glassCategory:'Sapphire',
+  movementDisplay:'Automatic caller GMT — Seiko/TMI NH34', movementType:'Automatic', movementCostDisplay:'~$60 (Seiko/TMI, new, est.)',
+  powerReserveDisplay:'41 h', accuracyDisplay:'−20/+40 s/day',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'~$920', priceValue:920, priceCurrency:'USD' },
+
+// --- KUOE Old Smith 90-002 Bronze, pass 45 (row 166) ------------------------------------------
+// The one row here whose link is NOT the maker's, and that is deliberate rather than a shortcut.
+// KUOE sell this reference themselves at $599 from Kyoto; the row links to and is priced at
+// japanese-microbrands.com, a German stockist listing it at EUR 650 with EU shipping included and
+// no import handling to follow. The two numbers are closer than they look - $599 converts to
+// about EUR 527, and 19% German import VAT on that is EUR 627 before any handling fee - so the
+// EUR 650 is not so much a markup over the maker as the same watch with the border already
+// crossed, and it is the price this list would actually be paying. priceValue is defined as what
+// this row costs from the source it links to, which is exactly that.
+// It is NOT a marketPrice: that mechanism is for a SECOND price BELOW the maker's list, and here
+// the stockist is dearer in nominal terms, so there is no second reading to record and nothing
+// for effectivePrice() to prefer. Recording one would also be backwards - it would put the
+// deliverable price in the "list" slot and the undeliverable one in the primary.
+// The specs below are KUOE's own, read from the product record behind their Wix page (the
+// Specifications / Size / Material accordions) rather than from the stockist's German summary,
+// which is a faithful translation but omits the case thickness.
+// One trap recorded: the stockist's URL slug says "38-mm" and ends in "kopie", while their own
+// product TITLE, their spec block and KUOE's page all say 35 mm. The slug is a duplicated-product
+// artefact and is not evidence about the watch.
+{ id:166, brand:'KUOE', name:'KUOE Old Smith 90-002 Bronze 35 mm (OS90002ND-BZ-BR)', desc:'CuSn8 bronze no-date field watch on a nylon pass-through · priced and linked at the EU stockist rather than at KUOE’s own $599 ex-Kyoto',
+  link:'https://japanese-microbrands.com/products/kuoe-old-smith-90-002-38-mm-bronze-braunes-zifferblatt-kopie',
+  img:'https://cdn.shopify.com/s/files/1/0911/3908/0530/files/IMG_4253.jpg?v=1735239871',
+  // KUOE's Size block: "Case: 35 x 35 x 12.95 mm", "Lug-to-lug: 42 mm", "Lug width: 18 mm". The
+  // thickness is the field the stockist's page does not carry.
+  diameterDisplay:'35 mm', diameterMm:35, l2lDisplay:'42 mm',
+  heightDisplay:'12.95 mm', heightMm:12.95,
+  // "Case: CuSn8 Bronze" - the same tin bronze as row 89, which is the alloy the CASE_SCORE
+  // comment argued its 0.45 on, so this row needs no override. "Caseback: SUS 316L" is KUOE's own
+  // wording and is why the string names it; see DISPLAY_BACK for why that does not settle whether
+  // there is a window in it.
+  caseDisplay:'CuSn8 bronze (316L steel caseback, screw-down crown, 18 mm lug width)', caseCategory:'Bronze',
+  // "Strap: Nylon", "Buckle: PVD coating" - a pass-through strap on a pin buckle, which is what
+  // the EUR 650 buys and therefore what clasp scores.
+  bandDisplay:'Nylon pass-through strap, PVD pin buckle',
+  // "Domed sapphire glass with AR and AF coating", the AR vapour-deposited on the inside.
+  glassDisplay:'Domed sapphire + inner AR (AF coated)', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Seiko/TMI NH38', movementType:'Automatic', movementCostDisplay:'~$40 (Seiko/TMI, new, est.)',
+  // Both figures are KUOE's own on this reference - "Power reserve: ~41 hours" and "Accuracy:
+  // -20 to +40 seconds per day (23 +/- 2 C)" - so unlike rows 164-165 nothing here is borrowed
+  // from TMI's caliber sheet. The temperature qualifier is left out because a parenthetical is
+  // prose that accuracyMagnitudePerDay() strips, and it is not a second rate.
+  powerReserveDisplay:'~41 h', accuracyDisplay:'−20/+40 s/day',
+  waterResDisplay:'100 m (10 ATM)', waterResM:100,
+  priceDisplay:'€650', priceValue:650, priceCurrency:'EUR' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -4139,6 +4258,15 @@ const MEASURED_ACCURACY = {
   'Miyota 9015':       { typ: 6,    range: '5\u20138',   conf: 'good', note: 'Individual owners at \u22126 and +6; guides report most regulated examples in the +5 to +10 band, well-regulated ones reaching chronometer range' },
   'Miyota 9075':       { typ: 6,    range: '5\u20138',   conf: 'fair', note: 'No data specific to the 9075 GMT; taken from the 9015, which shares the base' },
   'Seiko/TMI NH35':    { typ: 12,   range: '10\u201315', conf: 'good', note: 'Widely documented. Multiple sources describe \u221220/+40 as a quality-control ceiling rather than a performance figure, with most examples at \u221210 to +20 and regulated ones inside \u00b15' },
+  // Pass 45, and both are the 90S5 case exactly: no real-world data specific to either caliber,
+  // borrowed from the sibling that shares the architecture, and marked 'fair' for saying so. The
+  // NH34 is the NH35 with a 24-hour caller-GMT wheel and the NH38 is the NH35 without the date
+  // work; neither change touches the escapement, the balance or the regulation that decide a rate.
+  // These keys cannot collide with the NH35 above - measuredAccuracyFor() matches on substring and
+  // 'NH35' is not a substring of 'NH34' or 'NH38' - but they are placed here rather than anywhere
+  // else so the three stay together if a later pass finds figures for one of them.
+  'Seiko/TMI NH34':    { typ: 12,   range: '10\u201315', conf: 'fair', note: 'No data specific to the NH34; taken from the NH35, which shares the architecture and adds only a 24-hour GMT wheel' },
+  'Seiko/TMI NH38':    { typ: 12,   range: '10\u201315', conf: 'fair', note: 'No data specific to the NH38; taken from the NH35, which is the same movement with the date work' },
   // Pass 36. This entry MUST stay above 'Sellita SW200-1': rows 152-154 name both calibers in
   // one movementDisplay string, measuredAccuracyFor() returns the FIRST key that matches as a
   // substring, and without this ordering the AIKONs would silently report generic SW200 owner
@@ -4188,9 +4316,9 @@ function measuredRatioStats(watches) {
 
 
 // --- Weight (pass 10, rewritten in pass 11) ------------------------------------------------
-// Twelve makers publish mass as a plain field in the same spec table as the diameter, which the
-// roster above WEIGHT_MEASURED sets out per maker. The column is 64 published figures and 99
-// estimates - 84 rows that genuinely publish nothing, 8 that could not be reached, and 7
+// Thirteen makers publish mass as a plain field in the same spec table as the diameter, which the
+// roster above WEIGHT_MEASURED sets out per maker. The column is 66 published figures and 100
+// estimates - 85 rows that genuinely publish nothing, 8 that could not be reached, and 7
 // published head-only. The estimator below runs for anything not in WEIGHT_MEASURED.
 //
 // Pass 10 built this column on the premise that mass "is simply not in the spec sheets" and
@@ -4210,13 +4338,13 @@ function measuredRatioStats(watches) {
 // Pass 10 added that "if a real set of measured weights ever exists that argument changes,
 // because measured mass carries information the dimensions do not - bracelet build, case wall
 // thickness". That set now partly exists, so the question is flagged rather than quietly ignored.
-// It is still NOT acted on, for two reasons. The 64 are not a random sample - they are twelve
-// makers who happen to document well, two of them Japanese, two Chinese and eight Western, so
+// It is still NOT acted on, for two reasons. The 66 are not a random sample - they are thirteen
+// makers who happen to document well, three of them Japanese, two Chinese and eight Western, so
 // scoring on them would score brands on their spec-sheet habits. (That breakdown read "three of
 // them Japanese and eight Western" until pass 42, which is eleven makers correctly counted and
 // Seagull filed on the wrong side of the Sea of Japan; adding a second Chinese maker is what made
 // it visible.) And the double-counting objection above still
-// binds for the other 97 rows, where the "weight" is a function of columns the score already reads.
+// binds for the other 100 rows, where the "weight" is a function of columns the score already reads.
 // Scoring a column that is measured for some rows and derived from other scored inputs for the
 // rest would mean two different things in one number. Completing the research is the prerequisite.
 //
@@ -4232,12 +4360,21 @@ function measuredRatioStats(watches) {
 // slightly worse again, in the same direction and for the same structural reason - see below.
 // Pass 23's ONE row moved it more than either: the Junkers on row 113 is the largest single error
 // in the set at +76.1%, and on its own it takes mean absolute error from 9.8% to 11.1%.
-//                        28 rows (p11)   36 rows (p12)   47 rows (p16)   50 rows (p21)   51 rows (p23)   51 rows (p24)   54 rows (p25)   58 rows (p26)   61 rows (p32)   63 rows (p41)   64 rows (p42)
-//   mean absolute error       8.5%           8.2%            9.5%            9.8%           11.1%            9.8%            9.9%           10.7%           10.5%           10.6%           10.5%
-//   median absolute error     6.1%           5.8%            6.1%            6.5%            6.5%            6.0%            6.3%            6.6%            6.7%            6.7%            6.7%
-//   RMSE                     11.8 g         11.9 g          13.5 g          13.9 g          14.6 g          13.8 g          13.6 g          14.8 g          14.5 g          15.0 g          14.9 g
-//   within +-15%             25 of 28       32 of 36        40 of 47        42 of 50        42 of 51        44 of 51        46 of 54        48 of 58        51 of 61        52 of 63        53 of 64
-//   mean signed error        +2.6%          +1.6%           +2.4%           +3.1%           +4.5%           +3.2%           +3.7%          +4.4%           +4.5%           +4.0%           +4.0%  (+ = reads heavy)
+//                        28 rows (p11)   36 rows (p12)   47 rows (p16)   50 rows (p21)   51 rows (p23)   51 rows (p24)   54 rows (p25)   58 rows (p26)   61 rows (p32)   63 rows (p41)   64 rows (p42)   66 rows (p45)
+//   mean absolute error       8.5%           8.2%            9.5%            9.8%           11.1%            9.8%            9.9%           10.7%           10.5%           10.6%           10.5%           10.2%
+//   median absolute error     6.1%           5.8%            6.1%            6.5%            6.5%            6.0%            6.3%            6.6%            6.7%            6.7%            6.7%            6.5%
+//   RMSE                     11.8 g         11.9 g          13.5 g          13.9 g          14.6 g          13.8 g          13.6 g          14.8 g          14.5 g          15.0 g          14.9 g          14.7 g
+//   within +-15%             25 of 28       32 of 36        40 of 47        42 of 50        42 of 51        44 of 51        46 of 54        48 of 58        51 of 61        52 of 63        53 of 64        55 of 66
+//   mean signed error        +2.6%          +1.6%           +2.4%           +3.1%           +4.5%           +3.2%           +3.7%          +4.4%           +4.5%           +4.0%           +4.0%          +3.8%  (+ = reads heavy)
+// Pass 45 added TWO rows and they are the closest pair in the set, both at -1.3% - 158 g estimated
+// against KNIS's published 160 g, on the same case and the same bracelet. That is not a triumph
+// for the method and the block below the roster says why: KNIS do not state whether their figure
+// includes the band, the [Dimensions] block's wrist-size field is what decides that it does, and
+// the estimator's own 158 g agrees with the reading it was not allowed to make. Deciding the
+// reading by the estimator and then scoring the estimator on it would be circular; the reading is
+// textual and came first, but these two rows are still weaker evidence about the method than the
+// 64 whose band-inclusion was never in question. Left in and reported rather than held out, which
+// is the same refusal weightEstimatorStats() states for the Circula and the PRX rows.
 // Pass 42 added ONE row and it is the most accurate entry in the set that is not a coincidence of
 // rounding: the Jianghun on row 161 is estimated at 139 g against the 135 g taken from its field,
 // +3.0%. What makes it worth a line rather than a column is WHICH 139 that is. Jianghun publish
@@ -4335,8 +4472,8 @@ function measuredRatioStats(watches) {
 const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceramic: 2.0 };
 // Published weights, pass 11, extended in passes 12, 15 and 16. Every row was checked against the
 // maker's own product page - the link the row already carries - rather than sampled. That
-// overturned the premise this column was built on. Weight is NOT unpublishable: twelve makers
-// state it outright, as a plain field in the same spec table as the diameter, covering 62 rows.
+// overturned the premise this column was built on. Weight is NOT unpublishable: thirteen makers
+// state it outright, as a plain field in the same spec table as the diameter, covering 64 rows.
 //   Citizen    "Gewicht"          13/17 rows on de.citizenwatch.eu
 //   CW         "Weight inc. Strap" 10/10 rows - and the only maker that also gives a separate
 //                                  "Case Weight", i.e. the only one it is possible to take the
@@ -4361,6 +4498,11 @@ const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceram
 //                                  Stahlband ungekürzt"), so row 119's choose-the-priced-band rule
 //                                  decides it. Circula also qualify the bracelet figure as
 //                                  unshortened, which no other maker here does
+//   KNIS       "Weight"            2/2 rows - the thirteenth maker, pass 45, and the first whose
+//                                  field does NOT say whether the band is included: "Approx. 160g"
+//                                  sits in a [Dimensions] block alongside "Fits Wrists Up To:
+//                                  21cm", a bracelet dimension, which is what settles it. See the
+//                                  comment on the entries themselves
 //   Jianghun   "Weight"            1/1 row - the twelfth maker, pass 42, and the second after
 //                                  Circula to give two figures in one field. Here they do NOT
 //                                  resolve: "≈135/139g (including strap)" covers a 3-link and a
@@ -4370,7 +4512,7 @@ const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceram
 //                                  shape and both resolve, on band and on case size
 // Two more rows come from a third party where the maker omits it, marked below. Figures are
 // with the band the row is priced on, matching what this column claims to show.
-// The three counts above reconcile: 62 published by the maker + 2 borrowed = the 64 in the table.
+// The three counts above reconcile: 64 published by the maker + 2 borrowed = the 66 in the table.
 // They did not before pass 25 - the roster said eight makers and 47 rows while listing 48, had
 // never gained Junkers, and still counted row 67 as borrowed after pass 21 found Longines publish
 // it themselves. Corrected here rather than left, since a roster that does not add up is the kind
@@ -4514,6 +4656,26 @@ const WEIGHT_MEASURED = {
   // tooltip's verdict on this row either way. Jianghun stating which bracelet is which is what
   // would settle it.
   161: 135,  // JH0301G, steel bracelet - published as "≈135/139g", 3-link and 5-link unlabelled
+  // --- KNIS, "Weight" on en.knis-kyoto.com, pass 45 -----------------------------------------
+  // The thirteenth maker in the roster above, and the first whose field does NOT say whether the
+  // band is included. "Weight: Approx. 160g" sits in a block headed [Dimensions] whose other
+  // entries are Case Diameter, Lug-to-Lug, Case Thickness, Lug Width and "Fits Wrists Up To:
+  // 21cm" - and a wrist-circumference limit is a BRACELET dimension, not a case one, so the block
+  // describes the watch as delivered on its bracelet. That is the argument, and it is textual.
+  // It is worth being explicit that the physical reading agrees and was NOT used to decide it:
+  // this file's own estimator returns 158 g for a 40 x 13 mm steel case on a bracelet, and no
+  // reading of these two watches puts a bare head anywhere near 160 g. Deciding band-inclusion by
+  // the estimator and then scoring the estimator on the result would be circular, so the order
+  // matters - see the pass 45 paragraph in the footer, which says plainly that these two rows are
+  // therefore weaker evidence about the estimator than the other 64.
+  // NOT the row-121 case, which is the one this most resembles: there Citizen published two
+  // figures 47 g apart on two of their own pages and neither was qualified, so there was no way
+  // to choose. Here there is one figure per reference and only one reading of it is physically
+  // available. And not evidence rule 5 either - the two references are the SAME case on the SAME
+  // bracelet, each publishing the figure on its own page, rather than one number stretched across
+  // different cases the way Vaer's 70.6 g is.
+  164: 160,  // KN007-BK,   NH34, steel bracelet
+  165: 160,  // KN007-MTBL, NH34, steel bracelet - same case, same bracelet, same published figure
 };
 
 // Sinn is the one maker that publishes a head-only figure: "Gewicht ohne Band: 65 Gramm" for the
@@ -4665,6 +4827,14 @@ const WEIGHT_UNPUBLISHED = new Set([
                           //   stating nothing rather than the de-tagged view hiding it - a
                           //   distinction that matters on this page, where four other attributes
                           //   ARE published and only visible in the source
+  166,                    // KUOE Old Smith 90-002 Bronze - KUOE's Specifications, Size and
+                          //   Material accordions run caliber, glass, case alloy, crown, water
+                          //   resistance, power reserve, lume, accuracy, all three case
+                          //   dimensions, lug-to-lug, lug width, wrist size, caseback alloy,
+                          //   hands, strap and buckle, and none of them is a mass. Their Wix
+                          //   product record carries "weight":0, an unset field rather than a
+                          //   figure, and the stockist's Shopify variants carry grams 0 - the
+                          //   pass 31 Venezianico reading on both, not the Traska parcel trap
 ]);
 
 // Checked, not settled. Separated from the set above because "the maker does not publish it" and
@@ -4971,6 +5141,17 @@ const WATCH_TYPES = {
   // same maker's-intent rule that made row 124 'Pilot' and nothing else; 'Everyday' follows the
   // 100 m fixed-bezel bracelet rows 99, 109 and 156-157, not a second reading of the collection.
   163: ['Field', 'Everyday'],
+  // Pass 45. 164 and 165 are Diver first on 200 m, a screw-down crown and a 60-minute rotating
+  // dive bezel - KNIS's own photographs show the 10/20/30/40/50 scale, not a 24-hour one - with
+  // 'GMT / traveller' second for the independently set 24-hour hand. The pairing rows 34-35 and
+  // 36-37 carry, and the two rows take the identical array because they are the identical watch.
+  164: ['Diver', 'GMT / traveller'], 165: ['Diver', 'GMT / traveller'],
+  // 166 is Field on the maker's own intent, which is the rule rows 124 and 163 were filed under:
+  // KUOE say the 90-002 "was inspired by the British military watches of the 1940's - 70's" and
+  // build it at 35 mm with painted Arabics and a nylon pass-through. 'Everyday' second for the
+  // 100 m and the fixed bezel, as rows 99, 109, 156-157 and 163. NOT Dress despite the size -
+  // row 12's pairing is a maker who says field/dress, and KUOE say only the first half.
+  166: ['Field', 'Everyday'],
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
@@ -5041,7 +5222,7 @@ const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (144 of 163 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (146 of 166 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -5444,6 +5625,24 @@ const MOVEMENT_TIER = {
   'Automatic — Miyota 9039': 0.40,
   'Automatic — Miyota 90S5': 0.40,
   'Automatic — Seiko/TMI NH35': 0.35,
+  // Pass 45, two entries on the same base, both held LEVEL with the NH35 directly above. Neither
+  // is a shrug: each is the specific thing this table says it does not pay twice for.
+  //   NH34   the NH35 plus a 24-hour wheel driving an independently set GMT hand. The list has
+  //          already priced exactly this decision and priced it at zero: the SW330-2 takes 0.60
+  //          for being 2892-lineage and gets NONE of the +0.05 a jumping local hour earns, and
+  //          pass 18 states the split outright - a true GMT is +0.5 in complications AND +0.05
+  //          here, a caller GMT is +0.25 in complications and nothing here. The Miyota 9075's
+  //          +0.05 over the 9015 is the traveller case and is not this one. The caller hand is
+  //          paid for, once, in COMPLICATION_VALUES.
+  //   NH38   the NH35 with the date work removed. Same 24 jewels, same 21,600 vph, same hacking
+  //          and hand-winding, same 41 h. A date is not scored anywhere in this file - there is
+  //          no 'date' key in COMPLICATION_VALUES, for the reason row 131 records - so REMOVING
+  //          one cannot cost a row anything either, and docking it would be scoring a
+  //          complication in the one direction the file has decided carries no information.
+  // What would move either: a published component or regulation difference from TMI. None exists;
+  // TMI describe all three as one family and publish one rate, -20/+40, for every one of them.
+  'Automatic caller GMT — Seiko/TMI NH34': 0.35,
+  'Automatic — Seiko/TMI NH38': 0.35,
   // Laco 31 = Miyota 8315, pass 26, at 0.35 - level with the NH35 directly above, and two routes
   // land there. Against the NH35: same 21,600 vph, same hand-winding, same commodity-ebauche role
   // sold to third-party brands, one jewel short (21 against 24) per Miyota's own spec sheet.
@@ -6635,6 +6834,64 @@ const EXTRAS = {
   //   reference, so the page cannot state a date either way, and this file has no scored 'date'
   //   key regardless. Nothing else on the dial is a complication.
   163:{lume:0.7,war:2,iso:0,antimag:0.5,clasp:0.6,service:0.9,bezel:null},
+  // --- KNIS KN007, pass 45 (rows 164-165) --------------------------------------------------
+  // ONE entry written twice, and that is the point rather than a shortcut: rows 164 and 165 are
+  // the same watch with a different dial, PLAIN_TWIN says so, and any difference between these
+  // two objects would be the file quietly scoring the meteorite while the scope guard says it
+  // cannot. If a later pass finds a real difference, the twin entry has to go with it.
+  // lume 0.7: "Swiss Super-LumiNova" named, no compound variant and no grade, which is the rung
+  //   rows 67, 91-93, 147, 152-154 and 163 hold. KNIS's own lume photograph shows a broad and
+  //   even application - hands, every applied marker, the GMT tip AND the whole 24-hour chapter
+  //   ring, in the blue of the BGW9 family - which is why this is not the 0.5 of a maker who
+  //   names nothing. It does NOT lift the number: the bands above 0.7 are for a named grade
+  //   (0.85 Grade A BGW9, 1.0 X1) and a photograph is not a grade. KNIS naming C3, BGW9 or X1
+  //   would move it. Working against it, and recorded rather than hidden: the bezel pip is a
+  //   printed white triangle with no lume plot in it, unusual on a 200 m diver.
+  // clasp 0.7: "Push-Button Folding Clasp (Solid Stainless Steel)" - the push-button is named
+  //   outright, which is what the 0.7-0.8 band is for, and it is the bottom of that band rather
+  //   than the top because KNIS name no micro-adjustment and no diver extension. Row 162's entry
+  //   is the mirror image and the anchor: Vaer describe a foldover with a "secure locking
+  //   mechanism" and NO push-button, so that row sits at 0.6 and this one a rung above it. The
+  //   clasp photograph shows adjustment holes in the extension blade, which is a spring-bar
+  //   adjustment rather than an on-the-fly one and does not reach the 0.9 the Seastar bracelet
+  //   holds. A KNIS statement naming micro-adjustment or a wetsuit extension takes it to 0.8.
+  // bezel 1.0: "Bezel: Ceramic" stated outright, so this is the scale's own top value rather than
+  //   an inference - level with rows 34-35 and 41 and above the aluminium and steel inserts.
+  // war 1: "Warranty period: 1 year", in the packaging line of the spec table.
+  // iso 0: no ISO 6425 claim anywhere on either page. Absence of the claim is a finding of 0.
+  // antimag 0: nothing stated, and an NH34 carries no antimagnetic hairspring claim from TMI.
+  // service 0.4: microbrand, at the bottom of that band rather than the 0.5 rows 41 and 90 hold,
+  //   for one specific reason - KNIS sell from Kyoto with no European service presence at all,
+  //   where those two brands are at least reachable from this list's continent. The NH34 itself
+  //   is a commodity caliber any watchmaker can service, which is what keeps it off 0.3. DATA
+  //   ONLY: this field is not scored, so nothing in the table moves on it.
+  // comp ['gmt']: a CALLER GMT. The NH34's 24-hour hand is set from its own crown position and
+  //   the local hour hand does not jump, so it takes 0.25 and not gmt_true's 0.5 - the split
+  //   pass 18 made visible and the reason movementDisplay says "caller GMT" out loud.
+  164:{lume:0.7,war:1,iso:0,antimag:0,clasp:0.7,service:0.4,bezel:1.0,comp:['gmt']},
+  165:{lume:0.7,war:1,iso:0,antimag:0,clasp:0.7,service:0.4,bezel:1.0,comp:['gmt']},
+  // --- KUOE Old Smith 90-002 Bronze, pass 45 (row 166) -------------------------------------
+  // lume 0.7: "Super-LumiNova hands and dial" on KUOE's own page and "Zeiger und Zifferblatt mit
+  //   Swiss Super-LumiNova" on the stockist's - the compound named, no variant, no grade, which
+  //   is the same rung and the same evidence class as rows 164-165 above. Three rows on one rung
+  //   from one kind of statement is deliberate: it is what that rung means. The photographs show
+  //   lume-filled applied Arabics and plots on the chapter ring, so the application is not thin,
+  //   but a vintage-styled cream lume is exactly where a grade would matter most and KUOE do not
+  //   give one.
+  // clasp 0.3: a nylon pass-through strap on a PVD-coated pin buckle - "Strap: Nylon", "Buckle:
+  //   PVD coating". The 0.3-0.4 band is pin-buckle-only and this is the bottom of it, level with
+  //   row 90, which is priced on a strap for the same reason: clasp follows the price, and the
+  //   EUR 650 buys the nylon. KUOE sell no bracelet for this reference at all, so unlike row 90
+  //   there is not even a better closure being declined.
+  // bezel null: no rotating bezel - a plain polished bronze bezel over a domed crystal. Excluded
+  //   from the score rather than penalised, which is what null means here.
+  // war 1: "1-year warranty", in KUOE's own Accessories block.
+  // iso 0, antimag 0: neither claimed, on either page. Findings, not gaps.
+  // service 0.4: same rung and same reasoning as rows 164-165 - a Kyoto microbrand with no
+  //   European service network, on an NH38 any watchmaker can open. DATA ONLY, not scored.
+  // comp omitted: no date (this is the ND, no-date reference), no GMT, no chronograph, nothing
+  //   else on the dial. A three-hand watch with nothing to score, which is the ordinary case.
+  166:{lume:0.7,war:1,iso:0,antimag:0,clasp:0.3,service:0.4,bezel:null},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -7063,6 +7320,38 @@ const FINISH = {
   //     for it twice is the trap the Christopher Ward 0.65 rows avoid by earning theirs on a
   //     decorated rotor. Applied markers or visible movement decoration would move this to 0.55.
   163:0.50,
+  //   164, 165 KNIS, both 0.45, and the two being EQUAL is the substantive decision rather than
+  //     the number itself. 0.45 is the top of the competent-microbrand band and the level row 41
+  //     holds for the same class of watch - a microbrand steel diver with a ceramic bezel insert
+  //     on an NH-series caliber - which is the closest comparison the list has. KNIS's case work
+  //     supports the top of that band rather than the middle: brushed flanks with a polished
+  //     chamfer, applied polished markers rather than printed ones, and a vertically brushed dial
+  //     on the black reference. It does not reach the 0.50-0.60 mainstream rung because nothing
+  //     here is constructed - the chapter ring is printed on the rehaut and the dial is a single
+  //     plane.
+  //     Row 165 is NOT raised for the meteorite dial, and this is the file's own rule applied
+  //     rather than a new opinion: pass 29 refused 0.65 to row 132 for a mother-of-pearl dial and
+  //     bezel, and pass 31 granted it to rows 134-135, on the distinction that 0.65 is withheld
+  //     for a MATERIAL BOUGHT and granted for an OPERATION PERFORMED. A Muonionalusta slice is a
+  //     material bought - KNIS document what the meteorite is and where it was found, and nothing
+  //     about an operation they perform on it - so it falls on row 132's side of that line. It
+  //     also matters mechanically: FINISH is a scored field, PLAIN_TWIN requires the twin to be
+  //     identical in every scored field, and a bump here would break the pair the scope guard
+  //     needs while double-counting the very decoration the guard exists to hold OUT of the
+  //     score. Evidence KNIS cut, lap or finish the slices themselves would reopen it.
+  164:0.45, 165:0.45,
+  //   166 KUOE 0.50, one rung under row 89's 0.55 and one above the microbrand 0.45 of the two
+  //     rows directly above. Row 89 is the anchor because it is the list's other bronze watch and
+  //     it earned 0.55 for "brushed flanks and polished lugs and bezel, applied indexes and a
+  //     textured cream dial". KUOE match that on the dial - a matte grained brown surface with
+  //     applied lume-filled Arabics and a printed minute track - and do not match it on the case,
+  //     which is a single satin finish without the polished-flank contrast the Strela has. The
+  //     domed sapphire is deliberately worth nothing here: glassCoatingScore() already reads the
+  //     dome and the AR out of glassDisplay, and paying for it again is the double-count this
+  //     table's Conquest and Vaer entries refuse for a display back. What would move it is a
+  //     close look at the case transitions and the numerals' seating; the exposure is small, half
+  //     a rung being worth well under a spec point on a row at this price.
+  166:0.50,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -7070,9 +7359,9 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 148 of 163 rows resolved - 72 see-through, 76 solid. The fifteen still open are
-// 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125, 126, 142, 143 and 156, all rows whose maker publishes
-// no caseback detail. Row 156 is pass 41's, and it is the DK26 that explains why it is open rather
+// Research status: 150 of 166 rows resolved - 72 see-through, 78 solid. The sixteen still open are
+// 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125, 126, 142, 143, 156 and 166, all rows whose maker
+// publishes no caseback detail. Row 156 is pass 41's, and it is the DK26 that explains why it is open rather
 // than assumed: Damasko word the two references' caseback fields identically and one of them turns
 // out to have a sapphire back, so the text is no evidence either way and the DF20 has no caseback
 // photograph. Row 91 is the best documented of them: Longines leave the field empty on the
@@ -7081,6 +7370,14 @@ const DEFAULT_FINISH = 0.4;
 // Longines leave case_case_back null on both Zulu Time references too, while populating it on the
 // Legend Diver in the same pass - so the silence is per-collection, and the one Longines row this
 // pass could resolve is the one where they broke it.
+// 166 is pass 45's and it is the KUOE, where the temptation to fill the field is unusually strong:
+// KUOE DO publish a caseback line, "Caseback: SUS 316L", and a metal caseback reads like a solid
+// one until you notice that a display back is a steel caseback with a window in it. Naming the
+// alloy says nothing about the window, and neither gallery photographs the back - so the field
+// stays open on the same principle as row 156, which is that a caseback statement that cannot
+// distinguish the two states is not evidence about either. The two KNIS rows in the same pass are
+// the contrast: their spec text is no better ("Case Back: Screw-Down") and a photograph settled
+// them.
 // 125 and 126 are pass 28's, and they are the first open rows since pass 21 - every pass from 22
 // to 26 settled all of its own. They stay open for the reason spelled out at the end of this
 // table: Baltic document the GMT's caseback and say nothing about the Titanium's or the Bronze's,
@@ -7367,6 +7664,19 @@ const DISPLAY_BACK = {
   // four consecutive "Ja" values the de-tagged view drops, read from the raw body exactly as row
   // 124's was. Same field, same maker, same trap, and it is published both times.
   163: 1,
+  // Pass 45. 164 and 165 are 0 on KNIS's own photograph rather than on their text: the spec block
+  // says only "Case Back: Screw-Down", which settles nothing, but the shared caseback-and-clasp
+  // image in both galleries shows the back of the watch as a plain brushed steel disc with the
+  // water-resistance rating engraved around its rim and no crystal in it. Both references use the
+  // same case and the same photograph, so one image resolves both.
+  164: 0, 165: 0,
+  // Row 166 is deliberately ABSENT and this is the note explaining why, because the temptation to
+  // fill it is real. KUOE do publish a caseback field - "Caseback: SUS 316L" - and it would be
+  // easy to read a metal caseback as a solid one. It is not evidence: a display back is a steel
+  // caseback with a window in it, and a maker naming the alloy has not said whether there is one.
+  // Neither KUOE's gallery nor the stockist's photographs the back. So this is the three-state
+  // rule doing its job - an unresearched row is imputed at the list mean and costs nothing, where
+  // a guessed 0 would take fittings points off a row on the strength of a material name.
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
@@ -7672,7 +7982,7 @@ const listPrice = w => w.priceEUR;
 // What this deliberately does NOT do is touch the fit. These rows stay in the baseline, sigma and
 // the leave-one-out figures are exactly what they were, and their specScore and specResidual are
 // still computed. Only the badge is withheld. Dropping them from the fit would be a model change
-// and would move all 141 rows; this is a statement about what the page is entitled to display.
+// and would move all 166 rows; this is a statement about what the page is entitled to display.
 //
 // Row 105 is listed and does not trigger, which is the rule being seen to decline rather than
 // only to fire: its diamonds cost it under two spec points against row 104, short of the half-sigma
@@ -7684,6 +7994,12 @@ const PLAIN_TWIN = {
   105: { twin: 104, buys: 'diamond-set indexes' },
   134: { twin: 136, buys: 'hand-set baguette moissanite' },
   135: { twin: 137, buys: 'hand-set baguette moissanite' },
+  // Pass 45, and the cleanest pair this table has held. Rows 164 and 165 are one KNIS reference
+  // in two dial variants: identical case, bezel, glass, movement, water resistance, band, clasp,
+  // lume, published weight and caseback, differing in the meteorite dial and nothing else this
+  // page scores - so the gap the guard measures is not an estimate of the decoration's cost, it
+  // IS the decoration's cost, read off two prices the same maker charges on the same day.
+  165: { twin: 164, buys: 'a genuine Muonionalusta meteorite dial' },
 };
 const OUT_OF_SCOPE = { z: 0.5 };
 
@@ -7768,7 +8084,7 @@ function computeValueScores(watches) {
   //
   // It is a SECOND READING OF THE SAME FIT, not a second row in it. Putting one watch into the
   // baseline twice - one spec score at two prices - would let a row vote twice on the very line
-  // it is being measured against, and would move all 141 rows every time a second price was
+  // it is being measured against, and would move all 166 rows every time a second price was
   // recorded. So the Theil-Sen slope, the intercepts, the sigma and all four validation figures
   // are exactly what they would be without this step; the only thing that changes is how many
   // badges a row draws. Same argument as the scope guard above: display, not model.
@@ -8217,7 +8533,7 @@ function optionValuesFor(dim) {
 
 // How many rows each option would show, measured against every filter EXCEPT its own dimension's
 // (see matchesFilters). Recomputed on every pipeline pass, which is 5 x 90 predicate calls - the
-// same order as the search box, which rejoins a haystack string for all 163 rows per keystroke.
+// same order as the search box, which rejoins a haystack string for all 166 rows per keystroke.
 function optionCounts(dim) {
   const counts = new Map();
   WATCHES.filter(w => matchesFilters(w, dim.key)).filter(matchesSearch)
