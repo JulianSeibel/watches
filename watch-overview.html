@@ -641,6 +641,22 @@
 
   <p><b>What it did to everything else, and the pass costs the model a little skill.</b> Value moved by at most <b>0.40</b> spec points across the existing 163 &mdash; row 8, the AV86 1968 &mdash; with <b>129 of 163</b> moving at all and <b>four crossing zero</b>: rows 29 and 30 from 0 to &plus;0.1, row 33 from 0 to &minus;0.1 and row 97 from &minus;0.2 to &plus;0.1, all inside a tenth of a point and all of them rows sitting on the line already. <b>Five rows change band:</b> row 74 (Mido Baroncelli) <i>as expected</i>&nbsp;&rarr;&nbsp;<i>above the curve</i>; rows 88 (Red Star Seagull 1963 Acrylic), 96 (Sinn 104 St Sa I W) and 118 (Laco Atlantik 39 MB) <i>below</i>&nbsp;&rarr;&nbsp;<i>as expected</i>; and row 149 (Squale Matic-S) <i>well below</i>&nbsp;&rarr;&nbsp;<i>below</i>. Four of the five move upward, which is the direction three rows arriving <i>under</i> the curve should push everything else. <b>Leave-one-out RMSE is 6.21&nbsp;&rarr;&nbsp;6.27 against an unchanged naive baseline of 9.02, so skill falls 52.6%&nbsp;&rarr;&nbsp;51.8%</b>, and that is the honest cost of the pass: rows 165 and 166 are both a long way below the line, so the curve has more scatter to fit and fits it slightly worse. It is not hidden by the compensating figures, which are real &mdash; sign flips go 1&nbsp;&rarr;&nbsp;0 and the worst resample improves 0.69&nbsp;&rarr;&nbsp;0.68, while typical goes 0.29&nbsp;&rarr;&nbsp;0.32. Sigma holds at 6, the spec range at 26&ndash;66, and the spec/price correlation slips 0.74&nbsp;&rarr;&nbsp;0.73. <b>Spec drift touched two rows</b>, 70 and 71 (both Mido Ocean Star 39), each 56&nbsp;&rarr;&nbsp;55, which is <code>imputeMissingSubs()</code> filling their unresearched sub-scores with a list mean that three rows have shifted. <b>Why row 166 lands where it does, since &minus;13.5 is a hard verdict and ought to be legible.</b> Its spec score of 33 is not one weak criterion but four: wearability 0.22, because 12.95&nbsp;mm on a 35&nbsp;mm case is a thickness-to-diameter ratio of exactly 0.37, which is the <i>ceiling</i> of <code>WEAR_ANCHOR</code>'s band and therefore a zero on that sub-score; timekeeping 0.04, since TMI's &minus;20/+40 puts all three of this pass's rows among the eleven lowest in the list on that group, alongside the only other NH row here; complications 0, this being a three-hand no-date watch; and fittings 0.37 on a pin buckle. Against that the list expects 47 spec points at &euro;650. What the price is actually buying &mdash; bronze, 35&nbsp;mm, and KUOE's design &mdash; the model either scores <i>below</i> steel, since <code>CASE_SCORE</code> rates hardness and puts CuSn8 at 0.45, or does not score at all. That is the model's verdict and not a claim the watch is bad; it is the same shape as row 89's, the list's other tin-bronze row. <b>Three stale literals were corrected in passing</b>, all found by the sweep rather than by this pass's edits: the scope guard's comment and the second-price comment both said dropping a row from the fit &ldquo;would move all 141 rows&rdquo; when the list has held more than that since pass 32, and the weight block's roster still said twelve makers in one sentence while the maker list beneath it was about to run to thirteen.</p>
 
+  <p><b>Christopher Ward Biscay, Erebus and Henry Archer, pass 46 &mdash; twelve rows added (167&ndash;178), and the list goes from 166 to 178.</b> The largest pass since 22, and it is three brands rather than one: three Christopher Ward C60 Trident Biscays at &euro;1,950&ndash;2,115, five Erebus at &euro;424&ndash;574 and four Henry Archer at &euro;599&ndash;690. CW were already here with ten rows; <b>Erebus and Henry Archer are both new</b>, and neither needed an array, because the brand filter is derived from <code>WATCHES</code> itself. The angle is the middle of the price range at both ends of its quality spread: the Biscays are the first CW collection here sold <i>COSC across the board</i> rather than on a single titanium halo reference, while the nine microbrand rows land in the &euro;400&ndash;700 stretch that is already the thickest part of this list and test whether it has room left. <b>The vocabulary moved three times, all in <code>MOVEMENT_TIER</code></b>, and no new case category, glass, movement type, watch type or complication: <code>Sellita SW330-2 (COSC chronometer)</code> at 0.65, <code>Sellita SW200-1 (no date)</code> at 0.60 and <code>Miyota 9019</code> at 0.40. <b>All twelve are scored and none is an extrapolation</b> &mdash; support runs from 46 comparable rows on the dearest to 62 on the Nexus Premium &mdash; and the two <code>n/s</code> rows stay 16 and 56, which nothing priced above &euro;423 was ever going to rescue. <b>Where they land:</b> rows 167 and 168 at 59 spec points and &plus;2.10 / &plus;1.90; row 169 at 54 and &minus;2.50; rows 170&ndash;174 at 46, 42, 45, 47 and 42 spec points and &plus;0.50, &minus;1.80, &plus;1.10, &plus;1.90 and &minus;0.80; rows 175&ndash;178 at 49, 49, 50 and 50 and &plus;3.00, &plus;1.90, &plus;3.40 and &plus;2.20. Ten of the twelve read <i>as expected</i>; only rows 175 and 177, the two slim 200&nbsp;m Henry Archers, reach <i>above the curve</i>, and nothing in the pass lands below <i>as expected</i> at all. <b>That uniformity is the result.</b> Twelve watches from three makers at three price levels all landing inside &plus;3.4 of the line is the model saying it has no argument with any of them, which is a duller outcome than a pass usually produces and a more reassuring one.</p>
+
+  <p><b>The band in the link is not the band in the row, and on this pass it changed two prices, two weights and a clasp.</b> CW sell one reference across five band options at a roughly &euro;200 spread, and the row is scored on what its own price buys &mdash; so the SKUs recorded here are deliberately <i>not</i> the three handed to the pass. The Automatic was linked on the Bader bracelet (<code>-B0</code>, &euro;1,950, 157&nbsp;g) and is recorded on the Consort (<code>-B1</code>, &euro;2,005, 139&nbsp;g); the Bronze was linked in Brown and is recorded in Green on the tan vintage-oak leather (<code>B0VV0-VT1</code>), which also moves it from a bracelet row to a strap row and takes its clasp from 0.85 to 0.3. Only the GMT link needed nothing. Both were resolved through CW's own Demandware variation endpoint and then <i>re-fetched at the variant's own URL</i>, so every figure in those two rows is that SKU's page rather than the sibling's &mdash; which matters most on row 167, where taking the linked page's 157&nbsp;g would have put an 18&nbsp;g error into the weight estimator's test set with nothing to show it. <b>The route to CW is also worth recording, because the obvious tool fails.</b> <code>christopherward.com</code> refuses a plain scripted fetch outright, and answers <code>curl</code> with a browser User-Agent on the first attempt with 380&nbsp;KB of server-rendered HTML containing the whole Technical table. That is a change of transport and not of source, so nothing in these three rows is borrowed.</p>
+
+  <p><b>Both new brands publish better than their price suggests, and each hands over one field the other makes you work for.</b> Henry Archer's Specifications block settles <code>DISPLAY_BACK</code> for all four rows in a single line, and it is the <i>glass</i> field that does it: &ldquo;Sapphire crystal (front and back)&rdquo; on every reference. A sapphire crystal in the back is a display back by definition, so that is a published spec rather than an inference, and it is the first time in this file a caseback has been settled from the crystal field. Erebus publish no caseback field at all, but their galleries carry caseback <i>renders</i>, which settle rows 171 and 172 as solid &mdash; engraved steel, no window &mdash; and settle nothing for the other three, which are therefore left out of the table. <b>Row 173 is the one to point at</b>: it would have been easy to carry row 171's solid back across to it, and it is a different reference on a case 1.4&nbsp;mm taller, so it stays open and is imputed at the list mean, which costs nothing where a wrong 0 would take real fittings points off. The <code>DISPLAY_BACK</code> research status goes 150 of 166 resolved to <b>159 of 178</b>, 79 see-through and 80 solid, with nineteen open. <b>Currency was the trap on both storefronts and neither is what it looks like.</b> Erebus carry <code>Shopify.currency = {"active":"EUR","rate":"0.88420944"}</code>, which reads exactly like a USD base being converted &mdash; and if it were, every Erebus price here would be about 13% too high. It is not: the money format is a euro sign with a comma separator, <code>og:price:currency</code> is EUR, and the rendered figure is &ldquo;573,95&rdquo; where the JSON says 573.95, so the number IS the euro price. Henry Archer's rate is 0.136712, which is roughly DKK/EUR for a Danish maker and would have been just as wrong to convert by; their <code>/en-eu/</code> storefront renders EUR with no DKK anywhere in the body. Three independent signals were taken on each before either was recorded.</p>
+
+  <p><b>Henry Archer contradict themselves on row 178, and the contradiction is resolved rather than averaged.</b> The Tidevand Dacnis' Specifications block says &ldquo;Premium Miyota 9019&rdquo;; the DETAILS bullet list higher up the <i>same page</i> says &ldquo;Premium Series 9015 Automatic movement&rdquo;. That matters because <code>movementDisplay</code> is a primary key and the two calibers differ in exactly one visible respect &mdash; the 9015 carries a date and the 9019 does not. Henry Archer's own studio photography of this reference shows a clean dial with no date window at any position, which agrees with the spec block, so the 9019 is taken and the bullet is read as copy-paste from the Arkona, which <i>is</i> a 9015 and <i>is</i> dated. Same shape of finding as the YEMA Superman Dato on row 131, and settled the same way, by the maker's own photograph rather than by choosing the more authoritative-looking block. <b>The same photographic test settled two more date questions and one of them cuts the other way:</b> the Erebus Nexus Premium on row 170 has no date where the rest of the Nexus line does, which is why it needed the new <code>Sellita SW200-1 (no date)</code> key at all.</p>
+
+  <p><b>The judgement calls, and the softest three are all clasps.</b> <b>The three new movement tiers are arithmetic on this table's own precedents rather than opinions.</b> The SW330-2 COSC takes <b>0.65</b>: Elabor&eacute; sits at 0.60 and Top Grade at 0.63 for a factory step, and COSC is the &plus;0.05 that already separates the SW300-1 COSC from the SW200-1 Elabor&eacute; &mdash; landing it level with the SW300-1 COSC, which is right, because they are the same family certified the same way. It gets nothing for being a GMT, because it is a <i>caller</i>, and pass 16's ruling that a caller earns no tier bonus applies unchanged; CW's own movement paragraph says &ldquo;an independently adjustable 24-hour GMT hand&rdquo;, which is where that reading comes from rather than from the caliber's reputation. The other two are both arguments for adding nothing: <code>SW200-1 (no date)</code> and <code>Miyota 9019</code> are their dated siblings without a date module, which changes no base plate, escapement or regulator, and the precedent is the Oris 733 pair already sitting at 0.60 for that reason. <b>No <code>caseScore</code> override was taken, twice.</b> Row 169's CuAl10Ni5Fe4 is a nickel aluminium bronze &mdash; the third alloy in that category, and the propeller alloy with the hardness reputation to match &mdash; but CW publish no hardness figure for it, and pass 28 already refused exactly this promotion on row 126's CuAl8. Rows 172 and 177 both claim a 1200&nbsp;HV hardened coating, and both stay plain <code>Steel</code>, because Traska's rows 97&ndash;99 publish the same figure and take no override; ranking one maker's coating above an identical claim from another would be scoring the copywriting. <b>The clasps are where the evidence runs out.</b> Row 169's 0.3 is inferred from CW's own two weights &mdash; 57&nbsp;g case, 68&nbsp;g with the strap, leaving 11&nbsp;g for strap and closure together where a steel deployant alone runs 15&ndash;20&nbsp;g &mdash; so it is an inference from a published figure, not a spec, and a CW strap page naming a deployant overturns it. The two Erebus Nexus rows take 0.7 carried across from the Ascent's documented milled clasp, because Erebus publish no clasp field for the Nexus at all. And rows 175 and 176 take 0.7 rather than the 0.8 their siblings get, because Henry Archer name the &ldquo;toolless on-the-fly micro adjust&rdquo; on the Havstr&ouml;m and Tidevand and not on the Vesterhav or Arkona &mdash; the same hardware is visible in all four photographs, but a named feature is not awarded to a row whose maker declined to name it. <b>One lume split is the makers' own and reads backwards:</b> Henry Archer's three <i>non</i>-divers carry Grade X1 and the Tidevand, the only actual dive watch of the four, carries BGW9 Grade A. Recorded as stated, at 1.0 and 0.8.</p>
+
+  <p><b>The weight estimator's test set grows by three and every one of them reads heavy.</b> CW remain the only maker here publishing two masses per reference, and this column takes &ldquo;Weight inc. Strap&rdquo; as always; the roster goes to 67 maker-published plus 2 borrowed, and the test set 66 &rarr; <b>69</b>. Overall it gets slightly worse: mean absolute error 10.2% &rarr; 10.8%, median 6.5% &rarr; 6.7%, RMSE 14.7&nbsp;g &rarr; 15.2&nbsp;g, within &plusmn;15% 55 of 66 &rarr; 57 of 69, mean signed &plus;3.8% &rarr; &plus;4.7%. <b>The three added rows run &plus;24.8% signed on their own</b>, and they split cleanly rather than uniformly. Rows 167 and 168 are ordinary &mdash; 42&nbsp;mm and 39&nbsp;mm steel divers on bracelets, the case this method handles best, estimated 156&nbsp;g against 139 and 149&nbsp;g against 131, both inside the band at &plus;12.2% and &plus;13.7%. <b>Row 169 is the largest heavy-reading miss the set has ever had at &plus;48.5%</b>, 101&nbsp;g estimated against 68&nbsp;g published, and it is two known weaknesses at once: it is a strap row, where this estimator is already documented to break, and it is the <i>first bronze row with a published mass</i>, so the 8.8&nbsp;g/cm&sup3; bronze density has never until now been testable. CW publish 57&nbsp;g for the case alone against a predicted ~89&nbsp;g, which puts the error in the head and not in the band allowance &mdash; either the Light-catcher case is thinner-walled than the 0.55 fill factor assumes, or CuAl10Ni5Fe4 is being modelled too dense. <b>One row cannot separate those two and nothing was refitted on either</b>, which is the standing refusal this block states every time, and it binds hardest on the row that would be most tempting to fit.</p>
+
+  <p><b>What it did to everything else, and the model got better on a pass this size, which is unusual.</b> Value moved by at most <b>0.50</b> spec points across the existing 166 &mdash; row 138, the Venezianico Nereide Avventurina Nera &mdash; with <b>148 of 166</b> moving at all and <b>five crossing zero</b>: rows 67, 91 and 144 from exactly 0.0 to &minus;0.3 or &minus;0.4, row 97 from &plus;0.1 to &minus;0.3 and row 133 from &plus;0.3 to &minus;0.2, every one of them a row sitting on the line already. <b>Ten rows change band and all ten move down</b>: rows 10 (AV86 1968 Moonphase), 145 (Squale Super-Squale Sunray), 149 (Squale Matic-S) and 156 (Damasko DF20 Old Radium) from <i>below the curve</i> to <i>well below</i>; rows 88 (Red Star Seagull 1963 Acrylic), 95 and 96 (both Sinn 104 St Sa I), 98 (Traska Commuter 38), 99 (Traska Summiteer 38) and 118 (Laco Atlantik 39 MB) from <i>as expected</i> to <i>below</i>. The uniform direction has one cause and it is not those rows moving: nine of the twelve arrivals sit <i>above</i> the fitted line, which lifts it, so everything beneath falls relative to it. Sigma holds at <b>6</b> and the spec range at <b>26&ndash;66</b>, so no boundary moved underneath anyone &mdash; all ten are the row's own residual crossing a fixed line. <b>Leave-one-out RMSE is 6.27 &rarr; 6.10 against a naive baseline that also falls, 9.02 &rarr; 8.82, so skill rises 51.8% &rarr; 52.3%</b>; sign flips stay at 0 and the resampling figures improve on both ends, typical 0.32 &rarr; 0.29 and worst 0.68 &rarr; 0.56 &mdash; the best worst-case resample recorded here. The spec/price correlation goes 0.73 &rarr; 0.74. <b>Spec drift touched a single row</b>, row 55 (Citizen Eco-Drive Core Collection) at 32 &rarr; 33, which is <code>imputeMissingSubs()</code> filling its unresearched sub-score against a shifted list mean. One row on a twelve-row pass is the smallest drift relative to size recorded here, and it is exactly what that mechanism's own note predicts: drift tracks how far the list mean moves, not how many rows arrive, and twelve rows spread across &euro;424&ndash;2,115 barely move it.</p>
+
+  <p><b>One code comment was found contradicting its own table and is corrected as a bug rather than as prose.</b> The <code>DENSITY</code> note said the estimator &ldquo;correctly reads <i>the one bronze row</i> as heavier than the same case in steel&rdquo;. There has been more than one bronze row since pass 28, and with row 169 there are four spanning three alloys &mdash; CuSn8 on rows 89 and 166, CuAl8 on 126, CuAl10Ni5Fe4 on 169 &mdash; all carried at a single 8.8&nbsp;g/cm&sup3;. The comment now says so, and says what pass 46 newly makes testable about it. <b>The remaining literal sweep moved five current-state counts</b>, all of them row-count arithmetic rather than drift: the steel tally above <code>CASE_ORDER</code>, the scope guard's and the second-price comment's &ldquo;would move all N rows&rdquo;, the search box's per-keystroke count, and the weight block's own reconciliation, which goes to 67 &plus; 2 &equals; 69 and still adds up. The <code>{{tokens}}</code> in the Weight tooltip updated themselves, as they always do, which remains the argument for moving a figure into <code>computedFigures()</code> rather than trusting the sweep to find it.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -662,7 +678,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-166 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-178 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
 //                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
@@ -4104,6 +4120,267 @@ const WATCHES = [
   powerReserveDisplay:'~41 h', accuracyDisplay:'−20/+40 s/day',
   waterResDisplay:'100 m (10 ATM)', waterResM:100,
   priceDisplay:'€650', priceValue:650, priceCurrency:'EUR' },
+// --- Christopher Ward C60 Trident Biscay, pass 46 (rows 167-169) -------------------------------
+// Three references from CW's 2026 Biscay line, and all three are COSC where the ten CW rows
+// already here are mostly Elabore - the Biscay is the first CW collection in this file sold
+// chronometer-certified across the board rather than on a titanium halo reference.
+// ROUTE: christopherward.com refuses the skill script's plain fetch outright ("fetch failed") but
+// answers curl with a browser User-Agent and Accept-Language on the first attempt, 380 KB of
+// server-rendered HTML with the whole Technical table in it. A change of transport, not of
+// source, so nothing here is borrowed.
+// THE BAND IS NOT THE ONE IN THE LINK. CW sell one reference across five band options at a
+// ~EUR 200 spread and the link decides the price, the weight and the clasp. Rows 167 and 169 are
+// therefore NOT the SKUs handed to this pass: the Automatic was linked on the Bader bracelet
+// (-B0, EUR 1,950, 157 g) and is recorded on the Consort (-B1, EUR 2,005, 139 g); the Bronze was
+// linked in Brown and is recorded in Green on the tan Vintage Oak leather. Both resolved through
+// the Demandware variation endpoint - Product-Variation?dwvar_<pid>_WStrapColourMaterialType=…
+// - then re-fetched at the variant's own URL so every figure below is that SKU's own page. The
+// GMT needed no change: the link was already Consort and Black/Red.
+{ id:167, brand:'Christopher Ward', name:'Christopher Ward C60 Trident Biscay Automatic 42 (C60-42C3H1-S0RK0-B1)', desc:'Matte Black/Red · 200 m COSC diver on the Consort bracelet, aluminium bezel · the 42 mm three-hander beside the 39 mm GMT on row 168',
+  link:'https://www.christopherward.com/watches/trident-biscay-automatic/C60-42C3H1-S0RK0-B1.html',
+  img:'https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dw4b75f890/images/WATCHES/C60-42C3H1-S0RK0-B1/C60-42C3H1-S0RK0-B1_Picture_1.jpg?sw=600&sh=600',
+  diameterDisplay:'42 mm', diameterMm:42, l2lDisplay:'49.3 mm',
+  heightDisplay:'11.4 mm', heightMm:11.4,
+  // "Unidirectional anodised aluminium bezel, 250 HV (Vickers)" is CW's own feature line. The
+  // 250 HV is a surface-hardening claim about the anodising, not a change of material, so the
+  // bezel score stays at the aluminium value row 77 already carries - see EXTRAS.
+  caseDisplay:'Light-catcher stainless steel (unidirectional anodised aluminium bezel, 250 HV; sapphire exhibition back)', caseCategory:'Steel',
+  bandDisplay:'Steel Consort bracelet (iLink tool-free links, quick-release)',
+  glassDisplay:'Box sapphire, anti-reflective', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Sellita SW300-1 (COSC chronometer)', movementType:'Automatic', movementCostDisplay:'~$400 (Sellita, COSC grade, est.)',
+  powerReserveDisplay:'50 h (typ. 56 h)', accuracyDisplay:'−4/+6 s/day',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€2,005', priceValue:2005, priceCurrency:'EUR' },
+
+{ id:168, brand:'Christopher Ward', name:'Christopher Ward C60 Trident Biscay GMT 39 (C60-39AGM1-S0RK0-B1)', desc:'Matte Black/Red · 200 m COSC caller-GMT diver, bi-directional aluminium 24 h bezel · pre-order at the time of research',
+  link:'https://www.christopherward.com/watches/trident-biscay-gmt/C60-39AGM1-S0RK0-B1.html',
+  img:'https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dwaa875386/images/WATCHES/C60-39AGM1-S0RK0-B1/C60-39AGM1-S0RK0-B1_Picture_1.jpg?sw=600&sh=600',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'46.3 mm',
+  heightDisplay:'12 mm', heightMm:12,
+  caseDisplay:'Light-catcher stainless steel (bi-directional anodised aluminium 24 h bezel, 250 HV; sapphire exhibition back)', caseCategory:'Steel',
+  bandDisplay:'Steel Consort bracelet (iLink tool-free links, quick-release)',
+  glassDisplay:'Box sapphire, anti-reflective', glassCategory:'Sapphire',
+  // CALLER, not traveller, and sourced rather than assumed from the SW330-2's reputation: CW's
+  // own movement paragraph says the watch has "an independently adjustable 24-hour GMT hand",
+  // which moves the fourth hand and leaves the local hour where it is. Same reading as row 82.
+  movementDisplay:'Automatic caller GMT — Sellita SW330-2 (COSC chronometer)', movementType:'Automatic', movementCostDisplay:'~$450 (Sellita GMT, COSC grade, est.)',
+  // -4/+6 here, where row 82's Trident GMT 300 on the same caliber reads +/-20. That is not a
+  // contradiction to resolve: row 82 is an Elabore SW330-2 and this is a COSC one, so the two
+  // figures describe two different grades of the same movement.
+  powerReserveDisplay:'50 h (typ. 56 h)', accuracyDisplay:'−4/+6 s/day',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€2,115', priceValue:2115, priceCurrency:'EUR' },
+
+{ id:169, brand:'Christopher Ward', name:'Christopher Ward C60 Trident Biscay Bronze 39 (C60-39C3H1-B0VV0-VT1)', desc:'Matte Green · 200 m COSC bronze diver on tan vintage-oak leather · the strap-priced row of the three, and the fourth bronze alloy in the list',
+  link:'https://www.christopherward.com/watches/trident-biscay-bronze/C60-39C3H1-B0VV0-VT1.html',
+  img:'https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dw85d4130a/images/WATCHES/C60-39C3H1-B0VV0-VT1/C60-39C3H1-B0VV0-VT1_Picture_1.jpg?sw=600&sh=600',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'46.3 mm',
+  heightDisplay:'11 mm', heightMm:11,
+  // CuAl10Ni5Fe4 is CW's own wording - a nickel aluminium bronze, and the THIRD alloy in this
+  // category after row 89's CuSn8 and row 126's CuAl8. A caseScore override was considered and
+  // DECLINED, on pass 28's reasoning verbatim: nickel aluminium bronze has the hardness
+  // reputation (it is the propeller alloy) but CW publish no hardness figure for it, and
+  // promoting one row on a reputation this file has already refused once would be scoring the
+  // marketing. If CW ever state an HV for it, that is the evidence that reopens this.
+  caseDisplay:'CuAl10Ni5Fe4 nickel aluminium bronze (unidirectional anodised aluminium bezel, 250 HV; sapphire exhibition back)', caseCategory:'Bronze',
+  // Priced on the leather, so the leather is what clasp scores - see EXTRAS.
+  bandDisplay:'Tan vintage-oak leather strap (quick-release)',
+  glassDisplay:'Box sapphire, anti-reflective', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Sellita SW300-1 (COSC chronometer)', movementType:'Automatic', movementCostDisplay:'~$400 (Sellita, COSC grade, est.)',
+  powerReserveDisplay:'50 h (typ. 56 h)', accuracyDisplay:'−4/+6 s/day',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€1,950', priceValue:1950, priceCurrency:'EUR' },
+
+// --- Erebus, pass 46 (rows 170-174) ------------------------------------------------------------
+// New brand. Microbrand on Shopify, and the whole spec block renders server-side in the product
+// HTML as a labelled list (CASE / LUG TO LUG / THICKNESS / GLASS / LUME / MOVEMENT / WATER
+// RESISTANCE / INTERNATIONAL WARRANTY), so one fetch per reference settles every field.
+// CURRENCY, and it is a trap worth writing down. The page carries
+// Shopify.currency = {"active":"EUR","rate":"0.88420944"}, which reads exactly like a USD base
+// being converted at the day's USD/EUR rate - and if it were, every price below would be ~13%
+// too high. It is not. Three independent signals in the same body say the figure IS the euro
+// price: money_format is the euro sign with a comma separator, og:price:currency is EUR, and the
+// rendered figure is "573,95" comma-separated rather than the .json's dot-separated 573.95.
+// A USD base at that rate would have rendered 507. So these are EUR rows, not USD ones.
+// WEIGHT: Erebus publish none. The Shopify variant "weight" (140/175 g) is the packed parcel,
+// which is the trap row-and-tables.md names on Traska, so all five go to WEIGHT_UNPUBLISHED.
+{ id:170, brand:'Erebus', name:'Erebus Nexus Premium Blue Mosaic Mother of Pearl (ERNXMPBLU)', desc:'Hand-laid mosaic mother-of-pearl dial, integrated bracelet · the Swiss no-date Nexus, against the Miyota dated one on row 174',
+  link:'https://erebuswatches.com/products/nexus-blue-mosaic-mother-of-pearl',
+  img:'https://cdn.shopify.com/s/files/1/0765/3828/2270/files/NexusRenders_BlueMosaic.jpg?v=1787723827',
+  diameterDisplay:'38.5 mm', diameterMm:38.5, l2lDisplay:'44 mm',
+  heightDisplay:'12 mm', heightMm:12,
+  // No caseback claim anywhere on the page and no caseback photograph in the gallery, so this row
+  // is absent from DISPLAY_BACK rather than guessed. "exhibition"/"display back" are kept OUT of
+  // this string deliberately: displayBackFor() falls back to a regex on it and would score the
+  // row 1, defeating the three-state rule - the same reason row 91 is worded as it is.
+  caseDisplay:'316L stainless steel, integrated case (no rotating bezel, 5.5 mm screw-down crown)', caseCategory:'Steel',
+  bandDisplay:'Steel integrated bracelet, 24→17 mm taper (curved H-link)',
+  glassDisplay:'Double-domed sapphire + AR', glassCategory:'Sapphire',
+  // NO DATE, and that is read off Erebus' own render rather than inferred from the caliber: the
+  // dial is hours/minutes/seconds with nothing at 6, while the Miyota Nexus on row 174 carries a
+  // date window in that position. Erebus' prose says "a practical date complication" for the
+  // Nexus line and does NOT repeat it on the Premium, which agrees with the photograph.
+  movementDisplay:'Automatic — Sellita SW200-1 (no date)', movementType:'Automatic', movementCostDisplay:'~$170 (Sellita, new)',
+  // Erebus name the caliber and not the grade, and Sellita sell the SW200-1 at four grades
+  // spanning ±12 to −4/+6. Evidence rule 2: no grade named, so no rate is borrowable and this
+  // stays empty. The power reserve is the caliber's single published figure and is safe.
+  powerReserveDisplay:'38 h', accuracyDisplay:'—',
+  waterResDisplay:'100 m (10 ATM)', waterResM:100,
+  priceDisplay:'€573.95', priceValue:573.95, priceCurrency:'EUR' },
+
+{ id:171, brand:'Erebus', name:'Erebus Ascent 39 Blue Mother of Pearl (ERASC39 + OYS20)', desc:'Natural mother-of-pearl dial GADA automatic on the O-style bracelet · the 39 mm three-hander beside the 40 mm GMT on row 173',
+  link:'https://erebuswatches.com/products/ascent-blue-mother-of-pearl?variant=49786615300382',
+  img:'https://cdn.shopify.com/s/files/1/0765/3828/2270/files/web_A39_Blue_MOP-O.jpg?v=1775711528',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'44.5 mm',
+  heightDisplay:'11 mm', heightMm:11,
+  // Solid back, and this one IS settled: Erebus' own caseback render is a screwed steel back
+  // engraved "Erebus Ascent / sapphire / 10 ATM / Automatic Miyota 9015". DISPLAY_BACK 0.
+  caseDisplay:'316L stainless steel, brushed and polished (fixed polished bezel, 6 mm screw-down crown, engraved solid back)', caseCategory:'Steel',
+  // Priced on the O-style bracelet - the row links the O variant, and the J-style is the same
+  // money, so the band choice costs nothing here and the clasp is the same either way.
+  bandDisplay:'Steel O-style bracelet (milled adjustable clasp, quick-release)',
+  glassDisplay:'Double-domed sapphire + clear AR', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9015', movementType:'Automatic', movementCostDisplay:'~$85 (Miyota, new)',
+  // Erebus state neither figure. Both are Miyota's own published spec for the 9015, which the
+  // grade-ladder test admits because Miyota publish exactly one rate per caliber and no grade
+  // above or below it - the same basis rows 122-123 and 134-141 already use.
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',
+  waterResDisplay:'100 m (10 ATM)', waterResM:100,
+  priceDisplay:'€441.95', priceValue:441.95, priceCurrency:'EUR' },
+
+{ id:172, brand:'Erebus', name:'Erebus Origin 40 Blue (ERORIGBLU + ORIG40H)', desc:'200 m ceramic-bezel diver, hardened case · the only 200 m Erebus here, on the H-link bracelet',
+  link:'https://erebuswatches.com/products/origin-40-blue?variant=51888051978526',
+  img:'https://cdn.shopify.com/s/files/1/0765/3828/2270/files/web_SW0008A-1-20.jpg?v=1779773213',
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'46 mm',
+  heightDisplay:'12 mm', heightMm:12,
+  // "1200 HV Hardened Coating" is Erebus' own CASE HARDNESS line. It takes NO caseScore override,
+  // following rows 97-99: Traska's cases are hardened to the same ~1200 HV, carry caseCategory
+  // 'Steel' and no override, and splitting this row off from them would rank one maker's coating
+  // above an identical claim from another. Solid back, from Erebus' own caseback render -
+  // engraved "EREBUS ORIGIN / SAPPHIRE / 20 ATM / AUTOMATIC", no window.
+  caseDisplay:'316L stainless steel, fully brushed, 1200 HV hardened coating (120-click unidirectional ceramic bezel, 6.5 mm screw-down crown, engraved solid back)', caseCategory:'Steel',
+  bandDisplay:'Steel H-link bracelet, fully brushed (on-the-fly adjustable clasp, quick-release)',
+  glassDisplay:'Double-domed sapphire + clear AR', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9015', movementType:'Automatic', movementCostDisplay:'~$85 (Miyota, new)',
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€441.95', priceValue:441.95, priceCurrency:'EUR' },
+
+{ id:173, brand:'Erebus', name:'Erebus Ascent 40 GMT Black Gilt (ERASCGMTBGLT + OYS20)', desc:'Gilt enamel dial true-GMT on the O-style bracelet · fixed 24 h bezel, so the second zone is read off the hand alone',
+  link:'https://erebuswatches.com/products/ascent-40-gmt-black-gilt',
+  img:'https://cdn.shopify.com/s/files/1/0765/3828/2270/files/erebus-ascent-40-gmt-black-gilt-1.jpg?v=1755743217',
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'46 mm',
+  heightDisplay:'12.4 mm', heightMm:12.4,
+  // Erebus publish no caseback claim for the GMT and the gallery carries no back shot, so unlike
+  // rows 171 and 172 this one is NOT in DISPLAY_BACK. The Ascent 39's solid back is not carried
+  // across: it is a different reference and a 1.4 mm taller case.
+  caseDisplay:'316L stainless steel, brushed and polished (fixed brushed 24 h bezel, 6 mm screw-down crown)', caseCategory:'Steel',
+  bandDisplay:'Steel O-style bracelet, female end links (milled adjustable clasp, quick-release)',
+  glassDisplay:'Double-domed sapphire + clear AR', glassCategory:'Sapphire',
+  // TRUE GMT on Erebus' own wording - the 9075 "allows you to adjust the local hour hand
+  // independently", which is a jumping local hour and not a caller. Same reading as rows 34-35.
+  movementDisplay:'Automatic true GMT — Miyota 9075', movementType:'Automatic', movementCostDisplay:'~$195 (Miyota, new)',
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',
+  waterResDisplay:'100 m (10 ATM)', waterResM:100,
+  priceDisplay:'€529.95', priceValue:529.95, priceCurrency:'EUR' },
+
+{ id:174, brand:'Erebus', name:'Erebus Nexus Turquoise Fade (ERNXFADTUR)', desc:'Vertical fade dial, integrated bracelet · the Miyota dated Nexus, mechanically the cheaper half of the pair with row 170',
+  link:'https://erebuswatches.com/products/nexus-fade-fume-blue',
+  img:'https://cdn.shopify.com/s/files/1/0765/3828/2270/files/NexusRenders_TurquoiseFade.jpg?v=1787720771',
+  diameterDisplay:'38.5 mm', diameterMm:38.5, l2lDisplay:'44 mm',
+  heightDisplay:'12 mm', heightMm:12,
+  // Same wording rule as row 170: no caseback claim published, so nothing in this string that
+  // displayBackFor()'s regex could read as a window, and the row stays out of DISPLAY_BACK.
+  caseDisplay:'316L stainless steel, integrated case (no rotating bezel, 5.5 mm screw-down crown)', caseCategory:'Steel',
+  bandDisplay:'Steel integrated bracelet, 24→17 mm taper (curved H-link)',
+  glassDisplay:'Double-domed sapphire + AR', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9015', movementType:'Automatic', movementCostDisplay:'~$85 (Miyota, new)',
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',
+  waterResDisplay:'100 m (10 ATM)', waterResM:100,
+  // The handle is "nexus-fade-fume-blue" but Erebus' own current title is "Nexus Turquoise Fade"
+  // - the product was renamed and the handle kept. The maker's current title is what the row uses.
+  priceDisplay:'€423.95', priceValue:423.95, priceCurrency:'EUR' },
+
+// --- Henry Archer, pass 46 (rows 175-178) ------------------------------------------------------
+// New brand. Danish microbrand on Shopify, four references, and the single most useful thing they
+// publish is the glass line: "Sapphire crystal (front and back)" on all four, which settles
+// DISPLAY_BACK for every one of them in one field. Every other mandatory field is in the same
+// Specifications block; only mass is missing, and their Shopify variant weight is 300 g verbatim
+// on all four references, which fails evidence rule 5 twice over - it is the packed parcel AND
+// one number describing four different cases. All four go to WEIGHT_UNPUBLISHED.
+// CURRENCY: the /en-eu/ storefront renders EUR - priceCurrency EUR, the euro sign, "650,95"
+// comma-separated, and no DKK anywhere in the body - although Shopify.currency carries a rate of
+// 0.136712, which is roughly DKK/EUR and would have been the wrong number to convert by.
+{ id:175, brand:'Henry Archer', name:'Henry Archer Vesterhav Skyglint (HAC-VES-SKG-3LI)', desc:'Ice-blue sunburst dial, 10.45 mm slim 200 m automatic · the cheapest of the four and the only one with no bezel treatment of its own',
+  link:'https://henryarcher.com/en-eu/collections/vesterhav/products/vesterhav-skyglint',
+  img:'https://cdn.shopify.com/s/files/1/0684/9803/0885/files/vesterhav_-_skyglint_00.jpg?v=1742988921',
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'47 mm',
+  heightDisplay:'10.45 mm', heightMm:10.45,
+  caseDisplay:'316L stainless steel (fixed steel bezel, 20 mm lug width, sapphire display back)', caseCategory:'Steel',
+  bandDisplay:'Steel 3-link bracelet',
+  // "Sapphire crystal (front and back). 6-layer AR coating." - the AR count is Henry Archer's own
+  // and is unusually specific; it is recorded as stated and is not scored beyond Sapphire.
+  glassDisplay:'Sapphire + 6-layer AR', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9015', movementType:'Automatic', movementCostDisplay:'~$85 (Miyota, new)',
+  // 42 h is Henry Archer's own ("Up to 42 hrs power-reserve"). The rate is not theirs - it is
+  // Miyota's published figure for the 9015, borrowed on the grade-ladder rule as on row 171.
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€598.95', priceValue:598.95, priceCurrency:'EUR' },
+
+{ id:176, brand:'Henry Archer', name:'Henry Archer Arkona Tenebra (HAC-ARK-TEN-BOR)', desc:'Sector dial with CNC-machined guilloché centre, black PVD bezel and crown, beads-of-rice bracelet',
+  link:'https://henryarcher.com/en-eu/collections/arkona/products/arkona-tenebra',
+  img:'https://cdn.shopify.com/s/files/1/0684/9803/0885/files/Arkona_-_Tenebra_00001.jpg?v=1768419306',
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'47 mm',
+  heightDisplay:'11.5 mm', heightMm:11.5,
+  // "Bezel / crown: Lunar black PVD coating" - the bezel is fixed, so the PVD is a case finish
+  // here and not a rotating-bezel material; EXTRAS scores bezel null for that reason.
+  caseDisplay:'316L stainless steel, black PVD bezel and crown (fixed bezel, 20 mm lug width, sapphire display back)', caseCategory:'Steel',
+  bandDisplay:'Steel beads-of-rice bracelet',
+  glassDisplay:'Sapphire + 6-layer AR', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9015', movementType:'Automatic', movementCostDisplay:'~$85 (Miyota, new)',
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€650.95', priceValue:650.95, priceCurrency:'EUR' },
+
+{ id:177, brand:'Henry Archer', name:'Henry Archer Havström Icewake (HAC-HAV-ICW-3LI)', desc:'Textured turquoise dial, HV 1200 coating on case and bracelet · ties with the Arkona on price and undercuts it by a millimetre',
+  link:'https://henryarcher.com/en-eu/collections/havstrom/products/havstrom-icewake',
+  img:'https://cdn.shopify.com/s/files/1/0684/9803/0885/files/Havstrom_-_Icewake_00000.jpg?v=1750239927',
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'47 mm',
+  heightDisplay:'10.45 mm', heightMm:10.45,
+  // "HV 1200 scratch resistant coating on case and bracelet". No caseScore override, on exactly
+  // the reasoning row 172 carries and rows 97-99 set: Traska publish the same ~1200 HV figure,
+  // take caseCategory 'Steel' and no override, and one maker's hardening claim cannot outrank an
+  // identical claim from another.
+  caseDisplay:'316L stainless steel, HV 1200 coating on case and bracelet (fixed steel bezel, 20 mm lug width, sapphire display back)', caseCategory:'Steel',
+  bandDisplay:'Steel 3-link bracelet (clasp with tool-less on-the-fly micro-adjust)',
+  glassDisplay:'Sapphire + 6-layer AR', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Miyota 9019', movementType:'Automatic', movementCostDisplay:'~$85 (Miyota, new, est.)',
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€650.95', priceValue:650.95, priceCurrency:'EUR' },
+
+{ id:178, brand:'Henry Archer', name:'Henry Archer Tidevand Dacnis (HAC-TDV-DCS-3LI)', desc:'Turquoise 120-click sapphire-insert dive bezel, textured dial · the only true diver of the four, on the Trinity Grey 3-link',
+  link:'https://henryarcher.com/en-eu/collections/tidevand/products/tidevand-dacnis?variant=52292525818184',
+  img:'https://cdn.shopify.com/s/files/1/0684/9803/0885/files/dacnis-studio-tg_00004_ed5f004b-07aa-4e3d-b86c-b0987127ce52.jpg?v=1767873889',
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'47 mm',
+  heightDisplay:'10.65 mm', heightMm:10.65,
+  caseDisplay:'316L stainless steel (120-click unidirectional bezel, sapphire insert, 20 mm lug width, sapphire display back)', caseCategory:'Steel',
+  bandDisplay:'Steel 3-link bracelet (clasp with tool-less on-the-fly micro-adjust)',
+  glassDisplay:'Sapphire + 6-layer AR', glassCategory:'Sapphire',
+  // HENRY ARCHER CONTRADICT THEMSELVES ON THIS ROW, and the contradiction is resolved rather than
+  // averaged. Their Specifications block says "Premium Miyota 9019"; the DETAILS bullet list
+  // higher up the same page says "Premium Series 9015 Automatic movement". The two calibers are
+  // the same architecture and differ in one visible respect - the 9015 carries a date, the 9019
+  // does not - and Henry Archer's own studio photography of this reference shows a clean dial
+  // with no date window at any position. That agrees with the spec block, so the 9019 is taken
+  // and the DETAILS bullet is read as copy-paste from the Arkona, which IS a 9015 and IS dated.
+  // Do not "correct" this row's caliber from the bullet list alone. Same shape of finding as the
+  // YEMA Superman Dato on row 131, and settled the same way: by the maker's own photograph.
+  movementDisplay:'Automatic — Miyota 9019', movementType:'Automatic', movementCostDisplay:'~$85 (Miyota, new, est.)',
+  powerReserveDisplay:'42 h', accuracyDisplay:'−10/+30 s/day',
+  waterResDisplay:'200 m (20 ATM)', waterResM:200,
+  priceDisplay:'€689.95', priceValue:689.95, priceCurrency:'EUR' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -4338,13 +4615,13 @@ function measuredRatioStats(watches) {
 // Pass 10 added that "if a real set of measured weights ever exists that argument changes,
 // because measured mass carries information the dimensions do not - bracelet build, case wall
 // thickness". That set now partly exists, so the question is flagged rather than quietly ignored.
-// It is still NOT acted on, for two reasons. The 66 are not a random sample - they are thirteen
+// It is still NOT acted on, for two reasons. The 69 are not a random sample - they are thirteen
 // makers who happen to document well, three of them Japanese, two Chinese and eight Western, so
 // scoring on them would score brands on their spec-sheet habits. (That breakdown read "three of
 // them Japanese and eight Western" until pass 42, which is eleven makers correctly counted and
 // Seagull filed on the wrong side of the Sea of Japan; adding a second Chinese maker is what made
 // it visible.) And the double-counting objection above still
-// binds for the other 100 rows, where the "weight" is a function of columns the score already reads.
+// binds for the other 109 rows, where the "weight" is a function of columns the score already reads.
 // Scoring a column that is measured for some rows and derived from other scored inputs for the
 // rest would mean two different things in one number. Completing the research is the prerequisite.
 //
@@ -4383,6 +4660,19 @@ function measuredRatioStats(watches) {
 // independently returns the heavier one to the gram. That is not evidence the method is right to
 // four significant figures; it is evidence that both published figures describe the same watch,
 // which is the question the WEIGHT_MEASURED comment could not settle from the page.
+// Pass 46 added THREE rows, all Christopher Ward, and all three read HEAVY - +12.2%, +13.7% and
+// +48.5%, against a set that runs +3.8% signed. The first two are ordinary: 42 mm and 39 mm steel
+// divers on bracelets, the case this method handles best, both inside the +-15% band. The third is
+// the largest heavy-reading miss in the set and it is TWO effects at once, which is why it is
+// recorded rather than averaged into the CW line above. Row 169 is a strap row, and the strap rows
+// are where this estimator is already documented to break; it is ALSO the first bronze row with a
+// published mass, and bronze carries the one density figure here that has never been tested. CW
+// publish 57 g for the case where the method predicts about 89 g, so the error is in the head and
+// not in the 12 g band allowance - a 39 x 11 mm bronze case at 8.8 g/cm3 and a 0.55 fill factor
+// should not come out at 57 g, which says CW's Light-catcher case is thinner-walled than the fill
+// factor assumes or that CuAl10Ni5Fe4 is being modelled too dense. One row cannot separate those
+// two, and nothing was refitted on it either way: the standing refusal in weightEstimatorStats()
+// applies, and it applies most strongly to the row that would be most tempting to fit.
 // Pass 41 added ONE row and it is the largest single miss in the set after the Junkers: the Circula
 // on row 155 is estimated at 136 g against a published 170 g, -20.0%, and it is the first entry
 // here that reads LIGHT by more than 15%. The cause is in the figure rather than the method -
@@ -4468,14 +4758,20 @@ function measuredRatioStats(watches) {
 // CW publish 158 g for it, which the estimator reads to within 4.4%. The contradiction was never
 // resolved; the row simply no longer depends on it. Nothing was dropped to achieve that.
 // Bronze at 8.8 is CuSn8 tin bronze, the alloy used for watch cases - denser than 316L, so the
-// estimator correctly reads the one bronze row as heavier than the same case in steel.
+// estimator reads a bronze row as heavier than the same case in steel. It said "the one bronze
+// row" until pass 46 and there have been several since pass 28; the category now spans three
+// alloys (CuSn8 on rows 89 and 166, CuAl8 on row 126, CuAl10Ni5Fe4 on row 169) and 8.8 is used
+// for all of them, which is a simplification the CASE_SCORE comment already argues is harmless
+// on hardness and is now testable on mass: row 169 is the first bronze row with a PUBLISHED
+// weight, and the estimator reads it 48.5% heavy. One row is not enough to refit a density on -
+// see weightEstimatorStats() - but it is the first evidence this figure has ever had.
 const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceramic: 2.0 };
 // Published weights, pass 11, extended in passes 12, 15 and 16. Every row was checked against the
 // maker's own product page - the link the row already carries - rather than sampled. That
 // overturned the premise this column was built on. Weight is NOT unpublishable: thirteen makers
-// state it outright, as a plain field in the same spec table as the diameter, covering 64 rows.
+// state it outright, as a plain field in the same spec table as the diameter, covering 67 rows.
 //   Citizen    "Gewicht"          13/17 rows on de.citizenwatch.eu
-//   CW         "Weight inc. Strap" 10/10 rows - and the only maker that also gives a separate
+//   CW         "Weight inc. Strap" 13/13 rows - and the only maker that also gives a separate
 //                                  "Case Weight", i.e. the only one it is possible to take the
 //                                  WRONG figure from without noticing
 //   Tissot     "Gewicht (g)"      12/12 rows
@@ -4512,7 +4808,7 @@ const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceram
 //                                  shape and both resolve, on band and on case size
 // Two more rows come from a third party where the maker omits it, marked below. Figures are
 // with the band the row is priced on, matching what this column claims to show.
-// The three counts above reconcile: 64 published by the maker + 2 borrowed = the 66 in the table.
+// The three counts above reconcile: 67 published by the maker + 2 borrowed = the 69 in the table.
 // They did not before pass 25 - the roster said eight makers and 47 rows while listing 48, had
 // never gained Junkers, and still counted row 67 as borrowed after pass 21 found Longines publish
 // it themselves. Corrected here rather than left, since a roster that does not add up is the kind
@@ -4676,6 +4972,15 @@ const WEIGHT_MEASURED = {
   // different cases the way Vaer's 70.6 g is.
   164: 160,  // KN007-BK,   NH34, steel bracelet
   165: 160,  // KN007-MTBL, NH34, steel bracelet - same case, same bracelet, same published figure
+  // Christopher Ward Biscay, pass 46. CW remain the one maker here publishing TWO masses per
+  // reference, "Case Weight" and "Weight inc. Strap"; this column is a with-band figure so the
+  // second is taken, as on the ten CW rows above. Each figure below is that SKU's own page -
+  // which matters on 167, where the Bader bracelet the pasted link carried says 157 g and the
+  // Consort bracelet this row is priced on says 139 g. Taking the linked page's number would
+  // have put an 18 g error into the estimator's test set without anything showing.
+  167: 139,  // C60-42C3H1-S0RK0-B1, SW300-1 COSC, steel Consort bracelet (case alone 67 g)
+  168: 131,  // C60-39AGM1-S0RK0-B1, SW330-2 COSC, steel Consort bracelet (case alone 61 g)
+  169: 68,   // C60-39C3H1-B0VV0-VT1, SW300-1 COSC, tan vintage-oak leather (case alone 57 g)
 };
 
 // Sinn is the one maker that publishes a head-only figure: "Gewicht ohne Band: 65 Gramm" for the
@@ -4835,6 +5140,20 @@ const WEIGHT_UNPUBLISHED = new Set([
                           //   product record carries "weight":0, an unset field rather than a
                           //   figure, and the stockist's Shopify variants carry grams 0 - the
                           //   pass 31 Venezianico reading on both, not the Traska parcel trap
+
+  170, 171, 172, 173, 174, // Erebus - the Specifications block runs case, lug-to-lug, lug width,
+                          //   thickness, crown, bezel, glass, lume, material, bracelet, water
+                          //   resistance, movement, warranty and box contents, and no mass. The
+                          //   Shopify variants DO carry a weight - 140 g on the GMT, 175 g on the
+                          //   Ascent and Origin - and it is the packed parcel, not the watch:
+                          //   exactly the Traska trap, and 175 g shared verbatim by two different
+                          //   cases on two different bracelets fails evidence rule 5 as well
+  175, 176, 177, 178,     // Henry Archer - the Specifications block is complete on everything
+                          //   else (size, glass, case material, strap, dial, caliber, water
+                          //   resistance, warranty) and states no mass on any of the four. Their
+                          //   Shopify variant weight is 300 g on ALL FOUR references, which is
+                          //   the parcel reading and the one-number-for-four-cases reading at
+                          //   once - the Vaer 70.6 g objection, doubled
 ]);
 
 // Checked, not settled. Separated from the set above because "the maker does not publish it" and
@@ -5152,6 +5471,25 @@ const WATCH_TYPES = {
   // 100 m and the fixed bezel, as rows 99, 109, 156-157 and 163. NOT Dress despite the size -
   // row 12's pairing is a maker who says field/dress, and KUOE say only the first half.
   166: ['Field', 'Everyday'],
+  // Christopher Ward Biscay, pass 46.
+  167: ['Diver'],                       // 200 m, unidirectional dive bezel - row 77's case
+  168: ['Diver', 'GMT / traveller'],    // 200 m dive case with a 24 h bezel - both apply, as row 82
+  169: ['Diver'],                       // 200 m, unidirectional dive bezel, bronze
+  // Erebus, pass 46. Only the Origin is a diver; the rest have a fixed bezel or none, which is
+  // the same test that keeps row 97 out of Diver despite its 150 m rating.
+  170: ['Sports'],                      // integrated bracelet, 100 m, no bezel - The Twelve's case
+  171: ['Everyday', 'Sports'],          // Erebus' own "GADA" framing, 100 m, fixed bezel - as row 80
+  172: ['Diver'],                       // 200 m, 120-click unidirectional ceramic bezel
+  173: ['GMT / traveller', 'Everyday'], // 100 m and a FIXED 24 h bezel, so not a diver - as row 81
+  174: ['Sports'],                      // integrated bracelet, 100 m, no bezel
+  // Henry Archer, pass 46. Three of the four are 200 m with a FIXED bezel, which this file does
+  // not call a diver - Henry Archer's prose says they can "take on the challenges of diving" and
+  // the depth rating agrees, but a dive watch times a dive and none of the three can. Only the
+  // Tidevand, which Henry Archer themselves call "a purpose-built dive watch", has the bezel.
+  175: ['Everyday', 'Sports'],          // 200 m, fixed steel bezel, 10.45 mm
+  176: ['Everyday', 'Sports'],          // 200 m, fixed PVD bezel, sector dial
+  177: ['Everyday', 'Sports'],          // 200 m, fixed steel bezel, 10.45 mm
+  178: ['Diver'],                       // 200 m, 120-click unidirectional sapphire-insert bezel
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
@@ -5222,7 +5560,7 @@ const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (146 of 166 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (157 of 178 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -5500,6 +5838,16 @@ const MOVEMENT_TIER = {
   // tier bonus at all, because the second time zone is paid for in complications at the 'gmt'
   // rate of 0.25.
   'Automatic caller GMT — Sellita SW330-2 (Top Grade)': 0.63,
+  // Pass 46. The third SW330-2 grade in this table, and it is placed by the same arithmetic the
+  // other two were. Elabore sits at 0.60 and Top Grade at 0.63 for a factory step in balance,
+  // hairspring and positions; COSC is a further step, and this table's established rate for
+  // per-unit third-party certification is the +0.05 that separates the SW300-1 COSC on the line
+  // below from the SW200-1 Elabore at 0.60. 0.60 + 0.05 lands on 0.65, level with the SW300-1
+  // COSC - which is right, because the two ARE the same movement family certified the same way.
+  // It gets nothing extra for being a GMT: this one is a caller, and pass 16's ruling that a
+  // caller earns no tier bonus applies here exactly as it does to the two entries above. The
+  // second time zone is paid for in complications at the 'gmt' rate of 0.25.
+  'Automatic caller GMT — Sellita SW330-2 (COSC chronometer)': 0.65,
   'Automatic — Sellita SW300-1 (COSC chronometer)': 0.65,
   // Pass 22. Eight new entries, all 0.60, and the uniformity is the argument rather than laziness:
   // every one of them is an SW200 - Sellita's 2824 clone - or an Oris-finished SW200, and this
@@ -5526,6 +5874,13 @@ const MOVEMENT_TIER = {
   'Automatic small sec. — Sellita SW 261-1': 0.60,
   'Automatic small sec. — Sellita SW260-1': 0.60,
   'Automatic — Sellita SW200-1': 0.60,
+  // Pass 46, row 170. The same 0.60, and the (no date) suffix exists only because
+  // movementDisplay is an exact-match key and the row genuinely has no date - Erebus' own render
+  // shows a clean dial where the Miyota Nexus beside it has a window. Dropping a date module
+  // changes nothing this column rates: same base plate, same escapement, same regulator. The
+  // precedent is directly above in this block, where 'Oris 733 (no date; …)' and 'Oris 733-1
+  // (…)' are both 0.60 for that reason.
+  'Automatic — Sellita SW200-1 (no date)': 0.60,
   'Automatic — Sellita SW200-2': 0.60,
   'Automatic — Oris 733 (no date; Sellita SW200-1 base)': 0.60,
   'Automatic — Oris 733-1 (Sellita SW200-1 base)': 0.60,
@@ -5622,6 +5977,11 @@ const MOVEMENT_TIER = {
   'Hand-wound — SISTEM51-M (Nivachron, laser-regulated)': 0.45,
   'Automatic (hand-wind + hack) — Orient F6722': 0.40,
   'Automatic — Miyota 9015': 0.40,
+  // Pass 46, rows 177-178. 0.40, level with the 9015 directly above, because the 9019 IS the
+  // 9015 without the date module - same 28,800 A/h Premium-series base, same escapement, same
+  // 42 h barrel, and Henry Archer quote identical figures for both across their four references.
+  // The same no-date-changes-nothing reading as the SW200-1 (no date) entry further up.
+  'Automatic — Miyota 9019': 0.40,
   'Automatic — Miyota 9039': 0.40,
   'Automatic — Miyota 90S5': 0.40,
   'Automatic — Seiko/TMI NH35': 0.35,
@@ -6892,6 +7252,77 @@ const EXTRAS = {
   // comp omitted: no date (this is the ND, no-date reference), no GMT, no chronograph, nothing
   //   else on the dial. A three-hand watch with nothing to score, which is the ordinary case.
   166:{lume:0.7,war:1,iso:0,antimag:0,clasp:0.3,service:0.4,bezel:null},
+  // Christopher Ward Biscay, pass 46. Every value here is the one the ten existing CW rows
+  // already carry, and the two that are NOT are the interesting ones.
+  // lume 1.0: "SLN BL X1" is CW's own field on all three - Super-LumiNova Grade X1, the top of
+  //   this column's scale and the same claim rows 77-86 carry.
+  // war 5 / service 0.6 / antimag 0 / iso 0: unchanged from the CW rows above. CW claim no ISO
+  //   6425 test and no magnetic rating on any Biscay reference, which is a finding of 0.
+  // bezel 0.4 on all three, level with row 77 and NOT raised for CW's "250 HV (Vickers)" line.
+  //   That figure is anodising hardness on an aluminium insert; this column rates the insert
+  //   MATERIAL, and 250 HV is still an order below the ceramic that earns rows 78, 82 and 86
+  //   their 1.0. Raising it would let a surface treatment buy a material's score.
+  // clasp 0.85 on 167 and 168, the iLink Consort figure rows 80-83, 85 and 86 already hold.
+  // clasp 0.3 on 169, and this is the one soft number of the three. Row 169 is priced on the
+  //   tan vintage-oak leather, so the leather is what it scores - the rule that cost the MAEN
+  //   and Baltic rows 0.6-0.7 in pass 3. CW do not name the buckle anywhere on the page; the
+  //   evidence for a pin buckle rather than a deployant is their own two weights, 57 g case and
+  //   68 g with the strap, leaving 11 g for strap AND closure, where a steel deployant alone
+  //   runs 15-20 g. That is an inference from a published figure, not a spec. A CW strap page
+  //   naming a deployant would overturn it.
+  167:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.85,service:0.6,bezel:0.4},
+  168:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.85,service:0.6,bezel:0.4,comp:['gmt']},
+  169:{lume:1.0,war:5,iso:0,antimag:0,clasp:0.3,service:0.6,bezel:0.4},
+  // Erebus, pass 46. New brand, so every value is anchored against an existing row rather than
+  // against a house standard this file does not have yet.
+  // lume 0.8 on all five: "BGW9 Super-LumiNova" on hands, indices and markers, stated in the
+  //   same words on every reference. That is the middle of this column's BGW9 band and the value
+  //   row 2 carries for the same claim. It is NOT 1.0 - Erebus name the compound and not a grade,
+  //   where CW and Henry Archer both name X1 outright.
+  // war 2: "Two Years Limited", Erebus' own field. service 0.4: a microbrand with no European
+  //   service presence, on Miyota and Sellita calibers any watchmaker can open - row 166's rung
+  //   and reasoning. DATA ONLY, not scored.
+  // iso 0 / antimag 0: no ISO 6425 claim and no magnetic rating on any of the five. Findings.
+  // bezel: null on four of the five, because four of them have no ROTATING bezel at all - the
+  //   two Nexus have an integrated case with none, and both Ascents carry a bezel Erebus
+  //   themselves call "Fixed". Null excludes the factor rather than penalising it, which is the
+  //   right treatment for a watch that never claimed one. Row 172 is the exception at 1.0: a
+  //   120-click unidirectional bezel with a ceramic insert, the value rows 78, 82 and 86 hold.
+  // clasp 0.7 on 170, 171, 173 and 174; 0.8 on 172. Erebus describe the Ascent clasp as "Milled
+  //   and Adjustable" and their own clasp render shows a push-button folding clasp whose
+  //   micro-adjustment is two SCREWED positions - adjustable, but not without a tool, so it sits
+  //   at the foot of the 0.7-0.8 band rather than the top. The Origin's is different and Erebus
+  //   say so - "an on-the-fly adjustable clasp" - which earns 0.8. The two Nexus rows are the
+  //   soft ones: Erebus publish no clasp field for the Nexus at all, and 0.7 is carried across
+  //   from the Ascent as the same maker at the same money rather than measured. A Nexus clasp
+  //   specification, or a photograph of one, is what would move it.
+  170:{lume:0.8,war:2,iso:0,antimag:0,clasp:0.7,service:0.4,bezel:null},
+  171:{lume:0.8,war:2,iso:0,antimag:0,clasp:0.7,service:0.4,bezel:null},
+  172:{lume:0.8,war:2,iso:0,antimag:0,clasp:0.8,service:0.4,bezel:1.0},
+  173:{lume:0.8,war:2,iso:0,antimag:0,clasp:0.7,service:0.4,bezel:null,comp:['gmt_true']},
+  174:{lume:0.8,war:2,iso:0,antimag:0,clasp:0.7,service:0.4,bezel:null},
+  // Henry Archer, pass 46. New brand.
+  // lume 1.0 on 175-177 and 0.8 on 178, and the split is Henry Archer's own rather than a
+  //   judgement: the three non-divers state "Swiss Super-LumiNova White10 BL Grade X1", the top
+  //   of this scale, while the Tidevand - the one actual dive watch of the four - states "Swiss
+  //   Super-LumiNova BGW9 Grade A". The dive watch carries the LOWER-grade lume, which is
+  //   backwards from what the collection would lead you to expect and is recorded as stated.
+  // war 2: "2-year warranty", their own field. service 0.5, half a rung above Erebus: an EU-based
+  //   maker shipping from Denmark, on common Miyota calibers. DATA ONLY, not scored.
+  // iso 0 / antimag 0: neither claimed on any of the four. Findings, not gaps.
+  // bezel: null on 175-177, all three fixed - the Arkona's "Lunar black PVD" is a coating on a
+  //   fixed bezel and so is a case finish here, not a rotating-bezel material. Row 178 takes 0.7
+  //   for a sapphire insert, the foot of this column's stated 0.7-0.8 steel/sapphire band.
+  // clasp 0.8 on 177 and 178, where Henry Archer state "Clasp with toolless on-the-fly micro
+  //   adjust" outright. 0.7 on 175 and 176, where they do not - the same clasp hardware is
+  //   visible in the photography of all four, but this file does not award a named feature to a
+  //   row whose maker declined to name it on that reference, and the 0.7-0.8 band covers a
+  //   push-button foldover either way. Henry Archer adding the line to the Vesterhav or Arkona
+  //   page is what would move those two to 0.8.
+  175:{lume:1.0,war:2,iso:0,antimag:0,clasp:0.7,service:0.5,bezel:null},
+  176:{lume:1.0,war:2,iso:0,antimag:0,clasp:0.7,service:0.5,bezel:null},
+  177:{lume:1.0,war:2,iso:0,antimag:0,clasp:0.8,service:0.5,bezel:null},
+  178:{lume:0.8,war:2,iso:0,antimag:0,clasp:0.8,service:0.5,bezel:0.7},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -7352,6 +7783,45 @@ const FINISH = {
   //     close look at the case transitions and the numerals' seating; the exposure is small, half
   //     a rung being worth well under a spec point on a row at this price.
   166:0.50,
+  // Christopher Ward Biscay, pass 46. 0.55 on all three, which is the Pro 300 / Dune / GMT 300
+  // rung of the CW block above rather than the Reef's 0.50. What separates them from the Reef,
+  // which shares the sandblasted dial and the anodised aluminium bezel, is CW's own feature list:
+  // polished applied Arabic numerals at 3, 6, 9 and 12 over a light sandblasted dial, and an
+  // Elabore-grade Colimacon-finished rotor behind an exhibition back on all three references.
+  // The three are held LEVEL with each other deliberately. Row 169 is not raised for its bronze
+  // case - a case material is not finishing and is already scored through caseCategory, which is
+  // pass 32's ruling on the titanium Zulu Time and applies unchanged here.
+  167:0.55, 168:0.55, 169:0.55,
+  // Erebus, pass 46. 0.40-0.55, straddling the competent-microbrand band, and the spread inside
+  // it is entirely about dial construction because the cases and bracelets are the same work.
+  //   0.40  Origin 40, Ascent 40 GMT, Nexus Turquoise Fade - fully brushed or brushed-and-
+  //         polished cases, printed or sunburst dials, applied indices. Competent, not notable:
+  //         row 76's rung and row 76's reasoning, that this column rates visible craft rather
+  //         than the bill of materials.
+  //   0.45  Ascent 39 Blue MOP - half a rung up for a natural mother-of-pearl dial, which is a
+  //         cut mineral slice rather than a printed surface. Level with row 18.
+  //   0.55  Nexus Premium Blue Mosaic MOP - a dial individually assembled from cut sections of
+  //         mother-of-pearl, which is genuine hand-work and the most involved dial construction
+  //         in this pass. It sits with the CW rows above rather than beneath them, and below the
+  //         Lumiere's 0.65 because the case and bracelet around it are ordinary microbrand work
+  //         where the Lumiere's indexes are sculpted from solid.
+  // None of the five is raised for a visible movement: two are confirmed solid-backed, and on
+  // the three that are unresearched a display back would be fittings.displayBack's business
+  // anyway, not this column's - the double-count rows 91-93 and the SW200-2 entry both refuse.
+  170:0.55, 171:0.45, 172:0.40, 173:0.40, 174:0.45,
+  // Henry Archer, pass 46. 0.40-0.50.
+  //   0.40  Vesterhav Skyglint - sunburst dial, applied indices, slim polished-and-brushed case.
+  //         The plainest of the four and the cheapest, which agrees.
+  //   0.45  Havstrom Icewake and Tidevand Dacnis - both carry a machine-textured dial with a
+  //         repeating pattern rather than a plain sunburst, and the Tidevand adds a coloured
+  //         sapphire bezel insert, which is harder to make well than an aluminium one.
+  //   0.50  Arkona Tenebra - a sector dial with a centrally CNC-machined guilloche pattern, on
+  //         a beads-of-rice bracelet. Machined dial relief is a step above textured stamping and
+  //         puts it level with rows 13-15.
+  // All four have a sapphire display back and NONE is raised for it, for the reason rows 91-93
+  // record: that back is already 38% of the fittings group, and what it shows is an undecorated
+  // Miyota rotor.
+  175:0.40, 176:0.50, 177:0.45, 178:0.45,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -7359,9 +7829,13 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 150 of 166 rows resolved - 72 see-through, 78 solid. The sixteen still open are
-// 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125, 126, 142, 143, 156 and 166, all rows whose maker
-// publishes no caseback detail. Row 156 is pass 41's, and it is the DK26 that explains why it is open rather
+// Research status: 159 of 178 rows resolved - 79 see-through, 80 solid. The nineteen still open are
+// 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125, 126, 142, 143, 156, 166, 170, 173 and 174, all rows
+// whose maker publishes no caseback detail. Rows 170, 173 and 174 are pass 46's and are Erebus,
+// who publish no caseback field for any reference: 171 and 172 were settled by their own caseback
+// renders in the product gallery and these three have no back shot to settle them. 173 is the
+// instructive one - it would have been easy to carry row 171's solid back across to it, and it is
+// a different reference on a case 1.4 mm taller. Row 156 is pass 41's, and it is the DK26 that explains why it is open rather
 // than assumed: Damasko word the two references' caseback fields identically and one of them turns
 // out to have a sapphire back, so the text is no evidence either way and the DF20 has no caseback
 // photograph. Row 91 is the best documented of them: Longines leave the field empty on the
@@ -7670,6 +8144,26 @@ const DISPLAY_BACK = {
   // water-resistance rating engraved around its rim and no crystal in it. Both references use the
   // same case and the same photograph, so one image resolves both.
   164: 0, 165: 0,
+  // Christopher Ward Biscay, pass 46. All three researched and all three are 1: "Screw-down crown
+  // and exhibition caseback" is a line in CW's own Features list on every Biscay reference, and
+  // their product photography shows the Colimacon-finished rotor through it. Consistent with the
+  // nine of ten existing CW rows that also have one.
+  167: 1, 168: 1, 169: 1,
+  // Erebus, pass 46, and this is the three-state rule doing exactly what it is for - two of the
+  // five are settled, three are not, and the three are LEFT OUT rather than guessed from their
+  // siblings. Erebus publish no caseback field for any reference; what settles 171 and 172 is
+  // their own caseback renders in the product gallery, both screwed steel backs with engraving
+  // and no window ("Erebus Ascent / sapphire / 10 ATM / Automatic Miyota 9015" on one, "EREBUS
+  // ORIGIN / SAPPHIRE / 20 ATM / AUTOMATIC" on the other). The Ascent 40 GMT and the two Nexus
+  // rows have no back shot in their galleries. The GMT is the tempting one to fill in from row
+  // 171 and is deliberately not: it is a different reference on a 1.4 mm taller case, and an
+  // imputed row costs nothing where a wrong 0 takes real fittings points off.
+  171: 0, 172: 0,
+  // Henry Archer, pass 46. All four are 1, and unusually it is the GLASS field that says so
+  // rather than a caseback field: "Sapphire crystal (front and back)" appears in the
+  // Specifications block of every one of the four references. A sapphire crystal in the back is
+  // a display back by definition, so this is a published spec and not an inference.
+  175: 1, 176: 1, 177: 1, 178: 1,
   // Row 166 is deliberately ABSENT and this is the note explaining why, because the temptation to
   // fill it is real. KUOE do publish a caseback field - "Caseback: SUS 316L" - and it would be
   // easy to read a metal caseback as a solid one. It is not evidence: a display back is a steel
@@ -7982,7 +8476,7 @@ const listPrice = w => w.priceEUR;
 // What this deliberately does NOT do is touch the fit. These rows stay in the baseline, sigma and
 // the leave-one-out figures are exactly what they were, and their specScore and specResidual are
 // still computed. Only the badge is withheld. Dropping them from the fit would be a model change
-// and would move all 166 rows; this is a statement about what the page is entitled to display.
+// and would move all 178 rows; this is a statement about what the page is entitled to display.
 //
 // Row 105 is listed and does not trigger, which is the rule being seen to decline rather than
 // only to fire: its diamonds cost it under two spec points against row 104, short of the half-sigma
@@ -8084,7 +8578,7 @@ function computeValueScores(watches) {
   //
   // It is a SECOND READING OF THE SAME FIT, not a second row in it. Putting one watch into the
   // baseline twice - one spec score at two prices - would let a row vote twice on the very line
-  // it is being measured against, and would move all 166 rows every time a second price was
+  // it is being measured against, and would move all 178 rows every time a second price was
   // recorded. So the Theil-Sen slope, the intercepts, the sigma and all four validation figures
   // are exactly what they would be without this step; the only thing that changes is how many
   // badges a row draws. Same argument as the scope guard above: display, not model.
@@ -8533,7 +9027,7 @@ function optionValuesFor(dim) {
 
 // How many rows each option would show, measured against every filter EXCEPT its own dimension's
 // (see matchesFilters). Recomputed on every pipeline pass, which is 5 x 90 predicate calls - the
-// same order as the search box, which rejoins a haystack string for all 166 rows per keystroke.
+// same order as the search box, which rejoins a haystack string for all 178 rows per keystroke.
 function optionCounts(dim) {
   const counts = new Map();
   WATCHES.filter(w => matchesFilters(w, dim.key)).filter(matchesSearch)
