@@ -86,6 +86,12 @@ lives. **No probe hits is a finding**, and a much stronger one than a search tha
 Bodies are cached, so grepping the same page five ways costs one request. Use WebFetch afterwards
 for pages that are genuinely prose — a review, a press release, a dealer directory.
 
+**`fetch failed` from the script is not a finding about the maker** — it is a finding about the
+script. Some storefronts refuse its plain `fetch` and answer `curl` with a browser `-A` on the first
+attempt: christopherward.com did exactly that in pass 46, returning ~380 KB with the whole spec
+table in it. Retry with `curl` before concluding anything, and never record a field as unpublished
+on the strength of a failed fetch. That is the distinction the route ladder below turns on.
+
 `references/row-and-tables.md` carries a table of the site shapes seen so far and the route into
 each. Check it before working out a new one.
 

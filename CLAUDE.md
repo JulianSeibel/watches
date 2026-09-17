@@ -336,6 +336,18 @@ either would turn the model into an echo of the shortlist. Say so before wiring 
   `status` is the one dimension whose order array is a **fixed vocabulary rather than a derived
   set**: an unused status is normal, not a bug, so it is deliberately left out of `selfCheck()`'s
   orphan check and simply does not appear in the panel until a row carries it.
+- **Shell commands run from the project root, and must never lead with a variable assignment.**
+  The working directory is already `Dev\watches` and a redundant `cd` prefix is stripped before the
+  command runs, so it buys nothing. A leading `SP="…" && …` is worse than nothing: the allowlist in
+  `.claude/settings.json` matches a command by its **prefix**, so a command beginning with an
+  assignment reads as `SP=…` rather than as `curl` or `python` and can never match a rule, however
+  ordinary the command after it. Pass 46 measured this — 112 shell commands, 53 of them stopped for
+  approval, and 52 of the 53 were this one idiom. Inline the absolute path instead, or, for anything
+  multi-step, write a script file and run `python thing.py`: that matches cleanly, and re-running it
+  after a fix costs one line instead of a re-paste. **Widening the allowlist is not the fix** — a
+  `Bash(SP=*)` rule would wave through `SP=x && rm -rf /`, which is a blanket bypass with a
+  password. The same goes for `for`/`while` loops and heredocs, which have no leading command to
+  match: put the loop in the script file too.
 - **`EMPTY_ROW_COLSPAN`** is the single source for the empty-results `colspan`; `selfCheck()`
   compares it against the real `<th>` count in the browser.
 
