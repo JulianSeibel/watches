@@ -4142,17 +4142,18 @@ const WATCHES = [
 // source, so nothing here is borrowed.
 // THE BAND IS NOT THE ONE IN THE LINK. CW sell one reference across five band options at a
 // ~EUR 200 spread and the link decides the price, the weight and the clasp. Rows 167 and 169 are
-// therefore NOT the SKUs handed to this pass: the Automatic was linked on the Bader bracelet
-// (-B0, EUR 1,950, 157 g) and is recorded on the Consort (-B1, EUR 2,005, 139 g); the Bronze was
+// therefore NOT the SKUs handed to this pass: the Automatic was linked as the 42 mm on the Bader
+// bracelet (-B0, EUR 1,950, 157 g) and is recorded as the 39 mm on the Consort (C60-39C3H1-
+// S0RK0-B1, EUR 2,005, 127 g) - the same price the 42 carries on that bracelet; the Bronze was
 // linked in Brown and is recorded in Green on the tan Vintage Oak leather. Both resolved through
 // the Demandware variation endpoint - Product-Variation?dwvar_<pid>_WStrapColourMaterialType=…
 // - then re-fetched at the variant's own URL so every figure below is that SKU's own page. The
 // GMT needed no change: the link was already Consort and Black/Red.
-{ id:167, brand:'Christopher Ward', name:'Christopher Ward C60 Trident Biscay Automatic 42 (C60-42C3H1-S0RK0-B1)', desc:'Matte Black/Red · 200 m COSC diver on the Consort bracelet, aluminium bezel · the 42 mm three-hander beside the 39 mm GMT on row 168',
-  link:'https://www.christopherward.com/watches/trident-biscay-automatic/C60-42C3H1-S0RK0-B1.html',
-  img:'https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dw4b75f890/images/WATCHES/C60-42C3H1-S0RK0-B1/C60-42C3H1-S0RK0-B1_Picture_1.jpg?sw=600&sh=600',
-  diameterDisplay:'42 mm', diameterMm:42, l2lDisplay:'49.3 mm',
-  heightDisplay:'11.4 mm', heightMm:11.4,
+{ id:167, brand:'Christopher Ward', name:'Christopher Ward C60 Trident Biscay Automatic 39 (C60-39C3H1-S0RK0-B1)', desc:'Matte Black/Red · 200 m COSC diver on the Consort bracelet, aluminium bezel · the steel twin of row 169\'s bronze case, beside the 39 mm GMT on row 168',
+  link:'https://www.christopherward.com/watches/trident-biscay-automatic/C60-39C3H1-S0RK0-B1.html',
+  img:'https://www.christopherward.com/dw/image/v2/BDWD_PRD/on/demandware.static/-/Sites-cw-master-catalog/default/dw0cb285f4/images/WATCHES/C60-39C3H1-S0RK0-B1/C60-39C3H1-S0RK0-B1_Picture_1.jpg?sw=600&sh=600',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'46.3 mm',
+  heightDisplay:'11 mm', heightMm:11,
   // "Unidirectional anodised aluminium bezel, 250 HV (Vickers)" is CW's own feature line. The
   // 250 HV is a surface-hardening claim about the anodising, not a change of material, so the
   // bezel score stays at the aluminium value row 77 already carries - see EXTRAS.
@@ -5183,10 +5184,10 @@ const WEIGHT_MEASURED = {
   // Christopher Ward Biscay, pass 46. CW remain the one maker here publishing TWO masses per
   // reference, "Case Weight" and "Weight inc. Strap"; this column is a with-band figure so the
   // second is taken, as on the ten CW rows above. Each figure below is that SKU's own page -
-  // which matters on 167, where the Bader bracelet the pasted link carried says 157 g and the
-  // Consort bracelet this row is priced on says 139 g. Taking the linked page's number would
-  // have put an 18 g error into the estimator's test set without anything showing.
-  167: 139,  // C60-42C3H1-S0RK0-B1, SW300-1 COSC, steel Consort bracelet (case alone 67 g)
+  // which matters on 167, where CW's figures for one design span at least 127-157 g across the two case
+  // sizes and two bracelets. Taking a sibling SKU's number would put that error into the
+  // estimator's test set without anything showing.
+  167: 127,  // C60-39C3H1-S0RK0-B1, SW300-1 COSC, steel Consort bracelet (case alone 57 g)
   168: 131,  // C60-39AGM1-S0RK0-B1, SW330-2 COSC, steel Consort bracelet (case alone 61 g)
   169: 68,   // C60-39C3H1-B0VV0-VT1, SW300-1 COSC, tan vintage-oak leather (case alone 57 g)
 };
