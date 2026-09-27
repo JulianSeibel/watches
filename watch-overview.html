@@ -255,6 +255,12 @@
     </div>
   </div>
   <div class="field-group">
+    <label for="l2lBelow">L2L under (mm)</label>
+    <div class="range-group" title="Shows only watches whose lug-to-lug is strictly below this. A published range counts at its midpoint; a watch with no published L2L is always shown. Leave blank for no limit.">
+      <input type="number" id="l2lBelow" placeholder="Any">
+    </div>
+  </div>
+  <div class="field-group">
     <label for="priceMin">Price (€, approx.)</label>
     <div class="range-group" title="Min = lowest price to show, Max = highest. Leave either side blank for no limit on that side.">
       <input type="number" id="priceMin" placeholder="Min">
@@ -9209,6 +9215,11 @@ const FILTER_DIMS = [
 // ticking it brings those rows back; the panel's own Clear empties the dimension and shows all.
 const STATUS_HIDDEN_ON_LOAD = 'avoid';
 
+// The page opens hiding every watch whose lug-to-lug is 48 mm or more - too long for the wrist this
+// list is shopped for. Exclusive, so 48.0 is hidden and 47.9 is not. A row with no published L2L
+// stays visible: unknown is not evidence of too long. Clearing the field shows everything.
+const L2L_BELOW_ON_LOAD = 48;
+
 function defaultSelection(dim) {
   if (dim.key !== 'status') return new Set();
   const values = optionValuesFor(dim);
@@ -9228,7 +9239,8 @@ const state = {
   // Meaningful because a row holds several types; the other four dimensions hold exactly one
   // value each, where "all of these" could only ever match nothing.
   typeMatchAll: false,
-  waterMin: null, priceMin: null, priceMax: null, diaMin: null, diaMax: null
+  waterMin: null, priceMin: null, priceMax: null, diaMin: null, diaMax: null,
+  l2lBelow: L2L_BELOW_ON_LOAD
 };
 const sortState = { key: 'id', dir: 'asc' };
 
@@ -9257,6 +9269,10 @@ function matchesFilters(w, skipKey) {
   if (state.priceMax !== null && effectivePrice(w) > state.priceMax) return false;
   if (state.diaMin !== null && w.diameterMm < state.diaMin) return false;
   if (state.diaMax !== null && w.diameterMm > state.diaMax) return false;
+  if (state.l2lBelow !== null) {
+    const l2l = parseL2LMm(w.l2lDisplay);
+    if (l2l !== null && l2l >= state.l2lBelow) return false;
+  }
   return true;
 }
 
@@ -9556,6 +9572,9 @@ function wireControls() {
   document.getElementById('diaMax').addEventListener('input', e => { state.diaMax = e.target.value === '' ? null : parseFloat(e.target.value); applyPipeline(); });
   document.getElementById('priceMin').addEventListener('input', e => { state.priceMin = e.target.value === '' ? null : parseFloat(e.target.value); applyPipeline(); });
   document.getElementById('priceMax').addEventListener('input', e => { state.priceMax = e.target.value === '' ? null : parseFloat(e.target.value); applyPipeline(); });
+  const l2lBelowInput = document.getElementById('l2lBelow');
+  l2lBelowInput.value = L2L_BELOW_ON_LOAD;
+  l2lBelowInput.addEventListener('input', e => { state.l2lBelow = e.target.value === '' ? null : parseFloat(e.target.value); applyPipeline(); });
 
   document.getElementById('resetFilters').addEventListener('click', () => {
     state.search = '';
@@ -9571,6 +9590,9 @@ function wireControls() {
     document.getElementById('diaMax').value = '';
     document.getElementById('priceMin').value = '';
     document.getElementById('priceMax').value = '';
+    // Back to the load limit for the same reason as Status above.
+    state.l2lBelow = L2L_BELOW_ON_LOAD;
+    l2lBelowInput.value = L2L_BELOW_ON_LOAD;
     const anyMode = document.querySelector('.ms-mode input[value="any"]');
     if (anyMode) anyMode.checked = true;
     closeFilterPanels();
