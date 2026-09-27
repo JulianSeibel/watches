@@ -5,7 +5,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this is
 
 `watch-overview.html` is the entire project: a single self-contained static page (~9600 lines)
-holding a hand-researched comparison of 189 watches, plus a scoring model that rates each one's
+holding a hand-researched comparison of 200 watches, plus a scoring model that rates each one's
 specs against what the rest of the list charges at that price. No build system, no dependencies,
 no package manager. HTML, CSS and JS live in the one file; `check.js` beside it is a Node harness
 that runs the page's own checks.
@@ -28,12 +28,12 @@ key-less exchange-rate APIs to convert the USD-priced rows — USD is the only l
 HKD, INR and AUD rows carry a hand-set `priceEUR` with the rate in an inline comment instead. It never
 throws, and on failure (offline, or `file://` CORS) the hardcoded `USD_TO_EUR` fallback stays in
 use and the page renders normally. The `Pic` column hotlinks product photos from the makers' own
-CDNs (all 189 rows carry
+CDNs (all 200 rows carry
 an `img`; a row without one renders a `🔗 photo` link to the maker instead, and that branch has no
 rows in it today). A dead CDN URL costs a thumbnail and nothing else — the name cell links out too. Scoring, validation and filtering all run
 locally, so `file://` is a fine way to work.
 
-Seven per-maker traps are worth knowing before you touch those rows. Each is written up in full in
+Eight per-maker traps are worth knowing before you touch those rows. Each is written up in full in
 the code, under the `// --- <Brand>, pass N ---` banner named here — read the banner rather than
 working from this summary, and do not copy the reasoning back up here:
 
@@ -70,6 +70,11 @@ working from this summary, and do not copy the reasoning back up here:
   54, 9 on the Royal, matching the rendered "Hornbügel: … Bandanstoßbreite" line. Tudor publish
   no L2L, weight or caseback on any product page; per-caliber rates and the silicon hairspring
   are on their Manufacture Calibre page instead. See `Tudor, pass 47`.
+- **Glycine's own store prices at a standing markdown, and its `Bezel` field is the ring** —
+  every page shows a struck "List Price" and a sale price 55–73% below it. The rows score the
+  sale price, and at list they would all fall below the curve, so recheck the price before
+  anything else. "Bezel: Stainless Steel" reads the same on the ceramic GL0523, so it says nothing
+  about the insert. See `Glycine, pass 48`.
 
 ## Checking a change
 
@@ -86,8 +91,8 @@ It also prints the validation figures, which are the closest thing here to a reg
 Current baseline:
 
 ```
-189 rows · spec 26–67 · sigma 5 · 2 n/s · 3 o/s · 69 published weights
-model  LOO RMSE 6.18 vs naive 9.08 · skill 53.6% · 2 sign flip(s) · resample typical 0.28 worst 0.50
+200 rows · spec 26–67 · sigma 5 · 2 n/s · 3 o/s · 69 published weights
+model  LOO RMSE 6.06 vs naive 8.88 · skill 53.5% · 3 sign flip(s) · resample typical 0.25 worst 0.46
 ```
 
 **If a change was not meant to touch the model and those numbers move, something is wrong.**
@@ -120,7 +125,7 @@ messages and add a generated-with line to PR bodies. Drop all three.
 
 Three layers inside the one `<script>`:
 
-1. **Data.** `WATCHES` — 189 object literals, one per watch, ids **1–189, contiguous and
+1. **Data.** `WATCHES` — 200 object literals, one per watch, ids **1–200, contiguous and
    unique**, each with display strings (`diameterDisplay`, `movementDisplay`, …), an `img` and
    `link`, and the few structured fields the code sorts or scores on (`diameterMm`, `heightMm`,
    `waterResM`, `priceValue`, `priceCurrency`, `caseCategory`, `glassCategory`, `movementType`,
@@ -147,14 +152,14 @@ The per-watch research does not live on the watch objects. It lives in parallel 
 
 | Table | Keyed by | Holds |
 |---|---|---|
-| `EXTRAS` | `id` | lume, warranty, ISO 6425, antimagnetism, clasp, service, bezel, complications, optional `caseScore` override. **All 189 present.** |
-| `FINISH` | `id` | 0–1 finishing/decoration estimate. **All 189 present.** |
-| `DISPLAY_BACK` | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 162 of 189 researched, 27 open. |
-| `WATCH_TYPES` | `id` | array of types (filter only, never scored). **All 189 present.** |
+| `EXTRAS` | `id` | lume, warranty, ISO 6425, antimagnetism, clasp, service, bezel, complications, optional `caseScore` override. **All 200 present.** |
+| `FINISH` | `id` | 0–1 finishing/decoration estimate. **All 200 present.** |
+| `DISPLAY_BACK` | `id` | 1 = see-through, 0 = solid, **absent = not researched**. 173 of 200 researched, 27 open. |
+| `WATCH_TYPES` | `id` | array of types (filter only, never scored). **All 200 present.** |
 | `STATUS` | `id` | buying decision — `'bought'`, `'likely'`, `'sceptical'` or `'avoid'`; **absent = `'consider'`**, the default. Drives a filter, a name-cell chip and a bar on the row's left edge; never scored. The one id-keyed table with no coverage requirement, so adding a watch needs no entry — and the only one where a count would just drift, so none is stated here. |
-| `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | `id` | published grams (69); ids confirmed to publish none (105); ids whose page could not be reached (8); ids published without the band (7). The four are disjoint and together cover all 189 — keep it that way. |
+| `WEIGHT_MEASURED` / `WEIGHT_UNPUBLISHED` / `WEIGHT_UNRESOLVED` / `WEIGHT_HEAD_ONLY` | `id` | published grams (69); ids confirmed to publish none (116); ids whose page could not be reached (8); ids published without the band (7). The four are disjoint and together cover all 200 — keep it that way. |
 | `PLAIN_TWIN` | `id` | the row id of the reference identical in every scored field but without the decorative content, plus what the decoration is. Drives the scope guard, never the score. **Absent = no twin exists**, which is every row but four. Listing a row is not the same as marking it: 105 is listed and does not trigger. |
-| `MOVEMENT_TIER` | **exact `movementDisplay` string** | 0–1 architecture tier. 97 keys for 97 distinct movements, no misses, no orphans. |
+| `MOVEMENT_TIER` | **exact `movementDisplay` string** | 0–1 architecture tier. 100 keys for 100 distinct movements, no misses, no orphans. |
 | `MEASURED_ACCURACY` | caliber **substring** of `movementDisplay` | reported real-world rates |
 
 Grep the `const <NAME>` declaration to find one; line numbers are not quoted here because they moved
@@ -298,7 +303,7 @@ either would turn the model into an echo of the shortlist. Say so before wiring 
   written up in prose in the `<footer>` — what was wrong before, what the evidence was, what is
   still unresolved. That reasoning is irreplaceable and belongs there. The bare chronology of what
   changed when is git's job now; don't grow the footer with it. The model is on revision 3;
-  research passes run to 47.
+  research passes run to 48.
 - **Footer paragraphs are dated snapshots, not live claims.** Do not retrofit them to current
   numbers — later passes explicitly refer back to earlier ones ("the earlier warning overstated
   the case"), and rewriting the earlier text destroys the correction it records. Live claims go in
