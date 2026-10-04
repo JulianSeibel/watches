@@ -44,7 +44,11 @@
       "Bash(git commit *)",
 
       "PowerShell(node *)",
-      "PowerShell(Invoke-Item *)"
+      "PowerShell(Invoke-Item *)",
+
+      "mcp__claude-in-chrome__tabs_context_mcp",
+      "mcp__claude-in-chrome__get_page_text",
+      "mcp__ide__getDiagnostics"
     ],
     "deny": [
       "Bash(rm -rf *)",

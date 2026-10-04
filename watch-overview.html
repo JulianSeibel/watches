@@ -685,6 +685,18 @@
 
   <p><b>What it did to everything else.</b> Value moved by at most <b>0.40</b> spec points across the existing 189, on row 3, the Baltic Aquascaphe Dual-Crown, with 181 of 189 moving at all. Six changed side, every one of them a crossing to or from exactly 0.0 (rows 25, 33, 41, 97, 124 and 182). <b>Five rows change band.</b> Rows 51 and 53, both Citizen Tsuyosa, and row 96, the Sinn 104 St Sa I W, go from <i>below the curve</i> to <i>as expected</i>. Row 130, the YEMA Superman Gilt CMM.10, goes from <i>above</i> to <i>well above</i>, and row 168, the Christopher Ward C60 Trident Biscay GMT 39, from <i>as expected</i> to <i>above</i>. Sigma holds at 5, the spec range at 26&ndash;67 and the spec/price correlation at 0.74. <b>This pass's &ldquo;before&rdquo; is not the figure pass 47 wrote down.</b> <code>HEAD</code> measures naive RMSE 9.07, one sign flip and resample 0.29/0.51, against pass 47's 9.08, two flips and 0.28/0.50, because the row-167 retarget committed after pass 47 moved them without the CLAUDE.md baseline being updated. The chain resumes from what <code>HEAD</code> actually measures. Leave-one-out RMSE is 6.18 &rarr; <b>6.06</b> and naive RMSE 9.07 &rarr; 8.88, as eleven rows in the list's thick middle narrow the spread a median guess has to cover. Skill is 53.6% &rarr; 53.5%, so the model is neither better nor worse for the addition, and resample improves 0.29/0.51 &rarr; 0.25/0.46. <b>Sign flips go 1 &rarr; 3</b>, and all three are rows whose full-fit residual is exactly 0.00: rows 29 and 30, the two Vaer DS2 Meridian quartz, and row 97, the Traska Venturer GMT. Leaving any of them out tips a zero to &minus;0.08 or &minus;0.01, which is rounding, as it was for row 41 at <code>HEAD</code>. <b>Spec drift is none.</b> The <code>n/s</code> rows stay 16 and 56 and the <code>o/s</code> rows stay 134, 135 and 165. <b>One stale comment was corrected while sweeping</b>: the weight section's opening still said &ldquo;66 published figures and 100 estimates &mdash; 85 rows that genuinely publish nothing&rdquo; and &ldquo;the other 109 rows&rdquo;, figures from before passes 46 and 47. It now reads 69, 131, 116 and 131.</p>
 
+  <p><b>Peacock, pass 49 &mdash; three rows added (201&ndash;203), and the list goes from 200 to 203.</b> A new brand, a Chinese maker selling direct, and the list's first tourbillons: nothing in the 200 rows before these carried one. Two of the three do &mdash; the HAIYI Tourbillon Diver (row 201) and the Plumage Gaze Hand-Made Guilloch&eacute; Tourbillon (row 203) &mdash; and the third is the tourbillon's time-only sibling, the Plumage Gaze Hand-Made Guilloch&eacute; Year of the Horse (row 202). What these three add to the list is hand work: one dial cut with a pneumatic graver and then enamelled, and two cut on a hand-driven rose engine. They are priced at $3,099&ndash;3,499, which is where the list is thin, but 32&ndash;35 rows sit within the support window, so none of the three is extrapolated. Peacock's store is Shopify and prices in USD at par (<code>Shopify.currency</code> reads USD, rate 1.0), so these are USD rows converted live. <b>Row 201 lands at 60 spec points and +0.60, <i>as expected</i>; row 203 at 53 and &minus;5.80, <i>below the curve</i>; row 202 at 43 and &minus;14.80, <i>well below the curve</i></b> &mdash; the lowest residual of the three by a long way, explained below. All three were sold out on every variant when researched, and all three are numbered editions of 99 or 199 pieces. They are priced at Peacock's own list, which the store still shows; nothing here is a <code>marketPrice</code>.</p>
+
+  <p><b>Where a tourbillon is paid for: in the movement tier, once, and not as a complication.</b> Some of these numbers have no precedent here, so the placement had to be decided before any of them. Every tag in <code>COMPLICATION_VALUES</code> is something the wearer reads off the dial: a second time zone, an elapsed time, a moon phase, a power reserve. A tourbillon displays nothing. It is a rotating carriage around the escapement, which is architecture, and architecture is what <code>MOVEMENT_TIER</code> rates. Its chronometric promise is not credited a second time either: Peacock publish no rate, so the timekeeping group imputes one at the list mean, exactly as it does for any other row without a stated rate. The PAX9610 takes <b>0.70</b>. That puts it above the Swiss-ebauche rung and the Seagull ST19's 0.50, and level with the Longines L888.4. It goes no higher because the 1.00 rung is defined by three things Peacock do not claim: their own hairspring, hand assembly, and a published rate. Peacock also sell the tourbillon as an industrial product &mdash; their own catalogue lists some twenty tourbillon references from $1,799. The PAX9610B takes <b>0.75</b>, which is the same base plus this table's documented +0.05 for one added architectural merit: a free-sprung balance regulated by four inertia weights, the merit the Tudor block credits the MT5400 for. Its 68&nbsp;h against the 9610's 48&nbsp;h earns nothing in the tier, by the SW200-2 Power+ rule. The PAX6912 takes <b>0.40</b>: it is a 4&nbsp;Hz, 38&nbsp;h automatic in the ETA 2824 envelope, placed at the Seagull ST2130's 0.35 plus the +0.05 regulation step for the five-position adjustment Peacock state. <b>The tourbillon number was measured rather than argued.</b> At the 0.60 Swiss-ebauche rung, row 201 goes +0.60 &rarr; &minus;1.20 and row 203 goes &minus;5.80 &rarr; &minus;6.90, and neither changes band. The verdicts above therefore do not depend on the call most open to disagreement in this pass.</p>
+
+  <p><b>Row 202 is the clearest case on this list of a price paid for craft the criteria barely see.</b> $3,099 buys a three-hand automatic with no date. It has 38&nbsp;h of reserve, no published rate, 100&nbsp;m, a fixed bezel that is excluded rather than scored, unspecified lume, and a movement tier level with a Miyota 9015. The one strong input is <code>FINISH</code> at 0.75, and finishing is one sub-score inside the movement group. At this price the curve expects about 58 spec points, and the row has 43. The guilloch&eacute; Peacock describe is real work &mdash; sixteen engraved zones, some 2,000 hand-driven cuts, 527 intersections &mdash; but it is the kind of content the <code>o/s</code> guard was built to fence off, and the guard cannot fire here. That guard needs a maker-sold <i>plain twin</i> in the list, and none is. Peacock's catalogue holds a non-Horse Plumage Gaze Hand-Made Guilloch&eacute; at $2,799 on the same PAX6912, but its dial is hand-engraved too, so it is a sibling rather than a plain twin. Read the badge as &ldquo;this list's criteria do not pay for what this money buys&rdquo;, not as a verdict on the watch.</p>
+
+  <p><b>Row 203's spec table contradicts every other statement on its own page, and the row follows the page.</b> The spec block reads &ldquo;Strap: Crocodile Embossed Leather&rdquo;. The prose on the same page describes &ldquo;a sleek, integrated bracelet&rdquo; with &ldquo;the elimination of traditional lugs&rdquo; and a case &ldquo;and strap&rdquo; in 904L. All three variants are photographed on that integrated steel bracelet, on the wrist and on the bench, and a lugless case could not take a leather strap at all. This is the YEMA (pass 29) and Henry Archer (pass 46) shape, a spec block copied from a sibling, and it gets the same treatment: the row takes the bracelet, and <code>bandDisplay</code> records the contradiction. The same table names the PAX9610's winding type only as &ldquo;Tourbillon&rdquo;. <code>movementType</code> is therefore inferred as hand-wound from the PAX9610B on row 201, which Peacock call &ldquo;Manual-winding&rdquo;. The inference moves nothing: <code>robustBaseline()</code> splits mechanical from quartz, not hand-wound from automatic.</p>
+
+  <p><b>The judgement calls.</b> <b><code>FINISH</code> opens a new rung at 0.80 on row 201</b>, the highest number in the table below NOMOS's 1.00. It is earned by two separate hand operations on the dial &mdash; wave rings cut with a pneumatic graver, then five coats of translucent fired enamel &mdash; plus named movement decoration visible through the back, which is what DUG's 0.65 was granted for. Rows 202 and 203 take 0.75. Row 203 sits level with row 39, whose guilloch&eacute; is CNC-cut where this one is cut by hand, but Peacock state nothing about the decoration of the movement in its window. Row 202 sits level with row 148, and its solid back earns the PAX6912's stated perlage and anglage nothing, by the Tudor rule. Measured: all three at 0.60 cost rows 201 and 203 about 1.5 and 1.1 on Value, and row 202 about 1.1, with no band changes. <b><code>clasp</code> 0.6 on all three is an estimate from absence</b>, because no Peacock page describes a clasp. It sits on the &ldquo;basic foldover&rdquo; rung, level with Glycine's deployment clasps on rows 195&ndash;200. A butterfly at 0.9 would lift each of the three by 1.8 on Value, again with no band change. <b>Lume</b> is 0.6 / 0.5 / 0.4, from how much is applied, since no pigment is named on any of the three. <b>Row 201's bezel</b> is scored at 0.75 on Peacock's own &ldquo;sapphire bezel insert&rdquo;; only its direction is inferred, from the dive scale and pip. <b>904L</b> stays in the <code>Steel</code> category with no <code>caseScore</code> override. It is the more corrosion-resistant alloy, but Peacock's &ldquo;22% harder&rdquo; is not a figure this file can reproduce, and <code>CASE_SCORE</code> rates performance, not the premium on the label. Still open on all three: lug-to-lug, weight and rate. Peacock publish none of them, and <code>--probe</code> finds none of them in the payload.</p>
+
+  <p><b>What it did to everything else.</b> Value moved by at most <b>0.50</b> spec points across the existing 200, on row 185, the Tudor Black Bay 58, with 160 of 200 moving at all. Four changed side, every one a crossing from exactly 0.0 (rows 25, 41, 97 and 124). <b>Seven rows change band</b>, all by one step. Rows 26 (Vaer DS2 Meridian quartz) and 86 (Christopher Ward C60 Trident Lumi&egrave;re) move out of <i>above the curve</i>, row 26 down to <i>as expected</i> and row 86 up to <i>well above</i>. Rows 118 (Laco Atlantik 39 MB), 189 (Tudor Black Bay 58 Bronze) and 193 (Archimede Pilot 39 H&nbsp;.&nbsp;S) rise from <i>below the curve</i> to <i>as expected</i>. Row 156 (Damasko DF20 Old Radium) rises from <i>well below</i> to <i>below</i>, and row 186 (Tudor Black Bay 58 GMT) from <i>as expected</i> to <i>above the curve</i>. Three rows priced near the top of the range and scoring at or under the line move the fitted curve there. Rows near a band edge cross it, which is the half-sigma quantisation doing what it says. Leave-one-out RMSE is 6.06 &rarr; <b>6.11</b> and naive RMSE 8.88 &rarr; 8.87. Skill is 53.5% &rarr; 52.5%: slightly worse, because row 202 is a large residual that no fit can predict. Sign flips go 3 &rarr; 1, and resample goes 0.25/0.46 &rarr; 0.26/0.52. No spec drift, so no unresearched sub-score moved a displayed number. The <code>n/s</code> set is unchanged at rows 16 and 56, and the weight estimator is untouched: all three rows are in <code>WEIGHT_UNPUBLISHED</code>.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -706,7 +718,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-200 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-203 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
 //                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
@@ -4791,6 +4803,81 @@ const WATCHES = [
   powerReserveDisplay:'38–41 h', accuracyDisplay:'0/+15 s/day',
   waterResDisplay:'200 m (20 ATM)', waterResM:200,
   priceDisplay:'$705 (list $1,800)', priceValue:705, priceCurrency:'USD' },
+// --- Peacock, pass 49 (rows 201-203) ---------------------------------------------------------
+// A new brand, and the list's first TOURBILLONS - two of the three rows carry one, and nothing in
+// 200 rows before them did. Peacock is a Chinese maker selling direct from a Shopify store
+// (peacockwatches.com) that prices in USD: `Shopify.currency = {"active":"USD","rate":"1.0"}` in
+// every page, so these are USD rows and recomputePriceEUR() converts them live.
+// The spec block is short and identical in shape on all three - caliber, winding type, frequency,
+// reserve, glass, case, caseback, band, diameter, thickness, water resistance - and it is in the
+// Shopify `body_html`, so the .json route reads it. What it never carries: a lug-to-lug, a lug
+// width, a weight, a rate, or the clasp. --probe on the raw product pages finds none of those
+// hiding in the payload either, so every '—' below is a finding about Peacock, not a missed field.
+// The Shopify `grams` field is the parcel (the Traska trap) and is not used anywhere.
+// All three were SOLD OUT on every variant when researched (October 2026), and all three are
+// numbered editions (199 / 99 pieces). They are priced at Peacock's own list, which is still the
+// figure the store shows; nothing here is a marketPrice.
+//
+// Row 203 is the YEMA/Henry Archer shape again: its spec block says "Strap: Crocodile Embossed
+// Leather", and every other statement on the page contradicts it - the prose describes "a sleek,
+// integrated bracelet" with "the elimination of traditional lugs" and a case "and strap" in 904L,
+// and all three variants are photographed on the integrated steel bracelet, on the wrist and on
+// the bench. A leather strap could not attach to that lugless case at all. The row takes the
+// bracelet; the spec line reads as copy carried over from a strapped sibling.
+{ id:201, brand:'Peacock', name:'Peacock HAIYI Tourbillon Diver — XI (PFG0601.02)', desc:'Free-sprung tourbillon at 6 under a hand-engraved, enamelled wave dial · 300 m, sapphire bezel, helium valve; bracelet AND rubber strap · 199 pcs',
+  link:'https://peacockwatches.com/products/peacock-haiyi-tourbillon-watch-diver?variant=48024109580547',
+  img:'https://cdn.shopify.com/s/files/1/0681/6776/2179/files/1_c01d747b-6830-4c38-8b7b-1f14c383a338.jpg?v=1777346850',
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'—',
+  heightDisplay:'12.2 mm', heightMm:12.2,
+  // The bezel is described as "fully lumed" with a "sapphire bezel insert"; its direction is not
+  // stated. The photographs show a 60-minute dive scale with a lumed pip, which is a timing bezel,
+  // so it is scored as one (EXTRAS bezel) - the inference is the direction, not the material.
+  caseDisplay:'904L stainless steel (dive bezel with lumed sapphire insert, helium escape valve), transparent caseback', caseCategory:'Steel',
+  // The price buys both: "Delivered with quick-change rubber and steel bracelets". "bracelet"
+  // without "opt." is what predictedWeightG() reads, and it is the right reading - the steel
+  // bracelet is in the box at this price.
+  bandDisplay:'Integrated 48-link 904L steel bracelet + fluororubber strap, both included (quick-change)',
+  glassDisplay:'Sapphire, anti-reflective', glassCategory:'Sapphire',
+  // Peacock state the type as "Manual-winding" for this caliber outright. No rate is published
+  // anywhere, and an in-house caliber has no maker ladder to borrow from (rule 2), so '—'.
+  movementDisplay:'Hand-wound tourbillon — Peacock PAX9610B (in-house, free-sprung balance)', movementType:'Hand-wound', movementCostDisplay:'not sold separately (Peacock in-house)',
+  powerReserveDisplay:'68 h', accuracyDisplay:'—',
+  waterResDisplay:'300 m (30 ATM)', waterResM:300,
+  priceDisplay:'$3,499', priceValue:3499, priceCurrency:'USD' },
+
+{ id:202, brand:'Peacock', name:'Peacock Plumage Gaze Hand-Made Guilloché — Year of the Horse, PAN (PFG0502.02)', desc:'Hand-engine-turned 16-zone dial on a 38.5 × 9.4 mm integrated-bracelet case · three hands, no date; Dragon Horse relief back · 99 pcs',
+  link:'https://peacockwatches.com/products/peacock-plumage-gaze-hand-made-guilloche-watch-year-of-the-horse-special-edition?variant=47665373806851',
+  img:'https://cdn.shopify.com/s/files/1/0681/6776/2179/files/2_1309e52e-f8f0-4d96-9213-b3da41372231.jpg?v=1769061701',
+  diameterDisplay:'38.5 mm', diameterMm:38.5, l2lDisplay:'—',
+  heightDisplay:'9.4 mm', heightMm:9.4,
+  caseDisplay:'904L stainless steel, 56-facet integrated case, fixed bezel with six screws, solid caseback with Dragon Horse relief', caseCategory:'Steel',
+  bandDisplay:'Integrated 904L steel bracelet, 24 links with screwed pins (clasp not described)',
+  glassDisplay:'Sapphire, anti-reflective', glassCategory:'Sapphire',
+  // "Precise five-position adjustment" is Peacock's own wording; no figure goes with it, and the
+  // caliber is Peacock's own, so there is no ladder to borrow a rate from - '—'.
+  movementDisplay:'Automatic — Peacock PAX6912 (in-house, 5-position adjusted)', movementType:'Automatic', movementCostDisplay:'not sold separately (Peacock in-house)',
+  powerReserveDisplay:'38 h', accuracyDisplay:'—',
+  waterResDisplay:'100 m (10 ATM)', waterResM:100,
+  priceDisplay:'$3,099', priceValue:3099, priceCurrency:'USD' },
+
+{ id:203, brand:'Peacock', name:'Peacock Plumage Gaze Hand-Made Guilloché Tourbillon — JI (PCG0301.02)', desc:'Tourbillon at 6 under a hand-guilloché sunburst dial · 40 × 9.8 mm integrated-bracelet case, 100 m; the time-only sibling is row 202',
+  link:'https://peacockwatches.com/products/peacock-hand-made-guilloche-plumage-gaze-tourbillon-watch?variant=46285885833475',
+  img:'https://cdn.shopify.com/s/files/1/0681/6776/2179/files/WATCH_SKY-AFTER-RAINING.jpg?v=1736565889',
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'—',
+  heightDisplay:'9.8 mm', heightMm:9.8,
+  caseDisplay:'904L stainless steel, integrated case, fixed bezel with eight screws, transparent caseback', caseCategory:'Steel',
+  // See the banner: the spec line says leather, the page and every photograph say this bracelet.
+  bandDisplay:'Integrated 904L steel bracelet (spec line says leather; contradicted by the page)',
+  glassDisplay:'Sapphire, anti-reflective', glassCategory:'Sapphire',
+  // INFERRED movementType. The spec block's "Caliber Type" says only "Tourbillon" for the PAX9610,
+  // where it says "Manual-winding" for the PAX9610B on row 201 - the same base number - and no
+  // Peacock page names a rotor on any 9610. Taken as hand-wound from the family. It moves nothing
+  // in the fit: robustBaseline() splits mechanical from quartz, not hand-wound from automatic, and
+  // the tier below is keyed on the string, not the type.
+  movementDisplay:'Hand-wound tourbillon — Peacock PAX9610 (in-house)', movementType:'Hand-wound', movementCostDisplay:'not sold separately (Peacock in-house)',
+  powerReserveDisplay:'48 h', accuracyDisplay:'—',
+  waterResDisplay:'100 m (10 ATM)', waterResM:100,
+  priceDisplay:'$3,350', priceValue:3350, priceCurrency:'USD' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -5581,6 +5668,9 @@ const WEIGHT_UNPUBLISHED = new Set([
                           //   bezel, movement, lume, bracelet and caseback, and no mass
   195, 196, 197, 198,     // Glycine, pass 48 - Product Details run case, dial, band and movement
   199, 200,               //   down to beat error and jewel count, and no weight on any of the six
+  201, 202, 203,          // Peacock, pass 49 - an eleven-line spec block in body_html and long
+                          //   prose, and no mass in either; --probe finds none in the payload.
+                          //   Shopify's variant grams is the parcel and is not a weight here
 ]);
 
 // Checked, not settled. Separated from the set above because "the maker does not publish it" and
@@ -5946,6 +6036,13 @@ const WATCH_TYPES = {
   198: ['Diver', 'GMT / traveller'],
   199: ['Diver'],
   200: ['Diver'],
+  // Peacock, pass 49. The maker states the intent on all three, and the maker wins: the HAIYI is
+  // tagged Diver and Sport, the Horse is tagged Dress, and row 203's own copy calls it "a ...
+  // tourbillon sports watch". Both integrated-bracelet rows carry the other type too, because
+  // 100 m on a screwed bracelet is a sports case under a dress dial.
+  201: ['Diver', 'Sports'],              // 300 m, timing bezel, helium valve - Peacock's "Diver"
+  202: ['Dress', 'Sports'],              // 9.4 mm, three hands, no date; integrated bracelet, 100 m
+  203: ['Sports', 'Dress'],              // "tourbillon sports watch", 9.8 mm, 100 m
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
@@ -6016,7 +6113,7 @@ const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (173 of 200 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (176 of 203 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -6531,6 +6628,40 @@ const MOVEMENT_TIER = {
   // for separately in the complications group, and paying for it here as well would double-count
   // it exactly as a longer power reserve would if the SW200-2 Power+ had been promoted above.
   'Hand-wound chronograph — Seagull ST19 (column wheel)': 0.50,
+  // Peacock, pass 49 - the first tourbillons in this table, and the decision that comes before any
+  // number is WHERE a tourbillon is paid for. Here, in the tier, and nowhere else. It is not a
+  // complication tag: every tag in COMPLICATION_VALUES is something the wearer reads off the dial
+  // (a second time zone, an elapsed time, a moon, a reserve), and a tourbillon displays nothing -
+  // it is a regulating architecture, a rotating carriage around the escapement, which is exactly
+  // what this column rates. Its chronometric promise is not credited a second time either: if
+  // Peacock ever publish a rate, accuracyDisplay pays for it, as it pays for COSC.
+  //   PAX9610, 0.70. Architecturally beyond every escapement in this table except NOMOS's - so
+  //     above the Swiss-ebauche rung (0.55-0.60) and the ST19's 0.50, the other Chinese
+  //     complication here. Level with the L888.4 and the bottom of "in-house from a major", and
+  //     NOT higher, on three counts the 1.00 rung is defined by: Peacock name no hairspring of
+  //     their own and no hand assembly, publish no rate or certification, and sell the tourbillon
+  //     as an industrial product - their own catalogue lists some twenty tourbillon references
+  //     from $1,799. A tourbillon is no longer rare in China; it is still the more complex machine.
+  //   PAX9610B, 0.75. The same base plus the documented +0.05 for one added architectural merit:
+  //     a free-sprung balance regulated by four inertia weights (Peacock's own "Gyromax"
+  //     description) in place of a regulator index - the merit the Tudor block credits the
+  //     MT5400's variable-inertia balance for. Its 68 h against the 9610's 48 h earns nothing
+  //     here; that is the SW200-2 Power+ rule, and powerReserve pays for it.
+  // The objection worth recording: 0.70 is a judgement on architecture with no independent
+  // inspection behind it. Measured in pass 49: at the 0.60 Swiss-ebauche rung row 201 goes from
+  // +0.60 to -1.20 and row 203 from -5.80 to -6.90, and NEITHER changes band - so the verdicts
+  // the footer reports do not depend on this number.
+  'Hand-wound tourbillon — Peacock PAX9610 (in-house)': 0.70,
+  'Hand-wound tourbillon — Peacock PAX9610B (in-house, free-sprung balance)': 0.75,
+  // Peacock PAX6912, pass 49: 0.40. A 4 Hz, 38 h automatic - the ETA 2824 envelope - that Peacock
+  // call their own and say is "inspired by the architecture of legendary calibers"; nothing more
+  // about its construction is published. Placed from the Chinese 2824-class automatics above it,
+  // the Seagull ST2130 at 0.35, plus +0.05 for the one regulation merit Peacock do state, a
+  // five-position adjustment - regulation grade folded in, as the header requires, by the same
+  // step Laco's Elaboré -> Top takes. That lands it level with the Miyota 9015. The Geneva
+  // stripes, perlage and anglage Peacock describe earn nothing anywhere: the back is solid, and
+  // decoration nobody can see is the Tudor rule in FINISH.
+  'Automatic — Peacock PAX6912 (in-house, 5-position adjusted)': 0.40,
   'Automatic (hand-wind) — cal. 8213': 0.40,  // current in-house Citizen, hand-windable, 3 Hz, 21 jewels
   'Automatic — cal. 8210': 0.30,
   'Meca-quartz — Seiko VK63': 0.30,
@@ -7906,6 +8037,28 @@ const EXTRAS = {
   198:{lume:0.5,war:2,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:0.4,comp:['gmt']},
   199:{lume:0.5,war:2,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:0.4},
   200:{lume:0.5,war:2,iso:0,antimag:0,clasp:0.6,service:0.5,bezel:1.0},
+  // Peacock, pass 49. war 2 on every page ("2 Years Warranty"); service 0.4, Jianghun's figure on
+  // row 161 - a Chinese maker selling direct on its own calibers, with no parts network outside
+  // its own workshop. iso 0 on all three: the HAIYI's 300 m and helium valve come with no ISO
+  // 6425 claim, and absence of the claim is a finding of 0. antimag 0: nothing is stated.
+  // CLASP, all three, is an estimate from absence and the softest number here. No Peacock page
+  // describes a clasp. 0.6 is the "basic foldover" rung, level with what Glycine's deployment
+  // clasps take on rows 195-200 - a bracelet at this money has a folding clasp, and nothing
+  // published says it is a butterfly (0.9) or adjusts on the fly (0.85, row 161).
+  // Row 201, HAIYI. lume 0.6: applied lumed markers, sapphire hands printed with "seven layers"
+  // of lume, a "fully lumed" bezel - more application than the unspecified-SLN 0.5, with no
+  // pigment named to reach the BGW9/C3 rung at 0.75. bezel 0.75: the sapphire insert's material
+  // is Peacock's statement and sits on the steel/sapphire rung; the direction is inferred from
+  // the dive scale and pip (see the row comment). No complication tag for the tourbillon - the
+  // MOVEMENT_TIER block argues where it is paid for, and it is paid for once.
+  201:{lume:0.6,war:2,iso:0,antimag:0,clasp:0.6,service:0.4,bezel:0.75},
+  // Row 202, Year of the Horse. lume 0.5: "recessed white lume" in the indexes and lume-filled
+  // hands, unspecified, the standard rung. bezel null: a fixed screwed bezel, nothing to turn.
+  202:{lume:0.5,war:2,iso:0,antimag:0,clasp:0.6,service:0.4,bezel:null},
+  // Row 203, Plumage Gaze Tourbillon. lume 0.4: Peacock say "luminous hands and markers" and
+  // nothing else, and the photographs show thin applied batons and slim hands - less than row
+  // 202's filled indexes, level with the MoonSwatch on row 63. bezel null, fixed and screwed.
+  203:{lume:0.4,war:2,iso:0,antimag:0,clasp:0.6,service:0.4,bezel:null},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -8439,6 +8592,26 @@ const FINISH = {
   // indexes on brushed-and-polished cases, and nothing named beyond that. Rows 195 and 198 show
   // their Sellita through an exhibition back, and Glycine name no decoration on either.
   195:0.40, 196:0.40, 197:0.40, 198:0.40, 199:0.40, 200:0.40,
+  // Peacock, pass 49. The two highest numbers in this table below NOMOS's 1.00, and they are
+  // placed on what the rung above 0.70 has never had to rate: dial work done BY HAND.
+  //   Row 203, 0.75, level with row 39. The Heinrich Radiance's guilloché is CNC-cut over a
+  //     decorated ETA 7001 behind a display back; this dial is hand engine-turned (Peacock name
+  //     the engraver and his machine) over a tourbillon visible from both sides. Hand over CNC is
+  //     the step up; the step back is that Peacock describe no movement decoration on this page,
+  //     so the window shows a movement whose finish nobody has stated. Level, on balance.
+  //   Row 202, 0.75, level with row 148's Zaratsu case. A 16-zone hand-guilloché dial (some 2,000
+  //     cuts), a 56-facet brushed-and-polished case, hand-scraped hidden surfaces, a screwed
+  //     24-link bracelet and a relief caseback. The Geneva stripes, perlage and anglage Peacock
+  //     describe on the PAX6912 earn NOTHING: the back is solid, and the Tudor rule is that
+  //     decoration nobody can see is not rated.
+  //   Row 201, 0.80 - the one new rung. Two separate artisanal dial operations, not one: wave
+  //     rings cut by hand with a pneumatic graver, then five coats of translucent fired enamel
+  //     polished back to 0.06 mm. On top, NAMED movement operations visible through the back -
+  //     Geneva waves on the main plate, bevelled screws, radiating finishes on the train - which
+  //     is what DUG's 0.65 was granted for. No other row combines the two.
+  // What would move all three: an independent hands-on inspection. Every number here rests on
+  // Peacock's own photographs and copy, and the copy is the weaker of the two.
+  201:0.80, 202:0.75, 203:0.75,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -8446,7 +8619,7 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 173 of 200 rows resolved - 86 see-through, 87 solid. The twenty-seven still
+// Research status: 176 of 203 rows resolved - 88 see-through, 88 solid. The twenty-seven still
 // open are 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125, 126, 142, 143, 156, 166, 170, 173, 174 and
 // 182-189, all rows whose maker publishes no caseback detail. Rows 182-189 are pass 47's eight
 // Tudors: no Tudor product page has a caseback field or a caseback photograph. Rows 170, 173 and 174 are pass 46's and are Erebus,
@@ -8801,6 +8974,9 @@ const DISPLAY_BACK = {
   // - "Exhibition" on the Sea Kraken and the automatic GMT, "Closed" on the other four. That is
   // what KUOE's "Caseback: SUS 316L" on row 166 could not do.
   190: 1, 191: 1, 192: 1, 193: 1, 194: 0, 195: 1, 196: 0, 197: 0, 198: 1, 199: 0, 200: 0,
+  // Peacock, pass 49 - all three from the spec block's own "Caseback:" line: Transparent on both
+  // tourbillons, Solid on the Horse, whose back carries the Dragon Horse relief.
+  201: 1, 202: 0, 203: 1,
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
@@ -9106,7 +9282,7 @@ const listPrice = w => w.priceEUR;
 // What this deliberately does NOT do is touch the fit. These rows stay in the baseline, sigma and
 // the leave-one-out figures are exactly what they were, and their specScore and specResidual are
 // still computed. Only the badge is withheld. Dropping them from the fit would be a model change
-// and would move all 200 rows; this is a statement about what the page is entitled to display.
+// and would move every row; this is a statement about what the page is entitled to display.
 //
 // Row 105 is listed and does not trigger, which is the rule being seen to decline rather than
 // only to fire: its diamonds cost it under two spec points against row 104, short of the half-sigma
@@ -9208,7 +9384,7 @@ function computeValueScores(watches) {
   //
   // It is a SECOND READING OF THE SAME FIT, not a second row in it. Putting one watch into the
   // baseline twice - one spec score at two prices - would let a row vote twice on the very line
-  // it is being measured against, and would move all 200 rows every time a second price was
+  // it is being measured against, and would move every row every time a second price was
   // recorded. So the Theil-Sen slope, the intercepts, the sigma and all four validation figures
   // are exactly what they would be without this step; the only thing that changes is how many
   // badges a row draws. Same argument as the scope guard above: display, not model.
@@ -9667,7 +9843,7 @@ function optionValuesFor(dim) {
 
 // How many rows each option would show, measured against every filter EXCEPT its own dimension's
 // (see matchesFilters). Recomputed on every pipeline pass, which is 5 x 90 predicate calls - the
-// same order as the search box, which rejoins a haystack string for all 200 rows per keystroke.
+// same order as the search box, which rejoins a haystack string for every row per keystroke.
 function optionCounts(dim) {
   const counts = new Map();
   WATCHES.filter(w => matchesFilters(w, dim.key)).filter(matchesSearch)
