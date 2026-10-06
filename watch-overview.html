@@ -697,6 +697,8 @@
 
   <p><b>What it did to everything else.</b> Value moved by at most <b>0.50</b> spec points across the existing 200, on row 185, the Tudor Black Bay 58, with 160 of 200 moving at all. Four changed side, every one a crossing from exactly 0.0 (rows 25, 41, 97 and 124). <b>Seven rows change band</b>, all by one step. Rows 26 (Vaer DS2 Meridian quartz) and 86 (Christopher Ward C60 Trident Lumi&egrave;re) move out of <i>above the curve</i>, row 26 down to <i>as expected</i> and row 86 up to <i>well above</i>. Rows 118 (Laco Atlantik 39 MB), 189 (Tudor Black Bay 58 Bronze) and 193 (Archimede Pilot 39 H&nbsp;.&nbsp;S) rise from <i>below the curve</i> to <i>as expected</i>. Row 156 (Damasko DF20 Old Radium) rises from <i>well below</i> to <i>below</i>, and row 186 (Tudor Black Bay 58 GMT) from <i>as expected</i> to <i>above the curve</i>. Three rows priced near the top of the range and scoring at or under the line move the fitted curve there. Rows near a band edge cross it, which is the half-sigma quantisation doing what it says. Leave-one-out RMSE is 6.06 &rarr; <b>6.11</b> and naive RMSE 8.88 &rarr; 8.87. Skill is 53.5% &rarr; 52.5%: slightly worse, because row 202 is a large residual that no fit can predict. Sign flips go 3 &rarr; 1, and resample goes 0.25/0.46 &rarr; 0.26/0.52. No spec drift, so no unresearched sub-score moved a displayed number. The <code>n/s</code> set is unchanged at rows 16 and 56, and the weight estimator is untouched: all three rows are in <code>WEIGHT_UNPUBLISHED</code>.</p>
 
+  <p><b>Pass 49, revised: the tourbillon became a complication, and the movement tier stopped paying for it.</b> The placement argued earlier in this pass &mdash; tourbillon in the tier only, at 0.70 / 0.75, no complication tag &mdash; was overruled after review, and the old argument stays in that paragraph as the record. The objection was that a tourbillon is one of the most demanding complications in watchmaking, and that 1&ndash;2 spec points does not say so. The replacement keeps the rule that a merit is paid for once, and splits the merit into two parts. The <i>function</i> is now a complication, <code>tourbillon: 0.6</code>, the same for every tourbillon. 0.6 puts it above the chronograph and the true GMT (both 0.5), which is the conventional ranking, and leaves room under the 1.0 cap for anything stacked with it. The <i>construction</i> stays in <code>MOVEMENT_TIER</code>, now with no premium for the carriage: an industrial tourbillon sits at the 0.60 Swiss-ebauche rung, gains +0.05 per documented merit (free-sprung, flying, silicon) and +0.05 for certification, and reaches 1.00 only with an own hairspring and hand assembly. Decoration of the carriage stays in <code>FINISH</code>. That gives the PAX9610 <b>0.60</b> and the PAX9610B <b>0.65</b>, the latter for the free-sprung balance. A flat 0.8 was also considered, and the split was preferred over it: a flat value pays a commodity carriage and a certified one alike, and the split lets the tier tell them apart. <b>The size is a call, not a calibration</b>: pass 8 price-checked the other values, and two rows cannot calibrate anything. <b>Row 201 is now 64 spec points and +4.40, <i>above the curve</i>; row 203 is 57 and &minus;1.90, <i>as expected</i></b>, up from 60 / +0.60 and 53 / &minus;5.80. Value moved by at most 0.30 on any other row, on rows 185 and 189, the Black Bay 58 and its bronze sibling. Row 202 moved &minus;14.80 &rarr; &minus;15.00 and stays <i>well below</i>. Three other rows change band without moving more than 0.20, because each sat on a band edge: row 26 (Vaer DS2 Meridian quartz) goes <i>as expected</i> &rarr; <i>above</i>, row 156 (Damasko DF20) <i>below</i> &rarr; <i>well below</i>, and row 193 (Archimede Pilot 39 H&nbsp;.&nbsp;S) <i>as expected</i> &rarr; <i>below</i>. Leave-one-out RMSE is unchanged at 6.11, naive RMSE 8.87 &rarr; 8.92, skill 52.5% &rarr; 53.0%, sign flips 1 &rarr; 4, and resample 0.26/0.52 &rarr; 0.25/0.49.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -6628,31 +6630,31 @@ const MOVEMENT_TIER = {
   // for separately in the complications group, and paying for it here as well would double-count
   // it exactly as a longer power reserve would if the SW200-2 Power+ had been promoted above.
   'Hand-wound chronograph — Seagull ST19 (column wheel)': 0.50,
-  // Peacock, pass 49 - the first tourbillons in this table, and the decision that comes before any
-  // number is WHERE a tourbillon is paid for. Here, in the tier, and nowhere else. It is not a
-  // complication tag: every tag in COMPLICATION_VALUES is something the wearer reads off the dial
-  // (a second time zone, an elapsed time, a moon, a reserve), and a tourbillon displays nothing -
-  // it is a regulating architecture, a rotating carriage around the escapement, which is exactly
-  // what this column rates. Its chronometric promise is not credited a second time either: if
-  // Peacock ever publish a rate, accuracyDisplay pays for it, as it pays for COSC.
-  //   PAX9610, 0.70. Architecturally beyond every escapement in this table except NOMOS's - so
-  //     above the Swiss-ebauche rung (0.55-0.60) and the ST19's 0.50, the other Chinese
-  //     complication here. Level with the L888.4 and the bottom of "in-house from a major", and
-  //     NOT higher, on three counts the 1.00 rung is defined by: Peacock name no hairspring of
-  //     their own and no hand assembly, publish no rate or certification, and sell the tourbillon
-  //     as an industrial product - their own catalogue lists some twenty tourbillon references
-  //     from $1,799. A tourbillon is no longer rare in China; it is still the more complex machine.
-  //   PAX9610B, 0.75. The same base plus the documented +0.05 for one added architectural merit:
-  //     a free-sprung balance regulated by four inertia weights (Peacock's own "Gyromax"
-  //     description) in place of a regulator index - the merit the Tudor block credits the
-  //     MT5400's variable-inertia balance for. Its 68 h against the 9610's 48 h earns nothing
-  //     here; that is the SW200-2 Power+ rule, and powerReserve pays for it.
-  // The objection worth recording: 0.70 is a judgement on architecture with no independent
-  // inspection behind it. Measured in pass 49: at the 0.60 Swiss-ebauche rung row 201 goes from
-  // +0.60 to -1.20 and row 203 from -5.80 to -6.90, and NEITHER changes band - so the verdicts
-  // the footer reports do not depend on this number.
-  'Hand-wound tourbillon — Peacock PAX9610 (in-house)': 0.70,
-  'Hand-wound tourbillon — Peacock PAX9610B (in-house, free-sprung balance)': 0.75,
+  // Tourbillons, pass 49. The split: the FUNCTION is paid for once, in COMPLICATION_VALUES
+  // (`tourbillon`, 0.6, the same for every tourbillon), and this table rates only how the movement
+  // carrying it is BUILT - on its ordinary ladder, with no premium for the carriage itself. That is
+  // what lets two tourbillons differ: a commodity carriage and a certified one with its own
+  // hairspring collect the same 0.6 for the function and are told apart here. Decoration of the
+  // carriage or bridges is neither of the two; it is FINISH. The ladder for a tourbillon caliber:
+  //   0.60  industrial tourbillon, nothing further evidenced - the Swiss-ebauche rung. Not below
+  //         it: a tourbillon movement is not a commodity three-hander's architecture.
+  //   +0.05 per documented architectural merit - free-sprung balance, flying (bridge-less)
+  //         carriage, silicon hairspring - the step this table uses everywhere (L888.4, MT5400).
+  //   +0.05 per-unit certification (COSC), as the SW300-1 COSC and the L888.4 take it.
+  //   up to 1.00 for own escapement and hairspring, hand-assembled - the NOMOS rung.
+  // Where the two Peacock calibers sit, and why no higher: Peacock name no hairspring of their own
+  // and no hand assembly, publish no rate or certification, and sell the tourbillon as an
+  // industrial product - their own catalogue lists some twenty tourbillon references from $1,799.
+  //   PAX9610, 0.60. The base rung; nothing beyond the carriage is evidenced.
+  //   PAX9610B, 0.65. The base plus +0.05 for a free-sprung balance regulated by four inertia
+  //     weights (Peacock's own "Gyromax" description) in place of a regulator index - the merit
+  //     the Tudor block credits the MT5400's variable-inertia balance for. Its 68 h against the
+  //     9610's 48 h earns nothing here; that is the SW200-2 Power+ rule, and powerReserve pays.
+  // The tourbillon's chronometric promise is not credited anywhere: if Peacock ever publish a
+  // rate, accuracyDisplay pays for it, as it pays for COSC. (Pass 49 first placed these at 0.70 /
+  // 0.75 with no complication tag; the footer records why that was changed.)
+  'Hand-wound tourbillon — Peacock PAX9610 (in-house)': 0.60,
+  'Hand-wound tourbillon — Peacock PAX9610B (in-house, free-sprung balance)': 0.65,
   // Peacock PAX6912, pass 49: 0.40. A 4 Hz, 38 h automatic - the ETA 2824 envelope - that Peacock
   // call their own and say is "inspired by the architecture of legendary calibers"; nothing more
   // about its construction is published. Placed from the Chinese 2824-class automatics above it,
@@ -6737,6 +6739,15 @@ function movementTierFor(w) {
 //   power_reserve TRUE power-reserve indicator (hand + scale). A merely visible mainspring
 //                 barrel does NOT count — e.g. the Royal Pop shows its barrel but has no
 //                 indicator, so it scores 0 here. No watch in the list qualifies yet.
+//   tourbillon    a rotating carriage around the escapement (pass 49, rows 201 and 203). The one
+//                 tag here that displays nothing to the wearer; it is scored as a complication on
+//                 the strength of what it takes to build, which is the conventional horological
+//                 ranking. 0.6 puts it above the chronograph and the true GMT (0.5) and leaves the
+//                 cap room to stack. It is the same for every tourbillon by design: HOW the
+//                 movement is built - free-sprung, flying, certified, own hairspring - is rated in
+//                 MOVEMENT_TIER, which carries no premium for the carriage itself (see the
+//                 tourbillon ladder there). Not price-calibrated as pass 8's values were - two
+//                 rows cannot calibrate anything - so the order is argued and the size is a call.
 // Points per complication, summed and capped at 1. Calibrated in pass 8 against what the market
 // actually charges: regressing ln(price) on every other spec group plus a dummy per complication
 // isolates the premium buyers pay for the complication itself, and the fitted baseline converts
@@ -6757,6 +6768,7 @@ function movementTierFor(w) {
 // here to sanity-check the ORDER of the values, never to set them.
 const COMPLICATION_VALUES = {
   gmt_true: 0.5, gmt: 0.25, chrono: 0.5, moonphase: 0.2, small_sec: 0.15, power_reserve: 0.35,
+  tourbillon: 0.6,
 };
 function complicationScore(list) {
   if (!list || !list.length) return 0;
@@ -8049,16 +8061,17 @@ const EXTRAS = {
   // of lume, a "fully lumed" bezel - more application than the unspecified-SLN 0.5, with no
   // pigment named to reach the BGW9/C3 rung at 0.75. bezel 0.75: the sapphire insert's material
   // is Peacock's statement and sits on the steel/sapphire rung; the direction is inferred from
-  // the dive scale and pip (see the row comment). No complication tag for the tourbillon - the
-  // MOVEMENT_TIER block argues where it is paid for, and it is paid for once.
-  201:{lume:0.6,war:2,iso:0,antimag:0,clasp:0.6,service:0.4,bezel:0.75},
+  // the dive scale and pip (see the row comment). comp: the tourbillon, which is paid for here
+  // and only here - MOVEMENT_TIER rates the PAX9610B's construction with no carriage premium.
+  201:{lume:0.6,war:2,iso:0,antimag:0,clasp:0.6,service:0.4,bezel:0.75,comp:['tourbillon']},
   // Row 202, Year of the Horse. lume 0.5: "recessed white lume" in the indexes and lume-filled
   // hands, unspecified, the standard rung. bezel null: a fixed screwed bezel, nothing to turn.
   202:{lume:0.5,war:2,iso:0,antimag:0,clasp:0.6,service:0.4,bezel:null},
   // Row 203, Plumage Gaze Tourbillon. lume 0.4: Peacock say "luminous hands and markers" and
   // nothing else, and the photographs show thin applied batons and slim hands - less than row
   // 202's filled indexes, level with the MoonSwatch on row 63. bezel null, fixed and screwed.
-  203:{lume:0.4,war:2,iso:0,antimag:0,clasp:0.6,service:0.4,bezel:null},
+  // comp: the tourbillon, on the same terms as row 201.
+  203:{lume:0.4,war:2,iso:0,antimag:0,clasp:0.6,service:0.4,bezel:null,comp:['tourbillon']},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -9577,6 +9590,7 @@ function valueTooltip(w) {
   const COMP_LABELS = {
     gmt_true: 'true GMT', gmt: 'GMT (24h hand)', chrono: 'chronograph',
     moonphase: 'moonphase', small_sec: 'small seconds', power_reserve: 'power-reserve indicator',
+    tourbillon: 'tourbillon',
   };
   const comps = (x.comp ?? []).map(k => COMP_LABELS[k] ?? k);
   const pct = v => v == null ? 'not researched' : Math.round(v * 100) + '/100';

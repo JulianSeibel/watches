@@ -96,7 +96,7 @@ Current baseline:
 
 ```
 203 rows · spec 26–67 · sigma 5 · 2 n/s · 3 o/s · 69 published weights
-model  LOO RMSE 6.11 vs naive 8.87 · skill 52.5% · 1 sign flip(s) · resample typical 0.26 worst 0.52
+model  LOO RMSE 6.11 vs naive 8.92 · skill 53.0% · 4 sign flip(s) · resample typical 0.25 worst 0.49
 ```
 
 **If a change was not meant to touch the model and those numbers move, something is wrong.**
