@@ -715,6 +715,14 @@
 
   <p><b>Two stale literals in the weight block, and one had been wrong since pass 49.</b> The block's opening said &ldquo;69 published figures and 131 estimates &mdash; 116 rows that genuinely publish nothing&rdquo;. Pass 48 wrote it, and it was right on that pass's 200 rows. Pass 49 then put Peacock's three rows into <code>WEIGHT_UNPUBLISHED</code> without updating it, so 69 + 131 summed to 200 on a 203-row list. It now reads 74 and 135 (120 + 8 + 7), and the maker breakdown after it reads fifteen makers: three Japanese, three Chinese and nine Western. The roster above <code>WEIGHT_MEASURED</code> gains Rado and Agelocer and reconciles at 72 maker-published + 2 borrowed = 74. The usual sites moved with the row count: the contents banner, the steel count above <code>CASE_ORDER</code> (181 of 209), and the <code>DISPLAY_BACK</code> status (181 of 209 resolved, 92 see-through, 89 solid, with row 206 added to the open list because its page never mentions its back).</p>
 
+  <p><b>Sinn 6060 B and 308 Jagduhr, pass 51 &mdash; two rows added (210&ndash;211), and the list goes from 209 to 211.</b> Two more Sinns, the first since pass 22's three 104s, and both off the classic rather than the tool-watch side of the catalogue: the 6060 B Frankfurter Weltzeituhr, a 38.5&nbsp;mm three-time-zone watch at &euro;2,830 that ships with a bracelet and a leather strap, and the 308 Jagduhr, a 40&nbsp;mm hunting watch at &euro;2,920 on its default bracelet, whose moonlight display at 6 shows when the moon is bright enough to see by. The model needed two new <code>MOVEMENT_TIER</code> keys and nothing else new. Both clear the support guard with 38 comparable rows. <b>Row 210 lands at 53 spec points and &minus;5.40, <i>below the curve</i>; row 211 at 56 and &minus;2.70, <i>below the curve</i>, just past the &frac12;&sigma; line.</b> At these prices the fitted line expects about 58 to 59 points, and neither Sinn reaches it. That is the 104s' story at a higher price. Sinn publish no lug-to-lug, power reserve or rate, so three timekeeping and wearability inputs are imputed at the list mean, and what the money buys beyond that is mostly not on the spec sheet: the maker, the Frankfurt finishing, a hunting complication the list has nothing else like. The 6060 B also gives up the most on paper, at 100&nbsp;m with a push-in crown against the 308's 200&nbsp;m and screw-down crown, and the 308 makes some of that back on lume.</p>
+
+  <p><b>The 6060 B's third time zone is scored as a bezel, not as a second complication.</b> The SW&nbsp;330-1 supplies two zones, the hour hand and an independently set 24&nbsp;h hand, a caller GMT at the <code>'gmt'</code> rate. The third is an inner 12&nbsp;h ring under the crystal, turned by the crown at 10, which Sinn's photograph shows and the spec table does not name. That is mechanically what row 144's inner dive bezel is, so it takes row 144's 0.8, which came from rows 3 and 97. Counting it again as a complication would pay for one ring twice. <b>The band:</b> the page has no configurator at all, and Sinn's prose says the watch ships &ldquo;mit feingliedrigem Massivarmband, Rindslederarmband&rdquo;, so the one price buys both. The row is scored on the bracelet, as rows 102 and 103 are on Oris's bracelet-plus-strap sets, and <code>bandDisplay</code> says the strap is <i>supplied</i>, not optional, because the word &ldquo;opt.&rdquo; would make the weight estimator treat it as a strap row. <b>The 308's band</b> is the page's default, <code>defaultStrap</code> BMT356.001.004 at +&euro;350 on a &euro;2,570 base, which is the &euro;2,920 the page shows. A second article, BMT356.001.002, sits in the same configurator at +&euro;300 under an identical description, and nothing says what separates them. The row follows the page's own figure. If the cheaper one is the same bracelet, the row moves by ln(2,870/2,920) in price, a fraction of a spec point.</p>
+
+  <p><b>The judgement calls.</b> <b>Row 211's lume at 0.7 is the number most open to disagreement.</b> The indices and the moonlight element are hand-set hybrid-ceramic luminous parts, pigment moulded into ceramic &ldquo;at an exceptionally high concentration&rdquo;. That claim is of the thick-application kind that puts BGW9 and C3 at 0.8, but it is marketing with no grade, and the hands are plain &ldquo;Leuchtfarbe&rdquo; as on row 60, so the row sits one rung under. <b>The moonlight display scores as <code>moonphase</code></b>: Sinn do not call it a phase disc, but it is driven by the lunar cycle, which is the thing that key pays for. The pointer date scores nothing, as on row 179's Oris 754. <b>The SW&nbsp;382-1 is Sinn's designation and appears in no Sellita catalogue found.</b> What Sinn state about it (25 jewels, 4&nbsp;Hz, hacking) is the SW200 family's specification, so it sits at 0.60 beside the Oris 754's pointer-date key. If its base turns out to be something else, that entry is the one to revisit. <b>The SW&nbsp;330-1 sits level with the SW330-2 at 0.60</b>: it is the earlier generation of the same caller GMT, and the -2's longer reserve is what <code>timekeeping.powerReserve</code> pays for, not the tier. <b><code>FINISH</code> 0.65 on row 210</b> is the Christopher Ward rows' rung for the same reason they earned it: decoration Sinn name outright (Geneva stripes, blued screws, the &ldquo;Bulle und B&auml;r&rdquo; engraved rotor), not the window, which <code>fittings.displayBack</code> already scores. Row 211 stays at row 94's 0.60. <b>Neither rate is filled</b>: Sinn name no grade on either caliber, and pass 38's grade ladder leaves both at <code>'&mdash;'</code>. Both weights are Sinn's &ldquo;Gewicht ohne Band&rdquo; (57&nbsp;g and 69&nbsp;g), so both go to <code>WEIGHT_HEAD_ONLY</code> with the four Sinns before them, recorded and not used.</p>
+
+  <p><b>What it did to everything else.</b> Value moved by at most <b>0.20</b> spec points across the existing 209, on row 48, the Citizen Tsuyosa Small Second (+3.50 &rarr; +3.30). Three rows crossed zero within that, all of them at &plusmn;0.1: row 97, the Traska Venturer GMT (+0.1 &rarr; 0), row 184, the Tudor Black Bay 54 (0 &rarr; +0.1), and row 185, the Black Bay 58 (&minus;0.1 &rarr; 0). <b>One band changed: row 93, the Longines Conquest 38, <i>as expected</i> &rarr; <i>above the curve</i></b>, without its displayed residual moving at all. It reads +2.60 on its grey price before and after. It sits on the &frac12;&sigma; boundary, and &sigma; shifted in its second decimal, which is the quantised banding doing what it is for: the same number on either side of a line the model cannot resolve. Its list-price badge is unchanged at +0.40, <i>as expected</i>. Leave-one-out RMSE is 6.08 &rarr; 6.09 and skill 53.2% &rarr; 52.7%, so the model is neither better nor worse for the addition. Sign flips stay at 1, and resampling moves 0.24/0.50 &rarr; 0.28/0.53. Spec drift touched two rows by one rounding point each: row 126, the Baltic Aquascaphe Bronze (40 &rarr; 41), and row 174, the Erebus Nexus Turquoise Fade (42 &rarr; 43). That is <code>imputeMissingSubs()</code> following the list mean, which these two rows, with three unpublished fields each, moved. The weight test set is unchanged at 74.</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -736,7 +744,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-209 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-211 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
 //                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
@@ -5034,6 +5042,61 @@ const WATCHES = [
   powerReserveDisplay:'80 h', accuracyDisplay:'−5/+15 s/day',
   waterResDisplay:'50 m (5 ATM)', waterResM:50,
   priceDisplay:'$929', priceValue:929, priceCurrency:'USD' },
+
+// --- Sinn 6060 B and 308 Jagduhr, pass 51 (rows 210-211) -------------------------------------
+// Same OXID storefront as pass 22's three 104s, read the same way: the spec table from the
+// "Technische Merkmale" accordion, the band from the page's own window.articleInitData.
+// defaultStrap and, where the page has one, the configurator widget's data-price per band.
+//
+// Sinn publish no lug-to-lug, no power reserve and no rate on either page - checked in the raw
+// HTML, as pass 22 did. All three stay '—'. Neither caliber's grade is named, so pass 38's grade
+// ladder leaves the rate empty rather than borrowing a Sellita tier figure.
+//
+// Row 210 has no configurator at all: the page carries no articledetailsconfigurator widget, and
+// Sinn's prose says the 6060 B ships "mit feingliedrigem Massivarmband, Rindslederarmband" - the
+// one price buys both bands. The row is scored on the bracelet, as rows 102 and 103 are on the
+// Oris bracelet with a strap in the box, and bandDisplay says the leather
+// strap is supplied rather than optional, because "opt." would turn predictedWeightG() to a strap
+// row. The product photo shows the bracelet; Sinn's lifestyle shots show the leather.
+//
+// Its third time zone is not a complication. The SW 330-1 supplies two (hour hand, 24 h hand);
+// the third is the inner 12 h ring under the crystal, turned by the crown at 10 - the same kind
+// of thing row 144's inner dive bezel is, so it is scored as a bezel and not as comp.
+{ id:210, brand:'Sinn', name:'Sinn 6060 B Frankfurter Weltzeituhr (6060.013)', desc:'Three time zones: hour hand, 24-h GMT hand and an inner 12-h ring on a second crown · sunray-blue dial; the only Frankfurt finance-district watch here',
+  link:'https://www.sinn.de/uhren/alle-uhren/6060-b.html',
+  img:'https://www.sinn.de/out/pictures/generated/product/1/1170_1800_100/6060.013_385_20_mit_band.png',
+  diameterDisplay:'38.5 mm', diameterMm:38.5, l2lDisplay:'—',
+  heightDisplay:'12.0 mm', heightMm:12.0,
+  caseDisplay:'Polished stainless steel (inner rotating 12-h ring on a crown at 10, screwed sapphire display back)', caseCategory:'Steel',
+  bandDisplay:'Fine-link steel bracelet, polished/satinized solid links (blue cowhide strap also supplied)',
+  glassDisplay:'Sapphire, double-sided AR (+ sapphire caseback, AR inside)', glassCategory:'Sapphire',
+  movementDisplay:'Automatic caller GMT — Sellita SW 330-1', movementType:'Automatic', movementCostDisplay:'~$300 (Sellita GMT, new, est.)',
+  powerReserveDisplay:'—', accuracyDisplay:'—',
+  waterResDisplay:'100 m (10 bar, low-pressure-proof)', waterResM:100,
+  priceDisplay:'€2,830 (bracelet and strap)', priceValue:2830, priceCurrency:'EUR' },
+
+// Row 211's link carries no #config= fragment, so it takes the page's default, and that default
+// is the bracelet: articleInitData.defaultStrap is BMT356.001.004, "Satiniertes Massivarmband aus
+// Edelstahl", which the configurator prices at data-price 350 on a 2,570 base - the 2.920,00 EUR
+// the page shows. A second bracelet article, BMT356.001.002, sits in the same widget at +300 under
+// an identical description; it is not the default and nothing on the page says what separates the
+// two, so the row follows the page's own figure, as rows 94 and 95 do with BMT103.
+//
+// The caliber is Sinn's "SW 382-1": 25 jewels, 4 Hz, Sekundenstopp, a pointer date and the
+// moonlight display. That designation is in no Sellita catalogue found, so it is recorded
+// verbatim rather than resolved to a base caliber, and its tier argument is at MOVEMENT_TIER.
+{ id:211, brand:'Sinn', name:'Sinn 308 Jagduhr (308.010)', desc:'Hunting watch: a moonlight indicator at 6 that shows when the moon is bright enough to see by · pointer date, dark green dial, hybrid-ceramic lume',
+  link:'https://www.sinn.de/uhren/alle-uhren/308-jagduhr.html',
+  img:'https://www.sinn.de/out/pictures/generated/product/1/1170_1810_100/308.010_400_20_mit_band.png',
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'—',
+  heightDisplay:'12 mm', heightMm:12,
+  caseDisplay:'Satinized stainless steel (screw-down crown, sapphire display back, Ar dehumidifying technology)', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet, satinized solid links',
+  glassDisplay:'Sapphire, double-sided AR (+ sapphire caseback, AR inside)', glassCategory:'Sapphire',
+  movementDisplay:'Automatic pointer date + moonlight display — Sinn SW 382-1', movementType:'Automatic', movementCostDisplay:'not sold separately (Sinn-specified Sellita-family caliber)',
+  powerReserveDisplay:'—', accuracyDisplay:'—',
+  waterResDisplay:'200 m (20 bar, low-pressure-proof)', waterResM:200,
+  priceDisplay:'€2,920 (€2,570 + €350 bracelet)', priceValue:2920, priceCurrency:'EUR' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -5247,8 +5310,8 @@ function measuredRatioStats(watches) {
 
 // --- Weight (pass 10, rewritten in pass 11) ------------------------------------------------
 // Fifteen makers publish mass as a plain field in the same spec table as the diameter, which the
-// roster above WEIGHT_MEASURED sets out per maker. The column is 74 published figures and 135
-// estimates - 120 rows that genuinely publish nothing, 8 that could not be reached, and 7
+// roster above WEIGHT_MEASURED sets out per maker. The column is 74 published figures and 137
+// estimates - 120 rows that genuinely publish nothing, 8 that could not be reached, and 9
 // published head-only. The estimator below runs for anything not in WEIGHT_MEASURED.
 //
 // Pass 10 built this column on the premise that mass "is simply not in the spec sheets" and
@@ -5695,6 +5758,9 @@ const WEIGHT_HEAD_ONLY = {
   // its own anywhere on the site. Same decision as the Sinn rows above: recorded, not used.
   156: 56,  // DF20 Old Radium - "Gewicht ohne Band: 56,00 g"
   157: 55,  // DK26            - "Gewicht ohne Band: 55,00 g", same case, one gram apart
+  // Sinn, pass 51 - the same field in the same wording, so the same decision.
+  210: 57,  // 6060 B        - "Gewicht ohne Band: 57 Gramm"
+  211: 69,  // 308 Jagduhr   - "Gewicht ohne Band: 69 Gramm"
 };
 
 // Rows checked individually against the maker's own page and confirmed to publish NO weight.
@@ -6250,6 +6316,11 @@ const WATCH_TYPES = {
   207: ['Dress'],
   208: ['Dress', 'Everyday'],            // 42 mm, date, leather - the least formal of the four
   209: ['Dress'],
+  // Sinn, pass 51. 210 is both: three time zones make it a traveller, and Sinn place the Frankfurt
+  // finance-district line as the elegant one "zu festlichen Anlässen oder im Geschäftsleben".
+  // 211 is the one row here built for a field sport, and Sinn's prose is about nothing else.
+  210: ['GMT / traveller', 'Dress'],
+  211: ['Field'],
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
@@ -6320,7 +6391,7 @@ const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (181 of 209 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (183 of 211 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -6951,6 +7022,20 @@ const MOVEMENT_TIER = {
   // Chronograph kleine Sekunde") plus a dial layout matching the Ronda 5030.D. If a caliber ever
   // surfaces and it is not a Swiss module of that class, this entry is the thing to revisit.
   'Quartz chronograph — caliber not published': 0.25,
+  // Pass 51, two Sinn entries, both 0.60 and both level with an existing key.
+  //   SW 330-1   the generation of Sellita's caller GMT before the SW330-2 - same 2892-lineage
+  //              architecture, 4 Hz, the 24 h hand set on its own. The -2's change is a longer
+  //              power reserve, which timekeeping.powerReserve pays for and this column does not,
+  //              so the two sit level, at the unnamed-grade SW330-2 key's 0.60. A caller earns no
+  //              GMT bonus here (pass 16); the 'gmt' complication pays for the second zone.
+  //   SW 382-1   Sinn's designation, in no Sellita catalogue found. What Sinn state - 25 jewels,
+  //              28,800 A/h, hacking, automatic - is the SW200 family's specification, and the
+  //              additions are a pointer date and the moonlight display. The Oris 754 is the
+  //              pointer-date precedent at 0.60, and the moon element is paid for in
+  //              complications at the moonphase rate. If the base turns out to be something
+  //              other than a 4 Hz Sellita, this entry is the one to revisit.
+  'Automatic caller GMT — Sellita SW 330-1': 0.60,
+  'Automatic pointer date + moonlight display — Sinn SW 382-1': 0.60,
 };
 // Rows that took the fallback below, recorded so selfCheck() can report them. The fallback exists
 // so a NEW row never scores zero, but it fires just as quietly when an EXISTING row's
@@ -8351,6 +8436,32 @@ const EXTRAS = {
   207:{lume:0.1,war:3,iso:0,antimag:0,clasp:0.7,service:0.4,bezel:null},
   208:{lume:0.2,war:3,iso:0,antimag:0,clasp:0.3,service:0.4,bezel:null},
   209:{lume:0.2,war:3,iso:0,antimag:0,clasp:0.7,service:0.4,bezel:null,comp:['tourbillon']},
+  // --- Sinn 6060 B and 308 Jagduhr, pass 51 (rows 210-211) ---------------------------------
+  // Anchored on rows 60 and 94-96, the same maker making the same declarations.
+  // lume - 210 at 0.4, level with row 60: "Aufgesetzte Appliken mit Leuchtfarbe belegt", and
+  //   hands likewise, no compound or grade named. 211 at 0.7, and it is the soft number of the
+  //   pass. Its indices and the moonlight element are hybrid-ceramic luminous parts, hand-set,
+  //   which Sinn describe as pigment integrated into the ceramic moulding at "an exceptionally
+  //   high concentration". That is a thick-application claim of the kind that puts BGW9/C3 at
+  //   0.8, but it is Sinn's marketing rather than a grade, and the hands are plain "Leuchtfarbe"
+  //   as on row 60 - so one rung under 0.8. A named grade or a measured comparison would move it.
+  // antimag 0.3 - "Antimagnetisch nach DIN 8309" on both, the 4,800 A/m rung, as rows 60, 94-96.
+  // clasp 0.6 on both, level with rows 94 and 95: each is scored on a Sinn solid bracelet with
+  //   its folding clasp, no micro-adjustment or safety catch published. 210's price also buys a
+  //   leather strap; the row is scored on the bracelet, which is the better of the two it ships.
+  // bezel - 210 at 0.8: the inner 12 h ring on the crown at 10 is functional (it is the third
+  //   time zone) and Sinn name no material for it. Exactly row 144's case, and row 144 took 0.8
+  //   from rows 3 and 97. 211 null - no rotating bezel or ring of any kind.
+  // comp - 210 ['gmt'], the caller rate: the SW 330-1's 24 h hand is set independently of the
+  //   hour hand. The third time zone is the ring above, not a second complication, so it is not
+  //   counted twice. 211 ['moonphase']. The moonlight display is not a phase disc in Sinn's
+  //   words, but it is driven by the same thing - it tracks the lunar cycle and shows when the
+  //   moon is bright enough - and that is what the 'moonphase' key pays for. The pointer date
+  //   scores nothing, as on row 179's Oris 754: no date form is a key.
+  // war - 2 on 210 and 3 on 211, each from its own page's "Die Garantiezeit beträgt ... Jahre".
+  //   The pages differ, so the rows do. Data only. service 0.8, level with every Sinn row.
+  210:{lume:0.4,war:2,iso:0,antimag:0.3,clasp:0.6,service:0.8,bezel:0.8,comp:['gmt']},
+  211:{lume:0.7,war:3,iso:0,antimag:0.3,clasp:0.6,service:0.8,bezel:null,comp:['moonphase']},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -8929,6 +9040,14 @@ const FINISH = {
   //     show from the front and through the back. Venezianico's 0.55 baseline, above the three
   //     automatics and well under the Peacock tourbillons' hand-guilloché 0.75.
   206:0.50, 207:0.50, 208:0.50, 209:0.55,
+  // Sinn, pass 51, against row 94 at 0.60.
+  //   210, 0.65. The one Sinn row whose movement is decorated rather than merely visible: Geneva
+  //     stripes, blued screws and the "Bulle und Bär" engraved rotor, named in Sinn's own prose.
+  //     That is the Christopher Ward rows' 0.65 on an engraved, Colimaçon-finished rotor - not
+  //     the window, which fittings.displayBack already pays for. Sunray dial, applied markers.
+  //   211, 0.60, level with row 94. Hand-set ceramic indices and a satinized case are dial and
+  //     case construction of the 104 Klassik 12's order; no movement decoration is named.
+  210:0.65, 211:0.60,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -8936,7 +9055,7 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 181 of 209 rows resolved - 92 see-through, 89 solid. The twenty-eight still
+// Research status: 183 of 211 rows resolved - 94 see-through, 89 solid. The twenty-eight still
 // open are 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125, 126, 142, 143, 156, 166, 170, 173, 174,
 // 182-189 and 206, all rows whose maker publishes no caseback detail. Row 206 is pass 50's Agelocer
 // Astronomer, the one of four Agelocer pages that never mentions its back. Rows 182-189 are pass 47's eight
@@ -9302,6 +9421,8 @@ const DISPLAY_BACK = {
   // the case back". Row 206 is ABSENT: its page describes no back and its gallery shows none, and
   // its siblings' windows are evidence about three other references.
   204: 0, 205: 1, 207: 1, 208: 1, 209: 1,
+  // Sinn, pass 51: "Sichtboden aus Saphirkristallglas, innen entspiegelt" on both spec tables.
+  210: 1, 211: 1,
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
