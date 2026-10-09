@@ -699,6 +699,22 @@
 
   <p><b>Pass 49, revised: the tourbillon became a complication, and the movement tier stopped paying for it.</b> The placement argued earlier in this pass &mdash; tourbillon in the tier only, at 0.70 / 0.75, no complication tag &mdash; was overruled after review, and the old argument stays in that paragraph as the record. The objection was that a tourbillon is one of the most demanding complications in watchmaking, and that 1&ndash;2 spec points does not say so. The replacement keeps the rule that a merit is paid for once, and splits the merit into two parts. The <i>function</i> is now a complication, <code>tourbillon: 0.6</code>, the same for every tourbillon. 0.6 puts it above the chronograph and the true GMT (both 0.5), which is the conventional ranking, and leaves room under the 1.0 cap for anything stacked with it. The <i>construction</i> stays in <code>MOVEMENT_TIER</code>, now with no premium for the carriage: an industrial tourbillon sits at the 0.60 Swiss-ebauche rung, gains +0.05 per documented merit (free-sprung, flying, silicon) and +0.05 for certification, and reaches 1.00 only with an own hairspring and hand assembly. Decoration of the carriage stays in <code>FINISH</code>. That gives the PAX9610 <b>0.60</b> and the PAX9610B <b>0.65</b>, the latter for the free-sprung balance. A flat 0.8 was also considered, and the split was preferred over it: a flat value pays a commodity carriage and a certified one alike, and the split lets the tier tell them apart. <b>The size is a call, not a calibration</b>: pass 8 price-checked the other values, and two rows cannot calibrate anything. <b>Row 201 is now 64 spec points and +4.40, <i>above the curve</i>; row 203 is 57 and &minus;1.90, <i>as expected</i></b>, up from 60 / +0.60 and 53 / &minus;5.80. Value moved by at most 0.30 on any other row, on rows 185 and 189, the Black Bay 58 and its bronze sibling. Row 202 moved &minus;14.80 &rarr; &minus;15.00 and stays <i>well below</i>. Three other rows change band without moving more than 0.20, because each sat on a band edge: row 26 (Vaer DS2 Meridian quartz) goes <i>as expected</i> &rarr; <i>above</i>, row 156 (Damasko DF20) <i>below</i> &rarr; <i>well below</i>, and row 193 (Archimede Pilot 39 H&nbsp;.&nbsp;S) <i>as expected</i> &rarr; <i>below</i>. Leave-one-out RMSE is unchanged at 6.11, naive RMSE 8.87 &rarr; 8.92, skill 52.5% &rarr; 53.0%, sign flips 1 &rarr; 4, and resample 0.26/0.52 &rarr; 0.25/0.49.</p>
 
+  <p><b>Rado and Agelocer, pass 50 &mdash; six rows added (204&ndash;209), and the list goes from 203 to 209.</b> Two new makers from opposite ends of the price range. Rado is a Swatch Group house selling high-tech ceramic at Tudor money: the Captain Cook Automatic 39, a steel diver with a ceramic bezel insert at &euro;2,550, and the Captain Cook Discover, a ceramic case on a ceramic bracelet at &euro;4,100. Agelocer is a Chinese maker selling direct, in USD, on calibers it calls its own: a meteorite-dial moonphase at $1,129, a double-sided skeleton at $359, a marble-dial big date at $339 and a free-sprung flying tourbillon at $929. The model needed four new <code>MOVEMENT_TIER</code> keys and nothing else new; every case, glass, movement type, watch type and complication was already in its vocabulary. All six clear the support guard. <b>Where they land:</b> row 204 at <b>56 spec points and &minus;2.10, <i>as expected</i></b> (41 comparable rows); row 205 at <b>61 and &minus;0.50, <i>as expected</i></b> (17, the thin top of the range, mostly pass 47's Tudors); row 206 at <b>46 and &minus;4.40, <i>below the curve</i></b>; row 207 at <b>48 and +6.60, <i>above the curve</i></b>; row 208 at <b>44 and +2.90, <i>above the curve</i></b>; and row 209 at <b>59 and +10.20, <i>well above the curve</i></b> (70 comparable rows each for 206 and 209, 43 for 207 and 208). The two Rados read the way Tudor and Longines do, specs priced about where the list prices them. The Agelocers split on one thing: the three that sell mechanism are cheap for what they carry, and the one that sells a dial material is not.</p>
+
+  <p><b>Row 209 is the list's cheapest tourbillon by a factor of 3.6, and it lands where that says it should.</b> $929 buys the carriage that costs $3,350&ndash;3,499 on Peacock's rows 201 and 203, plus a free-sprung balance, a flying cage, a double barrel to 80&nbsp;h, a published &minus;5/+15&nbsp;s/day, sapphire on both sides and a bracelet with a butterfly clasp. The model pays for that list once each: <code>tourbillon</code> at 0.6 in complications (pass 49's split, unchanged here), the construction at <b>0.70</b> in the tier (the ladder's 0.60 base, +0.05 free-sprung, +0.05 flying), the rate in timekeeping. <b>Measured rather than asserted, the verdict does not rest on any one soft number.</b> At the ladder's base rung, 0.60, the row is +8.90 and still <i>well above</i>. With the &plusmn;15 the page's prose repeats instead of its &minus;5/+15 badge, +9.10. Both together, the worst case available from the page, +7.80, <i>above the curve</i>. Without the tourbillon tag at all, +4.80, still <i>above</i>. What would actually overturn it is evidence about the build rather than about the scoring: every claim of &ldquo;free-sprung&rdquo; and &ldquo;flying&rdquo; is Agelocer's own copy, no review has been found that opens one, and the photographs are renders. An independent teardown is the open item. Until one exists, the row reports what the maker states, which is how every other row here is scored.</p>
+
+  <p><b>Row 206 is the pass's mirror image of pass 49's row 202, and the scope guard does not catch it.</b> At $1,129 it is the dearest Agelocer and the only one below the curve. It shares the A4610 with row 208, which is +2.90 at $339. The $790 between them buys a Muonionalusta meteorite dial, a 3D micro-engraved moon on a 31-tooth moonphase, and a bracelet instead of leather. The model sees the moonphase (0.2 in complications), the bracelet (via the clasp) and the engraving (half a <code>FINISH</code> rung), and nothing for the meteorite, which is a material bought rather than an operation, pass 29's line. That is the right verdict on this file's terms and a fair description of what the money buys. It is not <code>o/s</code>: <code>PLAIN_TWIN</code> needs a maker-sold reference identical in every scored field, and row 208 differs in size, date and band. That is the falsifiable trigger working as designed, not a gap in it. <b>Row 207's +6.60 is the plainer story</b>: $359 for 80&nbsp;h, sapphire, a display back and a butterfly-clasp bracelet on a 9.5&nbsp;mm case is a lot of spec, and its weakest sub-scores, no lume and 50&nbsp;m, are the ones a skeleton dress watch gives up by design.</p>
+
+  <p><b>Agelocer's pages need reading per variant, and three things on them were not taken at face value.</b> The storefront is SHOPLAZZA, not Shopify: no <code>.json</code> route, and <code>page-text.js</code> gets HTTP 403 on every product page, while <code>curl</code> with a browser User-Agent gets the full 1.1&ndash;1.3&nbsp;MB page first time. That is pass 46's Christopher Ward shape, a limitation of the script and not a finding about the maker. <b>First</b>, each PARAMETER block describes one band. On row 206 that band is the leather strap, and the row is priced on the bracelet. Its 76.2&nbsp;g and &ldquo;Pin buckle&rdquo; are therefore a different SKU's: the row goes to <code>WEIGHT_UNPUBLISHED</code> as the row-90 near-miss, and its clasp is the 0.6 estimate from absence rather than the 0.7 its siblings' identical-looking bracelet states. <b>Second</b>, row 207 has no text specs at all, only a PARAMETER graphic, and the graphic carries &ldquo;Product SKU: 5401A9&rdquo;, the linked variant's own number. That stamp is what makes it evidence. The same page's gallery also carries a caseback render reading &ldquo;BUDAPEST&rdquo; on a leather strap, from a different series, so images travel between Agelocer pages, and only the SKU-stamped one was used. <b>Third</b>, rows 207 and 209 both publish 132&nbsp;g, and evidence rule 5 was put to them. It does not bite on the Vaer test's own terms. Vaer's 70.6&nbsp;g was one sentence across cases of different sizes and heights. These are two 40&nbsp;mm cases 0.2&nbsp;mm apart in height, on what the photographs show is the same bracelet, in blocks that differ in every other line. Agelocer's other figures, 76.2 and 95.6&nbsp;g, are precise to a decimal. A third, differently sized Agelocer case at 132&nbsp;g would reopen it.</p>
+
+  <p><b>The judgement calls.</b> <b>The Rado R763 at 0.60 is the number in this pass most open to disagreement.</b> Rado name no base, but every published property is the Swatch Group 80-hour family's, which sits at 0.55 on Tissot, Hamilton and Mido. Rado add a claim those three do not make, that the movement is tested or adjusted in five positions. +0.05 is the step pass 49 gave Peacock's PAX6912 for the same claim. The objection is real: the C07 family is laser-regulated with no index, so the claim may describe a sorting test, and Rado publish no tolerance. At 0.55, rows 204 and 205 lose a spec point each, <b>and row 204 crosses from <i>as expected</i> to <i>below the curve</i></b> (&minus;2.10 &rarr; &minus;2.70). So this call decides that row's band, and the footer should say so. It was applied because granting the step to the Chinese maker and withholding it from the Swiss one, on the same words, would be the inconsistency the L844.4 note refuses. <b>Agelocer's A4610 and A4710 at 0.35</b>, level with the Seagull ST2130 and 0.05 under the PAX6912, because Agelocer state no regulation; at 0.40 rows 206&ndash;208 move about 0.6 and no band changes. <b>Row 204's clasp at 0.6</b> is an estimate from absence, since Rado say only &ldquo;Dreifach-Faltschliesse&rdquo;. At Tissot's 0.8 the row goes to &minus;0.70 and stays <i>as expected</i>. <b>Agelocer's lume</b> is scored as found, 0.1&ndash;0.3: no page names lume on any hand or marker, and row 206's Super-LumiNova lights the moon rather than the time. <b>Row 205's bezel</b> is null rather than ceramic's 1.0. It is polished high-tech ceramic, but fixed and unmarked, and Rado call row 204's &ldquo;drehbar&rdquo; and not this one. <b>Rado's two weights</b> sit in an unqualified &ldquo;Gewicht&rdquo; field. They are read as with-band on the Tissot and Mido precedent, the same Swatch Group template where the field is demonstrably with-band, not on the KNIS one. <b>Neither Rado page publishes a lug-to-lug</b>, and none of the six rows carries one.</p>
+
+  <p><b>What it did to everything else.</b> Value moved by at most <b>0.50</b> spec points across the existing 203, on row 185, the Tudor Black Bay 58, with 148 of 203 moving at all. Three changed side, all onto exactly 0.0: rows 94 (Sinn 104 Klassik 12) and 184 (Tudor Black Bay 54) from &minus;0.4, row 195 (Glycine Sea Kraken 39) from +0.1. <b>Six rows change band</b>, each by one step and each a row sitting on an edge. Row 26 (Vaer DS2 Meridian quartz) goes <i>above</i> &rarr; <i>as expected</i>, the third pass running it has crossed that line. Rows 51 and 53 (Citizen Tsuyosa &ldquo;Shore&rdquo; and Tsuyosa) go <i>as expected</i> &rarr; <i>below</i>. Row 64 (Seiko Presage &ldquo;Aijiro&rdquo;) goes <i>as expected</i> &rarr; <i>above</i>. Row 85 (Christopher Ward The Twelve 40 Ti) goes <i>above</i> &rarr; <i>well above</i>. Row 156 (Damasko DF20 Old Radium) goes <i>well below</i> &rarr; <i>below</i>. Leave-one-out RMSE is 6.11 &rarr; <b>6.08</b> and naive RMSE 8.92 &rarr; 8.88, so skill moves 53.0% &rarr; 53.2%, marginally better for the addition. Sign flips go 4 &rarr; 1, and resample goes 0.25/0.49 &rarr; 0.24/0.50. Sigma stays at 5, the spec range at 26&ndash;67 and the spec/price correlation at 0.74, and the <code>n/s</code> set is unchanged at rows 16 and 56. <b>One row drifted on spec</b>: row 58, the Seagull Ancient Cloud Motif Day-Date, 37 &rarr; 38. It carries an unresearched sub-score that <code>imputeMissingSubs()</code> fills with the list mean, and six new rows moved that mean across a rounding edge.</p>
+
+  <p><b>The weight estimator's test set grows by five, 69 &rarr; 74, and the two Rado rows are its two largest new misses, in opposite directions.</b> Over the whole set, mean absolute error is 10.8% &rarr; 10.9%, median 6.7% &rarr; 6.8%, RMSE unchanged at 15.2&nbsp;g, within &plusmn;15% 57/69 &rarr; <b>60/74</b>, and mean signed error unchanged at +4.7%. The five added rows alone run 11.3% absolute, 7.7% median, 16.1&nbsp;g RMSE, 3 of 5 within the band and +4.0% signed. The three Agelocers are all close and all a little heavy: row 207 +5.3%, 209 +6.1%, 208 +7.7%. <b>Row 205, the ceramic Discover, reads 18.3% light</b> (105&nbsp;g estimated against 128.5&nbsp;g), which was predicted in its comment before it was measured. <code>DENSITY.Ceramic</code> is 2.0, a figure set for Swatch's bioceramic, and the Discover is the first sintered-zirconia row with a published mass. Zirconia runs about 6&nbsp;g/cm&sup3;, so the cylinder term is undercounted by roughly a factor of three. <b>Row 204, the steel Captain Cook, reads 19.2% heavy</b> (149&nbsp;g against 125&nbsp;g), the opposite sign, on the most ordinary material in the list. Nothing here explains it except that Rado's bracelet or case is lighter than this method assumes. Both are reported and nothing was refitted, for the reason <code>weightEstimatorStats()</code> gives every time: tuning the estimator on the rows meant to test it would leave no way to tell whether it works. A separate <code>Ceramic</code> density for real ceramic is the obvious fix, and it waits until there is more than one row to set it on. The by-pass table above the estimator gains a p50 column, and a p46 column it never got. Pass 46 added three rows without one, and passes 47&ndash;49 added none, so HEAD's figures at the start of this pass are the post-46 state.</p>
+
+  <p><b>Two stale literals in the weight block, and one had been wrong since pass 49.</b> The block's opening said &ldquo;69 published figures and 131 estimates &mdash; 116 rows that genuinely publish nothing&rdquo;. Pass 48 wrote it, and it was right on that pass's 200 rows. Pass 49 then put Peacock's three rows into <code>WEIGHT_UNPUBLISHED</code> without updating it, so 69 + 131 summed to 200 on a 203-row list. It now reads 74 and 135 (120 + 8 + 7), and the maker breakdown after it reads fifteen makers: three Japanese, three Chinese and nine Western. The roster above <code>WEIGHT_MEASURED</code> gains Rado and Agelocer and reconciles at 72 maker-published + 2 borrowed = 74. The usual sites moved with the row count: the contents banner, the steel count above <code>CASE_ORDER</code> (181 of 209), and the <code>DISPLAY_BACK</code> status (181 of 209 resolved, 92 see-through, 89 solid, with row 206 added to the open list because its page never mentions its back).</p>
+
   <p>Complication weights, pass 8. The group as a whole (9% of the spec score) was checked and left unchanged: it already ranks last of the seven groups by actual influence, contributing 7.2% of the observed spread, and raising it would not be supported by the evidence below. Within the group, two values were recalibrated. Because the baseline converts spec points into price (12.9 points = one unit of ln(price)), every complication value is a falsifiable claim about what the market charges; regressing price on all other spec groups plus a dummy per complication isolates that premium. GMT came out at +36%, implying 3.9 spec points against the 4.5 awarded — well calibrated, left alone. Chronograph came out at +87%, implying 8.1 against 3.6 awarded, and moonphase at −9%, implying −1.2 against 2.7 awarded. Chronograph accordingly rises 0.4 → 0.5 and moonphase falls 0.3 → 0.2, both far short of what the regression suggests: the estimates rest on five and three rows respectively, and the chronograph figure is contaminated by the MoonSwatch, which this table already scores as one of its worst-priced watches — part of that premium is hype, not worth. The deeper limit is that this is as far as price-calibration can responsibly go. The residual spread the Value column measures is about 5.6 spec points; weights fitted to agree with price would drive it toward zero by construction, leaving a column that detects nothing. Prices are used here to check the ordering of the values, never to set them. A separate structural point was noted and deliberately not acted on: the complication sub-score tops out at 0.5 against a cap of 1.0, because no watch in this list stacks enough complications to reach the upper half. Rescaling to use the full range would roughly double every complication’s effect, which the market evidence says would overshoot.</p>
   <p>Accuracy, pass 7 — two changes. <b>The Powermatic 80 figures were wrong.</b> All five rows (three Certina, two Tissot) carried −15/+15 s/day, which is the old blanket number. Tissot now publish three tiers on their own site: a standard version at ±7 regulated to +3, giving −4 to +10, seen in the Classic Dream; an Elaborated version at ±5 regulated to +3, giving −2 to +8, used in the Le Locle and PRX; and a COSC version at −4/+6 in the Ballade. All five rows now read −4/+10, the most conservative published tier. Two caveats worth keeping: Tissot do not name the Seastar in any tier, so it may in fact be the Elaborated grade and would then be understated here; and Certina publish no rate figure for the 80.611 at all, so their three rows borrow Swatch Group’s published spec for the same ETA base rather than a Certina number. <b>Second, a Measured column</b> sits beside the published one, holding what watches on each caliber are actually reported to do. It is not scored — the Value model still runs on the published figure — and it exists to make the choice between the two standards visible. The gap is not a constant: roughly 1.7× on the Miyota 9015, 2× on Citizen’s cal. 8210, 2.5× on the NH35 and Miyota 9039, 2.7× on the Sellita, 2.3–3.5× on the Powermatic 80 and 5× on the NOMOS. Rebasing on measured rates would not rescale the column, it would hand several spec points to whichever makers quote most conservatively. Worth noting that fixing the Powermatic figure narrowed its own gap sharply, from about 4× against the stale −15/+15 to 2.3–3.5× against Tissot’s current spec — some of what looks like maker conservatism is simply out-of-date data. Thirty of the seventy-five rows carry a measured figure. The rest are blank because nothing is published: no review or owner log gives rates for the Seagull dress calibers, the La Joux-Perret G100, the Sistem51, the ETA 7001 as fitted here, or the smaller Citizen automatics, and essentially no one measures quartz. Confidence is marked per caliber in the tooltip, and the weakest entry — Citizen’s cal. 8210, where one owner reports every Citizen automatic inside ±3–5 and another returned a new one at +21 — is shown greyed and italic. None of these are controlled measurements. They are owner reports and review samples, posted mostly by people either delighted or annoyed, often taken with phone apps rather than timegraphers, and a magnetised watch reads exactly like a badly regulated one.</p>
   <p>Accuracy correction, NOMOS Club Campus (row 66). This row carried ±1 s/day, which gave it a perfect 1.00 on the accuracy criterion — the only perfect score in the table, and seven times better than the next-best mechanical here. It does not come from NOMOS. Their own FAQ, repeated across three pages of their site, states that NOMOS mechanical watches achieve an accuracy of <b>less than ten seconds deviation per day</b>, regulated in six positions over seven days. Elsewhere they claim their calibers match chronometer results in in-house testing, but that is a comparison rather than a published figure, and chronometer standard is −4/+6 s/day, not ±1. Nothing NOMOS publishes for the DUW 4001 supports ±1, so the row was first set to their FAQ figure of &lt; 10 s/day, which cut the sub-score from 1.00 to 0.32 and the spec score from 66 to 59. It now reads <b>−4/+6 s/day</b>, and that choice needs stating plainly because it is the one row in this column not taken from a spec sheet. NOMOS claim their calibers reach the same accuracy in in-house testing as chronometer-tested watches; chronometer standard under ISO 3159 is −4/+6, so the figure is derived from a NOMOS statement rather than from owner reports — but it is a comparative claim, not a guarantee, and most brands here make some version of it. The row is an exception, and if the column is ever audited this is the entry to revisit first. Two things make it defensible anyway. It is worth 2 spec points, against a residual sigma of about 5, on a row that carries no Value score at all for want of comparable prices — so nothing downstream turns on it. And it removes a mechanical artefact: &lt; 10 is a single ceiling while −10/+30 is a range, and the parser reads a ceiling at its worst case but a range near its middle, so NOMOS was being scored at its guarantee while Miyota was scored comfortably inside theirs. Against the Measured column the row now sits at 2.5× conservatism, in line with the 1.7–3.5× of everything else, where &lt; 10 had it as a lone 5× outlier. The measured record, searched afterwards, says the ±1 was not invented: it is roughly what this watch does. Wristworthy timed a Club Campus 38 against an atomic clock over a full loan period and averaged 1.2 s/day, noting that this clears both COSC and Rolex's in-house standard while NOMOS claims neither. A Club Campus owner on WatchUSeek logged an average of +0.9 s/day; another owner's Club sits at +1; a Club Campus neomatik at +3; an Orion 33 on the same caliber was reviewed at +3 to +5. So the hand-wound cluster genuinely sits around 1–3 s/day, far inside the published bound. The outliers that do appear — a Ludwig at +15, an Alpha back from service at +10 — are attributed by owners to magnetisation rather than regulation, and NOMOS calibers are widely reported to magnetise easily; the +10 example returned to ±0 after demagnetising. The correction therefore is not that ±1 was wrong about the watch. It is that ±1 was a measured figure sitting in a column of manufacturer specifications, where it competed against −5/+15 quoted by makers who are deliberately conservative. Scoring one row on observed performance and thirty-nine on published tolerance rewards the brand somebody happened to look up. If this column is ever rebased on measured rates, that is a defensible standard — it just has to be applied to all forty mechanicals.</p>
@@ -720,7 +736,7 @@
 // =============================================================================================
 // Contents. Grep for the "--- Name ---" banner to jump to a section; they are in this order.
 //
-//   Data          WATCHES, one object literal per row, ids 1-203 contiguous. Row ids are keys
+//   Data          WATCHES, one object literal per row, ids 1-209 contiguous. Row ids are keys
 //                 into every side table below, so renumbering silently reassigns research.
 //   Side tables   MEASURED_ACCURACY · Weight · Watch type · Buying status · Movement tier ·
 //                 Complications · EXTRAS · Finishing · Fittings — all keyed by row id, except
@@ -4880,6 +4896,144 @@ const WATCHES = [
   powerReserveDisplay:'48 h', accuracyDisplay:'—',
   waterResDisplay:'100 m (10 ATM)', waterResM:100,
   priceDisplay:'$3,350', priceValue:3350, priceCurrency:'USD' },
+
+// --- Rado Captain Cook, pass 50 (rows 204-205) ---------------------------------------------------
+// rado.com/de_de is a Hyvä-themed Magento store and page-text.js fetches it directly. Two blocks
+// carry the specs and neither is complete alone: a rendered table (Gehäusedurchmesser, Höhe,
+// Gewicht, Lünette, Krone, Gehäuseboden, Kaliber, Gangreserve, Genauigkeit, Unruh, Bandschließe)
+// whose material and band rows render EMPTY, and a prose paragraph above it that names the
+// materials, the glass and the water resistance. Price is the schema.org offer. No lug-to-lug on
+// either page and none in the payload, so '—'. Images are the maker's own media/catalog renders.
+//
+// Accuracy is '—' on both. Rado's "Genauigkeit" field reads "Movement tested in 5 position" - a
+// regulation claim, no figure - and the R763 has no single published rate to borrow under rule 2.
+// The claim is not lost: it is what MOVEMENT_TIER pays the R763 for, see the key's comment there.
+{ id:204, brand:'Rado', name:'Rado Captain Cook Automatic 39 (R32223213)', desc:'39 mm steel diver, rotating bezel with engraved ceramic insert, black-to-turquoise gradient dial, box sapphire · 300 m, rice-grain steel bracelet',
+  link:'https://www.rado.com/de_de/captain-cook-automatic-r32223213.html',
+  img:'https://www.rado.com/media/catalog/product/c/a/captaincook_r32223213_a.png',
+  diameterDisplay:'39 mm', diameterMm:39, l2lDisplay:'—',
+  heightDisplay:'12 mm', heightMm:12,
+  caseDisplay:'Polished stainless steel, rotating bezel with black high-tech ceramic insert (engraved, lumed triangle), screw-down crown, screwed steel caseback', caseCategory:'Steel',
+  bandDisplay:'Polished and satin steel bracelet, rice-grain style, steel triple-fold clasp',
+  glassDisplay:'Box sapphire, AR both sides', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Rado R763 (Nivachron, 5-position adjusted)', movementType:'Automatic', movementCostDisplay:'not sold separately (Swatch Group excl.)',
+  powerReserveDisplay:'80 h', accuracyDisplay:'—',
+  waterResDisplay:'300 m (30 bar)', waterResM:300,
+  priceDisplay:'€2,550', priceValue:2550, priceCurrency:'EUR' },
+
+{ id:205, brand:'Rado', name:'Rado Captain Cook Discover (R32279162)', desc:'40.7 mm polished black high-tech ceramic case AND three-link ceramic bracelet, fixed ceramic bezel, laser wave dial, date at 4:30 · 150 m',
+  link:'https://www.rado.com/de_de/captain-cook-discover-r32279162.html',
+  img:'https://www.rado.com/media/catalog/product/c/a/captaincook_discover_r32279162_a.png',
+  diameterDisplay:'40.7 mm', diameterMm:40.7, l2lDisplay:'—',
+  heightDisplay:'12.3 mm', heightMm:12.3,
+  // The bezel is polished high-tech ceramic with no scale; Rado's prose never calls it rotating,
+  // where it says "drehbar" on row 204's, and the photographs show a plain unmarked ring. Fixed,
+  // so EXTRAS bezel is null rather than ceramic's 1.0.
+  caseDisplay:'Polished black high-tech ceramic, fixed polished ceramic bezel, crown guards, screw-down ceramic crown, titanium caseback with sapphire window', caseCategory:'Ceramic',
+  bandDisplay:'Ceramic bracelet (matt outer, polished centre links), titanium triple-fold clasp with 3-position quick adjustment',
+  // "gewölbtes Saphirglas" - domed sapphire, and unlike row 204 no anti-reflective coating is named.
+  glassDisplay:'Domed sapphire', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Rado R763 (Nivachron, 5-position adjusted)', movementType:'Automatic', movementCostDisplay:'not sold separately (Swatch Group excl.)',
+  powerReserveDisplay:'80 h', accuracyDisplay:'—',
+  waterResDisplay:'150 m', waterResM:150,
+  priceDisplay:'€4,100', priceValue:4100, priceCurrency:'EUR' },
+
+// --- Agelocer, pass 50 (rows 206-209) --------------------------------------------------------------
+// agelocershop.com is a SHOPLAZZA storefront, which is not Shopify: no <product>.json, and the
+// script's plain fetch gets HTTP 403 on every product page. curl with a browser User-Agent gets the
+// whole page (1.1-1.3 MB) on the first attempt - the christopherward.com shape from pass 46, so the
+// 403 is a finding about the script and nothing is recorded as unpublished on the strength of it.
+// The variant records (title, sku, price, image) are embedded in the page; the specs are a
+// "PARAMETER" block in the description, written as twelve labels followed by twelve values.
+// Prices are USD, the store's only currency, and recomputePriceEUR() converts them.
+//
+// Three things about this maker's pages that the rows depend on:
+//   1. The PARAMETER block describes ONE band, and on rows 206 and 208 it is the leather strap
+//      with a pin buckle. Row 206's link pins the steel-bracelet variant ("Silver steel strip",
+//      which on row 209's page is "316L stainless steel chain"), so its block's 76.2 g and
+//      "Pin buckle" describe a different SKU and are not used. Row 208's link pins nothing; the
+//      default variant is the leather one, so its block does apply.
+//   2. Row 207 has no text specs at all. Its PARAMETER block is a graphic, and that graphic
+//      carries the linked SKU's own number - "Product SKU: 5401A9" - so it is per-SKU data, not
+//      a shared template. The same page's gallery also carries a caseback render reading
+//      "BUDAPEST" on a leather strap, a different series: images travel between Agelocer pages,
+//      so only the SKU-stamped graphic is taken as evidence about this watch.
+//   3. Rates. Pages on the A4610 say the movement "controls the daily error ... within ±15
+//      seconds"; row 209's page says the same sentence AND carries a "-5~+15 Seconds/Day
+//      Precision" badge. See row 209 for which is taken.
+// No lug-to-lug is published for any of the four. "Case size: 40*40mm" on row 206 is the case
+// diameter written as a square, not a length - the photographs show lugs past the 40 mm ring.
+{ id:206, brand:'Agelocer', name:'Agelocer Astronomer Meteorite Moonphase, steel bracelet (6403A9)', desc:'Muonionalusta meteorite dial with an oversized micro-engraved 3D moon · 31-tooth moonphase (29.51-day cycle), 40 mm, 80 h; the 6403A1/A7 are the same watch on leather',
+  link:'https://www.agelocershop.com/products/agelocer-astronomer-new-mens-automatic-mechanical-gold-moonphase-watch-natural-meteorite-dial?variant=b5970efd-ea6f-4d7d-a9be-0020900685b9',
+  img:'https://img.staticdj.com/1af541f7c8c2275d82c46265d54cc360.jpg',
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'—',
+  heightDisplay:'10.6 mm', heightMm:10.6,
+  // Caseback NOT researched: no page text describes it and no gallery image shows it. Kept free of
+  // the words the displayBackFor() fallback reads, so the row stays imputed rather than scored 1.
+  caseDisplay:'316L stainless steel, brushed and polished, fixed polished bezel (caseback not specified)', caseCategory:'Steel',
+  // The linked variant. Its clasp is not described anywhere: the PARAMETER block is the leather
+  // SKU's. Rows 207 and 209 state a butterfly clasp on a bracelet of the same design; that is a
+  // sibling's figure and is NOT carried across - see EXTRAS.
+  bandDisplay:'Steel bracelet (clasp not described; the published spec block is the leather variant\'s)',
+  glassDisplay:'Sapphire, anti-glare', glassCategory:'Sapphire',
+  // The PARAMETER block names Cal.A4610, the same caliber as row 208's big-date watch, and its 12
+  // lines are otherwise row 208's template with different numbers. A moonphase is a module over a
+  // base, so one caliber name across both is plausible rather than a copy-paste error - and the
+  // tier is keyed on the base either way. The moonphase is paid for in EXTRAS comp.
+  movementDisplay:'Automatic — Agelocer A4610', movementType:'Automatic', movementCostDisplay:'not sold separately (Agelocer own caliber)',
+  powerReserveDisplay:'80 h', accuracyDisplay:'±15 s/day',
+  waterResDisplay:'50 m (5 ATM)', waterResM:50,
+  priceDisplay:'$1,129', priceValue:1129, priceCurrency:'USD' },
+
+{ id:207, brand:'Agelocer', name:'Agelocer Schwarzwald Double-Sided Skeleton, steel bracelet (5401A9)', desc:'Skeletonised automatic with scroll-engraved bridges, visible front and back · Roman chapter ring, 40 × 9.5 mm; 5401A1 is the same watch on leather at $30 less',
+  link:'https://www.agelocershop.com/products/schwarzwald-engraved-double-sided-skeleton-mechanical-watch?variant=330f944d-98e6-4436-845f-c81acacf0f08',
+  img:'https://img.staticdj.com/78ac012bd8162c6f7df7ffa6cf4ccabd.png',
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'—',
+  heightDisplay:'9.5 mm', heightMm:9.5,
+  caseDisplay:'316L stainless steel, fixed polished bezel, transparent caseback', caseCategory:'Steel',
+  bandDisplay:'Steel bracelet, butterfly clasp',
+  // "Mirror Material: Synthetic Sapphire" in the SKU graphic; no coating named on this page.
+  glassDisplay:'Sapphire', glassCategory:'Sapphire',
+  // Cal. A4710 in the SKU graphic, a different number from the A4610 on rows 206 and 208. The ±15
+  // s/day those pages state is a sentence about the A4610, and this page carries no rate at all;
+  // an own caliber has no maker ladder to borrow from (rule 2), so '—'.
+  movementDisplay:'Automatic — Agelocer A4710 (skeleton)', movementType:'Automatic', movementCostDisplay:'not sold separately (Agelocer own caliber)',
+  powerReserveDisplay:'80 h', accuracyDisplay:'—',
+  waterResDisplay:'50 m', waterResM:50,
+  priceDisplay:'$359', priceValue:359, priceCurrency:'USD' },
+
+{ id:208, brand:'Agelocer', name:'Agelocer Lake Baikal Marble Edition, Silver Black (5902A1)', desc:'Black marble dial, large date at 3, applied batons · 42 mm on leather, 80 h, exhibition back; 5902D2 is the rose-gold-tone sibling',
+  link:'https://www.agelocershop.com/products/lake-baikal-male-series-automatic-mechanical-watches-marble-edition',
+  img:'https://img.staticdj.com/36ecb67ac78b6468b0efbe8e6b060062.png',
+  diameterDisplay:'42 mm', diameterMm:42, l2lDisplay:'—',
+  heightDisplay:'11 mm', heightMm:11,
+  caseDisplay:'316L stainless steel, brushed and polished, fixed polished bezel, transparent caseback', caseCategory:'Steel',
+  bandDisplay:'Cowhide leather strap, pin buckle',
+  glassDisplay:'Sapphire, anti-glare', glassCategory:'Sapphire',
+  movementDisplay:'Automatic — Agelocer A4610', movementType:'Automatic', movementCostDisplay:'not sold separately (Agelocer own caliber)',
+  powerReserveDisplay:'80 h', accuracyDisplay:'±15 s/day',
+  waterResDisplay:'50 m (5 ATM)', waterResM:50,
+  priceDisplay:'$339', priceValue:339, priceCurrency:'USD' },
+
+{ id:209, brand:'Agelocer', name:'Agelocer Tourbillon, steel bracelet, Silver Black (9001A9)', desc:'Free-sprung flying tourbillon at 6 in an open skeleton dial · double barrel, 80 h, 40 × 9.7 mm; the 9001E9 adds a zircon bezel for $200 more',
+  link:'https://www.agelocershop.com/products/agelocer-tourbillon-male-series-manual-mechanical-watches-steel-strip-version?variant=ffb6563b-3c4c-4b0f-9013-44986096e72d',
+  img:'https://img.staticdj.com/4e5cb2475d270bb63bd333f6d407b51a.png',
+  diameterDisplay:'40 mm', diameterMm:40, l2lDisplay:'—',
+  heightDisplay:'9.7 mm', heightMm:9.7,
+  // "the same sapphire glass ... on both the watch crystal and the case back" - a published spec.
+  caseDisplay:'316L stainless steel, brushed and polished, fixed polished bezel, sapphire caseback', caseCategory:'Steel',
+  bandDisplay:'316L steel bracelet, butterfly clasp',
+  glassDisplay:'Sapphire, anti-glare (front and back)', glassCategory:'Sapphire',
+  // Two rates on one page. A "-5~+15 Seconds/Day Precision" badge sits in the page's own feature
+  // list, and the prose repeats the "within ±15 seconds" sentence the A4610 pages carry word for
+  // word. The badge is taken: it is the only statement specific to this caliber, where the
+  // sentence is shared copy across Agelocer's movements. The choice is worth about a spec point:
+  // accuracyMagnitudePerDay() reads -5/+15 as 10 and ±15 as 15, and measured, ±15 takes the row
+  // from 59 to 58 spec points and +10.20 to +9.10 - still well above the curve.
+  movementDisplay:'Hand-wound flying tourbillon — Agelocer 9001 (free-sprung balance)', movementType:'Hand-wound', movementCostDisplay:'not sold separately (Agelocer own caliber)',
+  powerReserveDisplay:'80 h', accuracyDisplay:'−5/+15 s/day',
+  waterResDisplay:'50 m (5 ATM)', waterResM:50,
+  priceDisplay:'$929', priceValue:929, priceCurrency:'USD' },
 ];
 
 // USD→EUR rate used both to sort/filter Price across currencies AND to show a converted
@@ -5092,9 +5246,9 @@ function measuredRatioStats(watches) {
 
 
 // --- Weight (pass 10, rewritten in pass 11) ------------------------------------------------
-// Thirteen makers publish mass as a plain field in the same spec table as the diameter, which the
-// roster above WEIGHT_MEASURED sets out per maker. The column is 69 published figures and 131
-// estimates - 116 rows that genuinely publish nothing, 8 that could not be reached, and 7
+// Fifteen makers publish mass as a plain field in the same spec table as the diameter, which the
+// roster above WEIGHT_MEASURED sets out per maker. The column is 74 published figures and 135
+// estimates - 120 rows that genuinely publish nothing, 8 that could not be reached, and 7
 // published head-only. The estimator below runs for anything not in WEIGHT_MEASURED.
 //
 // Pass 10 built this column on the premise that mass "is simply not in the spec sheets" and
@@ -5114,13 +5268,13 @@ function measuredRatioStats(watches) {
 // Pass 10 added that "if a real set of measured weights ever exists that argument changes,
 // because measured mass carries information the dimensions do not - bracelet build, case wall
 // thickness". That set now partly exists, so the question is flagged rather than quietly ignored.
-// It is still NOT acted on, for two reasons. The 69 are not a random sample - they are thirteen
-// makers who happen to document well, three of them Japanese, two Chinese and eight Western, so
+// It is still NOT acted on, for two reasons. The 74 are not a random sample - they are fifteen
+// makers who happen to document well, three of them Japanese, three Chinese and nine Western, so
 // scoring on them would score brands on their spec-sheet habits. (That breakdown read "three of
 // them Japanese and eight Western" until pass 42, which is eleven makers correctly counted and
 // Seagull filed on the wrong side of the Sea of Japan; adding a second Chinese maker is what made
 // it visible.) And the double-counting objection above still
-// binds for the other 131 rows, where the "weight" is a function of columns the score already reads.
+// binds for the other 135 rows, where the "weight" is a function of columns the score already reads.
 // Scoring a column that is measured for some rows and derived from other scored inputs for the
 // rest would mean two different things in one number. Completing the research is the prerequisite.
 //
@@ -5136,12 +5290,14 @@ function measuredRatioStats(watches) {
 // slightly worse again, in the same direction and for the same structural reason - see below.
 // Pass 23's ONE row moved it more than either: the Junkers on row 113 is the largest single error
 // in the set at +76.1%, and on its own it takes mean absolute error from 9.8% to 11.1%.
-//                        28 rows (p11)   36 rows (p12)   47 rows (p16)   50 rows (p21)   51 rows (p23)   51 rows (p24)   54 rows (p25)   58 rows (p26)   61 rows (p32)   63 rows (p41)   64 rows (p42)   66 rows (p45)
-//   mean absolute error       8.5%           8.2%            9.5%            9.8%           11.1%            9.8%            9.9%           10.7%           10.5%           10.6%           10.5%           10.2%
-//   median absolute error     6.1%           5.8%            6.1%            6.5%            6.5%            6.0%            6.3%            6.6%            6.7%            6.7%            6.7%            6.5%
-//   RMSE                     11.8 g         11.9 g          13.5 g          13.9 g          14.6 g          13.8 g          13.6 g          14.8 g          14.5 g          15.0 g          14.9 g          14.7 g
-//   within +-15%             25 of 28       32 of 36        40 of 47        42 of 50        42 of 51        44 of 51        46 of 54        48 of 58        51 of 61        52 of 63        53 of 64        55 of 66
-//   mean signed error        +2.6%          +1.6%           +2.4%           +3.1%           +4.5%           +3.2%           +3.7%          +4.4%           +4.5%           +4.0%           +4.0%          +3.8%  (+ = reads heavy)
+//                        28 rows (p11)   36 rows (p12)   47 rows (p16)   50 rows (p21)   51 rows (p23)   51 rows (p24)   54 rows (p25)   58 rows (p26)   61 rows (p32)   63 rows (p41)   64 rows (p42)   66 rows (p45)   69 rows (p46)   74 rows (p50)
+//   mean absolute error       8.5%           8.2%            9.5%            9.8%           11.1%            9.8%            9.9%           10.7%           10.5%           10.6%           10.5%           10.2%           10.8%           10.9%
+//   median absolute error     6.1%           5.8%            6.1%            6.5%            6.5%            6.0%            6.3%            6.6%            6.7%            6.7%            6.7%            6.5%            6.7%            6.8%
+//   RMSE                     11.8 g         11.9 g          13.5 g          13.9 g          14.6 g          13.8 g          13.6 g          14.8 g          14.5 g          15.0 g          14.9 g          14.7 g          15.2 g          15.2 g
+//   within +-15%             25 of 28       32 of 36        40 of 47        42 of 50        42 of 51        44 of 51        46 of 54        48 of 58        51 of 61        52 of 63        53 of 64        55 of 66        57 of 69        60 of 74
+//   mean signed error        +2.6%          +1.6%           +2.4%           +3.1%           +4.5%           +3.2%           +3.7%          +4.4%           +4.5%           +4.0%           +4.0%          +3.8%           +4.7%           +4.7%  (+ = reads heavy)
+// The p46 column was filled in by pass 50 - pass 46 added three rows without one, and passes
+// 47-49 added none, so the set as pass 50 found it IS the post-46 state and was measured there.
 // Pass 45 added TWO rows and they are the closest pair in the set, both at -1.3% - 158 g estimated
 // against KNIS's published 160 g, on the same case and the same bracelet. That is not a triumph
 // for the method and the block below the roster says why: KNIS do not state whether their figure
@@ -5267,8 +5423,8 @@ function measuredRatioStats(watches) {
 const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceramic: 2.0 };
 // Published weights, pass 11, extended in passes 12, 15 and 16. Every row was checked against the
 // maker's own product page - the link the row already carries - rather than sampled. That
-// overturned the premise this column was built on. Weight is NOT unpublishable: thirteen makers
-// state it outright, as a plain field in the same spec table as the diameter, covering 67 rows.
+// overturned the premise this column was built on. Weight is NOT unpublishable: fifteen makers
+// state it outright, as a plain field in the same spec table as the diameter, covering 72 rows.
 //   Citizen    "Gewicht"          13/17 rows on de.citizenwatch.eu
 //   CW         "Weight inc. Strap" 13/13 rows - and the only maker that also gives a separate
 //                                  "Case Weight", i.e. the only one it is possible to take the
@@ -5305,9 +5461,15 @@ const DENSITY = { Steel: 7.9, Bronze: 8.8, Titanium: 4.5, Ceramic: 2.0, Bioceram
 //                                  which is which - so the choose-the-priced-band rule has nothing
 //                                  to key on. Seagull's "93/g/182g" and "121g/84g" are the same
 //                                  shape and both resolve, on band and on case size
+//   Rado       "Gewicht"           2/2 rows - the fourteenth maker, pass 50. Band inclusion is
+//                                  unstated and read from the Swatch Group siblings' identical
+//                                  field; see the entries
+//   Agelocer   "Watch weight"      3/4 rows - the fifteenth maker, pass 50. One figure per page
+//                                  for ONE band; row 206's describes a band it is not priced on
 // Two more rows come from a third party where the maker omits it, marked below. Figures are
 // with the band the row is priced on, matching what this column claims to show.
-// The three counts above reconcile: 67 published by the maker + 2 borrowed = the 69 in the table.
+// The three counts above reconcile: 72 published by the maker + 2 borrowed = the 74 in the table.
+// (67 + 2 = 69 before pass 50 added Rado's two and Agelocer's three.)
 // They did not before pass 25 - the roster said eight makers and 47 rows while listing 48, had
 // never gained Junkers, and still counted row 67 as borrowed after pass 21 found Longines publish
 // it themselves. Corrected here rather than left, since a roster that does not add up is the kind
@@ -5480,6 +5642,35 @@ const WEIGHT_MEASURED = {
   167: 127,  // C60-39C3H1-S0RK0-B1, SW300-1 COSC, steel Consort bracelet (case alone 57 g)
   168: 131,  // C60-39AGM1-S0RK0-B1, SW330-2 COSC, steel Consort bracelet (case alone 61 g)
   169: 68,   // C60-39C3H1-B0VV0-VT1, SW300-1 COSC, tan vintage-oak leather (case alone 57 g)
+  // --- Rado, "Gewicht" on rado.com/de_de, pass 50 --------------------------------------------
+  // The fourteenth maker. The field sits in the spec table's summary row beside the diameter and
+  // the movement type and does not say whether the band is included - the KNIS question again.
+  // It is answered the way Tissot's and Mido's are, which is the relevant precedent rather than
+  // KNIS's: the same Swatch Group shop template, the same German label, and on those two makers
+  // the field is demonstrably with-band (row 21's 79 g is its silicone strap's figure, its steel
+  // siblings 131 g). Physically there is no other reading - a 39 mm steel head is ~70 g and a
+  // ceramic one less - but as on the KNIS rows that agreement was checked after, not used to decide.
+  204: 125,   // Captain Cook Automatic 39, R763, steel bracelet
+  205: 128.5, // Captain Cook Discover, R763, ceramic bracelet with titanium clasp. The first
+              //   sintered-ceramic row in the test set: DENSITY.Ceramic is 2.0, a figure set for
+              //   Swatch's bioceramic, where zirconia runs ~6 g/cm³, so expect this row to read
+              //   light. Reported rather than refitted - see weightEstimatorStats()
+  // --- Agelocer, "Watch weight" / "Weight" on agelocershop.com, pass 50 ----------------------
+  // The fifteenth maker. Each figure is the band its own PARAMETER block describes, and each is
+  // taken only where that is the band the row is priced on: 208's block is the leather strap and
+  // so is its default variant; 207's is the SKU-stamped graphic for the bracelet variant; 209's
+  // page sells only the bracelet. Row 206's 76.2 g is its leather variant's and is NOT here.
+  // 207 and 209 publish the SAME 132 g, and evidence rule 5 was put to them rather than waved
+  // past. It does not bite, on the Vaer test's own terms: Vaer's 70.6 g was one sentence pasted
+  // across 36 and 39 mm cases of three heights, while these are two 40 mm cases 0.2 mm apart in
+  // height on what the photographs show is the same seven-row bracelet, each figure in a block
+  // that differs from the other everywhere else (caliber, jewels, height, buckle wording). Two
+  // near-identical watches weighing the same is the expected result, not a template. Agelocer's
+  // other two figures, 76.2 g and 95.6 g, are specific to a decimal, which is the opposite of
+  // boilerplate. If a third, different-sized Agelocer case ever turns up at 132 g, revisit both.
+  207: 132,   // Schwarzwald 5401A9, A4710, steel bracelet - from the SKU graphic
+  208: 95.6,  // Lake Baikal 5902A1, A4610, cowhide leather strap
+  209: 132,   // Tourbillon 9001A9, cal. 9001, steel bracelet
 };
 
 // Sinn is the one maker that publishes a head-only figure: "Gewicht ohne Band: 65 Gramm" for the
@@ -5673,6 +5864,10 @@ const WEIGHT_UNPUBLISHED = new Set([
   201, 202, 203,          // Peacock, pass 49 - an eleven-line spec block in body_html and long
                           //   prose, and no mass in either; --probe finds none in the payload.
                           //   Shopify's variant grams is the parcel and is not a weight here
+  206,                    // Agelocer Astronomer, pass 50 - the row-90 near-miss. The page DOES
+                          //   publish 76.2 g, in a PARAMETER block describing the cowhide strap
+                          //   and pin buckle; this row is priced on the steel bracelet, whose
+                          //   mass is stated nowhere. The variant record's weight is "0"
 ]);
 
 // Checked, not settled. Separated from the set above because "the maker does not publish it" and
@@ -6045,6 +6240,16 @@ const WATCH_TYPES = {
   201: ['Diver', 'Sports'],              // 300 m, timing bezel, helium valve - Peacock's "Diver"
   202: ['Dress', 'Sports'],              // 9.4 mm, three hands, no date; integrated bracelet, 100 m
   203: ['Sports', 'Dress'],              // "tourbillon sports watch", 9.8 mm, 100 m
+  // Pass 50. Rado file both Captain Cooks under "Sport- & Taucheruhren"; only row 204 has the
+  // bezel and depth to be a diver, and the Discover's fixed bezel and 150 m make it a ceramic
+  // sports watch. The four Agelocers are dress watches by every reading - 50 m, fixed polished
+  // bezels, open or decorative dials - and Agelocer's own collections say no more than that.
+  204: ['Diver'],                        // 300 m, rotating ceramic-insert bezel
+  205: ['Sports', 'Everyday'],           // 150 m ceramic case and bracelet, fixed bezel
+  206: ['Dress'],
+  207: ['Dress'],
+  208: ['Dress', 'Everyday'],            // 42 mm, date, leather - the least formal of the four
+  209: ['Dress'],
 };
 const typesFor = w => WATCH_TYPES[w.id] ?? [];
 
@@ -6115,7 +6320,7 @@ const STATUS_LABELS = STATUS_ORDER.map(k => STATUS_META[k].label);
 // hardcoded <option> lists these replaced allowed.
 //
 // The orders are the ones the <option> lists carried and are kept deliberately: case runs
-// commonest-first (176 of 203 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
+// commonest-first (181 of 209 rows are steel), glass runs best-first on the GLASS_SCORE axis so it
 // reads as a scale, and movement happens to be alphabetical. Brand needs no array here - it is
 // derived from the data and sorted with localeCompare.
 const CASE_ORDER = ['Steel', 'Titanium', 'Bronze', 'Ceramic'];
@@ -6568,6 +6773,22 @@ const MOVEMENT_TIER = {
   'Automatic — Mido Caliber 80 (ETA C07.611, Nivachron)': 0.55,
   'Automatic — Mido Caliber 80 (ETA C07.621, Nivachron)': 0.55,
   'Automatic — Mido Caliber 80 (ETA C07.611)': 0.50,  // Baroncelli: no Nivachron claimed for this ref
+  // Rado R763, pass 50, at 0.60 - and this is the pass's number most open to disagreement. Rado
+  // do not name the base, but every published property is the Swatch Group 80-hour family's: 25
+  // jewels, 80 h, a Nivachron hairspring, a Swatch Group exclusive. So the starting point is the
+  // 0.55 the Powermatic 80, the Hamilton H-10 and the Mido Caliber 80 all take. Rado then state on
+  // both pages what Tissot, Hamilton and Mido do not - that the movement is "in fünf Positionen
+  // getestet" / adjusted "in fünf Lagen" - and this table's header folds regulation grade INTO the
+  // tier. +0.05 is the step Peacock's PAX6912 took one pass ago for the identical claim, so 0.60.
+  // THE OBJECTION: the C07 family is laser-regulated at one shot with no index to adjust, so
+  // "tested in five positions" may describe a sorting test rather than an adjustment, and Rado
+  // publish no tolerance to show it buys anything. If so, 0.55 level with the Mido rows is right,
+  // and it costs rows 204 and 205 a spec point each - measured, 204 goes -2.10 -> -2.70 and crosses
+  // from as expected to below the curve, 205 goes -0.50 -> -1.10 and stays. The rule is applied rather than
+  // withheld because withholding it for the Swiss maker after granting it to the Chinese one is
+  // the inconsistency the L844.4 note above refuses. The Nivachron is scored in EXTRAS antimag at
+  // 0.5, as on every Tissot, and is NOT why this is above 0.55.
+  'Automatic — Rado R763 (Nivachron, 5-position adjusted)': 0.60,
   'Automatic — cal. 8322': 0.50,
   'Automatic true GMT — Miyota 9075': 0.45,
   'Automatic — SISTEM51 (Nivachron, laser-regulated)': 0.45,
@@ -6664,6 +6885,27 @@ const MOVEMENT_TIER = {
   // stripes, perlage and anglage Peacock describe earn nothing anywhere: the back is solid, and
   // decoration nobody can see is the Tudor rule in FINISH.
   'Automatic — Peacock PAX6912 (in-house, 5-position adjusted)': 0.40,
+  // Agelocer, pass 50. Three keys, each placed on a ladder this table already has.
+  //   9001, 0.70 - the tourbillon ladder above, worked rather than asserted: 0.60 base rung, +0.05
+  //     for a free-sprung balance (Agelocer's "eliminates the balance-spring speed regulator
+  //     clamp", the merit the PAX9610B takes), +0.05 for a FLYING carriage, the ladder's second
+  //     named merit and the one the Peacocks do not claim. That puts it 0.05 above row 201's
+  //     PAX9610B and no higher: no own hairspring, no hand assembly, no certification is claimed.
+  //     The double barrel earns nothing here - it is how the 80 h is reached, and powerReserve
+  //     pays for 80 h. The -5/+15 rate pays in accuracyDisplay, as a COSC rate would.
+  //   A4610 and A4710, 0.35 - the Chinese commodity-automatic rung, level with the Seagull ST2130,
+  //     and deliberately 0.05 BELOW Peacock's PAX6912. That gap is the PAX6912's own argument run
+  //     the other way: it was 0.35 + 0.05 for a stated five-position adjustment, and Agelocer state
+  //     no regulation at all - "a 2-week precision test" is a test, not an adjustment. Agelocer do
+  //     call both calibers their own ("independently designed and developed"), as Peacock did, and
+  //     that claim earned Peacock nothing on its own either. The 27 jewels, the shock system
+  //     ("Novodiac suspension") and the 80 h do not move it: jewel counts are not architecture,
+  //     every caliber here has shock protection, and power reserve pays for itself. The
+  //     skeletonising of the A4710 is decoration, which is FINISH's, and A4710 gets its own key
+  //     only because it is a different caliber number on Agelocer's own sheet.
+  'Hand-wound flying tourbillon — Agelocer 9001 (free-sprung balance)': 0.70,
+  'Automatic — Agelocer A4610': 0.35,
+  'Automatic — Agelocer A4710 (skeleton)': 0.35,
   'Automatic (hand-wind) — cal. 8213': 0.40,  // current in-house Citizen, hand-windable, 3 Hz, 21 jewels
   'Automatic — cal. 8210': 0.30,
   'Meca-quartz — Seiko VK63': 0.30,
@@ -8072,6 +8314,43 @@ const EXTRAS = {
   // 202's filled indexes, level with the MoonSwatch on row 63. bezel null, fixed and screwed.
   // comp: the tourbillon, on the same terms as row 201.
   203:{lume:0.4,war:2,iso:0,antimag:0,clasp:0.6,service:0.4,bezel:null,comp:['tourbillon']},
+  // Rado, pass 50. war 5 on both pages ("5 Jahre internationale Garantie"); service 0.9, the
+  // Swatch Group network Tissot and Mido take. antimag 0.5: the Nivachron spiral Rado name in
+  // the Unruh field, the Powermatic rows' figure. iso 0: neither page claims ISO 6425, and row
+  // 204's 300 m does not make it one.
+  // Row 204. lume 0.6, level with row 201: Super-LumiNova named on indexes, hands and the bezel
+  // triangle - more application than the unspecified 0.5, no grade named to reach the 0.75 rung.
+  // clasp 0.6: "Dreifach-Faltschliesse aus Edelstahl" and nothing more - no push-buttons, no
+  // adjustment - so the basic-foldover rung. It sits BELOW Tissot's and Mido's 0.8 because those
+  // rows describe more, not because this clasp is known to be worse; it is an estimate from
+  // absence, the softest number on the row. bezel 1.0: a rotating bezel with a high-tech ceramic
+  // insert, the ceramic rung.
+  204:{lume:0.6,war:5,iso:0,antimag:0.5,clasp:0.6,service:0.9,bezel:1.0},
+  // Row 205. lume 0.4, level with row 203: Rado put Super-LumiNova on the skeleton hands and the
+  // anchor symbol and describe the applied indexes as polished black - less than row 204's full
+  // application. clasp 0.85, level with row 161: a titanium triple-fold with "Schnellverstellung
+  // in drei Positionen", adjustment on the wrist without tools, which is the on-the-fly rung, held
+  // under the 0.9 butterfly. bezel null: fixed and unmarked (see the row comment).
+  205:{lume:0.4,war:5,iso:0,antimag:0.5,clasp:0.85,service:0.9,bezel:null},
+  // Agelocer, pass 50. war 3 on every page ("3-Year Warranty Worldwide"). service 0.4, Peacock's
+  // and Jianghun's figure - a Chinese maker selling direct on its own calibers. iso 0 and antimag
+  // 0 throughout: nothing is claimed. bezel null on all four: fixed polished bezels.
+  // LUME is the weak spot of the whole maker and it is scored as found. No page names lume on
+  // hands or markers. Row 206 names Super-LumiNova on the moon disc only, which lights the moon
+  // rather than the time - 0.3, the top of the minimal rung, for a lumed element that is real but
+  // not a timekeeping one. 208 and 209 show polished batons and hands with nothing stated, 0.2;
+  // 207's skeleton dial has no lumed surface in any photograph, 0.1.
+  // CLASP follows the priced band. 207 and 209 state a "Butterfly buckle" with no adjustment, row
+  // 84's 0.7. 208 is priced on leather with a pin buckle, 0.3. 206 is priced on the bracelet and
+  // its page describes only the leather variant's buckle; the same bracelet design carries a
+  // butterfly on 207 and 209, and that is a sibling's spec, not this SKU's - so 0.6, the basic
+  // foldover estimate Peacock's undescribed clasps take, rather than borrowing 0.7.
+  // COMP: 206's moonphase and 209's tourbillon. 208's large date earns nothing - there is no date
+  // key in COMPLICATION_VALUES, a big one or otherwise (row 131's reason).
+  206:{lume:0.3,war:3,iso:0,antimag:0,clasp:0.6,service:0.4,bezel:null,comp:['moonphase']},
+  207:{lume:0.1,war:3,iso:0,antimag:0,clasp:0.7,service:0.4,bezel:null},
+  208:{lume:0.2,war:3,iso:0,antimag:0,clasp:0.3,service:0.4,bezel:null},
+  209:{lume:0.2,war:3,iso:0,antimag:0,clasp:0.7,service:0.4,bezel:null,comp:['tourbillon']},
 };
 const DEFAULT_EXTRAS = { lume:0.5, war:1, iso:0, antimag:0, clasp:0.5, service:0.5, bezel:null, comp:[] };
 
@@ -8625,6 +8904,31 @@ const FINISH = {
   // What would move all three: an independent hands-on inspection. Every number here rests on
   // Peacock's own photographs and copy, and the copy is the weaker of the two.
   201:0.80, 202:0.75, 203:0.75,
+  // Rado, pass 50. 0.60 for both, level with Tudor and Longines - the Swiss-major industrial rung.
+  // Row 204: polished case, a polished-and-satin rice-grain bracelet, a gradient dial with applied
+  // rhodium indexes; good, and nothing beyond the rung. Row 205: polished ceramic is hard to finish
+  // and the dial carries a laser-cut wave pattern, but the material is CASE_SCORE's (Ceramic, 1.0)
+  // and a laser pattern is a machine operation, so it holds level rather than climbing. Rado name
+  // no movement decoration behind 205's sapphire back, so the window earns nothing here.
+  204:0.60, 205:0.60,
+  // Agelocer, pass 50. Placed against the Seagull rows 87-88 at 0.50 (decorated Chinese dials at
+  // this money) and Venezianico's 0.55 baseline, and every number rests on Agelocer's own renders,
+  // which are retouched - the copy is the weaker evidence and the photographs not much stronger.
+  //   206, 0.50. The meteorite is a MATERIAL bought, which pass 29 declined to credit; the 3D
+  //     micro-engraved moon is an OPERATION, which is what lifts it off the 0.45 microbrand rung.
+  //     The movement decoration Agelocer describe cannot be seen - the back is unresearched - so
+  //     it earns nothing (the Tudor rule).
+  //   207, 0.50. Skeletonised, scroll-engraved bridges visible from both sides - operations, row
+  //     133's distinction - but at $359 the "engraving" is stamped or machine-cut, and the
+  //     renders show no hand work. So the decorated-Seagull rung, not Zelos's 0.70.
+  //   208, 0.50. A marble dial (material) and applied batons on a 0.45 case, plus decoration
+  //     Agelocer NAME and which the exhibition back shows: Côtes de Genève, polished chamfers,
+  //     blued screws. Named and visible is the DUG condition; executed at this price, it is
+  //     half a rung, not DUG's 0.65.
+  //   209, 0.55. The open dial IS the movement: black-coated skeleton bridges and a flying cage on
+  //     show from the front and through the back. Venezianico's 0.55 baseline, above the three
+  //     automatics and well under the Peacock tourbillons' hand-guilloché 0.75.
+  206:0.50, 207:0.50, 208:0.50, 209:0.55,
 };
 const DEFAULT_FINISH = 0.4;
 
@@ -8632,9 +8936,10 @@ const DEFAULT_FINISH = 0.4;
 // Three states, and the difference matters: 1 = confirmed present, 0 = confirmed ABSENT,
 // missing from the table = NOT YET CHECKED. Only 1 and 0 enter the average; an unchecked row
 // is skipped entirely, so a gap in the research can never be mistaken for a missing feature.
-// Research status: 176 of 203 rows resolved - 88 see-through, 88 solid. The twenty-seven still
-// open are 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125, 126, 142, 143, 156, 166, 170, 173, 174 and
-// 182-189, all rows whose maker publishes no caseback detail. Rows 182-189 are pass 47's eight
+// Research status: 181 of 209 rows resolved - 92 see-through, 89 solid. The twenty-eight still
+// open are 12, 16, 38, 41, 54, 56, 58, 59, 82, 91, 125, 126, 142, 143, 156, 166, 170, 173, 174,
+// 182-189 and 206, all rows whose maker publishes no caseback detail. Row 206 is pass 50's Agelocer
+// Astronomer, the one of four Agelocer pages that never mentions its back. Rows 182-189 are pass 47's eight
 // Tudors: no Tudor product page has a caseback field or a caseback photograph. Rows 170, 173 and 174 are pass 46's and are Erebus,
 // who publish no caseback field for any reference: 171 and 172 were settled by their own caseback
 // renders in the product gallery and these three have no back shot to settle them. 173 is the
@@ -8990,6 +9295,13 @@ const DISPLAY_BACK = {
   // Peacock, pass 49 - all three from the spec block's own "Caseback:" line: Transparent on both
   // tourbillons, Solid on the Horse, whose back carries the Dragon Horse relief.
   201: 1, 202: 0, 203: 1,
+  // Pass 50. Rado's Gehäuseboden field takes both values across the two pages - "Verschraubter
+  // Gehäuseboden, Edelstahl" on 204, "Verschraubter Gehäuseboden, Saphirglasboden, Titan" on 205
+  // - so it is evidence either way, the Glycine test. Agelocer: 207's "double-sided transparent
+  // design", 208's "Panoramic Exhibition Case Back", 209's sapphire "on both the watch crystal and
+  // the case back". Row 206 is ABSENT: its page describes no back and its gallery shows none, and
+  // its siblings' windows are evidence about three other references.
+  204: 0, 205: 1, 207: 1, 208: 1, 209: 1,
 };
 // Base material score by category — Sapphire hardest/clearest, Hesalite (acrylic) softest.
 const GLASS_SCORE = { Hesalite: 0.4, Mineral: 0.6, Sapphire: 1.0 };
