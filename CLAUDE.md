@@ -101,7 +101,7 @@ Current baseline:
 
 ```
 211 rows · spec 26–67 · sigma 5 · 2 n/s · 3 o/s · 74 published weights
-model  LOO RMSE 6.09 vs naive 8.86 · skill 52.7% · 1 sign flip(s) · resample typical 0.28 worst 0.53
+model  LOO RMSE 6.06 vs naive 8.82 · skill 52.8% · 2 sign flip(s) · resample typical 0.31 worst 0.55
 ```
 
 **If a change was not meant to touch the model and those numbers move, something is wrong.**
@@ -312,7 +312,7 @@ either would turn the model into an echo of the shortlist. Say so before wiring 
   written up in prose in the `<footer>` — what was wrong before, what the evidence was, what is
   still unresolved. That reasoning is irreplaceable and belongs there. The bare chronology of what
   changed when is git's job now; don't grow the footer with it. The model is on revision 3;
-  research passes run to 51.
+  research passes run to 52.
 - **Footer paragraphs are dated snapshots, not live claims.** Do not retrofit them to current
   numbers — later passes explicitly refer back to earlier ones ("the earlier warning overstated
   the case"), and rewriting the earlier text destroys the correction it records. Live claims go in
